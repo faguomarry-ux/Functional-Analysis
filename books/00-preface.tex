@@ -1,0 +1,47 @@
+\chapter*{前言与阅读约定}
+\addcontentsline{toc}{chapter}{前言与阅读约定}
+本书以吉田耕作《泛函分析》第六版中译本为主线，以英文第六版作为术语、目录和页码核对的辅助资料。第一部分完整保留原书第零章至第十四章的章节顺序及各节主题，包含原书第五章附录和第十章附录。当前已写入第零章四节预备知识、第一章“半范数”的全部十四节正文及补充证明、例子和习题，并核对整理第零章参考文献；第二至十四章仍保留目录与正文占位，不将占位章节标记为已经写成。
+
+第二部分“广义函数专题扩展”接入此前已经写成的八章内容，章号顺接为第十五章至第二十二章。它以施瓦尔茨《广义函数论》和盖尔芳特、希烙夫《广义函数 III：微分方程理论的若干问题》为专题参考。吉田原书本身涉及广义函数的各节仍保留在第一部分，后续写作可引用专题中的详细证明，也可补充原书特有的论述。本次调整保持现有专题正文与习题，采用标签引用适应新的章号。
+
+目录框架中的章节名与节名以中译本为准，英文版辅助核对人名与对应主题。每个主线占位节记录两版印刷起始页；附录另列 PDF 页序的换算。后续应逐节补充定义、定理、证明、例子和习题，并统一记号。下面的配对与 Fourier 约定目前适用于已写成的广义函数分部，主线正文写作时也应明确它与原书约定的差别。
+
+\section*{符号与配对}
+\phantomsection
+\addcontentsline{toc}{section}{符号与配对}
+始终令 $\Omega\subset\R^n$ 为开集，$K\Subset\Omega$ 表示紧集 $K$ 包含于 $\Omega$。多重指标 $\alpha=(\alpha_1,\ldots,\alpha_n)\in\N_0^n$，并约定
+\[
+ |\alpha|=\sum_j\alpha_j,\quad \alpha!=\prod_j\alpha_j!,\quad
+ x^\alpha=\prod_jx_j^{\alpha_j},\quad
+ \partial^\alpha=\partial_{x_1}^{\alpha_1}\cdots\partial_{x_n}^{\alpha_n}.
+\]
+分布是复线性泛函，$\Pair{T}{\varphi}$ 对 $\varphi$ 线性，正则分布采用
+\[
+ \Pair{T_f}{\varphi}=\int_\Omega f(x)\varphi(x)\,\dd x,
+\]
+不在测试函数上加复共轭。Hilbert 空间的内积则另行采用 $ (u,v)=\int u\overline v$，对第一变量线性。这两种约定不可混同。
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+符号 & 含义\\\midrule
+$\Test(\Omega)$ & $C_c^\infty(\Omega)$，带标准 LF 拓扑\\
+$\Dist(\Omega)$ & $\Test(\Omega)$ 的连续线性对偶\\
+$\Smooth(\Omega)$ & $C^\infty(\Omega)$，带紧集上各阶一致收敛拓扑\\
+$\CompactDist(\Omega)$ & 紧支集分布空间\\
+$\Sch(\R^n),\Temp(\R^n)$ & Schwartz 空间与温和分布空间\\
+$\supp T$ & 分布 $T$ 的支集\\
+$T_j\to T$ & 默认指逐测试函数收敛，即弱对偶收敛\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+傅里叶变换统一使用角频率约定：
+\begin{equation}\label{eq:fourier-convention}
+ \widehat f(\xi)=\int_{\R^n}e^{-ix\cdot\xi}f(x)\,\dd x,
+ \qquad f(x)=(2\pi)^{-n}\int_{\R^n}e^{ix\cdot\xi}\widehat f(\xi)\,\dd\xi.
+\end{equation}
+施瓦尔茨原书部分公式使用 $2\pi$ 频率约定，盖尔芳特、希烙夫原书相关章节采用正号指数；查阅时须作符号与常数换算。
+
+\section*{建议的阅读路径}
+主线按吉田原书从预备知识读至发展方程。当前可直接阅读的专题正文从第 \ref{ch:motivation} 章起：第 \ref{ch:test}--\ref{ch:operations} 章建立测试空间与分布运算，第 \ref{ch:convolution}--\ref{ch:fourier} 章讨论卷积与 Fourier 变换，第 \ref{ch:pde} 章讨论微分方程模型，第 \ref{ch:weighted} 章介绍加权空间与广义固有函数。已写成的习题解答集中置于书后；新增占位节目前没有虚构的习题或证明。

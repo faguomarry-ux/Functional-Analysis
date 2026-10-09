@@ -1,0 +1,107 @@
+\section{准 Hilbert 空间}\label{sec:yosida-01-05}
+\noindent\textit{原书位置：中译本第 40--44 页；英文版第 39--42 页。}
+
+\subsection{平行四边形恒等式与极化}
+\begin{definition}[准 Hilbert 空间]
+赋范空间若满足
+\[
+ \|x+y\|^2+\|x-y\|^2=2\|x\|^2+2\|y\|^2,
+\]
+称为准 Hilbert 空间，亦称预 Hilbert 空间。这里尚不要求完备。
+\end{definition}
+\begin{theorem}[Jordan--von Neumann 极化定理]\label{thm:y1-polarization}
+实赋范空间满足平行四边形恒等式，当且仅当其范数由唯一实内积生成，此内积为
+\[
+ B(x,y)=\frac14\bigl(\|x+y\|^2-\|x-y\|^2\bigr).
+\]
+复情形中，以第一变量线性为约定，唯一内积为
+\[
+ (x,y)=\frac14\left(\|x+y\|^2-\|x-y\|^2
+ +i\|x+iy\|^2-i\|x-iy\|^2\right).
+\]
+\end{theorem}
+\begin{proof}
+实情形中对称性及 $B(x,x)=\|x\|^2$ 直接成立。平行四边形恒等式分别用于 $x+z,y$ 和 $x-z,y$，相减得到
+\[
+ B(x+y,z)+B(x-y,z)=2B(x,z).
+\]
+取 $y=x$ 得 $B(2x,z)=2B(x,z)$。再令 $x=(u+v)/2$、$y=(u-v)/2$，得到 $B(u+v,z)=B(u,z)+B(v,z)$。于是整数及有理数齐次性成立；$B$ 的定义与范数连续性使有理数逼近推广为实齐次性。这完整证明了双线性。
+
+复空间先视为实空间，得到 $B$。由 $\|ix\|=\|x\|$ 可知 $B(ix,iy)=B(x,y)$，所以 $B(ix,y)=-B(x,iy)$，且 $B(x,ix)=0$。定义 $(x,y)=B(x,y)+iB(x,iy)$，便有 $(ix,y)=i(x,y)$、$(y,x)=\overline{(x,y)}$ 及 $(x,x)=\|x\|^2$。这证明复内积性质。内积展开 $\|x\pm y\|^2$ 和 $\|x\pm iy\|^2$ 反过来给出极化公式，故唯一性与必要性都成立。
+\end{proof}
+
+\begin{theorem}[内积生成范数与 Cauchy--Schwarz 不等式]\label{thm:y1-schwarz}
+若 $(x,y)$ 是正定的实或复内积，则 $\|x\|=(x,x)^{1/2}$ 是范数，满足平行四边形恒等式，并且
+\[
+ |(x,y)|\le\|x\|\|y\|.
+\]
+等号成立当且仅当 $x,y$ 线性相关。
+\end{theorem}
+\begin{proof}
+$y=0$ 时显然。否则令 $c=(x,y)/\|y\|^2$，利用第一变量线性展开
+\[
+ 0\le\|x-cy\|^2=\|x\|^2-\frac{|(x,y)|^2}{\|y\|^2}.
+\]
+等号恰在 $x=cy$ 时成立。因而
+\[
+ \|x+y\|^2=\|x\|^2+2\operatorname{Re}(x,y)+\|y\|^2
+ \le(\|x\|+\|y\|)^2.
+\]
+这是三角不等式；其余范数公理及平行四边形恒等式直接由内积展开得到。
+\end{proof}
+\begin{remark}[补充：完备性与共轭位置]
+仅有内积公理不能推出 Hilbert 空间，还须证明完备性；原书中译本这一处的表述应按英文版的 pre-Hilbert 理解。极化公式中虚部的符号取决于哪一个变量线性。本稿内积第一变量线性，而分布对测试函数线性，二者不应混用。
+\end{remark}
+
+\subsection{基本例子与 Sobolev 型内积}
+$L^2(S,\mu)$ 和 $\ell^2$ 分别取
+\[
+ (f,g)=\int f\overline g\,d\mu,\qquad
+ (x,y)=\sum_jx_j\overline{y_j}.
+\]
+积分与级数的绝对收敛由 Hölder 保证。对 $k\in\N_0$，令 $\widehat H^k(\Omega)$ 为满足以下有限范数的 $C^k$ 函数：
+\[
+ \|f\|_{k,2}^2=\sum_{|\alpha|\le k}\int_\Omega|\partial^\alpha f|^2\,dx,
+ \qquad (f,g)_{k,2}=\sum_{|\alpha|\le k}\int_\Omega
+ \partial^\alpha f\,\overline{\partial^\alpha g}\,dx.
+\]
+它是准 Hilbert 空间，$C_c^\infty(\Omega)$ 也可用此内积赋予准 Hilbert 结构。它们一般尚不完备；后面将用弱导数解释其完备化。原书也考虑 $C_c^k$，其完备化相同：先用正则化在全部有限阶导数范数中逼近，即可将 $C_c^k$ 换成 $C_c^\infty$。
+
+\subsection{Bergman 空间与 Hardy--Lebesgue 类}
+平面开集 $G$ 上的 Bergman 空间为
+\[
+ A^2(G)=\{f\text{ 在 }G\text{ 全纯}:\int_G|f|^2\,dA<\infty\},
+ \qquad(f,g)=\int_Gf\overline g\,dA.
+\]
+它继承 $L^2$ 内积。第 \ref{sec:yosida-01-09} 节将证明全纯性在 $L^2$ 极限中保留，从而得到完备性。
+
+单位圆盘 $\mathbb D$ 上的 Hardy--Lebesgue 类（现代记作 $H^2(\mathbb D)$）由满足
+\[
+ \|f\|_{H^2}^2=\sup_{0<r<1}\frac1{2\pi}
+ \int_0^{2\pi}|f(re^{i\theta})|^2\,d\theta<\infty
+\]
+的全纯函数组成。
+\begin{theorem}[Hardy 类与系数空间的等距对应]\label{thm:y1-hardy}
+若 $f(z)=\sum_{j=0}^\infty c_jz^j$，则 $f\in H^2$ 当且仅当 $(c_j)\in\ell^2$，且 $\|f\|_{H^2}^2=\sum|c_j|^2$。系数映射是线性等距双射，因此内积为 $(f,g)=\sum c_j\overline{d_j}$。
+\end{theorem}
+\begin{proof}
+在每个固定 $r<1$ 上，Taylor 级数一致绝对收敛，可逐项相乘积分。圆周指数函数的正交性给出
+\[
+ \frac1{2\pi}\int_0^{2\pi}|f(re^{i\theta})|^2\,d\theta
+ =\sum_{j=0}^\infty|c_j|^2r^{2j}.
+\]
+令 $r\uparrow1$，单调收敛即得范数公式。反过来，给定 $\ell^2$ 系数，Cauchy--Schwarz 给出对 $|z|\le r<1$，
+\[
+ \sum_{j\ge N}|c_jz^j|
+ \le\left(\sum_{j\ge N}|c_j|^2\right)^{1/2}
+ \frac{r^N}{\sqrt{1-r^2}}.
+\]
+因此级数在紧子圆盘上一致收敛，定义全纯函数，前一公式保证其属于 $H^2$。这也证明满射性。
+\end{proof}
+
+\begin{exercise}[补充：哪些序列范数来自内积]
+在 $\mathbb K^2$ 上取 $\ell^p$ 范数。用 $(1,0)$ 和 $(0,1)$ 验证：$1\le p\le\infty$ 中只有 $p=2$ 满足平行四边形恒等式。
+\end{exercise}
+\begin{solution}
+有限 $p$ 时，左边为 $2\cdot2^{2/p}$，右边为 $4$，故 $p=2$。$p=\infty$ 时左边为 $2$，也不等于 $4$。$p=2$ 的范数由标准内积生成，故对所有向量成立。
+\end{solution}

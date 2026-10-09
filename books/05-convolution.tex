@@ -1,0 +1,119 @@
+\SetChapterInfo{subtitle={平滑逼近与运算的支集条件},keywords={卷积; 正则化; 张量积},prereq={分布导数; 紧支集分布},goals={说明卷积何时有定义并构造光滑逼近}}
+\chapter{卷积、张量积与正则化}\label{ch:convolution}
+\ChapterSource{对应施瓦尔茨 \cite{schwartz} 第 IV 章及第 VI 章，特别是两个分布卷积的定义与紧支集条件（原书印刷第 111 页）。}
+
+\section{分布与测试函数的卷积}
+在本章先取全空间 $\R^n$。对 $T\in\Dist(\R^n)$ 与 $\rho\in\Test(\R^n)$，定义
+\begin{equation}\label{eq:convolution-function}
+ (T*\rho)(x)=\Pair{T_y}{\rho(x-y)}.
+\end{equation}
+固定 $x$ 时右侧探针关于 $y$ 紧支撑，因此有意义。若 $x$ 在某个紧集变化，全部探针的支集仍落在一个共同紧集中；对 $x$ 求差商时，差商在该层的所有半范数下收敛。这允许把任意阶导数移入配对。
+\begin{proposition}[卷积平滑性]\label{prop:smoothing}
+$T*\rho\in C^\infty(\R^n)$，且
+\[
+ \partial^\alpha(T*\rho)=T*(\partial^\alpha\rho)
+ =(\partial^\alpha T)*\rho.
+\]
+此外 $\supp(T*\rho)\subset\supp T+\supp\rho$。
+\end{proposition}
+\begin{proof}
+第一等式由上述测试空间中的差商极限得到。第二等式中 $\partial_y^\alpha\rho(x-y)=(-1)^{|\alpha|}\partial_x^\alpha\rho(x-y)$，与分布导数的负号抵消。如果 $x$ 不在支集之和中，$\rho(x-\cdot)$ 的支集与 $\supp T$ 不交，配对为零。由于 $\supp\rho$ 紧，闭集与它的和仍闭，故得到支集包含关系。
+\end{proof}
+例如 $\delta_a*\rho=\rho(\cdot-a)$，$\delta_0'*\rho=\rho'$。平滑过程保留分布信息，但将奇性转成窄峰和高速变化。
+
+\section{近似恒等与局部正则化}
+\begin{theorem}[平滑逼近]\label{thm:mollification}
+取第 \ref{ch:motivation} 章的 $\rho_\varepsilon$，则
+\[
+ T*\rho_\varepsilon\longrightarrow T\quad\text{于 }\Dist(\R^n).
+\]
+这里将左侧光滑函数识别为其正则分布。
+\end{theorem}
+\begin{proof}
+令 $\Reflected\rho(x)=\rho(-x)$。对测试函数 $\varphi$，将紧支集参数积分移入连续配对，得
+\[
+ \Pair{T*\rho_\varepsilon}{\varphi}
+ =\Pair{T}{\Reflected\rho_\varepsilon*\varphi}.
+\]
+可以先用 Riemann 和验证这一步：参数范围紧，探针族在固定 $\Test_K$ 层中连续，故积分极限在每个半范数下成立。
+而
+\[
+ (\Reflected\rho_\varepsilon*\varphi)(y)
+ =\int\rho(z)\varphi(y+\varepsilon z)\,\dd z.
+\]
+对每个 $\alpha$，$\partial^\alpha\varphi$ 一致连续，所以上式的各阶导数一致趋于 $\partial^\alpha\varphi$。当 $0<\varepsilon\le1$ 时支集落在固定紧集 $\supp\varphi+\overline B(0,1)$。故探针收敛发生在 $\Test$，最后利用 $T$ 的连续性。
+\end{proof}
+一般开集上，在 $\Omega_\varepsilon=\{x:\operatorname{dist}(x,\R^n\setminus\Omega)>\varepsilon\}$ 可用同样配对定义 $T*\rho_\varepsilon$，并在每个固定内紧集上得到逼近。另一种做法是先用切断函数将局部分布化为全空间紧支集分布，再卷积；不同切断在较小区域上给出相同局部极限。
+
+若 $f\in L^p_\Loc$，$1\le p<\infty$，则 $f*\rho_\varepsilon\to f$ 于 $L^p$ 的局部范数。证明先局部切断，再用
+\[
+ \|f*\rho_\varepsilon-f\|_p
+ \le\int|\rho(z)|\|f(\cdot-\varepsilon z)-f\|_p\,\dd z
+\]
+和 $L^p$ 平移的连续性。对于 $p=\infty$，任意函数的范数收敛不成立，例如 $H$ 的跳跃无法由连续函数一致逼近。
+
+\begin{corollary}[正则分布的唯一性]
+若 $f\in L^1_\Loc(\Omega)$ 且 $T_f=0$，则 $f=0$ 几乎处处。
+\end{corollary}
+\begin{proof}
+在内紧集上，所有足够小 $\varepsilon$ 的卷积都为零；它们又在 $L^1$ 局部收敛到 $f$，故 $f$ 在每个内紧集上几乎处处为零。取可数穷竭即得全域结论。
+\end{proof}
+
+\section{张量积：分离不同变量}
+对 $S\in\Dist(\R^m)$、$T\in\Dist(\R^n)$，定义
+\[
+ \Pair{S\otimes T}{\Phi}
+ =\Pair{S_x}{\Pair{T_y}{\Phi(x,y)}},
+ \qquad\Phi\in\Test(\R^{m+n}).
+\]
+内层配对关于 $x$ 为光滑紧支集函数，其支集包含 $\supp\Phi$ 在 $x$ 方向的投影。固定矩形紧集上，先用 $T$ 的有限阶估计，再用 $S$ 的有限阶估计，可得
+\[
+ |(S\otimes T)(\Phi)|\le C
+ \max_{|\alpha|\le r,|\beta|\le s}
+ \sup|\partial_x^\alpha\partial_y^\beta\Phi|.
+\]
+因此张量积是分布。两个配对次序相同：在固定矩形内，有限和形式 $\sum_jf_j(x)g_j(y)$ 在光滑测试函数拓扑中稠密，可用切断后的 Fourier 级数逼近证明；在这些有限和上两种次序显然一致，连续性给出一般结论。这一步是分布版本的 Fubini 原理。
+特别地
+\[
+ (S\otimes T)(f\otimes g)=S(f)T(g),\qquad
+ \supp(S\otimes T)\subset\supp S\times\supp T.
+\]
+张量积在不同变量中相乘，不是同一点上任意两个分布的乘积。比如 $\delta_0\otimes\delta_0$ 有定义，但这并不定义一维的 $\delta_0^2$。
+
+\section{两个分布的卷积}
+想写 $(S*T)(\varphi)=(S\otimes T)(\varphi(x+y))$，但 $\varphi(x+y)$ 通常不紧支撑：沿 $x+y$ 固定的方向可延伸到无穷远。因此必须补上支集条件。
+\begin{theorem}[一个因子紧支撑的卷积]\label{thm:compact-convolution}
+若 $S,T\in\Dist(\R^n)$ 且至少一个具有紧支集，则 $S*T\in\Dist(\R^n)$ 有定义，满足
+\begin{align*}
+ S*T&=T*S,\\
+ \partial^\alpha(S*T)&=(\partial^\alpha S)*T=S*(\partial^\alpha T),\\
+ \supp(S*T)&\subset\supp S+\supp T.
+\end{align*}
+\end{theorem}
+\begin{proof}
+设 $A=\supp S$ 紧，$K=\supp\varphi$。当 $x\in A$ 且 $x+y\in K$ 时，有 $y\in K-A$，也是紧集。于是相关支集交落在紧集 $A\times(K-A)$ 内，可以选紧支集光滑切断函数 $\theta(x,y)$ 在该紧集的邻域为 1，令
+\[
+ (S*T)(\varphi)=(S\otimes T)(\theta(x,y)\varphi(x+y)).
+\]
+两种切断的差与 $\supp(S\otimes T)$ 及 $\supp\varphi(x+y)$ 的相关部分不相交，故作用相同。固定 $K$ 时可统一选切断，链式法则与张量积的有限阶估计保证连续性。交换性来自张量积配对次序可交换；导数公式来自分部积分；支集包含由相关交集为空时配对为零得到。
+\end{proof}
+在所有相关卷积均满足支集条件时可以使用结合律；例如三因子中至少两个紧支撑时，结合律合法。没有条件时，形式上的交换积分或重新加括号没有保证。
+
+更一般地，只要加法映射 $(x,y)\mapsto x+y$ 在 $\supp S\times\supp T$ 上是适当映射，即每个紧集的原像与该支集的交是紧的，同样定义成立。一维中两个分布都支于 $[0,\infty)$ 就满足此条件。这对因果基本解尤为重要。
+\begin{example}[半轴上的因果卷积]
+$H*H=xH(x)$，因为在 $x\ge0$ 时积分范围是 $0\le y\le x$，积分值为 $x$；在 $x<0$ 时为零。对其求导得到 $(H*H)'=H$，与 $H'*H=\delta_0*H=H$ 一致。
+\end{example}
+
+\section{习题}
+\begin{exercise}[卷积单位]
+证明 $\delta_0*T=T$ 与 $\delta_a*T=\tau_aT$。解释这些等式为何对任意分布都有意义。
+\end{exercise}
+\begin{solution}
+点质量紧支撑，故卷积存在。对 $\varphi$，先对点质量配对，得到 $T(\varphi(a+\cdot))$，正是平移的定义。取 $a=0$ 得单位元。
+\end{solution}
+\begin{exercise}[常数卷积的障碍]
+说明两个常数分布 $1$ 的形式卷积在 $\R$ 上为何不能用普通积分定义；与 $1*\rho$ 比较。
+\end{exercise}
+\begin{solution}
+形式值为 $\int_\R1\,\dd y=\infty$，加法在全支集上也不适当。若 $\rho\in\Test$，则第二因子紧支撑，$1*\rho=\int\rho$ 是合法的常数分布。这体现支集或衰减条件的作用。
+\end{solution}

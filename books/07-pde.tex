@@ -1,0 +1,132 @@
+\SetChapterInfo{subtitle={基本解、弱解与柯西问题},keywords={Poisson 方程; 热半群; 适定性},prereq={卷积与 Fourier 变换; Hilbert 空间},goals={明确解空间并区分存在、唯一和稳定}}
+\chapter{广义函数与微分方程}\label{ch:pde}
+\ChapterSource{基本解部分对应施瓦尔茨 \cite{schwartz} 第 VI 章 §10；柯西问题的视角对应盖尔芳特、希烙夫 \cite{gelfand} 第 II--III 章，特别是初值在广义函数意义下取极限的论述（印刷第 108 页）。本章选择可完整核验的模型方程展开。}
+
+\section{分布解与算子的形式转置}
+对光滑系数微分算子 $P=\sum_{|\alpha|\le m}a_\alpha(x)\partial^\alpha$，定义
+\[
+ Pu=\sum_{|\alpha|\le m}a_\alpha\partial^\alpha u,
+ \qquad {}^tP\varphi=\sum_{|\alpha|\le m}(-1)^{|\alpha|}
+ \partial^\alpha(a_\alpha\varphi).
+\]
+则 $\Pair{Pu}{\varphi}=\Pair{u}{{}^tP\varphi}$。这里是双线性配对的形式转置，若使用 Hilbert 内积讨论伴随算子，还要对系数取复共轭。
+\begin{definition}[分布解]
+$u\in\Dist(\Omega)$ 是 $Pu=f$ 的分布解，是指对每个 $\varphi\in\Test(\Omega)$ 有 $u({}^tP\varphi)=f(\varphi)$。
+\end{definition}
+它不要求 $u$ 具有普通导数。然而，分布解也不自动具有边界值；边界条件须在具有迹算子的函数空间中解释，或另行使用适合的分布框架。
+
+\section{基本解与卷积求解}
+\begin{definition}[基本解]
+常系数算子 $P(\partial)$ 的基本解是满足 $P(\partial)E=\delta_0$ 的分布 $E$。
+\end{definition}
+若 $f$ 紧支撑，则 $u=E*f$ 有定义，导数与卷积交换给出 $Pu=(PE)*f=\delta_0*f=f$。这构造了一个解；全部解还需加上任意齐次解。基本解也可相差齐次解，唯一性须附加辐射、因果或增长条件。
+\begin{example}[一阶因果基本解]
+对 $P=\partial_x+a$，$E_a=H(x)e^{-ax}$ 在分布意义满足 $PE_a=\delta_0$，$a$ 可为复数。若源 $f$ 与 $E_a$ 都支于右半轴，即使都不紧支撑，加法适当性也保证因果卷积合法。当 $\operatorname{Re}a<0$ 时 $E_a$ 指数增长，通常不是温和分布，但仍是普通分布。
+\end{example}
+
+\section{Laplace 算子的基本解}
+设 $\omega_{n-1}$ 为单位球面面积。对于算子 $-\Delta$，取
+\begin{equation}\label{eq:laplace-fundamental}
+ E_n(x)=\begin{cases}
+ \displaystyle\frac{|x|^{2-n}}{(n-2)\omega_{n-1}},&n\ge3,\\[4pt]
+ \displaystyle-\frac1{2\pi}\log|x|,&n=2,\\[4pt]
+ \displaystyle-\frac12|x|,&n=1.
+ \end{cases}
+\end{equation}
+这些函数在原点附近局部可积，且至多多项式或对数增长，故定义温和分布。
+\begin{theorem}[Newton 势基本解]
+式 \eqref{eq:laplace-fundamental} 满足 $-\Delta E_n=\delta_0$。
+\end{theorem}
+\begin{proof}
+$n=1$ 时来自 $|x|''=2\delta_0$。当 $n\ge2$ 时，$E_n$ 在原点外调和，且其径向导数满足
+\[
+ \partial_rE_n(r)=-\frac1{\omega_{n-1}r^{n-1}}.
+\]
+对 $\varphi\in\Test$，在 $B_R\setminus\overline B_\varepsilon$ 应用第二 Green 公式，外边界选在探针支集之外。内边界相对于穿孔区域的外法向为 $-e_r$，故
+\[
+ \int_{|x|>\varepsilon}E_n(-\Delta\varphi)\,\dd x
+ =\int_{|x|=\varepsilon}
+ [E_n\partial_r\varphi-\varphi\partial_rE_n],\dd S.
+\]
+第一项的绝对值为 $O(\varepsilon)$（$n\ge3$）或 $O(\varepsilon|\log\varepsilon|)$（$n=2$），趋于零。第二项等于球面上 $\varphi$ 的平均值，趋于 $\varphi(0)$。局部可积性允许补回小球中的积分，得到结论。
+\end{proof}
+例如三维 $E_3=1/(4\pi|x|)$，故紧支撑源的 Newton 势 $u=E_3*f$ 满足 $-\Delta u=f$。无限空间的基本解并不直接给出有界区域的 Dirichlet Green 函数，后者还需要修正边界值。
+
+\section{弱解与能量空间}
+在有界 Lipschitz 区域 $\Omega$，令 $H_0^1(\Omega)$ 为 $C_c^\infty(\Omega)$ 在 $H^1$ 范数下的闭包。它提供零边界迹的解释。定义 $H^{-1}(\Omega)$ 为 $H_0^1(\Omega)$ 的连续对偶。
+\begin{definition}[Poisson 方程的能量弱解]
+对 $f\in H^{-1}(\Omega)$，寻找 $u\in H_0^1(\Omega)$ 使
+\begin{equation}\label{eq:weak-poisson}
+ \int_\Omega\nabla u\cdot\overline{\nabla v}\,\dd x
+ =\Pair{f}{\overline v},\qquad v\in H_0^1(\Omega).
+\end{equation}
+右侧配对按双线性分布约定写成 $f(\overline v)$，故对 $v$ 共轭线性。
+\end{definition}
+Poincaré 不等式使 $\|u\|_{H_0^1}$ 可等价地取为 $\|\nabla u\|_2$。双线性型在复空间中是 sesquilinear 型，连续且强制。Lax--Milgram 定理给出唯一解，并有
+\[
+ \|u\|_{H_0^1}\le C\|f\|_{H^{-1}}.
+\]
+这同时说明解对数据稳定。取 $v=\overline\varphi$ 可得 $\int\nabla u\cdot\nabla\varphi=f(\varphi)$，即 $-\Delta u=f$ 于分布意义。反过来，若 $u\in H_0^1$ 满足分布方程，则先对光滑紧支集探针分部积分，再由稠密性延拓，得到能量弱解。
+
+\begin{pitfall}[分布解与能量解的条件差别]
+Dirac 源并非在任何维数都属于 $H^{-1}$。在内点附近，$\delta_a\in H^{-1}$ 需要 $1>n/2$，所以仅在一维成立；二维临界情形也不成立。高维点源可有分布基本解，但不能据此直接套用上述 $H_0^1$ 弱解定理。
+\end{pitfall}
+
+\section{热方程与温和分布初值}
+考虑 $\partial_tu=\Delta u$，$u(0)=u_0\in\Temp(\R^n)$。Fourier 变换把方程化为 $\partial_t\widehat u=-|\xi|^2\widehat u$，自然令
+\begin{equation}\label{eq:heat-solution}
+ \widehat u(t)=e^{-t|\xi|^2}\widehat u_0,\qquad t\ge0.
+\end{equation}
+乘子 $e^{-t|\xi|^2}$ 的各阶导数都有多项式界，因此对 Schwartz 测试空间连续，公式合法。对于 $t>0$，也可写
+\[
+ u(t,x)=\Pair{(u_0)_y}{G_t(x-y)}.
+\]
+这里 $G_t(x-\cdot)\in\Sch$，故与温和分布卷积有定义；这使用 Gaussian 衰减，而不是第 \ref{ch:convolution} 章的紧支集假设。对 $x$ 求导可移入配对，得到 $u(t,\cdot)$ 光滑，且每个固定 $t>0$ 下各导数有至多多项式增长。
+
+\begin{theorem}[热半群的基本性质]
+由式 \eqref{eq:heat-solution} 定义的 $u$ 属于 $C([0,\infty);\Temp)$，在 $t>0$ 时可微并满足热方程，且 $u(t)\to u_0$ 于温和分布意义。此外 $G_t*G_s=G_{t+s}$。
+\end{theorem}
+\begin{proof}
+对固定 $\varphi\in\Sch$，$e^{-t|\xi|^2}\varphi\to\varphi$ 于 $\Sch$。可先在大球内使用光滑收敛，再以更高权重统一控制尾部；对 $t$ 在紧区间内，乘子的每个导数具有统一多项式界。故对偶配对在 $t=0$ 连续。对 $t>0$ 在 Schwartz 半范数下求导，得到 $\partial_t\widehat u=-|\xi|^2\widehat u$。逆变换给出方程。半群公式由 Fourier 侧 $e^{-t|\xi|^2}e^{-s|\xi|^2}=e^{-(t+s)|\xi|^2}$ 与变换单射性得到。
+\end{proof}
+在 $C([0,T];\Temp)\cap C^1((0,T];\Temp)$ 解类中，这个初值解唯一。可在 Fourier 侧取紧支集探针，对时间依赖探针 $e^{t|\xi|^2}\psi(\xi)$ 求配对的导数；紧支集保证乘法合法，得到配对恒定。由初值得到式 \eqref{eq:heat-solution} 在所有紧支集探针上成立，再用稠密性确定温和分布。这种证明避免把指数增长乘子当成全 Schwartz 空间上的合法算子。
+
+当 $u_0\in L^2$ 时，Plancherel 给出 $\|u(t)\|_2\le\|u_0\|_2$。当 $u_0=\delta_0$ 时，$u(t)=G_t$，点质量立即被扩散为光滑密度。
+
+\section{唯一性与稳定性为什么依赖空间}
+Hadamard 适定性要求在选定数据空间和解空间中，解存在、唯一、且连续依赖数据。仅写出形式解并不能同时得到三者。
+反向热方程 $\partial_tu=-\Delta u$ 的频率因子是 $e^{t|\xi|^2}$。在圆周 $\mathbb T$ 上，取 $u_0^{(k)}(x)=e^{-kt_0}e^{ikx}$，$t_0>0$ 固定。对任意固定 $s$，
+\[
+ \|u_0^{(k)}\|_{H^s(\mathbb T)}\asymp
+ e^{-kt_0}(1+k^2)^{s/2}\longrightarrow0,
+\]
+而时刻 $t_0$ 的解范数为 $e^{(k^2-k)t_0}(1+k^2)^{s/2}\to\infty$。每个单模解都存在，但解映射在该 Sobolev 空间中不连续。
+
+在 $\R^n$ 上，反向热方程以 $\delta_0$ 为初值也不能产生任意正时刻的温和分布解：局部 Fourier 方程强制其变换为光滑函数 $e^{t|\xi|^2}$，它不能满足温和分布估计。若初值 Fourier 变换带有足够 Gaussian 衰减，则有限时间内可能仍有解。由此可见，改变测试空间或增长条件会改变存在性与稳定性。
+
+\section{常系数系统的 Fourier 视角}
+对系统 $\partial_tu=P(\partial_x)u$，形式解为
+\[
+ \widehat u(t,\xi)=e^{tP(i\xi)}\widehat u_0(\xi).
+\]
+若该矩阵乘子的各阶导数在每个有限时间区间具有统一多项式增长，就能在 $\Temp$ 上定义连续演化。若增长更快，则需要更强衰减的测试空间和相应对偶。盖尔芳特、希烙夫对这些增长、唯一性类和适定性类进行了系统研究；其一般分类定理需要更多加权空间工具，不能仅由这条形式公式推出。
+
+\section{习题}
+\begin{exercise}[三维点源]
+求 $-\Delta u=\delta_a$ 在 $\R^3$ 上的一个分布解，并说明为什么不能仅由这个方程得到唯一性。
+\end{exercise}
+\begin{solution}
+取 $u(x)=1/(4\pi|x-a|)$。平移基本解即得方程。任意调和分布 $h$ 都可相加，$u+h$ 仍为解；例如任意常数。需附加无穷远行为等条件来消除齐次自由度。
+\end{solution}
+\begin{exercise}[能量唯一性]
+若 $u,v\in H_0^1(\Omega)$ 是同一 Poisson 方程的能量弱解，证明 $u=v$。
+\end{exercise}
+\begin{solution}
+相减后取测试函数 $u-v$，得 $\int|\nabla(u-v)|^2=0$。Poincaré 不等式推出 $\|u-v\|_2=0$，故两者代表同一 $H_0^1$ 元素。
+\end{solution}
+\begin{exercise}[输运的点质量]
+对常向量 $b\in\R^n$，求解 $\partial_tu+b\cdot\nabla u=0$，$u(0)=\delta_a$。
+\end{exercise}
+\begin{solution}
+取 $u(t)=\delta_{a+tb}$。对探针 $\varphi$，时间导数为 $b\cdot\nabla\varphi(a+tb)$，而 $b\cdot\nabla u$ 的作用为其负值，故方程成立。与热方程不同，质量集中移动而不扩散。
+\end{solution}

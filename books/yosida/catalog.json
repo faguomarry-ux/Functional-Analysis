@@ -1,0 +1,812 @@
+[
+  {
+    "number": 0,
+    "file": "00-preliminaries.tex",
+    "title": "预备知识",
+    "en_title": "Preliminaries",
+    "zh_range": "1--22",
+    "en_range": "1--22",
+    "sections": [
+      {
+        "title": "集合论",
+        "zh_page": 1,
+        "en_page": 1
+      },
+      {
+        "title": "拓扑空间",
+        "zh_page": 3,
+        "en_page": 3
+      },
+      {
+        "title": "测度空间",
+        "zh_page": 14,
+        "en_page": 15
+      },
+      {
+        "title": "线性空间",
+        "zh_page": 20,
+        "en_page": 20
+      }
+    ]
+  },
+  {
+    "number": 1,
+    "file": "01-seminorms.tex",
+    "title": "半范数",
+    "en_title": "Semi-norms",
+    "zh_range": "23--70",
+    "en_range": "23--67",
+    "sections": [
+      {
+        "title": "半范数与局部凸线性拓扑空间",
+        "zh_page": 23,
+        "en_page": 23
+      },
+      {
+        "title": "范数和拟范数",
+        "zh_page": 31,
+        "en_page": 30
+      },
+      {
+        "title": "几例赋范线性空间",
+        "zh_page": 33,
+        "en_page": 32
+      },
+      {
+        "title": "几例拟赋范线性空间",
+        "zh_page": 39,
+        "en_page": 38
+      },
+      {
+        "title": "准 Hilbert 空间",
+        "zh_page": 40,
+        "en_page": 39
+      },
+      {
+        "title": "线性算子的连续性",
+        "zh_page": 44,
+        "en_page": 42
+      },
+      {
+        "title": "有界集和囿空间",
+        "zh_page": 46,
+        "en_page": 44
+      },
+      {
+        "title": "广义函数和广义导数",
+        "zh_page": 48,
+        "en_page": 46
+      },
+      {
+        "title": "B-空间和 F-空间",
+        "zh_page": 54,
+        "en_page": 52
+      },
+      {
+        "title": "完备化",
+        "zh_page": 58,
+        "en_page": 56
+      },
+      {
+        "title": "B-空间的商空间",
+        "zh_page": 61,
+        "en_page": 59
+      },
+      {
+        "title": "单位分解",
+        "zh_page": 63,
+        "en_page": 60
+      },
+      {
+        "title": "具有紧支集的广义函数",
+        "zh_page": 64,
+        "en_page": 62
+      },
+      {
+        "title": "广义函数的直接积",
+        "zh_page": 67,
+        "en_page": 65
+      }
+    ]
+  },
+  {
+    "number": 2,
+    "file": "02-baire-hausdorff.tex",
+    "title": "Baire--Hausdorff 定理的应用",
+    "en_title": "Applications of the Baire--Hausdorff Theorem",
+    "zh_range": "71--84",
+    "en_range": "68--80",
+    "sections": [
+      {
+        "title": "一致有界性定理及共鸣定理",
+        "zh_page": 71,
+        "en_page": 68
+      },
+      {
+        "title": "Vitali--Hahn--Saks 定理",
+        "zh_page": 73,
+        "en_page": 70
+      },
+      {
+        "title": "广义函数序列的逐项可微性",
+        "zh_page": 75,
+        "en_page": 72
+      },
+      {
+        "title": "奇点凝聚原理",
+        "zh_page": 75,
+        "en_page": 72
+      },
+      {
+        "title": "开映射定理",
+        "zh_page": 77,
+        "en_page": 75
+      },
+      {
+        "title": "闭图像定理",
+        "zh_page": 79,
+        "en_page": 77
+      },
+      {
+        "title": "闭图像定理的一个应用（Hörmander 定理）",
+        "zh_page": 82,
+        "en_page": 80
+      }
+    ]
+  },
+  {
+    "number": 3,
+    "file": "03-orthogonal-projection.tex",
+    "title": "正交投影及 F. Riesz 表示定理",
+    "en_title": "The Orthogonal Projection and F. Riesz' Representation Theorem",
+    "zh_range": "85--106",
+    "en_range": "81--101",
+    "sections": [
+      {
+        "title": "正交投影",
+        "zh_page": 85,
+        "en_page": 81
+      },
+      {
+        "title": "“殆正交”元",
+        "zh_page": 88,
+        "en_page": 84
+      },
+      {
+        "title": "Ascoli--Arzelà 定理",
+        "zh_page": 89,
+        "en_page": 85
+      },
+      {
+        "title": "正交基、Bessel 不等式与 Parseval 等式",
+        "zh_page": 90,
+        "en_page": 86
+      },
+      {
+        "title": "E. Schmidt 正交化",
+        "zh_page": 92,
+        "en_page": 88
+      },
+      {
+        "title": "F. Riesz 表示定理",
+        "zh_page": 93,
+        "en_page": 90
+      },
+      {
+        "title": "Lax--Milgram 定理",
+        "zh_page": 95,
+        "en_page": 92
+      },
+      {
+        "title": "Lebesgue--Nikodym 定理的一个证明",
+        "zh_page": 97,
+        "en_page": 93
+      },
+      {
+        "title": "Aronszajn--Bergman 再生核",
+        "zh_page": 99,
+        "en_page": 95
+      },
+      {
+        "title": "P. Lax 的负指数范数",
+        "zh_page": 102,
+        "en_page": 98
+      },
+      {
+        "title": "广义函数的局部结构",
+        "zh_page": 104,
+        "en_page": 100
+      }
+    ]
+  },
+  {
+    "number": 4,
+    "file": "04-hahn-banach.tex",
+    "title": "Hahn--Banach 定理",
+    "en_title": "The Hahn--Banach Theorems",
+    "zh_range": "107--124",
+    "en_range": "102--118",
+    "sections": [
+      {
+        "title": "实线性空间中的 Hahn--Banach 扩张定理",
+        "zh_page": 107,
+        "en_page": 102
+      },
+      {
+        "title": "广义极限",
+        "zh_page": 109,
+        "en_page": 103
+      },
+      {
+        "title": "局部凸的完备线性拓扑空间",
+        "zh_page": 110,
+        "en_page": 104
+      },
+      {
+        "title": "复线性空间中的 Hahn--Banach 扩张定理",
+        "zh_page": 111,
+        "en_page": 105
+      },
+      {
+        "title": "赋范线性空间中的 Hahn--Banach 扩张定理",
+        "zh_page": 112,
+        "en_page": 106
+      },
+      {
+        "title": "非平凡连续线性泛函的存在性",
+        "zh_page": 113,
+        "en_page": 107
+      },
+      {
+        "title": "线性映射的拓扑",
+        "zh_page": 115,
+        "en_page": 110
+      },
+      {
+        "title": "嵌 \\texorpdfstring{$X$}{X} 入其二次对偶 \\texorpdfstring{$X''$}{X''}",
+        "zh_page": 117,
+        "en_page": 112
+      },
+      {
+        "title": "几例对偶空间",
+        "zh_page": 119,
+        "en_page": 114
+      }
+    ]
+  },
+  {
+    "number": 5,
+    "file": "05-strong-weak-convergence.tex",
+    "title": "强收敛和弱收敛",
+    "en_title": "Strong Convergence and Weak Convergence",
+    "zh_range": "125--150",
+    "en_range": "119--144",
+    "sections": [
+      {
+        "title": "弱收敛和弱\\texorpdfstring{$^*$}{*}收敛",
+        "zh_page": 125,
+        "en_page": 120
+      },
+      {
+        "title": "自反 B-空间的局部弱列紧性、一致凸性",
+        "zh_page": 131,
+        "en_page": 126
+      },
+      {
+        "title": "Dunford 定理和 Gelfand--Mazur 定理",
+        "zh_page": 133,
+        "en_page": 128
+      },
+      {
+        "title": "弱可测性和强可测性、Pettis 定理",
+        "zh_page": 135,
+        "en_page": 130
+      },
+      {
+        "title": "Bochner 积分",
+        "zh_page": 137,
+        "en_page": 132
+      }
+    ]
+  },
+  {
+    "number": 6,
+    "file": "06-fourier-differential-equations.tex",
+    "title": "Fourier 变换和微分方程",
+    "en_title": "Fourier Transform and Differential Equations",
+    "zh_range": "151--200",
+    "en_range": "145--192",
+    "sections": [
+      {
+        "title": "速降函数的 Fourier 变换",
+        "zh_page": 151,
+        "en_page": 146
+      },
+      {
+        "title": "缓增分布的 Fourier 变换",
+        "zh_page": 155,
+        "en_page": 149
+      },
+      {
+        "title": "卷积",
+        "zh_page": 161,
+        "en_page": 156
+      },
+      {
+        "title": "Paley--Wiener 定理、单边 Laplace 变换",
+        "zh_page": 167,
+        "en_page": 161
+      },
+      {
+        "title": "Titchmarsh 定理",
+        "zh_page": 172,
+        "en_page": 166
+      },
+      {
+        "title": "Mikusiński 的算子演算",
+        "zh_page": 175,
+        "en_page": 169
+      },
+      {
+        "title": "Sobolev 引理",
+        "zh_page": 179,
+        "en_page": 173
+      },
+      {
+        "title": "Gårding 不等式",
+        "zh_page": 181,
+        "en_page": 175
+      },
+      {
+        "title": "Friedrichs 定理",
+        "zh_page": 183,
+        "en_page": 177
+      },
+      {
+        "title": "Malgrange--Ehrenpreis 定理",
+        "zh_page": 188,
+        "en_page": 182
+      },
+      {
+        "title": "具有一致强度的微分算子",
+        "zh_page": 193,
+        "en_page": 188
+      },
+      {
+        "title": "亚椭圆性（Hörmander 定理）",
+        "zh_page": 195,
+        "en_page": 189
+      }
+    ]
+  },
+  {
+    "number": 7,
+    "file": "07-dual-operators.tex",
+    "title": "对偶算子",
+    "en_title": "Dual Operators",
+    "zh_range": "201--218",
+    "en_range": "193--208",
+    "sections": [
+      {
+        "title": "对偶算子",
+        "zh_page": 201,
+        "en_page": 193
+      },
+      {
+        "title": "伴随算子",
+        "zh_page": 204,
+        "en_page": 195
+      },
+      {
+        "title": "对称算子和自伴算子",
+        "zh_page": 205,
+        "en_page": 197
+      },
+      {
+        "title": "酉算子、Cayley 变换",
+        "zh_page": 210,
+        "en_page": 202
+      },
+      {
+        "title": "闭值域定理",
+        "zh_page": 214,
+        "en_page": 205
+      }
+    ]
+  },
+  {
+    "number": 8,
+    "file": "08-resolvent-spectrum.tex",
+    "title": "预解式和谱",
+    "en_title": "Resolvent and Spectrum",
+    "zh_range": "219--242",
+    "en_range": "209--230",
+    "sections": [
+      {
+        "title": "预解式和谱",
+        "zh_page": 219,
+        "en_page": 209
+      },
+      {
+        "title": "预解方程和谱半径",
+        "zh_page": 221,
+        "en_page": 211
+      },
+      {
+        "title": "平均遍历定理",
+        "zh_page": 223,
+        "en_page": 213
+      },
+      {
+        "title": "关于伪预解式的 Hille 型遍历定理",
+        "zh_page": 226,
+        "en_page": 215
+      },
+      {
+        "title": "殆周期函数的平均值",
+        "zh_page": 229,
+        "en_page": 218
+      },
+      {
+        "title": "对偶算子的预解式",
+        "zh_page": 235,
+        "en_page": 224
+      },
+      {
+        "title": "Dunford 积分",
+        "zh_page": 236,
+        "en_page": 225
+      },
+      {
+        "title": "预解式的孤立奇点",
+        "zh_page": 238,
+        "en_page": 228
+      }
+    ]
+  },
+  {
+    "number": 9,
+    "file": "09-semigroups.tex",
+    "title": "半群的分析理论",
+    "en_title": "Analytical Theory of Semi-groups",
+    "zh_range": "243--286",
+    "en_range": "231--273",
+    "sections": [
+      {
+        "title": "\\texorpdfstring{$(C_0)$}{(C0)} 类半群",
+        "zh_page": 243,
+        "en_page": 232
+      },
+      {
+        "title": "局部凸空间中 \\texorpdfstring{$(C_0)$}{(C0)} 类等度连续半群、几例半群",
+        "zh_page": 246,
+        "en_page": 234
+      },
+      {
+        "title": "\\texorpdfstring{$(C_0)$}{(C0)} 类等度连续半群的无穷小生成元",
+        "zh_page": 248,
+        "en_page": 237
+      },
+      {
+        "title": "无穷小生成元 \\texorpdfstring{$A$}{A} 的预解式",
+        "zh_page": 252,
+        "en_page": 240
+      },
+      {
+        "title": "几例无穷小生成元",
+        "zh_page": 254,
+        "en_page": 242
+      },
+      {
+        "title": "具等度连续幂的连续线性算子的指数函数",
+        "zh_page": 256,
+        "en_page": 244
+      },
+      {
+        "title": "\\texorpdfstring{$(C_0)$}{(C0)} 类等度连续半群用其无穷小生成元的表示和刻画",
+        "zh_page": 258,
+        "en_page": 246
+      },
+      {
+        "title": "压缩半群和耗散算子",
+        "zh_page": 261,
+        "en_page": 250
+      },
+      {
+        "title": "\\texorpdfstring{$(C_0)$}{(C0)} 类等度连续群、Stone 定理",
+        "zh_page": 263,
+        "en_page": 251
+      },
+      {
+        "title": "全纯半群",
+        "zh_page": 266,
+        "en_page": 254
+      },
+      {
+        "title": "闭算子的分数幂",
+        "zh_page": 271,
+        "en_page": 259
+      },
+      {
+        "title": "半群的收敛性、Trotter--Kato 定理",
+        "zh_page": 281,
+        "en_page": 269
+      },
+      {
+        "title": "对偶半群、Phillips 定理",
+        "zh_page": 284,
+        "en_page": 272
+      }
+    ]
+  },
+  {
+    "number": 10,
+    "file": "10-compact-operators.tex",
+    "title": "紧算子",
+    "en_title": "Compact Operators",
+    "zh_range": "287--306",
+    "en_range": "274--293",
+    "sections": [
+      {
+        "title": "B-空间中的紧集",
+        "zh_page": 287,
+        "en_page": 274
+      },
+      {
+        "title": "紧算子与核算子",
+        "zh_page": 290,
+        "en_page": 277
+      },
+      {
+        "title": "Rellich--Gårding 定理",
+        "zh_page": 294,
+        "en_page": 281
+      },
+      {
+        "title": "Schauder 定理",
+        "zh_page": 295,
+        "en_page": 282
+      },
+      {
+        "title": "Riesz--Schauder 理论",
+        "zh_page": 296,
+        "en_page": 283
+      },
+      {
+        "title": "Dirichlet 问题",
+        "zh_page": 299,
+        "en_page": 286
+      }
+    ]
+  },
+  {
+    "number": 11,
+    "file": "11-normed-rings-spectral.tex",
+    "title": "赋范环和谱表示",
+    "en_title": "Normed Rings and Spectral Representation",
+    "zh_range": "307--376",
+    "en_range": "294--361",
+    "sections": [
+      {
+        "title": "赋范环的极大理想",
+        "zh_page": 309,
+        "en_page": 295
+      },
+      {
+        "title": "根、半单性",
+        "zh_page": 312,
+        "en_page": 298
+      },
+      {
+        "title": "有界正规算子的谱分解",
+        "zh_page": 315,
+        "en_page": 302
+      },
+      {
+        "title": "酉算子的谱分解",
+        "zh_page": 319,
+        "en_page": 306
+      },
+      {
+        "title": "单位分解",
+        "zh_page": 322,
+        "en_page": 309
+      },
+      {
+        "title": "自伴算子的谱分解",
+        "zh_page": 327,
+        "en_page": 313
+      },
+      {
+        "title": "实算子和半有界算子、Friedrichs 定理",
+        "zh_page": 329,
+        "en_page": 316
+      },
+      {
+        "title": "自伴算子的谱、Rayleigh 原理和 Krylov--Weinstein 定理、谱的重数",
+        "zh_page": 332,
+        "en_page": 319
+      },
+      {
+        "title": "一般展开定理、连续谱不出现的一个条件",
+        "zh_page": 336,
+        "en_page": 323
+      },
+      {
+        "title": "Peter--Weyl--Neumann 理论",
+        "zh_page": 339,
+        "en_page": 326
+      },
+      {
+        "title": "关于非交换紧群的 Tannaka 对偶性定理",
+        "zh_page": 345,
+        "en_page": 332
+      },
+      {
+        "title": "自伴算子的函数",
+        "zh_page": 351,
+        "en_page": 338
+      },
+      {
+        "title": "Stone 定理和 Bochner 定理",
+        "zh_page": 358,
+        "en_page": 345
+      },
+      {
+        "title": "具有简单谱的自伴算子的标准型",
+        "zh_page": 360,
+        "en_page": 347
+      },
+      {
+        "title": "对称算子的亏指数、广义单位分解",
+        "zh_page": 362,
+        "en_page": 349
+      },
+      {
+        "title": "群环 \\texorpdfstring{$L^1$}{L1} 及 Wiener 的 Tauber 定理",
+        "zh_page": 367,
+        "en_page": 354
+      }
+    ]
+  },
+  {
+    "number": 12,
+    "file": "12-other-representations.tex",
+    "title": "线性空间中其他表示定理",
+    "en_title": "Other Representation Theorems in Linear Spaces",
+    "zh_range": "377--396",
+    "en_range": "362--378",
+    "sections": [
+      {
+        "title": "端点、Krein--Milman 定理",
+        "zh_page": 377,
+        "en_page": 362
+      },
+      {
+        "title": "向量格",
+        "zh_page": 379,
+        "en_page": 364
+      },
+      {
+        "title": "B-格和 F-格",
+        "zh_page": 385,
+        "en_page": 369
+      },
+      {
+        "title": "Banach 收敛定理",
+        "zh_page": 386,
+        "en_page": 370
+      },
+      {
+        "title": "向量格的点函数表示",
+        "zh_page": 388,
+        "en_page": 372
+      },
+      {
+        "title": "向量格的集合函数表示",
+        "zh_page": 391,
+        "en_page": 375
+      }
+    ]
+  },
+  {
+    "number": 13,
+    "file": "13-ergodic-diffusion.tex",
+    "title": "遍历理论和扩散理论",
+    "en_title": "Ergodic Theory and Diffusion Theory",
+    "zh_range": "397--436",
+    "en_range": "379--417",
+    "sections": [
+      {
+        "title": "具有不变测度的 Markov 过程",
+        "zh_page": 397,
+        "en_page": 379
+      },
+      {
+        "title": "个别遍历定理及其应用",
+        "zh_page": 401,
+        "en_page": 383
+      },
+      {
+        "title": "遍历假设和 \\texorpdfstring{$H$}{H}-定理",
+        "zh_page": 407,
+        "en_page": 389
+      },
+      {
+        "title": "带局部紧相空间的 Markov 过程的遍历分解",
+        "zh_page": 411,
+        "en_page": 393
+      },
+      {
+        "title": "齐次 Riemann 空间上的 Brown 运动",
+        "zh_page": 416,
+        "en_page": 398
+      },
+      {
+        "title": "W. Feller 的广义 Laplace 算子",
+        "zh_page": 422,
+        "en_page": 403
+      },
+      {
+        "title": "扩散算子的一种推广",
+        "zh_page": 426,
+        "en_page": 408
+      },
+      {
+        "title": "Markov 过程和位势",
+        "zh_page": 429,
+        "en_page": 410
+      },
+      {
+        "title": "抽象位势算子和半群",
+        "zh_page": 430,
+        "en_page": 411
+      }
+    ]
+  },
+  {
+    "number": 14,
+    "file": "14-evolution-equations.tex",
+    "title": "发展方程的积分",
+    "en_title": "The Integration of the Equation of Evolution",
+    "zh_range": "437--486",
+    "en_range": "418--465",
+    "sections": [
+      {
+        "title": "在 \\texorpdfstring{$L^2(\\R^m)$}{L2(Rm)} 中扩散方程的积分",
+        "zh_page": 438,
+        "en_page": 419
+      },
+      {
+        "title": "紧 Riemann 空间中扩散方程的积分",
+        "zh_page": 444,
+        "en_page": 425
+      },
+      {
+        "title": "Euclid 空间 \\texorpdfstring{$\\R^m$}{Rm} 中波动方程的积分",
+        "zh_page": 446,
+        "en_page": 427
+      },
+      {
+        "title": "B-空间中非时齐发展方程的积分",
+        "zh_page": 449,
+        "en_page": 430
+      },
+      {
+        "title": "Tanabe 和 Sobolevski 的方法",
+        "zh_page": 457,
+        "en_page": 438
+      },
+      {
+        "title": "非线性发展方程 1（Komura--Kato 方法）",
+        "zh_page": 464,
+        "en_page": 445
+      },
+      {
+        "title": "非线性发展方程 2（立足于 Crandall--Liggett 收敛定理的方法）",
+        "zh_page": 473,
+        "en_page": 454
+      }
+    ]
+  }
+]

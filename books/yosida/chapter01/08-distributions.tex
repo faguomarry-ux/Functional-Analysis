@@ -1,0 +1,125 @@
+\section{广义函数和广义导数}\label{sec:yosida-01-08}
+\noindent\textit{原书位置：中译本第 48--54 页；英文版第 46--52 页。}
+
+\subsection{测试函数空间的有界集与囿性}
+\begin{theorem}[测试空间有界集的完整刻画]\label{thm:y1-D-bounded}
+$B\subset\Test(\Omega)$ 有界，当且仅当存在共同紧集 $K\Subset\Omega$，使 $B\subset\Test_K$，且对每个 $m$，
+\[
+ \sup_{\varphi\in B}p_{K,m}(\varphi)<\infty.
+\]
+$\Test(\Omega)$ 是囿空间。
+\end{theorem}
+\begin{proof}
+若无共同紧集，与定理 \ref{thm:y1-D-sequence} 同样选出 $\varphi_j\in B$ 及无域内聚点的非零取值点 $x_j$。半范数
+\[
+ q(\psi)=\sum_{j=1}^\infty j\frac{|\psi(x_j)|}{|\varphi_j(x_j)|}
+\]
+各层限制为有限和，故连续；却有 $q(\varphi_j)\ge j$，与有界性矛盾。各阶导数的一致有界由全局连续半范数 $\sup_\Omega|\partial^\alpha\psi|$ 得到。反向给定任意连续半范数 $q$，其在 $\Test_K$ 上由有限个 $p_{K,m}$ 控制，所以在 $B$ 上有界，命题 \ref{prop:y1-bounded} 即给出充分性。
+
+最后，若半范数 $q$ 在 $\Test$ 的有界集上有界，其在每个 $\Test_K$ 上也保有界性，因为包含映射连续。$\Test_K$ 可度量且局部凸，故囿，$q|_{\Test_K}$ 连续。归纳极限判别给出 $q$ 连续，于是 $\Test$ 囿。这个证明无需把不可度量的 $\Test$ 当作度量空间。
+\end{proof}
+
+\subsection{定义、局部有限阶估计与典型分布}
+\begin{definition}[广义函数或分布]
+$\Omega$ 上的分布是连续线性泛函 $T:\Test(\Omega)\to\mathbb K$；全体分布记作 $\Dist(\Omega)$。配对记为 $T(\varphi)=\Pair{T}{\varphi}$。
+\end{definition}
+\begin{theorem}[分布的局部有限阶判别]\label{thm:y1-distribution-estimate}
+线性泛函 $T$ 是分布，当且仅当对每个 $K\Subset\Omega$，存在 $m\in\N_0$ 与 $C_K>0$，使
+\[
+ |\Pair{T}{\varphi}|\le C_Kp_{K,m}(\varphi)\quad(\varphi\in\Test_K).
+\]
+它也等价于 $T$ 在 $\Test$ 的每个有界集上有界。
+\end{theorem}
+\begin{proof}
+连续性限制到 $\Test_K$，用第 \ref{sec:yosida-01-06} 节的半范数估计；$p_{K,m}$ 随 $m$ 增大，所以有限最大值可用一个较高阶半范数替代。反向由归纳极限判别得到。最后一条由 $\Test$ 的囿性以及半范数 $|T(\cdot)|$ 的判别得到。
+\end{proof}
+阶数 $m$ 可随紧集变化；一般分布未必有一个对整个 $\Omega$ 通用的有限阶数。
+
+\begin{example}[局部可积函数、测度和 Dirac 分布]
+对 $f\in L^1_{\Loc}(\Omega)$，令 $T_f(\varphi)=\int_\Omega f\varphi\,dx$。其估计为 $|T_f(\varphi)|\le\|f\|_{L^1(K)}p_{K,0}(\varphi)$。若复 Radon 测度 $\nu$ 的全变差在紧集上有限，则 $T_\nu(\varphi)=\int\varphi\,d\nu$ 同样定义分布。特别地，$\delta_a(\varphi)=\varphi(a)$ 是集中于 $a$ 的 Dirac 分布。仅有 $\sigma$-有限性不能代替局部有限全变差条件。
+\end{example}
+
+\begin{proposition}[局部可积函数到分布的嵌入是单射]\label{prop:y1-regular-injective}
+若 $T_f=0$，则 $f=0$ 几乎处处。因而 $T_f=T_g$ 等价于 $f=g$ 几乎处处。
+\end{proposition}
+\begin{proof}
+给定任意 $V\Subset\Omega$ 的开集，在包含 $\overline V$ 的紧邻域内取足够小的 $\varepsilon$，则对 $x\in V$，$y\mapsto\rho_\varepsilon(x-y)$ 是测试函数，所以 $f*\rho_\varepsilon(x)=0$。局部可积函数的正则化在 $L^1(V)$ 中趋于 $f$。这一逼近可由局部截断化为 $L^1(\R^n)$，再用
+\[
+ \|f*\rho_\varepsilon-f\|_1
+ \le\int\rho_\varepsilon(h)\|f(\cdot-h)-f\|_1\,dh
+\]
+及 $L^1$ 平移连续性证明；后者由简单函数的矩形逼近得到。因此 $f=0$ 在 $V$ 中几乎处处，取可数穷竭完成证明。这避免将局部可积的 $f$ 在整个无界域上当成有限测度。
+\end{proof}
+
+\subsection{广义导数与跳跃项}
+\begin{definition}[分布导数]
+对任意多重指标 $\alpha$，定义
+\[
+ \Pair{\partial^\alpha T}{\varphi}
+ =(-1)^{|\alpha|}\Pair{T}{\partial^\alpha\varphi}.
+\]
+\end{definition}
+这是分布，因为测试函数的微分保持紧支集，且提高有限阶估计中的阶数。各分布都能任意次求导，偏导相互交换。若 $f$ 经典可微，分部积分给出 $\partial_jT_f=T_{\partial_jf}$；测试函数在边界附近为零，所以不产生边界项。
+
+\begin{example}[Heaviside 函数与分段光滑函数]
+对 $H=1_{(0,\infty)}$，
+\[
+ \Pair{H'}{\varphi}=-\int_0^\infty\varphi'(x)\,dx=\varphi(0),\qquad H'=\delta_0.
+\]
+若 $f$ 在有限个点 $a_j$ 外分段 $C^1$，具有有限单侧极限，且分段导数局部可积，则
+\[
+ \partial T_f=T_{f'_{\mathrm{pw}}}
+ +\sum_j\bigl(f(a_j+)-f(a_j-)\bigr)\delta_{a_j}.
+\]
+证明是在各光滑区间分部积分，相邻端点项合并为右值减左值。点值本身任意更改不影响公式。特别地，$(|x|)''=2\delta_0$。
+\end{example}
+
+\begin{proposition}[边界与 Green 公式]\label{prop:y1-boundary-distribution}
+设 $U\Subset\R^n$ 有光滑边界，$f\in C^2(\overline U)$，并把 $f$ 延零到 $U$ 外。取外法向 $n$，则
+\[
+ \partial_jT_{f1_U}=T_{(\partial_jf)1_U}
+ -f n_j\,dS\big|_{\partial U},
+\]
+且对测试函数 $\varphi$，
+\[
+ \Pair{\Delta T_{f1_U}}{\varphi}
+ =\int_U\Delta f\,\varphi\,dx
+ +\int_{\partial U}\bigl(f\partial_n\varphi-(\partial_nf)\varphi\bigr)\,dS.
+\]
+\end{proposition}
+\begin{proof}
+散度定理给出 $-\int_U f\partial_j\varphi=\int_U\partial_jf\,\varphi-\int_{\partial U}fn_j\varphi$。Green 第二恒等式给出 $\int_U f\Delta\varphi=\int_U\Delta f\,\varphi+\int_{\partial U}(f\partial_n\varphi-\partial_nf\,\varphi)$。原书取内法向时两条边界符号相应反转；必须先固定法向约定。
+\end{proof}
+
+\subsection{光滑乘子与广义 Leibniz 公式}
+对 $a\in C^\infty(\Omega)$ 定义 $\Pair{aT}{\varphi}=\Pair{T}{a\varphi}$。Leibniz 公式给出 $p_{K,m}(a\varphi)\le C_{a,K,m}p_{K,m}(\varphi)$，所以定义的是分布，且
+\[
+ \partial_j(aT)=(\partial_ja)T+a\partial_jT.
+\]
+两边作用于 $\varphi$ 后，只需将 $\partial_j(a\varphi)$ 展开即得。
+
+\begin{theorem}[Hörmander 的广义 Leibniz 公式]\label{thm:y1-general-leibniz}
+为与后面的 Fourier 记号衔接，此处临时记 $D_j=(1/i)\partial_j$。若 $P(\xi)$ 是多项式，$a$ 光滑，$T$ 是分布，则
+\[
+ P(D)(aT)=\sum_\beta\frac{D^\beta a}{\beta!}
+ (\partial_\xi^\beta P)(D)T.
+\]
+右边是有限和。
+\end{theorem}
+\begin{proof}
+先对单项式 $P(\xi)=\xi^\alpha$ 逐次应用乘积求导，得
+\[
+ D^\alpha(aT)=\sum_{\beta\le\alpha}\binom\alpha\beta
+ (D^\beta a)D^{\alpha-\beta}T.
+\]
+而 $\partial_\xi^\beta\xi^\alpha/\beta!=\binom\alpha\beta\xi^{\alpha-\beta}$，所以单项式情形成立。再以线性组合得到一般多项式。这补足了原书利用指数函数和多项式 Taylor 恒等式辨认系数的论证。
+\end{proof}
+一般两个分布之间没有自然乘法：例如 $\delta_0^2$ 不由以上定义产生。对光滑乘子的要求是保证乘积仍把每个测试函数送入测试空间。
+
+\begin{exercise}[补充：Dirac 分布与乘子]
+证明在 $\R$ 上，$x\delta_0=0$、$x\delta_0'=-\delta_0$，并求 $a\delta_0'$ 的一般表达式。
+\end{exercise}
+\begin{solution}
+分别作用于 $\varphi$。$x\delta_0$ 给出零；$x\delta_0'$ 给出 $-(x\varphi)'(0)=-\varphi(0)$；一般有 $a\delta_0'=a(0)\delta_0'-a'(0)\delta_0$。由此可见不能将 Dirac 分布误当成只在一点有非零数值的普通函数。
+\end{solution}
+进一步的拓扑、限制、运算与例子参见第 \ref{ch:distributions}、\ref{ch:operations} 章。

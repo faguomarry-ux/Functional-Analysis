@@ -1,0 +1,30 @@
+% !TeX encoding = UTF-8
+\SetChapterInfo{subtitle={局部凸拓扑、函数空间与分布的共同基础},keywords={半范数; 拟范数; 完备化; 分布},prereq={线性代数、度量空间、Lebesgue 积分},goals={用半范数组织拓扑; 掌握连续性与完备性; 建立分布的基本运算}}
+\chapter{半范数}\label{ch:yosida-01}
+\ChapterSource{本章以吉田耕作第六版中译本第一章（印刷页 23--70）为主线，以英文第六版第一章（印刷页 23--67）辅助核对，保留原书全部十四节的主题与顺序。以下是统一记号后重新组织的讲述，定理编号属于本稿；标为“补充”的论证、辨析及习题用于展开原书略写的步骤。参见 \cite{yosida-zh,yosida-en}。}
+
+半范数的作用不只是给向量赋予一个“长度”。在函数空间中，函数大小、各阶导数大小以及不同区域上的行为，往往需要分别测量。有限个或无限个这样的测量共同确定收敛，连续算子则把一种测量控制在另一种测量之内。本章从这一观点出发，依次建立局部凸空间、赋范与拟赋范空间、完备化和商空间，再把这些工具用于广义函数。
+
+除特别说明外，标量域 $\mathbb K$ 是 $\R$ 或 $\mathbb{C}$，所有拓扑向量空间均为 Hausdorff 空间。$\Omega\subset\R^n$ 是开集，$K\Subset\Omega$ 表示 $K$ 是包含于 $\Omega$ 的紧集。多重指标 $\alpha=(\alpha_1,\ldots,\alpha_n)$ 满足 $|\alpha|=\sum\alpha_j$、$\alpha!=\prod\alpha_j!$，并记 $\partial^\alpha=\prod\partial_{x_j}^{\alpha_j}$。分布配对对测试函数是线性的，不加入复共轭；内积则约定对第一个变量线性。
+
+\input{books/yosida/chapter01/01-local-convexity}
+\input{books/yosida/chapter01/02-norms}
+\input{books/yosida/chapter01/03-normed-examples}
+\input{books/yosida/chapter01/04-metric-examples}
+\input{books/yosida/chapter01/05-prehilbert}
+\input{books/yosida/chapter01/06-operators}
+\input{books/yosida/chapter01/07-bornological}
+\input{books/yosida/chapter01/08-distributions}
+\input{books/yosida/chapter01/09-completeness}
+\input{books/yosida/chapter01/10-completion}
+\input{books/yosida/chapter01/11-quotients}
+\input{books/yosida/chapter01/12-partition}
+\input{books/yosida/chapter01/13-compact-distributions}
+\input{books/yosida/chapter01/14-tensor-products}
+
+\section*{本章参考文献与阅读衔接}
+\phantomsection
+\addcontentsline{toc}{section}{本章参考文献与阅读衔接}
+本章十四节的基本材料来源于 \cite{yosida-zh,yosida-en} 第一章。原书章末还指引读者阅读 Bourbaki、Grothendieck、Köthe、Banach、Dunford--Schwartz 及 Hille--Phillips 关于局部凸空间与 Banach 空间的著作，以及 Schwartz、Gelfand--Shilov、Hörmander 与 Friedman 关于分布的著作。本稿实际使用的分布参考书见 \cite{schwartz,gelfand}；上述其余著作仅保留为原书的阅读线索，未作为已核查的直接引文。
+
+第 \ref{ch:yosida-02} 章将从完备性推出一致有界、开映射与闭图像定理；第 \ref{ch:yosida-03} 章继续发展 Hilbert 空间的投影与表示。广义函数的进一步例子、卷积、Fourier 变换及偏微分方程应用，可接续阅读第 \ref{ch:test}--\ref{ch:weighted} 章。本章中分布的基本定义与证明仍独立保留，以保证主线阅读不依赖专题部分。

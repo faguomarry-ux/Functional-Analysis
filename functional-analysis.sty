@@ -1,0 +1,50 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{functional-analysis}[2026/10/09 Distribution theory book profile]
+% Windows 宋体没有独立斜体字形，书稿的强调文字采用楷体。
+\ifdefstring{\MakiResolvedFontPreset}{windows}{%
+  \IfFontExistsTF{KaiTi}{%
+    \setCJKmainfont{SimSun}[AutoFakeBold=3,ItalicFont=KaiTi,BoldItalicFont=KaiTi]%
+  }{}%
+}{}
+% 本书专用扩展层：保留原始 maki-notes.cls 与 maki-notes.sty。
+\tcbset{commonbox/.append style={breakable,
+  fontupper=\linespread{1.32}\selectfont,
+  left=5mm,right=5mm,top=3mm,bottom=3mm,
+  before skip=1.2em,after skip=1em}}
+% 模板的工作流卡片使用与标题条相同的标题文字颜色，印刷时不可见。
+% 在本书中统一改为白字，并显式填充标题条。
+\tcbset{
+  maki method box/.append style={coltitle=white,title filled=true},
+  maki pitfall box/.append style={coltitle=white,title filled=true},
+  maki remark box/.append style={coltitle=white,title filled=true},
+  maki keyformula box/.append style={coltitle=white,title filled=true},
+  maki solution box/.append style={coltitle=white,title filled=true}}
+\renewcommand{\MakiHeaderLeftText}{泛函分析}
+\renewcommand{\MakiHeaderRightText}{\nouppercase{\leftmark}}
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{2}
+\setlength{\emergencystretch}{2em}
+\allowdisplaybreaks[2]
+\newcommand{\Test}{\mathcal{D}}
+\newcommand{\Smooth}{\mathcal{E}}
+\newcommand{\Sch}{\mathcal{S}}
+\newcommand{\Dist}{\mathcal{D}'}
+\newcommand{\Temp}{\mathcal{S}'}
+\newcommand{\CompactDist}{\mathcal{E}'}
+\newcommand{\Pair}[2]{\langle #1,#2\rangle}
+\newcommand{\Loc}{\mathrm{loc}}
+\newcommand{\FT}{\mathcal{F}}
+\newcommand{\pv}{\operatorname{pv}}
+\newcommand{\Ord}{\operatorname{ord}}
+\newcommand{\Reflected}[1]{\check{#1}}
+\newcommand{\ChapterSource}[1]{\begin{methodnote}[参考线索]#1\end{methodnote}}
+% 主线占位与原书页码。正文写成后可删去对应占位命令。
+\newcommand{\YosidaChapterPlaceholder}[4]{%
+  \begin{methodnote}[章节占位与参考位置]
+  本章按吉田耕作第六版中译本第 #1 章的目录建立，正文待撰写。\\
+  中译本印刷页码：#3；英文第六版印刷页码：#4。\\
+  英文章名：#2。参考文献：\cite{yosida-zh,yosida-en}。
+  \end{methodnote}}
+\newcommand{\YosidaSectionPlaceholder}[2]{%
+  \noindent\textcolor{MainText!65}{正文待撰写。}%
+  \quad 中译本起始页：#1；英文版对应起始页：#2。\par}

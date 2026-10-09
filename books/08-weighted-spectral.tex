@@ -1,0 +1,130 @@
+\SetChapterInfo{subtitle={从增长控制到连续谱},keywords={W 型空间; Young 对偶; 广义固有函数},prereq={Schwartz 对偶; Fourier 变换},goals={理解更强测试空间的动机与谱展开的分布意义}}
+\chapter{加权测试空间与广义固有函数}\label{ch:weighted}
+\ChapterSource{主要对应盖尔芳特、希烙夫 \cite{gelfand} 第 I 章 §§1--3（印刷第 1--22 页）与第 IV 章 §§4--6（印刷第 177--198 页）。本章区分原书的 $W$ 型基本空间、这里给出的加权模型，以及可直接验证的 Fourier 谱展开。}
+
+\section{为什么要改变测试空间}
+$\Test$ 只观察局部，因此允许指数乃至更快增长的正则分布，但普通 Fourier 变换未必存在。$\Sch$ 可以使用 Fourier 自同构，却要求对偶对象能由多项式权重估计。若需要处理更快增长的对象，可以使测试函数衰减更快，让相应积分有意义。
+
+但空间的集合关系与拓扑关系都要检查。若连续嵌入 $E_1\hookrightarrow E_2$ 稠密，则限制给出单射 $E_2'\hookrightarrow E_1'$。因此更小且更精细的测试空间通常对应更大的对偶对象类。若稠密性不成立，限制可能丢失信息，不能把两个对偶空间自然等同。
+
+\section{凸权重与 \texorpdfstring{$W_M$}{W-M} 型空间}
+按原书思想，取递增连续函数 $\mu:[0,\infty)\to[0,\infty)$，满足 $\mu(0)=0$、$\mu(r)\to\infty$，定义
+\[
+ M(r)=\int_0^r\mu(s)\,\dd s\quad(r\ge0),\qquad M(-r)=M(r).
+\]
+则 $M$ 为偶凸函数，并有 $M(r)/r\to\infty$。凸性和 $M(0)=0$ 给出
+\[
+ M(r)+M(s)\le M(r+s),\qquad 2M(r)\le M(2r)\quad(r,s\ge0).
+\]
+例如 $M(r)=r^p/p$，$p>1$，相应 $\mu(r)=r^{p-1}$。
+
+\begin{definition}[本书使用的加权模型]
+对 $a>0$，定义
+\[
+ E_{M,a}=\{\varphi\in C^\infty(\R):
+ p_{a,q}(\varphi)=\sup_xe^{M(a|x|)}|\varphi^{(q)}(x)|<\infty
+ \text{ 对每个 }q\ge0\}.
+\]
+在每一层取这些半范数的 Fréchet 拓扑，再令
+\[
+ E_M=\bigcup_{a>0}E_{M,a}
+ =\bigcup_{j\ge1}E_{M,1/j}
+\]
+并赋予局部凸归纳极限拓扑。
+\end{definition}
+每层的完备性由带权各导数一致 Cauchy 与导数极限相容性证明。这一模型突出原书 $W_M$ 中的估计
+\[
+ |\varphi^{(q)}(x)|\le C_qe^{-M(a|x|)},
+\]
+其中 $a$ 对一个函数的所有阶导数共同使用。原书还引入 $W_{M,a}$ 中允许 $a-\delta$ 的估计及其他整函数基本空间，并仔细规定其收敛性；因此这里的 $E_M$ 作为明确拓扑的教学模型使用，不宣称逐项等同于原书全部 $W$ 空间。
+
+由于 $M(ar)$ 比任何线性函数增长更快，$E_{M,a}\subset\Sch$ 连续。任意紧支集光滑函数属于每个 $E_{M,a}$。若 $M(r)=r^p/p$，则选择整数 $k$ 使 $2k\ge p$ 后，$e^{-x^{2k}}$ 也属于某个 $E_{M,a}$：每阶导数只是多项式乘以同一指数，而适当选 $a$ 能留出指数衰减余量。这说明模型含有非紧支撑测试函数。
+
+\section{快速增长函数如何作用于加权探针}
+设 $|f(x)|\le Ce^{b|x|}$。对 $\varphi\in E_{M,a}$，
+\[
+ |\int f\varphi|\le Cp_{a,0}(\varphi)
+ \int_\R e^{b|x|-M(a|x|)}\,\dd x<\infty.
+\]
+每一层上都有这样的连续估计，故 $f$ 给出 $E_M$ 上的连续泛函。例如 $e^x$ 虽非温和分布，却能作用于这个加权测试空间。这并不自动给出 $\Sch'$ 中的 Fourier 变换；它只说明已选对偶框架扩大了可处理的增长范围。
+
+对于更快增长 $e^{M(b|x|)}$，当 $a>b$ 时它能作用于足够强衰减的固定层。却不能据此声称它在所有 $a>0$ 的并上都能积分。量词“存在衰减参数”与“对任意衰减参数”会给出不同的对偶空间，正是原书细分空间的重要原因。
+
+\section{Young 对偶与复频率增长}
+\begin{definition}[凸共轭]
+定义 $M^*(s)=\sup_{r\ge0}(rs-M(r))$，$s\ge0$。则
+\begin{equation}\label{eq:young-conjugate}
+ rs\le M(r)+M^*(s)
+\end{equation}
+称为 Young 不等式。
+\end{definition}
+若 $M(r)=r^p/p$，最大值由 $s=r^{p-1}$ 给出，故 $M^*(s)=s^{p'}/p'$，其中 $1/p+1/p'=1$。若 $\mu$ 严格递增，可用其反函数积分表示 $M^*$；原书用这类对偶权重描述 Fourier 变换前后的增长。
+
+取 $\varphi\in E_{M,a}$，其 Fourier 积分可延拓到复数 $z=\xi+i\eta$：
+\[
+ \widehat\varphi(z)=\int_\R e^{-ixz}\varphi(x)\,\dd x.
+\]
+因为 $|e^{-ixz}|\le e^{|\eta||x|}$，超线性衰减保证在每个复紧集上一致可积。各阶复导数也由附加的 $x^k$ 权重控制，因此它是整函数。Young 不等式进一步给出
+\[
+ |\eta||x|\le\tfrac12M(a|x|)+\tfrac12M^*(2|\eta|/a),
+\]
+从而
+\begin{equation}\label{eq:entire-growth}
+ |\widehat\varphi(\xi+i\eta)|\le C_a p_{a,0}(\varphi)
+ \exp\!\left[\tfrac12M^*(2|\eta|/a)\right],
+ \quad C_a=\int_\R e^{-M(a|x|)/2}\,\dd x<\infty.
+\end{equation}
+这条可直接证明的估计说明：实轴方向的衰减权重决定复频率虚部方向的增长权重。要证明两种完整基本空间互为 Fourier 像，还必须控制实部方向的衰减、复导数以及逆变换；单独的估计 \eqref{eq:entire-growth} 不等于完整空间同构定理。
+
+\section{Hilbert 空间中的连续谱}
+有限维自伴矩阵有正交本征向量基。无限维自伴算子可能有连续谱，此时 Hilbert 空间内未必存在对应本征向量。例如 $A=-i\partial_x$ 在 $L^2(\R)$ 上，取定义域 $H^1(\R)$，Fourier 变换将其变为乘法算子 $\xi$。若 $Au=\lambda u$，则 $(\xi-\lambda)\widehat u=0$，$L^2$ 函数只能支于单点时必为零，故不存在非零 $L^2$ 本征向量。
+
+然而 $e^{i\lambda x}$ 是温和分布，满足
+\[
+ -i\partial_xe^{i\lambda x}=\lambda e^{i\lambda x}.
+\]
+因此它可作为广义固有函数。它不是单位范数向量；“正交性”只能以分布核或谱变换的意义解释。
+
+\section{装配空间与可核验的广义展开}
+考虑连续稠密嵌入
+\[
+ \Sch(\R^n)\subset L^2(\R^n)\subset\Temp(\R^n).
+\]
+第二个映射为 $f\mapsto T_f$，由 Cauchy--Schwarz 连续；使用双线性配对时这是线性嵌入。若改为通常的共轭线性反对偶约定，需要相应调整 Hilbert 空间的识别。这类三重结构称为装配 Hilbert 空间或 Gelfand 三元组的典型模型。
+
+对 $u\in\Sch$，Fourier 反演可写成
+\begin{equation}\label{eq:generalized-expansion}
+ u=(2\pi)^{-n}\int_{\R^n}\widehat u(\xi)E_\xi\,\dd\xi,
+ \qquad E_\xi(x)=e^{ix\cdot\xi}.
+\end{equation}
+等式在 $\Temp$ 中的弱意义是：对每个 $\varphi\in\Sch$，
+\[
+ \Pair{u}{\varphi}=(2\pi)^{-n}
+ \int\widehat u(\xi)\widehat\varphi(-\xi)\,\dd\xi.
+\]
+所有积分绝对收敛，故 Fubini 合法。每个 $E_\xi$ 同时是 $-i\partial_j$ 的广义本征分布，本征值为 $\xi_j$，也是 $-\Delta$ 的广义本征分布，本征值为 $|\xi|^2$。
+
+对 $u\in L^2$，展开需要用 Fourier 截断在 $L^2$ 中取极限，不宜声称逐点绝对积分总成立。Plancherel 定理提供的“连续正交性”是
+\[
+ \|u\|_2^2=(2\pi)^{-n}\|\widehat u\|_2^2.
+\]
+形式核 $\int e^{ix\cdot(\xi-\eta)}\,\dd x=(2\pi)^n\delta(\xi-\eta)$ 则必须按分布恒等式解释，不能把左侧作为普通可积函数计算。
+
+\section{一般谱展开需要什么假设}
+盖尔芳特、希烙夫通过适当基本空间、其 Hilbert 完备化和谱测度的微分来构造固有泛函。一般装配 Hilbert 空间的谱定理通常要求基本空间具备核性等额外性质、算子保持该空间并连续，且其 Hilbert 实现满足自伴性等条件；还涉及相对于谱测度“几乎处处”定义的广义本征泛函。不同版本的假设并不相同。
+
+本稿已证明的具体模型是式 \eqref{eq:generalized-expansion} 的 Fourier 展开。一般自伴算子的广义本征展开在此作为后续研究方向，不把“任意自伴算子在任意测试空间都有完整广义本征基”作为结论。对于有界区域的椭圆算子，紧预解式常带来离散谱；对于全空间算子，连续谱与广义固有函数则更自然。
+
+\section{习题}
+\begin{exercise}[Gaussian 权重的对偶]
+令 $M(r)=r^2/2$，求 $M^*$，并由式 \eqref{eq:entire-growth} 写出虚部方向的增长估计。
+\end{exercise}
+\begin{solution}
+$rs-r^2/2$ 在 $r=s$ 取最大值，因此 $M^*(s)=s^2/2$。于是 $\frac12M^*(2|\eta|/a)=|\eta|^2/a^2$，得到 $|\widehat\varphi(\xi+i\eta)|\le C_a p_{a,0}(\varphi)e^{|\eta|^2/a^2}$。
+\end{solution}
+\begin{exercise}[乘法算子的广义本征向量]
+对 $M_xf=xf$，说明 $\delta_\lambda$ 是广义本征分布，但并非 $L^2(\R)$ 中的向量。
+\end{exercise}
+\begin{solution}
+对探针 $\varphi$，$(x\delta_\lambda)(\varphi)=\lambda\varphi(\lambda)$，故 $x\delta_\lambda=\lambda\delta_\lambda$。Dirac 分布不是局部可积函数，当然也不是 $L^2$ 函数。该例与微分算子的平面波本征分布通过 Fourier 变换联系起来。
+\end{solution}

@@ -1,0 +1,141 @@
+name: Build notes and release
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      publish_release:
+        description: 'Compile and publish a personal study snapshot (default branch only)'
+        type: boolean
+        required: true
+        default: false
+
+permissions:
+  contents: read
+
+# Each commit keeps its own run; reruns of the same run do not overlap.
+concurrency:
+  group: notes-${{ github.run_id }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - name: Checkout build sources
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          # Reference scans and local fonts are not compilation dependencies.
+          sparse-checkout: |
+            /*.tex
+            /*.sty
+            /*.cls
+            /books/
+            /figure/
+            /scripts/
+
+      - name: Install XeLaTeX and Chinese typesetting packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            texlive-xetex texlive-lang-chinese texlive-latex-extra \
+            texlive-fonts-recommended texlive-science texlive-pictures
+
+      - name: Compile complete book (three passes)
+        run: bash scripts/build-book.sh
+
+      - name: Prepare release assets and checksum
+        run: |
+          mkdir -p dist
+          cp output/pdf/main.pdf dist/functional-analysis-notes.pdf
+          cd dist
+          sha256sum functional-analysis-notes.pdf > SHA256SUMS.txt
+
+      - name: Upload compiled notes
+        uses: actions/upload-artifact@v4
+        with:
+          name: lecture-notes
+          path: dist/*
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload compilation diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: latex-diagnostics
+          path: |
+            output/pdf/**/*.log
+            output/pdf/**/*.aux
+          if-no-files-found: ignore
+          retention-days: 7
+
+  release:
+    needs: build
+    # Only the tip commit's message is inspected on push; PRs never publish.
+    if: >-
+      github.ref == format('refs/heads/{0}', github.event.repository.default_branch) &&
+      ((github.event_name == 'push' && contains(github.event.head_commit.message, '[release]')) ||
+       (github.event_name == 'workflow_dispatch' && inputs.publish_release))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    concurrency:
+      group: release-${{ github.sha }}
+      cancel-in-progress: false
+    steps:
+      - name: Download compiled assets
+        uses: actions/download-artifact@v4
+        with:
+          name: lecture-notes
+          path: dist
+
+      - name: Publish study snapshot
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          SOURCE_SHA: ${{ github.sha }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          cd dist
+          sha256sum --check SHA256SUMS.txt
+          tag="notes-${SOURCE_SHA}"
+          # API errors fail the run; an interrupted draft can be resumed.
+          release_state=$(gh api --paginate "repos/${GH_REPO}/releases?per_page=100" \
+            --jq ".[] | select(.tag_name == \"${tag}\") | .draft")
+          if [ "$release_state" = 'false' ]; then
+            echo "Release ${tag} already exists; no changes made."
+            exit 0
+          fi
+          cat > release-notes.md <<EOF
+          泛函分析个人学习讲义快照，仅供个人、非商业学习。
+
+          - 源提交：${SOURCE_SHA}
+          - 构建记录：${RUN_URL}
+          - 编译：XeLaTeX，完整正文连续三遍。
+          - 附件：讲义 PDF、SHA-256 校验文件。
+          - 当前正文与占位范围、进度和待办以该提交的 README 与 docs/PROGRESS.md 为准。
+
+          本快照仍在编写与校对中；原作者、译者及第三方材料的权利保持不变。
+          项目自定义个人非商业学习许可仅适用于项目有权许可的原创内容。
+          EOF
+          if [ "$release_state" = 'true' ]; then
+            gh release upload "$tag" \
+              functional-analysis-notes.pdf SHA256SUMS.txt --clobber
+          else
+            gh release create "$tag" \
+              functional-analysis-notes.pdf SHA256SUMS.txt \
+              --target "$SOURCE_SHA" \
+              --title "学习讲义 ${SOURCE_SHA:0:12}" \
+              --notes-file release-notes.md \
+              --prerelease --draft
+          fi
+          # Publish only after both assets are attached successfully.
+          gh release edit "$tag" --draft=false --prerelease --notes-file release-notes.md

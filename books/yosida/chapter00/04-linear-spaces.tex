@@ -1,0 +1,135 @@
+% !TeX encoding = UTF-8
+本节只建立代数结构，不给线性空间预先指定拓扑。后续的范数、半范数、闭子空间及连续算子，都是在这些代数对象上添加分析条件。除特别说明外，标量域 $\mathbb K$ 为 $\R$ 或 $\mathbb C$。
+
+\subsection{线性空间、子空间与生成空间}
+\begin{definition}[线性空间]\label{def:y0-vector-space}
+域 $\mathbb K$ 上的线性空间是集合 $V$，配有加法与数乘，满足：加法使 $V$ 成为交换群，零元记为 $0$；且对 $x,y\in V$、$\alpha,\beta\in\mathbb K$ 有
+\[
+ \alpha(x+y)=\alpha x+\alpha y,\qquad
+ (\alpha+\beta)x=\alpha x+\beta x,\qquad
+ (\alpha\beta)x=\alpha(\beta x),\qquad 1x=x.
+\]
+其元素称为向量。
+\end{definition}
+
+由分配律与加法消去律可得 $0x=0$、$\alpha0=0$、$(-1)x=-x$；若 $\alpha x=0$ 且 $\alpha\ne0$，乘以 $\alpha^{-1}$ 得 $x=0$。标量零与向量零通常共用记号，语境决定其所属空间。
+
+\begin{definition}[子空间与线性张成]\label{def:y0-subspace}
+非空子集 $M\subseteq V$ 若对加法与数乘封闭，称为线性子空间。等价地，对任意 $x,y\in M$ 及标量 $\alpha,\beta$，有 $\alpha x+\beta y\in M$。
+
+集合 $A\subseteq V$ 的线性张成 $\operatorname{span}A$ 是 $A$ 中有限个向量的全部线性组合组成的集合，约定 $\operatorname{span}\varnothing=\{0\}$。
+\end{definition}
+
+\begin{proposition}[张成与子空间的运算]\label{prop:y0-span}
+$\operatorname{span}A$ 是包含 $A$ 的最小子空间。任意族子空间的交仍为子空间，空族的交为 $V$。若 $M,N$ 为子空间，则 $M+N=\{m+n:m\in M,n\in N\}$ 是包含 $M\cup N$ 的最小子空间。
+\end{proposition}
+\begin{proof}
+有限线性组合的和或数乘仍为有限线性组合，故张成是子空间；任何包含 $A$ 的子空间必须包含这些组合，得最小性。交中的元素在各成员中都对线性组合封闭。对 $M+N$，线性组合可分别整理到 $M$ 和 $N$ 中，故它是子空间；包含两者的任一子空间都必须包含它们的和。
+\end{proof}
+
+子空间的并通常不是子空间。例如 $\R^2$ 中两条不同的过原点直线，其并不含从两直线各取一个非零向量所得的和。若一族子空间按包含关系成链，则其并为子空间，因为任意两个向量共同属于某个较大的成员。
+
+\begin{example}[后续使用的线性空间]
+$\mathbb K^n$、全体数列 $\mathbb K^{\N}$、任意集合上的函数空间 $\mathbb K^S$ 都以逐坐标运算成为线性空间。$C(X;\mathbb K)$、$C_c(X;\mathbb K)$ 是函数空间的子空间；$L^p$ 则把几乎处处相等的可测函数识别为同一个向量。后一识别是一个商构造，它保证范数为零的对象恰为零向量。
+\end{example}
+
+\subsection{线性无关、基与维数}
+\begin{definition}[线性无关与 Hamel 基]\label{def:y0-linear-independence}
+有限向量族 $v_1,\ldots,v_n$ 线性无关，指 $\sum_j\alpha_jv_j=0$ 蕴含全部 $\alpha_j=0$。任意子集 $B\subseteq V$ 线性无关，指其中每个有限的互异向量族都线性无关。若 $B$ 同时张成 $V$，称为 Hamel 基。
+
+若 $V$ 有 $n$ 个向量组成的基，称 $V$ 为 $n$ 维，记 $\dim V=n$；若没有有限基，称为无限维。零空间的空基给出维数 $0$。
+\end{definition}
+
+\begin{lemma}[有限交换引理]\label{lem:y0-exchange}
+若 $u_1,\ldots,u_m$ 线性无关，而 $v_1,\ldots,v_n$ 张成 $V$，则 $m\le n$；且可用 $u_1,\ldots,u_m$ 替换生成族中的 $m$ 个向量而仍张成 $V$。
+\end{lemma}
+\begin{proof}
+把 $u_1$ 表示为 $v_j$ 的线性组合。因为 $u_1\ne0$，有一个系数非零，可解出对应的 $v_j$，从而用 $u_1$ 替换它，仍保持张成。若已将 $u_1,\ldots,u_k$ 换入，把 $u_{k+1}$ 表示为当前生成族的线性组合；由于 $u_{k+1}$ 不属于前 $k$ 个 $u$ 的张成，至少有一个尚未替换的 $v_j$ 的系数非零，再解出它并替换。若 $m>n$，到第 $n$ 步时已无剩余 $v_j$，$u_{n+1}$ 将属于前 $n$ 个 $u$ 的张成，矛盾。
+\end{proof}
+
+\begin{corollary}[有限维空间的基定理]\label{cor:y0-finite-basis}
+有限维空间中，任意两个基的元素个数相同，任意线性无关族可扩充为基，任意有限生成族可删减为基。在 $n$ 维空间中，任意 $n$ 个线性无关向量都是基，任意 $n$ 个生成向量也都是基。
+\end{corollary}
+\begin{proof}
+对两个基分别用交换引理，得其元素个数互相不超过，从而相同。从有限生成族中逐一删去可由其余向量表示者，最终得到基；交换引理先将无关族换入有限生成族，再只删去多余的其余向量，即得到包含原无关族的基。若 $n$ 个无关向量未张成，可再加入一个不在其张成中的向量，与交换引理矛盾。若 $n$ 个生成向量相关，可删去至少一个，导致由少于 $n$ 个向量张成空间，也与交换引理矛盾。
+\end{proof}
+
+任意维空间中基的存在性已在定理 \ref{thm:y0-hamel-basis} 中用 Zorn 引理证明。这里有限维的结论只用有限交换，不需要一般的选择公理。具有基时，每个向量的有限坐标表达唯一，因两个表达相减给出有限线性关系。
+
+\subsection{线性算子、核、值域与延拓}
+\begin{definition}[线性算子与线性泛函]\label{def:y0-linear-operator}
+设 $X,Y$ 为同一标量域上的线性空间，$D(T)\subseteq X$ 为子空间。映射 $T:D(T)\to Y$ 若满足
+\[
+ T(\alpha x+\beta y)=\alpha Tx+\beta Ty,
+\]
+称为线性算子。定义域、值域与核分别记为
+\[
+ D(T),\qquad R(T)=T[D(T)],\qquad N(T)=\ker T=\{x\in D(T):Tx=0\}.
+\]
+若 $Y=\mathbb K$，称 $T$ 为线性泛函。双射的线性算子称为线性同构。
+\end{definition}
+
+\begin{proposition}[核、值域与逆算子]\label{prop:y0-operator}
+核及值域均为子空间。$T$ 单射当且仅当 $N(T)=\{0\}$；此时 $T^{-1}:R(T)\to D(T)$ 线性。映射 $T$ 若要在整个 $Y$ 上具有逆，还必须满足 $R(T)=Y$。
+\end{proposition}
+\begin{proof}
+线性性给出 $T0=0$，以及核和值域对线性组合封闭。因为 $Tx=Ty$ 当且仅当 $T(x-y)=0$，单射性等价于零核。单射时，对 $u=Tx$、$v=Ty$，有 $\alpha u+\beta v=T(\alpha x+\beta y)$，故 $T^{-1}(\alpha u+\beta v)=\alpha x+\beta y$，证明逆算子线性。整个 $Y$ 上的逆需对每个 $y$ 有原像，即满射。
+\end{proof}
+
+两个算子相等，要求定义域相同且逐点取值相同。若 $D(T_1)\subseteq D(T_2)$ 且 $T_2|_{D(T_1)}=T_1$，称 $T_2$ 为 $T_1$ 的延拓，记 $T_1\subseteq T_2$；这也是将算子看作图时的包含关系。线性泛函的配对在本稿中对向量线性，例如 $\langle T,x\rangle=T(x)$；若使用内积实现泛函，则须遵守第一变量线性的既定内积约定。
+
+\begin{proposition}[由基上的取值定义算子]\label{prop:y0-basis-map}
+设 $B$ 为 $X$ 的 Hamel 基。任意映射 $a:B\to Y$ 唯一延拓为线性算子 $T:X\to Y$，由
+\[
+ T\left(\sum_{b\in F}\alpha_bb\right)
+          =\sum_{b\in F}\alpha_ba(b)
+ \qquad(F\subseteq B\text{ 有限})
+\]
+定义。
+\end{proposition}
+\begin{proof}
+基的有限坐标表达唯一，故定义不依赖表达；将两向量的表达统一到一个有限基向量集合上，即可验证线性性。任何延拓都须满足同一公式，故唯一。
+\end{proof}
+
+这是代数构造；没有连续性结论。后续分析中必须另行检查定义的算子是否有界或连续。
+
+\subsection{商空间与第一同构定理}
+\begin{theorem}[商线性空间]\label{thm:y0-quotient}
+设 $M\subseteq X$ 为子空间。关系 $x\sim y$ 当且仅当 $x-y\in M$ 是等价关系，其等价类为 $[x]=x+M$。在集合 $X/M=\{x+M:x\in X\}$ 上定义
+\[
+ [x]+[y]=[x+y],\qquad\alpha[x]=[\alpha x].
+\]
+这些运算良定，使 $X/M$ 成为线性空间。商映射 $q:X\to X/M$、$q(x)=[x]$ 为满射线性算子，且 $\ker q=M$。
+\end{theorem}
+\begin{proof}
+$x-x=0\in M$ 给出自反性；$x-y\in M$ 蕴含其负向量 $y-x\in M$，给出对称性；两个差相加给出传递性。若 $x'=x+m$、$y'=y+n$，则 $(x'+y')-(x+y)=m+n\in M$，且 $\alpha x'-\alpha x=\alpha m\in M$，所以运算不依赖代表元。线性空间公理由原空间逐条传递，零元为 $M=[0]$，负元为 $[-x]$。商映射的线性性和满射性直接由定义成立；$[x]=[0]$ 当且仅当 $x\in M$，故核为 $M$。
+\end{proof}
+
+\begin{theorem}[商空间的因子分解与第一同构定理]\label{thm:y0-first-isomorphism}
+设 $T:X\to Y$ 线性，$M\subseteq\ker T$。则存在唯一线性算子 $\widetilde T:X/M\to Y$ 使 $T=\widetilde T\circ q$，其公式为 $\widetilde T([x])=Tx$。特别地，
+\[
+ X/\ker T\ \cong\ R(T).
+\]
+对定义在子空间上的算子，相应结论为 $D(T)/N(T)\cong R(T)$。
+\end{theorem}
+\begin{proof}
+若 $[x]=[y]$，则 $x-y\in M\subseteq\ker T$，所以 $Tx=Ty$，定义良定。线性性由商运算继承，唯一性由 $q$ 满射得到。取 $M=\ker T$ 并将目标限制为 $R(T)$，所得算子满射，且 $\widetilde T([x])=0$ 蕴含 $x\in\ker T$、$[x]=0$，所以为同构。
+\end{proof}
+
+\begin{corollary}[有限维的秩--零度公式]\label{cor:y0-rank-nullity}
+若 $X$ 有限维且 $T:X\to Y$ 线性，则 $\dim X=\dim\ker T+\dim R(T)$。
+\end{corollary}
+\begin{proof}
+取核的一组基 $e_1,\ldots,e_k$ 并扩充为 $X$ 的基 $e_1,\ldots,e_k,u_1,\ldots,u_r$。向量 $Tu_1,\ldots,Tu_r$ 张成值域；若它们有线性关系，则对应的 $u_j$ 组合属于核，再由原基的线性无关性得系数全零。因此它们为值域的基，维数公式成立。
+\end{proof}
+
+\begin{example}[商空间消除积分中的代表元歧义]
+在可积函数构成的线性空间中，令 $M$ 为几乎处处为零的函数组成的子空间。商空间把 $f$ 与 $g$ 识别为同一元素，恰当且仅当 $f=g$ a.e.。积分距离 $\int|f-g|$ 对代表元不敏感，并且在商空间中只有零元素的距离为零，这就是 $L^1$ 空间的代数起点。抽象商空间无需子空间闭；要得到 Hausdorff 的拓扑商或真正的商范数，则需后续的闭性条件。
+\end{example}
+
+\begin{exercise}[代数补空间与投影]
+假设选择公理。证明每个子空间 $M\subseteq X$ 都存在子空间 $N$，使 $X=M\oplus N$，即每个 $x$ 唯一写成 $m+n$。由此构造投影 $P:X\to M$，并说明它未必连续。
+\end{exercise}
+\begin{solution}
+取 $M$ 的 Hamel 基并用定理 \ref{thm:y0-hamel-basis} 扩充为 $X$ 的基。令 $N$ 为新增基向量的张成。基的唯一有限表达给出 $X=M+N$ 及 $M\cap N=\{0\}$。定义 $P(m+n)=m$，则 $P$ 线性、$P^2=P$、$R(P)=M$、$\ker P=N$。例如在 $\ell^2$ 中，取包含全部单位向量 $e_n$ 的 Hamel 基，按命题 \ref{prop:y0-basis-map} 定义泛函 $f(e_n)=n$，其余基向量取值为零。它在单位向量上无界，因而不连续；对应的投影 $P(x)=f(x)e_1$ 满足 $P^2=P$，同样不连续。
+\end{solution}

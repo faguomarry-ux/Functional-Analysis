@@ -1,0 +1,83 @@
+\section{范数和拟范数}\label{sec:yosida-01-02}
+\noindent\textit{原书位置：中译本第 31--33 页；英文版第 30--32 页。}
+
+\subsection{范数与强收敛}
+\begin{definition}[赋范线性空间]
+半范数 $\|\cdot\|$ 若满足 $\|x\|=0\Rightarrow x=0$，称为范数。它诱导平移不变距离 $d(x,y)=\|x-y\|$。在此距离中的收敛称为范数收敛或强收敛，记作 $x_j\to x$，原书也用 $\mathrm{s}\!\operatorname{-lim}x_j=x$。
+\end{definition}
+范数满足反三角不等式；若 $x_j\to x$、$y_j\to y$、$a_j\to a$，则
+\[
+ \|x_j\|\to\|x\|,\qquad x_j+y_j\to x+y,\qquad a_jx_j\to ax.
+\]
+前两条由三角不等式得到，最后一条由
+\[
+ \|a_jx_j-ax\|\le |a_j|\|x_j-x\|+|a_j-a|\|x\|
+\]
+及收敛标量序列有界得到。这是在最简单情形下的拓扑与线性运算相容性。
+
+\subsection{吉田意义的拟范数}
+\begin{definition}[拟范数：本章的历史用法]\label{def:y1-Fnorm}
+函数 $q:X\to[0,\infty)$ 若满足
+\[
+ q(x)=0\Longleftrightarrow x=0,\quad q(-x)=q(x),\quad
+ q(x+y)\le q(x)+q(y),
+\]
+并满足两条数乘连续性条件
+\[
+ a_j\to0\ \Longrightarrow\ q(a_jx)\to0\quad(x\text{ 固定}),\qquad
+ q(x_j)\to0\ \Longrightarrow\ q(ax_j)\to0\quad(a\text{ 固定}),
+\]
+称为吉田意义的拟范数。它定义距离 $d(x,y)=q(x-y)$。
+\end{definition}
+\begin{remark}[补充：与现代术语的区别]
+原书的 quasi-norm 在这里不要求 $q(ax)=|a|q(x)$，但要求真正的三角不等式。现代文献常以 quasi-norm 指满足绝对齐次性和放宽三角不等式 $\|x+y\|\le C(\|x\|+\|y\|)$ 的函数。为避免混用，本章在谈完备度量线性空间时使用定义 \ref{def:y1-Fnorm}，也可称之为一种 F-范数。
+\end{remark}
+
+\begin{lemma}[Kakutani 的一致数乘结论]\label{lem:y1-uniform-scalars}
+若 $q(x_j)\to0$，则对每个 $M<\infty$，
+\[
+ \sup_{|a|\le M}q(ax_j)\longrightarrow0.
+\]
+因此定义 \ref{def:y1-Fnorm} 中数乘实际上联合连续。
+\end{lemma}
+\begin{proof}
+这是原书借助 Egorov 定理给出的关键步骤，现将其展开。令 $r_j(a)=q(ax_j)$。由反三角不等式与第一条数乘条件，各 $r_j$ 在标量域 $\mathbb K$ 上连续；第二条条件给出对每个 $a$，$r_j(a)\to0$。在标量域的单位球上应用 Egorov 定理，可取有限正 Lebesgue 测度的可测集 $A$，使 $r_j\to0$ 在 $A$ 上一致。复标量时把 $\mathbb{C}$ 看作 $\R^2$。
+
+可测集示性函数的 $L^1$ 平移连续性给出 $|A\mathbin\triangle(A+h)|\to0$。这里这一事实可由有限测度集在测度上用有限个矩形逼近、再利用矩形的平移连续性证明。因此存在 $\delta>0$，使 $|h|<\delta$ 时 $A\cap(A+h)\ne\varnothing$，即 $h=a-b$，其中 $a,b\in A$。于是
+\[
+ r_j(h)\le r_j(a)+r_j(-b)=r_j(a)+r_j(b)
+ \le2\sup_{c\in A}r_j(c).
+\]
+这给出 $r_j\to0$ 在 $|h|<\delta$ 上一致。给定 $M$，选整数 $N>M/\delta$，对 $|a|\le M$ 写 $a=N(a/N)$，次可加性给出 $r_j(a)\le Nr_j(a/N)$，即得结论。
+
+若 $a_j\to a$、$x_j\to x$，则
+\[
+ q(a_jx_j-ax)\le q(a_j(x_j-x))+q((a_j-a)x)\to0.
+\]
+第一项使用刚证的一致结论，第二项使用固定向量的数乘条件。加法与 $q$ 自身的连续性则来自三角和反三角不等式。
+\end{proof}
+
+\subsection{可数半范数族的度量化}
+\begin{theorem}[可数半范数族与平移不变距离]\label{thm:y1-countable-metric}
+设分离点的半范数族为 $p_1,p_2,\ldots$。则
+\[
+ q(x)=\sum_{j=1}^\infty2^{-j}\frac{p_j(x)}{1+p_j(x)},\qquad d(x,y)=q(x-y)
+\]
+定义吉田意义的拟范数与距离，生成同一局部凸拓扑。并且 $d$-Cauchy 等价于对每个 $j$ 在 $p_j$ 下 Cauchy。
+\end{theorem}
+\begin{proof}
+函数 $h(t)=t/(1+t)$ 增加、$h(0)=0$，且
+\[
+ h(s+t)=\frac{s}{1+s+t}+\frac{t}{1+s+t}\le h(s)+h(t).
+\]
+因此各求和项满足三角不等式，级数由 $\sum2^{-j}$ 控制。分离性给出正定性。若 $q(x_l)\to0$，则每个固定项趋于零，从而 $p_j(x_l)\to0$。反向结论先固定足够小的级数尾，再控制有限个首项得到。此“有限首项加一致小尾项”论证也证明两个邻域系统一致，以及两种 Cauchy 条件等价。半范数的齐次性与同一论证验证两条数乘条件。
+\end{proof}
+于是 $\mathcal E^k(\Omega)$、$\Test_K(\Omega)$ 可度量。不同的穷竭或等价半范数族给出不同公式的距离，但拓扑与 Cauchy 概念相同。
+
+\begin{proposition}[补充：可赋范性的判别]\label{prop:y1-normable}
+Hausdorff 局部凸空间可由一个范数生成拓扑，当且仅当它有一个有界的零邻域。
+\end{proposition}
+\begin{proof}
+范数单位球显然是有界零邻域。反向取有界零邻域中的绝对凸零邻域 $U$。其规范泛函 $p_U$ 连续。若 $p_U(x)=0$，则 $x\in tU$ 对每个 $t>0$ 成立；有界性使 $tU$ 最终包含于任意给定零邻域，故 $x=0$。对任意零邻域 $V$，有界性给出 $U\subset cV$，于是 $\{p_U<1/c\}\subset V$（可先取均衡 $V$）。所以 $p_U$ 的范数拓扑等于原拓扑。
+\end{proof}
+有界集的正式定义见第 \ref{sec:yosida-01-07} 节。此判别说明可度量性远弱于可赋范性：多个局部测量不能总由一种全局测量替代。

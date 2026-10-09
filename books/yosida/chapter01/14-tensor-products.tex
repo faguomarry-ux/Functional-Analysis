@@ -1,0 +1,97 @@
+\section{广义函数的直接积}\label{sec:yosida-01-14}
+\noindent\textit{原书位置：中译本第 67--70 页；英文版第 65--67 页。}
+
+\subsection{分离变量函数的稠密性}
+记 $u\otimes v$ 为函数 $(x,y)\mapsto u(x)v(y)$。有限个这样的函数的线性组合构成测试空间的代数张量积；它不是集合的笛卡尔积，也不是把同一变量中的两个分布相乘。
+
+\begin{theorem}[分离变量的测试函数逼近]\label{thm:y1-tensor-density}
+给定 $\varphi\in\Test(\R^{n+m})$，存在
+\[
+ \varphi_j(x,y)=\sum_{l=1}^{N_j}u_{jl}(x)v_{jl}(y),\qquad
+ u_{jl}\in\Test(\R^n),\ v_{jl}\in\Test(\R^m),
+\]
+使 $\varphi_j\to\varphi$ 在 $\Test(\R^{n+m})$ 中成立。即有限分离变量函数的和在完整测试拓扑下稠密。
+\end{theorem}
+\begin{proof}
+展开原书的高斯正则化证明。令 $d=n+m$、$z=(x,y)$，定义
+\[
+ \Phi_t(z)=(4\pi t)^{-d/2}\int_{\R^d}
+ \varphi(w)\exp\left(-\frac{|z-w|^2}{4t}\right)\,dw,
+ \qquad t>0.
+\]
+对每个导数 $\partial^\alpha$，分部积分将微分从核移到 $\varphi$，得到 $\partial^\alpha\Phi_t=G_t*\partial^\alpha\varphi$。换元 $w=z+2\sqrt t\,s$ 后，积分为归一化高斯下 $\partial^\alpha\varphi(z+2\sqrt t\,s)$ 的平均。分成 $|s|\le R$ 与 $|s|>R$：前一部分因紧支集光滑函数的全域一致连续性而随 $t\downarrow0$ 一致逼近，后一部分由可积高斯尾部先取大 $R$ 控制。因此所有有限阶导数一致趋于 $\partial^\alpha\varphi$。
+
+积分中的 $|z-w|^2$ 在复变量延拓时应理解为 $\sum(z_l-w_l)^2$，不用复共轭。$w$ 的积分区间固定紧集，所以核对复 $z$ 是整函数并在复紧集上有统一可积控制；故 $\Phi_t$ 是 $d$ 变量整函数。其多元 Taylor 部分和为多项式，在每个复紧集上一致收敛；由 Cauchy 积分公式，各有限阶导数也一致收敛。选择 $t_j\downarrow0$ 及足够高阶多项式 $P_j$，使在 $|z|\le j$ 上、$|\alpha|\le j$ 时，$\partial^\alpha(P_j-\Phi_{t_j})$ 的绝对值小于 $1/j$。于是 $P_j\to\varphi$ 在 $\mathcal E(\R^d)$ 中。
+
+选固定 $a\in\Test(\R^n)$、$b\in\Test(\R^m)$，分别在 $\supp\varphi$ 的两坐标投影附近为一。令 $\varphi_j=a(x)b(y)P_j(x,y)$。它们的支集全部在固定紧集 $\supp a\times\supp b$ 中，且 Leibniz 公式给出所有导数一致趋于 $a(x)b(y)\varphi=\varphi$，所以是 $\Test$ 收敛。每个多项式是有限个 $x^\alpha y^\beta$ 的和，乘上 $a,b$ 后即是所需分离变量和。固定截断而非随 $j$ 逃向无穷的截断，是最后一步的要点。
+\end{proof}
+同一结论适用于 $\Test(\Omega\times\Lambda)$：先用有限个紧包含于乘积域的矩形邻域及单位分解分解一个给定测试函数，再对每片选择支集留在对应坐标域中的截断。因支集紧，只需有限片，每片的上述逼近可以合并。
+
+\subsection{带参数作用、直积及 Fubini 性质}
+\begin{lemma}[分布作用后的参数函数仍是测试函数]\label{lem:y1-parameter}
+设 $S\in\Dist(\Lambda)$，$\varphi\in\Test(\Omega\times\Lambda)$。则
+\[
+ \psi(x)=\Pair{S}{\varphi(x,\cdot)}
+\]
+属于 $\Test(\Omega)$，且 $\partial_x^\alpha\psi(x)=\Pair{S}{\partial_x^\alpha\varphi(x,\cdot)}$。若 $\supp\varphi\subset K\times L$ 且 $S$ 在 $\Test_L$ 上受 $s$ 阶估计控制，则
+\[
+ \max_{|\alpha|\le r}\sup_K|\partial_x^\alpha\psi|
+ \le C_S\max_{\substack{|\alpha|\le r\\|\beta|\le s}}
+ \sup_{K\times L}|\partial_x^\alpha\partial_y^\beta\varphi|.
+\]
+\end{lemma}
+\begin{proof}
+$x$ 在坐标投影支集外时，$\varphi(x,\cdot)=0$，所以 $\psi$ 有紧支集。对一阶差商，Taylor 公式给出
+\[
+ \frac{\varphi(x+he_j,y)-\varphi(x,y)}h-\partial_{x_j}\varphi(x,y)
+ \longrightarrow0
+\]
+在任意有限阶的 $y$ 导数半范数下一致成立，且 $y$ 支集固定于 $L$。$S$ 连续允许取此极限，得到导数公式；逐次重复证明所有阶。对导数公式应用 $S$ 的有限阶估计即得最后的上界。它还证明带参数作用把测试空间的有界集送入有界集。
+\end{proof}
+
+\begin{theorem}[分布直积的存在、唯一性与交换作用顺序]\label{thm:y1-tensor}
+对 $T\in\Dist(\Omega)$、$S\in\Dist(\Lambda)$，存在唯一 $T\otimes S\in\Dist(\Omega\times\Lambda)$，使
+\[
+ \Pair{T\otimes S}{u(x)v(y)}=\Pair{T}{u}\Pair{S}{v}.
+\]
+对一般测试函数，具有分布版 Fubini 公式
+\[
+ \Pair{T\otimes S}{\varphi}
+ =\Pair{T_x}{\Pair{S_y}{\varphi(x,y)}}
+ =\Pair{S_y}{\Pair{T_x}{\varphi(x,y)}}.
+\]
+\end{theorem}
+\begin{proof}
+由上一引理，先作用 $S$ 再作用 $T$ 有意义，并且在固定 $K\times L$ 上有
+\[
+ |T_x(S_y\varphi)|\le C_TC_S
+ \max_{\substack{|\alpha|\le r\\|\beta|\le s}}
+ \sup_{K\times L}|\partial_x^\alpha\partial_y^\beta\varphi|.
+\]
+每个一般紧集都包含在两个坐标投影紧集的乘积内，故局部有限阶判别证明它是分布。反向作用顺序同样定义分布。两者对分离变量函数都取值 $T(u)S(v)$，故对其有限线性组合相同。定理 \ref{thm:y1-tensor-density} 的稠密性及两个分布的连续性证明它们在全部测试函数上相同，并同时证明满足所列乘积条件的分布唯一。
+\end{proof}
+交换公式是“交换作用于不同变量的顺序”；若把 $T\otimes S$ 与 $S\otimes T$ 看作不同次序乘积域上的分布，还须配合坐标交换映射。原书以 $\times$ 记直接积，此处用 $\otimes$ 突出独立变量与张量含义。
+
+\begin{proposition}[补充：支集、微分与普通函数的对应]
+分布直积满足
+\[
+ \supp(T\otimes S)=\supp T\times\supp S,
+\]
+以及
+\[
+ \partial_x^\alpha\partial_y^\beta(T\otimes S)
+ =(\partial^\alpha T)\otimes(\partial^\beta S).
+\]
+若 $f\in L^1_{\Loc}(\Omega)$、$g\in L^1_{\Loc}(\Lambda)$，则 $T_f\otimes T_g=T_{f(x)g(y)}$。
+\end{proposition}
+\begin{proof}
+若一点在 $\supp T\times\supp S$ 外，可取一个矩形邻域，其中某个因子分布为零，直积在此邻域为零，得支集包含关系。反向若 $a\in\supp T$、$b\in\supp S$，任意包含 $(a,b)$ 的邻域都有较小矩形 $U\times V$。由支集定义存在支集于 $U,V$ 的 $u,v$，使 $T(u)\ne0$、$S(v)\ne0$，于是直积在 $uv$ 上非零，故 $(a,b)$ 属于支集。微分公式逐次使用导数定义和 Fubini 公式。普通函数情形中，固定乘积紧集上的绝对可积性由 $\int_K|f|\int_L|g|<\infty$ 保证，经典 Fubini 给出对应公式。
+\end{proof}
+例如 $\delta_a\otimes\delta_b=\delta_{(a,b)}$，且 $\delta_a'\otimes\delta_b$ 作用于 $\varphi$ 给出 $-\partial_x\varphi(a,b)$。这都合法，仍没有定义同一变量中的 $\delta_a^2$。更深入的卷积与张量应用见第 \ref{ch:convolution} 章。
+
+\begin{exercise}[补充：直积与微分的检验]
+在 $\R^2$ 上令 $W=H(x)\otimes\delta_0(y)$。写出 $W(\varphi)$，计算 $\partial_xW$ 与 $\partial_yW$，并确定其支集。
+\end{exercise}
+\begin{solution}
+$W(\varphi)=\int_0^\infty\varphi(x,0)\,dx$。因此 $\partial_xW=\delta_0(x)\otimes\delta_0(y)=\delta_{(0,0)}$，$\partial_yW=H(x)\otimes\delta_0'(y)$，后者作用于测试函数为 $-\int_0^\infty\partial_y\varphi(x,0)\,dx$。支集为 $[0,\infty)\times\{0\}$。
+\end{solution}

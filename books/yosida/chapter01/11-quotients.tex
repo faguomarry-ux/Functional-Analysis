@@ -1,0 +1,48 @@
+\section{B-空间的商空间}\label{sec:yosida-01-11}
+\noindent\textit{原书位置：中译本第 61--62 页；英文版第 59--60 页。}
+
+\begin{definition}[商范数]
+设 $X$ 赋范，$M\subset X$ 为闭线性子空间。对商空间中的陪集 $x+M$ 定义
+\[
+ \|x+M\|_{X/M}=\inf_{m\in M}\|x+m\|=\operatorname{dist}(x,M).
+\]
+规范映射记为 $Q:X\to X/M$，$Qx=x+M$。
+\end{definition}
+\begin{proposition}[商范数、商拓扑与开映射]\label{prop:y1-quotient-norm}
+该定义不依赖代表元，是商空间上的范数；其拓扑正是商拓扑。$Q$ 线性连续，$\|Q\|\le1$，且 $Q$ 是开映射。
+\end{proposition}
+\begin{proof}
+代表元变化只是把 $m$ 平移，故下确界不变。齐次性显然，三角性由对两个下确界选取任意精度的近似代表再相加得到。范数为零时 $x$ 在 $M$ 的闭包中，闭性给出 $x\in M$，故正定。
+
+有 $\|Qx\|\le\|x\|$。更准确地，
+\[
+ Q(B_X(x,r))=B_{X/M}(Qx,r).
+\]
+一向由压缩估计；反向若 $\|\xi-Qx\|<r$，下确界的定义允许选取该陪集中的代表 $z$，使 $\|z\|<r$，于是 $\xi=Q(x+z)$。这证明 $Q$ 开，也证明范数拓扑等于商拓扑。
+\end{proof}
+若 $M$ 不闭，同一公式仍是半范数，其零空间为 $\overline M/M$；所以闭性不是一个仅为方便而附加的条件。
+
+\begin{theorem}[Banach 空间的闭子空间商仍完备]\label{thm:y1-quotient-complete}
+若 $X$ 为 Banach 空间且 $M$ 闭，则 $X/M$ 为 Banach 空间。
+\end{theorem}
+\begin{proof}
+从商空间的 Cauchy 序列 $\xi_j$ 抽出子列，使 $\|\xi_{j_{k+1}}-\xi_{j_k}\|<2^{-k-1}$。对每个差陪集选代表 $u_k\in X$，使
+\[
+ Qu_k=\xi_{j_{k+1}}-\xi_{j_k},\qquad\|u_k\|<2^{-k}.
+\]
+选 $x_1$ 满足 $Qx_1=\xi_{j_1}$。级数 $x=x_1+\sum_ku_k$ 在 Banach 空间中绝对收敛。部分和 $s_k=x_1+\sum_{l<k}u_l$ 满足 $Qs_k=\xi_{j_k}$，因此 $\xi_{j_k}\to Qx$。原序列由 Cauchy 性也趋于 $Qx$。这里仅需要近似达到下确界的代表，完全不需要最近点存在。
+\end{proof}
+
+\begin{proposition}[补充：经商空间分解算子]
+若有界线性算子 $T:X\to Y$ 满足 $M\subset\ker T$，则存在唯一有界线性算子 $\widetilde T:X/M\to Y$，满足 $T=\widetilde TQ$，并且 $\|\widetilde T\|=\|T\|$。
+\end{proposition}
+\begin{proof}
+定义 $\widetilde T(x+M)=Tx$。$M\subset\ker T$ 保证代表元无关；由 $\|Tx\|=\|T(x+m)\|\le\|T\|\|x+m\|$ 对 $m$ 取下确界，得到 $\|\widetilde T\|\le\|T\|$。反向来自 $T=\widetilde TQ$ 与 $\|Q\|\le1$。满射性保证唯一性。
+\end{proof}
+
+\begin{exercise}[补充：商空间的具体计算]
+在 $C([0,1])$ 上取上确界范数，令 $M=\{f:f(0)=0\}$。证明 $C([0,1])/M$ 与标量域等距同构。
+\end{exercise}
+\begin{solution}
+评价映射 $f\mapsto f(0)$ 的核为 $M$，故诱导双射。所有代表的范数至少为 $|f(0)|$；而陪集中有常函数 $f(0)$，其范数恰为 $|f(0)|$，故商范数就是 $|f(0)|$。
+\end{solution}

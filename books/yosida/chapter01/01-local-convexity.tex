@@ -1,0 +1,138 @@
+\section{半范数与局部凸线性拓扑空间}\label{sec:yosida-01-01}
+\noindent\textit{原书位置：中译本第 23--30 页；英文版第 23--30 页。}
+
+\subsection{半范数及其几何}
+\begin{definition}[半范数、均衡集与吸收集]
+线性空间 $X$ 上的半范数是满足
+\[
+ p(x+y)\le p(x)+p(y),\qquad p(ax)=|a|p(x)
+\]
+的函数 $p:X\to[0,\infty)$。集合 $U\subset X$ 称为均衡的，若 $|a|\le1$ 蕴含 $aU\subset U$；称为吸收的，若对每个 $x\in X$，存在 $t>0$ 使 $x\in tU$。均衡凸集亦称绝对凸集。
+\end{definition}
+半范数可以在非零向量处为零。例如在 $\R^2$ 上，$p(x_1,x_2)=|x_1|$ 不测量第二个坐标。它的单位球是一条无限长的竖直带，而不是有界圆盘。
+
+\begin{proposition}[基本不等式与半范数球]\label{prop:y1-seminorm-basic}
+半范数满足 $p(0)=0$、$p(-x)=p(x)$ 以及
+\[
+ |p(x)-p(y)|\le p(x-y).
+\]
+若 $c>0$，则 $U_c=\{x:p(x)\le c\}$ 是吸收的绝对凸集，且
+\[
+ p(x)=c\inf\{t>0:x\in tU_c\}.
+\]
+半范数的零空间 $\ker p$ 是线性子空间。
+\end{proposition}
+\begin{proof}
+齐次性给出前两个等式。由 $p(x)\le p(x-y)+p(y)$ 及交换 $x,y$ 后的不等式得到第三式。若 $x,y\in U_c$、$0\le s\le1$，则 $p(sx+(1-s)y)\le sc+(1-s)c=c$；均衡性由齐次性得到。选择 $t>p(x)/c$ 即得吸收性。最后 $x\in tU_c$ 等价于 $p(x)\le tc$，对 $t$ 取下确界即得公式。零空间的封闭于加法和数乘也直接来自两条公理。
+\end{proof}
+
+\begin{definition}[Minkowski 泛函]
+若 $U$ 是吸收的绝对凸集，定义
+\[
+ p_U(x)=\inf\{t>0:x\in tU\}.
+\]
+这称为 $U$ 的 Minkowski 泛函或规范泛函。
+\end{definition}
+\begin{theorem}[Minkowski 泛函是半范数]\label{thm:y1-gauge}
+$p_U$ 是有限值半范数，且
+\[
+ \{p_U<1\}\subset U\subset\{p_U\le1\}.
+\]
+若 $U$ 是拓扑向量空间中零点的绝对凸邻域，则 $p_U$ 连续。若 $U$ 还开，则 $U=\{p_U<1\}$；若 $U$ 还闭，则 $U=\{p_U\le1\}$。
+\end{theorem}
+\begin{proof}
+吸收性保证下确界有限。对 $a\ne0$，均衡性蕴含 $aU=|a|U$，故 $p_U(ax)=|a|p_U(x)$。给定 $r>p_U(x)$、$s>p_U(y)$，均衡性保证 $x/r,y/s\in U$。凸性给出
+\[
+ \frac{x+y}{r+s}=\frac r{r+s}\frac xr+\frac s{r+s}\frac ys\in U.
+\]
+令 $r\downarrow p_U(x)$、$s\downarrow p_U(y)$ 得次可加性。若 $p_U(x)<1$，选 $r<1$ 使 $x\in rU\subset U$；另一包含关系显然。$U$ 为邻域时，$(\varepsilon/2)U\subset\{p_U<\varepsilon\}$，所以 $p_U$ 在零点连续，反三角不等式保证处处连续。
+
+若 $U$ 开且 $x\in U$，数乘连续性给出某个 $r<1$ 使 $x/r\in U$，于是 $p_U(x)<1$。若 $U$ 闭且 $p_U(x)\le1$，则 $x/(1+1/j)\in U$，取极限得 $x\in U$。这也说明一般不能把两个包含关系不加条件地写成等式。
+\end{proof}
+
+\subsection{由半范数族生成拓扑}
+\begin{theorem}[局部凸空间的半范数刻画]\label{thm:y1-lc}
+设 $\mathcal P$ 是 $X$ 上一族半范数，且满足分离条件：每个 $x\ne0$ 都有 $p\in\mathcal P$ 使 $p(x)>0$。以
+\[
+ U(p_1,\ldots,p_r;\varepsilon_1,\ldots,\varepsilon_r)
+ =\{x:p_j(x)<\varepsilon_j,\ 1\le j\le r\}
+\]
+为零点的邻域基，以平移得到各点邻域，则 $X$ 成为 Hausdorff 局部凸拓扑向量空间，各 $p\in\mathcal P$ 连续。反过来，每个 Hausdorff 局部凸拓扑向量空间的拓扑均由它的连续半范数生成。
+\end{theorem}
+\begin{proof}
+上述集合的有限交仍具有同样形式，并且均为吸收的绝对凸集。把各阈值缩小一半得到 $V+V\subset U$，因而加法连续。在 $(a_0,x_0)$ 处，利用
+\[
+ p_j(ax-a_0x_0)\le |a|p_j(x-x_0)+|a-a_0|p_j(x_0)
+\]
+同时使 $a$ 接近 $a_0$、$x$ 接近 $x_0$，即可验证数乘的联合连续性。各半范数连续来自命题 \ref{prop:y1-seminorm-basic}。若 $x\ne y$，选 $p(x-y)=c>0$，则 $x+\{p<c/3\}$ 和 $y+\{p<c/3\}$ 不相交，故拓扑 Hausdorff。
+
+反向证明中，每个零邻域包含绝对凸零邻域 $U$。定理 \ref{thm:y1-gauge} 给出连续半范数 $p_U$，且 $\{p_U<1\}\subset U$，所以这些半范数生成原拓扑。Hausdorff 性保证它们分离点，否则一个非零向量将落在所有零邻域中。
+\end{proof}
+把半范数族扩充为一切有限最大值及正倍数，不改变拓扑。于是许多估计可写成 $q(Tx)\le Cp(x)$；若原来的族没有经过这种扩充，则右边必须允许有限个半范数的最大值。
+
+\subsection{光滑函数空间与测试函数空间}
+函数的支集定义为其非零点集在定义域中的闭包。记
+\[
+ \mathcal E^k(\Omega)=C^k(\Omega),\qquad
+ p_{K,m}(f)=\max_{|\alpha|\le m}\sup_{x\in K}|\partial^\alpha f(x)|,
+\]
+其中 $m\le k$；$k=\infty$ 时允许任意有限的 $m$。这些半范数定义局部 $C^k$ 拓扑：$f_j\to f$ 就是允许的各阶导数在每个紧集上一致收敛。取紧集穷竭 $K_j\subset\operatorname{int}K_{j+1}$，$\bigcup K_j=\Omega$，所有紧集都包含于某个 $K_j$，于是可用可数个 $p_{K_j,m}$ 定义同一拓扑。度量化将在下一节证明。
+
+光滑紧支集函数并非只有零函数。例如
+\[
+ b(x)=\begin{cases}\exp\bigl(-1/(1-|x|^2)\bigr),&|x|<1,\\0,&|x|\ge1\end{cases}
+\]
+属于 $C_c^\infty(\R^n)$。其边界光滑性来自：任意幂次的 $t^{-1}$ 乘 $e^{-1/t}$，在 $t\downarrow0$ 时都趋于零。
+
+令
+\[
+ \Test_K(\Omega)=\{\varphi\in C_c^\infty(\Omega):\supp\varphi\subset K\},\qquad
+ \Test(\Omega)=C_c^\infty(\Omega).
+\]
+$\Test_K$ 由 $p_{K,m}$ 赋拓扑；$\Test$ 取使所有包含映射 $\Test_K\to\Test$ 连续的最强局部凸拓扑，称为局部凸归纳极限拓扑。利用穷竭可写为严格的可数归纳极限 $\Test=\bigcup_j\Test_{K_j}$。其中 $\Test_{K_j}$ 在 $\Test_{K_{j+1}}$ 中是闭子空间，诱导拓扑等于原拓扑。
+
+\begin{proposition}[归纳极限的半范数判别]\label{prop:y1-inductive}
+$\Test$ 上的半范数 $q$ 连续，当且仅当其在每个 $\Test_K$ 上的限制连续。更一般地，线性映射 $T:\Test\to Y$（$Y$ 局部凸）连续，当且仅当所有 $T|_{\Test_K}$ 连续。
+\end{proposition}
+\begin{proof}
+一个半范数 $q$ 的各限制连续时，把 $q$ 加入生成 $\Test$ 拓扑的半范数族，仍使各包含映射连续；最强性表明 $q$ 本来就连续。必要性由复合映射的连续性得到。对一般线性映射，只须把此结论用于 $q\circ T$，其中 $q$ 遍历 $Y$ 的连续半范数。
+\end{proof}
+
+\begin{theorem}[测试函数的序列收敛]\label{thm:y1-D-sequence}
+$\varphi_j\to\varphi$ 在 $\Test(\Omega)$ 中成立，当且仅当存在共同紧集 $K\Subset\Omega$ 包含所有 $\supp\varphi_j$ 及 $\supp\varphi$，且对每个 $m$，$p_{K,m}(\varphi_j-\varphi)\to0$。
+\end{theorem}
+\begin{proof}
+充分性由包含映射连续得到。证明必要性时先令极限为零。若不存在共同紧集，可逐次选子列 $\varphi_{j_l}$ 和无域内聚点的 $x_l\in\Omega$，使 $\varphi_{j_l}(x_l)\ne0$；这是因为其支集不断逃出紧集穷竭，非零点可在逃出的支集附近选取。定义
+\[
+ q(\psi)=\sum_{l=1}^\infty
+ \frac{|\psi(x_l)|}{|\varphi_{j_l}(x_l)|}.
+\]
+对任意紧支集 $\psi$ 此和只有有限项；在每个 $\Test_K$ 上，它是有限个点评价绝对值之和，所以由命题 \ref{prop:y1-inductive} 连续。然而 $q(\varphi_{j_l})\ge1$，矛盾。共同紧集存在后，全局半范数 $\psi\mapsto\sup_\Omega|\partial^\alpha\psi|$ 的各层限制连续，故在 $\Test$ 中连续，得到全部导数的一致收敛。一般极限通过相减化为零极限。
+\end{proof}
+\begin{pitfall}[局部收敛与测试函数收敛]
+若 $\eta\ne0$ 是紧支集光滑函数，则 $\eta(x-j)$ 在 $\mathcal E(\R)$ 中趋于零，却不在 $\Test(\R)$ 中趋于零；即使乘上 $e^{-j^2}$ 也一样。共同紧支集是额外条件。$\Test$ 通常不可度量，不能把序列判别未经证明地用于任意非线性映射的连续性。
+\end{pitfall}
+
+\subsection{正则化与逼近}
+\begin{proposition}[紧支集连续函数的光滑逼近]\label{prop:y1-mollify}
+取非负 $\rho\in\Test(\R^n)$ 满足 $\int\rho=1$、$\supp\rho\subset\overline B(0,1)$，并令 $\rho_\varepsilon(x)=\varepsilon^{-n}\rho(x/\varepsilon)$。若 $f\in C_c(\R^n)$，则
+\[
+ f_\varepsilon(x)=\int f(y)\rho_\varepsilon(x-y)\,dy
+\]
+属于 $C_c^\infty$，支集包含于 $\supp f+\overline B(0,\varepsilon)$，且 $\|f_\varepsilon-f\|_\infty\to0$。
+\end{proposition}
+\begin{proof}
+对光滑核在积分号下求导，得 $\partial^\alpha f_\varepsilon=f*\partial^\alpha\rho_\varepsilon$；积分区间可固定在 $\supp f$，故求导合法。支集结论来自卷积核仅在距离不超过 $\varepsilon$ 时非零。紧支集连续函数在整个 $\R^n$ 上一致连续，故
+\[
+ |f_\varepsilon(x)-f(x)|\le
+ \sup_{|h|\le\varepsilon}|f(x-h)-f(x)|\longrightarrow0
+\]
+一致成立。若 $\supp f\Subset\Omega$，充分小的 $\varepsilon$ 保证 $f_\varepsilon\in\Test(\Omega)$。
+\end{proof}
+
+\begin{exercise}[补充：半范数的零空间]
+证明 $X/\ker p$ 上 $\|x+\ker p\|=p(x)$ 是范数；再说明一个半范数族不分离点时，怎样先取公共零空间的商而得到 Hausdorff 空间。
+\end{exercise}
+\begin{solution}
+若 $x-y\in\ker p$，反三角不等式给出 $p(x)=p(y)$，所以定义良好，正定性在商空间上成立，其余公理由 $p$ 继承。对半范数族令 $N=\bigcap_p\ker p$，所有 $p$ 都下降为 $X/N$ 上的半范数，且下降后的族分离商空间中的点。
+\end{solution}

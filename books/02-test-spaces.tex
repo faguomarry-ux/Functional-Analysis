@@ -1,0 +1,94 @@
+\SetChapterInfo{subtitle={半范数、Fréchet 空间与 LF 拓扑},keywords={局部凸; 紧支集; 有界集},prereq={拓扑向量空间的基本概念},goals={区分局部光滑收敛与测试函数收敛}}
+\chapter{测试函数空间及其拓扑}\label{ch:test}
+\ChapterSource{主要对应施瓦尔茨 \cite{schwartz} 第 I 章 §2、第 III 章 §§1--3。归纳极限的有界集定理作为标准 LF 空间结论引用，其后给出本书需要的具体推论。}
+
+\section{局部凸空间与有限半范数估计}
+\begin{definition}[半范数]
+向量空间 $E$ 上的函数 $p:E\to[0,\infty)$ 若满足 $p(ax)=|a|p(x)$ 和 $p(x+y)\le p(x)+p(y)$，称为半范数。给定分离点的半范数族 $\{p_\lambda\}$，以有限交
+\[
+ \{x:p_{\lambda_1}(x)<\varepsilon_1,\ldots,p_{\lambda_r}(x)<\varepsilon_r\}
+\]
+作为零邻域基，可定义 Hausdorff 局部凸拓扑。
+\end{definition}
+\begin{proposition}[连续线性泛函的估计]\label{prop:seminorm-est}
+线性泛函 $L:E\to\mathbb C$ 连续，当且仅当存在有限多个半范数和 $C>0$，使
+\[
+ |L(x)|\le C\max_{1\le j\le r}p_{\lambda_j}(x).
+\]
+\end{proposition}
+\begin{proof}
+连续性给出某个基本零邻域上 $|L|<1$。取 $q(x)=\max_jp_{\lambda_j}(x)/\varepsilon_j$。若 $q(x)>0$，把 $x$ 缩放到 $q<1$ 的邻域内，得到 $|L(x)|\le q(x)$。若 $q(x)=0$，则任意倍数 $tx$ 都在该邻域内，故 $L(x)=0$。逆向由估计直接得到连续性。
+\end{proof}
+因此，无限多个半范数描述空间的拓扑，一个连续泛函却只需要有限多个半范数控制。
+
+\section{固定紧集上的测试空间}
+对 $K\Subset\Omega$ 令
+\[
+ \Test_K=\{\varphi\in C_c^\infty(\Omega):\supp\varphi\subset K\},\qquad
+ p_{K,m}(\varphi)=\max_{|\alpha|\le m}\sup_{x\in K}|\partial^\alpha\varphi(x)|.
+\]
+若 $K$ 没有足够的内部，$\Test_K$ 可能为零；实际构造穷竭时取具有内部的紧集。由于支集固定，导数在 $K$ 外为零，上式也可在 $\Omega$ 上取上确界。
+\begin{proposition}[Fréchet 性]
+$\Test_K$ 是完备可度量的局部凸空间。其拓扑可由平移不变距离
+\[
+ d(\varphi,\psi)=\sum_{m=0}^\infty2^{-m-1}
+ \frac{p_{K,m}(\varphi-\psi)}{1+p_{K,m}(\varphi-\psi)}
+\]
+描述。
+\end{proposition}
+\begin{proof}
+该距离的收敛等价于各个 $p_{K,m}$ 收敛。若序列为 Cauchy，则每个导数序列在 $\Omega$ 上一致 Cauchy，因而有连续极限 $g_\alpha$。在任意包含于 $\Omega$ 的小矩形上，对原函数应用微积分基本定理并取极限，得到 $\partial_jg_\alpha=g_{\alpha+e_j}$。故 $g_0$ 光滑且导数为 $g_\alpha$。在 $\Omega\setminus K$ 上各函数均为零，极限也为零。于是 $g_0\in\Test_K$，且在所有半范数下收敛。
+\end{proof}
+
+\section{从固定紧集到全部紧支集}
+选取紧穷竭 $K_1\subset\operatorname{int}K_2\subset\cdots\Subset\Omega$，其并为 $\Omega$，且任意紧集最终包含于某个 $K_j$。则
+\[
+ \Test(\Omega)=\bigcup_{j=1}^\infty\Test_{K_j}.
+\]
+\begin{definition}[标准测试函数拓扑]
+在上述并上取使所有包含映射 $\Test_{K_j}\to\Test(\Omega)$ 连续的最强局部凸拓扑，称为局部凸归纳极限拓扑。它不依赖所选穷竭。由于各层为 Fréchet 空间，且相邻层的包含映射给出闭子空间及其原拓扑，这里是严格 LF 空间。
+\end{definition}
+\begin{theorem}[测试空间的有界集与序列收敛]\label{thm:D-convergence}
+集合 $B\subset\Test(\Omega)$ 有界，当且仅当它包含于某个 $\Test_K$，且对每个 $m$，$\sup_{\varphi\in B}p_{K,m}(\varphi)<\infty$。特别地，$\varphi_j\to\varphi$ 当且仅当存在共同紧集 $K\Subset\Omega$ 包含全部支集，并且对每个多重指标 $\alpha$，
+\[
+ \sup_K|\partial^\alpha(\varphi_j-\varphi)|\longrightarrow0.
+\]
+\end{theorem}
+有界集结论引用标准严格 LF 空间定理；这是本章唯一需要较一般归纳极限理论的地方。序列推论的理由是：收敛序列连同极限在任意拓扑向量空间中有界，因而落在同一层；该层上的诱导拓扑恰为各阶一致收敛拓扑。反向由包含映射的连续性立即得到。有限多个初始项可以吸收到更大紧集中。
+
+\begin{example}[支集逃向无穷远]
+取非零 $\eta\in\Test(\R)$，$\varphi_j(x)=\eta(x-j)$。对每个固定紧区间，各阶导数最终为零，因此 $\varphi_j\to0$ 于 $C^\infty(\R)$ 的局部拓扑。但是它在 $\Test(\R)$ 中不趋于零，因为不存在共同紧支集。即使改成 $e^{-j^2}\eta(x-j)$，仍然不能满足测试空间的收敛条件。
+\end{example}
+\begin{pitfall}[序列判别的使用边界]
+$\Test(\Omega)$ 的标准拓扑一般不可度量。上述序列收敛判别是其特殊结构的结论，不能由此推断任意映射的连续性都等价于序列连续。定义分布时应使用逐紧集连续性或有限阶估计。
+\end{pitfall}
+
+\section{光滑函数空间与 Schwartz 空间}
+$\Smooth(\Omega)=C^\infty(\Omega)$ 由 $p_{K_j,m}$ 构成 Fréchet 拓扑，收敛只要求每个紧集上的各阶一致收敛，不要求共同紧支集。取切断函数 $\chi_j\in\Test(\Omega)$，在 $K_j$ 附近为 1，则 $\chi_jf\to f$ 于 $\Smooth$，故 $\Test$ 在 $\Smooth$ 中稠密。
+
+\begin{definition}[Schwartz 空间]
+$\Sch(\R^n)$ 是所有满足
+\[
+ q_{N,m}(\varphi)=\max_{|\alpha|\le m}\sup_{x\in\R^n}
+ (1+|x|)^N|\partial^\alpha\varphi(x)|<\infty
+ \quad(N,m\in\N_0)
+\]
+的光滑函数组成的空间，拓扑由这些半范数定义。它也可用 $\sup|x^\beta\partial^\alpha\varphi|$ 这族等价半范数描述。
+\end{definition}
+高斯函数 $e^{-|x|^2}$ 属于 $\Sch$，而 $1$ 不属于。各导数比任意负幂衰减；这比仅仅趋于零强得多。用与 $\Test_K$ 相似的导数极限论证可证 $\Sch$ 完备：各带权导数在加权一致范数下有极限，这些极限相容并满足所有权重估计。因此它是 Fréchet 空间。
+
+包含映射 $\Test\to\Sch\to\Smooth$ 都连续。在固定紧集上，权重有界，给出第一种连续性；在固定紧集上去掉权重得到第二种。又取 $\chi\in\Test$ 在单位球附近为 1，令 $\chi_R(x)=\chi(x/R)$，则 $\chi_R\varphi\to\varphi$ 于 $\Sch$。证明时对每个导数用 Leibniz 公式，利用 $|x|\gtrsim R$ 的尾部衰减，并以更高的权重吸收切断函数的导数。因此 $\Test$ 在 $\Sch$ 中稠密。
+
+\section{习题}
+\begin{exercise}[零阶范数不够]
+证明导数泛函 $L(\varphi)=\varphi'(0)$ 在 $\Test(\R)$ 连续，但无法在含零点内部的固定紧区间上由 $C\|\varphi\|_\infty$ 控制。
+\end{exercise}
+\begin{solution}
+它由一阶半范数控制。取 $\eta\in\Test$ 在零点附近为 1，令 $\varphi_k(x)=\eta(x)\sin(kx)$，则 $\|\varphi_k\|_\infty\le\|\eta\|_\infty$，但 $\varphi_k'(0)=k$，故零阶控制不可能。
+\end{solution}
+\begin{exercise}[固定支集与快速衰减]
+证明 $j^{-1}\eta(x-j)\to0$ 于 $\Smooth(\R)$，但不趋于零于 $\Sch(\R)$；设 $\eta$ 非零且紧支集。
+\end{exercise}
+\begin{solution}
+局部收敛来自支集最终离开每个固定紧集。取 $y_0$ 使 $\eta(y_0)\ne0$，在 $x=j+y_0$ 处，二阶权重给出 $q_{2,0}\ge j^{-1}(1+|j+y_0|)^2|\eta(y_0)|\to\infty$，故不在 Schwartz 拓扑中收敛。
+\end{solution}

@@ -1,0 +1,53 @@
+\section{几例拟赋范线性空间}\label{sec:yosida-01-04}
+\noindent\textit{原书位置：中译本第 39--40 页；英文版第 38--39 页。}
+
+\subsection{局部光滑拓扑}
+按定理 \ref{thm:y1-countable-metric}，$\mathcal E^k(\Omega)$ 和固定紧集上的 $\Test_K$ 都可取距离
+\[
+ d(f,g)=\sum_{j=1}^\infty2^{-j}\frac{p_j(f-g)}{1+p_j(f-g)},
+\]
+其中 $p_j$ 枚举相应的半范数。此拟范数可有统一上界 $1$，但这不意味着全空间是拓扑有界集：拓扑有界性涉及标量缩放与所有邻域，而不是某个距离数值的上界。
+
+\subsection{有限测度空间上的测度收敛}
+\begin{definition}[可测函数空间]
+设 $\mu(S)<\infty$。用 $L^0(S,\mu)$（原书记 $M(S,\Sigma,\mu)$）表示几乎处处有限的可测函数按几乎处处相等组成的空间。定义
+\[
+ q(f)=\int_S\frac{|f|}{1+|f|}\,d\mu,\qquad d(f,g)=q(f-g).
+\]
+\end{definition}
+\begin{proposition}[积分距离与测度收敛]\label{prop:y1-measure-convergence}
+上述 $q$ 是吉田意义的拟范数，并且 $d(f_j,f)\to0$ 当且仅当对每个 $\varepsilon>0$，
+\[
+ \mu\{|f_j-f|\ge\varepsilon\}\longrightarrow0.
+\]
+\end{proposition}
+\begin{proof}
+正定性在等价类上成立。三角不等式使用 $t/(1+t)$ 的单调性与次可加性。固定 $f$ 时，$q(af)\to0$ 随 $a\to0$ 由控制收敛得到，控制函数是可积的常数 $1$。
+
+令 $A_\varepsilon=\{|u|\ge\varepsilon\}$，则
+\[
+ \frac{\varepsilon}{1+\varepsilon}\mu(A_\varepsilon)
+ \le q(u)\le\mu(A_\varepsilon)
+ +\frac{\varepsilon}{1+\varepsilon}\mu(S).
+\]
+第一式证明距离收敛推出测度收敛；第二式先令序列指标趋于无穷，再令 $\varepsilon\downarrow0$，证明反向。固定 $a\ne0$ 时，$\{|au|\ge\varepsilon\}=\{|u|\ge\varepsilon/|a|\}$，故第二条数乘条件成立。联合连续性也可引用引理 \ref{lem:y1-uniform-scalars}。
+\end{proof}
+原书还给出同一拓扑的另一种拟范数。令
+\[
+ r(f)=\inf_{\varepsilon>0}\bigl(\varepsilon+\mu\{|f|\ge\varepsilon\}\bigr),
+ \qquad \widetilde q(f)=\arctan r(f).
+\]
+由 $\{|f+g|\ge a+b\}\subset\{|f|\ge a\}\cup\{|g|\ge b\}$ 得 $r(f+g)\le r(f)+r(g)$；$\arctan$ 在非负轴上增加且次可加，故 $\widetilde q$ 满足三角不等式。$r(f_j)\to0$ 与测度收敛等价：一向取固定阈值，另一向选择接近下确界的小阈值，再比较较大阈值的异常集。于是它也满足数乘条件，并定义相同拓扑。
+
+\begin{example}[测度收敛与几乎处处收敛]
+在 $[0,1)$ 上依次枚举第 $m$ 层的二进区间
+\[
+ I_{m,k}=[k2^{-m},(k+1)2^{-m}),\quad 0\le k<2^m,
+\]
+取相应示性函数作为一个序列。其积分距离趋于零，却在每个点上都无极限，因为每层恰有一次取值为 $1$，其余大量次取值为 $0$。相反，有限测度空间上的几乎处处收敛必推出测度收敛，由控制收敛应用于异常集示性函数即可。
+\end{example}
+测度收敛序列可以抽出几乎处处收敛的子列：选 $j_k$ 使 $\mu\{|f_{j_k}-f|>2^{-k}\}<2^{-k}$，可数次可加性给出异常事件的上极限为零测集。这一选子列技术也用于后面的完备性证明。
+
+\begin{remark}[补充：非局部凸性需要测度条件]
+在 $[0,1]$ 的 Lebesgue 测度上，$L^0$ 的测度拓扑并非局部凸。事实上其连续线性泛函只能为零：连续性给出某个 $\delta>0$，使 $q(f)<\delta$ 时 $|L(f)|<1$。任何支集测度小于 $\delta$ 的 $f$，其任意标量倍 $tf$ 都有 $q(tf)\le\mu(\supp f)<\delta$，故 $L(f)=0$。把 $[0,1]$ 分成有限个长度小于 $\delta$ 的区间，将任意 $f$ 分解于这些区间上，即得 $L(f)=0$。若此非零 Hausdorff 空间局部凸，Hahn--Banach 定理将给出分离点的连续线性泛函，矛盾。有限原子空间则可局部凸，所以不能对任意测度空间一概作此断言。
+\end{remark}

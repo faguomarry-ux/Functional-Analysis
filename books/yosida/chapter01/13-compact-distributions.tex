@@ -1,0 +1,71 @@
+\section{具有紧支集的广义函数}\label{sec:yosida-01-13}
+\noindent\textit{原书位置：中译本第 64--67 页；英文版第 62--65 页。}
+
+\subsection{支集及光滑函数对偶}
+\begin{definition}[分布支集]
+称 $T$ 在开集 $U$ 上为零，若它对所有支集于 $U$ 的测试函数取零。由命题 \ref{prop:y1-gluing}，所有这种开集的并仍是零区域。其补集称为 $\supp T$，即 $T$ 的支集。
+\end{definition}
+支集是相对闭集。若 $\varphi$ 的紧支集与 $\supp T$ 不相交，则 $T(\varphi)=0$。由定义可直接得
+\[
+ \supp(\partial^\alpha T)\subset\supp T,\qquad
+ \supp(aT)\subset\supp a\cap\supp T.
+\]
+例如 $\supp\delta_a=\{a\}$，而非零光滑函数生成的分布支集就是其函数支集；后一事实利用局部可积嵌入单射。
+
+$\mathcal E(\Omega)=C^\infty(\Omega)$ 的有界集由每个紧集上的每阶导数一致有界刻画，直接来自半范数有界判别。它是可度量局部凸空间，故囿，因此其线性泛函连续等价于在所有有界集上有界。
+
+\begin{theorem}[紧支集分布等同于光滑函数的连续对偶]\label{thm:y1-Eprime}
+每个紧支集分布 $T$ 唯一延拓为 $\mathcal E(\Omega)$ 上的连续线性泛函。反过来，每个 $L\in\mathcal E(\Omega)'$ 限制于 $\Test$ 后都是紧支集分布。这给出自然的线性对应
+\[
+ \CompactDist(\Omega)=\{T\in\Dist(\Omega):\supp T\Subset\Omega\}.
+\]
+连续性还等价于存在一个 $K\Subset\Omega$、整数 $m\ge0$ 和常数 $C$，使
+\[
+ |L(f)|\le C\max_{|\alpha|\le m}\sup_K|\partial^\alpha f|
+ \quad(f\in C^\infty(\Omega)).
+\]
+\end{theorem}
+\begin{proof}
+设 $\supp T=F$ 紧，取 $\chi\in\Test$ 在 $F$ 附近为一，定义 $L(f)=T(\chi f)$。若换用另一个 $\chi_1$，$(\chi-\chi_1)f$ 是紧支集测试函数且在 $F$ 附近为零，故 $T$ 对它取零，定义与截断选择无关。由 $T$ 在固定紧集 $K=\supp\chi$ 上的有限阶估计及 Leibniz 公式，得到上述对 $f$ 的估计，因此 $L$ 连续。它限制到 $\Test$ 等于 $T$；$\Test$ 在 $\mathcal E$ 中稠密，故连续延拓唯一。
+
+反向，连续性给出有限个 $p_{K_j,m_j}$ 控制 $|L(f)|$，取有限个紧集的并及最大的阶数得所列单一估计。于是 $L|_{\Test}$ 是分布，并在 $\Omega\setminus K$ 上为零，故支集包含于 $K$。估计的充分性显然。注意这里“一种延拓”指的是延拓\emph{泛函}唯一；实现它的截断函数可以有很多个。
+\end{proof}
+每个紧支集分布因此具有全局有限阶估计，但估计中的紧集可以稍大于其真实支集。Dirac 分布及其导数可作用于任何光滑函数；一般非紧支集分布则不能未经条件直接作用于常函数 $1$。
+
+\subsection{点支集分布的完整结构}
+\begin{theorem}[点支集分布是 Dirac 导数的有限和]\label{thm:y1-point-support}
+若 $\supp T\subset\{a\}$，则存在 $m<\infty$ 及唯一系数 $c_\alpha$，使
+\[
+ T=\sum_{|\alpha|\le m}c_\alpha\partial^\alpha\delta_a.
+\]
+只在需要时选取足够大的 $m$；补零后各系数唯一。
+\end{theorem}
+\begin{proof}
+平移后设 $a=0$。由定理 \ref{thm:y1-Eprime}，存在固定紧邻域 $K$ 上的 $m$ 阶估计。若 $\partial^\alpha f(0)=0$ 对 $|\alpha|\le m$ 成立，取 $\chi\in\Test$ 在零附近为一，令 $\chi_\varepsilon(x)=\chi(x/\varepsilon)$，其支集在充分小时落于 $K$。支集性质给出 $T(f)=T(\chi_\varepsilon f)$。
+
+Taylor 余项保证对 $|\gamma|\le m$，在 $|x|\le C\varepsilon$ 上，
+\[
+ |\partial^\gamma f(x)|\le C_f\varepsilon^{m+1-|\gamma|}.
+\]
+Leibniz 公式中的一项为 $\varepsilon^{-|\beta|}(\partial^\beta\chi)(x/\varepsilon)\partial^{\alpha-\beta}f(x)$，因此对 $|\alpha|\le m$，
+\[
+ \sup_K|\partial^\alpha(\chi_\varepsilon f)|
+ \le C_f'\varepsilon^{m+1-|\alpha|}\le C_f''\varepsilon
+ \quad(0<\varepsilon\le1).
+\]
+有限阶估计使 $T(f)=0$。这展开了截断函数求导产生负幂后，Taylor 余项仍能抵消它们的理由。
+
+一般 $f$ 减去 $m$ 阶 Taylor 多项式 $P_mf=\sum_{|\alpha|\le m}\partial^\alpha f(0)x^\alpha/\alpha!$ 后满足上述零喷射条件，所以 $T(f)=T(P_mf)$。这里 $T$ 已延拓到 $\mathcal E$，可以合法作用于多项式。由于
+\[
+ (\partial^\alpha\delta_0)(f)=(-1)^{|\alpha|}\partial^\alpha f(0),
+\]
+取 $c_\alpha=(-1)^{|\alpha|}T(x^\alpha/\alpha!)$ 即得表示。最后以在零附近等于单项式的紧支集测试函数分别检验各喷射，得到系数唯一。
+\end{proof}
+有限多个点支集的分布也是各点 Dirac 导数的有限和：取互不相交的小邻域和相应截断，将分布分解成各点支集分布后应用定理。点支集结论不能把“有限阶”换成任意无穷导数级数，连续性正是截断为有限喷射的原因。
+
+\begin{exercise}[补充：点支集分布的阶数]
+证明在 $\R$ 上 $\delta_0^{(m)}$ 的阶数恰为 $m$：它受 $m$ 阶测试半范数控制，但 $m\ge1$ 时不能由 $m-1$ 阶半范数控制。
+\end{exercise}
+\begin{solution}
+上界由 $|\delta_0^{(m)}(\varphi)|=|\varphi^{(m)}(0)|$ 给出。选 $\eta\in\Test$ 使 $\eta^{(m)}(0)\ne0$，令 $\varphi_\varepsilon(x)=\varepsilon^{m-1}\eta(x/\varepsilon)$。支集保持在一个固定紧邻域中，所有至 $m-1$ 阶导数统一有界，而 $|\varphi_\varepsilon^{(m)}(0)|=\varepsilon^{-1}|\eta^{(m)}(0)|\to\infty$。因此不存在低阶估计。
+\end{solution}

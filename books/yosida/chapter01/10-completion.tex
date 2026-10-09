@@ -1,0 +1,84 @@
+\section{完备化}\label{sec:yosida-01-10}
+\noindent\textit{原书位置：中译本第 58--61 页；英文版第 56--59 页。}
+
+\subsection{由 Cauchy 序列构造完备化}
+\begin{theorem}[拟赋范空间的完备化]\label{thm:y1-completion}
+每个拟赋范空间 $X$ 都能线性等距嵌入某个 F-空间 $\widehat X$，且像稠密；该完备化在固定原空间嵌入的线性等距同构意义下唯一。若原拟范数是范数，则 $\widehat X$ 是 Banach 空间；若原范数来自内积，则其完备化是 Hilbert 空间。
+\end{theorem}
+\begin{proof}
+令 $\mathcal C$ 为 $X$ 的全部 Cauchy 序列，定义 $x_j\sim y_j$ 当且仅当 $q(x_j-y_j)\to0$。三角不等式证明它是等价关系。定义
+\[
+ [x_j]+[y_j]=[x_j+y_j],\qquad a[x_j]=[ax_j],\qquad
+ \widehat q([x_j])=\lim_jq(x_j).
+\]
+反三角不等式保证实数序列 $q(x_j)$ Cauchy，故极限存在。加法与拟范数不依赖代表元；固定数乘的连续性保证 $[ax_j]$ 仍为 Cauchy 序列且不依赖代表元。正定性、对称性及三角不等式直接继承。
+
+\emph{补充检查数乘条件。} 一个 Cauchy 序列 $x_j$ 满足 $q(ax_j)\to0$ 随 $a\to0$ 对 $j$ 一致。确实，数乘在 $(0,0)$ 联合连续，所以给定误差可先选小的向量邻域和标量邻域，使两者乘积小；再把 $x_j$ 的尾部写成某个固定 $x_N$ 加上该小向量，有限个首项另行控制。因此 $\widehat q(a[x_j])\to0$。对固定 $a$，源空间的数乘连续性给出：$q(x)<\delta$ 时 $q(ax)<\varepsilon/2$。若 $\widehat q(\xi)<\delta/2$，其代表元最终满足 $q(x_j)<\delta$，故 $\widehat q(a\xi)\le\varepsilon/2<\varepsilon$。于是 $\widehat q$ 满足两条数乘条件。这避免未经论证交换两重极限。
+
+嵌入 $Jx=[x,x,\ldots]$ 线性等距。对 $\xi=[x_j]$，有 $\widehat q(\xi-Jx_N)=\lim_jq(x_j-x_N)\to0$，所以像稠密。若 $\xi_k$ 在 $\widehat X$ 中 Cauchy，由稠密性取 $z_k\in X$ 使 $\widehat q(Jz_k-\xi_k)<2^{-k}$。三角不等式使 $z_k$ 在 $X$ 中 Cauchy，令 $\xi=[z_k]$；由刚证明的稠密逼近及 Cauchy 性，$Jz_k\to\xi$，从而 $\xi_k\to\xi$，得完备性。
+
+若另有稠密等距嵌入 $J':X\to Z$，$Z$ 完备，则映射 $[x_j]\mapsto\lim_jJ'x_j$ 良定义、线性等距且满射：任何 $z\in Z$ 可由原空间的像逼近。它固定 $X$，所以唯一。范数齐次性以及平行四边形恒等式均可在极限中继承。
+\end{proof}
+
+\begin{proposition}[补充：算子的延拓性质]\label{prop:y1-extension}
+设 $Y$ 是 Banach 空间，$T:X\to Y$ 为赋范空间上的有界线性算子，则存在唯一有界线性延拓 $\widehat T:\widehat X\to Y$，且 $\|\widehat T\|=\|T\|$。
+\end{proposition}
+\begin{proof}
+定义 $\widehat T([x_j])=\lim_jTx_j$。估计 $\|Tx_j-Tx_l\|\le\|T\|\|x_j-x_l\|$ 保证极限存在及代表元无关，并给出 $\|\widehat T\|\le\|T\|$。限制于原空间得到反向不等式。稠密性保证唯一性。
+\end{proof}
+
+\subsection{Sobolev 空间的完备化解释}
+令 $H_0^k(\Omega)$ 为 $C_c^\infty(\Omega)$ 在 $H^k$ 范数下的完备化。第 \ref{sec:yosida-01-09} 节的完备性与弱导数相容性证明说明，它可等距识别为
+\[
+ H_0^k(\Omega)=\overline{C_c^\infty(\Omega)}^{\,H^k(\Omega)}.
+\]
+因此它是 $H^k(\Omega)$ 的闭子空间。原书还从 $\widehat H^k$ 出发作抽象完备化；本稿将现代弱导数定义的空间直接记为 $H^k$，以免“经典导数空间”和“已完备的 Sobolev 空间”混淆。对任意开集，$H_0^k$ 的定义不需要边界光滑；“零边界值”的迹解释则需要另加相应条件。
+
+\begin{lemma}[补充：$L^p$ 平移连续与正则化逼近]\label{lem:y1-Lp-translation}
+若 $1\le p<\infty$，$f\in L^p(\R^n)$，则 $\|f(\cdot-h)-f\|_p\to0$ 随 $h\to0$。因而 $f*\rho_\varepsilon\to f$ 在 $L^p$ 中。
+\end{lemma}
+\begin{proof}
+先对有界矩形的示性函数证明：平移后对称差的体积趋零，$L^p$ 距离的 $p$ 次方正是该体积。有限个这样的简单函数亦成立。一般 $L^p$ 函数可先截断大小和远方尾部，再用简单函数及有限测度集的矩形逼近，在 $L^p$ 中逼近为上述函数。平移等距，于是
+\[
+ \|f(\cdot-h)-f\|_p
+ \le2\|f-g\|_p+\|g(\cdot-h)-g\|_p
+\]
+完成一般情形。卷积逼近由 Jensen 不等式和 Fubini 得
+\[
+ \|f*\rho_\varepsilon-f\|_p^p
+ \le\int\rho_\varepsilon(h)\|f(\cdot-h)-f\|_p^p\,dh.
+\]
+核支集收缩至零，右边趋零。
+\end{proof}
+
+\begin{theorem}[全空间上的光滑紧支集稠密性]\label{thm:y1-sobolev-density}
+对每个整数 $k\ge0$ 与 $1\le p<\infty$，$C_c^\infty(\R^n)$ 在 $W^{k,p}(\R^n)$ 中稠密。特别地
+\[
+ H_0^k(\R^n)=H^k(\R^n)=W^{k,2}(\R^n).
+\]
+\end{theorem}
+\begin{proof}
+取 $\chi\in C_c^\infty$ 在单位球上为 $1$，令 $\chi_R(x)=\chi(x/R)$。Leibniz 公式给出
+\[
+ \partial^\alpha(\chi_Rf)-\partial^\alpha f
+ =(\chi_R-1)\partial^\alpha f
+ +\sum_{0<\beta\le\alpha}\binom\alpha\beta
+ (\partial^\beta\chi_R)\partial^{\alpha-\beta}f.
+\]
+第一项的 $L^p$ 范数由 $\partial^\alpha f$ 的可积尾部趋零；其余项的系数不超过 $C_\beta R^{-|\beta|}$，且支集位于远方环带，故也趋零。因此 $\chi_Rf\to f$ 在 Sobolev 范数下，先把问题化为紧支集。
+
+固定 $R$ 后令 $f_{R,\varepsilon}=(\chi_Rf)*\rho_\varepsilon$。它光滑且紧支集。利用分布导数的定义，将微分移入卷积核，再移到 $\chi_Rf$ 的弱导数，得到
+\[
+ \partial^\alpha f_{R,\varepsilon}
+ =(\partial^\alpha(\chi_Rf))*\rho_\varepsilon.
+\]
+引理 \ref{lem:y1-Lp-translation} 保证每个有限阶导数在 $L^p$ 下逼近；先选大 $R$，再选小 $\varepsilon$，使总误差任意小。
+\end{proof}
+
+\begin{example}[补充：在有边界的域中两空间可以不同]
+在 $(0,1)$ 上，常数 $1\in H^1(0,1)$，却不属于 $H_0^1(0,1)$。若 $\varphi_j\in C_c^\infty(0,1)$ 在 $H^1$ 中趋于 $1$，令 $v_j=\varphi_j-1$。对任意 $v\in C^1([0,1])$，由 $v(0)=v(x)-\int_0^xv'(t)\,dt$ 并对 $x$ 积分，得
+\[
+ |v(0)|\le\|v\|_{L^2(0,1)}+\|v'\|_{L^2(0,1)}.
+\]
+应用于 $v_j$，右侧趋零，左侧恒为 $1$，矛盾。这也说明将全空间的密度结论直接搬到任意有边界域会出错。
+\end{example}

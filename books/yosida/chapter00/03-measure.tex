@@ -1,0 +1,273 @@
+% !TeX encoding = UTF-8
+本节采用现代的 $\sigma$-代数记号，先从简单函数构造积分，再证明极限交换与乘积积分定理。原书将 $\sigma$-有限性列入主要工作设定；本稿将它单独标出，使读者能看清各结论实际需要什么条件。除涉及乘积测度等处另加说明外，一般测度空间不预设拓扑。
+
+\subsection{可测集、测度与几乎处处}
+\begin{definition}[$\sigma$-代数与测度空间]\label{def:y0-measure}
+集合 $S$ 上的 $\sigma$-代数 $\Sigma$ 是包含 $S$、对补集和可数并封闭的子集族；其成员称为可测集。映射 $\mu:\Sigma\to[0,\infty]$ 若满足 $\mu(\varnothing)=0$，且对两两不交的 $E_n\in\Sigma$ 有
+\[
+ \mu\left(\bigcup_{n\ge1}E_n\right)=\sum_{n\ge1}\mu(E_n),
+\]
+称为测度，$(S,\Sigma,\mu)$ 称为测度空间。若 $\mu(S)<\infty$，称测度有限；若 $S=\bigcup_nS_n$ 且每个 $\mu(S_n)<\infty$，称测度 $\sigma$-有限。
+
+若性质在某个可测零测集之外成立，称它几乎处处成立，简记为 a.e.。若每个可测零测集的所有子集均可测，称测度空间完备。
+\end{definition}
+
+原书称含 $S$ 且对补集、可数并封闭的族为“$\sigma$-ring”；按现代通常术语，这是 $\sigma$-代数。现代 $\sigma$-环只要求对差和可数并封闭，不一定包含 $S$。这个区别在非 $\sigma$-紧空间上的紧集生成测度中尤其需要注意。
+
+\begin{proposition}[测度的基本极限性质]\label{prop:y0-measure-continuity}
+测度单调且可数次可加。若 $E_n\uparrow E$，则 $\mu(E_n)\uparrow\mu(E)$；若 $E_n\downarrow E$ 且 $\mu(E_1)<\infty$，则 $\mu(E_n)\downarrow\mu(E)$。
+\end{proposition}
+\begin{proof}
+将 $B$ 写为 $A$ 与 $B\setminus A$ 的不交并得单调性。一般可数并可按首次出现的指标分成不交差集，得次可加性。对递增族，将并写为 $E_1$ 与 $E_n\setminus E_{n-1}$ 的不交并，级数部分和即 $\mu(E_n)$。递减情形对 $E_1\setminus E_n$ 使用递增结论，再从有限数 $\mu(E_1)$ 中相减。有限性不能省略，例如计数测度下 $\{n,n+1,\ldots\}\downarrow\varnothing$，每项测度却为无穷。
+\end{proof}
+
+\begin{proposition}[测度的完备化]\label{prop:y0-completion-measure}
+令 $\widehat\Sigma$ 为所有形如 $E\cup N$ 的集合，其中 $E\in\Sigma$，$N$ 包含于某个 $\Sigma$ 中的零测集。则 $\widehat\Sigma$ 为 $\sigma$-代数，且 $\widehat\mu(E\cup N)=\mu(E)$ 给出唯一延拓 $\mu$ 的完备测度。
+\end{proposition}
+\begin{proof}
+每个新集合 $A$ 都夹在两个原可测集 $E\subseteq A\subseteq F$ 之间，且 $\mu(F\setminus E)=0$。取补集或可数并仍可找到这样的上下夹集，证明 $\widehat\Sigma$ 为 $\sigma$-代数。不同夹集的测度相同，因为它们只相差零测集，所以定义良定。对不交的新集合 $A_n$，选择可测下夹集 $E_n\subseteq A_n$，它们也不交，且 $\bigcup_nA_n$ 与 $\bigcup_nE_n$ 只相差零测集。可数可加性因此继承。完备性及唯一性由零测集的任何子集必须有测度零得到。
+\end{proof}
+
+\subsection{可测函数与 Egorov 定理}
+\begin{definition}[可测函数与简单函数]\label{def:y0-measurable-function}
+函数 $f:S\to[-\infty,\infty]$ 称为可测，若 $\{s:f(s)>a\}\in\Sigma$ 对每个 $a\in\R$ 成立。有限复值函数可测，指其实部与虚部可测，等价于每个复平面开集的原像可测。取有限个值的可测函数称为简单函数，可写作 $\sum_{j=1}^ma_j\mathbf1_{E_j}$，其中 $E_j$ 两两不交且可测。
+\end{definition}
+
+可测函数的有限和、乘积、绝对值仍可测；可数上确界、下确界、上极限及下极限也可测。例如 $\{\sup_nf_n>a\}=\bigcup_n\{f_n>a\}$，下确界与极限由类似可数运算表达。每个非负可测函数都有递增的非负简单函数逼近；可取
+\[
+ s_n(s)=2^{-n}\left\lfloor2^n\min(f(s),n)\right\rfloor,
+ \qquad s_n\uparrow f,
+\]
+其中在 $f=\infty$ 处规定截断值为 $n$。每个取值区间的原像可测，故 $s_n$ 可测。
+
+\begin{theorem}[Egorov 定理]\label{thm:y0-egorov}
+设 $E\in\Sigma$、$\mu(E)<\infty$，$f_n$、$f$ 为可测函数，在 $E$ 上几乎处处有限，且 $f_n\to f$ 几乎处处。则对每个 $\eta>0$，存在可测集 $F\subseteq E$，使 $\mu(E\setminus F)<\eta$，且 $f_n\to f$ 在 $F$ 上一致。
+\end{theorem}
+\begin{proof}
+先从 $E$ 中去掉一个可测零测集，使全部函数有限并逐点收敛。对正整数 $k,N$，令
+\[
+ A_{k,N}=\bigcup_{n\ge N}\{s\in E:|f_n(s)-f(s)|>1/k\}.
+\]
+固定 $k$ 时，$A_{k,N}\downarrow\varnothing$；由有限测度下的上连续性，可取 $N_k$ 使 $\mu(A_{k,N_k})<\eta2^{-k}$。令 $F=E\setminus\bigcup_kA_{k,N_k}$，则损失测度小于 $\eta$，且 $n\ge N_k$ 时 $\sup_F|f_n-f|\le1/k$。这正是一致收敛。
+\end{proof}
+
+\begin{example}[有限测度条件的作用]
+在 $\R$ 的 Lebesgue 测度下，$f_n=\mathbf1_{[n,\infty)}$ 逐点趋于零；但从 $\R$ 去掉任意有限测度集后，剩余集合仍与每个 $[n,\infty)$ 相交，故误差上确界始终为 $1$。不能将 Egorov 定理中的有限测度条件直接换成 $\sigma$-有限。
+\end{example}
+
+\subsection{积分的构造与单调收敛}
+\begin{definition}[Lebesgue 积分]\label{def:y0-integral}
+对非负简单函数 $s=\sum_ja_j\mathbf1_{E_j}$，定义 $\int s\,\dd\mu=\sum_ja_j\mu(E_j)$，约定 $0\cdot\infty=0$。对非负可测函数 $f$，定义
+\[
+ \int f\,\dd\mu=\sup\left\{\int s\,\dd\mu:
+                      0\le s\le f,\ s\text{ 为简单函数}\right\}.
+\]
+实值函数写为 $f=f^+-f^-$，其中 $f^+=\max(f,0)$、$f^-=\max(-f,0)$。若 $\int|f|\,\dd\mu<\infty$，称 $f$ 可积，并定义 $\int f=\int f^+-\int f^-$。复值函数可积也指 $\int|f|<\infty$，积分分别取实部和虚部的积分。局部可积、$L^p$ 等概念将在后续章节使用。
+\end{definition}
+
+对简单函数，不同表示可细分到同一不交分割，因此积分良定、单调、可加且正齐次。对于一般函数，先证明下一定理，再从简单函数逼近继承这些性质。
+
+\begin{theorem}[单调收敛定理]\label{thm:y0-monotone}
+若 $0\le f_n\uparrow f$ 为可测函数，则 $\int f_n\,\dd\mu\uparrow\int f\,\dd\mu$，允许积分无穷。
+\end{theorem}
+\begin{proof}
+由单调性，左侧极限 $L\le\int f$。取简单函数 $0\le s\le f$ 和 $0<c<1$。令 $E_n=\{f_n\ge cs\}$。这些集合递增，其并包含 $\{s>0\}$：若 $s(x)>0$，则 $f_n(x)\uparrow f(x)\ge s(x)>cs(x)$。所以由测度的下连续性和简单函数公式，$\int s\mathbf1_{E_n}\to\int s$。于是
+\[
+ \int f_n\ge c\int s\mathbf1_{E_n},\qquad
+ L\ge c\int s.
+\]
+令 $c\uparrow1$，再对 $s$ 取上确界，得 $L\ge\int f$。
+\end{proof}
+
+非负函数的积分可加性现在可由各自的递增简单逼近和单调收敛得出；有限实值及复值可积函数的线性性由正负部或实虚部的分解得出。特别地，可积性在加法下保持，且
+\[
+ \left|\int f\,\dd\mu\right|\le\int|f|\,\dd\mu.
+\]
+复数情形可选模为 $1$ 的标量 $\alpha$，使 $\alpha\int f$ 为非负实数，再用 $\operatorname{Re}(\alpha f)\le|f|$ 得到估计。若 $f\ge0$，则 $\int f=0$ 当且仅当 $f=0$ a.e.：因为 $\mu(\{f\ge1/n\})\le n\int f$，而 $\{f>0\}$ 是这些集合的并。
+
+\begin{proposition}[与简单函数逼近定义的相容性]\label{prop:y0-simple-l1}
+每个可积函数 $f$ 都有可积简单函数 $s_n$ 满足 $\int|s_n-f|\to0$。反之，若可测有限函数 $f$ 是可积简单函数 $s_n$ 的几乎处处极限，且 $(s_n)$ 在积分距离 $\int|s_n-s_m|$ 下 Cauchy，则 $f$ 可积，$\int|s_n-f|\to0$，并且 $\int s_n\to\int f$。
+\end{proposition}
+\begin{proof}
+第一条先对 $f\ge0$ 使用递增简单逼近，由单调收敛及 $\int f<\infty$ 得 $\int(f-s_n)\to0$；再分别处理实虚部和正负部。反向将在下面 Fatou 引理得到后使用它：固定 $n$，
+\[
+ \int|s_n-f|\le\liminf_{m\to\infty}\int|s_n-s_m|.
+\]
+右侧在 $n$ 充分大时任意小，故 $f$ 与某个可积 $s_n$ 的差可积，从而 $f$ 可积，并得积分距离趋零。积分估计又给出积分值的收敛。这说明本稿的非负积分构造与原书按简单函数积分距离定义的方式相容。
+\end{proof}
+
+\subsection{Fatou 引理、控制收敛与积分的绝对连续性}
+\begin{theorem}[Fatou 引理]\label{thm:y0-fatou}
+若 $f_n\ge0$ 可测，则
+\[
+ \int\liminf_nf_n\,\dd\mu\le\liminf_n\int f_n\,\dd\mu.
+\]
+若实值可积函数 $f_n$ 满足 $f_n\ge h$ a.e.，其中 $h$ 可积，则同样有 $\int\liminf_nf_n\le\liminf_n\int f_n$，左侧按有可积下界的扩展积分解释。若有可积上界，则得到上极限的反向不等式。
+\end{theorem}
+\begin{proof}
+令 $g_N=\inf_{n\ge N}f_n$，则 $0\le g_N\uparrow\liminf_nf_n$，且 $\int g_N\le\inf_{n\ge N}\int f_n$。单调收敛给出结论。有可积下界时对 $f_n-h$ 应用非负版本，再加回 $\int h$；有上界时对 $-f_n$ 应用下界版本。
+\end{proof}
+
+\begin{theorem}[控制收敛定理]\label{thm:y0-dominated}
+若可测函数 $f_n\to f$ a.e.，且存在非负可积函数 $g$ 使 $|f_n|\le g$ a.e.，则 $f$ 可积，$\int|f_n-f|\to0$，并且 $\int f_n\to\int f$。
+\end{theorem}
+\begin{proof}
+有 $|f|\le g$ a.e.，故 $f$ 可积。函数 $h_n=|f_n-f|$ 趋零且 $0\le h_n\le2g$。对非负函数 $2g-h_n$ 使用 Fatou 引理，得
+\[
+ 2\int g\le\liminf_n\left(2\int g-\int h_n\right)
+            =2\int g-\limsup_n\int h_n.
+\]
+所以 $\int h_n\to0$，再用积分估计即可。
+\end{proof}
+
+\begin{proposition}[积分的可数可加性与绝对连续性]\label{prop:y0-integral-ac}
+若 $f$ 可积，$\nu_f(E)=\int_Ef\,\dd\mu$ 为可数可加的实值或复值集合函数，且 $\mu(E)=0$ 蕴含 $\nu_f(E)=0$。更强地，对任意 $\varepsilon>0$，存在 $\delta>0$，使 $\mu(E)<\delta$ 时 $\int_E|f|\,\dd\mu<\varepsilon$。
+\end{proposition}
+\begin{proof}
+对不交 $E_n$，部分并的示性函数逐点趋于全并的示性函数，乘以 $f$ 后由 $|f|$ 控制，控制收敛给出可数可加性。选 $M\ge1$ 使 $\int_{\{|f|>M\}}|f|<\varepsilon/2$，这由控制收敛得到。于是
+\[
+ \int_E|f|\le M\mu(E)+\int_{\{|f|>M\}}|f|.
+\]
+取 $\delta=\varepsilon/(2M)$ 即得结论，零测集的结论也直接成立。
+\end{proof}
+
+\subsection{乘积测度与 Fubini--Tonelli 定理}
+\begin{lemma}[$\pi$--$\lambda$ 原理]\label{lem:y0-pi-lambda}
+集合族 $\mathcal P$ 若对有限交封闭，称为 $\pi$-系。集合族 $\mathcal D$ 若含全集、对补集及可数不交并封闭，称为 $\lambda$-系。若 $\mathcal P\subseteq\mathcal D$，则 $\sigma(\mathcal P)\subseteq\mathcal D$。
+\end{lemma}
+\begin{proof}
+令 $\mathcal L$ 为包含 $\mathcal P$ 的最小 $\lambda$-系。$\lambda$-系对两个嵌套成员的差封闭。固定 $A\in\mathcal P$，集合族 $\{B:A\cap B\in\mathcal L\}$ 为 $\lambda$-系并包含 $\mathcal P$，所以包含 $\mathcal L$。再固定 $B\in\mathcal L$，同样论证 $\{A:A\cap B\in\mathcal L\}$ 包含 $\mathcal L$。于是 $\mathcal L$ 对有限交封闭，结合补集可得有限并封闭，再将可数并分为不交差集，得它对可数并封闭。因此 $\mathcal L$ 是 $\sigma$-代数，必包含 $\sigma(\mathcal P)$，结论成立。
+\end{proof}
+
+\begin{theorem}[乘积测度与 Tonelli 定理]\label{thm:y0-tonelli}
+设 $(S,\Sigma,\mu)$、$(T,\mathcal T,\nu)$ 均 $\sigma$-有限。令 $\Sigma\otimes\mathcal T$ 为由矩形 $A\times B$ 生成的 $\sigma$-代数。存在唯一测度 $\mu\times\nu$ 满足
+\[
+ (\mu\times\nu)(A\times B)=\mu(A)\nu(B).
+\]
+对非负乘积可测函数 $f$，截面可测，两个截面积分函数可测，且
+\[
+ \int_{S\times T}f\,\dd(\mu\times\nu)
+ =\int_S\left(\int_Tf(s,t)\,\dd\nu(t)\right)\dd\mu(s)
+ =\int_T\left(\int_Sf(s,t)\,\dd\mu(s)\right)\dd\nu(t),
+\]
+允许值为无穷，乘积中的 $0\cdot\infty$ 约定为零。
+\end{theorem}
+\begin{proof}
+先设两测度有限。对集合 $E$，记 $E_s=\{t:(s,t)\in E\}$、$E^t=\{s:(s,t)\in E\}$。全部截面可测的集合构成包含矩形的 $\sigma$-代数，故乘积可测集均有可测截面。
+
+考虑满足以下性质的集合 $E$：$s\mapsto\nu(E_s)$、$t\mapsto\mu(E^t)$ 可测，且它们的积分相等。矩形具有这些性质。有限测度保证取补集时可将截面测度及其积分从有限总量中相减；取可数不交并时由单调收敛得到性质。因此此族为包含矩形的 $\lambda$-系，由 $\pi$--$\lambda$ 原理，性质对所有乘积可测集成立。定义
+\[
+ \lambda(E)=\int_S\nu(E_s)\,\dd\mu(s).
+\]
+对不交集族，截面不交，测度可加性与单调收敛证明 $\lambda$ 为测度，并有所需矩形值。它也等于反向截面积分。
+
+一般 $\sigma$-有限情形，将 $S$、$T$ 各分为可数个不交的有限测度集 $S_i$、$T_j$。在每个 $S_i\times T_j$ 上用上述有限测度构造，再对 $(i,j)$ 求和，得全空间测度。截面函数的可测性及两向积分相等由非负级数的单调收敛继承。对任意非负简单函数先按示性函数公式计算，再以递增简单函数逼近 $f$，三次使用单调收敛便得 Tonelli 公式。
+
+唯一性在每个有限测度块上由 $\pi$--$\lambda$ 原理得到：两个有限测度相等的集合构成 $\lambda$-系并包含矩形。再对所有块求和，得全空间唯一性。
+\end{proof}
+
+\begin{theorem}[Fubini 定理]\label{thm:y0-fubini}
+在上一设定下，若乘积可测函数 $f$ 满足 $\int|f|\,\dd(\mu\times\nu)<\infty$，则几乎所有截面可积，截面积分函数可积，且两个累次积分均等于 $\int f\,\dd(\mu\times\nu)$。绝对可积性等价于任意一个 $|f|$ 的累次积分有限。
+\end{theorem}
+\begin{proof}
+对 $|f|$ 应用 Tonelli 定理，截面的绝对积分几乎处处有限，否则其积分不能有限。对实部与虚部的正、负部分分别使用 Tonelli，再作有限量的相减，得到交换次序的公式；由 $|\int f(s,t)\,\dd\nu(t)|\le\int|f(s,t)|\,\dd\nu(t)$ 得截面积分可积。最后的等价性正是 $|f|$ 的 Tonelli 公式。
+\end{proof}
+
+对完备化后的乘积测度，可用与原乘积可测函数几乎处处相同的代表元解释这些结论，截面结论仍是几乎处处的。不能只因两个带符号的累次积分各自存在，就跳过绝对可积性的检查。
+
+\subsection{拓扑测度、Borel 集与 Baire 集}
+\begin{definition}[Borel、Baire 与 Radon 测度]\label{def:y0-topological-measure}
+拓扑空间 $X$ 的 Borel $\sigma$-代数 $\mathcal B(X)$ 由开集生成。现代 Baire $\sigma$-代数由所有连续实值函数的开集原像生成，通常包含于 $\mathcal B(X)$。在局部紧 Hausdorff 空间上，若 Borel 测度在紧集上有限，并满足
+\[
+ \mu(E)=\inf_{\substack{U\supseteq E\\U\text{ 开}}}\mu(U),\qquad
+ \mu(E)=\sup_{\substack{K\subseteq E\\K\text{ 紧}}}\mu(K)
+ \quad(E\in\mathcal B(X)),
+\]
+则本稿称其为 Radon 测度；这一定义明确要求外正则性与内正则性。
+\end{definition}
+
+原书的 Baire 集从紧 $G_\delta$ 集生成 $\sigma$-环，其中 $G_\delta$ 表示可数个开集的交；Borel 集也使用紧集生成的表述。这在一般非 $\sigma$-紧空间中与现代全空间 $\sigma$-代数表述须区别对待。在 $\R^n$ 及其闭子空间中，上述区别消失：这些空间可由可数个紧集覆盖，每个闭集为 $G_\delta$，而开集可写为可数个紧集的并，因此原书两种可测集族均等于通常的 Borel 集族。对连续函数的可测性，这些欧氏空间中也有 Baire 与 Borel 一致的结论。
+
+例如，闭集 $F$ 可写为 $\bigcap_m\{x:d(x,F)<1/m\}$；开集 $U\subseteq\R^n$ 可写为紧集
+\[
+ K_m=\{x:|x|\le m,\ d(x,\R^n\setminus U)\ge1/m\}
+\]
+的并。更一般拓扑空间中的正则性和 Baire--Borel 延拓，须使用相应的测度表示定理，不能仅由可数可加性推出。
+
+\subsection{Lebesgue 测度与两个逼近性质}
+\begin{definition}[Lebesgue 外测度与可测集]\label{def:y0-lebesgue}
+对 $E\subseteq\R^n$，令
+\[
+ m^*(E)=\inf\left\{\sum_j|Q_j|:
+               E\subseteq\bigcup_jQ_j,\ Q_j\text{ 为有界开矩形}\right\},
+\]
+其中 $|Q_j|$ 是边长的乘积。若对每个 $A\subseteq\R^n$ 有
+\[
+ m^*(A)=m^*(A\cap E)+m^*(A\setminus E),
+\]
+称 $E$ 为 Lebesgue 可测集；$m^*$ 在这些集合上的限制记为 $m$。
+\end{definition}
+
+\begin{proposition}[外测度构造的基本性质]\label{prop:y0-lebesgue-construction}
+上述可测集形成完备 $\sigma$-代数，$m$ 为 $\sigma$-有限测度，所有 Borel 集均可测，矩形的测度等于其体积。$m$ 平移不变，且对有限测度可测集 $E$ 有
+\[
+ m(E)=\inf_{U\supseteq E,\ U\text{ 开}}m(U)
+     =\sup_{K\subseteq E,\ K\text{ 紧}}m(K).
+\]
+\end{proposition}
+\begin{proof}
+覆盖定义直接给出 $m^*(\varnothing)=0$、单调性及可数次可加性；后一性质通过对各集合选误差小于 $\varepsilon2^{-j}$ 的覆盖，再把覆盖合并得到。
+
+分割等式对补集对称。若 $E,F$ 满足分割等式，对任意测试集先按 $E$、再按 $F$ 分割，得四项分解，从而得 $E\cup F$ 也满足等式。对不交可测集 $E_j$，重复分割给出
+\[
+ m^*(A)\ge\sum_{j=1}^Nm^*(A\cap E_j)
+                   +m^*\left(A\setminus\bigcup_{j\ge1}E_j\right).
+\]
+令 $N\to\infty$，结合 $m^*(A\cap\bigcup_jE_j)\le\sum_jm^*(A\cap E_j)$，得全并满足分割等式；将一般并化为不交差集，证明 $\sigma$-代数性质。取 $A=\bigcup_jE_j$，同一估计与次可加性给出可数可加性。零外测度集及其子集自动满足分割等式，故测度完备。
+
+坐标半空间可测：对任意矩形覆盖，沿对应坐标超平面切开各矩形，可将交叠处增宽任意小的宽度，使两边仍由开矩形覆盖且总体积增加任意小。于是 $m^*(A\cap H)+m^*(A\setminus H)\le m^*(A)$；反向由次可加性成立。因此矩形可测，开集为可数个有理矩形的并，故 Borel 集可测。
+
+矩形的外测度不超过其体积，可通过稍增宽的开矩形覆盖得到。反向，对矩形内的任意紧闭矩形，用任意可数开矩形覆盖，紧性给出有限子覆盖；按有限个边界坐标细分，有限覆盖的体积和不小于被覆盖闭矩形的体积。令内矩形扩张至原矩形，得反向不等式。平移保持矩形体积并一一对应覆盖，故外测度及可测测度平移不变。可数个有界矩形覆盖全空间，故 $\sigma$-有限。
+
+对有限测度 $E$，取体积总和小于 $m(E)+\varepsilon$ 的开矩形覆盖，并集 $U$ 开，且 $m(U\setminus E)<\varepsilon$，得外正则性。为得内正则性，先取足够大的闭立方体 $Q$，使 $m(E\setminus Q)<\varepsilon$；对 $Q\setminus E$ 外逼近为开集 $V$，使 $m(V\setminus(Q\setminus E))<\varepsilon$。则 $K=Q\setminus V$ 紧、$K\subseteq E$，且 $m(E\setminus K)<2\varepsilon$。
+\end{proof}
+
+在实线上，单调不减且右连续函数 $F$ 决定的区间值 $\mu_F((a,b])=F(b)-F(a)$ 称为 Lebesgue--Stieltjes 测度的起点；一般 $F$ 可用区间覆盖的外测度构造完成延拓。\emph{只有 $F(t)=t$ 时才是通常的 Lebesgue 测度}，例如阶跃函数决定点质量。这里不把一般 Stieltjes 测度统称为 Lebesgue 测度。
+
+\begin{theorem}[紧支集连续函数的 $L^1$ 稠密性]\label{thm:y0-cc-density}
+若 $G\subseteq\R^n$ 开，$f\in L^1(G)$，则对任意 $\varepsilon>0$，存在 $\varphi\in C_c(G)$ 使 $\int_G|f-\varphi|\,\dd x<\varepsilon$。
+\end{theorem}
+\begin{proof}
+由命题 \ref{prop:y0-simple-l1}，先将 $f$ 逼近为可积简单函数，只需处理 $\mathbf1_E$，其中 $E\subseteq G$ 可测且有限测度。由正则性取紧集 $K\subseteq E$ 和开集 $U\supseteq E$，使 $m(E\setminus K)$、$m(U\setminus E)$ 都任意小。将 $U$ 换为 $U\cap G$，再在其中选含 $K$ 的相对紧开邻域 $V$。由推论 \ref{cor:y0-cutoff} 取 $0\le\varphi\le1$，在 $K$ 上为 $1$ 且支集包含于 $V$。于是
+\[
+ \int_G|\mathbf1_E-\varphi|
+ \le m(E\setminus K)+m(U\setminus E).
+\]
+将有限个示性函数的逼近按系数组合，得到结论；有限个紧支集的并仍紧且包含于 $G$。
+\end{proof}
+
+\begin{theorem}[有限测度集的平移连续性]\label{thm:y0-translation-set}
+若 $E\subseteq\R^n$ 可测且 $m(E)<\infty$，则 $m((E+h)\mathbin{\triangle}E)\to0$ 随 $h\to0$，其中 $\triangle$ 为对称差。
+\end{theorem}
+\begin{proof}
+左侧等于 $\|\mathbf1_E(\cdot-h)-\mathbf1_E\|_{L^1}$。取 $\varphi\in C_c(\R^n)$ 使 $\|\mathbf1_E-\varphi\|_1<\varepsilon$。平移不变性给出
+\[
+ \|\mathbf1_E(\cdot-h)-\mathbf1_E\|_1
+ \le2\varepsilon+\|\varphi(\cdot-h)-\varphi\|_1.
+\]
+当 $|h|\le1$ 时，后者的支集处于一个固定紧集内；紧支集连续函数在全空间一致连续，所以其平移差一致趋零，积分也趋零。最后令 $\varepsilon\downarrow0$。
+\end{proof}
+
+\begin{exercise}[逐点收敛与积分收敛]
+在 $(0,1)$ 上令 $f_n=n\mathbf1_{(0,1/n)}$。证明它几乎处处趋于零，但积分不趋于零，并说明它不能由一个可积函数统一控制。
+\end{exercise}
+\begin{solution}
+固定 $x>0$，充分大时 $1/n<x$，故 $f_n(x)=0$，而 $\int_0^1f_n=1$。若有可积 $g\ge|f_n|$ a.e.，控制收敛定理将给出积分趋零，矛盾。也可由积分的绝对连续性直接看出：$\int_{(0,1/n)}g\ge1$ 与这些集合测度趋零矛盾。
+\end{solution}
+
+\begin{exercise}[非绝对可积时累次积分可以不同]
+在 $(0,1)^2$ 上取 $f(x,y)=(x^2-y^2)/(x^2+y^2)^2$。计算两个累次积分，说明为什么不违反 Fubini 定理。
+\end{exercise}
+\begin{solution}
+由于 $\partial_y\bigl(y/(x^2+y^2)\bigr)=f$，对固定 $x>0$ 有 $\int_0^1f(x,y)\,\dd y=1/(1+x^2)$，再积分得 $\pi/4$。由于 $\partial_x\bigl(x/(x^2+y^2)\bigr)=-f$，反向累次积分为 $-\pi/4$。在第一象限极坐标下，$|f|=|\cos(2\theta)|/r^2$，面积元为 $r\,\dd r\,\dd\theta$，原点附近径向积分 $\int_0^\delta\dd r/r$ 发散，故 $f$ 不绝对可积，Fubini 的假设不成立。
+\end{solution}

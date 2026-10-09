@@ -1,0 +1,52 @@
+\section{单位分解}\label{sec:yosida-01-12}
+\noindent\textit{原书位置：中译本第 63--64 页；英文版第 60--62 页。}
+
+\subsection{局部有限覆盖的作用}
+一族集合称为局部有限，若每个点都有邻域只与其中有限多个集合相交。在开集 $\Omega$ 中，对闭支集组成的局部有限族，每个紧集只与有限多个支集相交；因此相应的函数和在局部是有限和，可以逐项求导。这是把局部定义拼成全局对象的基本机制。
+
+\begin{theorem}[从属任意开覆盖的光滑单位分解]\label{thm:y1-partition}
+设 $\Omega\subset\R^n$ 开，$\{G_i\}_{i\in I}$ 是其开覆盖。存在可数函数族 $\{\theta_j\}_{j\ge1}\subset C_c^\infty(\Omega)$，满足
+\[
+ 0\le\theta_j\le1,\qquad \supp\theta_j\subset G_{i(j)},\qquad
+ \sum_j\theta_j(x)=1\quad(x\in\Omega),
+\]
+且支集族在 $\Omega$ 中局部有限。这里允许多个 $j$ 从属于同一个覆盖元素。
+\end{theorem}
+\begin{proof}
+取紧集穷竭 $K_m\subset\operatorname{int}K_{m+1}$，置 $K_0=K_{-1}=\varnothing$。紧环层
+\[
+ A_m=K_m\setminus\operatorname{int}K_{m-1}
+\]
+包含于开环层 $W_m=\operatorname{int}K_{m+1}\setminus K_{m-2}$。对每个 $x\in A_m$，选择覆盖元素 $G_i$ 及小球 $B(x,2r)$，使闭球包含于 $W_m\cap G_i$。有限个小球 $B(x,r)$ 覆盖 $A_m$。在每个大球中取非负光滑紧支集函数 $b_j$，在对应小球上严格为正。
+
+所有环层的这些函数组成可数族，且支集在 $\Omega$ 中局部有限：固定紧集包含于某个 $K_N$，而 $m\ge N+2$ 的支集在 $K_N$ 外，剩下层各只有有限个函数。函数
+\[
+ b(x)=\sum_jb_j(x)
+\]
+因局部有限而光滑，因小球覆盖各环层而处处为正。令 $\theta_j=b_j/b$，则正性、求和为一和支集条件全部成立。每个 $b_j$ 的支集紧包含于 $\Omega$，所以 $\theta_j$ 也可延零成 $\R^n$ 上的光滑紧支集函数；分母可能在域边界变小不影响这一点，因为每个单独支集与边界保持正距离。
+\end{proof}
+这给出了原书“散开覆盖”的标准局部有限含义，同时确保局部有限的是\emph{支集}而非仅非零开集，消除了归一化与求导中的潜在缺口。
+
+\begin{corollary}[光滑截断函数]\label{cor:y1-cutoff}
+若 $K\Subset\Omega$、$O\subset\Omega$ 开且含 $K$，则存在 $\chi\in\Test(\Omega)$，$0\le\chi\le1$，在 $K$ 的某个邻域上为 $1$，且 $\supp\chi\subset O$。
+\end{corollary}
+\begin{proof}
+用有限个闭球包含于 $O$ 的小球覆盖 $K$，取在小球上为正的紧支集光滑函数，相加得 $b$，其支集紧包含于 $O$，且 $\min_K b=c>0$。取光滑实函数 $h$，在 $t\le c/2$ 上为零，在 $t\ge3c/4$ 上为一，并介于零与一之间。$\chi=h\circ b$ 即满足要求。
+\end{proof}
+特别地，可以取 $\chi_m$ 在 $K_m$ 附近为一，于是 $\chi_mf\to f$ 在 $\mathcal E(\Omega)$ 中成立，说明 $\Test$ 在 $\mathcal E$ 中稠密。这个稠密性不是说 $\Test$ 与 $\mathcal E$ 的拓扑相同。
+
+\subsection{补充：分布的限制与粘合}
+若 $U\subset\Omega$ 开，$\Test(U)$ 的函数延零到 $\Omega$ 后仍是测试函数，因此可定义 $T|_U$。下面的局部原则使后面支集的定义成立。
+\begin{proposition}[分布的局部唯一性与粘合]\label{prop:y1-gluing}
+若分布 $T$ 在开集族 $U_i$ 上均为零，则它在 $\bigcup_iU_i$ 上为零。更一般地，若 $T_i\in\Dist(U_i)$ 在交集上相容，则存在唯一 $T\in\Dist(\bigcup_iU_i)$，其各限制等于 $T_i$。
+\end{proposition}
+\begin{proof}
+先取从属于 $U_i$ 的单位分解 $\theta_j$。对支集于并集的 $\varphi$，只有有限个 $\theta_j\varphi$ 非零，因此 $\varphi=\sum_j\theta_j\varphi$。若各局部限制为零，对有限和应用 $T$ 即得零。
+
+一般情形定义
+\[
+ T(\varphi)=\sum_jT_{i(j)}(\theta_j\varphi).
+\]
+对固定 $\Test_K$ 只有有限项；每项由光滑乘子连续性及局部有限阶估计控制，所以 $T$ 是分布。若 $\supp\varphi\subset U_i$，各 $\theta_j\varphi$ 的紧支集在 $U_i\cap U_{i(j)}$ 中，相容性使和等于 $\sum_jT_i(\theta_j\varphi)=T_i(\varphi)$。局部零结论保证唯一性，因此也保证结果与单位分解选择无关。
+\end{proof}
+专题部分第 \ref{ch:distributions} 章给出限制与粘合的进一步应用。

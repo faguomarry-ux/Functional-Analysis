@@ -1,0 +1,259 @@
+% !TeX encoding = UTF-8
+本节以开集组织邻近、连续与紧性，随后证明函数逼近和类别论中常用的基础定理。除特别说明外，拓扑空间均假设为 Hausdorff 空间；个别结论会明确指出不需要这一假设。紧性始终指开覆盖意义的紧性。
+
+\subsection{开集、闭集、邻域与连续映射}
+\begin{definition}[拓扑与子空间拓扑]\label{def:y0-topology}
+集合 $X$ 上的拓扑是子集族 $\tau\subseteq\mathcal P(X)$，满足 $\varnothing,X\in\tau$，任意族成员的并属于 $\tau$，有限个成员的交属于 $\tau$。$\tau$ 的成员称为开集，补集为开集的集合称为闭集。子集 $A\subseteq X$ 的子空间拓扑为 $\{A\cap U:U\in\tau\}$。
+
+若 $N$ 含有一个包含 $x$ 的开集，则称 $N$ 为 $x$ 的邻域。若任意两个不同点都有互不相交的开邻域，则空间称为 Hausdorff 空间。
+\end{definition}
+
+\begin{definition}[闭包、内部、边界与聚点]\label{def:y0-closure}
+集合 $A$ 的闭包 $\overline A$ 是包含 $A$ 的全部闭集的交；内部 $A^\circ$ 是包含于 $A$ 的全部开集的并；边界为 $\partial A=\overline A\setminus A^\circ$。若 $\overline A=X$，称 $A$ 在 $X$ 中稠密。若每个 $x$ 的邻域都与 $A\setminus\{x\}$ 相交，称 $x$ 为 $A$ 的聚点。
+\end{definition}
+
+\begin{proposition}[闭包的邻域刻画]\label{prop:y0-closure}
+$x\in\overline A$ 当且仅当 $x$ 的每个开邻域都与 $A$ 相交。因此 $A$ 闭当且仅当它包含自己的全部聚点，且
+\[
+ \overline A=X\setminus(X\setminus A)^\circ.
+\]
+\end{proposition}
+\begin{proof}
+若某开邻域 $U\ni x$ 与 $A$ 不交，则闭集 $X\setminus U$ 包含 $A$，而不含 $x$，所以 $x\notin\overline A$。反之，若 $x\notin\overline A$，则 $X\setminus\overline A$ 是所求开邻域。对 $x\notin A$，与 $A$ 相交等价于与 $A\setminus\{x\}$ 相交，故闭集的刻画随之成立。最后一个等式是邻域刻画的补集形式。
+\end{proof}
+
+\begin{definition}[拓扑基、邻域基与连续]\label{def:y0-continuity}
+开集族 $\mathcal B$ 若使每个开集都是其成员的并，称为拓扑基。点 $x$ 的邻域族 $\mathcal B_x$ 若使每个 $x$ 的邻域都包含一个 $\mathcal B_x$ 的成员，称为 $x$ 的邻域基。每点有可数邻域基称为第一可数；有可数拓扑基称为第二可数。
+
+映射 $f:X\to Y$ 在 $x$ 连续，指对每个 $f(x)$ 的邻域 $V$，存在 $x$ 的邻域 $U$ 使 $f(U)\subseteq V$；在每点连续称为连续。双射若其本身和逆映射都连续，称为同胚。
+\end{definition}
+
+\begin{proposition}[连续性的等价条件]\label{prop:y0-continuity}
+映射 $f:X\to Y$ 连续当且仅当每个开集的原像为开集，也当且仅当每个闭集的原像为闭集。
+\end{proposition}
+\begin{proof}
+若 $f$ 连续，对开集 $V\subseteq Y$ 及 $x\in f^{-1}(V)$，连续性给出含 $x$ 的开集 $U\subseteq f^{-1}(V)$，所以原像开。反之，给定邻域 $V\ni f(x)$，在其中取开邻域 $W$，则 $f^{-1}(W)$ 为 $x$ 的开邻域，且像包含于 $V$。闭集条件与开集条件由取补集互相转换。
+\end{proof}
+
+\begin{definition}[度量与收敛]\label{def:y0-metric}
+函数 $d:X\times X\to[0,\infty)$ 若满足 $d(x,y)=0$ 当且仅当 $x=y$、$d(x,y)=d(y,x)$ 和三角不等式 $d(x,z)\le d(x,y)+d(y,z)$，称为度量。开球 $B(x,r)=\{y:d(x,y)<r\}$ 构成拓扑基，所定义的拓扑称为度量拓扑。
+
+在拓扑空间中，$x_n\to x$ 指每个 $x$ 的邻域都包含数列的全部充分靠后项。在度量空间中，这等价于 $d(x_n,x)\to0$。
+\end{definition}
+
+度量拓扑是 Hausdorff 的：不同点之间距离为 $r>0$，半径 $r/3$ 的两球不交。一般 Hausdorff 空间中数列极限也唯一，否则两个不交的极限邻域都必须含有充分靠后的项。度量空间是第一可数的，因为 $B(x,1/n)$ 给出可数邻域基。
+
+\begin{proposition}[第一可数空间中的数列判据]\label{prop:y0-sequential}
+若 $X$ 第一可数，则 $x\in\overline A$ 当且仅当存在 $A$ 中的数列趋于 $x$；映射 $f:X\to Y$ 连续当且仅当它保持所有数列的收敛。
+\end{proposition}
+\begin{proof}
+将 $x$ 的可数邻域基替换为有限交，使它递减，记为 $U_n$。若 $x\in\overline A$，取 $x_n\in A\cap U_n$，便有 $x_n\to x$。反向由闭包的邻域刻画成立。连续映射显然保持收敛；若 $f$ 在 $x$ 不连续，则有开邻域 $V\ni f(x)$ 使每个 $U_n$ 都含有点 $x_n$ 满足 $f(x_n)\notin V$，这给出反例数列。
+\end{proof}
+
+一般拓扑空间中数列未必刻画闭包或连续性。例如在不可数集的可数补拓扑中，每个收敛数列最终恒等于其极限，但所有不可数子集都稠密。此例不满足 Hausdorff 条件，仅用来说明不能省略数列判据的假设。
+
+\subsection{紧性、局部紧性与单点紧化}
+\begin{definition}[紧性与相对紧性]\label{def:y0-compact}
+若子集 $K\subseteq X$ 的每个开覆盖都有有限子覆盖，称 $K$ 紧。若 $\overline A$ 紧，称 $A$ 相对紧。若每个点都具有紧邻域，称空间局部紧。
+
+集合族具有有限交性质，指每个有限子族的交都非空，其中空族的交约定为整个底集。
+\end{definition}
+
+\begin{proposition}[紧性的基本性质]\label{prop:y0-compact}
+连续像保持紧性；紧空间的闭子集紧；Hausdorff 空间的紧子集闭；紧性等价于每个具有有限交性质的闭集族的交非空。紧空间到 Hausdorff 空间的连续双射为同胚。
+\end{proposition}
+\begin{proof}
+像空间的开覆盖取原像，再用有限子覆盖，即得第一条。覆盖闭子集时加上其补集，得到紧空间的覆盖，即得第二条。若 $x\notin K$ 且 $K$ 紧，对每个 $y\in K$ 取不交开邻域 $U_y\ni y$、$V_y\ni x$。有限个 $U_{y_j}$ 覆盖 $K$，则 $\bigcap_jV_{y_j}$ 与 $K$ 不交，故 $X\setminus K$ 开。有限交刻画由开覆盖取补集得到。最后，连续双射将闭集送到紧集，再送到闭集，故其逆映射连续。
+\end{proof}
+
+\begin{proposition}[紧 Hausdorff 空间的正规性]\label{prop:y0-normal}
+紧 Hausdorff 空间是正规空间，即任意两个不交闭集都有互不相交的开邻域。它也是正则空间，即点与不含它的闭集可被不交开集分离。
+\end{proposition}
+\begin{proof}
+设不交闭集 $A,B$，均紧。固定 $a\in A$，对每个 $b\in B$ 取不交开邻域 $U_{a,b}\ni a$、$V_{a,b}\ni b$。以有限个 $V_{a,b_j}$ 覆盖 $B$，令 $U_a=\bigcap_jU_{a,b_j}$、$V_a=\bigcup_jV_{a,b_j}$。则 $U_a\cap V_a=\varnothing$ 且 $B\subseteq V_a$。再以有限个 $U_{a_i}$ 覆盖 $A$，取 $U=\bigcup_iU_{a_i}$、$V=\bigcap_iV_{a_i}$，便有 $A\subseteq U$、$B\subseteq V$、$U\cap V=\varnothing$。单点在 Hausdorff 空间中闭，故正规性也给出正则性。
+\end{proof}
+
+\begin{theorem}[单点紧化]\label{thm:y0-one-point}
+设 $X$ 局部紧且 Hausdorff，添加新点 $\infty$，令 $X^*=X\cup\{\infty\}$。规定 $X$ 原有开集仍开，含 $\infty$ 的集合 $W$ 开当且仅当 $X^*\setminus W$ 是 $X$ 的紧子集。则 $X^*$ 为紧 Hausdorff 空间，且诱导于 $X$ 的拓扑不变。若 $X$ 非紧，则 $X$ 在 $X^*$ 中稠密；若 $X$ 紧，则 $\infty$ 为孤立点。
+\end{theorem}
+\begin{proof}
+紧子集闭；含 $\infty$ 的开集取有限交时，补集是有限个紧集的并，仍紧。取任意并时，若其中某成员含 $\infty$，并集的补集是该成员补集的闭子集，故紧。与原有开集取交也保持开性。这证明拓扑公理及子空间拓扑不变。
+
+任意覆盖 $X^*$ 的开族中，取一个含 $\infty$ 的成员，其补集紧，可由有限个其余成员覆盖，故 $X^*$ 紧。$X$ 中两点沿用原来的分离。对 $x\in X$，取紧邻域 $K$ 及开集 $U$ 使 $x\in U\subseteq K$，则 $U$ 和 $X^*\setminus K$ 分离 $x$ 与 $\infty$。若 $X$ 非紧，$\infty$ 的任何邻域都与 $X$ 相交；若 $X$ 紧，$\{\infty\}$ 开。
+\end{proof}
+
+\subsection{乘积拓扑与 Tychonoff 定理}
+\begin{definition}[乘积拓扑]\label{def:y0-product-topology}
+对空间族 $(X_i)_{i\in I}$，乘积 $X=\prod_iX_i$ 的乘积拓扑以集合 $\bigcap_{i\in F}\pi_i^{-1}(U_i)$ 为基，其中 $F\subseteq I$ 有限，各 $U_i\subseteq X_i$ 开，$\pi_i$ 为坐标投影。它是使所有投影连续的最弱拓扑。若允许无限多个坐标同时受限，得到的箱拓扑通常更强。
+\end{definition}
+
+以下证明使用第 \ref{thm:y0-zorn} 定理，因而在选择公理下进行。为使任意多个坐标的极限相容，先引入滤子。
+
+\begin{lemma}[超滤子与紧性]\label{lem:y0-ultrafilter}
+非空集合 $X$ 上的滤子是子集族 $\mathcal F$，满足 $X\in\mathcal F$、$\varnothing\notin\mathcal F$，对有限交封闭，并且包含成员的所有超集。极大的滤子称为超滤子。每个滤子可扩充为超滤子；超滤子 $\mathcal U$ 对任意 $A\subseteq X$ 恰包含 $A$、$X\setminus A$ 之一。
+
+称滤子收敛于 $x$，若它包含 $x$ 的所有邻域。空间紧当且仅当其上每个超滤子都收敛于至少一点；Hausdorff 空间中的滤子极限至多一个。
+\end{lemma}
+\begin{proof}
+所有包含固定滤子的滤子按包含排序，链的并仍为滤子。Zorn 引理给出极大者。若 $A\notin\mathcal U$，将 $A$ 加入不能生成真滤子，故存在 $F\in\mathcal U$ 使 $F\cap A=\varnothing$；于是 $X\setminus A\in\mathcal U$。两者不能同时属于滤子。
+
+若空间紧，闭集族 $\{\overline F:F\in\mathcal U\}$ 具有有限交性质，故取 $x$ 在其交中。若邻域 $V\ni x$ 不在 $\mathcal U$ 中，取开邻域 $W\subseteq V$，则 $X\setminus W\in\mathcal U$，与 $x\in\overline{X\setminus W}=X\setminus W$ 矛盾。因此超滤子收敛于 $x$。反之，具有有限交性质的闭集族生成滤子，将其扩充为超滤子并取极限 $x$。若某个原闭集 $F$ 不含 $x$，其补集为 $x$ 的邻域，与 $F$ 同时在滤子中，矛盾，所以 $x$ 属于全部原闭集。Hausdorff 情形的唯一性由不交邻域不能同时属于滤子得到。
+\end{proof}
+
+\begin{theorem}[Tychonoff 定理]\label{thm:y0-tychonoff}
+任意族紧 Hausdorff 空间的乘积，在乘积拓扑下仍为紧 Hausdorff 空间。
+\end{theorem}
+\begin{proof}
+若乘积为空，它紧。否则取乘积上的超滤子 $\mathcal U$。对每个 $i$，族 $\mathcal U_i=\{A\subseteq X_i:\pi_i^{-1}(A)\in\mathcal U\}$ 为 $X_i$ 上的超滤子，由紧性它收敛于 $x_i$。令 $x=(x_i)_{i\in I}$。$x$ 的每个基本邻域是有限个 $\pi_i^{-1}(U_i)$ 的交，各项都在 $\mathcal U$ 中，故交也在其中。这说明 $\mathcal U\to x$，由引理得乘积紧。不同乘积点在某一坐标不同，该坐标中的不交开邻域的原像分离这两点，故乘积 Hausdorff。
+\end{proof}
+
+\subsection{Urysohn 引理与连续截断函数}
+\begin{theorem}[Urysohn 引理]\label{thm:y0-urysohn}
+设 $X$ 为正规 Hausdorff 空间，$A,B\subseteq X$ 为不交闭集。则存在连续函数 $f:X\to[0,1]$，使 $f|_A=0$、$f|_B=1$。
+\end{theorem}
+\begin{proof}
+正规性给出缩小邻域的性质：若闭集 $F\subseteq O$ 且 $O$ 开，则存在开集 $V$ 使 $F\subseteq V\subseteq\overline V\subseteq O$。确实，将 $F$ 与 $X\setminus O$ 用不交开集分离即可。
+
+令 $D$ 为 $[0,1]$ 中的二进有理数。取开集 $U_1=X\setminus B$，再取 $U_0$ 使 $A\subseteq U_0\subseteq\overline U_0\subseteq U_1$。逐层在相邻已定义指标 $r<s$ 的中点插入开集，使
+\[
+ \overline U_r\subseteq U_{(r+s)/2}
+ \subseteq\overline U_{(r+s)/2}\subseteq U_s.
+\]
+从而对任意 $r<s$ 都有 $\overline U_r\subseteq U_s$。定义
+\[
+ f(x)=\inf\bigl(\{r\in D:x\in U_r\}\cup\{1\}\bigr).
+\]
+显然 $f=0$ 于 $A$，$f=1$ 于 $B$。对 $0<a\le1$，有 $\{f<a\}=\bigcup_{r<a}U_r$。对 $0\le a<1$，有
+\[
+ \{f>a\}=\bigcup_{\substack{r\in D\\r>a}}
+                     (X\setminus\overline U_r).
+\]
+后一等式中，若 $x\notin\overline U_r$，则 $x$ 不属于任何 $U_s$（$s\le r$），所以 $f(x)\ge r>a$；若 $f(x)>a$，在 $a$ 与 $f(x)$ 之间取 $r<s$，则 $x\notin U_s$，从而 $x\notin\overline U_r$。这些原像均开，证明连续性。
+\end{proof}
+
+\begin{corollary}[局部紧空间中的截断函数]\label{cor:y0-cutoff}
+若 $X$ 局部紧且 Hausdorff，$K\subseteq O\subseteq X$，其中 $K$ 紧、$O$ 开，则有 $\varphi\in C_c(X)$ 满足 $0\le\varphi\le1$、$\varphi|_K=1$、$\operatorname{supp}\varphi\subseteq O$。这里 $C_c(X)$ 表示连续且具有紧支集的函数。
+\end{corollary}
+\begin{proof}
+在紧 Hausdorff 空间 $X^*$ 中，$K$ 闭而 $O$ 开，由正规性取开集 $V$ 使 $K\subseteq V\subseteq\overline V\subseteq O$。对不交闭集 $K$、$X^*\setminus V$ 应用 Urysohn 引理，得到在 $K$ 上为 $1$、在后者上为 $0$ 的函数。限制到 $X$ 后，其支集包含于紧集 $\overline V\subseteq O$，即得结论。
+\end{proof}
+
+\subsection{Weierstrass 与 Stone--Weierstrass 逼近}
+\begin{theorem}[Bernstein 多项式逼近]\label{thm:y0-bernstein}
+对 $f\in C([0,1];\mathbb K)$，其中 $\mathbb K=\R$ 或 $\mathbb C$，多项式
+\[
+ B_nf(x)=\sum_{k=0}^nf(k/n)\binom nk x^k(1-x)^{n-k}
+\]
+一致收敛于 $f$。因此任意闭有限区间上的连续函数均可由多项式一致逼近。
+\end{theorem}
+\begin{proof}
+记 $p_{n,k}(x)=\binom nkx^k(1-x)^{n-k}$。二项式公式及其一、二阶导数给出
+\[
+ \sum_kp_{n,k}=1,\qquad
+ \sum_k(k/n-x)^2p_{n,k}=\frac{x(1-x)}n\le\frac1{4n}.
+\]
+设 $M=\|f\|_\infty$。由紧区间上的一致连续性，给定 $\varepsilon>0$ 可取 $\delta>0$ 使 $|s-t|<\delta$ 时 $|f(s)-f(t)|<\varepsilon$。将求和按 $|k/n-x|<\delta$ 与其补集分开，得
+\[
+ |B_nf(x)-f(x)|
+ \le\varepsilon+2M\delta^{-2}\sum_k(k/n-x)^2p_{n,k}
+ \le\varepsilon+\frac{M}{2n\delta^2}.
+\]
+估计对 $x$ 一致，故结论成立。一般区间由仿射换元得到。这里的一致连续性可由紧性证明：在每点取控制函数振荡的小邻域，有限子覆盖再给出统一的距离界限。
+\end{proof}
+
+\begin{theorem}[实 Stone--Weierstrass 定理]\label{thm:y0-stone-real}
+设 $X$ 紧 Hausdorff，$\mathcal A\subseteq C(X;\R)$ 为含常数函数且分离点的子代数；分离点指对 $x\ne y$ 存在 $a\in\mathcal A$ 使 $a(x)\ne a(y)$。则 $\mathcal A$ 在一致范数 $\|f\|_\infty=\sup_X|f|$ 下稠密于 $C(X;\R)$。
+\end{theorem}
+\begin{proof}
+设 $\mathcal B$ 为 $\mathcal A$ 的一致闭包，它仍为含常数的代数。对 $g\in\mathcal B$，在包含其值域的有限区间上以多项式逼近绝对值函数，得 $|g|\in\mathcal B$。因此
+\[
+ \max(g,h)=\tfrac12(g+h+|g-h|),\qquad
+ \min(g,h)=\tfrac12(g+h-|g-h|)
+\]
+也在 $\mathcal B$ 中。
+
+给定 $f\in C(X;\R)$ 与 $\varepsilon>0$。对任意 $x,y\in X$，可找 $a_{x,y}\in\mathcal A$ 满足 $a_{x,y}(x)=f(x)$、$a_{x,y}(y)=f(y)$：若 $x\ne y$，对一个分离它们的函数作仿射变换；若 $x=y$，取常数函数。固定 $x$，开集 $\{t:a_{x,y}(t)>f(t)-\varepsilon\}$ 随 $y$ 覆盖 $X$。取有限子覆盖并令 $g_x$ 为对应函数的最大值，则 $g_x\in\mathcal B$、$g_x>f-\varepsilon$ 于 $X$，且 $g_x(x)=f(x)$。
+
+开集 $\{t:g_x(t)<f(t)+\varepsilon\}$ 随 $x$ 覆盖 $X$。再取有限子覆盖，令 $g$ 为对应 $g_x$ 的最小值，便有 $f-\varepsilon<g<f+\varepsilon$ 于 $X$，且 $g\in\mathcal B$。由闭性 $f\in\mathcal B$，完成证明。
+\end{proof}
+
+\begin{corollary}[格形式与复数形式]\label{cor:y0-stone-complex}
+实数情形中，可将“子代数”替换为“对有限最大、最小运算封闭的线性子空间”，仍要求含常数及分离点。复数情形中，含常数、分离点且对复共轭封闭的子代数 $\mathcal A\subseteq C(X;\mathbb C)$ 在一致范数下稠密。
+\end{corollary}
+\begin{proof}
+格形式直接使用上一证明的两次有限覆盖构造。复数情形中，实部和虚部都属于 $\mathcal A$，故其中的实值函数构成含常数的实代数，并分离点：一个复值函数在两点不同，其实部或虚部必不同。对任意复值连续函数分别逼近实部和虚部，再组合即可。
+\end{proof}
+
+\begin{example}[三角多项式的一致稠密性]
+在单位圆上，函数 $z\mapsto z^k$（$k\in\mathbb Z$）的有限复线性组合构成含常数、分离点且对共轭封闭的代数。因此每个连续 $2\pi$ 周期函数都可由 $\sum_{k=-N}^Nc_ke^{ikt}$ 一致逼近。这里只断言存在逼近的三角多项式，不断言原函数的 Fourier 部分和必一致收敛。
+\end{example}
+
+\subsection{完备性与 Baire 类别定理}
+\begin{definition}[Cauchy 数列、完备性与类别]\label{def:y0-baire}
+度量空间中，数列 $(x_n)$ 为 Cauchy 数列，指对任意 $\varepsilon>0$，存在 $N$ 使 $m,n\ge N$ 时 $d(x_m,x_n)<\varepsilon$。每个 Cauchy 数列都在空间内收敛，称空间完备。
+
+若 $(\overline A)^\circ=\varnothing$，称 $A$ 无处稠密；若 $A$ 是可数个无处稠密集的并，称 $A$ 为第一纲集或贫集；否则称为第二纲集。若可数个稠密开集的交仍稠密，称空间为 Baire 空间。
+\end{definition}
+
+\begin{theorem}[Baire 类别定理]\label{thm:y0-baire}
+每个完备度量空间和每个局部紧 Hausdorff 空间都是 Baire 空间。特别地，非空完备度量空间或非空紧 Hausdorff 空间不能是自身中的第一纲集。
+\end{theorem}
+\begin{proof}
+设 $G_n$ 为稠密开集，$O$ 为非空开集。在完备度量空间中，递归取非空闭球 $K_n=\overline B(x_n,r_n)$，使 $K_1\subseteq O\cap G_1$、$K_{n+1}\subseteq B(x_n,r_n)\cap G_{n+1}$，并使 $0<r_n<2^{-n}$。稠密性保证每一步可进行。中心为 Cauchy 数列，由完备性收敛于 $x$；闭球嵌套给出 $x\in K_n$ 对所有 $n$ 成立，故 $x\in O\cap\bigcap_nG_n$。
+
+在局部紧 Hausdorff 空间中，每个非空开集包含一个非空开集 $V$，使 $\overline V$ 紧且包含于原开集；这由单点紧化空间的正则性得到。于是递归取 $V_n$ 使 $\overline V_1\subseteq O\cap G_1$、$\overline V_{n+1}\subseteq V_n\cap G_{n+1}$，且各闭包紧。闭集 $\overline V_n$ 在 $\overline V_1$ 中具有有限交性质，交非空，交中的点即属于 $O\cap\bigcap_nG_n$。最后，对无处稠密集的闭包取补集，便得到第一纲表述。
+\end{proof}
+
+\begin{proposition}[连续函数逐点极限的不连续点]\label{prop:y0-baire-one}
+设 $f_n:X\to\R$ 连续，且在每点收敛于有限值 $f$。则 $f$ 的不连续点集为第一纲集。若 $X$ 为 Baire 空间，$f$ 的连续点集稠密。
+\end{proposition}
+\begin{proof}
+固定 $\varepsilon>0$，令
+\[
+ F_N=\bigcap_{m,n\ge N}\{x:|f_m(x)-f_n(x)|\le\varepsilon/4\}.
+\]
+各 $F_N$ 闭，且由逐点 Cauchy 性 $X=\bigcup_NF_N$。在 $F_N$ 上取极限得 $|f-f_N|\le\varepsilon/4$。若 $x\in F_N^\circ$，由 $f_N$ 的连续性，可取 $x$ 的开邻域 $U\subseteq F_N^\circ$，使 $f_N$ 在 $U$ 上的振荡小于 $\varepsilon/2$；于是 $f$ 在 $U$ 上的振荡小于 $\varepsilon$。
+
+令 $G_\varepsilon$ 为所有使 $f$ 的振荡小于 $\varepsilon$ 的开集的并。则 $G_\varepsilon$ 开，且
+\[
+ X\setminus G_\varepsilon\subseteq
+          \bigcup_N(F_N\setminus F_N^\circ).
+\]
+右侧为第一纲集，因为闭集 $F_N$ 的边界无处稠密。$f$ 在 $x$ 连续当且仅当 $x\in\bigcap_{k\ge1}G_{1/k}$，故不连续点集第一纲。在 Baire 空间中，第一纲集不能包含非空开集，因而其补集稠密。
+\end{proof}
+
+\subsection{度量空间中的紧性判据}
+\begin{definition}[全有界]\label{def:y0-total-bounded}
+度量空间 $M$ 若对每个 $\varepsilon>0$ 都能用有限个半径 $\varepsilon$ 的球覆盖，称为全有界。对子集使用限制的度量。全有界蕴含有界，但无限维空间中有界未必全有界。
+\end{definition}
+
+\begin{theorem}[度量紧性的等价条件]\label{thm:y0-metric-compact}
+度量空间 $M$ 的下列条件等价：紧；每个数列有收敛子列且极限在 $M$ 中；完备且全有界。因此完备度量空间 $X$ 中的子集 $A$ 相对紧，当且仅当 $A$ 全有界。
+\end{theorem}
+\begin{proof}
+紧空间全有界，因为固定半径的全部开球构成覆盖。紧度量空间也完备：对 Cauchy 数列，闭集 $\overline{\{x_n:n\ge N\}}$ 嵌套且非空，紧性给出公共点 $x$，Cauchy 性随即给出 $x_n\to x$。
+
+完备且全有界时，依次用半径 $2^{-k}$ 的有限球覆盖，从当前无限多个数列项中保留落在同一球内的无限子列。取对角子列，得到 Cauchy 子列，再由完备性得到收敛。反之，数列紧性蕴含全有界：若不全有界，递归选取两两距离至少某个 $\varepsilon>0$ 的点，便没有收敛子列。
+
+最后由数列紧性推出开覆盖紧性。给定开覆盖，必有 $\delta>0$ 使每个球 $B(x,\delta)$ 都包含于某一覆盖成员。否则可取 $x_n$ 使 $B(x_n,1/n)$ 不包含于任何成员；取收敛子列 $x_{n_j}\to x$，再取覆盖成员 $U\ni x$ 和 $r>0$ 使 $B(x,r)\subseteq U$，则充分大时 $B(x_{n_j},1/n_j)\subseteq U$，矛盾。用全有界性取有限个半径 $\delta/2$ 的球，再为其中心各选一个包含半径 $\delta$ 球的覆盖成员，即得有限子覆盖。
+
+若 $X$ 完备，$\overline A$ 为完备子空间；$A$ 全有界时，放大覆盖球半径即知其闭包也全有界，故闭包紧。反向由紧集全有界及其子集仍全有界成立。
+\end{proof}
+
+\begin{example}[有界不足以推出紧]
+在 $\ell^2$ 中，标准单位向量 $e_n$ 均在闭单位球内，但 $\|e_n-e_m\|_2=\sqrt2$（$n\ne m$），所以闭单位球不全有界，也不紧。这与 $\R^n$ 中“闭且有界等价于紧”形成区别；后者由有限网格覆盖给出全有界性，再结合完备性证明。
+\end{example}
+
+\begin{exercise}[紧空间上的连续函数空间]
+设 $K$ 紧 Hausdorff。证明 $C(K;\mathbb K)$ 在一致范数下完备。
+\end{exercise}
+\begin{solution}
+一致 Cauchy 数列 $(f_n)$ 在每点为标量 Cauchy 数列，令 $f(x)=\lim_nf_n(x)$。将 $\|f_n-f_m\|_\infty<\varepsilon$ 中的 $m$ 取极限，得 $|f_n(x)-f(x)|\le\varepsilon$ 对所有 $x$ 成立，故一致收敛。固定 $x$，先使 $\|f-f_n\|_\infty$ 小，再以 $f_n$ 的连续性控制邻域中的变化，由三角不等式知 $f$ 连续。连续函数在紧空间上的像紧，因而有界，故 $f\in C(K;\mathbb K)$。
+\end{solution}
+
+\begin{exercise}[复 Stone--Weierstrass 中的共轭条件]
+在单位圆 $\mathbb T$ 上，令 $\mathcal A$ 为仅含非负幂 $z^k$ 的多项式的限制。证明它含常数且分离点，却不能一致逼近 $\overline z$。
+\end{exercise}
+\begin{solution}
+函数 $z$ 本身分离点。对任意 $p\in\mathcal A$，有 $\int_0^{2\pi}p(e^{it})e^{it}\,\dd t=0$，因为每个指数的频率均为正整数。若 $p_n\to\overline z$ 一致，则左侧趋于 $\int_0^{2\pi}e^{-it}e^{it}\,\dd t=2\pi$，矛盾。因此共轭封闭条件不能直接删去。
+\end{solution}

@@ -1,0 +1,131 @@
+\SetChapterInfo{subtitle={Schwartz 对偶与微分的乘子化},keywords={温和分布; Fourier 自同构; Sobolev 空间},prereq={第 2、4、5 章; 经典 Fourier 反演},goals={统一常数并使用对偶定义 Fourier 变换}}
+\chapter{温和分布与傅里叶变换}\label{ch:fourier}
+\ChapterSource{对应施瓦尔茨 \cite{schwartz} 第 VII 章 §§2--6，特别是原书印刷第 169、172 页。全章使用式 \eqref{eq:fourier-convention}，与原书频率归一化不同。}
+
+\section{温和分布的增长控制}
+\begin{definition}[温和分布]
+Schwartz 空间 $\Sch(\R^n)$ 的连续线性对偶记为 $\Temp(\R^n)$。其元素称为温和分布，也称缓增分布。
+\end{definition}
+由有限半范数估计，$T\in\Temp$ 当且仅当存在 $N,m,C$ 使
+\begin{equation}\label{eq:tempered-bound}
+ |T(\varphi)|\le Cq_{N,m}(\varphi)\qquad(\varphi\in\Sch).
+\end{equation}
+$\Test\to\Sch$ 连续，故限制得到 $\Temp\to\Dist$；由于 $\Test$ 在 $\Sch$ 中稠密，这一映射单射。也就是说，温和分布是普通分布中的特殊一类，它们能连续地作用于非紧支撑但快速衰减的探针。
+
+\begin{proposition}[基本例子]
+以下对象都是温和分布：$L^p(\R^n)$ 函数（$1\le p\le\infty$）；具有至多多项式增长的局部可积函数；紧支集分布；$\delta_a$ 的任意阶导数。
+\end{proposition}
+\begin{proof}
+对 $L^p$ 函数用 Hölder 不等式，再以足够高权重控制测试函数的 $L^{p'}$ 范数。若 $|f(x)|\le C(1+|x|)^M$ 几乎处处，取 $N>M+n$ 得
+\[
+ |\int f\varphi|\le Cq_{N,0}(\varphi)
+ \int(1+|x|)^{M-N}\,\dd x<\infty.
+\]
+紧支集分布的有限阶估计由某个 $q_{0,m}$ 控制，故也温和。
+\end{proof}
+更一般，若 $\int|f(x)|(1+|x|)^{-N}\,\dd x<\infty$，则 $T_f$ 温和。对带符号或复值的振荡函数，这只是充分条件，不能误当成必要条件。
+
+\begin{example}[普通分布并非都温和]
+函数 $e^x$ 在 $\R$ 上局部可积，给出分布但不是温和分布。若它满足式 \eqref{eq:tempered-bound}，取非负非零 $\eta\in\Test$ 并令 $\eta_j(x)=\eta(x-j)$，则配对为 $e^j\int e^y\eta(y)\,\dd y$，而 $q_{N,m}(\eta_j)$ 至多按 $j^N$ 增长，矛盾。
+\end{example}
+求导和多项式乘法保持 $\Temp$。更一般，若光滑 $a$ 的每个导数均有某种多项式增长，则 $\varphi\mapsto a\varphi$ 连续作用于 $\Sch$，其转置给出温和分布乘法。
+
+\section{Schwartz 空间上的傅里叶变换}
+\begin{theorem}[Fourier 自同构]\label{thm:schwartz-fourier}
+按式 \eqref{eq:fourier-convention} 定义的 $\FT$ 是 $\Sch(\R^n)$ 的连续线性自同构，其逆为
+\[
+ \FT^{-1}\psi(x)=(2\pi)^{-n}\int e^{ix\cdot\xi}\psi(\xi)\,\dd\xi.
+\]
+\end{theorem}
+\begin{proof}
+微分可移入积分，分部积分无边界项，故
+\begin{equation}\label{eq:fourier-identities}
+ \widehat{\partial_j\varphi}=i\xi_j\widehat\varphi,
+ \qquad\widehat{x_j\varphi}=i\partial_{\xi_j}\widehat\varphi.
+\end{equation}
+任意 $\xi^\beta\partial_\xi^\alpha\widehat\varphi$ 因此可表示成 $x^\alpha\varphi$ 的有限阶导数的 Fourier 变换，差一个常数因子。其上确界由对应函数的 $L^1$ 范数控制，而该范数由有限个 $q_{N,m}(\varphi)$ 控制。故 $\FT$ 连续映入 $\Sch$。逆号积分同理连续映入 $\Sch$。使用经典 Schwartz 函数 Fourier 反演公式，两个映射互为逆。
+\end{proof}
+经典反演也可以用高斯截断验证：在逆积分中加入 $e^{-\varepsilon|\xi|^2}$，得到与高斯核的卷积；高斯核构成近似恒等，令 $\varepsilon\downarrow0$ 得到原函数。这里所需 Fubini 与控制收敛均由 Schwartz 衰减保证。
+
+\section{温和分布的傅里叶变换}
+\begin{definition}[对偶定义]
+对 $T\in\Temp$，定义
+\begin{equation}\label{eq:fourier-distribution}
+ \Pair{\widehat T}{\varphi}=\Pair{T}{\widehat\varphi},\qquad\varphi\in\Sch.
+\end{equation}
+\end{definition}
+注意右侧是探针的正向变换。这是因为核 $e^{-ix\cdot\xi}$ 在两个变量中对称，配对采用双线性约定。若 $T=T_f$ 且 $f\in L^1$，Fubini 定理给出该定义与普通 $\widehat f$ 一致。连续自同构的转置也是连续自同构，因此 $\widehat T\in\Temp$ 且 Fourier 变换可逆。
+\begin{keyformula}[常数与基本对象]
+\begin{align*}
+ \widehat{\delta_0}&=1,&\widehat1&=(2\pi)^n\delta_0,\\
+ \widehat{\delta_a}&=e^{-ia\cdot\xi},&
+ \widehat{\partial^\alpha T}&=(i\xi)^\alpha\widehat T,\\
+ \widehat{x_jT}&=i\partial_{\xi_j}\widehat T,&
+ \widehat{\tau_hT}&=e^{-ih\cdot\xi}\widehat T.
+\end{align*}
+\end{keyformula}
+例如 $\widehat{\delta_0}(\varphi)=\widehat\varphi(0)=\int\varphi$。又由反演 $\int\widehat\varphi=(2\pi)^n\varphi(0)$，得到常数的变换。对于导数，
+\[
+ \widehat{\partial_jT}(\varphi)
+ =-T(\partial_{x_j}\widehat\varphi)
+ =T(\widehat{i\xi_j\varphi})
+ =\widehat T(i\xi_j\varphi).
+\]
+这直接验证 $i$ 与负号，无须靠记忆。
+
+\begin{example}[高斯]
+对 $t>0$，令
+\[
+ G_t(x)=(4\pi t)^{-n/2}e^{-|x|^2/(4t)}.
+\]
+一维高斯积分与张量积计算给出 $\widehat G_t(\xi)=e^{-t|\xi|^2}$。由于 $\int G_t=1$，$G_t\to\delta_0$ 于分布意义；变换侧则 $e^{-t|\xi|^2}\to1$ 于温和分布意义。
+\end{example}
+
+\section{卷积定理的合法范围}
+对 Schwartz 函数 $f,g$，Fubini 直接给出 $\widehat{f*g}=\widehat f\widehat g$。若 $S\in\CompactDist$、$T\in\Temp$，则 $S*T\in\Temp$，并且
+\begin{equation}\label{eq:convolution-fourier}
+ \widehat{S*T}=\widehat S\,\widehat T.
+\end{equation}
+紧支集分布的 Fourier 变换是光滑函数
+\[
+ \widehat S(\xi)=\Pair{S_x}{e^{-ix\cdot\xi}},
+\]
+这里以紧支集切断解释非紧支撑探针。对 $\xi$ 求导产生 $(-ix)^\alpha$；有限阶估计表明每个导数至多多项式增长。因此它是合法 Schwartz 乘子，右端有意义。卷积定理可由对探针的配对与第 \ref{ch:convolution} 章的切断定义验证。
+
+任意两个温和分布的卷积未必存在，它们的 Fourier 变换之积也未必有定义。例如 $1*1$ 无定义，相应右侧形式上含 $\delta_0^2$。在允许的函数类中，乘积定理为 $\widehat{fg}=(2\pi)^{-n}\widehat f*\widehat g$；其中常数因子来自反演。
+
+\section{Sobolev 空间：分布的 Hilbert 尺度}
+\begin{definition}[Bessel--Sobolev 空间]
+对 $s\in\R$，$H^s(\R^n)$ 由那些 Fourier 变换可用可测函数表示、且满足下列有限范数条件的 $u\in\Temp$ 组成：
+\[
+ \|u\|_{H^s}^2=(2\pi)^{-n}\int_{\R^n}
+ (1+|\xi|^2)^s|\widehat u(\xi)|^2\,\dd\xi<\infty.
+\]
+\end{definition}
+Plancherel 定理给出 $H^0=L^2$。对非负整数 $m$，权重 $(1+|\xi|^2)^m$ 与 $\sum_{|\alpha|\le m}|\xi^\alpha|^2$ 等价，故 $H^m$ 等价于所有不超过 $m$ 阶弱导数属于 $L^2$ 的空间。并有
+\[
+ \partial_j:H^s\to H^{s-1}\quad\text{连续},\qquad
+ s_1\ge s_2\Rightarrow H^{s_1}\subset H^{s_2}.
+\]
+用加权 Cauchy--Schwarz 可把 $H^{-s}$ 识别为 $H^s$ 的连续对偶，注意与 Hilbert 内积对应时的复共轭约定。
+\begin{example}[点质量的正则性门槛]
+因 $\widehat{\delta_0}=1$，有
+\[
+ \delta_0\in H^s(\R^n)\quad\Longleftrightarrow\quad s<-\frac n2.
+\]
+积分在原点附近有限，在无穷远需 $\int_1^\infty r^{2s+n-1}\,\dd r<\infty$。类似地，$\partial^\alpha\delta_0\in H^s$ 当且仅当 $s<-n/2-|\alpha|$，可在球面上一块多项式不为零的区域给出必要性。
+\end{example}
+
+\section{习题}
+\begin{exercise}[二次变换]
+证明 $\FT^2T=(2\pi)^n\Reflected T$，其中 $\Reflected T(\varphi)=T(\varphi(-\cdot))$。
+\end{exercise}
+\begin{solution}
+对探针用经典反演得到 $\FT^2\varphi(x)=(2\pi)^n\varphi(-x)$，故 $\FT^2T(\varphi)=T(\FT^2\varphi)=(2\pi)^n\Reflected T(\varphi)$。
+\end{solution}
+\begin{exercise}[一阶基本解的变换]
+令 $E(x)=H(x)e^{-x}$。验证 $(\partial_x+1)E=\delta_0$，并求 $\widehat E$。
+\end{exercise}
+\begin{solution}
+由光滑乘积公式 $E'=\delta_0-E$。又 $E\in L^1$，故 $\widehat E(\xi)=\int_0^\infty e^{-(1+i\xi)x}\,\dd x=(1+i\xi)^{-1}$。变换侧 $(1+i\xi)\widehat E=1$ 与原方程一致。
+\end{solution}

@@ -1,0 +1,124 @@
+\SetChapterInfo{subtitle={有限阶估计、支集与对偶收敛},keywords={连续对偶; 分布阶数; 局部结构},prereq={第 2 章; Hahn--Banach 定理},goals={用估计判定分布并理解奇异支集}}
+\chapter{分布空间的定义与结构}\label{ch:distributions}
+\ChapterSource{对应施瓦尔茨 \cite{schwartz} 第 I 章 §§2--3、第 III 章 §§3、6--7、10。尤其参见原书印刷第 10、49、61、70 页。}
+
+\section{连续对偶与有限阶判别}
+\begin{definition}[分布]
+开集 $\Omega$ 上的分布是 $\Test(\Omega)$ 上的连续复线性泛函。全体分布记为 $\Dist(\Omega)$。泛函 $T$ 在各层 $\Test_K$ 上连续，等价于它在归纳极限上连续。
+\end{definition}
+\begin{theorem}[分布的局部有限阶判别]\label{thm:finite-order}
+线性泛函 $T:\Test(\Omega)\to\mathbb C$ 为分布，当且仅当对每个 $K\Subset\Omega$，存在整数 $m_K\ge0$ 和常数 $C_K$，使
+\begin{equation}\label{eq:finite-order}
+ |\Pair{T}{\varphi}|\le C_K\max_{|\alpha|\le m_K}\sup_K|\partial^\alpha\varphi|,
+ \qquad\varphi\in\Test_K.
+\end{equation}
+\end{theorem}
+\begin{proof}
+在 $\Test_K$ 上用命题 \ref{prop:seminorm-est}。因半范数随 $m$ 递增，有限多个半范数可合并为最大的一个。反过来，估计保证每个限制映射连续，归纳极限的定义保证 $T$ 连续。
+\end{proof}
+正则分布由式 \eqref{eq:regular-bound} 满足零阶估计，Radon 测度 $\mu$ 也满足 $|\int\varphi\,\dd\mu|\le|\mu|(K)\|\varphi\|_\infty$。而 $\partial^\alpha\delta_a$ 的作用为 $(-1)^{|\alpha|}\partial^\alpha\varphi(a)$，需要导数控制。
+
+称 $T$ 在 $K$ 上的阶不超过 $m$，是指式 \eqref{eq:finite-order} 可取该 $m$。若同一整数 $m$ 对所有紧集均可使用，则称其全局阶不超过 $m$，常数仍可依赖紧集。每个分布局部有限阶，但未必全局有限阶。例如
+\[
+ T=\sum_{j=1}^\infty\delta_j^{(j)}\quad\text{于 }\R
+\]
+是合法分布，因为每个紧集只遇到有限项；在整数 $j$ 附近的阶至少为 $j$。后者可用缩放测试函数 $\varepsilon^m\eta((x-j)/\varepsilon)$ 检验，其不超过 $m$ 阶的导数有界，而第 $j>m$ 阶点值可以发散。
+
+\section{弱对偶拓扑与强对偶拓扑}
+\begin{definition}[两种对偶拓扑]
+弱对偶拓扑 $\sigma(\Dist,\Test)$ 由半范数 $T\mapsto|\Pair{T}{\varphi}|$ 定义。强对偶拓扑 $\beta(\Dist,\Test)$ 则由
+\[
+ P_B(T)=\sup_{\varphi\in B}|\Pair{T}{\varphi}|,
+ \qquad B\subset\Test\text{ 为有界集}
+\]
+定义。强收敛要求在每个有界测试函数集上配对一致收敛。
+\end{definition}
+本书写 $T_j\to T$ 时默认弱对偶收敛。这给出容易使用的判别：每个固定探针的读数都收敛。强对偶拓扑通常更精细，定义也不同；不能因某些序列有相同极限就把两种拓扑混为一谈。
+\begin{theorem}[逐点极限仍是分布]\label{thm:distribution-limit}
+若 $T_j\in\Dist(\Omega)$ 且对每个 $\varphi\in\Test(\Omega)$，$\Pair{T_j}{\varphi}$ 有有限极限，则该极限定义一个分布 $T$。此外，对每个 $K$，存在共同的 $C_K,m_K$ 使式 \eqref{eq:finite-order} 对所有 $T_j$ 成立。
+\end{theorem}
+\begin{proof}
+极限显然线性。固定 $K$，各泛函 $T_j|_{\Test_K}$ 逐点有界。$\Test_K$ 为 Fréchet 空间，故可用一致有界原理得到等度连续性。具体地，闭集
+\[
+ A_r=\{\varphi:\sup_j|\Pair{T_j}{\varphi}|\le r\}\quad(r\in\N)
+\]
+覆盖 $\Test_K$。Baire 定理保证某个 $A_r$ 有内点；相减给出零邻域上的共同控制，再缩放得到共同的有限阶估计。对 $j$ 取极限，该估计也控制 $T$，故 $T$ 是分布。
+\end{proof}
+如果同时 $\varphi_j\to\varphi$ 于 $\Test$，则 $\Pair{T_j}{\varphi_j}\to\Pair{T}{\varphi}$。因为
+\[
+ \Pair{T_j}{\varphi_j}-\Pair{T}{\varphi}
+ =\Pair{T_j}{\varphi_j-\varphi}+\Pair{T_j-T}{\varphi},
+\]
+第一项由共同有限阶估计趋于零，第二项由弱收敛趋于零。
+
+\begin{remark}[关于序列的进一步结论]
+在这里弱收敛的分布序列也强收敛。理由是：每个有界 $B\subset\Test$ 落在固定层，并由各阶导数界、Arzelà--Ascoli 定理和对角抽取得到相对紧性。上面的等度连续性配合有限网格覆盖，将逐点收敛提升为在 $B$ 上一致收敛。这是测试空间的 Montel 性所带来的特殊现象；关于一般网或一般对偶空间，不能照搬该结论。
+\end{remark}
+
+\section{限制、粘合与支集}
+对开集 $U\subset\Omega$，测试函数零延拓给出 $\Test(U)\to\Test(\Omega)$ 的连续映射，故可定义 $T|_U$。若一族局部分布在重叠处一致，可借助从属于开覆盖的光滑单位分解进行粘合：$\Pair{T}{\varphi}=\sum_i\Pair{T_i}{\chi_i\varphi}$。因为 $\varphi$ 紧支集，局部有限的和实际只含有限项；重叠一致性保证定义不依赖单位分解。
+\begin{definition}[支集与奇异支集]
+若 $T|_U=0$，称 $T$ 在 $U$ 上为零。$\supp T$ 是所有这样的开集之并在 $\Omega$ 中的补集。奇异支集 $\operatorname{sing\,supp}T$ 是 $T$ 不能局部由光滑函数表示的点集。
+\end{definition}
+两者均为相对闭集。$\supp\delta_a=\operatorname{sing\,supp}\delta_a=\{a\}$。对 Heaviside 分布，$\supp H=[0,\infty)$，而 $\operatorname{sing\,supp}H=\{0\}$。任何非零光滑函数都可以有非空支集而奇异支集为空。
+若 $\supp\varphi$ 与 $\supp T$ 不交，单位分解将 $\varphi$ 拆成有限个支于 $T$ 为零的开集中的函数，故 $\Pair{T}{\varphi}=0$。
+
+\section{紧支集分布与光滑函数的对偶}
+\begin{theorem}[$\Smooth'$ 与紧支集分布]\label{thm:Eprime}
+$\Smooth(\Omega)$ 的连续对偶可自然识别为 $\Omega$ 上的紧支集分布。任意紧支集分布都有有限全局阶。
+\end{theorem}
+\begin{proof}
+若 $L$ 在 $\Smooth$ 上连续，则存在紧集 $K$ 和有限阶 $m$ 使 $|L(f)|\le Cp_{K,m}(f)$。限制到 $\Test$ 得分布，且所有支于 $\Omega\setminus K$ 的探针均被消去，因此支集包含于 $K$。
+
+反向，若 $T$ 支于紧集 $A$，选 $\chi\in\Test(\Omega)$ 在 $A$ 的邻域为 1，定义 $\Pair{T}{f}=\Pair{T}{\chi f}$。两种切断函数的差在 $A$ 的邻域为零，故定义与切断无关。对 $\chi f$ 使用固定紧集有限阶估计和 Leibniz 公式，可得 $|\Pair{T}{f}|\le Cp_{K,m}(f)$。该估计也给出 $T$ 的有限全局阶。唯一性来自 $\Test$ 在 $\Smooth$ 中稠密。
+\end{proof}
+
+\section{点支集分布的结构}
+\begin{theorem}[有限点射流]\label{thm:point-support}
+若 $\supp T\subset\{a\}$，则存在某个整数 $m$ 和唯一一族常数 $c_\alpha$，使
+\begin{equation}\label{eq:point-support}
+ T=\sum_{|\alpha|\le m}c_\alpha\partial^\alpha\delta_a.
+\end{equation}
+\end{theorem}
+\begin{proof}
+平移令 $a=0$。由紧支集性取共同阶 $m$。若 $\partial^\alpha\varphi(0)=0$ 对所有 $|\alpha|\le m$ 成立，取 $\chi_\varepsilon(x)=\chi(x/\varepsilon)$ 在原点附近为 1，则 $T(\varphi)=T(\chi_\varepsilon\varphi)$。Taylor 余项给出在 $|x|\le C\varepsilon$ 上
+\[
+ \partial^\gamma\varphi(x)=o(\varepsilon^{m-|\gamma|})\quad(|\gamma|\le m).
+\]
+Leibniz 公式中切断函数的 $\beta$ 阶导数产生 $\varepsilon^{-|\beta|}$，故 $p_{K,m}(\chi_\varepsilon\varphi)=o(1)$。有限阶估计推出 $T(\varphi)=0$。
+
+因此 $T$ 只依赖有限个数 $\partial^\alpha\varphi(0)$，在这个有限维射流空间上是线性泛函，故可写成 $\sum b_\alpha\partial^\alpha\varphi(0)$。令 $c_\alpha=(-1)^{|\alpha|}b_\alpha$ 得结论。用 $\chi(x)x^\beta/\beta!$ 分别提取射流坐标，得到系数唯一性。
+\end{proof}
+
+\section{局部结构：测度导数的有限和}
+\begin{proposition}[测度表示]\label{prop:measure-structure}
+设 $U\Subset\Omega$，则存在有限阶 $m$ 和有限复 Radon 测度 $\mu_\alpha$，使
+\[
+ T|_U=\sum_{|\alpha|\le m}\partial^\alpha\mu_\alpha.
+\]
+这里各测度可以选为支于同一紧集，并在 $U$ 上解释等式。
+\end{proposition}
+\begin{proof}
+取 $\chi\in\Test(\Omega)$ 在 $\overline U$ 附近为 1，令 $S=\chi T$。取包含 $\supp\chi$ 的紧集 $K$，由前述结论可得
+$|S(\varphi)|\le C\max_{|\alpha|\le m}\|\partial^\alpha\varphi\|_{C(K)}$。
+把 $\varphi$ 映入有限乘积 $\prod_{|\alpha|\le m}C(K)$ 的射流向量。估计保证 $S$ 在像上是有界泛函。Hahn--Banach 定理将它延拓到整个乘积，Riesz 表示定理将各坐标泛函表示为测度 $\nu_\alpha$。于是
+\[
+ S(\varphi)=\sum_{|\alpha|\le m}\int_K\partial^\alpha\varphi\,\dd\nu_\alpha.
+\]
+令 $\mu_\alpha=(-1)^{|\alpha|}\nu_\alpha$ 得到分布导数表示；在 $U$ 上 $S=T$。
+\end{proof}
+这说明分布的奇异性仍具有有限阶的局部控制。施瓦尔茨还证明了局部分布可表示为连续函数的有限阶导数；这里证明的测度版本已足以支持本稿的结构讨论，不把更强版本作为已证明结论使用。
+
+\section{习题}
+\begin{exercise}[零阶与正性]
+说明每个零阶分布是局部 Radon 测度。证明若分布 $T$ 对每个非负实测试函数有 $T(\varphi)\ge0$，则 $T$ 为正 Radon 测度。
+\end{exercise}
+\begin{solution}
+零阶估计使泛函在每个固定紧集上按一致范数延拓，Riesz 表示得到局部测度；不同局部表示由测试函数稠密性唯一而相容。正性情形，固定 $K$，选 $\chi\ge0$ 且在 $K$ 上为 1。实测试函数满足 $-\|\varphi\|_\infty\chi\le\varphi\le\|\varphi\|_\infty\chi$，因此 $|T(\varphi)|\le T(\chi)\|\varphi\|_\infty$。对复函数分解实虚部得到零阶估计；表示测度的正性再由非负探针检验。
+\end{solution}
+\begin{exercise}[无穷远的点质量]
+在 $\R$ 上证明 $\delta_j\to0$ 于 $\Dist$，并说明 $e^{j^2}\delta_j$ 也有相同弱极限。
+\end{exercise}
+\begin{solution}
+对固定紧支集 $\varphi$，当 $j$ 足够大时 $\varphi(j)=0$，因此两个序列的配对都最终为零。这不与有限阶估计矛盾：每个固定紧集只遇到有限多个 $j$。
+\end{solution}

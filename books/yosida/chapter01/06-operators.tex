@@ -1,0 +1,54 @@
+\section{线性算子的连续性}\label{sec:yosida-01-06}
+\noindent\textit{原书位置：中译本第 44--46 页；英文版第 42--44 页。}
+
+线性算子的定义域 $D(T)$ 是线性子空间，取原空间的诱导拓扑。由 $T(x+h)-Tx=Th$，在零点连续等价于在定义域每一点连续。
+
+\begin{theorem}[连续线性算子的半范数估计]\label{thm:y1-operator-seminorm}
+设 $X,Y$ 分别由半范数族 $\mathcal P,\mathcal Q$ 定义拓扑。线性映射 $T:D(T)\subset X\to Y$ 连续，当且仅当对每个 $q\in\mathcal Q$，存在 $p_1,\ldots,p_r\in\mathcal P$ 与 $C>0$，使
+\[
+ q(Tx)\le C\max_{1\le j\le r}p_j(x)\quad(x\in D(T)).
+\]
+若 $\mathcal P$ 对有限最大值封闭，则可简写为 $q(Tx)\le Cp(x)$。
+\end{theorem}
+\begin{proof}
+连续性给出有限半范数邻域，其与定义域的交映入 $\{q<1\}$。令 $p(x)=\max_jp_j(x)/\varepsilon_j$。若 $p(x)>0$，对每个 $t>p(x)$，$x/t$ 落在该邻域中，于是 $q(Tx)<t$，令 $t\downarrow p(x)$。若 $p(x)=0$，所有倍数 $ax$ 都在该邻域中，$|a|q(Tx)<1$ 对任意 $a$ 成立，故 $q(Tx)=0$。反向估计把每个有限的目标邻域条件转成有限的源邻域条件，因此在零点连续。
+\end{proof}
+\begin{corollary}[线性泛函、范数估计与逆算子]
+局部凸空间上的线性泛函连续，当且仅当其绝对值受有限个连续半范数的最大值控制。赋范空间之间的线性算子连续，当且仅当 $\|Tx\|\le C\|x\|$。而逆映射 $T^{-1}:R(T)\to D(T)$ 存在且连续，当且仅当存在 $c>0$，使
+\[
+ \|Tx\|\ge c\|x\|\quad(x\in D(T)).
+\]
+\end{corollary}
+\begin{proof}
+前两项分别以标量绝对值及单一范数作为目标半范数。后一项的下界首先使 $T$ 单射；把它改写成 $\|T^{-1}y\|\le c^{-1}\|y\|$ 即得连续性，反向同理。这里逆算子只定义于值域，尚未断言值域是整个目标空间。
+\end{proof}
+
+\begin{definition}[算子范数]
+全定义的有界线性算子 $T:X\to Y$ 的算子范数为
+\[
+ \|T\|=\sup_{\|x\|\le1}\|Tx\|
+ =\inf\{C\ge0:\|Tx\|\le C\|x\|\ \forall x\}.
+\]
+当 $X\ne\{0\}$ 时，还等于 $\sup_{\|x\|=1}\|Tx\|$。此处“有界”指把单位球映成有界集，等价于连续；不指在整个 $X$ 上函数值有统一上界。
+\end{definition}
+若 $S,T$ 定义域不同，则 $D(S+T)=D(S)\cap D(T)$，$D(ST)=\{x\in D(T):Tx\in D(S)\}$。对全定义有界算子，
+\[
+ \|S+T\|\le\|S\|+\|T\|,\quad
+ \|aT\|=|a|\|T\|,\quad \|ST\|\le\|S\|\|T\|.
+\]
+这些公式逐点估计后在单位球取上确界即可；例如 $\|STx\|\le\|S\|\|Tx\|\le\|S\|\|T\|\|x\|$。于是 $\|T^m\|\le\|T\|^m$，$T^0=I$。
+
+\begin{example}[算子的非交换性与定义域]
+在 $L^2(\R)$ 上，乘法算子 $Mu(t)=tu(t)$ 的定义域为 $\{u:tu\in L^2\}$，微分算子 $Du=iu'$ 可取定义域 $H^1(\R)$。在共同的不变子空间 $\Test(\R)$ 上直接算得
+\[
+ (DM-MD)u=i(tu)'-tiu'=iu.
+\]
+这两个算子在 $L^2$ 范数下都不是全定义有界算子。给出共同定义域后，交换关系才有明确含义。
+\end{example}
+
+\begin{proposition}[补充：有界下界与闭值域]
+若 $X$ 是 Banach 空间，$T:X\to Y$ 有界且 $\|Tx\|\ge c\|x\|$，则 $R(T)$ 在赋范空间 $Y$ 中闭。
+\end{proposition}
+\begin{proof}
+若 $Tx_j\to y$，下界使 $x_j$ 是 Cauchy 序列，故趋于 $x\in X$。连续性给出 $y=Tx$。源空间的完备性在此不可省去，例如未完备空间到其完备化的等距包含有稠密但不闭的值域。
+\end{proof}

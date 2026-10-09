@@ -1,0 +1,126 @@
+\section{几例赋范线性空间}\label{sec:yosida-01-03}
+\noindent\textit{原书位置：中译本第 33--39 页；英文版第 32--38 页。}
+
+\subsection{有界连续函数与可积函数}
+拓扑空间 $S$ 上的有界连续函数组成 $C_b(S)$，赋予范数 $\|f\|_\infty=\sup_S|f|$。范数收敛就是全域一致收敛。原书此处的 $C(S)$ 限于有界连续函数；若 $S$ 紧，所有连续函数都自动有界，记号 $C(S)$ 无歧义。
+
+对测度空间 $(S,\Sigma,\mu)$ 与 $1\le p<\infty$，令
+\[
+ L^p(S,\mu)=\{f\text{ 可测}:\int_S|f|^p\,d\mu<\infty\}/\text{几乎处处相等},
+ \qquad\|f\|_p=\left(\int_S|f|^p\,d\mu\right)^{1/p}.
+\]
+商掉几乎处处相等是正定性的必要条件。$L^\infty$ 由本质有界函数的等价类组成，范数为
+\[
+ \|f\|_\infty=\operatorname*{ess\,sup}|f|
+ =\inf\{M\ge0:|f|\le M\text{ 几乎处处}\}.
+\]
+本质上确界与逐点上确界不同：零测集上的任意修改都不改变前者。
+
+\begin{lemma}[Young 不等式]
+若 $1<p<\infty$、$1/p+1/p'=1$，则对 $a,b\ge0$，
+\[
+ ab\le\frac{a^p}{p}+\frac{b^{p'}}{p'}.
+\]
+等号成立当且仅当 $a^p=b^{p'}$。
+\end{lemma}
+\begin{proof}
+固定 $b$，函数 $a\mapsto a^p/p-ab+b^{p'}/p'$ 的导数为 $a^{p-1}-b$，唯一极小值点为 $a=b^{1/(p-1)}$，极小值为零。$b=0$ 的情形直接验证。
+\end{proof}
+\begin{theorem}[Hölder 与 Minkowski 不等式]\label{thm:y1-holder}
+对共轭指数 $p,p'$（包含 $p=1,p'=\infty$），
+\[
+ \int|fg|\,d\mu\le\|f\|_p\|g\|_{p'}.
+\]
+对 $1\le p\le\infty$，$\|f+g\|_p\le\|f\|_p+\|g\|_p$，因而 $L^p$ 是赋范线性空间。
+\end{theorem}
+\begin{proof}
+端点 Hölder 由 $|g|\le\|g\|_\infty$ 几乎处处得到。内部指数时，若两范数不为零，将 Young 不等式用于 $|f|/\|f\|_p$ 和 $|g|/\|g\|_{p'}$ 后积分；任一范数为零则直接成立。
+
+先由 $|f+g|^p\le2^{p-1}(|f|^p+|g|^p)$ 确保 $f+g\in L^p$。当 $1<p<\infty$，利用 Hölder 和 $(p-1)p'=p$，
+\[
+ \|f+g\|_p^p
+ \le\int |f+g|^{p-1}(|f|+|g|)\,d\mu
+ \le\|f+g\|_p^{p-1}(\|f\|_p+\|g\|_p).
+\]
+若左侧非零，约去相应因子即得 Minkowski；否则结论显然。$p=1,\infty$ 直接由逐点三角不等式得到。
+\end{proof}
+当 $1<p<\infty$ 且 $f,g$ 非零时，Minkowski 等号成立恰在 $f=cg$ 几乎处处、$c>0$ 的情形。实值时是同号正比例，复值时还要求相同相位；证明由 Hölder 的模值比例条件与逐点三角等号条件合并得到。$p=1$ 只须几乎处处无相消，不要求固定比例；$p=\infty$ 的等号条件也不同。
+
+\begin{proposition}[有限测度空间上的极限]
+若 $\mu(S)<\infty$ 且 $f\in L^\infty$，则 $\lim_{p\to\infty}\|f\|_p=\|f\|_\infty$。
+\end{proposition}
+\begin{proof}
+总测度为零或 $\|f\|_\infty=0$ 时直接成立。记 $M=\|f\|_\infty>0$，上界为 $\|f\|_p\le\mu(S)^{1/p}M$。对 $0<\varepsilon<M$，集合 $A_\varepsilon=\{|f|>M-\varepsilon\}$ 有正测度，所以
+\[
+ \|f\|_p\ge\mu(A_\varepsilon)^{1/p}(M-\varepsilon).
+\]
+先令 $p\to\infty$，再令 $\varepsilon\downarrow0$。
+\end{proof}
+
+\subsection{数列空间}
+在 $\N$ 上取计数测度，即得
+\[
+ \ell^p=\{x=(x_j):\sum|x_j|^p<\infty\},\qquad
+ \ell^\infty=\{x:\sup_j|x_j|<\infty\}.
+\]
+另外 $c_0=\{x:x_j\to0\}$、$c=\{x:x_j\text{ 有有限极限}\}$ 均取上确界范数。它们是 $\ell^\infty$ 的闭子空间：一致极限保留趋零或存在极限的条件。有限支集数列在 $c_0$ 与 $\ell^p$（$p<\infty$）中稠密，却不在 $\ell^\infty$ 中稠密，常数数列 $(1,1,\ldots)$ 与任何有限支集数列距离都是 $1$。
+
+\subsection{带符号测度、Jordan 分解与 Hahn 分解}
+以下先取 $\sigma$-代数 $\Sigma$。原书用 $\sigma$-环表述的情形可对可测集合分别限制处理；为使全空间上的公式直接有意义，此处假定 $S\in\Sigma$。一个有限值带符号测度 $\nu:\Sigma\to\R$ 是可数可加的集合函数。有限值指每个可测集的值都是有限实数，随后将证明其全变差有限。
+
+\begin{lemma}[有限值带符号测度的值域有界]\label{lem:y1-measure-bounded}
+$\sup_{A\in\Sigma}|\nu(A)|<\infty$。
+\end{lemma}
+\begin{proof}
+记 $V(A)=\sup_{B\subset A}|\nu(B)|$。若 $V(S)=\infty$，归纳构造递减 $E_j$，使 $V(E_j)=\infty$ 且 $|\nu(E_j)|\ge j$。给定 $E_j$，选 $B\subset E_j$，$|\nu(B)|>|\nu(E_j)|+j+1$。$B$ 与 $E_j\setminus B$ 的测度绝对值都大于 $j+1$，并且至少一者有无穷大的 $V$；选该者为 $E_{j+1}$。可是可数可加性应用于不交分解
+\[
+ E_1=\left(\bigcap_jE_j\right)\mathbin{\dot\cup}
+ \bigcup_j(E_j\setminus E_{j+1})
+\]
+给出 $\nu(E_j)\to\nu(\bigcap_jE_j)$，与绝对值无界矛盾。
+\end{proof}
+
+\begin{theorem}[Jordan 与 Hahn 分解]\label{thm:y1-jordan}
+定义
+\[
+ \nu^+(A)=\sup_{B\subset A}\nu(B),\qquad
+ \nu^-(A)=-\inf_{B\subset A}\nu(B).
+\]
+则 $\nu^+,\nu^-$ 是有限正测度，$\nu=\nu^+-\nu^-$。存在可测分解 $S=P\mathbin{\dot\cup}N$，使 $P$ 的每个可测子集测度非负，$N$ 的每个可测子集测度非正；而且 $\nu^-(P)=0$、$\nu^+(N)=0$。这种分解称为 Hahn 分解。
+\end{theorem}
+\begin{proof}
+上一引理保证上下确界有限。对不交 $A_j$，任意 $B\subset\bigcup A_j$ 有
+\[
+ \nu(B)=\sum_j\nu(B\cap A_j)\le\sum_j\nu^+(A_j),
+\]
+故 $\nu^+(\bigcup A_j)\le\sum\nu^+(A_j)$。反向对前 $m$ 个 $A_j$ 各取逼近上确界的子集，将它们合并，误差取小于任意 $\varepsilon$；再令 $\varepsilon\downarrow0$、$m\to\infty$。这证明可数可加性。对 $-\nu$ 同理。由 $\nu(B)=\nu(A)-\nu(A\setminus B)$ 对 $B\subset A$ 取上确界，得 $\nu^+(A)=\nu(A)+\nu^-(A)$。
+
+选 $B_j$ 使 $\nu(B_j)>\nu^+(S)-2^{-j}$。由分解公式得 $\nu^-(B_j)<2^{-j}$、$\nu^+(S\setminus B_j)<2^{-j}$。令 $P=\liminf B_j$、$N=S\setminus P$。对每个 $m$，
+\[
+ N\subset\bigcup_{j\ge m}(S\setminus B_j),\qquad
+ \nu^+(N)\le\sum_{j\ge m}2^{-j}\to0.
+\]
+对 $P_m=\bigcap_{j\ge m}B_j$，有 $\nu^-(P_m)\le\inf_{j\ge m}2^{-j}=0$；$P=\bigcup_mP_m$，故 $\nu^-(P)=0$。这正是所需的符号性质。
+\end{proof}
+原书以负值的“负变差”记下确界；此处 $\nu^-$ 取非负值，因此 Jordan 公式使用减号。这个记号改变不改变数学内容。
+
+\begin{proposition}[全变差范数]\label{prop:y1-variation}
+令 $|\nu|=\nu^++\nu^-$，则
+\[
+ \|\nu\|_{\mathrm{TV}}=|\nu|(S)
+ =\sup_{\substack{h\text{ 可测}\\|h|\le1}}
+ \left|\int h\,d\nu\right|
+ =\sup_{\{A_j\}}\sum_j|\nu(A_j)|,
+\]
+最后的上确界取遍有限可测分割。有限带符号测度组成赋范实线性空间。有限复测度也组成赋范复线性空间，其范数由同一分割公式给出，积分上确界中允许复值 $h$。
+\end{proposition}
+\begin{proof}
+实情形中 $|\int h\,d\nu|\le\int|h|\,d|\nu|\le|\nu|(S)$；取 $h=1_P-1_N$ 达到上界。每个分割的和不超过全变差，而分割 $P,N$ 达到上界。复情形中 $\nu=\nu_1+i\nu_2$，由前述实测度结论知分割和不超过 $|\nu_1|(S)+|\nu_2|(S)<\infty$。对一个有限分割，取简单函数在 $A_j$ 上为 $\overline{\nu(A_j)}/|\nu(A_j)|$（零值时取零），积分等于该分割和。反向对简单 $h$ 逐项估计，再用一致简单函数逼近一般有界可测 $h$，得积分公式。两种情形下范数的三角性及齐次性来自积分公式；若范数为零，取 $h=1_A$ 得 $\nu(A)=0$ 对所有 $A$ 成立。
+\end{proof}
+
+\begin{exercise}[补充：全变差不是总质量的绝对值]
+在两点空间取 $\nu=\delta_a-\delta_b$。计算 $\nu(S)$ 和 $\|\nu\|_{\mathrm{TV}}$，并用积分上确界解释两者为什么不同。
+\end{exercise}
+\begin{solution}
+总质量为零而全变差为二。选择 $h(a)=1,h(b)=-1$，则 $\int h\,d\nu=2$；全变差可以分别选择不同位置的符号，避免正负质量抵消。
+\end{solution}

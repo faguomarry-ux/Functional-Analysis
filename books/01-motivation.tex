@@ -1,0 +1,85 @@
+\SetChapterInfo{subtitle={从积分泛函走向连续对偶},keywords={Dirac 质量; 弱极限; 分部积分},prereq={Lebesgue 积分; 多元微积分},goals={理解测试函数的作用与拓扑的必要性}}
+\chapter{为什么需要广义函数}\label{ch:motivation}
+\ChapterSource{主要对应施瓦尔茨 \cite{schwartz} 第 I 章“函数概念的推广”与第 II 章求导的基本思想。下面的例子按本书的配对约定重新推导。}
+
+\section{函数也可以看成泛函}
+通常把 $f$ 看作映射 $x\mapsto f(x)$。另一种观察方式是把它看作加权测量：给定探针 $\varphi$，测得 $\int f\varphi$。探针的紧支集使观察局限在有限区域；探针的光滑性使任意阶分部积分成为可能。
+\begin{definition}[正则分布的原型]
+对 $f\in L^1_\Loc(\Omega)$，定义 $T_f:C_c^\infty(\Omega)\to\mathbb C$ 为
+\[
+ \Pair{T_f}{\varphi}=\int_\Omega f\varphi\,\dd x.
+\]
+若 $\supp\varphi\subset K\Subset\Omega$，则
+\begin{equation}\label{eq:regular-bound}
+ |\Pair{T_f}{\varphi}|\le \left(\int_K|f|\,\dd x\right)\sup_K|\varphi|.
+\end{equation}
+\end{definition}
+这一估计已包含未来连续性的全部信息：固定观察区域后，只须控制测试函数的零阶大小。几乎处处相等的函数给出同一泛函；反过来，若 $T_f=T_g$，则 $f=g$ 几乎处处。后一事实将在正则化建立后证明。
+
+\section{集中质量与 Dirac 分布}
+\begin{definition}[Dirac 分布]
+对 $a\in\Omega$，令 $\Pair{\delta_a}{\varphi}=\varphi(a)$。这是点值探针的对偶对象；它也是单位点质量测度所给的分布。
+\end{definition}
+Dirac 分布不是局部可积函数。若 $T_f=\delta_a$，对所有支集避开 $a$ 的测试函数积分都为零，便推出 $f=0$ 于 $\Omega\setminus\{a\}$ 几乎处处。单点的 Lebesgue 测度为零，故 $f=0$ 几乎处处，矛盾于取 $\varphi(a)=1$。
+
+取非负 $\rho\in C_c^\infty(\R^n)$，满足 $\supp\rho\subset\overline{B(0,1)}$ 与 $\int\rho=1$。例如将
+\[
+ \rho_0(x)=\begin{cases}\exp[-1/(1-|x|^2)],&|x|<1,\\0,&|x|\ge1\end{cases}
+\]
+乘上归一化常数。令 $\rho_\varepsilon(x)=\varepsilon^{-n}\rho(x/\varepsilon)$。
+\begin{proposition}[集中质量的极限]\label{prop:delta-approx}
+当 $\varepsilon\downarrow0$ 时，$T_{\rho_\varepsilon(\cdot-a)}\to\delta_a$，即对每个 $\varphi\in\Test(\R^n)$，其配对趋于 $\varphi(a)$。
+\end{proposition}
+\begin{proof}
+变量替换 $x=a+\varepsilon y$ 给出
+\[
+ \int\rho_\varepsilon(x-a)\varphi(x)\,\dd x
+ =\int\rho(y)\varphi(a+\varepsilon y)\,\dd y.
+\]
+在 $\supp\rho$ 上 $\varphi(a+\varepsilon y)$ 一致趋于 $\varphi(a)$，而 $\rho$ 可积，故结论成立。
+\end{proof}
+这里函数的峰值通常趋于无穷，其 $L^1$ 范数恒为 1，且对 $x\ne a$ 最终为零。逐点极限不能记录保留下来的总质量；逐探针极限却能记录它。
+
+\section{把导数移到测试函数上}
+对光滑 $f$ 和紧支集 $\varphi$，分部积分给出
+\[
+ \int (\partial_j f)\varphi=-\int f\partial_j\varphi.
+\]
+右边只要求 $f$ 局部可积。由此可以把求导定义在更大范围：
+\begin{equation}\label{eq:derivative-preview}
+ \Pair{\partial_jT}{\varphi}=-\Pair{T}{\partial_j\varphi}.
+\end{equation}
+紧支集消除边界项；负号来自分部积分，不是任意约定。
+\begin{example}[跳跃的导数]
+令 $H(x)=0$ 于 $x<0$，$H(x)=1$ 于 $x>0$；零点值任取。则
+\[
+ \Pair{H'}{\varphi}=-\int_0^\infty\varphi'(x)\,\dd x=\varphi(0),
+ \qquad H'=\delta_0.
+\]
+同理 $\operatorname{sgn}'=2\delta_0$，$|x|'=\operatorname{sgn}x$，$|x|''=2\delta_0$。
+\end{example}
+
+\section{弱收敛记录什么信息}
+在有界区间上，$f_k(x)=\sin(kx)$ 的振荡幅度并未变小。但对每个测试函数，
+\[
+ \int\sin(kx)\varphi(x)\,\dd x
+ =k^{-1}\int\cos(kx)\varphi'(x)\,\dd x\longrightarrow0.
+\]
+因此 $T_{f_k}\to0$。同时 $f_k^2=(1-\cos(2kx))/2$ 在分布意义趋于 $1/2$。这个例子说明线性弱极限可以控制线性方程，却不能自动穿过乘法这样的非线性运算。
+\begin{pitfall}[符号计算必须有定义域]
+“$\delta$ 在零点无穷大、其余点为零”只是一种不精确的图像；定义是 $\Pair{\delta}{\varphi}=\varphi(0)$。同样，$\delta^2$ 并没有由上述定义得到合法乘法。后续一切运算须先证明测试函数侧的映射连续。
+\end{pitfall}
+
+\section{习题}
+\begin{exercise}[质量与缩放]
+设 $g\in L^1(\R^n)$，$\int g=c$。证明 $\varepsilon^{-n}g(\cdot/\varepsilon)\to c\delta_0$ 于分布意义；$g$ 不需要非负。
+\end{exercise}
+\begin{solution}
+对固定 $\varphi$，配对等于 $\int g(y)\varphi(\varepsilon y)\,\dd y$。被积函数趋于 $g(y)\varphi(0)$，且其绝对值不超过 $\|\varphi\|_\infty|g(y)|$。由控制收敛定理得 $c\varphi(0)$。
+\end{solution}
+\begin{exercise}[边界质量]
+在 $\R$ 上证明 $\mathbf1_{(a,b)}'=\delta_a-\delta_b$，再求它的二阶分布导数。
+\end{exercise}
+\begin{solution}
+$-\int_a^b\varphi'=\varphi(a)-\varphi(b)$，故一阶导数为 $\delta_a-\delta_b$。再求导得 $\delta_a'-\delta_b'$，其作用为 $-\varphi'(a)+\varphi'(b)$。
+\end{solution}

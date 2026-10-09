@@ -1,0 +1,148 @@
+\SetChapterInfo{subtitle={转置原理与合法运算},keywords={分布导数; 光滑乘子; 主值},prereq={分布有限阶估计},goals={证明运算连续并处理跳跃与奇性}}
+\chapter{分布的导数与基本运算}\label{ch:operations}
+\ChapterSource{对应施瓦尔茨 \cite{schwartz} 第 II 章、第 III 章 §§4--5 及第 V 章。主值和跳跃公式以下从定义直接验证。}
+
+\section{转置原理}
+若 $A:\Test(\Omega_1)\to\Test(\Omega_2)$ 连续线性，则
+\[
+ \Pair{{}^tA T}{\varphi}=\Pair{T}{A\varphi}
+\]
+定义连续对偶间的线性映射。若 $T_j\to T$，则 $\Pair{{}^tAT_j}{\varphi}\to\Pair{{}^tAT}{\varphi}$，故转置对弱收敛连续。这是分布运算的统一来源。要定义对象侧的运算，先确定探针侧的运算，并检查它保持测试空间和连续性。
+
+\section{任意阶求导及其连续性}
+\begin{definition}[分布导数]
+对多重指标 $\alpha$，定义
+\begin{equation}\label{eq:distribution-derivative}
+ \Pair{\partial^\alpha T}{\varphi}=(-1)^{|\alpha|}\Pair{T}{\partial^\alpha\varphi}.
+\end{equation}
+\end{definition}
+求导不扩大测试函数的支集，且 $p_{K,m}(\partial^\alpha\varphi)\le p_{K,m+|\alpha|}(\varphi)$。因此导数仍是分布，并满足
+\[
+ \partial^\alpha\partial^\beta T=\partial^{\alpha+\beta}T,
+ \quad\supp(\partial^\alpha T)\subset\supp T,
+ \quad T_j\to T\Rightarrow\partial^\alpha T_j\to\partial^\alpha T.
+\]
+若 $f\in C^{|\alpha|}$，反复分部积分得到 $\partial^\alpha T_f=T_{\partial^\alpha f}$。如果 $f$ 只是局部可积，则导数存在但未必仍由函数表示。
+
+\begin{proposition}[导数为零的分布]\label{prop:zero-derivative}
+在连通开区间 $I\subset\R$ 上，若 $T'=0$，则 $T$ 是常数分布。
+\end{proposition}
+\begin{proof}
+若 $\varphi\in\Test(I)$ 且 $\int\varphi=0$，则其原函数 $\psi(x)=\int_{-\infty}^x\widetilde\varphi(t)\,\dd t$ 支于 $I$ 内某个紧区间，属于 $\Test(I)$。因此 $T(\varphi)=T(\psi')=-T'(\psi)=0$。选 $\eta\in\Test(I)$ 满足 $\int\eta=1$，把任意探针写成
+\[
+ \varphi=\left(\int\varphi\right)\eta+
+ \left[\varphi-\left(\int\varphi\right)\eta\right].
+\]
+方括号积分为零，故 $T(\varphi)=T(\eta)\int\varphi$。
+\end{proof}
+由此归纳得，在区间上 $T^{(m)}=0$ 当且仅当 $T$ 为次数不超过 $m-1$ 的多项式分布。高维连通开集上，若所有一阶偏导都为零，类似的局部论证与粘合也得到常数分布。
+
+\section{光滑乘子与 Leibniz 公式}
+\begin{definition}[与光滑函数相乘]
+对 $a\in C^\infty(\Omega)$，定义 $\Pair{aT}{\varphi}=\Pair{T}{a\varphi}$。
+\end{definition}
+在固定紧集上，Leibniz 公式给出 $p_{K,m}(a\varphi)\le C_{a,K,m}p_{K,m}(\varphi)$，故乘法合法；并且 $\supp(aT)\subset\supp a\cap\supp T$。
+\begin{proposition}[乘积求导]
+对光滑 $a$ 和分布 $T$，
+\[
+ \partial_j(aT)=(\partial_ja)T+a\partial_jT,
+ \qquad
+ \partial^\alpha(aT)=\sum_{\beta\le\alpha}\binom\alpha\beta
+ (\partial^\beta a)\partial^{\alpha-\beta}T.
+\]
+\end{proposition}
+\begin{proof}
+$-T(a\partial_j\varphi)=-T(\partial_j(a\varphi))+T((\partial_ja)\varphi)$，正是右端对 $\varphi$ 的作用。高阶公式由归纳得到。
+\end{proof}
+特别地，在一维
+\[
+ a\delta_0=a(0)\delta_0,\qquad
+ a\delta_0'=a(0)\delta_0'-a'(0)\delta_0.
+\]
+例如 $x\delta_0=0$，$x\delta_0'=-\delta_0$。不能把 $a\delta_0'$ 简化为 $a(0)\delta_0'$，因为导数会读取乘子的导数。
+
+\section{跳跃函数与界面项}
+\begin{proposition}[一维跳跃公式]
+设 $f$ 在 $a$ 两侧分片 $C^1$，且有有限单侧极限。令 $f'_{\mathrm{reg}}$ 为两侧的普通导数组成的局部可积函数，则
+\begin{equation}\label{eq:jump}
+ (T_f)'=T_{f'_{\mathrm{reg}}}+[f]_a\delta_a,
+ \qquad [f]_a=f(a+)-f(a-).
+\end{equation}
+\end{proposition}
+\begin{proof}
+把 $-\int f\varphi'$ 分成 $(-\infty,a)$ 与 $(a,\infty)$ 两部分，在探针支集范围内分别分部积分。左右边界项之和为 $(f(a+)-f(a-))\varphi(a)$，其余积分为 $\int f'_{\mathrm{reg}}\varphi$。
+\end{proof}
+若两侧分片 $C^2$，还有 $f''=f''_{\mathrm{reg}}+[f']_a\delta_a+[f]_a\delta_a'$。多界面时把各跳跃项求和。
+
+在高维，若 $D$ 有光滑边界，外法向为 $\nu$，则散度定理给出
+\[
+ \Pair{\partial_j\mathbf1_D}{\varphi}
+ =-\int_D\partial_j\varphi\,\dd x
+ =-\int_{\partial D}\varphi\nu_j\,\dd S.
+\]
+故 $\nabla\mathbf1_D=-\nu\,\delta_{\partial D}$。这解释了守恒律和界面方程中表面质量的出现，也固定了法向符号。
+
+\section{平移、缩放与坐标变换}
+定义平移 $(\tau_hf)(x)=f(x-h)$，对分布采用
+\[
+ \Pair{\tau_hT}{\varphi}=\Pair{T}{\varphi(\cdot+h)}.
+\]
+于是 $\tau_h\delta_a=\delta_{a+h}$。对可逆线性变换 $A$，$f(Ax)$ 的分布推广为
+\[
+ \Pair{T(A\cdot)}{\varphi}=|\det A|^{-1}\Pair{T}{\varphi(A^{-1}\cdot)}.
+\]
+由此 $\delta_0(A\cdot)=|\det A|^{-1}\delta_0$。这里的 Jacobian 不能遗漏。
+更一般地，对光滑微分同胚 $F:U\to V$，
+\[
+ \Pair{F^*T}{\varphi}=\Pair{T}{
+ (\varphi\circ F^{-1})|\det DF^{-1}|}.
+\]
+微分同胚把紧集送到紧集，链式法则给出各阶半范数估计，因此拉回合法。对任意非可逆光滑映射，拉回分布则需要额外条件，本稿不作一般定义。
+
+\section{主值分布与奇性消去}
+\begin{definition}[Cauchy 主值]
+在 $\R$ 上定义
+\[
+ \Pair{\pv\frac1x}{\varphi}
+ =\lim_{\varepsilon\downarrow0}\int_{|x|>\varepsilon}\frac{\varphi(x)}x\,\dd x.
+\]
+\end{definition}
+取 $R$ 包含探针支集，利用对称性将该式写成
+\[
+ \int_0^R\frac{\varphi(x)-\varphi(-x)}x\,\dd x.
+\]
+均值定理使绝对值不超过 $2R\|\varphi'\|_\infty$，所以极限存在且定义分布。又因 $x\varphi$ 消去分母，$x\,\pv(1/x)=1$。
+\begin{proposition}[对数的分布导数]
+局部可积函数 $\log|x|$ 满足 $(\log|x|)'=\pv(1/x)$。
+\end{proposition}
+\begin{proof}
+在 $(-\infty,-\varepsilon)$ 与 $(\varepsilon,\infty)$ 分部积分，有
+\[
+ -\int_{|x|>\varepsilon}\log|x|\,\varphi'(x)\,\dd x
+ =\int_{|x|>\varepsilon}\frac{\varphi(x)}x\,\dd x
+ +\log\varepsilon[\varphi(\varepsilon)-\varphi(-\varepsilon)].
+\]
+最后一项为 $O(\varepsilon|\log\varepsilon|)$，而被删去区间上的左端积分趋于零，故得结论。
+\end{proof}
+\begin{pitfall}[为什么不能任意相乘]
+用 $\rho_\varepsilon$ 逼近 $\delta_0$ 时，
+\[
+ \int\rho_\varepsilon(x)^2\varphi(x)\,\dd x
+ =\varepsilon^{-1}\int\rho(y)^2\varphi(\varepsilon y)\,\dd y
+\]
+在 $\varphi(0)>0$ 时发散。因此该正则化不能定义 $\delta_0^2$。这个例子展示了直接乘法的障碍；它本身不代替关于各种广义乘法体系的完整不可能性定理。
+\end{pitfall}
+
+\section{习题}
+\begin{exercise}[除法的不唯一性]
+求 $\R$ 上方程 $xT=1$ 的全部分布解。
+\end{exercise}
+\begin{solution}
+一个特解为 $\pv(1/x)$。若 $xS=0$，则在避开零点的开集上可乘以光滑函数 $1/x$，得到 $S=0$，故 $S$ 为点支集分布。由定理 \ref{thm:point-support} 写成有限个 $\delta_0^{(k)}$ 的和，再用 $x\delta_0^{(k)}=-k\delta_0^{(k-1)}$，可知除 $k=0$ 外系数皆零。故 $T=\pv(1/x)+c\delta_0$。
+\end{solution}
+\begin{exercise}[阶数与支集]
+证明 $\supp(\partial_jT)\subset\supp T$，并给出严格包含的例子。
+\end{exercise}
+\begin{solution}
+若 $T$ 在开集 $U$ 上为零，$\partial_j\varphi$ 仍支于 $U$，故导数也在 $U$ 上为零。严格包含的例子是常数分布 $T=1$：其支集为整个空间，而导数为零，支集为空。
+\end{solution}

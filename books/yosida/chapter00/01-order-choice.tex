@@ -1,0 +1,248 @@
+% !TeX encoding = UTF-8
+泛函分析中常须把一个局部构造延拓到整个空间。例如，线性无关集能否扩充为基，或者已定义的线性泛函能否继续延拓？这类问题常通过“按包含关系排列所有候选对象，再取一个极大对象”解决。本节建立这一方法的集合论基础。
+
+以下在 Zermelo--Fraenkel 集合论（ZF）中讨论；选择公理作为额外命题单独提出。所有偏序集、索引族及线性空间的底集都是集合。记 $\mathcal P(X)$ 为 $X$ 的幂集，$\varnothing$ 为空集。三个选择原理之间的证明不能预先借用其中另一个；为此，先交代良序与超限递归所需的基础工具。
+
+\subsection{偏序、链与极大元}
+\begin{definition}[偏序与全序]\label{def:y0-partial-order}
+集合 $P$ 上的二元关系 $\le$ 称为\emph{偏序}，若它满足：
+\begin{enumerate}
+  \item 自反性：$x\le x$，对每个 $x\in P$ 成立；
+  \item 反对称性：$x\le y$ 且 $y\le x$ 蕴含 $x=y$；
+  \item 传递性：$x\le y$ 且 $y\le z$ 蕴含 $x\le z$。
+\end{enumerate}
+称 $(P,\le)$ 为偏序集，记 $x<y$ 表示 $x\le y$ 且 $x\ne y$。若任意两个元素都可比较，即 $x\le y$ 或 $y\le x$，则此偏序称为\emph{全序}。
+\end{definition}
+
+\begin{definition}[链、上界、最大元与极大元]\label{def:y0-chain}
+设 $(P,\le)$ 为偏序集，$A\subseteq P$。
+\begin{enumerate}
+  \item 若 $C\subseteq P$ 中任意两元素可比较，则称 $C$ 为\emph{链}；允许 $C=\varnothing$。
+  \item 若 $u\in P$ 且每个 $a\in A$ 都满足 $a\le u$，则称 $u$ 为 $A$ 在 $P$ 中的\emph{上界}。上界不必属于 $A$。上界中的最小元称为 $A$ 的\emph{上确界}，记为 $\sup A$。
+  \item 若 $a_*\in A$ 且每个 $a\in A$ 都有 $a\le a_*$，则称 $a_*$ 为 $A$ 的\emph{最大元}。
+  \item 若 $m\in P$ 且 $m\le x$ 蕴含 $x=m$，则称 $m$ 为 $P$ 的\emph{极大元}。
+\end{enumerate}
+反向不等式分别定义下界、下确界、最小元与极小元。讨论子集的极大元时，使用从 $P$ 限制得到的偏序。
+\end{definition}
+
+最大元必须支配所有元素，而极大元只要求不存在严格更大的元素。最大元若存在则唯一，并且是极大元；极大元可以不唯一。在全序集中，极大元也是最大元。空链的每个上界条件都是空条件，故它的上界恰为 $P$ 的全部元素。
+
+\begin{example}[包含序与整除序]
+幂集 $\mathcal P(X)$ 在包含关系 $\subseteq$ 下是偏序集。若 $X$ 至少有两个元素，它通常不是全序集。任意子族 $\mathcal A\subseteq\mathcal P(X)$ 的上确界为 $\bigcup\mathcal A$，下确界为 $\bigcap\mathcal A$；这里约定空族的交为 $X$。
+
+在 $P=\{\{1\},\{2\}\}$ 的包含序下，两个元素均极大，却没有最大元。正整数集在整除关系下也是偏序集；例如 $2$ 与 $3$ 不可比较。通常的数值大小和整除关系是两种不同的偏序。
+\end{example}
+
+\subsection{良序与超限递归的基础}
+\begin{definition}[良序与初始段]\label{def:y0-well-order}
+全序集 $(X,\le)$ 称为\emph{良序集}，若每个非空子集 $A\subseteq X$ 都有最小元。对 $x\in X$，集合
+\[
+ X_{<x}=\{y\in X:y<x\}
+\]
+称为由 $x$ 决定的严格初始段。一般地，$I\subseteq X$ 若满足 $x\in I$ 且 $y<x$ 时 $y\in I$，则称 $I$ 为初始段。
+\end{definition}
+
+自然数集在通常次序下良序。整数集不是良序，因为整个整数集没有最小元；实数集不是良序，例如 $(0,1)$ 没有最小元。有限全序集总是良序。\emph{良序原则断言可给一个集合另赋某种良序，并非断言它原有的次序就是良序。}
+
+\begin{proposition}[良序归纳]\label{prop:y0-well-order-induction}
+设 $X$ 良序。若性质 $Q(x)$ 满足：对任意 $x\in X$，所有 $y<x$ 满足 $Q(y)$ 时，$Q(x)$ 也成立，则每个 $x\in X$ 都满足 $Q(x)$。
+\end{proposition}
+\begin{proof}
+若反例集非空，取其中的最小元 $x_0$。所有 $y<x_0$ 都不是反例，由假设 $Q(x_0)$ 成立，矛盾。
+\end{proof}
+
+为精确说明“逐个选择，直到选完”何时停止，使用序数记号。\emph{序数}是由成员关系 $\in$ 严格良序的传递集合；传递指 $u\in\alpha$ 蕴含 $u\subseteq\alpha$。序数的严格次序记为 $\beta<\alpha$，即 $\beta\in\alpha$。最小序数为 $0=\varnothing$，后继序数为 $\alpha+1=\alpha\cup\{\alpha\}$；非零且不是后继的序数称为极限序数。自然数的序数集合记为 $\omega$。一族序数的并仍为序数，且是该族的上确界。
+
+每个良序集都与唯一序数保序同构，此序数称为其\emph{序型}。这里“保序同构”指保持并反映次序的双射。其构造是沿良序定义
+\[
+ r(x)=\{r(y):y<x\}.
+\]
+良序归纳表明各 $r(x)$ 是序数，且 $y<x$ 当且仅当 $r(y)\in r(x)$；像集是传递的序数。唯一性也由良序归纳得到：两个保序的编号在每个位置都有相同的前驱编号，因而相等。这一构造使用下面的递归定理，它在 ZF 内成立，不需要选择公理。
+
+\begin{lemma}[沿良序的递归]\label{lem:y0-transfinite-recursion}
+设 $X$ 为良序集。若一条确定规则对每个 $x\in X$ 及已定义在 $X_{<x}$ 上的函数 $g$ 指定唯一集合值 $F(x,g)$，则存在唯一函数 $f$，定义域为 $X$，且
+\[
+ f(x)=F\bigl(x,f|_{X_{<x}}\bigr)\qquad(x\in X).
+\]
+在序数上使用此定理称为超限递归；在极限阶段，已有函数取并，得到此前全部取值。
+\end{lemma}
+\begin{proof}
+称定义在某个初始段上并满足递归式的函数为近似解。任意两个近似解在公共定义域上一致：若有分歧，取最早分歧点；该点之前的函数相同，规则的唯一性迫使此点取值也相同，矛盾。
+
+用良序归纳证明每个 $X_{<x}$ 上有唯一近似解。若所有更早的初始段都有解，对每个 $y<x$ 将 $X_{<y}$ 上的解延拓一步，定义 $y$ 处的取值为 $F(y,g)$。由替代公理，这些唯一确定的延拓组成一个集合；由相容性，其并给出 $X_{<x}$ 上的解。空初始段的解为空函数。最后，对所有 $x\in X$ 再将这些解延拓一步并取并，得到整个 $X$ 上的 $f$。相容性同时证明唯一性。这里收集的是唯一确定的对象，所用的是替代公理，而非选择公理。
+\end{proof}
+
+\begin{lemma}[Hartogs 引理]\label{lem:y0-hartogs}
+对任意集合 $X$，存在序数 $\theta$，使得不存在从 $\theta$ 到 $X$ 的单射。此结论可在 ZF 中证明。
+\end{lemma}
+\begin{proof}
+考虑 $X$ 的各个子集上的所有良序关系。每一项可表示为一对 $(A,R)$，其中 $A\subseteq X$，$R\subseteq X\times X$，故这些对象构成一个集合。对每个这样的良序取唯一序型，由替代公理得到一个序数集合 $T$。令
+\[
+ \theta=\bigcup_{\alpha\in T}(\alpha+1).
+\]
+这是序数，且对所有 $\alpha\in T$ 都有 $\alpha<\theta$。若有单射 $j:\theta\to X$，把 $\theta$ 的良序搬到像集 $j[\theta]$ 上，得到 $X$ 的一个子集上的良序，其序型正是 $\theta$。于是 $\theta\in T$，从而 $\theta<\theta$，矛盾。
+\end{proof}
+
+Hartogs 引理给出递归选择不能无限延长的集合论界限。只说“每次选一个，最后必能选完”并不构成证明；若只按自然数编号，更无法遍历任意不可数集合。
+
+\subsection{选择公理、良序原则与 Zorn 引理}
+\begin{definition}[选择函数与选择公理]\label{def:y0-choice}
+设 $(A_i)_{i\in I}$ 为一族非空集合。函数 $f:I\to\bigcup_{i\in I}A_i$ 若满足 $f(i)\in A_i$，称为这族集合的\emph{选择函数}。\emph{选择公理}（AC）断言：每一族非空集合都有选择函数。等价地，每一这样的笛卡尔积都非空：
+\[
+ \prod_{i\in I}A_i
+ =\left\{f:I\to\bigcup_{i\in I}A_i:
+          f(i)\in A_i\text{ 对所有 }i\in I\right\}\ne\varnothing.
+\]
+若 $I=\varnothing$，空函数即为选择函数，此时乘积是单元素集 $\{\varnothing\}$。
+\end{definition}
+
+有限族非空集合的选择函数可用有限归纳在 ZF 中构造；一般无限族的结论是额外公理。若每个 $A_i$ 的元素由一条统一规则唯一确定，例如非空自然数子集的最小元，也不需要选择公理。选择公理保证函数存在，不提供可计算的选择算法。
+
+\begin{theorem}[良序原则]\label{thm:y0-well-order-principle}
+每个集合 $X$ 都可以赋予一个良序关系。空集的空关系也视为良序。
+\end{theorem}
+
+\begin{theorem}[Zorn 引理]\label{thm:y0-zorn}
+设 $(P,\le)$ 是非空偏序集。如果每条链 $C\subseteq P$ 都在 $P$ 中有上界，则 $P$ 至少有一个极大元。
+\end{theorem}
+
+Zorn 引理只要求上界存在，不要求上界唯一，也不要求上确界存在。若把空链也包含在条件中，“每条链都有上界”本身已蕴含 $P\ne\varnothing$；若只考察非空链，则必须另列 $P\ne\varnothing$。
+
+\begin{theorem}[三种选择原理的等价性]\label{thm:y0-choice-equivalence}
+在 ZF 集合论中，以下三命题等价：选择公理、良序原则、Zorn 引理。
+\end{theorem}
+\begin{proof}
+依次证明
+\[
+ \text{选择公理}\ \Longrightarrow\ \text{良序原则}
+ \ \Longrightarrow\ \text{Zorn 引理}
+ \ \Longrightarrow\ \text{选择公理}.
+\]
+
+\emph{第一步：选择公理推出良序原则。}
+若 $X=\varnothing$，结论直接成立。设 $X\ne\varnothing$，对所有非空子集应用选择公理，固定函数
+\[
+ c:\mathcal P(X)\setminus\{\varnothing\}\longrightarrow X,
+ \qquad c(A)\in A.
+\]
+由 Hartogs 引理取不能单射到 $X$ 的序数 $\theta$。取一个不在 $X$ 中的标记 $\ast$，沿 $\theta$ 递归定义
+\[
+ R_\alpha=X\setminus
+       \{x_\beta:\beta<\alpha,\ x_\beta\in X\},\qquad
+ x_\alpha=
+ \begin{cases}
+   c(R_\alpha),&R_\alpha\ne\varnothing,\\
+   \ast,&R_\alpha=\varnothing.
+ \end{cases}
+\]
+若每个 $\alpha<\theta$ 都有 $R_\alpha\ne\varnothing$，则 $\alpha\mapsto x_\alpha$ 是 $\theta$ 到 $X$ 的单射，因为每次所取元素均未在此前出现。这与 $\theta$ 的定义矛盾。
+
+故存在最小的 $\gamma<\theta$ 使 $R_\gamma=\varnothing$。在 $\gamma$ 之前，取值两两不同，且已遍历 $X$，于是 $\alpha\mapsto x_\alpha$ 是 $\gamma$ 到 $X$ 的双射。定义 $x_\alpha\prec x_\beta$ 当且仅当 $\alpha<\beta$，便把序数 $\gamma$ 的良序搬到了 $X$ 上。
+
+\emph{第二步：良序原则推出 Zorn 引理。}
+设 $P$ 非空且每条链都有上界。由良序原则，将 $P$ 的全部元素无重复地写作 $(p_\alpha)_{\alpha<\kappa}$，其中 $\kappa$ 是某个非零序数。按这个编号逐个检查元素，只在新元素严格大于所有已保留元素时将它保留。精确地，令 $C_0=\varnothing$，并递归定义
+\[
+ C_{\alpha+1}=
+ \begin{cases}
+ C_\alpha\cup\{p_\alpha\},
+       &x<p_\alpha\text{ 对每个 }x\in C_\alpha,\\
+ C_\alpha,&\text{否则},
+ \end{cases}
+ \qquad
+ C_\lambda=\bigcup_{\alpha<\lambda}C_\alpha
+ \quad(\lambda\text{ 为极限序数}).
+\]
+良序归纳表明各 $C_\alpha$ 是链，且随 $\alpha$ 递增；极限阶段的并仍为链，因为任意两个元素已共同处于某个更早阶段。于是 $C_\kappa$ 是链，并且 $p_0$ 在第一步被保留，所以它非空。
+
+取 $C_\kappa$ 的一个上界 $u\in P$。若 $u$ 不是极大元，则存在 $v\in P$ 使 $u<v$。设 $v=p_\beta$。在检查 $p_\beta$ 的阶段，对所有 $x\in C_\beta$ 都有 $x\le u<v$，所以 $v$ 被保留，属于 $C_\kappa$。上界条件又给出 $v\le u$，与 $u<v$ 矛盾。因此 $u$ 为极大元。
+
+\emph{第三步：Zorn 引理推出选择公理。}
+设 $(A_i)_{i\in I}$ 为非空集合族，令 $U=\bigcup_{i\in I}A_i$。考虑全部部分选择函数：
+\[
+ P=\{f:J\to U:J\subseteq I,\ f(i)\in A_i\ (i\in J)\},
+\]
+把函数看作图，即 $I\times U$ 的子集，以图的包含关系作为偏序。因空函数属于 $P$，此偏序集非空。
+
+若 $\mathcal C\subseteq P$ 是链，令 $g=\bigcup_{f\in\mathcal C}f$。这是函数：同一指标若在两个成员的定义域中出现，这两个成员可比较，较大的函数延拓较小的函数，取值必然一致。且 $g(i)\in A_i$，所以 $g\in P$，并为 $\mathcal C$ 的上界。空链的并为空函数，也满足要求。
+
+由 Zorn 引理存在极大部分选择函数 $f_*$。若其定义域 $J_*$ 不等于 $I$，取 $i_0\in I\setminus J_*$，再取一个 $a_0\in A_{i_0}$，则
+\[
+ f_*\cup\{(i_0,a_0)\}
+\]
+是严格延拓 $f_*$ 的部分选择函数，与极大性矛盾。因此 $J_*=I$，$f_*$ 即为所求选择函数。这里仅从一个非空集合取一个元素，不是在所有 $A_i$ 中同时作选择，故没有循环使用选择公理。
+\end{proof}
+
+上述闭环已经证明任意两命题互相蕴含。下面再给出两个常用的直接证明，帮助识别“良序化”和“取极大延拓”这两种构造。
+
+\begin{proposition}[良序原则直接推出选择公理]\label{prop:y0-wo-ac}
+若每个集合都可良序化，则每族非空集合都有选择函数。
+\end{proposition}
+\begin{proof}
+将 $U=\bigcup_{i\in I}A_i$ 良序化，定义 $f(i)$ 为 $A_i$ 在这一良序下的最小元。非空性保证最小元存在，良序性保证唯一性；替代公理将这些唯一取值收集为函数。若 $I$ 为空，取空函数。
+\end{proof}
+
+\begin{proposition}[Zorn 引理直接推出良序原则]\label{prop:y0-zorn-wo}
+若 Zorn 引理成立，则每个集合 $X$ 都可良序化。
+\end{proposition}
+\begin{proof}
+令 $P$ 为 $X$ 的各个子集上的所有良序对 $(A,\le_A)$。规定
+\[
+ (A,\le_A)\preccurlyeq(B,\le_B)
+\]
+当且仅当 $A\subseteq B$，$\le_B$ 在 $A$ 上限制为 $\le_A$，且 $A$ 是 $B$ 的初始段。这是偏序，空集上的良序对使 $P$ 非空。
+
+对非空链 $\mathcal C$，取底集的并 $B$ 和各个序关系的并 $\le_B$。任意有限个元素都共同处于某个链成员中，故 $\le_B$ 为全序。它还是良序：设 $S\subseteq B$ 非空，取 $s\in S$ 及含 $s$ 的链成员 $A$，令 $a$ 为 $S\cap A$ 在 $A$ 中的最小元。若 $t\in S\setminus A$，含 $t$ 的链成员必延拓 $A$，且 $A$ 是它的初始段，所以 $a<t$。于是 $a$ 是 $S$ 的最小元。每个链成员均为 $B$ 的初始段，故 $(B,\le_B)$ 为链的上界。空链由空良序对作为上界。
+
+由 Zorn 引理取极大良序对 $(A_*,\le_*)$。若 $A_*\ne X$，取 $x\in X\setminus A_*$，把 $x$ 放在 $A_*$ 的全部元素之后。新次序仍是良序，且 $A_*$ 是其初始段，从而得到严格延拓，矛盾。所以 $A_*=X$。
+\end{proof}
+
+\begin{remark}[为什么需要初始段条件]
+上一个证明若只要求两个良序的限制相容，其链的并未必良序。例如 $A_n=\{-n,\ldots,-1,0\}$ 各自在通常大小次序下良序，次序逐步延拓，但它们的并没有最小元。初始段条件禁止在已有元素之前不断插入新元素，正是并集良序性的关键。
+\end{remark}
+
+\subsection{极大链原理与泛函分析中的应用}
+\begin{theorem}[Hausdorff 极大链原理]\label{thm:y0-maximal-chain}
+每个偏序集的任意一条链都包含于一条按包含关系极大的链。此原理在 ZF 中与 Zorn 引理等价。
+\end{theorem}
+\begin{proof}
+先假设 Zorn 引理。固定链 $C_0\subseteq P$，考虑全部包含 $C_0$ 的链组成的集合 $\mathcal Q$，以包含关系排序。它非空。$\mathcal Q$ 中一条链的并仍为 $P$ 中的链：任意两元素分别来自两个可比较的成员，故共同属于较大者。这个并包含 $C_0$，所以是 $\mathcal Q$ 中的上界；空链可用 $C_0$ 作上界。Zorn 引理给出所求极大链。
+
+反过来，设 $P$ 非空且每条链有上界。用极大链原理将空链扩充为极大链 $C$，取其上界 $u$。由于 $C\cup\{u\}$ 仍为链，极大性迫使 $u\in C$。若 $u<v$，则 $C\cup\{v\}$ 也为链，故 $v\in C$；但 $u$ 是 $C$ 的上界，得到 $v\le u$，矛盾。所以 $u$ 为极大元。
+\end{proof}
+
+\begin{theorem}[线性无关集扩充为 Hamel 基]\label{thm:y0-hamel-basis}
+假设选择公理，设 $V$ 是域 $\mathbb K$ 上的线性空间，$L\subseteq V$ 为线性无关集。则存在包含 $L$ 的 Hamel 基 $B$；也就是说，每个向量都唯一表示为 $B$ 中有限个向量的线性组合。特别地，每个线性空间都有 Hamel 基。
+\end{theorem}
+\begin{proof}
+令 $P$ 为 $V$ 中全部包含 $L$ 的线性无关子集，以包含关系为偏序。$L\in P$，故 $P$ 非空。对非空链 $\mathcal C\subseteq P$，令 $M=\bigcup_{A\in\mathcal C}A$。任何有限个 $M$ 中的向量都共同处于某个链成员中：对有限个包含它们的成员逐次取较大者即可。因此它们的线性关系只能是平凡关系，$M$ 线性无关，并包含 $L$，故 $M\in P$。空链以 $L$ 为上界。
+
+由 Zorn 引理取极大元素 $B$。若 $v\notin\operatorname{span}B$，则 $B\cup\{v\}$ 仍线性无关：任何涉及 $v$ 的有限线性关系，若 $v$ 的系数非零便把 $v$ 表示为 $B$ 的有限线性组合；若系数为零则由 $B$ 的线性无关性知其余系数全零。这样得到严格更大的成员，与极大性矛盾。因此 $\operatorname{span}B=V$。线性无关性保证表达唯一。取 $L=\varnothing$ 即得基的存在性；零空间的基为空集。
+\end{proof}
+
+\begin{remark}[代数基与拓扑基]
+Hamel 基只涉及有限线性组合，不涉及收敛。Banach 空间中的 Schauder 基要求向量有收敛的级数展开；Hilbert 空间中的完全正交系也涉及内积与闭线性张成。Hamel 基存在定理不保证任意 Banach 空间具有 Schauder 基。
+\end{remark}
+
+对后续的 Hahn--Banach 延拓，候选对象则是定义在不同子空间上的线性泛函，以“定义域扩大且取值相容”排序。链的并给出一致的线性泛函，极大性再配合单步延拓将定义域推到整个空间。因此使用 Zorn 引理时，应依次明确：候选对象形成集合，偏序及非空性成立，每条链有合法上界，极大对象具有目标性质。
+
+\subsection{补充习题与解答}
+\begin{exercise}[极大元可以不唯一]
+设 $X$ 为至少有两个元素的集合，$P=\mathcal P(X)\setminus\{X\}$，以包含关系排序。求 $P$ 的全部极大元，并判断 $P$ 是否有最大元。
+\end{exercise}
+\begin{solution}
+极大元恰为 $X\setminus\{x\}$（$x\in X$）。这种集合再加入任何缺少的元素就变成 $X$，故极大。若 $A\in P$ 缺少两个不同元素 $x,y$，则 $A\cup\{x\}$ 仍是真子集，故 $A$ 不极大。若有最大元，它必须包含每个单元素子集，从而等于 $X$，与属于 $P$ 矛盾。
+\end{solution}
+
+\begin{exercise}[有界的数列并不足够]
+在 Zorn 引理中，能否将“每条链都有上界”改为“每个可数链都有上界”？提示：考虑全体可数序数 $\omega_1$ 在通常序数次序下的偏序，并在选择公理下讨论。
+\end{exercise}
+\begin{solution}
+不能。在选择公理下，可数个可数集合的并可数，所以任意可数子集 $C\subseteq\omega_1$ 的序数上确界 $\bigcup C$ 仍是可数序数，属于 $\omega_1$，并是其上界；空集的并为 $0$。但任意 $\alpha<\omega_1$ 的后继 $\alpha+1$ 仍在 $\omega_1$ 中，故没有极大元。这里可数并的结论使用了选择公理所蕴含的可数选择，不能在讨论 ZF 中的等价性时不加说明地借用。
+\end{solution}
+
+\begin{exercise}[已指定的局部选择可以延拓]
+假设 Zorn 引理。对非空集合族 $(A_i)_{i\in I}$，若已给定 $J_0\subseteq I$ 上的部分选择函数 $f_0$，证明它能延拓为整个 $I$ 上的选择函数。
+\end{exercise}
+\begin{solution}
+将定理 \ref{thm:y0-choice-equivalence} 第三步中的偏序集换为所有延拓 $f_0$ 的部分选择函数。它包含 $f_0$，因而非空；非空链的并仍延拓 $f_0$，空链以 $f_0$ 作上界。由 Zorn 引理取极大延拓，若有未定义指标，选其中一个指标及其集合中的一个元素即可继续延拓，矛盾。所以定义域为 $I$。
+\end{solution}

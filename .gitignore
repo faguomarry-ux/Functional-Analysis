@@ -1,0 +1,60 @@
+# XeLaTeX / latexmk generated files
+*.aux
+*.log
+*.toc
+*.out
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.xdv
+*.nav
+*.snm
+*.vrb
+*.bbl
+*.bcf
+*.blg
+*.run.xml
+*.idx
+*.ind
+*.ilg
+*.glo
+*.gls
+*.glg
+*.acn
+*.acr
+*.alg
+*.sol
+*.synctex(busy)
+
+# Build outputs and local scratch files
+/output/
+/tmp/
+/main.pdf
+/example.pdf
+/build/
+/dist/
+
+# Local font copies are unnecessary for CI; rights are not established.
+/fonts/
+
+# Editor / operating system files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Local credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Deliberately do NOT ignore *.pdf: the five reference PDFs remain addable.
+# Keep generated PDFs in output/ or add an explicit generated-file rule above.

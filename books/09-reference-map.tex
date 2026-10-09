@@ -1,0 +1,53 @@
+\chapter{参考书对照与公式核查}\label{app:references}
+\section{本稿与两本主要参考书的对应}
+下列对照依据本地扫描 PDF 的目录与所检查的正文。印刷页码指原书页面中的页码；PDF 页序从 1 计数，包括前置页。两者切勿混用。
+本附录专用于第二部分“广义函数专题扩展”；吉田主线的版本对照见附录 \ref{app:yosida-map}。
+
+\begin{center}\small
+\begin{tabular}{p{0.25\linewidth}p{0.43\linewidth}p{0.22\linewidth}}
+\toprule
+本稿主题 & 原书位置 & 页码线索\\\midrule
+动机、分布定义 & 施瓦尔茨，第 I 章 §§1--3 & 印刷 1--16；章首 PDF 24\\
+测试空间拓扑 & 施瓦尔茨，第 III 章 §§1--3 & 印刷 43--53；章首 PDF 66\\
+求导与局部结构 & 施瓦尔茨，第 II 章；第 III 章 §§4--10 & 第 II 章 PDF 40；点支集印刷 70 / PDF 93\\
+张量积与光滑乘法 & 施瓦尔茨，第 IV--V 章 & 章首 PDF 96、106\\
+卷积与基本解 & 施瓦尔茨，第 VI 章 §§2、10 & 卷积印刷 111 / PDF 134\\
+温和分布与 Fourier & 施瓦尔茨，第 VII 章 §§2--6 & 印刷 169、172 / PDF 192、195\\
+凸权重与 $W$ 型空间 & 盖尔芳特、希烙夫，第 I 章 §§1--3 & 印刷 1--22 / PDF 5--26\\
+柯西问题与适定性 & 盖尔芳特、希烙夫，第 II--III 章 & 章首 PDF 30、107\\
+广义固有函数 & 盖尔芳特、希烙夫，第 IV 章 §§4--6 & 印刷 177--198 / PDF 181--202\\
+\bottomrule
+\end{tabular}
+\end{center}
+盖尔芳特、希烙夫扫描目录的第一章标题显示为 $M$ 型空间，正文标题使用 $W$ 型空间，故本稿优先遵从正文符号。该卷本身不是广义函数初步教程，它多处调用前两卷结果。本稿将其作为应用和拓展的主要参考，基础内容以施瓦尔茨的系统叙述为主。
+
+\section{运算条件速查}
+\begin{center}\small
+\begin{tabular}{p{0.23\linewidth}p{0.43\linewidth}p{0.24\linewidth}}
+\toprule
+运算 & 本稿使用的充分条件 & 所得对象\\\midrule
+$\partial^\alpha T$ & $T\in\Dist(\Omega)$ & 分布\\
+$aT$ & $a\in C^\infty(\Omega)$ & 分布\\
+$T*\rho$ & $T\in\Dist(\R^n),\rho\in\Test$ & 光滑函数\\
+$S*T$ & 至少一个因子紧支集 & 分布\\
+$S*T$ & 加法在支集乘积上适当 & 分布\\
+$\widehat T$ & $T\in\Temp(\R^n)$ & 温和分布\\
+$S*T$ 的 Fourier 公式 & $S\in\CompactDist,T\in\Temp$ & 温和分布\\
+$F^*T$ & $F$ 是光滑微分同胚 & 分布\\
+$G_t*T$ & $t>0,T\in\Temp$ & 光滑函数与温和分布\\
+\bottomrule
+\end{tabular}
+\end{center}
+这些都是明确可用的充分条件，不宣称列尽所有可能的合法情形。
+
+\section{检查证明时的五个问题}
+\begin{enumerate}
+\item 测试空间是什么？要求共同紧支集，还是全空间带权衰减？
+\item 配对是否线性？是否混入了 Hilbert 内积的复共轭？
+\item 对偶运算由哪个测试函数映射的转置得到？该映射是否连续？
+\item 移动导数、极限或积分时，支集和半范数是否有统一控制？
+\item 唯一性和稳定性在哪个解空间与数据拓扑中成立？
+\end{enumerate}
+
+\section{进一步扩充的路径}
+本稿已完成分布专题的基础、主要运算及模型应用。若将全书扩为完整泛函分析教材，可在本专题之前插入赋范空间、Banach 空间三大定理、Hilbert 空间与算子理论等分部；本专题之后可继续加入紧算子谱论、无界算子与半群、核空间、Schwartz 核定理、Paley--Wiener 定理、椭圆正则性以及一般广义本征展开。此处只列阅读方向，不以空章节替代正文。

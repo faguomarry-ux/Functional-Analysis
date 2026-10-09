@@ -1,0 +1,47 @@
+Personal Noncommercial Study License — Version 1.0
+Copyright (c) 2026 faguomarry-ux and the respective original contributors.
+
+1. Scope
+This license applies only to original material whose copyright is held by
+the project contributors, including original notes, documentation, and
+original build/configuration changes. It grants no rights in third-party
+textbooks, scans, translations, quotations, fonts, or pre-existing templates.
+Those materials retain their respective rights and license terms.
+
+2. Permission
+Subject to applicable law and third-party rights, you may download, copy,
+compile, read, and privately modify the covered original material solely
+for your own personal, noncommercial study. Retain this license, copyright
+notices, source attribution, and notices of any modifications in your copies.
+
+3. Restrictions
+This license does not grant permission to sell, monetize, commercially
+redistribute, incorporate the material into paid products or courses, or
+otherwise use the covered material for commercial advantage. Public
+redistribution, public distribution of modified versions, and uses outside
+personal noncommercial study require separate permission from the relevant
+rights holders. Nothing here restricts rights available under applicable law.
+
+4. Third-party materials
+Repository inclusion, acknowledgement, a private repository, or a statement
+of educational intent is not a license to reproduce or publicly distribute
+third-party material. The project cannot grant permissions it does not hold.
+Reference PDFs are not relicensed by this file. No claim is made that their
+public upload has been authorized. The same exclusion applies to the
+pre-existing maki-notes.cls and maki-notes.sty unless ownership or a separate
+license is established.
+
+5. Disclaimer
+THE COVERED MATERIAL IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
+TO THE EXTENT PERMITTED BY LAW, CONTRIBUTORS ARE NOT LIABLE FOR CLAIMS,
+DAMAGES, OR OTHER LIABILITY ARISING FROM ITS USE. Mathematical notes may
+contain errors and unfinished sections; verify against the cited sources.
+
+中文说明（便于阅读；许可正文如上）
+本项目仅用于个人、非商业学习。许可范围仅限贡献者拥有版权的原创
+笔记、文档及原创构建配置，允许个人下载、复制、编译、阅读及私下修改，
+并须保留署名、出处、许可和修改说明。商业使用、公开再分发和超出上述
+范围的使用须另获相关权利人许可；法律本已允许的使用不受本许可限制。
+五本参考教材及其扫描件、译文、引用、字体和既有模板不因收入仓库而
+获得本项目许可。非商业学习声明不等于第三方教材的公开传播授权。
+本项目采用自定义限制性许可，不属于 OSI 意义上的开源许可。

@@ -1,0 +1,113 @@
+\section{B-空间和 F-空间}\label{sec:yosida-01-09}
+\noindent\textit{原书位置：中译本第 54--58 页；英文版第 52--56 页。}
+
+\subsection{完备性与术语}
+\begin{definition}[B-空间、F-空间与 Hilbert 空间]
+在平移不变距离下，每个 Cauchy 序列均收敛的空间称为完备。完备赋范空间称为 Banach 空间，原书简称 B-空间；完备拟赋范空间称为 F-空间。完备准 Hilbert 空间称为 Hilbert 空间。现代通常把“Fréchet 空间”限定为完备、可度量的局部凸空间；一般 F-空间不必局部凸。
+\end{definition}
+收敛序列总是 Cauchy；极限唯一，因为 $d(x,y)\le d(x,x_j)+d(x_j,y)$。完备性要求极限落在空间内，而不只落在某个更大的函数集合内。
+
+\begin{theorem}[光滑函数空间与固定支集测试空间完备]\label{thm:y1-smooth-complete}
+$\mathcal E^k(\Omega)$（$k$ 有限或无穷）以及 $\Test_K(\Omega)$ 都是 Fréchet 空间。
+\end{theorem}
+\begin{proof}
+对 $\mathcal E^k$ 中的 Cauchy 序列 $f_j$，每个允许的 $\partial^\alpha f_j$ 在每个紧集上一致 Cauchy，故有连续局部极限 $g_\alpha$，不同紧集上的极限相容。需要证明 $g_\alpha$ 真是 $g_0$ 的导数。在域内任意小闭长方体上，对 $|\alpha|<k$ 用微积分基本定理写
+\[
+ \partial^\alpha f_j(x+te_l)-\partial^\alpha f_j(x)
+ =\int_0^t\partial^{\alpha+e_l}f_j(x+se_l)\,ds.
+\]
+一致极限允许交换积分与极限，得同样的 $g$ 公式；再由连续性求导，得到 $\partial_lg_\alpha=g_{\alpha+e_l}$。归纳即有 $g_0\in C^k$，并在所有半范数下收敛。无限阶情形对每个有限阶重复即可。若原序列均支集于 $K$，域外 $\Omega\setminus K$ 上所有函数及其极限为零，故极限仍属于 $\Test_K$。这补足了“导数各有极限，所以极限光滑”中的关键相容性步骤。
+\end{proof}
+
+\subsection{可积函数空间的完备性}
+\begin{theorem}[Riesz--Fischer 完备性]\label{thm:y1-Lp-complete}
+对任意测度空间，$L^p$（$1\le p\le\infty$）都是 Banach 空间。若 $1\le p<\infty$，每个 $L^p$-Cauchy 序列都有一个几乎处处收敛于其范数极限的子列。
+\end{theorem}
+\begin{proof}
+先设 $p<\infty$。从 Cauchy 序列抽出 $f_{j_k}$，使
+\[
+ \|f_{j_{k+1}}-f_{j_k}\|_p\le2^{-k}.
+\]
+令 $g_N=|f_{j_1}|+\sum_{k=1}^N|f_{j_{k+1}}-f_{j_k}|$。Minkowski 保证 $\|g_N\|_p\le\|f_{j_1}\|_p+1$；单调收敛或 Fatou 引理给出极限 $g\in L^p$。因此 $g<\infty$ 几乎处处，差分级数绝对收敛，定义几乎处处有限的
+\[
+ f=f_{j_1}+\sum_{k=1}^\infty(f_{j_{k+1}}-f_{j_k}).
+\]
+$|f|\le g$ 保证 $f\in L^p$。再次用 Fatou 与 Minkowski，
+\[
+ \|f-f_{j_k}\|_p\le\sum_{l\ge k}2^{-l}\longrightarrow0.
+\]
+原序列由 Cauchy 性和这一收敛子列也趋于 $f$。
+
+对于 $p=\infty$，同样选择子列使差分范数不超过 $2^{-k}$。去掉可数个零测集后，每个差分逐点不超过该上界，故差分级数在余集上一致收敛。极限本质有界，且 $L^\infty$ 距离的尾项不超过 $\sum_{l\ge k}2^{-l}$；再由 Cauchy 性处理原序列。甚至原序列在去掉一个共同零测集后可取一致收敛的代表元。
+\end{proof}
+$C_b(S)$ 也完备：一致 Cauchy 序列逐点取极限，一致收敛保留连续性和有界性。由此 $c_0,c$ 是 Banach 空间；$\ell^p$ 是 $L^p$ 的计数测度特例。因而 $L^2,\ell^2$ 是 Hilbert 空间，定理 \ref{thm:y1-hardy} 又使 $H^2$ 成为 Hilbert 空间。
+
+\begin{proposition}[补充：有界算子空间的完备性]
+若 $Y$ 是 Banach 空间，则 $\mathcal L(X,Y)$ 在算子范数下是 Banach 空间，不要求 $X$ 完备。
+\end{proposition}
+\begin{proof}
+算子范数 Cauchy 序列 $T_j$ 对每个 $x$ 使 $T_jx$ 在 $Y$ 中 Cauchy，定义 $Tx=\lim T_jx$。逐点极限保留线性；$\|T_j\|$ 统一有界，所以 $T$ 有界。给定 $\varepsilon$，$j,l\ge N$ 时 $\|(T_j-T_l)x\|\le\varepsilon\|x\|$，令 $l\to\infty$，再在单位球取上确界，得到 $\|T_j-T\|\le\varepsilon$。
+\end{proof}
+
+\subsection{Bergman 空间、测度收敛空间与全体数列}
+\begin{proposition}[Bergman 空间完备]
+$A^2(G)$ 是 $L^2(G)$ 的闭子空间，因而是 Hilbert 空间。
+\end{proposition}
+\begin{proof}
+全纯函数在 $\overline B(z,r)\subset G$ 上的圆周平均或 Taylor 展开给出
+\[
+ |f(z)|^2\le\frac1{\pi r^2}\int_{B(z,r)}|f(w)|^2\,dA(w).
+\]
+例如展开 $f(z+\rho e^{i\theta})=\sum a_j\rho^je^{ij\theta}$，角积分消掉异次项，再对 $\rho\,d\rho$ 积分，常数项就给出右边至少 $|a_0|^2$。在任意紧集 $K\Subset G$ 上可取统一 $r>0$，所以 $L^2$-Cauchy 序列的全纯代表元在 $K$ 上一致 Cauchy。其局部一致极限 $f$ 全纯，可由 Cauchy 积分公式取极限证明。与此同时 $L^2$ 完备性给出范数极限 $g$，两种极限在每个紧子域上几乎处处一致，故 $g$ 有全纯代表 $f$。所以闭性成立。
+\end{proof}
+
+\begin{proposition}[测度收敛空间完备]
+若 $\mu(S)<\infty$，则第 \ref{sec:yosida-01-04} 节的 $L^0(S,\mu)$ 是 F-空间。
+\end{proposition}
+\begin{proof}
+从距离 Cauchy 序列抽出子列 $f_{j_k}$，使
+\[
+ \mu\{|f_{j_{k+1}}-f_{j_k}|>2^{-k}\}<2^{-k}.
+\]
+尾部异常集之并的测度不超过 $\sum_{l\ge k}2^{-l}$，趋于零；因此几乎处处只有有限次异常，差分级数的尾部绝对值受 $\sum2^{-l}$ 控制，得到有限极限 $f$。有限测度上的几乎处处收敛推出测度收敛，故子列在距离中趋于 $f$；原序列由 Cauchy 性得到同样结论。
+\end{proof}
+原书的空间 $(s)$，即所有实或复数列 $\mathbb K^{\N}$，在
+\[
+ q(x)=\sum_{j=1}^\infty2^{-j}\frac{|x_j|}{1+|x_j|}
+\]
+下是 F-空间且局部凸：Cauchy 性等价于各坐标 Cauchy，逐坐标取极限后，有限首项与小尾项论证给出距离收敛。其拓扑就是逐坐标收敛的乘积拓扑。
+\begin{pitfall}[补充核查：原书的另一计数公式]
+原书还列出 $\arctan\inf_{\varepsilon>0}(\varepsilon+\#\{j:|x_j|>\varepsilon\})$ 作为替代公式。若它按未加权的普通计数理解，则不能在\emph{全体}数列上作为拟范数：取 $x_j=j$，任意有限阈值以上的坐标数都是无穷，所以任意 $a\ne0$ 时该表达式在 $ax$ 上恒为 $\pi/2$，不满足 $a\to0$ 的数乘连续性。本稿因此采用上面的加权求和公式来处理全体数列；这里没有把有缺陷的替代式作为定理使用。
+\end{pitfall}
+
+\subsection{Sobolev 空间及其完备性}
+\begin{definition}[弱导数与 Sobolev 空间]
+对整数 $k\ge0$ 和 $1\le p<\infty$，定义
+\[
+ W^{k,p}(\Omega)=\{f\in L^p(\Omega):\partial^\alpha T_f=T_{g_\alpha},\
+ g_\alpha\in L^p(\Omega),\ |\alpha|\le k\}.
+\]
+由分布嵌入单射，$g_\alpha$ 唯一，记为弱导数 $\partial^\alpha f$。范数为
+\[
+ \|f\|_{k,p}=\left(\sum_{|\alpha|\le k}\|\partial^\alpha f\|_p^p\right)^{1/p}.
+\]
+当 $p=2$，记 $H^k(\Omega)=W^{k,2}(\Omega)$，取第 \ref{sec:yosida-01-05} 节的导数内积。
+\end{definition}
+\begin{theorem}[Sobolev 空间完备]\label{thm:y1-sobolev-complete}
+$W^{k,p}(\Omega)$ 是 Banach 空间；$H^k(\Omega)$ 是 Hilbert 空间。
+\end{theorem}
+\begin{proof}
+若 $f_j$ 在 Sobolev 范数下 Cauchy，则各 $\partial^\alpha f_j$ 在 $L^p$ 中 Cauchy，设极限为 $g_\alpha$，特别地 $f_j\to g_0=f$。对任意 $\varphi\in\Test$，Hölder（$p=1$ 时用上确界）允许在
+\[
+ \int\partial^\alpha f_j\,\varphi
+ =(-1)^{|\alpha|}\int f_j\partial^\alpha\varphi
+\]
+两边取极限，得到 $\int g_\alpha\varphi=(-1)^{|\alpha|}\int f\partial^\alpha\varphi$。所以 $g_\alpha$ 正是 $f$ 的弱导数，$f\in W^{k,p}$，全部有限项范数同时收敛。这是“函数及其导数独立取极限”后必须验证的相容性。$p=2$ 时范数由内积生成，结合完备性即得 Hilbert 性。
+\end{proof}
+
+\begin{exercise}[补充：不完备的自然函数空间]
+令 $c_{00}$ 为有限支集数列空间，取 $\ell^2$ 范数。构造一个不在 $c_{00}$ 中收敛的 Cauchy 序列，并确定其在 $\ell^2$ 中的极限。
+\end{exercise}
+\begin{solution}
+取 $x^{(N)}=(1,1/2,\ldots,1/N,0,\ldots)$。差的平方范数为相应的 $\sum j^{-2}$ 尾部，故 Cauchy。极限 $(1/j)_{j\ge1}$ 属于 $\ell^2$，但不属于 $c_{00}$；若在 $c_{00}$ 内有极限，坐标连续性会迫使它等于该无限支集数列，矛盾。
+\end{solution}

@@ -1,0 +1,69 @@
+% !TeX program = xelatex
+% !TeX encoding = UTF-8
+\documentclass[a4paper,12pt,oneside,fontpreset=auto,theme=ocean,
+  sectionstyle=classic,answers=true,solutions=appendix]{maki-notes}
+\usepackage{functional-analysis}
+
+\renewcommand{\LectureNotesTitle}{泛函分析}
+\renewcommand{\AuthorInfo}{书稿框架与专题讲义}
+\renewcommand{\CoverTitle}{泛函分析}
+\renewcommand{\CoverAuthorBlock}{吉田耕作第六版主线\\广义函数专题扩展}
+\renewcommand{\CoverFooterBlock}{以中译本为主，英文第六版为辅助\\逐章编写版 · 2026 年 10 月}
+\hypersetup{pdftitle={泛函分析：吉田主线与广义函数专题},pdfauthor={书稿框架与专题讲义},
+  colorlinks=true,linkcolor=LogicColor,citecolor=DefColor,urlcolor=ExColor}
+\SetCourseInfo{course={泛函分析},audience={高年级本科生与研究生},
+  term={第零、第一章正文与全书框架},date={2026-10-09}}
+
+% 快速编译时取消下面一行的注释；章节编号沿用完整编译生成的 aux。
+% \includeonly{books/03-distributions}
+% 只编译吉田主线中的一章：
+% \includeonly{books/yosida/01-seminorms}
+\begin{document}
+\frontmatter
+\hypersetup{pageanchor=false}
+\MakeTitlePage
+\clearpage
+\hypersetup{pageanchor=true}
+\include{books/00-preface}
+\tableofcontents
+\mainmatter
+% 第一部分保留吉田原书的 0--14 章编号，不以分部重排原章次。
+\part{泛函分析主线：吉田耕作第六版}
+\setcounter{chapter}{-1}
+\include{books/yosida/00-preliminaries}
+\include{books/yosida/01-seminorms}
+\include{books/yosida/02-baire-hausdorff}
+\include{books/yosida/03-orthogonal-projection}
+\include{books/yosida/04-hahn-banach}
+\include{books/yosida/05-strong-weak-convergence}
+\include{books/yosida/06-fourier-differential-equations}
+\include{books/yosida/07-dual-operators}
+\include{books/yosida/08-resolvent-spectrum}
+\include{books/yosida/09-semigroups}
+\include{books/yosida/10-compact-operators}
+\include{books/yosida/11-normed-rings-spectral}
+\include{books/yosida/12-other-representations}
+\include{books/yosida/13-ergodic-diffusion}
+\include{books/yosida/14-evolution-equations}
+
+% 第二部分为已写成的专题扩展，章号顺接为 15--22。
+% 吉田原书中的广义函数相关节保留在第一部分，正文可交叉引用本部分。
+\part{广义函数专题扩展}
+\include{books/01-motivation}
+\include{books/02-test-spaces}
+\include{books/03-distributions}
+\include{books/04-operations}
+\include{books/05-convolution}
+\include{books/06-fourier}
+\include{books/07-pde}
+\include{books/08-weighted-spectral}
+\appendix
+\include{books/yosida/15-edition-map}
+\include{books/09-reference-map}
+\backmatter
+\include{books/yosida/16-supplementary-notes}
+\PrintSolutions
+\include{books/10-bibliography}
+\include{books/yosida/17-index}
+\include{books/yosida/18-notation}
+\end{document}
