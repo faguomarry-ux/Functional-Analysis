@@ -33,6 +33,10 @@
 完备性与闭性保证 $m_j\to m\in M$，且 $\|x-m\|=d$。对 $v\in M$ 及实数 $t$，$\|x-m-tv\|^2\ge\|x-m\|^2$。展开关于 $t$ 的二次式得 $\operatorname{Re}(x-m,v)=0$；复数情形再以 $iv$ 代替 $v$，得到虚部也为零。因此 $n=x-m\in M^\perp$。两种分解之差属于 $M\cap M^\perp=\{0\}$，故唯一。最后的恒等式由正交性展开即得，并同时给出最佳逼近的唯一性。
 \end{proof}
 
+图 \ref{fig:y3-projection} 解释最佳逼近的勾股恒等式；存在性仍须由上述最小化序列证明。
+\input{figures/ch03-projection.tex}
+
+
 \begin{corollary}[双重正交补与投影的性质]\label{cor:y3-double-perp}
 对线性子空间 $L\subset H$，$L^{\perp\perp}=\overline L$。对闭子空间 $M$，$P_M$ 线性，且
 \[

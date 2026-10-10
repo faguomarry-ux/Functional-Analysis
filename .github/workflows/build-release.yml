@@ -37,6 +37,7 @@ jobs:
             /*.cls
             /books/
             /figure/
+            /figures/
             /scripts/
 
       - name: Install XeLaTeX and Chinese typesetting packages

@@ -1,0 +1,17 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[fa diagram]
+  \node[fa box] (r0) at (0,0) {$e_0=y$};
+  \node[fa box] (r1) at (4,0) {$e_1=y-Tx_0$};
+  \node[fa box] (r2) at (8.5,0) {$e_2=y-T(x_0+x_1)$};
+  \draw[->,fa main] (r0)--(r1) node[midway,above=10pt] {减去 $Tx_0$};
+  \draw[->,fa main] (r1)--(r2) node[midway,above=10pt] {减去 $Tx_1$};
+  \node[fa note] at (0,-1) {$d_Y(e_0,0)<\eta_0$};
+  \node[fa note] at (4,-1) {$d_Y(e_1,0)<\eta_1$};
+  \node[fa note] at (8.5,-1) {$d_Y(e_2,0)<\eta_2$};
+  \node[fa box] (limit) at (4.2,-2.5) {$\sum_jd_X(x_j,0)<\varepsilon\quad\text{且}\quad\eta_j\to0$\\$x=\sum_jx_j$ 存在，$Tx=y$};
+  \draw[->,fa accent] (r2.east)--(10.7,0)--(10.7,-2.5)--(limit.east);
+\end{tikzpicture}
+\caption{开映射定理把“像的闭包含小球”提升为“像包含小球”。每次利用闭包选择一个修正项；源空间完备性使可求和的小修正收敛，目标残差趋零才给出精确原像。图用平移不变度量，不假设 $F$ 空间有齐次范数。}
+\label{fig:y2-open}
+\end{figure}

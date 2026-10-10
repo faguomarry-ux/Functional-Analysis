@@ -29,6 +29,10 @@ Riesz 定理给出实函数 $h\in L^2(\rho)$，使 $\int f\,d\nu=\int fh\,d\rho$
 为证唯一，若 $p,q$ 都给出表示，先限制到一个 $\nu$ 有限的覆盖片，并测试其内 $\{p\ge q+1/r\}$。两密度在此可积且积分相同，故该集合的 $\mu$ 测度为零。对 $r$ 及覆盖片取可数并，再交换 $p,q$，即得 $p=q$ 几乎处处。密度在 $\nu$ 有限片上可积，亦保证它 $\mu$ 几乎处处有限。
 \end{proof}
 
+图 \ref{fig:y3-radon-nikodym} 只针对有限测度步骤，帮助追踪 $h$、$1-h$ 与最终密度 $p$ 的关系。
+\input{figures/ch03-radon-nikodym.tex}
+
+
 \begin{example}[原子与绝对连续性]
 在可数集上，若 $\mu(\{j\})=a_j>0$，$\nu(\{j\})=b_j\ge0$ 且各值有限，则 $p(j)=b_j/a_j$。相反，$\R$ 上的 Dirac 测度 $\delta_0$ 不绝对连续于 Lebesgue 测度，因为单点的后者测度为零而前者为一；不存在相应的 Lebesgue 可积密度。
 \end{example}

@@ -1,0 +1,19 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[fa diagram]
+  \draw[fa region] (-2,-1.7) rectangle (2.2,1.8);
+  \node at (-1.45,1.4) {$E_m$};
+  \draw[fa main] (.2,0) circle (1);
+  \node[fa dot,label=below:$x_0$] at (.2,0) {};
+  \node[fa dot,label=above:$x_0+h$] at (.8,.45) {};
+  \draw[->,fa accent] (.2,0)--(.8,.45);
+  \draw[->,fa main] (2.6,.1)--(4.3,.1) node[midway,above] {相减};
+  \draw[fa main,fill=LogicColor!8] (6,0) circle (1);
+  \node[fa dot,label=below:$0$] at (6,0) {};
+  \node[fa dot,label=above:$h$] at (6.6,.45) {};
+  \draw[->,fa accent] (6,0)--(6.6,.45);
+  \node[fa note] at (2.9,-2.4) {$x_0+h,x_0\in E_m\quad\Longrightarrow\quad\sup_a\|T_ah\|\le2m$};
+\end{tikzpicture}
+\caption{一致有界性证明的转折：Baire 定理在某个 $E_m$ 中找到非空内球，线性相减把它变为零附近的统一估计，再缩放至单位球。仅取 $x_0$ 与 $x_0+h$ 相减已足够，不要求 $E_m$ 本身是子空间。}
+\label{fig:y2-uniform}
+\end{figure}

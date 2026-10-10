@@ -32,6 +32,10 @@
 平移不变度量的三角不等式使部分和为 Cauchy 序列，故在 $X$ 中趋于 $x$，且 $d_X(x,0)\le\sum_jr_j=\varepsilon/2<\varepsilon$。连续性和 $\eta_j\to0$ 给出 $Tx=y$。因此 $B_Y(\eta_0)\subset T(B_X(\varepsilon))$。平移到任意点即得开性。此证明只用度量的三角不等式，未假定度量对标量绝对齐次，也未用局部凸性。
 \end{proof}
 
+图 \ref{fig:y2-open} 把逐次修正写成残差链；闭包给出近似，完备性才把近似拼成精确解。
+\input{figures/ch02-open-mapping.tex}
+
+
 \begin{corollary}[有界逆与商空间]\label{cor:y2-inverse}
 连续线性双射 $T:X\to Y$ 在 $F$ 空间之间具有连续逆。若 $X,Y$ 为 Banach 空间，则逆有界。若 $T$ 只是 Banach 空间之间的有界满射，则存在 $C>0$，对每个 $y$ 可选 $Tx=y$ 且 $\|x\|\le C\|y\|$；诱导映射 $X/\ker T\to Y$ 是 Banach 空间同构。
 \end{corollary}

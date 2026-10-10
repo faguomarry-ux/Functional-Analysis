@@ -30,6 +30,10 @@
 一般版本对每个目标连续半范数 $q$ 使用 $E_m=\{x:\sup_aq(T_ax)\le m\}$。同样的平移相减给出某零邻域上的统一界，再缩放得到任意小的 $q$ 界。对有限个目标半范数条件取源邻域的交，即得等度连续性。特别地，Fr\'echet 空间上逐点有界的连续线性泛函族满足 $\sup_a|T_ax|\le C\max_{j\le r}p_j(x)$，其中 $p_j$ 是有限多个源半范数。
 \end{proof}
 
+图 \ref{fig:y2-uniform} 对应 Banach 版本中从非零中心的内球转到零附近估计的步骤。
+\input{figures/ch02-uniform-boundedness.tex}
+
+
 \begin{corollary}[强极限的连续性]\label{cor:y2-strong-limit}
 若 $T_n:X\to Y$ 如上且 $T_nx\to Tx$ 对每个 $x$ 成立，则 $T$ 有界线性，且 $\|T\|\le\liminf_n\|T_n\|$。
 \end{corollary}

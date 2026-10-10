@@ -1,0 +1,12 @@
+% Shared styles; loaded once by functional-analysis.sty.
+\usetikzlibrary{arrows.meta,calc,positioning}
+\tikzset{
+  fa diagram/.style={font=\small,>=Stealth,line width=.7pt},
+  fa axis/.style={->,draw=MainText!65},
+  fa main/.style={draw=LogicColor,thick},
+  fa accent/.style={draw=ExColor,thick},
+  fa region/.style={draw=LogicColor,fill=LogicColor!8,rounded corners=2pt},
+  fa box/.style={fa region,align=center,inner sep=7pt},
+  fa note/.style={align=center,font=\footnotesize,text=MainText},
+  fa dot/.style={circle,fill=LogicColor,inner sep=1.8pt}
+}

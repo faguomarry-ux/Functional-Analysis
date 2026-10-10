@@ -1,0 +1,18 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[fa diagram]
+  \draw[fa axis] (-.5,0)--(7,0) node[right] {$\ker\mathrm{ev}_b$};
+  \draw[fa main] (-.3,2.1)--(6.3,2.1) node[right] {$g(b)=1$};
+  \node[fa dot,label=below:$0$] at (1,0) {};
+  \node[fa dot] (k) at (1,2.1) {};
+  \node[above left] at (k) {$g_*={K_b}/{K(b,b)}$};
+  \node[fa dot,label={above:$g=g_*+h$}] (g) at (5,2.1) {};
+  \draw[->,fa accent] (1,0)--(k) node[midway,left] {$K_b$ 方向};
+  \draw[->,fa main] (k)--(g) node[midway,below] {$h(b)=0$};
+  \draw[fa main,dashed] (1,0)--(g);
+  \draw[fa main] (1,.25)--(1.25,.25)--(1.25,0);
+  \node[fa note] at (3,-1) {$\|g\|^2=1/K(b,b)+\|h\|^2$，故 $g_*$ 唯一极小。};
+\end{tikzpicture}
+\caption{再生核把点值约束变成几何极小问题。假设 $K(b,b)>0$，则 $h(b)=(h,K_b)=0$；固定 $g(b)=1$ 的集合是与核向量正交的仿射超平面。图为其中一个二维实截面，不把一般函数空间当作平面。}
+\label{fig:y3-kernel-minimum}
+\end{figure}

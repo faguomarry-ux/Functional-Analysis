@@ -1,0 +1,16 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[fa diagram]
+  \draw[fa axis] (-.7,0)--(5.6,0) node[right] {$M$};
+  \draw[fa main] (-.5,2)--(5,2) node[right] {$x+M$};
+  \node[fa dot,label=above:$x$] at (3.7,2) {};
+  \node[fa dot,label=below:$0$] at (1,0) {};
+  \draw[fa accent] (1,0)--(1,2) node[midway,left] {$d$};
+  \draw[fa main,dashed] (1,0)--(3.7,2);
+  \draw[fa main,dashed] (1,0)--(4.7,2);
+  \node[fa note] at (3.2,-1) {$\|Qx\|=\inf_{m\in M}\|x+m\|$};
+  \node[fa box] at (8.5,1) {商空间把整条陪集\\视为同一个点 $Qx$};
+\end{tikzpicture}
+\caption{商范数在 $\R^2$ 欧氏范数中的模型：在同一陪集中改变代表元，再取距原点的距离下确界。本例中 $d$ 由垂足达到；一般 Banach 空间的闭子空间未必有最近点，正文完备性证明只选择近似代表。}
+\label{fig:y1-quotient}
+\end{figure}

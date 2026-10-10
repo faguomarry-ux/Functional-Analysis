@@ -109,7 +109,7 @@
 \end{proof}
 
 \begin{theorem}[控制收敛定理]\label{thm:y0-dominated}
-若可测函数 $f_n\to f$ a.e.，且存在非负可积函数 $g$ 使 $|f_n|\le g$ a.e.，则 $f$ 可积，$\int|f_n-f|\to0$，并且 $\int f_n\to\int f$。
+设 $f_n$ 与 $f$ 均可测，$f_n\to f$ a.e.，且存在非负可积函数 $g$ 使 $|f_n|\le g$ a.e.，则 $f$ 可积，$\int|f_n-f|\to0$，并且 $\int f_n\to\int f$。
 \end{theorem}
 \begin{proof}
 有 $|f|\le g$ a.e.，故 $f$ 可积。函数 $h_n=|f_n-f|$ 趋零且 $0\le h_n\le2g$。对非负函数 $2g-h_n$ 使用 Fatou 引理，得
@@ -119,6 +119,7 @@
 \]
 所以 $\int h_n\to0$，再用积分估计即可。
 \end{proof}
+这里把极限函数的可测性单独列出：在未完备的测度空间中，对可测零集上的值作任意修改，可能破坏可测性。若只给出 $f_n$ 几乎处处收敛，则应选取其可测极限代表，或先完备化测度空间，再使用上述结论。
 
 \begin{proposition}[积分的可数可加性与绝对连续性]\label{prop:y0-integral-ac}
 若 $f$ 可积，$\nu_f(E)=\int_Ef\,\dd\mu$ 为可数可加的实值或复值集合函数，且 $\mu(E)=0$ 蕴含 $\nu_f(E)=0$。更强地，对任意 $\varepsilon>0$，存在 $\delta>0$，使 $\mu(E)<\delta$ 时 $\int_E|f|\,\dd\mu<\varepsilon$。

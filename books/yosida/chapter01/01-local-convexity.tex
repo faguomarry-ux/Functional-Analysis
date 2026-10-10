@@ -68,6 +68,10 @@ $p_U$ 是有限值半范数，且
 
 反向证明中，每个零邻域包含绝对凸零邻域 $U$。定理 \ref{thm:y1-gauge} 给出连续半范数 $p_U$，且 $\{p_U<1\}\subset U$，所以这些半范数生成原拓扑。Hausdorff 性保证它们分离点，否则一个非零向量将落在所有零邻域中。
 \end{proof}
+
+图 \ref{fig:y1-seminorm} 比较单个半范数与分离点的半范数族；带状邻域的无界方向正是被忽略的方向。
+\input{figures/ch01-seminorm.tex}
+
 把半范数族扩充为一切有限最大值及正倍数，不改变拓扑。于是许多估计可写成 $q(Tx)\le Cp(x)$；若原来的族没有经过这种扩充，则右边必须允许有限个半范数的最大值。
 
 \subsection{光滑函数空间与测试函数空间}
@@ -109,6 +113,10 @@ $\varphi_j\to\varphi$ 在 $\Test(\Omega)$ 中成立，当且仅当存在共同�
 \]
 对任意紧支集 $\psi$ 此和只有有限项；在每个 $\Test_K$ 上，它是有限个点评价绝对值之和，所以由命题 \ref{prop:y1-inductive} 连续。然而 $q(\varphi_{j_l})\ge1$，矛盾。共同紧集存在后，全局半范数 $\psi\mapsto\sup_\Omega|\partial^\alpha\psi|$ 的各层限制连续，故在 $\Test$ 中连续，得到全部导数的一致收敛。一般极限通过相减化为零极限。
 \end{proof}
+
+图 \ref{fig:y1-test-support} 解释为什么局部光滑收敛不能替代共同紧支集条件。
+\input{figures/ch01-test-support.tex}
+
 \begin{pitfall}[局部收敛与测试函数收敛]
 若 $\eta\ne0$ 是紧支集光滑函数，则 $\eta(x-j)$ 在 $\mathcal E(\R)$ 中趋于零，却不在 $\Test(\R)$ 中趋于零；即使乘上 $e^{-j^2}$ 也一样。共同紧支集是额外条件。$\Test$ 通常不可度量，不能把序列判别未经证明地用于任意非线性映射的连续性。
 \end{pitfall}

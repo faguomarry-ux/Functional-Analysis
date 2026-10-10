@@ -1,0 +1,14 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[fa diagram]
+  \node[fa box] (G) at (0,2.5) {$G(T)\subset X\times Y$\\闭子空间，故完备};
+  \node[fa box] (X) at (-3,0) {$X$};
+  \node[fa box] (Y) at (3,0) {$Y$};
+  \draw[->,fa main] (G.south west)--(X.north) node[midway,left] {$\pi_X$};
+  \draw[->,fa main] (G.south east)--(Y.north) node[midway,right] {$\pi_Y$};
+  \draw[->,fa accent] (X.east)--(Y.west) node[midway,below] {$T=\pi_Y\circ\pi_X^{-1}$};
+  \node[fa note] at (0,-1.2) {$D(T)=X$ 保证 $\pi_X$ 满射；图像的定义保证单射。\\开映射定理使 $\pi_X^{-1}$ 连续。};
+\end{tikzpicture}
+\caption{闭图像定理的因子分解。图像闭性先给出完备空间，再由连续线性双射 $\pi_X$ 获得连续逆。若定义域并非整个 $X$，这一满射步骤失效，闭算子仍可能无界。}
+\label{fig:y2-closed-graph}
+\end{figure}

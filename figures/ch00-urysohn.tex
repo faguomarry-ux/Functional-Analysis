@@ -1,0 +1,19 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[fa diagram]
+  \draw[fa region] (0,0) rectangle (9,3.7);
+  \draw[fa region,fill=LogicColor!12] (.4,.4) rectangle (6.9,3.2);
+  \draw[fa region,fill=LogicColor!18] (.8,.8) rectangle (4.9,2.7);
+  \draw[fa region,fill=LogicColor!25] (1.2,1.2) rectangle (2.8,2.2);
+  \node[fa dot,label=below:$A$] at (1.7,1.65) {};
+  \node at (2.35,1.9) {$U_0$};
+  \node at (3.7,1.35) {$U_r$};
+  \node at (5.8,.95) {$U_s$};
+  \node at (7.8,.6) {$U_1$};
+  \node[fa note] at (4.5,4.25) {$r<s\quad\Longrightarrow\quad\overline U_r\subset U_s$};
+  \node[fa note] at (4.5,-.6) {$f(x)=\inf\bigl(\{r:x\in U_r\}\cup\{1\}\bigr)$};
+  \node[fa note] at (10,1.8) {$B$\\在 $U_1$ 外};
+\end{tikzpicture}
+\caption{Urysohn 构造中的嵌套开集。矩形仅表示包含关系；严格留出的间隙表示闭包仍包含于下一开集，并非假设空间有距离。函数值由点首次进入这些集合的指标下确界确定。}
+\label{fig:y0-urysohn}
+\end{figure}

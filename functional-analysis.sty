@@ -24,6 +24,9 @@
 \setcounter{tocdepth}{2}
 \setcounter{secnumdepth}{2}
 \setlength{\emergencystretch}{2em}
+% 本书所有教学插图及共用 TikZ 样式统一维护于 figures/。
+\input{figures/tikz-styles.tex}
+\renewcommand{\thefigure}{\thechapter.\arabic{figure}}
 \allowdisplaybreaks[2]
 % 模板在标题局部分组中 refstepcounter，正文 label 会回退到节号。
 % 在环境入口推进共享计数器，标题只读取编号，使引用与显示一致。

@@ -8,6 +8,8 @@
 
 更新时间：**2026-10-11（北京时间）**。
 
+最新更新：完成第 0–3 章 36 节现有正文、证明和解答的作者复核，加入 **13 幅 TikZ 教学插图**，并补明控制收敛定理中极限函数的可测性要求。本地三遍 XeLaTeX 编译通过，讲义共 **207 页**；逐图及相邻页排版检查完成。具体范围与证明边界见 [复核记录](docs/REVIEW-CH00-03.md)，独立数学审校仍待完成。
+
 ## 阅读入口
 
 - [学习讲义快照 / Releases](https://github.com/faguomarry-ux/Functional-Analysis/releases)：自动编译的 PDF 与 SHA-256 校验文件，快照标记为预发布。
@@ -38,16 +40,16 @@
 
 | 模块 | 当前状态 | 下一步 |
 | --- | --- | --- |
-| 第零章：预备知识 | 四节正文及章末文献已整理，8 道附解答习题 | 复核证明边界、引文与交叉引用 |
-| 第一章：半范数 | 十四节正文已整理，8 道附解答习题 | 二轮数学校对与排版检查 |
-| 第二章：Baire–Hausdorff 定理的应用 | 七节正文、证明、例子及 8 道附解答习题已整理 | 二轮独立数学校对与后续章节衔接 |
-| 第三章：正交投影及 F. Riesz 表示定理 | 十一节正文、证明、例子及 11 道附解答习题已整理 | 本轮数学检查与完整排版验收见 COVERAGE；后续独立复核 |
+| 第零章：预备知识 | 四节正文、8 道附解答习题；本轮复核并加入 2 幅图 | 独立核查证明边界、引文与交叉引用 |
+| 第一章：半范数 | 十四节正文、8 道附解答习题；本轮复核并加入 3 幅图 | 独立数学校对 |
+| 第二章：Baire–Hausdorff 定理的应用 | 七节正文、8 道附解答习题；本轮复核并加入 3 幅图 | 独立数学校对与后续章节衔接 |
+| 第三章：正交投影及 F. Riesz 表示定理 | 十一节正文、11 道附解答习题；本轮复核并加入 5 幅图 | 独立核查共轭约定及局部表示范围 |
 | 第四至十四章 | 96 个编号节保留标题、两版页码和占位提示 | 从第四章开始逐节补写 |
 | 广义函数专题：第 15–22 章 | 八章已有正文、证明、例子和习题 | 逐章复核与主线的衔接及出处 |
 | 版本对照与参考对照 | 已有附录框架与主要映射 | 随正文补写更新 |
 | 补充说明、索引、空间记号表、原书总书目 | 仍有占位；第零章相关五组文献已核对 | 整理实际引用、生成可检索索引 |
 | 汪林反例专题 | 参考书已列入，未系统整合 | 按定理条件建立反例索引 |
-| GitHub 工程配置 | 忽略规则、许可证、构建/发布工作流和项目文档已写入 | 第二章 Release 已验证，继续维护后续阶段快照 |
+| GitHub 工程配置 | 已有构建/发布流程，第二、三章阶段 Release 已成功 | 持续核验新提交的 Actions 构建与阶段快照 |
 
 核查依据见 [第零章 COVERAGE](books/yosida/chapter00/COVERAGE.md)、[第一章 COVERAGE](books/yosida/chapter01/COVERAGE.md)、[第二章 COVERAGE](books/yosida/chapter02/COVERAGE.md)、[第三章 COVERAGE](books/yosida/chapter03/COVERAGE.md) 和 [目录数据](books/yosida/catalog.json)。不把目录、占位或仅有编译产物的章节计为完成。
 
@@ -71,10 +73,10 @@
 - [ ] 核对 maki-notes 模板来源及许可；本地字体副本默认不提交。
 - [x] 工程文件已推送到 GitHub，初始 Actions 构建成功（2026-10-10）。
 - [x] 第二章 `[release]` 发布成功，已核验下载 PDF 与 SHA256（2026-10-11）。
-- [ ] 按第零、第一章 COVERAGE 完成第二轮校对，不提前把校对状态标为完成。
+- [x] 对第 0–3 章进行本轮作者复核，加入 13 幅插图并完成本地编译及排版检查（2026-10-11）。
 - [x] 补写第二章七节，更新核查记录并加入 8 道附解答习题（2026-10-11）。
 - [x] 补写第三章十一节与 11 道附解答习题，记录数学自查与证明边界（2026-10-11）。
-- [ ] 完成第二、三章二轮独立数学校对，继续第四章。
+- [ ] 完成第 0–3 章独立数学校对，继续第四章。
 - [ ] 建立反例索引，标明每个反例针对哪个定理条件。
 
 ## 仓库结构
@@ -87,6 +89,7 @@ LICENSE                            自定义个人非商业学习许可
 THIRD_PARTY_NOTICE.md               教材、模板、字体的权利说明
 CONTRIBUTING.md                     写作与校对规范
 docs/PROGRESS.md                    详细进度、时间线和项目待办
+docs/REVIEW-CH00-03.md               第 0–3 章数学复核与插图验收记录
 main.tex                           封面、目录、分部、章节、附录与答案
 functional-analysis.sty            本项目符号与排版设置
 maki-notes.cls / maki-notes.sty      既有讲义模板
@@ -103,7 +106,11 @@ books/
                                    广义函数专题八章
   09-reference-map.tex              专题参考书对照
   10-bibliography.tex               统一文献表
-figure/                            插图资源
+figure/                            既有模板插图资源
+figures/                           教学插图统一目录
+  README.md                        第 0–3 章 13 幅插图索引与维护约定
+  tikz-styles.tex                   共用 TikZ 样式
+  ch00-*.tex ... ch03-*.tex          随正文载入的插图、图注及标签
 scripts/build-book.sh               Linux/macOS 完整编译入口
 build-book.ps1 / build.bat          Windows 编译入口
 五本教材 PDF                       参考资料，使用原有文件名
@@ -148,7 +155,7 @@ GitHub Actions 在 Ubuntu 上安装 texlive-xetex、texlive-lang-chinese、texli
 例如已有首次提交、默认分支及 GitHub 用户配置后：
 
 ```powershell
-git add README.md docs books main.tex functional-analysis.sty
+git add README.md docs books figures .github/workflows/build-release.yml main.tex functional-analysis.sty
 git commit -m "docs: 完成第三章学习笔记 [release]"
 git push
 ```
@@ -182,6 +189,19 @@ git push -u origin main
 首次 `git add .` 会纳入五本参考 PDF、正文和工程文件，并排除 fonts/、tmp/、output/ 及生成文件。Git 提交需要事先配置 user.name 与 user.email，SSH 远端需要可用的 GitHub 密钥配置。手工触发工作流前，工作流文件应已存在于 GitHub 默认分支。
 
 之后按学习单元提交，采用 notes:、fix:、docs:、ci: 等简洁前缀。日常记录不加发布关键词；阶段学习成果才加 `[release]`。每次补写后同步更新 [PROGRESS.md](docs/PROGRESS.md) 与相应 COVERAGE，避免文档状态落后于正文。
+
+## 教学插图与复核
+
+第 0–3 章加入 13 张 TikZ 矢量图，所有源文件与共用样式统一放在 [figures/](figures/README.md)，正文通过 input 载入。插图解释关键构造并注明适用条件；本轮的数学复核范围和排版验收记录见 [第 0–3 章复核记录](docs/REVIEW-CH00-03.md)。
+
+| 章节 | 插图主题 |
+| --- | --- |
+| 第零章（2 幅） | Urysohn 闭包嵌套；Baire 嵌套闭球与完备性 |
+| 第一章（3 幅） | 半范数零空间与有限交邻域；共同紧支集；商空间与距离下确界 |
+| 第二章（3 幅） | 一致有界性的平移；开映射的逐次修正；闭图像的投影分解 |
+| 第三章（5 幅） | 正交投影；Ascoli 三段误差；Radon–Nikodym 密度；再生核极小问题；分布局部结构 |
+
+插图使用现有主题颜色，无需外部绘图程序或 shell escape。图号按章编排，图注注明二维示意和一般结论的区别。最终本地检查没有未定义引用、重复标签或 Overfull；原有专题中的两处 Underfull 提示保留。207 页是 Windows 本地字体下的页数，GitHub 的 Linux 构建可能有分页差异。
 
 ## 写作和数学约定
 

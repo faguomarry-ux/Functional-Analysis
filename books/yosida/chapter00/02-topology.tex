@@ -131,6 +131,10 @@ $x\in\overline A$ 当且仅当 $x$ 的每个开邻域都与 $A$ 相交。因此 
 后一等式中，若 $x\notin\overline U_r$，则 $x$ 不属于任何 $U_s$（$s\le r$），所以 $f(x)\ge r>a$；若 $f(x)>a$，在 $a$ 与 $f(x)$ 之间取 $r<s$，则 $x\notin U_s$，从而 $x\notin\overline U_r$。这些原像均开，证明连续性。
 \end{proof}
 
+图 \ref{fig:y0-urysohn} 把二进指标构造的关键闭包包含关系单独画出。
+\input{figures/ch00-urysohn.tex}
+
+
 \begin{corollary}[局部紧空间中的截断函数]\label{cor:y0-cutoff}
 若 $X$ 局部紧且 Hausdorff，$K\subseteq O\subseteq X$，其中 $K$ 紧、$O$ 开，则有 $\varphi\in C_c(X)$ 满足 $0\le\varphi\le1$、$\varphi|_K=1$、$\operatorname{supp}\varphi\subseteq O$。这里 $C_c(X)$ 表示连续且具有紧支集的函数。
 \end{corollary}
@@ -203,6 +207,10 @@ $x\in\overline A$ 当且仅当 $x$ 的每个开邻域都与 $A$ 相交。因此 
 
 在局部紧 Hausdorff 空间中，每个非空开集包含一个非空开集 $V$，使 $\overline V$ 紧且包含于原开集；这由单点紧化空间的正则性得到。于是递归取 $V_n$ 使 $\overline V_1\subseteq O\cap G_1$、$\overline V_{n+1}\subseteq V_n\cap G_{n+1}$，且各闭包紧。闭集 $\overline V_n$ 在 $\overline V_1$ 中具有有限交性质，交非空，交中的点即属于 $O\cap\bigcap_nG_n$。最后，对无处稠密集的闭包取补集，便得到第一纲表述。
 \end{proof}
+
+图 \ref{fig:y0-baire} 说明度量情形中“选球”与“取极限”各自负责哪一步。
+\input{figures/ch00-baire.tex}
+
 
 \begin{proposition}[连续函数逐点极限的不连续点]\label{prop:y0-baire-one}
 设 $f_n:X\to\R$ 连续，且在每点收敛于有限值 $f$。则 $f$ 的不连续点集为第一纲集。若 $X$ 为 Baire 空间，$f$ 的连续点集稠密。

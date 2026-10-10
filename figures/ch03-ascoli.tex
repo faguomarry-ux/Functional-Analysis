@@ -1,0 +1,18 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[fa diagram]
+  \node[fa box] (a) at (0,0) {$g_n(s)$};
+  \node[fa box] (b) at (3.1,0) {$g_n(s_j)$};
+  \node[fa box] (c) at (6.3,0) {$g_k(s_j)$};
+  \node[fa box] (d) at (9.4,0) {$g_k(s)$};
+  \draw[<->,fa main] (a)--(b) node[midway,above] {$<\varepsilon/3$};
+  \draw[<->,fa accent] (b)--(c) node[midway,above] {$<\varepsilon/3$};
+  \draw[<->,fa main] (c)--(d) node[midway,above] {$<\varepsilon/3$};
+  \node[fa note] at (1.55,-1) {等度连续};
+  \node[fa note] at (4.7,-1) {有限网点上 Cauchy};
+  \node[fa note] at (7.85,-1) {等度连续};
+  \node[fa note] at (4.7,-2) {$d(s,s_j)<\delta$，网点有限，故中间项的 $N$ 可统一选择。\\三项相加：$\sup_s|g_n(s)-g_k(s)|<\varepsilon$。};
+\end{tikzpicture}
+\caption{Ascoli 证明的三段误差。对角抽取得到稠密点上的收敛，紧性提供有限 $\delta$ 网，等度连续把网点控制传递到全部点。箭头表示数值差的估计，并非函数之间的算子。}
+\label{fig:y3-ascoli}
+\end{figure}

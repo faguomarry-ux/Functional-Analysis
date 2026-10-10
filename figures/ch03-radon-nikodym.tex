@@ -1,0 +1,15 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[fa diagram]
+  \node[fa box] (rho) at (0,2.3) {$\rho=\mu+\nu$};
+  \node[fa box] (mu) at (-3.6,0) {$\mu(E)=\int_E(1-h)\,d\rho$};
+  \node[fa box] (nu) at (3.6,0) {$\nu(E)=\int_Eh\,d\rho$};
+  \draw[->,fa main] (rho)--(mu) node[midway,left] {$1-h$};
+  \draw[->,fa main] (rho)--(nu) node[midway,right] {$h$};
+  \draw[->,fa accent] (mu.south) to[bend right=22] node[midway,below] {$p=h/(1-h)$} (nu.south);
+  \node[fa note] at (0,3.5) {有限测度情形：Riesz 表示先得到 $h$，$0\le h\le1$};
+  \node[fa note] at (0,-2.5) {$A=\{h=1\}$：$\mu(A)=0\Rightarrow\nu(A)=0\Rightarrow\rho(A)=0$。};
+\end{tikzpicture}
+\caption{Radon--Nikodym 证明的共同参照测度。箭头上的函数表示积分权重；绝对连续性排除分母为零的集合，随后用简单函数与单调收敛证明换测度公式。一般 $\sigma$ 有限情形先分成两测度都有限的片。}
+\label{fig:y3-radon-nikodym}
+\end{figure}

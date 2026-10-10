@@ -22,6 +22,10 @@ $H$ 存在再生核，当且仅当每个点值泛函 $f\mapsto f(b)$ 连续。�
 有核时，Cauchy--Schwarz 给出点值有界；点值有界时逐点应用 Riesz 定理，便构造唯一的 $K_b$。由再生性，$K(a,b)=(K_b,K_a)$，故有共轭对称性及对角线等式。取 $\|\sum_jc_jK_{b_j}\|^2$ 即得非负二次型。泛函范数及等号条件来自 Riesz 定理和 Cauchy--Schwarz 等号条件。若 $K(b,b)=0$，则所有 $f(b)=0$，最大值为零，但归一化核向量的公式无意义。
 \end{proof}
 
+图 \ref{fig:y3-kernel-minimum} 把再生性解释为点值约束下的最小范数问题；这也是后面 Bergman 映射证明所用的几何步骤。
+\input{figures/ch03-reproducing-kernel.tex}
+
+
 \begin{proposition}[由正交基展开核]\label{prop:y3-kernel-basis}
 若 $\{e_\alpha\}$ 为 $H$ 的 Hilbert 基，则
 \[

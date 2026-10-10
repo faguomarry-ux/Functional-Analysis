@@ -33,6 +33,10 @@
 选 $x_1$ 满足 $Qx_1=\xi_{j_1}$。级数 $x=x_1+\sum_ku_k$ 在 Banach 空间中绝对收敛。部分和 $s_k=x_1+\sum_{l<k}u_l$ 满足 $Qs_k=\xi_{j_k}$，因此 $\xi_{j_k}\to Qx$。原序列由 Cauchy 性也趋于 $Qx$。这里仅需要近似达到下确界的代表，完全不需要最近点存在。
 \end{proof}
 
+图 \ref{fig:y1-quotient} 给出商范数的有限维模型；证明中的代表元只须近似达到下确界。
+\input{figures/ch01-quotient.tex}
+
+
 \begin{proposition}[补充：经商空间分解算子]
 若有界线性算子 $T:X\to Y$ 满足 $M\subset\ker T$，则存在唯一有界线性算子 $\widetilde T:X/M\to Y$，满足 $T=\widetilde TQ$，并且 $\|\widetilde T\|=\|T\|$。
 \end{proposition}

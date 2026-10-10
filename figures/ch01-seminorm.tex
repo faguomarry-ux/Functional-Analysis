@@ -1,0 +1,22 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[fa diagram]
+\begin{scope}
+  \fill[LogicColor!12] (-.8,-1.7) rectangle (.8,1.7);
+  \draw[fa main,dashed] (-.8,-1.7)--(-.8,1.7) (.8,-1.7)--(.8,1.7);
+  \draw[fa axis] (-2,0)--(2,0) node[right] {$x_1$};
+  \draw[fa axis] (0,-1.9)--(0,2) node[above] {$x_2$};
+  \draw[fa accent] (0,-1.7)--(0,1.7);
+  \node[fa note] at (0,-2.5) {$p_1(x)=|x_1|<1$\\竖直方向是 $\ker p_1$};
+\end{scope}
+\begin{scope}[xshift=6.5cm]
+  \fill[LogicColor!12] (-.8,-.8) rectangle (.8,.8);
+  \draw[fa main,dashed] (-.8,-.8) rectangle (.8,.8);
+  \draw[fa axis] (-2,0)--(2,0) node[right] {$x_1$};
+  \draw[fa axis] (0,-1.9)--(0,2) node[above] {$x_2$};
+  \node[fa note] at (0,-2.5) {$p_1(x)<1,\ p_2(x)=|x_2|<1$\\$\ker p_1\cap\ker p_2=\{0\}$};
+\end{scope}
+\end{tikzpicture}
+\caption{一个半范数可以忽略非零方向；有限个半范数球的交形成基本零邻域。本图采用 $\R^2$ 的坐标例子，虚线边界不属于开球；一般局部凸空间不一定存在有界零邻域。}
+\label{fig:y1-seminorm}
+\end{figure}

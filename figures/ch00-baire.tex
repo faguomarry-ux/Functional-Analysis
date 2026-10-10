@@ -1,0 +1,17 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[fa diagram]
+  \draw[fa region] (-2.8,-2.1) rectangle (3,2.2);
+  \node at (-2.2,1.8) {$O$};
+  \draw[fa main,fill=LogicColor!8] (0,0) circle (1.65);
+  \draw[fa main,fill=LogicColor!16] (.55,.1) circle (.86);
+  \draw[fa main,fill=LogicColor!26] (.8,.03) circle (.38);
+  \node[fa dot,label=below:$x$] at (.87,0) {};
+  \draw[fa main] (-1,1.3)--(3.7,1.8) node[right] {$K_1\subset O\cap G_1$};
+  \draw[fa main] (1.25,.6)--(3.7,.7) node[right] {$K_2\subset B(x_1,r_1)\cap G_2$};
+  \draw[fa main] (1.15,-.1)--(3.7,-.5) node[right] {$K_3\subset B(x_2,r_2)\cap G_3$};
+  \node[fa note] at (5,-1.6) {$r_n\to0$，中心为 Cauchy 序列\\完备性使极限留在 $X$ 内};
+\end{tikzpicture}
+\caption{Baire 定理的完备度量空间证明。稠密开集允许逐步选球，闭球嵌套使极限属于每个 $G_n$。圆盘是度量球的平面示意；一般度量球不必是圆盘。}
+\label{fig:y0-baire}
+\end{figure}

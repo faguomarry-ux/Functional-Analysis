@@ -1,0 +1,15 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[fa diagram]
+  \node[fa box] (test) at (0,0) {$\varphi\in\Test_K$};
+  \node[fa box] (R) at (4.5,0) {$\partial^\beta\varphi\in R\subset L^2(K)$};
+  \node[fa box] (scalar) at (9,0) {$T(\varphi)$};
+  \draw[->,fa main] (test)--(R) node[midway,above] {单射};
+  \draw[->,fa main] (R)--(scalar) node[midway,above] {$S$ 有界};
+  \node[fa box] (riesz) at (4.5,-2.3) {$S(\psi)=\int_K\psi\overline g$，$g\in\overline R$\\令 $f=\overline g$};
+  \draw[->,fa accent] (R)--(riesz) node[midway,right] {延至 $\overline R$，Riesz};
+  \node[fa note] at (4.5,-3.8) {$\overline U\subset\operatorname{int}K$ 时，$T|_U=(-1)^{|\beta|}\partial^\beta f|_U$；\\再逐坐标积分得到连续 $F$，$T|_U=\partial^{\beta+\boldsymbol 1}F|_U$。};
+\end{tikzpicture}
+\caption{局部结构证明先把测试函数的高阶导数放入 $L^2$，再在其闭包上使用 Riesz 表示。$\beta=(m+1,\ldots,m+1)$ 的总阶数是 $n(m+1)$；限制到 $U$ 才得到域上的分布恒等式，不能据此断言全域同阶。}
+\label{fig:y3-local-structure}
+\end{figure}

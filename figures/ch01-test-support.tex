@@ -1,0 +1,15 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[fa diagram,x=1cm,y=1cm]
+  \fill[LogicColor!8] (-1.2,-.2) rectangle (1.2,1.55);
+  \node at (0,1.85) {固定紧集 $K$};
+  \draw[fa axis] (-2,0)--(8,0) node[right] {$x$};
+  \foreach \a/\h/\c in {0/1/LogicColor,3/.65/ExColor,6/.35/DefColor}{
+    \draw[thick,draw=\c] plot[domain=-1:1,samples=40] ({\a+\x},{\h*exp(1-1/(1.001-\x*\x))});
+  }
+  \node[fa note] at (3,-.65) {$\eta(x)$\hspace{1.2cm}$\eta(x-j)$\hspace{1cm}$a_j\eta(x-j)$};
+  \draw[->,fa accent] (2.1,1.2)--(6.8,1.2) node[midway,above] {支集逃向无穷远};
+\end{tikzpicture}
+\caption{测试函数收敛需要共同紧支集。对非零 $\eta\in\Test(\R)$，平移在每个固定紧集上最终为零，故在 $\mathcal E$ 中趋零；即使 $a_j>0$ 趋零，$a_j\eta(\cdot-j)$ 仍不在 $\Test$ 中趋零。图中衰减高度只作示意，不给出统一导数估计。}
+\label{fig:y1-test-support}
+\end{figure}

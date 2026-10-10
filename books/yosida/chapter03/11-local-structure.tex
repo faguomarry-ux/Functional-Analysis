@@ -52,6 +52,10 @@ $|T(\varphi)|\le C'\|\partial^\beta\varphi\|_2$，$\beta=(m+1,\ldots,m+1)$。在
 由支配收敛，$x_k\to x$ 时指示函数除有限个坐标超平面外逐点收敛，而这些超平面 Lebesgue 测度为零，故 $F$ 连续。反复使用一维积分原函数的分布求导公式与 Fubini 定理，得 $\partial_1\cdots\partial_nF=(-1)^{|\beta|}\widetilde f$。另一方面，在 $U$ 上，结构公式意味着 $T=(-1)^{|\beta|}\partial^\beta\widetilde f$。合并即得 $T|_U=\partial^{\beta+(1,\ldots,1)}F|_U$。
 \end{proof}
 
+图 \ref{fig:y3-local-structure} 汇总局部表示的构造，强调闭子空间表示与限制域两个环节。
+\input{figures/ch03-local-structure.tex}
+
+
 \begin{remark}[“局部”与表示的范围]
 固定 $K$ 的公式最初只对支于 $K$ 的测试函数成立；选 $\overline U\subset\operatorname{int}K$ 后，才能无歧义地称其为 $U$ 上的分布恒等式。一般 $T$ 在不同紧集上的阶数可能增长，所以不能从局部结构推出一个全域统一的有限阶数。连续原函数通常既不唯一，也不必在全域由同一个积分公式给出。
 \end{remark}
