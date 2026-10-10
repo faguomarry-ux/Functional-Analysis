@@ -1,0 +1,73 @@
+\section{奇点凝聚原理}\label{sec:yosida-02-04}
+\noindent\textit{原书位置：中译本第 75--77 页；英文版第 72--75 页。}
+
+\begin{theorem}[有界点集合的二择性]\label{thm:y2-bounded-points}
+设 $X$ 为 Banach 空间，$T_j:X\to Y_j$ 为有界线性算子，$Y_j$ 赋范。则
+\[
+ B=\{x:\sup_j\|T_jx\|<\infty\}
+\]
+或者等于 $X$，或者是第一纲集。
+\end{theorem}
+\begin{proof}
+写 $B=\bigcup_m E_m$，其中 $E_m=\{x:\sup_j\|T_jx\|\le m\}$ 闭。若 $B$ 不是第一纲集，某 $E_m$ 有内点。与共鸣定理相同的平移相减和缩放给出 $\sup_j\|T_j\|<\infty$，故 $B=X$。反之，各 $E_m$ 均闭且无内点，便是无处稠密集。
+\end{proof}
+
+\begin{corollary}[Banach--Steinhaus 奇点凝聚原理]\label{cor:y2-condensation}
+设 $T_{p,q}:X\to Y_p$ 为有界线性算子，$p,q\ge1$。若对每个 $p$ 存在 $x_p$ 使 $\sup_q\|T_{p,q}x_p\|=\infty$，则
+\[
+ G=\{x:\sup_q\|T_{p,q}x\|=\infty\ \text{对所有 }p\}
+\]
+是稠密的余第一纲集。这里可等价地把上确界无穷写为 $\limsup_{q\to\infty}\|T_{p,q}x\|=\infty$，不能换成普通极限。
+\end{corollary}
+\begin{proof}
+对每个 $p$，定理中的有界点集合 $B_p$ 不等于 $X$，所以是第一纲集。$G=X\setminus\bigcup_pB_p$ 的补集仍是第一纲集，由 Baire 定理得稠密性。
+\end{proof}
+
+\begin{theorem}[处处无有限导数的连续函数：补全锯齿论证]\label{thm:y2-nowhere-differentiable}
+在 $C([0,1];\R)$ 中，处处无有限导数的函数构成一个包含稠密余第一纲集的集合；端点的导数按单侧理解。
+\end{theorem}
+\begin{proof}
+对 $m\ge1$ 令
+\[
+ M_m=\left\{f:\exists t\in[0,1/2],\quad
+ |f(t+h)-f(t)|\le mh\ \text{对所有 }0<h<1/2\right\}.
+\]
+若 $f_j\to f$ 一致且 $f_j\in M_m$，由相应 $t_j$ 的紧性可取 $t_j\to t$。固定 $h\in(0,1/2)$，连续性和一致收敛使不等式传到 $t$，故 $f\in M_m$；所以 $M_m$ 闭。
+
+现证 $M_m$ 无内点。给定 $f$ 和误差 $\varepsilon$，先用分段线性 $g$ 一致逼近 $f$ 到 $\varepsilon/2$，记其有限个斜率绝对值的最大值为 $L$。在 $g$ 的每个线性区间上细分，叠加端点为零、振幅小于 $\varepsilon/2$ 的连续三角波 $w$，使每段斜率为 $\pm M$ 且 $M>L+m$；只需把三角波周期取得足够短，并使每个原区间包含整数个周期。于是 $g+w$ 的每个线性小段斜率的绝对值都大于 $m$。对每个 $t\in[0,1/2]$，即使 $t$ 是顶点，也有一个充分短的右侧线性区间，其差商绝对值大于 $m$。所以 $g+w\notin M_m$，而 $\|g+w-f\|_\infty<\varepsilon$。
+
+因此 $G_+=C([0,1])\setminus\bigcup_mM_m$ 是稠密余第一纲集。若 $f$ 在 $t\in[0,1/2]$ 有有限右导数，则小 $h$ 的差商有界；较大 $h$ 的差商由 $2\|f\|_\infty/h$ 控制，故 $f\in M_m$ 对某个 $m$ 成立。由此 $G_+$ 中函数在左半区间无有限右导数。反射 $Rf(t)=f(1-t)$ 是同胚，$G_+\cap R(G_+)$ 仍为稠密余第一纲集，其函数在整个区间无有限导数。
+\end{proof}
+
+\begin{example}[连续周期函数的 Fourier 部分和可以无界]\label{ex:y2-fourier-divergence}
+在实 Banach 空间 $C(\mathbb T)$ 上使用标准 Dirichlet 核
+\[
+ D_N(s)=\sum_{k=-N}^Ne^{iks}
+ =\frac{\sin((N+1/2)s)}{\sin(s/2)},\qquad
+ S_Nf(t)=\frac1{2\pi}\int_{-\pi}^{\pi}f(t-s)D_N(s)\,ds.
+\]
+对固定 $t$，$f\mapsto S_Nf(t)$ 为有界实线性泛函，其范数为 $(2\pi)^{-1}\|D_N\|_1$。上界来自积分估计；下界可取连续周期函数近似 $\operatorname{sgn}D_N$，例如 $D_N/\sqrt{D_N^2+\delta^2}$，再令 $\delta\downarrow0$，并相应平移反射。
+
+这些范数无界。事实上 $\sin(s/2)\le s/2$ 给出
+\[
+ \int_0^\pi|D_N(s)|\,ds
+ \ge2\int_0^{(N+1/2)\pi}\frac{|\sin v|}{v}\,dv
+ \ge c\sum_{j=1}^{N-1}\frac1{j+1},
+\]
+最后一步在 $[j\pi+\pi/6,j\pi+5\pi/6]$ 上用 $|\sin v|\ge1/2$；$c>0$ 与 $N$ 无关。因此由共鸣定理的逆否命题，对每个固定 $t$ 存在 $f_t$ 使 $\sup_N|S_Nf_t(t)|=\infty$。
+
+给定任意可数点集，加入一个可数稠密集得到 $\{t_p\}$。奇点凝聚原理给出一个连续 $f$，使上述无界性在全部 $t_p$ 同时发生。对这个 $f$，令
+\[
+ F_m=\bigcap_N\{t:|S_Nf(t)|\le m\}.
+\]
+各 $F_m$ 闭，且不可能含非空开弧，否则与 $\{t_p\}$ 稠密且部分和无界矛盾。所以 $P=\mathbb T\setminus\bigcup_mF_m$ 是余第一纲集，并包含所有预先指定的点。在 $P$ 上有 $\limsup_N|S_Nf(t)|=\infty$。
+
+补充说明：$P$ 的势为连续统，无需连续统假设。写 $P=\bigcap_mO_m$ 为稠密开集之交，在任意开弧内递归选择两两分离的闭子弧，令第 $m$ 层均落在 $O_1\cap\cdots\cap O_m$，直径趋零。每个二进制无限序列确定一个不同的交点，因而向 $P$ 嵌入 $\{0,1\}^{\mathbb N}$；反向上界由 $P\subset\mathbb T$ 给出。这展开了原书关于无须连续统假设的注记。
+\end{example}
+
+\begin{exercise}
+设 $X$ 为 Banach 空间，$T_n:X\to Y_n$ 有界线性且 $\sup_n\|T_n\|=\infty$。证明存在稠密余第一纲集 $G$，使每个 $x\in G$ 满足 $\limsup_n\|T_nx\|=\infty$。该结论是否保证 $\|T_nx\|\to\infty$？
+\end{exercise}
+\begin{solution}
+若有界点集合等于 $X$，共鸣定理给出算子范数一致有界，矛盾。因此有界点集合为第一纲集，其补集就是所求 $G$。不保证普通极限：在 $X=Y_n=\R$ 上取 $T_{2k}=0$、$T_{2k-1}x=kx$。对 $x\ne0$ 上极限无穷，而偶数子列恒为零。
+\end{solution}

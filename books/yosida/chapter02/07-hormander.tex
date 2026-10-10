@@ -1,0 +1,64 @@
+\section{闭图像定理的一个应用（H\"ormander 定理）}\label{sec:yosida-02-07}
+\noindent\textit{原书位置：中译本第 82--83 页；英文版第 80--81 页。}
+
+本节展示一个有代表性的思路：先由定性光滑性保证导数算子处处有定义，再以闭图像定理得到统一估计，最后代入指数函数，把估计变成多项式零点的限制。
+
+\begin{definition}[本节使用的亚椭圆性]
+令 $D_j=(1/i)\partial_{x_j}$，$P(D)$ 为常系数偏微分算子，$P(\zeta)$ 为对应复多项式。本节沿用原书的 $L^2_{\Loc}$ 表述：若在任意开子域上，$u\in L^2_{\Loc}$ 且 $P(D)u$ 在某开集光滑，必有 $u$ 在该开集具有光滑代表，则称 $P(D)$ 亚椭圆。现代通常要求同一结论对所有分布 $u$ 成立；该较强定义当然蕴含本节所用性质。下面的必要条件仅需 $L^2_{\Loc}$ 形式。
+\end{definition}
+
+分布等式使用形式转置 $P^t(D)=P(-D)$：$P(D)u=0$ 指 $\int uP(-D)\varphi=0$ 对所有测试函数成立；不加入 Hilbert 配对的复共轭。
+
+\begin{theorem}[H\"ormander 的复特征根必要条件]\label{thm:y2-hormander}
+若 $P(D)$ 亚椭圆，则对每个 $A>0$ 存在 $B_A<\infty$，使
+\[
+ P(\zeta)=0,\quad\zeta=\xi+i\eta\in\mathbb C^n,\quad
+ |\eta|\le A\quad\Longrightarrow\quad|\zeta|\le B_A.
+\]
+等价地，零点集上的 $|\zeta|\to\infty$ 必迫使 $|\operatorname{Im}\zeta|\to\infty$。这采用中译本第 82 页校注中修正的常数次序。
+\end{theorem}
+\begin{proof}
+选非空有界开集 $V\Subset W\subset\R^n$，并使 $W$ 有界。令
+\[
+ U=\{u\in L^2(W):P(D)u=0\text{ 于分布意义}\}.
+\]
+对每个测试函数，$u\mapsto\int_WuP(-D)\varphi$ 在 $L^2(W)$ 上连续，故其核闭；$U$ 为这些核的交，所以是 Banach 空间。亚椭圆性保证每个 $u\in U$ 在 $W$ 光滑，从而 $\partial_ju|_V\in L^2(V)$。
+
+算子 $A_j:U\to L^2(V)$、$A_ju=\partial_ju|_V$ 图像闭：若 $u_l\to u$ 于 $L^2(W)$、$A_ju_l\to v$ 于 $L^2(V)$，对 $\varphi\in\Test(V)$ 分部积分取极限得
+\[
+ \int_Vv\varphi=-\int_Vu\partial_j\varphi,
+\]
+所以 $v=\partial_ju$。闭图像定理给出常数 $C$，使
+\[
+ \sum_{j=1}^n\|\partial_ju\|_{L^2(V)}^2
+ \le C\|u\|_{L^2(W)}^2\quad(u\in U).
+\]
+若 $P(\zeta)=0$，取 $u(x)=e^{ix\cdot\zeta}$。因 $W$ 有界，$u\in L^2(W)$ 且 $P(D)u=P(\zeta)u=0$，代入得
+\[
+ |\zeta|^2\int_Ve^{-2x\cdot\eta}\,dx
+ \le C\int_We^{-2x\cdot\eta}\,dx.
+\]
+选择 $R$ 使 $W\subset B(0,R)$。若 $|\eta|\le A$，左边积分不小于 $|V|e^{-2RA}$，右边积分不大于 $|W|e^{2RA}$，所以
+\[
+ |\zeta|^2\le C\frac{|W|}{|V|}e^{4RA}.
+\]
+右边与具体零点无关，取平方根即得 $B_A$。这补全了原书“虚部有界则根有界”的积分比值步骤。
+\end{proof}
+
+\begin{example}[Laplace 算子与遗漏方向的导数]
+对 Laplace 算子取 $P(\zeta)=-\sum_j\zeta_j^2$。若 $P(\xi+i\eta)=0$，比较实虚部得 $|\xi|^2=|\eta|^2$、$\xi\cdot\eta=0$，所以 $|\zeta|^2=2|\eta|^2$，满足必要条件。但必要条件本身不构成 Weyl 引理的证明；其充分性留待后续理论。
+
+在 $\R^2$ 上，$P(D)=D_1$ 的零点包含 $(0,t)$，$t\in\R$，虚部恒为零而模无界，因而不亚椭圆。也可直接取 $u(x_1,x_2)=|x_2|$：它局部平方可积且 $D_1u=0$，却不光滑。这里的缺陷来自算子没有控制第二个方向。
+\end{example}
+
+\begin{exercise}
+对常系数算子 $P(D)$，假定每个局部平方可积的齐次解均光滑。证明对任意多重指标 $\alpha$ 及非空有界开集 $V\Subset W$，存在 $C_{\alpha,V,W}$，使
+\[
+ \|\partial^\alpha u\|_{L^2(V)}\le C_{\alpha,V,W}\|u\|_{L^2(W)}
+ \quad(u\in L^2(W),\ P(D)u=0).
+\]
+这些常数能否由本章论证直接算出？
+\end{exercise}
+\begin{solution}
+齐次解空间 $U$ 在 $L^2(W)$ 中闭。光滑性使 $u\mapsto\partial^\alpha u|_V$ 全定义。若 $u_l\to u$ 于 $U$ 且 $\partial^\alpha u_l\to v$ 于 $L^2(V)$，对测试函数配对得 $\int v\varphi=(-1)^{|\alpha|}\int u\partial^\alpha\varphi$，故 $v=\partial^\alpha u$。闭图像定理给出估计。该论证保证常数存在，并未提供可计算的最佳常数或其随 $\alpha$、区域变化的定量规律。
+\end{solution}

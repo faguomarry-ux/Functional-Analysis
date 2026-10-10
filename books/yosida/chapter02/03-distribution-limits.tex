@@ -1,0 +1,38 @@
+\section{广义函数序列的逐项可微性}\label{sec:yosida-02-03}
+\noindent\textit{原书位置：中译本第 75 页；英文版第 72 页。}
+
+\begin{theorem}[分布的逐测试函数极限]\label{thm:y2-distribution-limit}
+设 $T_n\in\Dist(\Omega)$，对每个 $\varphi\in\Test(\Omega)$，$T(\varphi)=\lim_n\Pair{T_n}{\varphi}$ 存在且有限。则 $T\in\Dist(\Omega)$。对每个 $K\Subset\Omega$，存在 $C_K>0$ 和整数 $m_K\ge0$，使
+\[
+ \sup_n|\Pair{T_n}{\varphi}|\le C_K
+ \max_{|\alpha|\le m_K}\sup_K|\partial^\alpha\varphi|
+ \quad(\varphi\in\Test_K).
+\]
+\end{theorem}
+\begin{proof}
+第一章已证明 $\Test_K$ 是 Fr\'echet 空间。各 $T_n|_{\Test_K}$ 为连续线性泛函，逐点收敛使它们逐点有界。由定理 \ref{thm:y2-banach-steinhaus} 得等度连续性，再把有限多个导数半范数合并，即得所述估计。取极限得到 $T$ 的同一估计；线性直接由极限得到。对每个紧集的有限阶估计正是第一章的分布连续性判别，所以 $T$ 为分布。这里在各 $\Test_K$ 上使用 Baire 定理，并未假定整个 LF 空间 $\Test(\Omega)$ 是 Fr\'echet 空间。
+\end{proof}
+
+\begin{corollary}[逐项求导与光滑乘法]\label{cor:y2-termwise}
+若 $T_n\to T$ 是逐测试函数的分布收敛，则对任意多重指标 $\alpha$ 及 $a\in C^\infty(\Omega)$，$\partial^\alpha T_n\to\partial^\alpha T$，且 $aT_n\to aT$。
+\end{corollary}
+\begin{proof}
+对固定 $\varphi$，$\partial^\alpha\varphi,a\varphi\in\Test(\Omega)$，且
+\[
+ \Pair{\partial^\alpha T_n}{\varphi}
+ =(-1)^{|\alpha|}\Pair{T_n}{\partial^\alpha\varphi}
+ \longrightarrow(-1)^{|\alpha|}\Pair{T}{\partial^\alpha\varphi}.
+\]
+乘法同理。该收敛不等于导数作为普通函数逐点或一致收敛。
+\end{proof}
+
+\begin{example}[正则化阶跃与 Dirac 质量]
+取 $\rho\in\Test(\R)$、$\rho\ge0$、$\int\rho=1$，令 $\rho_\varepsilon(x)=\varepsilon^{-1}\rho(x/\varepsilon)$，$H_\varepsilon(x)=\int_{-\infty}^x\rho_\varepsilon(t)\,dt$。由有界收敛，$H_\varepsilon\to H=\mathbf1_{(0,\infty)}$ 于分布意义；故 $H_\varepsilon'=\rho_\varepsilon\to H'=\delta_0$。求导后极限已不是普通局部可积函数。
+\end{example}
+
+\begin{exercise}
+令 $u_n(x)=\sin(nx)$。证明 $u_n\to0$、$u_n'\to0$ 于分布意义，而 $u_n'$ 不逐点收敛到零。说明分布级数的逐项求导需要什么假设。
+\end{exercise}
+\begin{solution}
+分部积分得 $|\int\sin(nx)\varphi(x)\,dx|\le n^{-1}\|\varphi'\|_1\to0$。推论给出 $u_n'\to0$，但 $u_n'(0)=n$。若级数部分和 $S_N=\sum_{j=1}^NT_j$ 在每个测试函数上收敛到有限值，则定理保证极限为分布，并且 $\partial^\alpha S_N\to\partial^\alpha S$。无需级数以函数范数绝对收敛；也不能只凭各项可微便断言级数可逐项求导。
+\end{solution}

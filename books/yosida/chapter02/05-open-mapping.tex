@@ -1,0 +1,51 @@
+\section{开映射定理}\label{sec:yosida-02-05}
+\noindent\textit{原书位置：中译本第 77--79 页；英文版第 75--77 页。}
+
+\begin{lemma}[像的闭包含零邻域]\label{lem:y2-almost-open}
+设 $T:X\to Y$ 连续线性，且其值域 $R(T)$ 在 $Y$ 中不是第一纲集。那么对每个 $X$ 的零邻域 $U$，$\overline{T(U)}$ 包含 $Y$ 的某个零邻域。
+\end{lemma}
+\begin{proof}
+取对称零邻域 $W$ 使 $W-W\subset U$。零邻域吸收每个向量，所以 $X=\bigcup_{n\ge1}nW$，$R(T)\subset\bigcup_n n\overline{T(W)}$。若所有这些闭集无内点，值域便是第一纲集，矛盾。故 $\overline{T(W)}$ 有内点。取非空开集 $O\subset\overline{T(W)}$，则 $O-O$ 为零邻域，且
+\[
+ O-O\subset\overline{T(W)}-\overline{T(W)}
+ \subset\overline{T(W-W)}\subset\overline{T(U)}.
+\]
+中间包含关系由减法连续性得到。
+\end{proof}
+
+\begin{theorem}[Banach 开映射定理]\label{thm:banach-open}
+设 $X,Y$ 为 $F$ 空间，$T:X\to Y$ 为连续线性满射。则 $T$ 是开映射。特别地，它适用于 Banach 空间和 Fr\'echet 空间。
+\end{theorem}
+\begin{proof}
+取给出拓扑的完备平移不变度量 $d_X,d_Y$，以 $B_X(r),B_Y(r)$ 表示零点开球。$Y$ 完备，故不是第一纲集。由引理，对每个 $r>0$，$\overline{T(B_X(r))}$ 含某零球。
+
+固定 $\varepsilon>0$，令 $r_j=\varepsilon2^{-j-2}$，$j\ge0$。选择 $\eta_j>0$ 使
+\[
+ B_Y(\eta_j)\subset\overline{T(B_X(r_j))},\qquad
+ \eta_j\le2^{-j}.
+\]
+任取 $y\in B_Y(\eta_0)$。由闭包定义可取 $x_0\in B_X(r_0)$，使残差 $y-Tx_0\in B_Y(\eta_1)$；再取 $x_1\in B_X(r_1)$，使 $y-T(x_0+x_1)\in B_Y(\eta_2)$。如此继续得到
+\[
+ d_X(x_j,0)<r_j,\qquad
+ d_Y\left(y-T\sum_{j=0}^Nx_j,0\right)<\eta_{N+1}.
+\]
+平移不变度量的三角不等式使部分和为 Cauchy 序列，故在 $X$ 中趋于 $x$，且 $d_X(x,0)\le\sum_jr_j=\varepsilon/2<\varepsilon$。连续性和 $\eta_j\to0$ 给出 $Tx=y$。因此 $B_Y(\eta_0)\subset T(B_X(\varepsilon))$。平移到任意点即得开性。此证明只用度量的三角不等式，未假定度量对标量绝对齐次，也未用局部凸性。
+\end{proof}
+
+\begin{corollary}[有界逆与商空间]\label{cor:y2-inverse}
+连续线性双射 $T:X\to Y$ 在 $F$ 空间之间具有连续逆。若 $X,Y$ 为 Banach 空间，则逆有界。若 $T$ 只是 Banach 空间之间的有界满射，则存在 $C>0$，对每个 $y$ 可选 $Tx=y$ 且 $\|x\|\le C\|y\|$；诱导映射 $X/\ker T\to Y$ 是 Banach 空间同构。
+\end{corollary}
+\begin{proof}
+逆像开集的条件正是 $T$ 的开性。对满射，由开映射得 $B_Y(\delta)\subset T(B_X(1))$。当 $y\ne0$ 时，将 $y$ 缩放至范数 $\delta/2$ 再选原像，得 $\|x\|<2\|y\|/\delta$；$y=0$ 取 $x=0$。核闭，商空间由第一章知为 Banach，诱导映射为有界双射，再用有界逆结论。这里选取原像的估计并不自动产生一个线性的右逆。
+\end{proof}
+
+\begin{example}[等价范数与不完备反例]
+同一线性空间上的两个 Banach 范数若满足 $\|x\|_1\le C\|x\|_2$，则反向估计也成立：对恒等双射应用有界逆定理。完备性缺失时可失败。在 $C^1[0,1]$ 上，$\|f\|_{C^1}=\|f\|_\infty+\|f'\|_\infty$ 完备，而 $\|f\|_\infty$ 不完备；恒等映射从前者到后者连续双射，逆不连续，因为 $f_n(t)=\sin(nt)/n$ 一致趋零，导数却不一致趋零。
+\end{example}
+
+\begin{exercise}
+设 $T:X\to Y$ 为 Banach 空间之间的有界单射。证明：$R(T)$ 闭当且仅当存在 $c>0$，使 $\|Tx\|\ge c\|x\|$ 对所有 $x$ 成立。
+\end{exercise}
+\begin{solution}
+若值域闭，$R(T)$ 按 $Y$ 的范数完备，有界逆定理用于 $T:X\to R(T)$，得所需下界。反之，若 $Tx_n\to y$，下界使 $x_n$ 为 Cauchy 序列，源空间完备性给出 $x_n\to x$。连续性使 $Tx=y$，故值域闭。单射本身不足，例如 $T:\ell^2\to\ell^2$，$(Tx)_j=x_j/j$；有限支集序列在值域内，但 $(1/j)_j$ 是值域的极限点而不在值域内。
+\end{solution}

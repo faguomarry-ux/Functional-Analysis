@@ -25,6 +25,18 @@
 \setcounter{secnumdepth}{2}
 \setlength{\emergencystretch}{2em}
 \allowdisplaybreaks[2]
+% 模板在标题局部分组中 refstepcounter，正文 label 会回退到节号。
+% 在环境入口推进共享计数器，标题只读取编号，使引用与显示一致。
+\renewenvironment{theorem}[1][]{\refstepcounter{theorem}\begin{thmBox}[before title={}]{定理}{#1}}{\end{thmBox}}
+\renewenvironment{lemma}[1][]{\refstepcounter{theorem}\begin{thmBox}[before title={}]{引理}{#1}}{\end{thmBox}}
+\renewenvironment{proposition}[1][]{\refstepcounter{theorem}\begin{thmBox}[before title={}]{命题}{#1}}{\end{thmBox}}
+\renewenvironment{corollary}[1][]{\refstepcounter{theorem}\begin{thmBox}[before title={}]{推论}{#1}}{\end{thmBox}}
+\renewenvironment{property}[1][]{\refstepcounter{theorem}\begin{thmBox}[before title={}]{性质}{#1}}{\end{thmBox}}
+\renewenvironment{definition}[1][]{\refstepcounter{theorem}\begin{defBox}[before title={}]{定义}{#1}}{\end{defBox}}
+\renewenvironment{axiom}[1][]{\refstepcounter{theorem}\begin{defBox}[before title={}]{公理}{#1}}{\end{defBox}}
+\renewenvironment{example}[1][]{\refstepcounter{theorem}\begin{exBox}[before title={}]{例题}{#1}}{\end{exBox}}
+\renewenvironment{longexample}[1][]{\refstepcounter{theorem}\begin{longexBox}[before title={}]{例题}{#1}}{\end{longexBox}}
+\renewenvironment{exercise}[1][]{\refstepcounter{theorem}\begin{exBox}[before title={}]{练习}{#1}\xdef\MakiCurrentExerciseNumber{\thetheorem}}{\end{exBox}}
 \newcommand{\Test}{\mathcal{D}}
 \newcommand{\Smooth}{\mathcal{E}}
 \newcommand{\Sch}{\mathcal{S}}

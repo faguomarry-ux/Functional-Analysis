@@ -1,0 +1,69 @@
+\section{Vitali--Hahn--Saks 定理}\label{sec:yosida-02-02}
+\noindent\textit{原书位置：中译本第 73--74 页；英文版第 70--72 页。}
+
+本节测度均为可数可加的有限值实或复测度，$|\nu|$ 表示全变差。对正测度 $m$，这里的 $m$-绝对连续明确指
+\[
+ \forall\varepsilon>0\ \exists\delta>0:\quad m(E)<\delta\Longrightarrow|\nu(E)|<\varepsilon.
+\]
+对有限值复测度，它等价于在 $m$-零集上为零。非平凡方向可用反证法选 $m(E_j)<2^{-j}$ 而 $|\nu(E_j)|\ge\varepsilon$，令 $F_k=\bigcup_{j\ge k}E_j$。则 $m(\bigcap_kF_k)=0$，由 $|\nu|$ 的从上连续性得 $|\nu|(F_k)\to0$，矛盾。此论证使用了第一章已证明的复测度全变差有限。
+
+\begin{lemma}[集合空间的完备性]\label{lem:y2-measure-algebra}
+在正测度空间 $(S,\Sigma,m)$ 上，令 $\Sigma_0=\{E\in\Sigma:m(E)<\infty\}$，把相差 $m$-零集的集合视为同一点。则 $d([E],[F])=m(E\triangle F)$ 是完备度量。
+\end{lemma}
+\begin{proof}
+由 $\|\mathbf1_E-\mathbf1_F\|_1=m(E\triangle F)$ 得到向 $L^1$ 的等距嵌入。若 $\mathbf1_{E_j}$ 为 Cauchy 序列，$L^1$ 完备性给出极限 $f$，并有几乎处处收敛的子列。子列只取 $0,1$，所以 $f=\mathbf1_E$ 几乎处处；用子列的可测上极限可选择可测 $E$。又 $m(E)=\|f\|_1<\infty$，所以极限仍在像中。
+\end{proof}
+
+\begin{theorem}[Vitali--Hahn--Saks]\label{thm:y2-vhs}
+设 $m(S)<\infty$，$\nu_n$ 为 $m$-绝对连续的复测度。若对每个 $E\in\Sigma$，有限极限 $\nu(E)=\lim_n\nu_n(E)$ 存在，则
+\[
+ \forall\varepsilon>0\ \exists\delta>0:\quad
+ m(E)<\delta\Longrightarrow\sup_n|\nu_n(E)|<\varepsilon.
+\]
+而且 $\nu$ 是 $m$-绝对连续的复测度。
+\end{theorem}
+\begin{proof}
+每个 $[E]\mapsto\nu_n(E)$ 在引理的完备空间上良定义且连续，因为
+\[
+ |\nu_n(E)-\nu_n(F)|\le|\nu_n(E\setminus F)|+|\nu_n(F\setminus E)|
+\]
+在 $m(E\triangle F)\to0$ 时趋零。固定 $\varepsilon>0$，令
+\[
+ F_k=\{[E]:|\nu_n(E)-\nu_l(E)|\le\varepsilon/4\ \text{对所有 }n,l\ge k\}.
+\]
+这些闭集由逐集合 Cauchy 性覆盖整个空间。Baire 定理给出 $k,E_0,\eta>0$，使 $d([E],[E_0])<\eta$ 蕴含 $[E]\in F_k$。若 $m(B)<\eta$，令 $E_1=E_0\cup B$、$E_2=E_0\setminus B$。两者均在该球内，且 $\nu_n(B)=\nu_n(E_1)-\nu_n(E_2)$，故对 $n\ge k$ 有
+\[
+ |\nu_n(B)-\nu_k(B)|\le\varepsilon/2.
+\]
+再用有限多个 $\nu_1,\ldots,\nu_k$ 的绝对连续性缩小 $\delta<\eta$，使它们在 $m(B)<\delta$ 时均小于 $\varepsilon/4$。便得全部 $n$ 的统一界小于 $\varepsilon$。
+
+取极限得 $\nu$ 的绝对连续性，逐集合取极限也给出有限可加性。若 $E_j$ 两两不交，令 $E=\bigcup_jE_j$、$R_N=\bigcup_{j>N}E_j$。因 $m(S)<\infty$，$m(R_N)\to0$，故
+\[
+ \nu(E)-\sum_{j=1}^N\nu(E_j)=\nu(R_N)\longrightarrow0.
+\]
+这证明可数可加性。有限值复测度的全变差自动有限；此处无需额外假定变差对 $n$ 一致有界，这也对应中译本第 73 页的校注。
+\end{proof}
+
+\begin{corollary}[一致可数可加性与无限参考测度]\label{cor:y2-nikodym}
+若 $\nu_n(E)$ 对每个可测集收敛，无需预给参考测度，则对 $E_j\downarrow\varnothing$ 有 $\sup_n|\nu_n(E_j)|\to0$，逐集合极限是复测度。若各 $\nu_n$ 对任意正测度 $m$ 满足上述绝对连续性，则极限也对 $m$ 绝对连续，即使 $m(S)=\infty$。
+\end{corollary}
+\begin{proof}
+定义有限正控制测度
+\[
+ \mu(E)=\sum_{n=1}^\infty2^{-n}\frac{|\nu_n|(E)}{1+|\nu_n|(S)}.
+\]
+非负求和可交换，故 $\mu$ 可数可加且 $\mu(S)\le1$。每个 $|\nu_n|\le2^n(1+|\nu_n|(S))\mu$，从而各 $\nu_n$ 都对 $\mu$ 绝对连续。应用定理，$\mu(E_j)\to0$ 导出一致从上连续性和极限的可数可加性。分母的 $1+$ 处理了零测度。
+
+若另有 $m$，在 $\{[E]:m(E)<\infty\}$ 上重复定理的闭集和 Baire 论证，便得对 $m$ 的统一绝对连续性；所有 $m(B)<\delta$ 的集合本来就在该空间内。因此极限也对 $m$ 绝对连续。可数可加性已由有限控制测度获得，不需要在无限 $m$ 下错误地断言所有尾集的 $m$ 测度趋零。
+\end{proof}
+
+\begin{example}[密度几乎处处收敛不能替代逐集合收敛]
+在 $[0,1]$ 上令 $f_n=n\mathbf1_{(0,1/n)}$、$\nu_n(E)=\int_Ef_n\,dx$。虽然 $f_n\to0$ 几乎处处，取 $E_n=(0,1/n)$ 却有 $m(E_n)\to0$、$\nu_n(E_n)=1$。所以该列不一致绝对连续，由定理它不可能对每个可测集都有极限。
+\end{example}
+
+\begin{exercise}
+证明定理的假设还蕴含：对每个 $\varepsilon>0$ 存在 $\delta>0$，使 $m(E)<\delta$ 时 $\sup_n|\nu_n|(E)<\varepsilon$。
+\end{exercise}
+\begin{solution}
+先证一般估计 $|\rho|(E)\le4\sup_{B\subset E}|\rho(B)|$，其中 $B$ 可测。实带符号测度 $a$ 的正负分解给出 $|a|(E)\le2\sup_{B\subset E}|a(B)|$。写 $\rho=a+ib$，由分割定义 $|\rho|(E)\le|a|(E)+|b|(E)$，即得估计。若 $m(E)<\delta$，所有 $B\subset E$ 也满足此条件。将定理的误差取为 $\varepsilon/8$，得 $\sup_n|\nu_n|(E)\le\varepsilon/2<\varepsilon$。
+\end{solution}

@@ -1,0 +1,73 @@
+\section{一致有界性定理及共鸣定理}\label{sec:yosida-02-01}
+\noindent\textit{原书位置：中译本第 71--72 页；英文版第 68--70 页。}
+
+\begin{theorem}[一致有界性：原书的次可加形式]\label{thm:y2-uniform-general}
+设 $X$ 不是第一纲集，$Y$ 具有第一章意义的拟范数 $q$，$T_a:X\to Y$ 连续，并满足
+\[
+ q(T_a(x+y))\le q(T_ax)+q(T_ay),\qquad
+ q(T_a(tx))=q(tT_ax)\quad(t\ge0).
+\]
+若对每个 $x\in X$，集合 $\{T_ax:a\in A\}$ 拓扑有界，则对任意 $\varepsilon>0$，存在零邻域 $V$，使 $q(T_ax)\le\varepsilon$ 对所有 $x\in V,a\in A$ 成立。
+\end{theorem}
+\begin{proof}
+固定 $\varepsilon>0$，令
+\[
+ E_m=\left\{x:\sup_a\bigl[q(m^{-1}T_ax)+q(m^{-1}T_a(-x))\bigr]\le\varepsilon/2\right\}.
+\]
+各 $E_m$ 闭。拓扑有界性意味着对固定 $x$，$m^{-1}T_a(\pm x)$ 对 $a$ 一致趋零，故 $X=\bigcup_mE_m$。于是某 $E_m$ 含有 $x_0+W$，其中 $W$ 是零邻域且 $0\in W$。对 $h\in W$，次可加性和正数缩放条件给出
+\[
+ q(T_a(h/m))\le q(m^{-1}T_a(x_0+h))+q(m^{-1}T_a(-x_0))\le\varepsilon.
+\]
+取 $V=m^{-1}W$ 即可。拟范数不要求绝对齐次，不能把拓扑有界误换成拟范数数值有界。
+\end{proof}
+
+\begin{theorem}[Banach--Steinhaus 与共鸣定理]\label{thm:y2-banach-steinhaus}
+设 $X$ 为 Banach 空间，$Y$ 为赋范空间，$T_a:X\to Y$ 为有界线性算子。若 $\sup_a\|T_ax\|<\infty$ 对每个 $x\in X$ 成立，则 $\sup_a\|T_a\|<\infty$。更一般地，若 $X$ 是 Baire 局部凸空间、$Y$ 是局部凸空间，则逐点有界的连续线性算子族等度连续。
+\end{theorem}
+\begin{proof}
+令 $E_m=\{x:\sup_a\|T_ax\|\le m\}$。这些闭集覆盖 $X$，故某 $E_m$ 包含 $B(x_0,r)$。当 $\|h\|<r$ 时，$x_0+h,x_0\in E_m$，故 $\sup_a\|T_ah\|\le2m$。对单位向量取 $h=(r/2)x$，得 $\sup_a\|T_a\|\le4m/r$。
+
+一般版本对每个目标连续半范数 $q$ 使用 $E_m=\{x:\sup_aq(T_ax)\le m\}$。同样的平移相减给出某零邻域上的统一界，再缩放得到任意小的 $q$ 界。对有限个目标半范数条件取源邻域的交，即得等度连续性。特别地，Fr\'echet 空间上逐点有界的连续线性泛函族满足 $\sup_a|T_ax|\le C\max_{j\le r}p_j(x)$，其中 $p_j$ 是有限多个源半范数。
+\end{proof}
+
+\begin{corollary}[强极限的连续性]\label{cor:y2-strong-limit}
+若 $T_n:X\to Y$ 如上且 $T_nx\to Tx$ 对每个 $x$ 成立，则 $T$ 有界线性，且 $\|T\|\le\liminf_n\|T_n\|$。
+\end{corollary}
+\begin{proof}
+收敛序列逐点有界，故 $M=\sup_n\|T_n\|<\infty$。在和与数乘的恒等式中取极限得线性，并有 $\|Tx\|\le M\|x\|$。又由 $\|T_nx\|\le\|T_n\|\|x\|$ 取下极限，再对单位球取上确界即得结论。这里不要求 $Y$ 完备，因为已经假定极限在 $Y$ 中存在。
+\end{proof}
+
+\begin{theorem}[Neumann 级数]\label{thm:y2-neumann}
+若 $X$ 为 Banach 空间，$A\in\mathcal L(X)$ 且 $\|A\|<1$，则
+\[
+ (I-A)^{-1}=\sum_{j=0}^\infty A^j,\qquad
+ \|(I-A)^{-1}\|\le(1-\|A\|)^{-1}.
+\]
+级数在算子范数下收敛。原书以 $A=I-T$ 表述此结果。
+\end{theorem}
+\begin{proof}
+第一章已证明 $\mathcal L(X)$ 完备，而 $\sum_j\|A^j\|\le\sum_j\|A\|^j<\infty$。若 $S_N=\sum_{j=0}^NA^j$，则 $(I-A)S_N=S_N(I-A)=I-A^{N+1}$。按算子范数取极限得双侧逆，范数界来自几何级数。
+\end{proof}
+
+\begin{example}[源空间完备性的作用]
+给有限支集序列空间 $c_{00}$ 配上 $\|x\|_\infty$，令 $T_nx=nx_n$。每个固定 $x$ 只在有限多个坐标非零，所以 $\sup_n|T_nx|<\infty$，但 $\|T_n\|=n$。$c_{00}$ 不完备，其完备化为 $c_0$。
+\end{example}
+
+\begin{exercise}
+设 $X$ 为 Banach 空间，$T_n\in\mathcal L(X,Y)$，$Y$ 赋范。证明：$T_nx\to0$ 对所有 $x$ 成立，当且仅当 $\sup_n\|T_n\|<\infty$ 且在某个稠密子集 $D\subset X$ 上 $T_nd\to0$。
+\end{exercise}
+\begin{solution}
+必要性由共鸣定理，且可取 $D=X$。反向令 $M=\sup_n\|T_n\|$。给定 $x,\varepsilon$，取 $d\in D$ 使 $M\|x-d\|<\varepsilon/2$（$M=0$ 时显然）。当 $n$ 足够大时 $\|T_nd\|<\varepsilon/2$，于是 $\|T_nx\|\le M\|x-d\|+\|T_nd\|<\varepsilon$。无需 $D$ 为子空间。
+\end{solution}
+
+\begin{exercise}
+设 $T:X\to Y$ 为 Banach 空间之间的有界可逆算子，$E\in\mathcal L(X,Y)$ 且 $\|T^{-1}E\|<1$。证明 $T+E$ 可逆，给出逆的级数及范数界。
+\end{exercise}
+\begin{solution}
+由 $T+E=T(I+T^{-1}E)$，对 $A=-T^{-1}E$ 使用 Neumann 级数得
+\[
+ (T+E)^{-1}=\sum_{j=0}^\infty(-T^{-1}E)^jT^{-1},\qquad
+ \|(T+E)^{-1}\|\le\frac{\|T^{-1}\|}{1-\|T^{-1}E\|}.
+\]
+级数在 $\mathcal L(Y,X)$ 中按范数收敛，并给出双侧逆。
+\end{solution}

@@ -1,0 +1,63 @@
+\section{闭图像定理}\label{sec:yosida-02-06}
+\noindent\textit{原书位置：中译本第 79--81 页；英文版第 77--79 页。}
+
+\begin{definition}[闭算子与可闭算子]
+线性算子 $T:D(T)\subset X\to Y$ 的图像是 $G(T)=\{(x,Tx):x\in D(T)\}$。若它在 $X\times Y$ 中闭，称 $T$ 闭；若 $\overline{G(T)}$ 仍为某线性算子的图像，称 $T$ 可闭，该算子记为 $\overline T$。对可度量空间，闭性等价于：$x_n\in D(T)$、$x_n\to x$、$Tx_n\to y$ 蕴含 $x\in D(T)$ 且 $Tx=y$。
+\end{definition}
+
+\begin{proposition}[可闭判别与逆算子的闭性]\label{prop:y2-closable}
+在可度量拓扑向量空间之间，$T$ 可闭当且仅当 $x_n\in D(T)$、$x_n\to0$、$Tx_n\to y$ 蕴含 $y=0$。闭单射的逆 $T^{-1}:R(T)\to X$ 也是闭算子。
+\end{proposition}
+\begin{proof}
+若图像闭包为图像，其中 $(0,y)$ 只能有 $y=0$。反向，$\overline{G(T)}$ 是闭线性子空间，若同时含 $(x,y_1),(x,y_2)$，相减得 $(0,y_1-y_2)$。可度量性允许用图像中的序列逼近它，假设即给出 $y_1=y_2$。所以闭包确为某线性算子的图像，且是包含 $G(T)$ 的最小闭图像。逆算子的图像由同胚 $(x,y)\mapsto(y,x)$ 得到，所以仍闭。
+\end{proof}
+
+\begin{theorem}[Banach 闭图像定理]\label{thm:banach-closed-graph}
+设 $X,Y$ 为 $F$ 空间，全定义线性算子 $T:X\to Y$ 若闭，则连续。对 Banach 空间，结论等价于存在 $C$ 使 $\|Tx\|\le C\|x\|$。
+\end{theorem}
+\begin{proof}
+积空间 $X\times Y$ 由乘积度量完备，$G(T)$ 是其闭线性子空间，因而也是 $F$ 空间。投影 $\pi_X:G(T)\to X$ 连续线性双射，因为 $D(T)=X$。由开映射定理其逆连续，而 $T=\pi_Y\pi_X^{-1}$ 连续。
+\end{proof}
+
+\begin{proposition}[图像范数与算子比较]\label{prop:y2-graph-comparison}
+若 $X,Y_1,Y_2$ 为 Banach 空间，$T_1:D(T_1)\subset X\to Y_1$ 闭，则
+\[
+ \|x\|_{T_1}=\|x\|_X+\|T_1x\|_{Y_1}
+\]
+使 $D(T_1)$ 成为 Banach 空间。若 $T_2:D(T_2)\subset X\to Y_2$ 可闭且 $D(T_1)\subset D(T_2)$，则存在 $C>0$，使
+\[
+ \|T_2x\|_{Y_2}\le C(\|x\|_X+\|T_1x\|_{Y_1})\quad(x\in D(T_1)).
+\]
+\end{proposition}
+\begin{proof}
+图像范数的 Cauchy 序列同时使 $x_n$ 和 $T_1x_n$ 收敛；闭性保证两个极限仍构成图像中的点，所以范数完备。对 $T_2:D(T_1)\to Y_2$，若 $x_n\to x$ 于图像范数且 $T_2x_n\to y$，则 $x\in D(T_2)$，并有 $x_n-x\to0$、$T_2(x_n-x)\to y-T_2x$。可闭判别给出 $y=T_2x$。故该映射图像闭，由闭图像定理有界。这是原书归于 H\"ormander 的算子比较定理；和范数与平方和范数等价。
+\end{proof}
+
+\begin{example}[闭而无界的微分算子]
+在 $X=Y=C[0,1]$ 上取 $D(T)=C^1[0,1]$、$Tf=f'$。若 $f_n\to f$、$f_n'\to g$ 都一致，恒等式
+\[
+ f_n(t)-f_n(0)=\int_0^tf_n'(s)\,ds
+\]
+传到极限得 $f(t)-f(0)=\int_0^tg(s)\,ds$，故 $f\in C^1$ 且 $f'=g$，所以 $T$ 闭。另一方面 $f_n(t)=t^n$ 满足 $\|f_n\|_\infty=1$、$\|Tf_n\|_\infty=n$，故按 $C$ 范数无界。它的定义域不是整个 $C[0,1]$；换用图像范数以后它是有界的。
+\end{example}
+
+\begin{example}[微分算子的可闭性与形式转置]
+设 $P=\sum_{|\alpha|\le k}a_\alpha(x)\partial^\alpha$，$a_\alpha\in C^k(\Omega)$。在 $L^2(\Omega)$ 中取
+\[
+ D(P)=\{u\in C^k(\Omega)\cap L^2(\Omega):Pu\in L^2(\Omega)\}.
+\]
+若 $u_n\to0$、$Pu_n\to g$ 于 $L^2$，对 $\varphi\in\Test(\Omega)$ 分部积分得
+\[
+ \int g\varphi=\lim_n\int(Pu_n)\varphi
+ =\lim_n\int u_nP^t\varphi=0,\qquad
+ P^t\varphi=\sum_{|\alpha|\le k}(-1)^{|\alpha|}\partial^\alpha(a_\alpha\varphi).
+\]
+紧支集消去边界项，$P^t\varphi\in L^2$ 允许用 Schwarz 不等式取极限。因此 $g=0$，$P$ 可闭。这里的双线性配对不加复共轭，$P^t$ 是形式转置；Hilbert 伴随的系数则须取共轭。
+\end{example}
+
+\begin{exercise}
+在 $L^2(\R)$ 上定义 $D(T)=\{u\in L^2:xu\in L^2\}$、$(Tu)(x)=xu(x)$。证明 $T$ 闭而无界，并说明其图像范数空间为什么完备。
+\end{exercise}
+\begin{solution}
+若 $u_n\to u$、$xu_n\to v$ 于 $L^2$，可逐次选取同一子列使两者都几乎处处收敛，于是 $v=xu$ 几乎处处。故 $u\in D(T)$ 且 $Tu=v$，图像闭。取 $u_n=\mathbf1_{[n,n+1]}$，有 $\|u_n\|_2=1$、$\|Tu_n\|_2\ge n$，所以无界。图像范数完备由命题 \ref{prop:y2-graph-comparison}，也可对两部分的 Cauchy 序列用刚才的闭性论证。
+\end{solution}

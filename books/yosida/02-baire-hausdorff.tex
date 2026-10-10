@@ -1,39 +1,23 @@
 % !TeX encoding = UTF-8
-% 吉田第六版：中译本第 2 章；此文件当前仅为目录与正文占位。
-\SetChapterInfo{subtitle={吉田耕作第六版主线 · 正文待撰写}}
+\SetChapterInfo{subtitle={由完备性获得统一控制与连续性},keywords={一致有界; 测度极限; 开映射; 闭图像; 亚椭圆性},prereq={Baire 定理、第一章函数空间与分布},goals={掌握三大基本定理; 区分闭性与有界性; 理解定性正则性如何产生估计}}
 \chapter{Baire--Hausdorff 定理的应用}\label{ch:yosida-02}
-\YosidaChapterPlaceholder{2}{Applications of the Baire--Hausdorff Theorem}{71--84}{68--80}
+\ChapterSource{本章依照 \cite{yosida-zh,yosida-en} 第二章七节的顺序重新组织。实际核对范围：中译本印刷第 71--83 页（PDF 第 86--98 页），英文第六版印刷第 68--81 页（PDF 第 83--96 页）。中译本第 84 页为空白页；英文第 81 页下部已进入第三章。以下采用本稿记号与编号，补充步骤另作说明，并非逐字翻译。}
 
-\section{一致有界性定理及共鸣定理}\label{sec:yosida-02-01}
-\YosidaSectionPlaceholder{71}{68}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
+第一章提供了大量完备函数空间。本章解释完备性如何把逐点信息变成统一控制：一致有界性把各点上的有界性变为邻域上的一致估计；开映射把满射变为可控地求解方程；闭图像把极限相容性变为连续性。三者都以第零章的 Baire 定理为基础。
 
-\section{Vitali--Hahn--Saks 定理}\label{sec:yosida-02-02}
-\YosidaSectionPlaceholder{73}{70}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
+除特别说明外，标量域为 $\R$ 或 $\mathbb C$，所有空间均为 Hausdorff 拓扑向量空间。沿用第一章术语：$F$ 空间的拓扑由完备平移不变度量给出，不要求局部凸；Fr\'echet 空间另要求局部凸。Banach 空间是完备赋范空间。第一纲集是可数个无处稠密集之并，其补集称为余第一纲集。非空完备度量空间中的余第一纲集稠密。
 
-\section{广义函数序列的逐项可微性}\label{sec:yosida-02-03}
-\YosidaSectionPlaceholder{75}{72}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-扩展阅读：第 \ref{ch:distributions}、\ref{ch:operations} 章。\par
+\input{books/yosida/chapter02/01-uniform-boundedness}
+\input{books/yosida/chapter02/02-vitali-hahn-saks}
+\input{books/yosida/chapter02/03-distribution-limits}
+\input{books/yosida/chapter02/04-condensation}
+\input{books/yosida/chapter02/05-open-mapping}
+\input{books/yosida/chapter02/06-closed-graph}
+\input{books/yosida/chapter02/07-hormander}
 
-\section{奇点凝聚原理}\label{sec:yosida-02-04}
-\YosidaSectionPlaceholder{75}{72}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{开映射定理}\label{sec:yosida-02-05}
-\YosidaSectionPlaceholder{77}{75}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{闭图像定理}\label{sec:yosida-02-06}
-\YosidaSectionPlaceholder{79}{77}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{闭图像定理的一个应用（Hörmander 定理）}\label{sec:yosida-02-07}
-\YosidaSectionPlaceholder{82}{80}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section*{本章参考文献整理（占位）}
+\section*{本章参考文献与阅读衔接}
 \phantomsection
-\addcontentsline{toc}{section}{本章参考文献整理（占位）}
-待核对原书本章参考文献。中译本印刷第 83 页起；后续按实际引用合并至本书参考文献表。
+\addcontentsline{toc}{section}{本章参考文献与阅读衔接}
+本章直接核对的资料是两版吉田第二章 \cite{yosida-zh,yosida-en}。原书章末列出 Banach、Bourbaki、Dunford--Schwartz、Hille--Phillips 与 H\"ormander 的著作；它们是原书的进一步阅读线索，本稿未将其列作已直接查阅的文献。中译本第 73 页关于复测度及绝对连续性的校注、第 82 页关于常数次序的校注，已在相应节说明。
+
+本章八道习题均为补充学习题，解答统一输出于书后。第三章转向 Hilbert 空间的投影与表示；分布极限与闭微分算子的例子可与第 \ref{ch:distributions}、\ref{ch:operations}、\ref{ch:pde} 章对读。H\"ormander 特征根条件的充分性和一般 Weyl 引理不在本章证明范围内。
