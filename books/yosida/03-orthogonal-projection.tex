@@ -1,55 +1,28 @@
 % !TeX encoding = UTF-8
-% 吉田第六版：中译本第 3 章；此文件当前仅为目录与正文占位。
-\SetChapterInfo{subtitle={吉田耕作第六版主线 · 正文待撰写}}
+\SetChapterInfo{subtitle={由正交分解到泛函表示及局部结构},keywords={正交投影; Hilbert 基; Riesz 表示; 再生核; 负指数范数},prereq={第一章内积与完备性; 第零章紧性与测度},goals={掌握投影和表示的证明; 核对复数共轭约定; 连接变分问题与分布}}
 \chapter{正交投影及 F. Riesz 表示定理}\label{ch:yosida-03}
-\YosidaChapterPlaceholder{3}{The Orthogonal Projection and F. Riesz' Representation Theorem}{85--106}{81--101}
+\ChapterSource{本章依照 \cite{yosida-zh,yosida-en} 第三章十一节的顺序编写。查阅中译本印刷第 85--105 页（PDF 第 100--120 页），并对照英文版相应段落（印刷第 81--101 页）。采用本稿记号与编号，展开原书略去的步骤并补充例题；并非原文或译文转录。实际查阅页与证明边界见本章 COVERAGE。}
 
-\section{正交投影}\label{sec:yosida-03-01}
-\YosidaSectionPlaceholder{85}{81}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
+正交投影先把几何上的最短距离问题变成线性分解；Riesz 定理再把连续线性泛函变成向量。后半章展示这种表示如何进入变分方程、测度论、全纯函数空间及广义函数。
 
-\section{“殆正交”元}\label{sec:yosida-03-02}
-\YosidaSectionPlaceholder{88}{84}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
+除特别说明外，$H$ 为实或复 Hilbert 空间，内积 $(x,y)$ 对第一变量线性、第二变量共轭线性，$H'$ 始终表示连续\emph{线性}泛函空间。分布配对 $T(\varphi)=\Pair{T}{\varphi}$ 对测试函数线性，不含共轭。正交归一基的“完备”指闭线性张成为全空间，不是代数的有限线性张成。
 
-\section{Ascoli--Arzelà 定理}\label{sec:yosida-03-03}
-\YosidaSectionPlaceholder{89}{85}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
+\input{books/yosida/chapter03/01-projection}
+\input{books/yosida/chapter03/02-almost-orthogonal}
+\input{books/yosida/chapter03/03-ascoli}
+\input{books/yosida/chapter03/04-orthonormal-basis}
+\input{books/yosida/chapter03/05-schmidt}
+\input{books/yosida/chapter03/06-riesz}
+\input{books/yosida/chapter03/07-lax-milgram}
+\input{books/yosida/chapter03/08-radon-nikodym}
+\input{books/yosida/chapter03/09-reproducing-kernel}
+\input{books/yosida/chapter03/10-negative-norm}
+\input{books/yosida/chapter03/11-local-structure}
 
-\section{正交基、Bessel 不等式与 Parseval 等式}\label{sec:yosida-03-04}
-\YosidaSectionPlaceholder{90}{86}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{E. Schmidt 正交化}\label{sec:yosida-03-05}
-\YosidaSectionPlaceholder{92}{88}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{F. Riesz 表示定理}\label{sec:yosida-03-06}
-\YosidaSectionPlaceholder{93}{90}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{Lax--Milgram 定理}\label{sec:yosida-03-07}
-\YosidaSectionPlaceholder{95}{92}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{Lebesgue--Nikodym 定理的一个证明}\label{sec:yosida-03-08}
-\YosidaSectionPlaceholder{97}{93}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{Aronszajn--Bergman 再生核}\label{sec:yosida-03-09}
-\YosidaSectionPlaceholder{99}{95}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{P. Lax 的负指数范数}\label{sec:yosida-03-10}
-\YosidaSectionPlaceholder{102}{98}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{广义函数的局部结构}\label{sec:yosida-03-11}
-\YosidaSectionPlaceholder{104}{100}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-扩展阅读：第 \ref{ch:distributions} 章的局部结构。\par
-
-\section*{本章参考文献整理（占位）}
+\Needspace{9\baselineskip}
+\section*{本章参考文献与阅读衔接}
 \phantomsection
-\addcontentsline{toc}{section}{本章参考文献整理（占位）}
-待核对原书本章参考文献。中译本印刷第 105 页起；后续按实际引用合并至本书参考文献表。
+\addcontentsline{toc}{section}{本章参考文献与阅读衔接}
+直接对照资料为两版吉田第三章 \cite{yosida-zh,yosida-en}。原书关于 Hilbert 空间、正交多项式、测度、再生核及分布的文献线索，不视为本次已直接查阅的原始论文。本章十一道补充习题的解答统一在书后输出。
+
+本章的 Hilbert 空间 Riesz 表示不依赖第四章 Hahn--Banach 定理；负范数的稠密性证明也只用投影和自反性。下一章讨论一般赋范空间中泛函的延拓与分离。分布局部结构可与第 \ref{ch:distributions}、\ref{ch:operations} 章对读；本章已证明局部连续函数导数的结论，而测度导数的有限和是另一种表示。

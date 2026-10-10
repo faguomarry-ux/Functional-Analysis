@@ -1,0 +1,68 @@
+\Needspace{11\baselineskip}
+\section{广义函数的局部结构}\label{sec:yosida-03-11}
+\noindent\textit{原书位置：中译本第 104--105 页；英文版第 100--101 页。}
+
+\begin{lemma}[以一个高阶混合导数控制低阶导数]\label{lem:y3-mixed-estimate}
+设 $K\Subset\Omega$，$m\ge0$ 为整数，$q=m+1$，$\beta=(q,\ldots,q)$。存在 $C_{K,m}$ 使
+\[
+ p_{K,m}(\varphi)=\max_{|\alpha|\le m}\sup_K|\partial^\alpha\varphi|
+ \le C_{K,m}\|\partial^\beta\varphi\|_{L^2(K)}
+ \quad(\varphi\in\Test_K(\Omega)).
+\]
+特别，$\varphi\mapsto\partial^\beta\varphi$ 在 $\Test_K$ 上单射。
+\end{lemma}
+\begin{proof}
+将 $\varphi$ 延零为 $\R^n$ 上光滑函数，取包含 $K$ 于内部的矩形 $Q=\prod_j[a_j,b_j]$；$Q$ 不必包含于 $\Omega$。对 $|\alpha|\le m$，每个整数 $\beta_j-\alpha_j\ge1$。从左端点逐坐标反复积分，端点处所有导数都为零，得到
+\[
+ \partial^\alpha\varphi(x)
+ =\int_{a_1}^{x_1}\!\cdots\!\int_{a_n}^{x_n}
+ \prod_{j=1}^n\frac{(x_j-t_j)^{\beta_j-\alpha_j-1}}
+ {(\beta_j-\alpha_j-1)!}\,
+ \partial^\beta\varphi(t)\,dt_n\cdots dt_1.
+\]
+核在固定矩形上有统一上界，由 Cauchy--Schwarz 得 $\sup_Q|\partial^\alpha\varphi|\le C_{Q,\alpha}\|\partial^\beta\varphi\|_{L^2(Q)}$。导数支集仍包含于 $K$，故右端可用 $L^2(K)$ 范数。对有限多个 $\alpha$ 取最大值，即得估计；取 $\alpha=0$ 还给出单射性。若 $\Test_K=\{0\}$，结论当然也成立。
+\end{proof}
+
+\begin{theorem}[Schwartz 局部 $L^2$ 导数表示]\label{thm:y3-local-structure}
+设 $T\in\Dist(\Omega)$，$K\Subset\Omega$。存在整数 $q\ge1$ 和 $f\in L^2(K)$，使对所有 $\varphi\in\Test_K(\Omega)$ 有
+\[
+ T(\varphi)=\int_K f(x)\,
+ \partial_1^q\cdots\partial_n^q\varphi(x)\,dx.
+\]
+若 $T$ 在 $K$ 上的有限阶估计可用 $m$ 阶上确界半范数，则可取 $q=m+1$；这里总导数阶数为 $nq$。
+\end{theorem}
+\begin{proof}
+第一章的有限阶判别（定理 \ref{thm:y1-distribution-estimate}）给出 $|T(\varphi)|\le Cp_{K,m}(\varphi)$。用上一引理得
+$|T(\varphi)|\le C'\|\partial^\beta\varphi\|_2$，$\beta=(m+1,\ldots,m+1)$。在 $L^2(K)$ 的线性子空间
+\[
+ R=\{\partial^\beta\varphi:\varphi\in\Test_K(\Omega)\}
+\]
+上定义 $S(\partial^\beta\varphi)=T(\varphi)$。单射性保证良定义，估计保证有界。因此 $S$ 可唯一连续延拓到闭子空间 $\overline R$，它是 Hilbert 空间。Riesz 定理给出 $g\in\overline R\subset L^2(K)$ 使 $S(\psi)=\int_K\psi\overline g$。令 $f=\overline g$，即得不含共轭的分布配对公式。此证明在闭子空间上直接表示，无须使用下一章的延拓定理。$g$ 在 $\overline R$ 中唯一，但一般不声称 $f$ 在整个 $L^2(K)$ 的所有表示中唯一。
+\end{proof}
+
+\begin{corollary}[局部为连续函数的分布导数]\label{cor:y3-continuous-primitive}
+对每个开集 $U\Subset\Omega$，存在连续函数 $F$ 和多重指标 $\gamma$，使 $T|_U=\partial^\gamma F|_U$。函数及导数阶数均可依赖 $U$。
+\end{corollary}
+\begin{proof}
+选 $\overline U\subset\operatorname{int}K\Subset\Omega$，用上一定理得到 $f$ 和 $\beta$，将 $f$ 在 $K$ 外延零为 $\widetilde f$。因 $K$ 紧，$\widetilde f\in L^1(\R^n)$。令
+\[
+ F(x)=(-1)^{|\beta|}\int_{\{t_j\le x_j\ (1\le j\le n)\}}
+ \widetilde f(t)\,dt.
+\]
+由支配收敛，$x_k\to x$ 时指示函数除有限个坐标超平面外逐点收敛，而这些超平面 Lebesgue 测度为零，故 $F$ 连续。反复使用一维积分原函数的分布求导公式与 Fubini 定理，得 $\partial_1\cdots\partial_nF=(-1)^{|\beta|}\widetilde f$。另一方面，在 $U$ 上，结构公式意味着 $T=(-1)^{|\beta|}\partial^\beta\widetilde f$。合并即得 $T|_U=\partial^{\beta+(1,\ldots,1)}F|_U$。
+\end{proof}
+
+\begin{remark}[“局部”与表示的范围]
+固定 $K$ 的公式最初只对支于 $K$ 的测试函数成立；选 $\overline U\subset\operatorname{int}K$ 后，才能无歧义地称其为 $U$ 上的分布恒等式。一般 $T$ 在不同紧集上的阶数可能增长，所以不能从局部结构推出一个全域统一的有限阶数。连续原函数通常既不唯一，也不必在全域由同一个积分公式给出。
+\end{remark}
+
+\begin{example}[Dirac 分布的连续原函数]
+在 $\R$ 上令 $F(x)=|x|/2$。它的一阶分布导数为 $\operatorname{sgn}(x)/2$，再次求导得 $F''=\delta_0$。在 $\R^n$ 上，$F(x)=2^{-n}\prod_{j=1}^n|x_j|$ 连续，且 $\partial_1^2\cdots\partial_n^2F=\delta_0$。这给出局部结构的具体模型；连续函数的高阶分布导数可以具有点奇性。
+\end{example}
+
+\begin{exercise}
+验证一维恒等式 $(|x|/2)''=\delta_0$，并说明为什么不可能存在连续函数 $G$ 满足 $G'=\delta_0$。
+\end{exercise}
+\begin{solution}
+对 $\varphi\in\Test(\R)$，分开正负半轴并分部积分，得 $\frac12\int|x|\varphi''=\varphi(0)$，故二阶导数等于 $\delta_0$。若连续 $G$ 满足 $G'=\delta_0$，则在两个开半轴上导数为零，故分别为常数。这里“分布导数为零则为常数”可直接验证：任一积分为零的测试函数都是紧支集测试函数的导数，因此被该分布消去。连续性使两侧常数相同，从而 $G$ 全域为常数，导数为零，矛盾。
+\end{solution}

@@ -1,0 +1,41 @@
+\Needspace{11\baselineskip}
+\section{E. Schmidt 正交化}\label{sec:yosida-03-05}
+\noindent\textit{原书位置：中译本第 92--93 页；英文版第 88--90 页。}
+
+\begin{proposition}[Gram--Schmidt 过程]\label{prop:y3-schmidt}
+设 $x_1,x_2,\ldots$ 为有限或可数的线性无关系。依次定义
+\[
+ v_1=x_1,\quad e_1=v_1/\|v_1\|,\qquad
+ v_n=x_n-\sum_{j<n}(x_n,e_j)e_j,\quad e_n=v_n/\|v_n\|.
+\]
+则每个 $v_n\ne0$，$\{e_n\}$ 正交归一，且对每个 $n$，两系前 $n$ 项的线性张成相同，因而闭线性张成也相同。
+\end{proposition}
+\begin{proof}
+归纳假定前 $n-1$ 项已有上述性质。直接取内积得 $(v_n,e_j)=0$。若 $v_n=0$，则 $x_n$ 属于前面向量的张成，与线性无关矛盾。归一化不改变张成，又可由定义将 $x_n$ 和 $v_n$ 相互表示，故归纳完成。
+\end{proof}
+
+\begin{corollary}[可分性]
+Hilbert 空间可分，当且仅当它有至多可数的 Hilbert 基（有限维及零空间包括在内）。
+\end{corollary}
+\begin{proof}
+从可数稠密序列依次保留不属于此前有限张成的向量，其余跳过，再作正交化。每个被跳过的向量均已属于保留系的张成，故所得系闭张成为 $H$。反向，基的有限线性组合中，把系数限制为有理数，复数情形限制为实部和虚部均有理的数，就得到可数稠密集。也可看到可分空间中的任意正交归一系至多可数，因为不同单位向量距离为 $\sqrt2$，其半径 $1/3$ 的球互不相交，每球必须含一个不同的稠密集点。
+\end{proof}
+
+\begin{example}[正交多项式]
+对紧区间 $[a,b]$ 上的有限正 Borel 测度 $\mu$，若其支集有无限多个点，则 $1,t,t^2,\ldots$ 在 $L^2(\mu)$ 中线性无关：非零多项式只有有限个根，而连续函数若几乎处处为零，必在测度支集上为零。正交化得到每项次数恰为 $n$ 的正交多项式。多项式由 Weierstrass 定理在连续函数中一致稠密，而连续函数在该有限 Borel 测度的 $L^2$ 中稠密，故所得系完备。
+
+对 $[-1,1]$ 上 Lebesgue 测度，前三项为
+\[
+ e_0(t)=\frac1{\sqrt2},\quad
+ e_1(t)=\sqrt{\frac32}\,t,\quad
+ e_2(t)=\sqrt{\frac58}\,(3t^2-1).
+\]
+这是归一化 Legendre 系。权 $e^{-t^2}$（全实轴）及 $e^{-t}$（正半轴）分别产生 Hermite 与 Laguerre 系；其完备性不能直接套用紧区间的一致逼近证明，本节不证明这两个无界区间的结论。原书一般正交多项式的历史称谓不应与特定权下的 Chebyshev 多项式混为一谈。
+\end{example}
+
+\begin{exercise}
+在 $L^2(-1,1)$ 中正交化 $1,t,t^2$，验证上述三个常数，并求 $t^2$ 到一次多项式空间的最佳逼近。
+\end{exercise}
+\begin{solution}
+$\int_{-1}^11\,dt=2$，$\int_{-1}^1t^2\,dt=2/3$，奇函数积分为零。去掉 $t^2$ 的常数投影得 $t^2-1/3$，其平方积分为 $2/5-2/9=8/45$，归一化即 $\sqrt{5/8}(3t^2-1)$。到 $\operatorname{span}\{1,t\}$ 的投影为常数 $1/3$，最小平方误差为 $8/45$。
+\end{solution}

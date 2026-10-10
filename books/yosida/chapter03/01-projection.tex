@@ -1,0 +1,68 @@
+\Needspace{11\baselineskip}
+\section{正交投影}\label{sec:yosida-03-01}
+\noindent\textit{原书位置：中译本第 85--88 页；英文版第 81--84 页。}
+
+\begin{definition}[正交补]
+设 $H$ 为 Hilbert 空间，$A\subset H$。定义
+\[
+ A^\perp=\{y\in H:(x,y)=0\text{ 对所有 }x\in A\}.
+\]
+它是闭线性子空间：线性性由内积的半双线性得到，闭性由各映射 $y\mapsto(x,y)$ 的连续性得到。即使 $A$ 本身不是子空间，这个结论仍成立。
+\end{definition}
+
+\begin{theorem}[正交分解与最佳逼近]\label{thm:y3-projection}
+若 $M$ 是 $H$ 的闭线性子空间，则每个 $x\in H$ 唯一写成
+\[
+ x=m+n,\qquad m\in M,\quad n\in M^\perp.
+\]
+记 $P_Mx=m$。它是 $M$ 中离 $x$ 最近的唯一元素；对任意 $z\in M$，
+\[
+ \|x-z\|^2=\|x-P_Mx\|^2+\|P_Mx-z\|^2.
+\]
+\end{theorem}
+\begin{proof}
+置 $d=\inf_{z\in M}\|x-z\|$，取 $m_j\in M$ 使 $\|x-m_j\|\to d$。平行四边形恒等式给出
+\[
+ \begin{aligned}
+ \|m_j-m_k\|^2
+ &=2\|x-m_j\|^2+2\|x-m_k\|^2
+   -4\left\|x-\frac{m_j+m_k}{2}\right\|^2\\
+ &\le2\|x-m_j\|^2+2\|x-m_k\|^2-4d^2\to0.
+ \end{aligned}
+\]
+完备性与闭性保证 $m_j\to m\in M$，且 $\|x-m\|=d$。对 $v\in M$ 及实数 $t$，$\|x-m-tv\|^2\ge\|x-m\|^2$。展开关于 $t$ 的二次式得 $\operatorname{Re}(x-m,v)=0$；复数情形再以 $iv$ 代替 $v$，得到虚部也为零。因此 $n=x-m\in M^\perp$。两种分解之差属于 $M\cap M^\perp=\{0\}$，故唯一。最后的恒等式由正交性展开即得，并同时给出最佳逼近的唯一性。
+\end{proof}
+
+\begin{corollary}[双重正交补与投影的性质]\label{cor:y3-double-perp}
+对线性子空间 $L\subset H$，$L^{\perp\perp}=\overline L$。对闭子空间 $M$，$P_M$ 线性，且
+\[
+ P_M^2=P_M,\quad \|P_Mx\|\le\|x\|,\quad
+ (P_Mx,y)=(x,P_My),\quad I-P_M=P_{M^\perp}.
+\]
+若 $M\ne\{0\}$，则 $\|P_M\|=1$；零投影的范数为零。
+\end{corollary}
+\begin{proof}
+正交于 $L$ 等价于正交于 $\overline L$。对 $x\in L^{\perp\perp}$ 作 $x=m+n$，其中 $m\in\overline L$，$n\in L^\perp$，则 $0=(x,n)=\|n\|^2$。反向包含显然。投影的线性性来自分解的唯一性，幂等性来自它在 $M$ 上为恒等映射。将 $x,y$ 分别正交分解，内积两端都等于 $(P_Mx,P_My)$；勾股公式给出收缩性，取非零 $m\in M$ 即得范数等于一。
+\end{proof}
+
+\begin{proposition}[从算子识别正交投影]\label{prop:y3-contracting-projection}
+设 $P:H\to H$ 为有界线性算子且 $P^2=P$。以下条件等价：$P$ 是正交投影；$(Px,y)=(x,Py)$；$\|Px\|\le\|x\|$ 对所有 $x$ 成立。
+\end{proposition}
+\begin{proof}
+正交投影的性质已证。幂等性给出 $H=\operatorname{ran}P\mathbin{\dot+}\ker P$，且 $\operatorname{ran}P=\ker(I-P)$ 闭。若内积恒等式成立，对 $m=Px$ 与 $n\in\ker P$ 有 $(m,n)=(x,Pn)=0$。若 $P$ 为收缩，则对任意标量 $t$ 有 $\|m\|=\|P(m+tn)\|\le\|m+tn\|$。分别取实数 $t$ 和纯虚数 $t$ 并展开，得 $(m,n)=0$。两种条件均使上述直和成为正交分解，故 $P=P_{\operatorname{ran}P}$。
+\end{proof}
+
+\begin{example}[闭性不能省略]
+在 $\ell^2$ 中，有限支集序列组成的 $c_{00}$ 稠密但不闭。对 $x=(1/j)_{j\ge1}$，到 $c_{00}$ 的距离为零，却不存在最近点。在 $\R^2$ 中，$P(a,b)=(a+b,0)$ 满足 $P^2=P$，但 $\|P\|=\sqrt2$，不是正交投影。幂等性本身只给出沿核的投影。
+\end{example}
+
+\begin{exercise}
+在 $L^2(0,1)$ 中，令 $M$ 为常数函数子空间。求 $P_Mf$，并证明平均值是使下式最小的常数：
+\[
+ \int_0^1|f(t)-c|^2\,dt.
+\]
+\end{exercise}
+\begin{solution}
+函数 $1$ 的范数为一，故 $P_Mf=(f,1)1=\int_0^1f(t)\,dt$。对任意常数 $c$，最佳逼近恒等式给出
+$\|f-c\|_2^2=\|f-P_Mf\|_2^2+|P_Mf-c|^2$，所以极小值仅在 $c=P_Mf$ 处取得；复值情形也成立。
+\end{solution}

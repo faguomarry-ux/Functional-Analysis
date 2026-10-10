@@ -1,0 +1,83 @@
+\Needspace{11\baselineskip}
+\section{Aronszajn--Bergman 再生核}\label{sec:yosida-03-09}
+\noindent\textit{原书位置：中译本第 99--101 页；英文版第 95--98 页。}
+
+\begin{definition}[再生核]
+设 $H$ 是集合 $A$ 上的实际函数构成的 Hilbert 空间。若 $K:A\times A\to\mathbb C$ 满足 $K_b=K(\cdot,b)\in H$ 且
+\[
+ f(b)=(f,K_b)_H\quad(f\in H,b\in A),
+\]
+则称 $K$ 为 $H$ 的再生核。此处函数的点值必须有定义，不能直接把一般 $L^2$ 等价类当作点值函数。
+\end{definition}
+
+\begin{theorem}[点值连续性刻画再生核]\label{thm:y3-rkhs}
+$H$ 存在再生核，当且仅当每个点值泛函 $f\mapsto f(b)$ 连续。核唯一，满足
+\[
+ K(a,b)=\overline{K(b,a)},\qquad
+ K(b,b)=\|K_b\|^2,\qquad \|\mathrm{ev}_b\|=\sqrt{K(b,b)}.
+\]
+对任意有限个点 $b_j$ 和系数 $c_j$，$\sum_{i,j}\overline{c_i}K(b_i,b_j)c_j\ge0$。若 $K(b,b)>0$，单位球上 $|f(b)|$ 的最大值为 $\sqrt{K(b,b)}$，取等号的单位向量恰为 $\lambda K_b/\|K_b\|$，$|\lambda|=1$。
+\end{theorem}
+\begin{proof}
+有核时，Cauchy--Schwarz 给出点值有界；点值有界时逐点应用 Riesz 定理，便构造唯一的 $K_b$。由再生性，$K(a,b)=(K_b,K_a)$，故有共轭对称性及对角线等式。取 $\|\sum_jc_jK_{b_j}\|^2$ 即得非负二次型。泛函范数及等号条件来自 Riesz 定理和 Cauchy--Schwarz 等号条件。若 $K(b,b)=0$，则所有 $f(b)=0$，最大值为零，但归一化核向量的公式无意义。
+\end{proof}
+
+\begin{proposition}[由正交基展开核]\label{prop:y3-kernel-basis}
+若 $\{e_\alpha\}$ 为 $H$ 的 Hilbert 基，则
+\[
+ K(a,b)=\sum_\alpha e_\alpha(a)\overline{e_\alpha(b)}.
+\]
+对固定 $b$，右端作为第一变量的函数在 $H$ 范数下收敛；对固定 $a,b$，标量和绝对收敛。
+\end{proposition}
+\begin{proof}
+$(K_b,e_\alpha)=\overline{(e_\alpha,K_b)}=\overline{e_\alpha(b)}$。用 Parseval 展开 $K_b$，再利用点值泛函连续性取 $a$ 处的值。绝对收敛来自 $\sum|e_\alpha(a)|^2=K(a,a)$、$\sum|e_\alpha(b)|^2=K(b,b)$ 及 Cauchy--Schwarz。此论证未声称一般集合 $A$ 上的一致收敛。
+\end{proof}
+
+\begin{example}[单位圆盘的 Bergman 核]
+取 $A^2(\mathbb D)$，内积为面积积分 $\int_{\mathbb D}f\overline g\,dA$。全纯函数的圆平均估计给出：若 $\overline{B(b,r)}\subset\mathbb D$，则 $|f(b)|^2\le(\pi r^2)^{-1}\|f\|_2^2$，故点值连续。第一章已证该空间完备。
+单项式 $e_n(z)=\sqrt{(n+1)/\pi}\,z^n$ 构成 Hilbert 基：若 $f(z)=\sum a_nz^n$，先在半径 $r<1$ 的圆盘逐项积分，再令 $r\uparrow1$，得
+\[
+ \|f\|_2^2=\pi\sum_{n\ge0}\frac{|a_n|^2}{n+1}.
+\]
+因而 Taylor 多项式在 $A^2$ 范数下趋于 $f$。于是
+\[
+ K_{\mathbb D}(z,w)=\frac1\pi\sum_{n\ge0}(n+1)(z\overline w)^n
+ =\frac1{\pi(1-z\overline w)^2}.
+\]
+面积测度没有归一化；若改用 $dA/\pi$，核将相应乘以 $\pi$。
+\end{example}
+
+\begin{theorem}[Bergman 核与归一化共形映射]\label{thm:y3-bergman-map}
+设 $G\subset\mathbb C$ 为非空有界单连通域，$z_0\in G$。取 Riemann 映射 $F:G\to\{|w|<R\}$，归一化为 $F(z_0)=0$、$F'(z_0)=1$，其中半径 $R>0$ 由归一化决定。则
+\[
+ \begin{gathered}
+ F'(z)=\frac{K_G(z,z_0)}{K_G(z_0,z_0)},\qquad
+ K_G(z_0,z_0)=\frac1{\pi R^2},\\
+ F(z)=\frac1{K_G(z_0,z_0)}\int_{z_0}^zK_G(t,z_0)\,dt.
+ \end{gathered}
+\]
+积分与域内路径无关。
+\end{theorem}
+\begin{proof}
+Riemann 映射定理在此作为复分析的已知结果使用。考虑所有全纯 $h$ 满足 $h(z_0)=0$、$h'(z_0)=1$ 且 $h'\in A^2(G)$。经 $w=F(z)$ 换元，写
+$h(F^{-1}(w))=w+\sum_{n\ge2}a_nw^n$。共形映射的面积 Jacobian 为 $|(F^{-1})'(w)|^2$，所以
+\[
+ \begin{aligned}
+ \int_G|h'(z)|^2\,dA(z)
+ &=\int_{|w|<R}|(h\circ F^{-1})'(w)|^2\,dA(w)\\
+ &=\pi R^2+\pi\sum_{n\ge2}n|a_n|^2R^{2n}.
+ \end{aligned}
+\]
+级数公式先在小圆盘成立，再由单调收敛取极限。故唯一极小函数为 $h=F$，最小值 $\pi R^2$。
+
+另一方面，因 $G$ 单连通，每个 $g\in A^2(G)$ 均有在 $z_0$ 为零的全纯原函数。条件 $h'(z_0)=1$ 等价于 $g(z_0)=1$。再生公式和 Cauchy--Schwarz 表明该约束下 $\|g\|_2^2$ 的唯一极小元为 $K_G(\cdot,z_0)/K_G(z_0,z_0)$，极小值为 $1/K_G(z_0,z_0)$。此处分母正，因为常数函数属于 $A^2(G)$ 且在 $z_0$ 非零。比较两个极小问题得三条公式；单连通性保证全纯核函数有原函数，故路径无关。
+\end{proof}
+
+\begin{exercise}
+在 $H=H_0^1(0,1)$ 中只用导数内积 $(u,v)=\int_0^1u'\overline{v'}$。求其再生核，并验证点值泛函的范数。
+\end{exercise}
+\begin{solution}
+一维 Sobolev 函数取连续代表；$|u(t)|\le\|u'\|_2$ 由积分及 Cauchy--Schwarz 得到。令 $K(s,t)=\min(s,t)-st$。固定 $t$，此分段线性函数在两端为零，属于 $H_0^1$，且
+$\int_0^1u'(s)\partial_sK(s,t)\,ds=(1-t)\int_0^tu'-t\int_t^1u'=u(t)$。
+故它为再生核，点值范数为 $\sqrt{K(t,t)}=\sqrt{t(1-t)}$。导数范数在此完备，是因为 $\|u\|_2\le\|u'\|_2$ 使它与通常的 $H_0^1$ 范数等价。
+\end{solution}

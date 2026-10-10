@@ -1,0 +1,42 @@
+\Needspace{11\baselineskip}
+\section{Lax--Milgram 定理}\label{sec:yosida-03-07}
+\noindent\textit{原书位置：中译本第 95--96 页；英文版第 92--93 页。}
+
+\begin{theorem}[Lax--Milgram：强制半双线性形式]\label{thm:y3-lax-milgram}
+设 $\mathbb K$ 为 $H$ 的标量域，$B:H\times H\to\mathbb K$ 对第一变量线性、第二变量共轭线性（实数情形为双线性），且存在 $C,c>0$ 使
+\[
+ |B(x,y)|\le C\|x\|\|y\|,\qquad
+ \operatorname{Re}B(x,x)\ge c\|x\|^2.
+\]
+则对每个 $\ell\in H'$，存在唯一 $u\in H$ 使
+\[
+ B(v,u)=\ell(v)\quad(v\in H),\qquad
+ \|u\|\le c^{-1}\|\ell\|.
+\]
+等价地，存在唯一有界可逆线性算子 $S$ 使 $B(x,Sy)=(x,y)$，并有 $\|S\|\le c^{-1}$、$\|S^{-1}\|\le C$。
+\end{theorem}
+\begin{proof}
+对每个 $y$，Riesz 定理给出唯一 $Ay\in H$，使 $B(x,y)=(x,Ay)$。两次共轭线性相消，故 $A$ 线性，且 $\|Ay\|\le C\|y\|$。强制性给出
+\[
+ c\|y\|^2\le\operatorname{Re}(y,Ay)\le\|y\|\|Ay\|,
+ \qquad \|Ay\|\ge c\|y\|.
+\]
+因此 $A$ 单射且值域闭：若 $Ay_j$ 收敛，则 $y_j$ 为 Cauchy，利用 $H$ 完备及 $A$ 连续得到极限仍在值域中。若 $z\perp\operatorname{ran}A$，则 $(z,Ay)=B(z,y)=0$ 对所有 $y$ 成立，特别 $B(z,z)=0$，由强制性得 $z=0$。闭值域的正交补为零，故值域为全空间。
+
+以 $h$ 表示 $\ell$，则方程等价于 $Au=h$，唯一解为 $u=A^{-1}h$。下界给出 $\|A^{-1}\|\le c^{-1}$。取 $S=A^{-1}$，其逆 $A$ 的范数不超过 $C$，即得最后陈述。
+\end{proof}
+
+\begin{remark}[与原书表述及通常弱形式的关系]
+原书采用 $B(x,x)\ge c\|x\|^2$ 的正值假设；上面以实部表述，允许非对称形式，证明仍成立。对复数直接写“$B(x,x)>0$”须先说明它为实数。若习惯把未知量放第一变量，令 $a(u,v)=\overline{B(v,u)}$，$F(v)=\overline{\ell(v)}$，则方程为 $a(u,v)=F(v)$，右端对 $v$ 共轭线性。
+\end{remark}
+
+\begin{example}[一个 Dirichlet 弱问题]
+取 $H=H_0^1(0,1)$，范数 $\|v\|_H^2=\int_0^1(|v'|^2+|v|^2)$。令 $B(v,u)=\int_0^1(v'\overline{u'}+v\overline u)$。它就是 $H$ 的内积，故有界且强制，常数均为一。对 $f\in L^2(0,1)$，$\ell(v)=\int v\overline f$ 连续，因此存在唯一 $u\in H_0^1$ 满足该方程。取共轭后得到 $\int(u'\overline{v'}+u\overline v)=\int f\overline v$，即 $-u''+u=f$ 的弱形式；齐次边界条件已由 $H_0^1$ 编入，而不是额外作经典求导假设。
+\end{example}
+
+\begin{exercise}
+在 $\ell^2$ 上令 $B(x,y)=\sum_{j\ge1}j^{-1}x_j\overline{y_j}$。证明此形式有界、对非零向量严格正，但存在连续线性泛函 $\ell$，使 $B(v,u)=\ell(v)$ 无解。
+\end{exercise}
+\begin{solution}
+有界性来自 Cauchy--Schwarz，严格正来自正权重；但 $B(e_j,e_j)=1/j$，不存在统一的强制常数。取 $h=(1/j)_j\in\ell^2$，$\ell(v)=(v,h)$。逐坐标测试方程强制 $u_j/j=1/j$，即 $u_j=1$，不属于 $\ell^2$。严格正不能替代一致下界。
+\end{solution}

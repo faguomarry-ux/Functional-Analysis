@@ -1,0 +1,58 @@
+\Needspace{11\baselineskip}
+\section{正交基、Bessel 不等式与 Parseval 等式}\label{sec:yosida-03-04}
+\noindent\textit{原书位置：中译本第 90--92 页；英文版第 86--88 页。}
+
+\begin{definition}[正交归一系与 Hilbert 基]
+系 $\{e_\alpha\}_{\alpha\in A}$ 正交归一，是指 $(e_\alpha,e_\beta)=\delta_{\alpha\beta}$。若其闭线性张成等于 $H$，称其为完备正交归一系或 Hilbert 基。它通常不是 Hamel 基；表示向量时允许范数收敛的无穷和。
+\end{definition}
+
+\begin{theorem}[有限投影与 Bessel 不等式]\label{thm:y3-bessel}
+对正交归一系、有限集 $F\subset A$ 及标量 $c_\alpha$，
+\[
+ \left\|x-\sum_{\alpha\in F}c_\alpha e_\alpha\right\|^2
+ =\|x\|^2-\sum_{\alpha\in F}|(x,e_\alpha)|^2
+   +\sum_{\alpha\in F}|(x,e_\alpha)-c_\alpha|^2.
+\]
+特别地，$P_Fx=\sum_{\alpha\in F}(x,e_\alpha)e_\alpha$ 是有限维张成空间的正交投影，且
+\[
+ \sum_{\alpha\in A}|(x,e_\alpha)|^2\le\|x\|^2.
+\]
+任意指标集上的非负和定义为所有有限部分和的上确界。
+\end{theorem}
+\begin{proof}
+余项 $x-P_Fx$ 与各 $e_\alpha$ 正交，故与 $\sum((x,e_\alpha)-c_\alpha)e_\alpha$ 正交。两次使用勾股公式即得恒等式；取 $c_\alpha=(x,e_\alpha)$ 并对有限集取上确界，即得 Bessel 不等式。
+\end{proof}
+
+\begin{theorem}[完备性、展开与 Parseval]\label{thm:y3-parseval}
+任意正交归一系中，每个 $x$ 的非零系数至多可数，且
+\[
+ Px=\sum_{\alpha\in A}(x,e_\alpha)e_\alpha
+\]
+在范数下无条件收敛，$P$ 是到该系闭线性张成的正交投影。以下三件事等价：该系完备；唯一与所有 $e_\alpha$ 正交的向量是零；对所有 $x$ 有
+\[
+ x=\sum_{\alpha\in A}(x,e_\alpha)e_\alpha,\qquad
+ \|x\|^2=\sum_{\alpha\in A}|(x,e_\alpha)|^2.
+\]
+完备时还成立 $(x,y)=\sum_\alpha(x,e_\alpha)\overline{(y,e_\alpha)}$。
+\end{theorem}
+\begin{proof}
+对每个正整数 $r$，模至少为 $1/r$ 的系数只能有限多个，否则违反 Bessel 不等式；非零系数集为这些有限集之并。平方可和性和正交性使有限部分和成为 Cauchy 网：给定误差，先固定有限集使其外平方和足够小；任何包含它的两个部分和之差都由这个尾和控制。完备性保证极限存在且与次序无关。极限 $Px$ 属于闭张成，$x-Px$ 与每个 $e_\alpha$ 正交，因而与整个闭张成正交。投影定理给出三项等价性，取有限和的内积再令其趋于极限即得最后公式；标量级数绝对收敛由序列的 Cauchy--Schwarz 不等式保证。
+\end{proof}
+
+\begin{proposition}[基的存在与 $\ell^2$ 模型]
+每个 Hilbert 空间都有 Hilbert 基，且任意正交归一系均可扩充为基。若 $\{e_\alpha\}_{\alpha\in A}$ 为基，则 $x\mapsto((x,e_\alpha))_\alpha$ 是 $H$ 到 $\ell^2(A)$ 的线性等距满射。
+\end{proposition}
+\begin{proof}
+按包含关系对所有扩充系应用 Zorn 引理；链的并仍正交归一。极大系若闭张成不等于 $H$，则正交补内有非零向量，归一化后可以继续添加，矛盾。等距性由 Parseval 给出；对 $a\in\ell^2(A)$，有限和 $\sum a_\alpha e_\alpha$ 同样成为 Cauchy 网，其极限的系数正是 $a_\alpha$，故满射。
+\end{proof}
+
+\begin{example}[Fourier 基与收敛拓扑]
+在 $L^2(0,2\pi)$ 中，$e_k(t)=(2\pi)^{-1/2}e^{ikt}$（$k\in\mathbb Z$）正交归一。三角多项式在连续周期函数中一致稠密，而连续周期函数在 $L^2$ 中稠密：先以紧支集光滑函数逼近，再周期延拓。因此此系完备，Fourier 级数按对称部分和在 $L^2$ 范数下收敛，并满足 Parseval 等式。这里没有声称每点收敛或一致收敛，与第二章连续函数 Fourier 级数的逐点发散例子并不冲突。
+\end{example}
+
+\begin{exercise}
+设 $\{e_j\}$ 正交归一，$a\in\ell^2$。证明 $\sum_ja_je_j$ 收敛，且对任意有限集 $F$，其余项的范数平方等于 $\sum_{j\notin F}|a_j|^2$。由此说明重排不改变极限。
+\end{exercise}
+\begin{solution}
+有限和之差的范数平方等于相应系数的平方和，故部分和为 Cauchy，完备性给出极限 $x$。固定 $F$ 后对扩大有限集取极限，得 $\|x-\sum_{j\in F}a_je_j\|^2=\sum_{j\notin F}|a_j|^2$。任意排列最终包含控制尾和所需的有限集，因此都趋于同一个 $x$。
+\end{solution}

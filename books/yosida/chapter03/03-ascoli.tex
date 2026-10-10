@@ -1,0 +1,28 @@
+\Needspace{11\baselineskip}
+\section{Ascoli--Arzel\`a 定理}\label{sec:yosida-03-03}
+\noindent\textit{原书位置：中译本第 89--90 页；英文版第 85--86 页。}
+
+\begin{definition}[等度连续]
+设 $S$ 为度量空间。族 $\mathcal A\subset C(S)$ 等度连续，是指对每个 $s\in S$ 和 $\varepsilon>0$，存在 $\delta>0$，使 $d(s,t)<\delta$ 时，对所有 $f\in\mathcal A$ 均有 $|f(s)-f(t)|<\varepsilon$。这里的 $\delta$ 不依赖 $f$。若 $S$ 紧，有限覆盖论证使 $\delta$ 可同时不依赖 $s$，即成为一致等度连续。
+\end{definition}
+
+\begin{theorem}[Ascoli--Arzel\`a]\label{thm:y3-ascoli}
+设 $S$ 为紧度量空间，$\mathcal A\subset C(S)$ 为实值或复值连续函数族。其在上确界范数下相对紧，当且仅当它等度连续且逐点有界。此时它也一致有界。
+\end{theorem}
+\begin{proof}
+先证充分性。由紧性取可数稠密集 $\{s_j\}$；在每个 $s_j$ 上函数值有界。对任意序列 $f_n\in\mathcal A$，逐次抽子列并对角化，得子列 $g_n$ 在所有 $s_j$ 上收敛。
+给定 $\varepsilon>0$，取一致等度连续的半径 $\delta$，使距离小于 $\delta$ 时振幅小于 $\varepsilon/3$。从稠密集取有限 $\delta$ 网 $s_{j_1},\ldots,s_{j_r}$。当 $n,k$ 足够大，各网点上 $|g_n-g_k|<\varepsilon/3$；任意 $s$ 与一个网点距离小于 $\delta$，三角不等式给出 $|g_n(s)-g_k(s)|<\varepsilon$。故子列在完备空间 $C(S)$ 中一致收敛。度量空间中序列相对紧等价于闭包紧，充分性得证。一致有界性同样由有限网点的有界性和等度连续性得到。
+
+反之，若 $\overline{\mathcal A}$ 紧，则点值映射连续，故逐点有界。给定 $\varepsilon$，用有限个上确界范数半径 $\varepsilon/3$ 的球覆盖它，球心为连续函数 $h_1,\ldots,h_r$。这些函数在紧集上一致连续，取共同的 $\delta$ 使各振幅小于 $\varepsilon/3$，再由到球心的两次误差，得族的等度连续性。
+\end{proof}
+
+\begin{example}[有界性与紧性之间]
+$\{t^n:n\ge1\}\subset C[0,1]$ 一致有界，但在 $1$ 处不等度连续，故不相对紧。反之，$|f(0)|\le A$ 且 $|f(t)-f(s)|\le L|t-s|$ 的函数族相对紧；它在一致收敛下闭，故实际上紧。这里紧性控制的是整个函数，不能仅检查每个点上的数列。
+\end{example}
+
+\begin{exercise}
+证明 $Tf(t)=\int_0^t f(s)\,ds$ 将 $C[0,1]$ 的有界集送到相对紧集。
+\end{exercise}
+\begin{solution}
+若 $\|f\|_\infty\le R$，则 $\|Tf\|_\infty\le R$，且 $|Tf(t)-Tf(s)|\le R|t-s|$。像族一致有界并等度连续，故由定理相对紧；这也证明积分算子 $T:C[0,1]\to C[0,1]$ 是紧算子。
+\end{solution}

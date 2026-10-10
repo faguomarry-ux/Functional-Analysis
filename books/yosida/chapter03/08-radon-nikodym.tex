@@ -1,0 +1,41 @@
+\Needspace{11\baselineskip}
+\section{Lebesgue--Nikodym 定理的一个证明}\label{sec:yosida-03-08}
+\noindent\textit{原书位置：中译本第 97--99 页；英文版第 93--95 页。}
+
+\begin{theorem}[非负测度的 Radon--Nikodym 密度]\label{thm:y3-radon-nikodym}
+设 $\mu,\nu$ 为同一可测空间 $(S,\Sigma)$ 上的 $\sigma$ 有限非负测度，且 $\nu\ll\mu$，即 $\mu(E)=0$ 蕴含 $\nu(E)=0$。则存在非负可测函数 $p$，在 $\mu$ 几乎处处意义下唯一，使
+\[
+ \nu(E)=\int_Ep\,d\mu\quad(E\in\Sigma).
+\]
+等式允许两端为无穷。原书以 Lebesgue--Nikodym 为名，本稿沿用节名并注明现今常用名称。
+\end{theorem}
+\begin{proof}
+先设两测度均有限，置 $\rho=\mu+\nu$，使用实 Hilbert 空间 $L^2(\rho)$。泛函 $L(f)=\int f\,d\nu$ 良定义且有界，因为
+\[
+ |L(f)|\le\nu(S)^{1/2}\|f\|_{L^2(\nu)}
+ \le\nu(S)^{1/2}\|f\|_{L^2(\rho)}.
+\]
+Riesz 定理给出实函数 $h\in L^2(\rho)$，使 $\int f\,d\nu=\int fh\,d\rho$。对特征函数测试，得 $\nu(E)=\int_Eh\,d\rho$。由于 $0\le\nu(E)\le\rho(E)$ 对每个 $E$ 成立，在集合 $\{h<0\}$ 与 $\{h>1\}$ 上测试（或先取阈值子集），得 $0\le h\le1$，$\rho$ 几乎处处。相减还得 $\mu(E)=\int_E(1-h)\,d\rho$。
+
+在 $A=\{h=1\}$ 上 $\mu(A)=0$，绝对连续性给出 $\nu(A)=0$，故 $\rho(A)=0$。修改零测集后可设 $0\le h<1$，令 $p=h/(1-h)$。由对特征函数、简单函数和单调极限依次成立的积分换测度公式，
+\[
+ \int_Ep\,d\mu=\int_Ep(1-h)\,d\rho
+ =\int_Eh\,d\rho=\nu(E).
+\]
+这一步只使用简单函数逼近与单调收敛，并没有预先调用待证密度定理。
+
+一般情形中，$\mu$ 与 $\nu$ 的有限测度覆盖取两两交，再枚举并去除此前各集，得到互不相交的可测分片 $E_j$ 覆盖 $S$，每片的两种测度均有限。在每片应用有限情形得到 $p_j$，拼成 $p=\sum_j1_{E_j}p_j$；可数可加性及非负积分的可数可加性给出全空间等式。
+
+为证唯一，若 $p,q$ 都给出表示，先限制到一个 $\nu$ 有限的覆盖片，并测试其内 $\{p\ge q+1/r\}$。两密度在此可积且积分相同，故该集合的 $\mu$ 测度为零。对 $r$ 及覆盖片取可数并，再交换 $p,q$，即得 $p=q$ 几乎处处。密度在 $\nu$ 有限片上可积，亦保证它 $\mu$ 几乎处处有限。
+\end{proof}
+
+\begin{example}[原子与绝对连续性]
+在可数集上，若 $\mu(\{j\})=a_j>0$，$\nu(\{j\})=b_j\ge0$ 且各值有限，则 $p(j)=b_j/a_j$。相反，$\R$ 上的 Dirac 测度 $\delta_0$ 不绝对连续于 Lebesgue 测度，因为单点的后者测度为零而前者为一；不存在相应的 Lebesgue 可积密度。
+\end{example}
+
+\begin{exercise}
+设 $d\nu=p\,d\mu$，其中 $p\ge0$。证明对每个非负可测 $g$ 有 $\int g\,d\nu=\int gp\,d\mu$。若又有 $d\lambda=q\,d\nu$，推出 $d\lambda=qp\,d\mu$。
+\end{exercise}
+\begin{solution}
+对特征函数公式是密度定义，对非负简单函数由有限线性组合成立。取简单函数 $g_n\uparrow g$，两边应用单调收敛即可；零密度处乘积约定为零。再把 $g=1_Eq$ 代入，得 $\lambda(E)=\int_Eq\,d\nu=\int_Eqp\,d\mu$，这就是密度的链式法则。
+\end{solution}

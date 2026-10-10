@@ -1,0 +1,48 @@
+\Needspace{11\baselineskip}
+\section{“殆正交”元}\label{sec:yosida-03-02}
+\noindent\textit{原书位置：中译本第 88--89 页；英文版第 84--85 页。}
+
+一般赋范空间没有内积，却仍能找到离真闭子空间足够远的单位向量。这是本节“殆正交”的含义。
+
+\begin{lemma}[Riesz 引理]\label{lem:y3-riesz}
+设 $M$ 是赋范空间 $X$ 的真闭线性子空间。对任意 $0<\theta<1$，存在 $x\in X$ 使
+\[
+ \|x\|=1,\qquad \operatorname{dist}(x,M)>\theta.
+\]
+空间 $X$ 无须完备。
+\end{lemma}
+\begin{proof}
+取 $y\notin M$，令 $d=\operatorname{dist}(y,M)>0$。按下确界定义可取 $m_0\in M$ 使 $\|y-m_0\|<d/\theta$。置 $x=(y-m_0)/\|y-m_0\|$。对任意 $m\in M$，
+\[
+ \|x-m\|=\frac{\|y-(m_0+\|y-m_0\|m)\|}{\|y-m_0\|}
+ \ge\frac d{\|y-m_0\|}>\theta.
+\]
+\end{proof}
+
+\begin{corollary}[严格递增子空间中的分离向量]
+若 $\{0\}\ne M_1\subsetneq M_2\subsetneq\cdots$ 是赋范空间的闭线性子空间，则可取 $y_j\in M_j$，$\|y_j\|=1$，使 $\operatorname{dist}(y_{j+1},M_j)>1/2$，从而 $\|y_j-y_k\|>1/2$（$j\ne k$）。
+\end{corollary}
+\begin{proof}
+在 $M_{j+1}$ 中对真闭子空间 $M_j$ 应用引理，另任取 $M_1$ 中的单位向量为 $y_1$。若 $k<j$，则 $y_k\in M_{j-1}$，距离下界立即给出分离性。
+\end{proof}
+
+\begin{theorem}[局部紧性与维数]\label{thm:y3-compact-ball}
+赋范空间 $X$ 的闭单位球紧，当且仅当 $X$ 有限维。因此无限维赋范空间的单位球不全有界。
+\end{theorem}
+\begin{proof}
+有限维时，坐标映射 $a\mapsto\sum_{j=1}^da_je_j$ 与欧氏范数等价：上界来自三角不等式，下界来自欧氏单位球面上连续正函数 $\|\sum a_je_j\|$ 的正最小值。于是闭单位球对应一个欧氏闭有界集，因而紧。这个证明也表明有限维子空间必闭。
+
+无限维时，递归选单位向量 $x_{j+1}$ 使其到 $\operatorname{span}\{x_1,\ldots,x_j\}$ 的距离大于 $1/2$；这个子空间有限维、闭且真，故可用 Riesz 引理。所得序列满足 $\|x_j-x_k\|>1/2$（$j\ne k$），不能被有限多个半径 $1/4$ 的球覆盖，也没有 Cauchy 子列。紧度量空间全有界，故闭单位球不紧。
+\end{proof}
+
+\begin{remark}[为何保留 $\theta<1$]
+Hilbert 空间可取垂直于 $M$ 的单位向量，使距离恰为一；一般赋范空间中这个极值未必取得。若 $M$ 不闭，甚至可能每个向量到 $M$ 的距离都是零，例如 $c_{00}\subset\ell^2$。不要把本节结论改写成一般空间中的正交分解。
+\end{remark}
+
+\begin{exercise}
+在实空间 $c_0$ 上令 $F(x)=\sum_{j\ge1}2^{-j}x_j$，$M=\ker F$。证明 $\|F\|=1$，但不存在单位向量 $x$ 满足 $\operatorname{dist}(x,M)=1$。
+\end{exercise}
+\begin{solution}
+三角不等式给出 $\|F\|\le1$；前 $N$ 项为一、其余为零的向量给出 $F(x)=1-2^{-N}$，故 $\|F\|=1$。若 $\|x\|_\infty=1$，则 $|F(x)|<1$，因为 $x_j\to0$，至少一个正权重项严格小于一。
+对任意 $x$，$\operatorname{dist}(x,\ker F)=|F(x)|$：下界由 $|F(x-m)|\le\|x-m\|$ 得到；上界取单位向量 $u_N$ 使 $F(u_N)\to1$，令 $m_N=x-F(x)u_N/F(u_N)\in M$，再令 $N\to\infty$。于是所有单位向量到 $M$ 的距离均严格小于一。
+\end{solution}

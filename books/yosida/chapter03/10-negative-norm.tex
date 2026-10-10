@@ -1,0 +1,63 @@
+\Needspace{11\baselineskip}
+\section{P. Lax 的负指数范数}\label{sec:yosida-03-10}
+\noindent\textit{原书位置：中译本第 102--104 页；英文版第 98--100 页。}
+
+\begin{definition}[正阶空间与负范数]
+设 $\Omega\subset\R^n$ 开，$s$ 为非负整数。令 $V=H_0^s(\Omega)$ 为 $\Test(\Omega)$ 关于内积
+\[
+ (u,v)_s=\sum_{|\alpha|\le s}\int_\Omega
+ \partial^\alpha u\,\overline{\partial^\alpha v}\,dx
+\]
+的完备化，$\|u\|_s^2=(u,u)_s$。特别 $H_0^0=L^2(\Omega)$。对 $b\in L^2(\Omega)$ 定义
+\[
+ \|b\|_{-s}=\sup_{w\in V,\,\|w\|_s\le1}|(w,b)_0|,
+ \qquad (w,b)_0=\int_\Omega w\overline b\,dx.
+\]
+以 $H^{-s}(\Omega)$ 表示 $L^2(\Omega)$ 关于此范数的完备化。原书将其记为 $H_0^{-s}$；本稿采用 $H^{-s}$，其下标含义由它与 $H_0^s$ 配对的定义决定，避免与其他负阶空间约定混淆。
+\end{definition}
+
+\begin{lemma}[正阶完备化确实嵌入 $L^2$]\label{lem:y3-sobolev-injection}
+自然映射 $V\to L^2(\Omega)$ 连续、单射且像稠密。负范数是真正的范数，并有 $\|b\|_{-s}\le\|b\|_0$。
+\end{lemma}
+\begin{proof}
+对光滑函数 $\|u\|_0\le\|u\|_s$，故映射可延拓。若 $u_j$ 在正阶范数下为 Cauchy，则各 $\partial^\alpha u_j$ 在 $L^2$ 有极限 $v_\alpha$。分部积分及 $L^2$ 收敛给出
+\[
+ \int v_\alpha\varphi=(-1)^{|\alpha|}\int v_0\partial^\alpha\varphi
+ \quad(\varphi\in\Test(\Omega)).
+\]
+若 $v_0=0$，则所有 $v_\alpha$ 所定义的分布为零，故这些 $L^2$ 函数几乎处处为零；完备化元素的正阶范数也为零。这证明单射。像含有在 $L^2$ 稠密的 $\Test(\Omega)$。Cauchy--Schwarz 给出负范数上界；若负范数为零，则 $b$ 正交于稠密子空间 $V$，故 $b=0$。
+\end{proof}
+
+\begin{theorem}[负阶完备化与对偶]\label{thm:y3-negative-dual}
+令 $f_b(w)=(w,b)_0$。这些泛函在 $V'$ 中稠密，且 $\|f_b\|_{V'}=\|b\|_{-s}$。因而 $b\mapsto f_b$ 延拓为 $H^{-s}(\Omega)\to V'$ 的共轭线性等距满射。配对
+\[
+ [w,b]=f_b(w),\qquad |[w,b]|\le\|w\|_s\|b\|_{-s}
+\]
+对 $w$ 线性、对 $b$ 共轭线性，并有
+\[
+ \|w\|_s=\sup_{b\in L^2,\,\|b\|_{-s}\le1}|(w,b)_0|.
+\]
+每个 $H^{-s}$ 上的连续线性泛函唯一形如 $g_w(b)=\overline{[w,b]}$，且 $\|g_w\|=\|w\|_s$。
+\end{theorem}
+\begin{proof}
+记 $E=\{f_b:b\in L^2\}$，它虽由共轭线性映射产生，仍为 $V'$ 的线性子空间。若其闭包不等于 $V'$，投影与 Riesz 定理给出非零 $T\in V''$ 消去 $E$。由自反性 $T(f)=f(w)$，其中 $0\ne w\in V$。于是 $(w,b)_0=0$ 对所有 $b\in L^2$，取 $b=w$ 得 $w=0$（使用上一引理的单射性），矛盾。故 $E$ 稠密。范数等式是定义，完备化便给出共轭线性等距满射；配对不等式由连续延拓得到。稠密泛函族的范数公式（推论 \ref{cor:y3-dense-dual}）给出 $\|w\|_s$ 的对偶公式。
+
+最后，设 $q$ 为 $H^{-s}$ 上连续线性泛函，则在 $E$ 上定义 $T(f_b)=\overline{q(b)}$。因 $b\mapsto f_b$ 共轭线性，这个 $T$ 线性、连续且范数与 $q$ 相同，故延拓到 $V'$。自反性给出唯一 $w\in V$ 使 $T(f)=f(w)$，于是 $q(b)=\overline{[w,b]}$，先在 $L^2$ 成立，再由稠密性在整个负阶空间成立。范数等式来自上面的对偶公式。
+\end{proof}
+
+\begin{remark}[与本稿线性分布配对的衔接]
+复共轭是 $V$ 和 $L^2$ 上的等距映射，也在负阶范数下等距，故可延拓到 $H^{-s}$。定义
+\[
+ T_b(\varphi)=[\varphi,\overline b],\qquad
+ T_b(\varphi)=\int_\Omega b\varphi\,dx\quad(b\in L^2).
+\]
+这样 $b\mapsto T_b$ 与 $\varphi\mapsto T_b(\varphi)$ 都线性。对每个固定紧集，$\|\varphi\|_s$ 受有限阶上确界半范数控制，故 $T_b$ 为分布；若它为零，测试函数在 $V$ 的稠密性使相应泛函为零，故该嵌入单射。相应地 $b\mapsto T_b$ 把负阶空间\emph{线性}等距对应到 $V'$。原书的 $f_b=(\cdot,b)_0$ 与这一分布表示相差共轭，不能不加说明地当成同一个复线性映射。
+\end{remark}
+
+\begin{exercise}
+设 $f_\alpha\in L^2(\Omega)$，$|\alpha|\le s$。证明分布 $T=\sum_{|\alpha|\le s}\partial^\alpha f_\alpha$ 属于 $H^{-s}(\Omega)$，并证明
+$\|T\|_{-s}\le(\sum_{|\alpha|\le s}\|f_\alpha\|_2^2)^{1/2}$。
+\end{exercise}
+\begin{solution}
+对测试函数，$T(\varphi)=\sum_\alpha(-1)^{|\alpha|}\int f_\alpha\partial^\alpha\varphi$。先对每项作积分 Cauchy--Schwarz，再对有限指标作序列 Cauchy--Schwarz，得绝对值不超过 $(\sum\|f_\alpha\|_2^2)^{1/2}\|\varphi\|_s$。它因此唯一延拓到 $V$ 的连续线性泛函；利用线性分布表示 $b\mapsto T_b$ 得唯一负阶元素及上述范数估计。
+\end{solution}

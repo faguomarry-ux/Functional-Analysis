@@ -1,0 +1,56 @@
+\Needspace{11\baselineskip}
+\section{F. Riesz 表示定理}\label{sec:yosida-03-06}
+\noindent\textit{原书位置：中译本第 93--95 页；英文版第 90--92 页。}
+
+\begin{theorem}[Hilbert 空间上的 Riesz 表示]\label{thm:y3-riesz-representation}
+对 $H$ 上的任意连续线性泛函 $f\in H'$，存在唯一 $y_f\in H$ 使
+\[
+ f(x)=(x,y_f)\quad(x\in H),\qquad \|f\|=\|y_f\|.
+\]
+反之，每个 $y\in H$ 都以该公式定义一个连续线性泛函。定理不要求可分性。
+\end{theorem}
+\begin{proof}
+若 $f=0$，取 $y_f=0$。否则 $N=\ker f$ 为真闭子空间，取非零 $y_0\in N^\perp$。由于 $N\cap N^\perp=\{0\}$，$f(y_0)\ne0$。任意 $x$ 可写成
+\[
+ x=\left(x-\frac{f(x)}{f(y_0)}y_0\right)
+       +\frac{f(x)}{f(y_0)}y_0,
+\]
+第一项在 $N$。于是置
+\[
+ y_f=\frac{\overline{f(y_0)}}{\|y_0\|^2}y_0
+\]
+便有 $(x,y_f)=f(x)$，其中共轭来自内积对第二变量的共轭线性。若另有 $z$ 表示 $f$，则 $(x,y_f-z)=0$ 对所有 $x$ 成立，取 $x=y_f-z$ 得唯一性。Cauchy--Schwarz 给出 $\|f\|\le\|y_f\|$；$y_f\ne0$ 时在单位向量 $y_f/\|y_f\|$ 处取得反向等号。反向陈述也由同一不等式得到。
+\end{proof}
+
+\begin{corollary}[对偶 Hilbert 结构与自反性]\label{cor:y3-reflexive}
+复 Hilbert 空间中，$y\mapsto f_y$ 是共轭线性等距满射。赋予 $H'$ 内积
+\[
+ (f,g)_{H'}=(y_g,y_f)_H,
+\]
+则 $H'$ 仍为 Hilbert 空间，范数正是泛函范数。自然映射 $J:H\to H''$，$Jx(f)=f(x)$，是线性等距满射。
+\end{corollary}
+\begin{proof}
+由表示唯一性，$y_{af+bg}=\overline a y_f+\overline b y_g$，故上述内积对第一变量线性；完备性由等距对应得到。对 $T\in H''$，在 $H'$ 上再次使用 Riesz 定理，得某 $g\in H'$ 使
+$T(f)=(f,g)_{H'}=(y_g,y_f)=f(y_g)$，故 $T=Jy_g$。$\|Jx\|=\|x\|$ 由单位向量处达到范数的泛函得到。
+\end{proof}
+
+\begin{corollary}[稠密泛函族决定范数]\label{cor:y3-dense-dual}
+若线性子空间 $E\subset H'$ 在泛函范数下稠密，则
+\[
+ \|x\|=\sup\{|f(x)|:f\in E,\ \|f\|\le1\}.
+\]
+\end{corollary}
+\begin{proof}
+上界显然。若 $x\ne0$，取范数为一且 $f_0(x)=\|x\|$ 的表示泛函，并以 $E$ 中的 $g_j$ 逼近它。将 $g_j$ 除以 $\max(1,\|g_j\|)$ 后仍趋于 $f_0$，且范数不超过一，给出下界。$x=0$ 平凡。
+\end{proof}
+
+\begin{remark}[三种表示须分清]
+本节表示 $H'$ 的向量，不是把 $C(K)'$ 表示为测度的 Riesz 定理。复数情形中 $H\to H'$ 的上述对应共轭线性，而 $H\to H''$ 的自然嵌入线性。若改用连续共轭线性泛函组成的反对偶，第一次对应可以成为线性映射；两种约定不可混用。
+\end{remark}
+
+\begin{exercise}
+设 $a\in\ell^2$，$f(x)=\sum_{j\ge1}a_jx_j$。求其表示向量及范数，并说明所有 $\ell^2$ 上连续线性泛函都具有此形式。
+\end{exercise}
+\begin{solution}
+因为 $(x,y)=\sum_jx_j\overline{y_j}$，表示向量是 $y=(\overline{a_j})_j$，范数为 $\|a\|_2$；级数由 Cauchy--Schwarz 绝对收敛。反之 Riesz 定理提供 $y\in\ell^2$，取 $a_j=\overline{y_j}$ 即可。若 $a\ne0$，在 $x=\overline a/\|a\|_2$ 处 $f(x)=\|a\|_2$。
+\end{solution}
