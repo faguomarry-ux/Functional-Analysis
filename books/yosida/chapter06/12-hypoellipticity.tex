@@ -1,0 +1,50 @@
+\Needspace{12\baselineskip}
+\section{亚椭圆性（Hörmander 定理）}\label{sec:yosida-06-12}
+\noindent\textit{原书起始页：中译本 195；英文版 189。}
+
+本节沿用中译本“亚椭圆性”，对应英文 \textit{hypoellipticity}。它表示局部光滑性的传递；不可仅凭中文词形把它等同于某个指定阶数的 subelliptic 估计。
+
+\begin{definition}[亚椭圆性与奇异支集]
+称 $P(D)$ 亚椭圆，若对任意开集 $U$ 和 $u\in\Dist(U)$，$P(D)u\in C^\infty(U)$ 蕴含 $u\in C^\infty(U)$。分布的奇异支集为它不能由光滑函数表示的点集。
+\end{definition}
+
+光滑系数微分算子不在原来光滑的地方制造奇性，所以总有 $\operatorname{sing\,supp}P(D)u\subset\operatorname{sing\,supp}u$。亚椭圆性恰使反向包含也成立，从而二者相等。第二章已讨论常系数亚椭圆性的复零点必要条件；这里用 Fourier 语言描述它。
+
+\begin{theorem}[H\"ormander 的常系数刻画：一般等价性作为外部定理]\label{thm:y6-hypo-criterion}
+对非零常系数多项式 $P$，下列条件等价：
+\begin{enumerate}
+ \item $P(D)$ 亚椭圆。
+ \item 对 $P(\zeta)=0$ 的复零点，$|\operatorname{Re}\zeta|\to\infty$ 时必有 $|\operatorname{Im}\zeta|\to\infty$；等价地，每个固定宽度的水平管道中零点的实部有界。
+ \item $P$ 在充分大的实频率上非零，且对每个 $|\alpha|>0$，$|\partial_\xi^\alpha P(\xi)|/|P(\xi)|\to0$（$|\xi|\to\infty$）。
+\end{enumerate}
+\end{theorem}
+
+原书先由零点条件得到导数比值，再结合一个定量的多项式衰减引理与局部 Sobolev 迭代证明充分性；其中定量引理也引用外部文献。本轮明确引用一般刻画，完整验证以下模型，不把验证例子记为一般定理的证明。
+
+\begin{proposition}[椭圆算子与热算子]
+常系数椭圆算子亚椭圆。热算子 $\partial_t-\Delta_x$ 也亚椭圆，但不是在 $(x,t)$ 全变量中的总阶二阶椭圆算子。
+\end{proposition}
+\begin{proof}
+椭圆情形已由定理 \ref{thm:y6-constant-regularity} 及 Sobolev 引理独立证明：光滑右端属于全部局部 Sobolev 阶，解亦然。
+
+热算子的符号为 $P(\xi,\tau)=|\xi|^2+i\tau$，且
+$|P|=(|\xi|^4+\tau^2)^{1/2}$。它的实零点只有原点。非零一阶导数是 $2\xi_j$ 和 $i$，二阶导数为常数，其余为零。当 $|(\xi,\tau)|\to\infty$，$1/|P|\to0$；对 $|\xi|/|P|$，若 $|\xi|$ 大则至多 $1/|\xi|$，若 $|\xi|$ 有界而 $|\tau|$ 大也趋零。因此全部导数比值趋零，引用一般刻画得亚椭圆。总阶二阶主符号为 $|\xi|^2$，在 $\xi=0$、$\tau\ne0$ 时为零，故不椭圆。
+\end{proof}
+
+\begin{example}[只沿一个方向求导不会消去横向奇性]
+在 $\mathbb R^2$ 上取 $u=1\otimes\delta_0$，即 $u(\varphi)=\int_{\mathbb R}\varphi(x,0)\,\dd x$。它不光滑，但 $\partial_xu=0$。所以 $\partial_x$ 在二维不亚椭圆；其符号 $i\xi$ 的实零集含无穷直线，与零点判据一致。空间维数改变会改变同一形式算子的性质。
+\end{example}
+
+\begin{exercise}[波动算子的反例]\label{ex:y6-wave}
+在 $\mathbb R^2_{x,t}$ 上令 $u=\delta(x-t)$，证明 $(\partial_t^2-\partial_x^2)u=0$，并判断算子是否亚椭圆。
+\end{exercise}
+\begin{solution}
+链式求导或线性坐标变换给 $\partial_xu=\delta'(x-t)$、$\partial_tu=-\delta'(x-t)$，两次求导均得 $\delta''(x-t)$，故差为零。$u$ 沿直线 $x=t$ 奇异，而右端为光滑的零函数，因此该算子不亚椭圆。其符号 $\xi^2-\tau^2$ 也有无界实零集。
+\end{solution}
+
+\begin{exercise}[分离存在性与正则性]\label{ex:y6-existence-vs-regularity}
+说明 Malgrange--Ehrenpreis 定理与亚椭圆性分别回答什么，并用 $\partial_x$ 在二维的例子区分它们。
+\end{exercise}
+\begin{solution}
+前者保证非零常系数算子存在分布基本解，从而可解紧支集右端；后者断言任意分布解的局部光滑性由右端传递。二维 $\partial_x$ 有基本解 $H(x)\otimes\delta_0(y)$，但齐次解 $1\otimes\delta_0(y)$ 不光滑。因此存在基本解不能推出亚椭圆性，更不能推出唯一性。
+\end{solution}

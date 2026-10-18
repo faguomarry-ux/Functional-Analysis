@@ -1,0 +1,82 @@
+\Needspace{12\baselineskip}
+\section{Malgrange--Ehrenpreis 定理}\label{sec:yosida-06-10}
+\noindent\textit{原书起始页：中译本 188；英文版 182。}
+
+\begin{definition}[基本解与符号强度]
+非零常系数算子 $P(D)$ 的基本解是满足 $P(D)E=\delta_0$ 的 $E\in\Dist(\mathbb R^d)$。对其多项式符号定义
+\[
+ \widetilde P(\xi)=\left(\sum_{\alpha}|\partial_\xi^\alpha P(\xi)|^2\right)^{1/2}.
+\]
+求和仅含有限个非零项。最高阶中某个偏导数为非零常数，故 $\widetilde P$ 在实空间有严格正的统一下界。称 $Q$ 弱于 $P$，若 $\widetilde Q\le C\widetilde P$。
+\end{definition}
+
+\begin{lemma}[多项式的复平均估计]\label{lem:y6-complex-average}
+固定次数上界及 $r>0$。若 $F$ 在多圆盘 $|z_j|\le r$ 的邻域全纯，$p$ 为该次数内的多项式，则
+\[
+ |F(0)|\left(\sum_\alpha|\partial^\alpha p(0)|^2\right)^{1/2}
+ \le C\int_{[0,2\pi]^d}|F(z(\theta))p(z(\theta))|\,\dd\theta,
+ \quad z_j(\theta)=re^{i\theta_j}.
+\]
+常数只依赖 $r,d$ 和次数上界。
+\end{lemma}
+\begin{proof}
+先在一维单位圆证明：若 $p(z)=A\prod_{j=1}^n(z-a_j)$，将 $|a_j|<1$ 的因子换为 $1-\overline{a_j}z$，得到多项式 $q$。在单位圆 $|q|=|p|$，且 $|q(0)|=|A|\prod_{|a_j|\ge1}|a_j|\ge|A|$。Cauchy 平均公式给
+$|AF(0)|\le|q(0)F(0)|\le(2\pi)^{-1}\int|Fp|$。
+
+对每个 $k$，将任意 $k$ 个根的乘积作为上述多项式，剩余根因子并入全纯函数 $F$，便控制 $|F(0)|$ 乘任意 $n-k$ 个根之积及 $|A|$。$p^{(k)}(0)$ 是这些项的和，故
+$|F(0)p^{(k)}(0)|\le n!/(n-k)!\,(2\pi)^{-1}\int|Fp|$。常数或零多项式亦直接成立。缩放得到半径 $r$ 的版本。
+
+多变量时逐个变量应用一维导数估计；对固定的其他变量先估计第一变量导数，再依次估计其余变量导数。Fubini 给多圆周积分，对有限个多重指标求和并比较有限维 $\ell^1,\ell^2$ 范数，即得结论。
+\end{proof}
+
+\begin{theorem}[Malgrange--Ehrenpreis]\label{thm:y6-malgrange}
+每个非零常系数线性微分算子 $P(D)$ 都有全空间分布基本解。这里不要求椭圆性。
+\end{theorem}
+\begin{proof}
+令 $Q(\xi)=P(-\xi)$，所以双线性分布配对的形式转置为 ${}^tP(D)=Q(D)$。固定 $\varepsilon>0$，定义测试空间上的半范数
+\[
+ p(v)=\sup_{|\eta|\le\varepsilon}\int_{\mathbb R^d}
+ \frac{|\widehat v(\xi+i\eta)|}{\widetilde Q(\xi)}\,\dd\xi.
+\]
+它有限且连续：在固定紧支集 $K$ 上，$\widehat v(\xi+i\eta)=\widehat{e^{x\cdot\eta}v}(\xi)$，有限阶分部积分使其由 $C_K(1+|\xi|)^{-d-1}\max_{|\alpha|\le d+1}\|\partial^\alpha v\|_\infty$ 控制，且 $\widetilde Q$ 有正下界。测试空间的归纳极限拓扑使逐个固定支集的这些估计保证 $p$ 连续。
+
+取引理 \ref{lem:y6-complex-average} 中 $r\sqrt d\le\varepsilon$，对 $F(z)=\widehat\varphi(\xi+z)$ 和多项式 $Q(\xi+z)$ 应用引理，得
+\[
+ |\widehat\varphi(\xi)|\le\frac C{\widetilde Q(\xi)}
+ \int_{[0,2\pi]^d}|\widehat{Q(D)\varphi}(\xi+z(\theta))|\,\dd\theta.
+\]
+对有界实平移 $a$，Taylor 公式在有限个导数间给出
+$\widetilde Q(\xi+a)\le C_r\widetilde Q(\xi)$，反向以 $-a$ 同样成立。将上一式对 $\xi$ 积分，逐个 $\theta$ 平移实变量并比较分母，得到
+\[
+ |\varphi(0)|\le(2\pi)^{-d}\int|\widehat\varphi(\xi)|\,\dd\xi
+ \le C' p(Q(D)\varphi).
+\]
+于是 $Q(D)\varphi\mapsto\varphi(0)$ 是其像子空间上的良定义线性泛函：若两像相同，上述估计使两原像在零点取值相同。由复 Hahn--Banach 定理，延拓为 $E$，满足 $|E(v)|\le C'p(v)$，故 $E\in\Dist$，并有
+\[
+ (P(D)E)(\varphi)=E(Q(D)\varphi)=\varphi(0).
+\]
+因此 $E$ 为基本解。构造中使用复频率平移，不将 $1/P(\xi)$ 当作处处有意义的普通函数。
+\end{proof}
+
+\begin{corollary}[紧支集右端的求解]
+若 $f\in\CompactDist$，则 $u=E*f$ 有定义，且 $P(D)u=f$。所有其他解与它相差一个齐次解。
+\end{corollary}
+\begin{proof}
+紧支集卷积与导数交换，故 $P(D)(E*f)=(P(D)E)*f=\delta_0*f=f$。两解相减即满足齐次方程。基本解存在不包含边界条件、因果条件或唯一性。
+\end{proof}
+
+一维 $(\partial_t+a)$ 的因果基本解为 $H(t)e^{-at}$，由分布求导直接验证。$-\Delta$ 的 Newton 势基本解已在第 \ref{ch:pde} 章证明；与原书采用 $\Delta$ 的符号不同，相应常数须变号。
+
+\begin{exercise}[基本解可不温和]\label{ex:y6-growing-fundamental}
+验证 $E=H(t)e^t$ 为 $(\partial_t-1)$ 的基本解，并说明它不是温和分布。
+\end{exercise}
+\begin{solution}
+$E'=\delta_0+E$，所以 $(\partial_t-1)E=\delta_0$。对移向正无穷的非负紧支集探针配对按 $e^j$ 增长，任何固定 Schwartz 半范数只按多项式增长，故不温和。该算子还可能有别的增长性质不同的基本解，存在性定理不唯一指定它。
+\end{solution}
+
+\begin{exercise}[形式转置的负号]\label{ex:y6-transpose}
+若 $D=-i\partial$，计算双线性配对下 ${}^tD$，并解释为何上面必须使用 $P(-D)$。
+\end{exercise}
+\begin{solution}
+$(DT)(\varphi)=(-i)(-T(\varphi'))=T(i\varphi')=T(-D\varphi)$，故 ${}^tD=-D$，常系数多项式逐项得到 ${}^tP(D)=P(-D)$。Hilbert 伴随还会共轭系数，不能替代此处的形式转置。
+\end{solution}

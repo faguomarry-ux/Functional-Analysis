@@ -1,0 +1,78 @@
+\Needspace{12\baselineskip}
+\section{速降函数的 Fourier 变换}\label{sec:yosida-06-01}
+\noindent\textit{原书起始页：中译本 151；英文版 146。}
+
+令 $d\ge1$。Schwartz 空间 $\Sch(\mathbb R^d)$ 由满足下列全部半范数有限的光滑函数组成：
+\[
+ q_{N,m}(\varphi)=\max_{|\alpha|\le m}\sup_x(1+|x|)^N|\partial^\alpha\varphi(x)|,
+ \qquad N,m\in\mathbb N_0.
+\]
+这些半范数与 $\sup_x|x^\beta\partial^\alpha\varphi(x)|$ 生成相同拓扑。高斯及紧支集光滑函数均属此空间。多项式乘法、求导均连续；不是每个趋零的光滑函数都速降。
+
+\begin{proposition}[紧支集探针稠密]
+$\Test(\mathbb R^d)$ 在 $\Sch$ 中稠密。
+\end{proposition}
+\begin{proof}
+取 $\chi\in\Test$ 在单位球上为 1，令 $\chi_R(x)=\chi(x/R)$。Leibniz 公式将 $\partial^\alpha((1-\chi_R)\varphi)$ 分成无截断导数项及含 $R^{-|\gamma|}(\partial^\gamma\chi)(x/R)$ 的项。所有项支于 $|x|\ge R$，故以更高一阶权重控制，有
+$q_{N,m}((1-\chi_R)\varphi)\le C_{N,m}R^{-1}q_{N+1,m}(\varphi)$（$R\ge1$）。因此 $\chi_R\varphi\to\varphi$ 于 $\Sch$。
+\end{proof}
+
+\begin{theorem}[Fourier 自同构与反演]\label{thm:y6-fourier}
+按式 \eqref{eq:fourier-convention}，
+\[
+ \widehat\varphi(\xi)=\int e^{-ix\cdot\xi}\varphi(x)\,\dd x,
+ \qquad \varphi(x)=(2\pi)^{-d}\int e^{ix\cdot\xi}\widehat\varphi(\xi)\,\dd\xi.
+\]
+$\FT$ 为 $\Sch$ 的连续线性自同构，且
+\[
+ \widehat{\partial_j\varphi}=i\xi_j\widehat\varphi,
+ \qquad\widehat{x_j\varphi}=i\partial_{\xi_j}\widehat\varphi.
+\]
+\end{theorem}
+\begin{proof}
+速降性允许在积分内求导及无边界项分部积分，得到两条恒等式。任意 $\xi^\beta\partial_\xi^\alpha\widehat\varphi$ 因而是有限个 $\partial^\gamma(x^\alpha\varphi)$ 的变换之和。利用 $\|\widehat f\|_\infty\le\|f\|_1$，再以权重 $N>d$ 控制 $L^1$ 范数，便得输出半范数被有限个输入半范数控制。
+
+为证明反演，在逆积分中插入 $e^{-\varepsilon|\xi|^2}$。Fubini 与高斯积分给出
+\[
+ (2\pi)^{-d}\int e^{ix\cdot\xi-\varepsilon|\xi|^2}\widehat\varphi(\xi)\,\dd\xi
+ =(G_\varepsilon*\varphi)(x),\quad
+ G_\varepsilon(x)=(4\pi\varepsilon)^{-d/2}e^{-|x|^2/(4\varepsilon)}.
+\]
+右侧因近似恒等趋于 $\varphi(x)$：先在 $|y|<\delta$ 用一致连续性，余部以高斯尾质量控制。左侧因 $\widehat\varphi\in L^1$ 可用控制收敛，得到反演。逆号积分的半范数估计相同，故逆映射连续。
+\end{proof}
+
+\begin{proposition}[Parseval 与 Plancherel]\label{prop:y6-plancherel}
+对 $f,g\in\Sch$，
+\[
+ \int f\overline g\,\dd x=(2\pi)^{-d}\int\widehat f\,\overline{\widehat g}\,\dd\xi.
+\]
+因此 $(2\pi)^{-d/2}\FT$ 唯一延拓为 $L^2$ 的酉算子。
+\end{proposition}
+\begin{proof}
+把 $g$ 的反演式共轭后代入，Fubini 合法，得等式。取 $g=f$ 得等距性。$\Test\subset\Sch$ 在 $L^2$ 稠密，故由完备性延拓；逆变换同样等距延拓，二者在稠密子空间互逆，因而在全空间互逆。这里 $L^2$ 变换是范数极限，未必逐点由绝对收敛积分给出。
+\end{proof}
+
+\begin{proposition}[一维 Poisson 求和]
+若 $\varphi\in\Sch(\mathbb R)$，则
+\[
+ \sum_{n\in\mathbb Z}\varphi(x+2\pi n)
+  =\frac1{2\pi}\sum_{k\in\mathbb Z}\widehat\varphi(k)e^{ikx}.
+\]
+\end{proposition}
+\begin{proof}
+左侧及其逐阶导数由速降性在一周期上一致绝对收敛，定义光滑周期函数。逐项积分给出 Fourier 系数为 $(2\pi)^{-1}\widehat\varphi(k)$；右侧也一致绝对收敛。由周期三角系的完备性（第三章），两侧在 $L^2$ 相等，再由连续性处处相等。
+\end{proof}
+
+\begin{exercise}[归一化换算]\label{ex:y6-normalization}
+原书变换记为 $\mathcal F_0=(2\pi)^{-d/2}\FT$。分别写出 $\mathcal F_0(f*g)$ 和 $\FT(f*g)$，并计算 $\widehat{e^{-a|x|^2}}$（$a>0$）。
+\end{exercise}
+\begin{solution}
+Fubini 给出 $\FT(f*g)=\widehat f\widehat g$；故 $\mathcal F_0(f*g)=(2\pi)^{d/2}(\mathcal F_0f)(\mathcal F_0g)$。高斯变换为 $(\pi/a)^{d/2}e^{-|\xi|^2/(4a)}$，可先计算一维高斯积分再用张量积。常数可在 $\xi=0$ 处核对。
+\end{solution}
+
+\begin{exercise}[调制和平移]\label{ex:y6-translation}
+对 $\tau_af(x)=f(x-a)$，证明 $\widehat{\tau_af}=e^{-ia\cdot\xi}\widehat f$ 及 $\widehat{e^{ib\cdot x}f(x)}(\xi)=\widehat f(\xi-b)$。
+\end{exercise}
+\begin{solution}
+第一式在积分中代换 $y=x-a$，第二式将两个指数合并即可。两式先对 $\Sch$ 成立，再由对偶性延拓到温和分布。
+\end{solution}

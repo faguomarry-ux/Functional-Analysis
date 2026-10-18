@@ -1,0 +1,60 @@
+\Needspace{12\baselineskip}
+\section{Sobolev 引理}\label{sec:yosida-06-07}
+\noindent\textit{原书起始页：中译本 179；英文版 173。}
+
+\begin{definition}[全空间与局部 Sobolev 空间]
+对实数 $s$，令 $H^s(\mathbb R^d)$ 为满足
+\[
+ \|u\|_{H^s}^2=(2\pi)^{-d}\int(1+|\xi|^2)^s|\widehat u(\xi)|^2\,\dd\xi<\infty
+\]
+的温和分布，其中变换须由可测函数表示。$u\in H^s_{\Loc}(\Omega)$ 指每个 $\chi\in\Test(\Omega)$ 都使零延拓的 $\chi u\in H^s(\mathbb R^d)$。非负整数 $m$ 时，$H^m$ 等价于所有 $|\alpha|\le m$ 的分布导数属于 $L^2$ 的空间，亦记 $W^{m,2}$。
+\end{definition}
+
+最后的等价性来自 Plancherel 与权重比较
+$(1+|\xi|^2)^m\asymp\sum_{|\alpha|\le m}|\xi^\alpha|^2$。加权 $L^2$ 的完备性给出 $H^s$ 完备。切断频率后作光滑逼近说明 $\Sch$ 在其中稠密；亦可直接在加权 $L^2$ 中逼近变换再取逆。
+
+\begin{lemma}[切断乘子与插值估计]\label{lem:y6-sobolev-cutoff}
+对每个 $s\in\mathbb R$ 和 $\chi\in\Test$，乘法 $u\mapsto\chi u$ 在 $H^s$ 上有界。若 $0\le a<b$ 且 $\varepsilon>0$，则存在 $C_\varepsilon$ 使
+\[
+ \|u\|_{H^a}^2\le\varepsilon\|u\|_{H^b}^2+C_\varepsilon\|u\|_2^2
+ \quad(0\le a<b).
+\]
+\end{lemma}
+\begin{proof}
+记 $\langle\xi\rangle=(1+|\xi|^2)^{1/2}$。由 $\langle\xi\rangle\le\sqrt2\langle\eta\rangle\langle\xi-\eta\rangle$ 及交换 $\xi,\eta$ 的不等式，得到
+\[
+ \langle\xi\rangle^s\le C_s\langle\eta\rangle^s\langle\xi-\eta\rangle^{|s|}.
+\]
+先对 Schwartz 函数，用 $\widehat{\chi u}=(2\pi)^{-d}\widehat\chi*\widehat u$；卷积核 $\langle\zeta\rangle^{|s|}|\widehat\chi(\zeta)|$ 可积，Young 的 $L^1*L^2$ 估计给有界性，再由稠密性延拓。Young 估计可由积分三角不等式与平移的 $L^2$ 等距性得到。插值式则将频率分为大球及其补集，在球外用 $\langle\xi\rangle^{2a}\le\varepsilon\langle\xi\rangle^{2b}$，球内用常数控制。
+\end{proof}
+
+\begin{theorem}[Sobolev 引理]\label{thm:y6-sobolev}
+若 $s>k+d/2$、$k\in\mathbb N_0$，则每个 $u\in H^s(\mathbb R^d)$ 有唯一的 $C^k$ 代表，各阶 $|\alpha|\le k$ 导数有界连续且在无穷远趋零，并有
+\[
+ \sum_{|\alpha|\le k}\|\partial^\alpha u\|_\infty\le C_{s,k,d}\|u\|_{H^s}.
+\]
+因此 $H^s_{\Loc}(\Omega)\subset C^k(\Omega)$；代表按几乎处处相同理解。
+\end{theorem}
+\begin{proof}
+Cauchy--Schwarz 给出
+\[
+ \int|\xi^\alpha\widehat u(\xi)|\,\dd\xi
+ \le\left(\int\langle\xi\rangle^{2s}|\widehat u|^2\right)^{1/2}
+ \left(\int|\xi|^{2|\alpha|}\langle\xi\rangle^{-2s}\right)^{1/2}.
+\]
+后一积分在无穷远有限恰需 $s>|\alpha|+d/2$。故反演积分及其前 $k$ 阶导数绝对收敛，用控制收敛得连续性和一致界。$L^1$ 函数的逆变换在无穷远趋零：先用紧支集光滑函数在 $L^1$ 中逼近，再用分部积分及变换的上确界估计。反演所得函数与原 $u$ 是同一分布；连续代表若几乎处处相同则处处相同。局部结论取等于 1 的切断函数，各片代表在交集一致。
+\end{proof}
+
+\begin{exercise}[临界指标不能由该估计补上]\label{ex:y6-critical}
+取非负非零 $\psi\in\Test(\{1<|\xi|<3/2\})$，令 $\widehat u_N(\xi)=\sum_{j=1}^Nj^{-1}2^{-jd}\psi(2^{-j}\xi)$。证明 $\|u_N\|_{H^{d/2}}$ 一致有界，而 $u_N(0)\to\infty$。
+\end{exercise}
+\begin{solution}
+各项的频率支集不交，且在第 $j$ 项上 $\langle\xi\rangle^d\asymp2^{jd}$。范数平方的第 $j$ 项至多为常数乘 $j^{-2}2^{-2jd}2^{jd}2^{jd}=j^{-2}$。但反演给 $u_N(0)=(2\pi)^{-d}(\int\psi)\sum_{j=1}^N1/j\to\infty$。所以临界处不存在同样的统一上确界估计；不能把严格不等号改为等号。
+\end{solution}
+
+\begin{exercise}[负阶起点]\label{ex:y6-negative-order}
+若 $T$ 紧支集且有限阶估计为 $|T(\varphi)|\le C\max_{|\alpha|\le m}\sup_K|\partial^\alpha\varphi|$，证明对充分大的 $M$，$T\in H^{-M}$。
+\end{exercise}
+\begin{solution}
+变换满足 $|\widehat T(\xi)|\le C'(1+|\xi|)^m$，故 $\int\langle\xi\rangle^{-2M}|\widehat T|^2<\infty$ 只需 $M>m+d/2$。因此任意分布在每个紧内部区域上都有一个负 Sobolev 阶的起点，便于正则性迭代。
+\end{solution}

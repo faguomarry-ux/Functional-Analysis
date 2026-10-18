@@ -1,0 +1,48 @@
+\Needspace{12\baselineskip}
+\section{Friedrichs 定理}\label{sec:yosida-06-09}
+\noindent\textit{原书起始页：中译本 183；英文版 177。}
+
+本节是椭圆方程的内部正则性，不是第十一章的半有界算子延拓定理。设 $L$ 是 $2m$ 阶光滑系数强椭圆算子，$Lu=f$ 按分布解释；内部结论不需要边界值，也不给边界正则性。
+
+\begin{theorem}[Friedrichs 内部正则性：一般变系数形式作为外部定理]\label{thm:y6-friedrichs}
+若 $L$ 为光滑系数的强椭圆算子，$u\in L^2_{\Loc}(\Omega)$ 且 $Lu=f\in H^k_{\Loc}(\Omega)$（$k\in\mathbb N_0$），则 $u\in H^{k+2m}_{\Loc}(\Omega)$。因此 $f$ 光滑时 $u$ 在内部光滑。
+\end{theorem}
+
+原书通过冻结系数、正则化和逐阶迭代证明一般情形。本轮不省略这些技术步骤而将一般结论冒充为直接推论；下面完整证明常系数椭圆情形，展示 Fourier 方法如何获得正则性。记 $P(D)$ 的阶数为 $r\ge1$，主齐次多项式 $P_r(\xi)$ 在 $\xi\ne0$ 时不为零。
+
+\begin{lemma}[常系数椭圆估计]\label{lem:y6-elliptic-estimate}
+存在 $R,c>0$，使 $|P(\xi)|\ge c|\xi|^r$（$|\xi|\ge R$）。对任意 $s\in\mathbb R$，
+\[
+ \|v\|_{H^{s+r}}\le C_s\bigl(\|P(D)v\|_{H^s}+\|v\|_{H^s}\bigr).
+\]
+\end{lemma}
+\begin{proof}
+$|P_r|$ 在单位球面有正的最小值，低阶项为 $O(|\xi|^{r-1})$，故大频率有下界。球内用常数控制，得到 $\langle\xi\rangle^r\le C(1+|P(\xi)|)$；平方后乘 $\langle\xi\rangle^{2s}|\widehat v|^2$ 积分即可。该估计可先用于 $\Sch$，再直接由频率积分用于相应分布。
+\end{proof}
+
+\begin{theorem}[常系数椭圆算子的内部正则性]\label{thm:y6-constant-regularity}
+若 $u\in\Dist(\Omega)$，且 $P(D)u\in H^s_{\Loc}(\Omega)$，则 $u\in H^{s+r}_{\Loc}(\Omega)$。
+\end{theorem}
+\begin{proof}
+在任意固定紧内部邻域上，分布的有限阶性给出某个 $t<0$ 使 $u\in H^t_{\Loc}$，见习题 \ref{ex:y6-negative-order}。取 $\eta\in\Test(\Omega)$，其支集落在稍大的、已有此控制的区域内。交换子公式为
+\[
+ P(D)(\eta u)=\eta P(D)u+[P(D),\eta]u.
+\]
+交换子至多 $r-1$ 阶，切断乘子有界，所以右侧属于 $H^a$，其中 $a=\min(s,t-r+1)$；同时 $\eta u\in H^t\subset H^a$。由引理 \ref{lem:y6-elliptic-estimate} 得 $\eta u\in H^{a+r}=H^{\min(s+r,t+1)}$。
+
+选择在目标紧集附近等于 1 的嵌套切断，逐次将已知阶数至少提升 1，直到达到 $s+r$。只需有限次，故可事先在紧集与外侧区域之间选择所需有限层邻域。因目标紧集任意，得局部结论。这一证明不对变系数算子作未经证明的同样推断。
+\end{proof}
+
+\begin{exercise}[Poisson 方程的局部增益]\label{ex:y6-poisson-regularity}
+设 $-\Delta u=f\in L^2_{\Loc}$，$u$ 为分布。证明 $u\in H^2_{\Loc}$；若 $f\in C^\infty$，证明 $u\in C^\infty$。
+\end{exercise}
+\begin{solution}
+$-\Delta$ 的符号为 $|\xi|^2$，二阶椭圆，故用定理 \ref{thm:y6-constant-regularity} 取 $s=0$。若 $f$ 光滑，则每个局部 Sobolev 阶均有限，得 $u\in H^N_{\Loc}$ 对任意 $N$ 成立。再用 Sobolev 引理，令 $N>k+d/2$ 得任意阶连续导数。
+\end{solution}
+
+\begin{exercise}[内部不包含边界]\label{ex:y6-boundary}
+在单位圆盘内令 $u(z)=\operatorname{Re}(1-z)^{-1}$。说明 $\Delta u=0$ 的内部光滑性不能推出闭圆盘上的有界性。
+\end{exercise}
+\begin{solution}
+该函数为圆盘内全纯函数的实部，故内部调和光滑。但沿实轴 $z=r\uparrow1$ 有 $u(r)=(1-r)^{-1}\to\infty$。缺少边界条件与边界空间假设，内部正则性不能给边界控制。
+\end{solution}

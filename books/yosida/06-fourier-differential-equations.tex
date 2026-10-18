@@ -1,58 +1,26 @@
 % !TeX encoding = UTF-8
-% 吉田第六版：中译本第 6 章；此文件当前仅为目录与正文占位。
-\SetChapterInfo{subtitle={吉田耕作第六版主线 · 正文待撰写}}
+\SetChapterInfo{subtitle={由频率分析走向支集、基本解与内部正则性},keywords={Fourier; Paley--Wiener; 卷积; Sobolev; Gårding; 基本解; 亚椭圆性},prereq={测试空间与分布; 第四章延拓; 第五章向量积分与全纯性},goals={统一变换常数; 用支集和频率估计判断运算合法性; 区分可解性与正则性}}
 \chapter{Fourier 变换和微分方程}\label{ch:yosida-06}
-\YosidaChapterPlaceholder{6}{Fourier Transform and Differential Equations}{151--200}{145--192}
+\ChapterSource{按 \cite{yosida-zh,yosida-en} 第六章十二节组织，2026 年 10 月 18 日补写首轮正文。原书位置为中译本印刷第 151--200 页、英文版第 145--192 页。本轮查看的扫描页、采用的证明与未展开前提逐项记于本章 COVERAGE。原书 Fourier 变换乘 $(2\pi)^{-d/2}$；本稿统一按式 \eqref{eq:fourier-convention}，正变换无前置常数、逆变换乘 $(2\pi)^{-d}$。本章保持原书主题顺序，不把已有广义函数专题原样重复计作新内容。}
 
-\section{速降函数的 Fourier 变换}\label{sec:yosida-06-01}
-\YosidaSectionPlaceholder{151}{146}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-扩展阅读：第 \ref{ch:fourier} 章。\par
+本章将“微分变为乘法”发展成两条主线：紧支集与复频率增长的对应，以及频率权重与解的正则性的对应。全文 $D_j=-i\partial_j$ 时均显式使用这一约定，分布配对仍对探针线性。一般 Titchmarsh、Hardy 逆命题、变系数 Friedrichs、定量右逆及一般亚椭圆刻画的证明边界已在相应位置注明。
 
-\section{缓增分布的 Fourier 变换}\label{sec:yosida-06-02}
-\YosidaSectionPlaceholder{155}{149}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-扩展阅读：第 \ref{ch:fourier} 章的温和分布。\par
+\input{books/yosida/chapter06/01-schwartz-fourier}
+\input{books/yosida/chapter06/02-tempered}
+\input{books/yosida/chapter06/03-convolution}
+\input{books/yosida/chapter06/04-paley-wiener}
+\input{books/yosida/chapter06/05-titchmarsh}
+\input{books/yosida/chapter06/06-operational-calculus}
+\input{books/yosida/chapter06/07-sobolev}
+\input{books/yosida/chapter06/08-garding}
+\input{books/yosida/chapter06/09-friedrichs}
+\input{books/yosida/chapter06/10-fundamental-solutions}
+\input{books/yosida/chapter06/11-uniform-strength}
+\input{books/yosida/chapter06/12-hypoellipticity}
 
-\section{卷积}\label{sec:yosida-06-03}
-\YosidaSectionPlaceholder{161}{156}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-扩展阅读：第 \ref{ch:convolution} 章。\par
+\Needspace{10\baselineskip}
+\section*{本章参考文献与阅读衔接}
+\phantomsection\addcontentsline{toc}{section}{本章参考文献与阅读衔接}
+直接参考为两版吉田第六章 \cite{yosida-zh,yosida-en}；原书提及的 Paley--Wiener、Titchmarsh、Mikusiński、Sobolev、Gårding、Friedrichs、Malgrange、Ehrenpreis、H\"ormander 等原始文献，本轮未逐项直接阅读。本稿选择明确的归一化并重组证明；特别是紧支集分布刻画以光滑版和正则化证明，基本解存在性以多圆周平均估计和 Hahn--Banach 延拓证明。
 
-\section{Paley--Wiener 定理、单边 Laplace 变换}\label{sec:yosida-06-04}
-\YosidaSectionPlaceholder{167}{161}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{Titchmarsh 定理}\label{sec:yosida-06-05}
-\YosidaSectionPlaceholder{172}{166}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{Mikusiński 的算子演算}\label{sec:yosida-06-06}
-\YosidaSectionPlaceholder{175}{169}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{Sobolev 引理}\label{sec:yosida-06-07}
-\YosidaSectionPlaceholder{179}{173}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-扩展阅读：第 \ref{ch:fourier} 章的 Sobolev 空间。\par
-
-\section{Gårding 不等式}\label{sec:yosida-06-08}
-\YosidaSectionPlaceholder{181}{175}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{Friedrichs 定理}\label{sec:yosida-06-09}
-\YosidaSectionPlaceholder{183}{177}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{Malgrange--Ehrenpreis 定理}\label{sec:yosida-06-10}
-\YosidaSectionPlaceholder{188}{182}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-相关模型：第 \ref{ch:pde} 章的基本解；一般定理仍待本节撰写。\par
-
-\section{具有一致强度的微分算子}\label{sec:yosida-06-11}
-\YosidaSectionPlaceholder{193}{188}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{亚椭圆性（Hörmander 定理）}\label{sec:yosida-06-12}
-\YosidaSectionPlaceholder{195}{189}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
+第 \ref{ch:convolution}、\ref{ch:fourier}、\ref{ch:pde} 章分别补充卷积的支集构造、温和分布计算和模型方程。下一主线章讨论对偶算子，将本章的形式转置与 Hilbert 伴随放进一般算子框架。本章二十四道习题的解答集中在书后；正文已有不表示全部一般定理已获独立审校。

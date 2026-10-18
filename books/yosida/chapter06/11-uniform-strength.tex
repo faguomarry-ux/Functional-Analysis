@@ -1,0 +1,56 @@
+\Needspace{12\baselineskip}
+\section{具有一致强度的微分算子}\label{sec:yosida-06-11}
+\noindent\textit{原书起始页：中译本 193；英文版 188。}
+
+对 $P(x,D)=\sum_{|\alpha|\le r}a_\alpha(x)D^\alpha$，将 $x$ 暂作参数，定义
+\[
+ \widetilde P(x,\xi)=\left(\sum_\beta|\partial_\xi^\beta P(x,\xi)|^2\right)^{1/2}.
+\]
+称它在区域 $\Omega$ 具有一致强度，若各冻结多项式非零，且存在 $C$ 使
+$\widetilde P(x,\xi)\le C\widetilde P(y,\xi)$ 对全部 $x,y\in\Omega$、$\xi\in\mathbb R^d$ 成立。交换 $x,y$ 即得双向比较。
+
+\begin{example}[椭圆与抛物型模型]
+光滑且系数有界、主部一致椭圆的 $r$ 阶算子满足
+$\widetilde P(x,\xi)\asymp\langle\xi\rangle^r$，因而具有一致强度。大频率由主符号的统一下界控制；有界频率由最高阶偏导数中非零系数的统一控制给下界。
+
+另取 $P(x,\xi,\tau)=a(x)|\xi|^2+i\tau$，其中 $0<c\le a(x)\le C$。直接求各阶频率导数可得
+$\widetilde P^2\asymp1+|\xi|^4+|\tau|^2$，故也有一致强度；其最高总次数的主部却不控制纯时间频率，不能称为总阶二阶椭圆算子。
+\end{example}
+
+\begin{theorem}[定量常系数右逆：本节引用的分析前提]\label{thm:y6-right-inverse}
+设 $P_0\ne0$ 为常系数符号，$Q_1,\ldots,Q_N$ 均弱于 $P_0$。在有界区域上存在有界线性右逆 $T:L^2\to L^2$，使 $P_0(D)Tf=f$，且每个 $Q_j(D)T:L^2\to L^2$ 有界，等式在分布意义成立。
+\end{theorem}
+
+这是原书第 6.10 节中对基本解的加权估计所给的定量强化。上一节已证明基本解存在，却未为所选基本解证明这些 $L^2$ 算子界；本节明确引用这一强化，不能只凭 $E*f$ 形式上存在就断言它有界。
+
+\begin{proposition}[小扰动的局部可解性]\label{prop:y6-perturbation}
+设在 $x_0$ 附近
+\[
+ P(x,D)=P_0(D)+\sum_{j=1}^Nb_j(x)Q_j(D),\qquad b_j(x_0)=0,
+\]
+$b_j$ 连续，$Q_j$ 弱于 $P_0$。在上述定量右逆前提下，可缩小到 $x_0$ 的邻域 $V$，使每个 $f\in L^2(V)$ 都有 $L^2$ 解 $u$；并有 $Q_j(D)u\in L^2(V)$。
+\end{proposition}
+\begin{proof}
+先在固定有界邻域上取 $T$。对更小 $V$，将 $L^2(V)$ 数据零延拓后用 $T$ 再限制回 $V$，得到右逆 $T_V$，其本身及 $Q_jT_V$ 的范数至多为原来的界。于是可以先固定这些常数，再由 $b_j(x_0)=0$ 取 $V$ 使
+\[
+ \|K\|\le\sum_j\|b_j\|_{L^\infty(V)}\|Q_jT_V\|<1,
+ \qquad K=\sum_jb_jQ_jT_V.
+\]
+令 $v=(I+K)^{-1}f=\sum_{n\ge0}(-K)^nf$、$u=T_Vv$，则 $P(x,D)u=v+Kv=f$，且 $Q_ju=Q_jT_Vv\in L^2$。连续系数与这些 $L^2$ 函数相乘合法，不需要将任意分布直接乘以仅连续的系数。
+\end{proof}
+
+对一般一致强度算子，原书先在“弱于 $P(x_0,\cdot)$”的有限维多项式空间选基，再将 $P(x,\cdot)-P(x_0,\cdot)$ 写成上述形式。系数连续及在 $x_0$ 为零来自有限维坐标连续性。本轮保留这一归约的说明，并在给定基表示及定量右逆的条件下完整证明扰动步骤。
+
+\begin{exercise}[强度可因退化而改变]\label{ex:y6-degenerate-strength}
+在含零点的区间考虑 $P(x,\xi)=x\xi$，证明它不满足一致强度条件；若区间改为 $1<x<2$，结果如何？
+\end{exercise}
+\begin{solution}
+$\widetilde P(x,\xi)=|x|\sqrt{1+\xi^2}$，$x=0$ 时冻结多项式为零，无法与非零点比较。在 $1<x<2$ 时各点比值介于 $1/2$ 与 2 之间，所以具有一致强度。
+\end{solution}
+
+\begin{exercise}[Neumann 界]\label{ex:y6-neumann-bound}
+若上面 $\|K\|\le\theta<1$，给出 $u$ 对数据 $f$ 的范数界。
+\end{exercise}
+\begin{solution}
+几何级数给 $\|(I+K)^{-1}\|\le(1-\theta)^{-1}$，故 $\|u\|_2\le\|T_V\|(1-\theta)^{-1}\|f\|_2$；同理 $\|Q_ju\|_2\le\|Q_jT_V\|(1-\theta)^{-1}\|f\|_2$。这是选定右逆给出的一个解的稳定估计，不包含全部解的唯一性。
+\end{solution}

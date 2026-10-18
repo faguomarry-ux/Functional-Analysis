@@ -1,0 +1,68 @@
+\Needspace{12\baselineskip}
+\section{Paley--Wiener 定理、单边 Laplace 变换}\label{sec:yosida-06-04}
+\noindent\textit{原书起始页：中译本 167；英文版 161。}
+
+紧支集在复频率中体现为指数增长。记 $z=\xi+i\eta\in\mathbb C^d$，则 $|e^{-ix\cdot z}|=e^{x\cdot\eta}$；若 $|x|\le R$，它至多为 $e^{R|\eta|}$。
+
+\begin{theorem}[光滑函数的 Paley--Wiener 定理]\label{thm:y6-pw-smooth}
+整函数 $F$ 是某个支于 $\overline B_R$ 的 $f\in\Test(\mathbb R^d)$ 的 Fourier--Laplace 变换，当且仅当对每个 $N\in\mathbb N_0$ 存在 $C_N$，使
+\[
+ |F(z)|\le C_N(1+|z|)^{-N}e^{R|\operatorname{Im}z|}\qquad(z\in\mathbb C^d).
+\]
+\end{theorem}
+\begin{proof}
+若 $f$ 紧支集，可逐次在复参数中求导，故其变换整全纯。分部积分给出 $(iz)^\alpha F(z)=\int e^{-ix\cdot z}\partial^\alpha f(x)\,\dd x$。取最大模坐标处理 $|z|\ge1$，取 $\alpha=0$ 处理 $|z|<1$，即得任意阶衰减估计。
+
+反之，实轴上的 $F$ 及其所有多项式倍数可积，定义
+$f(x)=(2\pi)^{-d}\int e^{ix\cdot\xi}F(\xi)\,\dd\xi$，积分内逐阶求导使 $f\in C^\infty$。固定 $\eta$，以逐坐标矩形围道将积分面移到 $\mathbb R^d+i\eta$；围道侧面由任意阶实部衰减估计趋零（先固定 $\eta$，再令矩形尺度趋无穷）。于是
+\[
+ |f(x)|\le C e^{R|\eta|-x\cdot\eta}
+ \int_{\mathbb R^d}(1+|\xi|)^{-d-1}\,\dd\xi.
+\]
+取 $\eta=t x/|x|$，若 $|x|>R$，令 $t\to\infty$ 得 $f(x)=0$。因此 $f\in\Test$。实轴上的逆变换唯一性给出 $\widehat f=F$；两整函数在实轴相同，再逐变量用解析延拓得到复域相同。
+\end{proof}
+
+\begin{theorem}[紧支集分布的整函数刻画]\label{thm:y6-pw-distribution}
+整函数 $F$ 是某个 $T\in\CompactDist$ 的变换，当且仅当存在 $C,R,N$ 使
+\[
+ |F(z)|\le C(1+|z|)^N e^{R|\operatorname{Im}z|}.
+\]
+若有这一估计，则相应分布支于 $\overline B_R$。这里从已给支集得到估计时允许取稍大的包围球，不宣称已证明最优指数。
+\end{theorem}
+\begin{proof}
+取 $\chi\in\Test$ 在 $\supp T$ 附近为 1，且支于某球 $B_R$，定义 $F(z)=T(\chi e^{-ix\cdot z})$。有限阶估计给出多项式因子与指数因子，参数求导在固定支集测试空间中合法，故整全纯。
+
+反之，实轴上 $F$ 多项式增长，定义温和分布 $T=\FT^{-1}T_F$。取单位质量 $\rho_\varepsilon$，支集包含于 $\overline B_\varepsilon$。上一条定理的必要性给出 $\widehat\rho_\varepsilon$ 的任意阶衰减与指数 $\varepsilon$。所以 $F\widehat\rho_\varepsilon$ 满足光滑版的估计，支集半径为 $R+\varepsilon$。它正是 $T*\rho_\varepsilon$ 的变换，故正则化支于 $\overline B_{R+\varepsilon}$。令 $\varepsilon\downarrow0$，在 $\overline B_R$ 外任意紧探针上取极限，得到 $T$ 在外部为零。
+\end{proof}
+
+\begin{proposition}[单边 Laplace 变换的 $L^2$ 控制]\label{prop:y6-laplace}
+若 $g\in L^2(0,\infty)$，则
+\[
+ Lg(z)=\int_0^\infty e^{-zt}g(t)\,\dd t,\qquad\operatorname{Re}z>0
+\]
+全纯，且对 $a>0$，
+\[
+ \frac1{2\pi}\int_{\mathbb R}|Lg(a+i\xi)|^2\,\dd\xi
+ =\int_0^\infty e^{-2at}|g(t)|^2\,\dd t\le\|g\|_2^2.
+\]
+当 $a\downarrow0$，$Lg(a+i\cdot)$ 在 $L^2(\mathbb R)$ 中趋于零延拓 $g$ 的 Fourier 变换。
+\end{proposition}
+\begin{proof}
+Cauchy--Schwarz 给出绝对收敛；在闭半平面 $\operatorname{Re}z\ge a_0>0$ 上，$t^ke^{-a_0t}g(t)$ 可积，故可逐阶求导。Plancherel 用于 $e^{-at}g(t)\mathbf1_{t\ge0}$ 即得等式；标量控制收敛给出 $e^{-at}g\to g$ 于 $L^2$，再用 Plancherel 得边界结论。
+\end{proof}
+
+原书还证明其 Hardy 空间逆命题：右半平面全纯且 $\sup_{a>0}\int|F(a+i\xi)|^2\,\dd\xi<\infty$ 的函数，恰为上述 $L^2$ 函数的 Laplace 变换。本轮将此逆命题作为参考结论，不展开其 Cauchy 围道与弱紧性证明。单边变换的定义也不意味着任意连续函数都具有某个收敛半平面。
+
+\begin{exercise}[支集平移的指数因子]\label{ex:y6-pw-delta}
+求 $\delta_a$ 的 Fourier--Laplace 变换，并说明其复域增长如何记录点 $a$。
+\end{exercise}
+\begin{solution}
+变换为 $e^{-ia\cdot z}$，模为 $e^{a\cdot\operatorname{Im}z}$。沿 $\operatorname{Im}z=ta/|a|$ 的增长率为 $e^{t|a|}$；$a=0$ 时恒为 1。若只看实轴，其模恒为 1，不能从实轴的模恢复支集位置。
+\end{solution}
+
+\begin{exercise}[Laplace 的导数公式]\label{ex:y6-laplace-derivative}
+设 $f\in C^1[0,\infty)$，$f,f'$ 均至多指数增长。证明在充分右的半平面内 $L(f')(z)=zLf(z)-f(0)$。
+\end{exercise}
+\begin{solution}
+在 $[0,R]$ 分部积分得 $\int_0^R e^{-zt}f'(t)\,\dd t=e^{-zR}f(R)-f(0)+z\int_0^Re^{-zt}f(t)\,\dd t$。取 $\operatorname{Re}z$ 大于增长指数，边界项趋零且两个积分绝对收敛，故公式成立。
+\end{solution}

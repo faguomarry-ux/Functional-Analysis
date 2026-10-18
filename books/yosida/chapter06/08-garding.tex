@@ -1,0 +1,58 @@
+\Needspace{12\baselineskip}
+\section{Gårding 不等式}\label{sec:yosida-06-08}
+\noindent\textit{原书起始页：中译本 181；英文版 175。}
+
+本节令 $D_j=-i\partial_j$，故 $\widehat{D_ju}=\xi_j\widehat u$。设 $\Omega$ 有界，考虑
+\[
+ B(u,v)=\sum_{|\alpha|,|\beta|\le m}\int_\Omega
+ a_{\alpha\beta}(x)D^\beta u\,\overline{D^\alpha v}\,\dd x,
+ \qquad u,v\in\Test(\Omega).
+\]
+系数连续于 $\overline\Omega$，且主部满足统一强椭圆条件
+\[
+ \operatorname{Re}\sum_{|\alpha|=|\beta|=m}a_{\alpha\beta}(x)\xi^\beta\xi^\alpha
+ \ge c_0|\xi|^{2m}\qquad(x\in\overline\Omega,\ \xi\in\mathbb R^d).
+\]
+这里是对主符号的条件，不要求整个系数矩阵对任意独立坐标向量正定。
+
+\begin{theorem}[Gårding 不等式]\label{thm:y6-garding}
+存在 $c>0$、$C\ge0$，使
+\[
+ \operatorname{Re}B(u,u)\ge c\|u\|_{H^m}^2-C\|u\|_2^2
+ \qquad(u\in\Test(\Omega)),
+\]
+其中全空间范数对零延拓取值。
+\end{theorem}
+\begin{proof}
+先冻结主部系数于一点 $x_0$。Plancherel 将主部积分化为主符号乘 $|\widehat u|^2$ 的积分，故至少为 $c_0(2\pi)^{-d}\int|\xi|^{2m}|\widehat u|^2$。因 $\langle\xi\rangle^{2m}\le C(1+|\xi|^{2m})$，得到 $c_1\|u\|_{H^m}^2-C_1\|u\|_2^2$。低阶项至少一个导数阶数至多 $m-1$，故其绝对值至多 $C\|u\|_{H^m}\|u\|_{H^{m-1}}$，由 $2ab\le\varepsilon a^2+\varepsilon^{-1}b^2$ 和引理 \ref{lem:y6-sobolev-cutoff} 吸收。
+
+若 $u$ 的支集限制在主系数振幅至多 $\delta$ 的小邻域，冻结主部误差至多 $C\delta\|u\|_{H^m}^2$。取统一足够小的 $\delta$，仍有正的主项常数。系数在紧集上一致连续，所以可选有限个这样的邻域覆盖 $\overline\Omega$，并取实光滑函数 $\chi_j$ 使 $\sum_j\chi_j^2=1$ 于其邻域内。$\chi_j$ 不必紧支于 $\Omega$，但 $\chi_ju$ 都紧支于 $\Omega$，故前面的估计适用。
+
+Leibniz 展开给出
+\[
+ B(u,u)=\sum_jB(\chi_ju,\chi_ju)+R(u),\qquad
+ |R(u)|\le C\|u\|_{H^m}\|u\|_{H^{m-1}}.
+\]
+理由是没有导数落在 $\chi_j$ 上的项因平方和为 1 恰好还原原式；其余项至少一边少一阶作用于 $u$。同样展开 $u=\sum_j\chi_j(\chi_ju)$，得到 $\|u\|_{H^m}^2\le C\sum_j\|\chi_ju\|_{H^m}^2$。合并局部估计并再次以小 $\varepsilon$ 吸收余项，即得结论。$m=0$ 情形直接由正性成立；上述低阶讨论针对 $m\ge1$。
+\end{proof}
+
+\begin{corollary}[移位后强制性]
+当 $\lambda>C$ 时，$B_\lambda(u,v)=B(u,v)+\lambda(u,v)_{L^2}$ 在 $H_0^m(\Omega)$ 上连续且强制，因此对该空间的每个连续共轭线性泛函 $F$，存在唯一 $u\in H_0^m$ 使 $B_\lambda(u,v)=F(v)$。
+\end{corollary}
+\begin{proof}
+系数有界给连续性，Gårding 估计经 $\Test$ 的稠密性传到 $H_0^m$，并给 $\operatorname{Re}B_\lambda(u,u)\ge c\|u\|_{H^m}^2$。用第三章 Lax--Milgram 定理即得结论。若按分布的双线性对偶表示数据，应写 $F(v)=f(\overline v)$。
+\end{proof}
+
+\begin{exercise}[为什么要减去低阶项]\label{ex:y6-garding-shift}
+对 $B(u,u)=\|\nabla u\|_2^2-M\|u\|_2^2$，说明强椭圆主部并不保证 $B$ 本身为正。
+\end{exercise}
+\begin{solution}
+任取非零紧支集光滑 $u$，选 $M>\|\nabla u\|_2^2/\|u\|_2^2$ 即得负值。主部仍为 $|\xi|^2$，强椭圆不变。加上足够大的 $\lambda\|u\|_2^2$ 才能对全部 $u$ 保证强制性。
+\end{solution}
+
+\begin{exercise}[冻结系数误差]\label{ex:y6-freezing}
+证明当所有主系数在 $\supp u$ 上与 $x_0$ 的值相差至多 $\delta$ 时，主部形式的差至多为 $C\delta\|u\|_{H^m}^2$。
+\end{exercise}
+\begin{solution}
+逐项用 $\delta\|D^\beta u\|_2\|D^\alpha u\|_2$ 控制，再对有限个 $|\alpha|=|\beta|=m$ 求和，并用 $2ab\le a^2+b^2$。常数只依赖维数与阶数，故选小邻域时可统一。
+\end{solution}

@@ -1,0 +1,45 @@
+\Needspace{12\baselineskip}
+\section{Titchmarsh 定理}\label{sec:yosida-06-05}
+\noindent\textit{原书起始页：中译本 172；英文版 166。}
+
+对 $f,g\in C[0,\infty)$，因果卷积为 $(f*g)(t)=\int_0^tf(t-s)g(s)\,\dd s$。它在每个有限区间有定义，不需要全局增长界。
+
+\begin{theorem}[Titchmarsh：无零因子形式，外部定理]\label{thm:y6-titchmarsh}
+若 $f,g\in C[0,\infty)$ 且 $f*g\equiv0$，则 $f\equiv0$ 或 $g\equiv0$。
+\end{theorem}
+
+原书给出以 Phragm\'en 型引理和矩量唯一性为基础的证明，本轮不将该证明标作已经展开。更强的局部版本说：若 $f*g$ 在 $[0,T]$ 为零，则存在 $a,b\ge0$、$a+b\ge T$，使 $f$ 在 $[0,a)$ 为零、$g$ 在 $[0,b)$ 为零。它刻画支集左端点相加，而不仅仅是通常的支集包含。以下两个可直接验证的范围说明定理的作用及证明限制。
+
+\begin{proposition}[指数增长情形的无零因子证明]
+若 $f,g$ 连续且分别至多指数增长，则上述无零因子结论可由 Laplace 变换证明。
+\end{proposition}
+\begin{proof}
+在共同的右半平面，绝对收敛和 Fubini 给出 $L(f*g)=Lf\,Lg$。若乘积恒为零，解析函数恒等定理使某个因子恒为零：若 $Lf$ 不恒零，存在开圆盘使其非零，故 $Lg$ 在该盘为零并解析延拓为零。
+
+若 $Lg=0$，固定充分大的实数 $a$，则 $e^{-at}g(t)\mathbf1_{t\ge0}\in L^1\cap L^2$，其 Fourier 变换为 $Lg(a+i\xi)=0$。Plancherel 单射性给出 $g=0$ 几乎处处，连续性给出处处为零。此证明不能覆盖超指数增长的任意连续函数。
+\end{proof}
+
+\begin{proposition}[非负函数的左端点]
+设 $f,g$ 连续、非负且均不恒为零，记 $a=\inf\supp f$、$b=\inf\supp g$（均以半轴为底空间）。则 $\inf\supp(f*g)=a+b$。
+\end{proposition}
+\begin{proof}
+若 $t<a+b$，积分的每个位置至少一个因子为零，故卷积为零。给定 $\varepsilon>0$，可在 $[a,a+\varepsilon/2)$、$[b,b+\varepsilon/2)$ 各找到严格正值点 $r,s$。连续性使两函数在这些点附近正；取 $t=r+s$，相应积分区间的一个正长度子区间上被积函数严格正，所以 $(f*g)(t)>0$。故左端点不大于 $a+b+\varepsilon$，令 $\varepsilon\downarrow0$。
+\end{proof}
+
+\begin{remark}[符号抵消的困难]
+复值或变号函数不能用正性证明；局部卷积在一段区间为零，也不迫使某个因子在整条半轴为零。例如两个各有延迟的非零函数，其卷积开始得更晚。无零因子结论针对卷积在整个半轴恒零。
+\end{remark}
+
+\begin{exercise}[延迟相加]\label{ex:y6-delay}
+取 $a,b\ge0$，令 $f(t)=(t-a)_+$、$g(t)=(t-b)_+$。求 $f*g$ 并核对左端点。
+\end{exercise}
+\begin{solution}
+$t<a+b$ 时为零。令 $r=t-a-b\ge0$，代换后积分为 $\int_0^r(r-s)s\,\dd s=r^3/6$。故 $(f*g)(t)=(t-a-b)_+^3/6$，左端点为 $a+b$。
+\end{solution}
+
+\begin{exercise}[取消律]\label{ex:y6-cancellation}
+若 $f\ne0$ 且 $f*g=f*h$，证明 $g=h$，并指出引用了哪个一般结论。
+\end{exercise}
+\begin{solution}
+分配律给出 $f*(g-h)=0$。由定理 \ref{thm:y6-titchmarsh} 的无零因子结论，$g-h=0$。对任意连续函数，本题依赖明列的外部 Titchmarsh 定理；若均有指数增长界，则可用本节已证明的特例。
+\end{solution}

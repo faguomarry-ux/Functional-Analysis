@@ -1,0 +1,66 @@
+\Needspace{12\baselineskip}
+\section{缓增分布的 Fourier 变换}\label{sec:yosida-06-02}
+\noindent\textit{原书起始页：中译本 155；英文版 149。}
+
+\begin{definition}[缓增分布与对偶变换]
+$\Temp=\Sch'$ 为 Schwartz 空间的连续线性对偶，亦称温和分布。它的连续性等价于存在 $C,N,m$ 使
+$|T(\varphi)|\le Cq_{N,m}(\varphi)$。按本稿对探针线性的配对约定，定义
+\[
+ \widehat T(\varphi)=T(\widehat\varphi),\qquad\varphi\in\Sch.
+\]
+这里探针使用正向变换。正则分布以 $T_f(\varphi)=\int f\varphi$ 定义，不带共轭。
+\end{definition}
+
+\begin{proposition}[与普通分布及函数变换相容]
+$\Temp\to\Dist$ 的限制映射单射。$L^p$ 函数（$1\le p\le\infty$）、至多多项式增长的可测函数和紧支集分布都属于 $\Temp$。对 $f\in L^1$，上述定义等于通常 Fourier 变换定义的正则分布。
+\end{proposition}
+\begin{proof}
+$\Test$ 在 $\Sch$ 中稠密，故限制为零的连续泛函处处为零。$L^p$ 情形以 H\"older 及足够大的权重控制探针的 $L^{p'}$ 范数；多项式增长情形以 $(1+|x|)^{-N}$ 可积性估计。紧支集分布的有限阶估计也由某个 Schwartz 半范数控制。最后对 $L^1$ 函数，$\varphi\in\Sch\subset L^1$ 保证双重积分绝对收敛，Fubini 给出相容性。
+\end{proof}
+
+\begin{theorem}[变换的基本规则]\label{thm:y6-tempered-rules}
+$\FT$ 在 $\Temp$ 上可逆，保持逐探针收敛及强对偶收敛，并有
+\begin{align*}
+ \widehat{\delta_a}&=e^{-ia\cdot\xi},&\widehat1&=(2\pi)^d\delta_0,\\
+ \widehat{\partial^\alpha T}&=(i\xi)^\alpha\widehat T,&
+ \widehat{x_jT}&=i\partial_{\xi_j}\widehat T,\\
+ \FT^2T&=(2\pi)^d\Reflected T.&
+\end{align*}
+\end{theorem}
+\begin{proof}
+连续自同构 $\FT:\Sch\to\Sch$ 的转置是可逆映射。若 $T_n\to T$ 逐探针，则在 $\widehat\varphi$ 上测试即得变换收敛；若在有界集上一致收敛，则 $\FT$ 将有界集映为有界集，结论亦成立。
+
+$\widehat{\delta_a}(\varphi)=\widehat\varphi(a)$ 直接给出首式；反演式给出 $\int\widehat\varphi=(2\pi)^d\varphi(0)$。导数公式由
+\[
+ \widehat{\partial_jT}(\varphi)=-T(\partial_j\widehat\varphi)
+ =T(\widehat{i\xi_j\varphi})=\widehat T(i\xi_j\varphi)
+\]
+得到，其余用相同方法。二次变换公式来自探针上的反演公式。
+\end{proof}
+
+\begin{example}[主值与跳跃]
+一维中 $x\,\pv(1/x)=1$，且 $(\operatorname{sgn}x)'=2\delta_0$。后者变换得到 $i\xi\widehat{\operatorname{sgn}}=2$。奇性排除可能添加的 $\delta_0$ 项，因而
+\[
+ \widehat{\operatorname{sgn}x}=\frac2i\pv\frac1\xi,
+ \qquad \widehat{\pv(1/x)}=-i\pi\operatorname{sgn}\xi.
+\]
+为核对唯一性，若 $\xi S=0$，则 $S=c\delta_0$：将探针写成 $\varphi(0)\chi+\xi\psi$，其中 $\chi(0)=1$、$\psi\in\Sch$，即可。奇分布不含偶的点质量。第二式再用二次变换得到。
+\end{example}
+
+\begin{example}[并非所有分布都可作此变换]
+$e^x$ 定义普通分布，却非温和分布。取非负非零 $\eta\in\Test$，则 $T_{e^x}(\eta(\cdot-j))=e^j\int e^y\eta(y)\,\dd y$，而每个固定 Schwartz 半范数只按 $j$ 多项式增长，无法满足连续性估计。可先加指数阻尼再作 Laplace 变换，但不能直接把普通分布全体作为 $\FT$ 的定义域。
+\end{example}
+
+\begin{exercise}[多项式解的判定]\label{ex:y6-polynomial}
+求一维温和分布方程 $\partial^mT=0$ 的全部解（$m\ge1$）。
+\end{exercise}
+\begin{solution}
+变换后 $\xi^m\widehat T=0$，故 $\widehat T$ 支于原点；前文点支集结构定理使其为有限个 $\delta_0^{(j)}$ 的线性组合。由 $\xi\delta_0^{(j)}=-j\delta_0^{(j-1)}$，只有 $j<m$ 可以保留。逆变换得到次数至多 $m-1$ 的多项式正则分布。
+\end{solution}
+
+\begin{exercise}[点质量的 Sobolev 门槛]\label{ex:y6-dirac-sobolev}
+证明 $\delta_0\in H^s(\mathbb R^d)$ 当且仅当 $s<-d/2$。
+\end{exercise}
+\begin{solution}
+$\widehat{\delta_0}=1$，故需 $\int(1+|\xi|^2)^s\,\dd\xi<\infty$。原点附近无问题，无穷远的径向积分为 $\int_1^\infty r^{2s+d-1}\,\dd r$，恰在 $2s+d<0$ 时收敛，等号时对数发散。
+\end{solution}

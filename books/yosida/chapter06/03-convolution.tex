@@ -1,0 +1,64 @@
+\Needspace{12\baselineskip}
+\section{卷积}\label{sec:yosida-06-03}
+\noindent\textit{原书起始页：中译本 161；英文版 156。}
+
+若 $T\in\Dist$、$\rho\in\Test$，定义光滑函数 $(T*\rho)(x)=T_y(\rho(x-y))$。平移与差商在共同紧支集的测试空间中收敛，故可在配对内求导，得到
+\[
+ \partial^\alpha(T*\rho)=T*(\partial^\alpha\rho)=(\partial^\alpha T)*\rho.
+\]
+它的支集包含于 $\supp T+\supp\rho$；后一集合因一个加项紧而闭。
+
+\begin{definition}[至少一个因子紧支集的分布卷积]
+若 $S\in\CompactDist$、$T\in\Dist$，令
+\[
+ (S*T)(\varphi)=S_x\bigl(T_y(\varphi(x+y))\bigr).
+\]
+当 $x$ 限制在 $\supp S$ 的固定紧邻域时，$y$ 落在一个固定紧集；对 $x$ 使用等于 1 的切断函数解释外层配对。结果与切断选择无关。详见第 \ref{ch:convolution} 章的支集构造。
+\end{definition}
+
+\begin{proposition}[代数规则与支集控制]\label{prop:y6-convolution}
+上述卷积交换，且
+\[
+ \supp(S*T)\subset\supp S+\supp T,\qquad
+ \partial^\alpha(S*T)=(\partial^\alpha S)*T=S*(\partial^\alpha T).
+\]
+三个分布中至少两个紧支集时可结合。对 Schwartz 函数和紧支集分布与温和分布的卷积，分别有
+\[
+ \widehat{f*g}=\widehat f\widehat g,\qquad
+ \widehat{S*T}=\widehat S\,\widehat T\quad(S\in\CompactDist,\ T\in\Temp).
+\]
+\end{proposition}
+\begin{proof}
+切断后均可归结为紧集上的分布张量积配对。交换变量给交换律，探针上分部积分给导数规则。若探针支集避开支集之和，配对为零，得支集结论。至少两个因子紧时三重加法在有关支集上有紧的逆像，故三重配对及两种括号一致。
+
+函数卷积定理由 Fubini 得到。紧支集分布的变换为光滑函数 $\widehat S(\xi)=S_x(e^{-ix\cdot\xi})$，非紧探针以切断解释。有限阶估计使它的全部导数有多项式界，因而可乘温和分布。将 Fourier 核代入切断后的双重配对即得分布公式；也可先将紧支集因子正则化，再在探针配对中取极限。
+\end{proof}
+
+\begin{proposition}[正则化与近似恒等]
+取 $\rho\in\Test$、$\int\rho=1$，令 $\rho_\varepsilon(x)=\varepsilon^{-d}\rho(x/\varepsilon)$。则 $T*\rho_\varepsilon\to T$ 于 $\Dist$；对 $T\in\Temp$，也在 $\Temp$ 逐探针收敛。
+\end{proposition}
+\begin{proof}
+配对等于 $T(\Reflected\rho_\varepsilon*\varphi)$，而
+\[
+ (\Reflected\rho_\varepsilon*\varphi)(x)=\int\rho(y)\varphi(x+\varepsilon y)\,\dd y.
+\]
+Taylor 公式及 $y$ 的固定紧支集给出各阶导数的一致收敛；紧探针时支集共同紧，Schwartz 探针时用高一阶半范数控制带权差商。因此右侧在相应测试空间趋于 $\varphi$。
+\end{proof}
+
+\begin{remark}[合法范围]
+任意两个温和分布未必能卷积，例如 $1*1$ 发散；变换侧形式上出现 $\delta_0^2$，它也未定义。另一方面，支于同一个右半轴的两个普通分布可作因果卷积：若 $x,y\ge0$ 且 $x+y$ 落在固定紧集，两者都受界，故加法在其支集乘积上适当。此时即使不是温和分布也能卷积。
+\end{remark}
+
+\begin{exercise}[因果导数]\label{ex:y6-heaviside}
+令 $H$ 为 Heaviside 分布。计算 $H*H$ 及 $\partial(H*H)$。
+\end{exercise}
+\begin{solution}
+对 $t\ge0$，$(H*H)(t)=\int_0^t1\,\dd s=t$，对 $t<0$ 为零，故为 $tH(t)$。因 $H'=\delta_0$，其导数为 $\delta_0*H=H$；直接用乘积规则也得 $H+t\delta_0=H$。
+\end{solution}
+
+\begin{exercise}[单位质量不可省]\label{ex:y6-mollifier}
+若改取 $\int\rho=c$，求 $T*\rho_\varepsilon$ 的分布极限，并说明零积分核有何后果。
+\end{exercise}
+\begin{solution}
+探针卷积趋于 $c\varphi$，故极限为 $cT$。零积分核的极限为零，不能用作恢复 $T$ 的近似恒等。
+\end{solution}

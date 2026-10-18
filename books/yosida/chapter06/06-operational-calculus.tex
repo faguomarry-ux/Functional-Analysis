@@ -1,0 +1,64 @@
+\Needspace{12\baselineskip}
+\section{Mikusiński 的算子演算}\label{sec:yosida-06-06}
+\noindent\textit{原书起始页：中译本 175；英文版 169。}
+
+按原书采用只将积分算子倒置的局部化环，这一构造不依赖上一节的一般 Titchmarsh 定理。令 $\mathcal C=C[0,\infty)$，加法逐点，乘法为因果卷积；令 $h(t)=1$。由有限区间的 Fubini，乘法交换、结合且分配，但 $h$ 不是乘法单位元：
+\[
+ (h*f)(t)=\int_0^tf(s)\,\dd s,\qquad h^{*n}(t)=\frac{t^{n-1}}{(n-1)!}\quad(n\ge1).
+\]
+
+\begin{definition}[积分算子的局部化]
+用分式 $f/h^{*n}$（$n\ge1$）构造 $\mathcal C_H$，约定
+\[
+ \frac f{h^{*n}}=\frac g{h^{*m}}
+ \ \Longleftrightarrow\ f*h^{*m}=g*h^{*n}.
+\]
+加法通分，乘法将分子、分母分别卷积。原函数 $f$ 嵌入为 $(h*f)/h$。
+\end{definition}
+
+\begin{proposition}[局部化与微分规则]\label{prop:y6-operational}
+这些运算良定义并形成有单位元的交换环。标量 $c$ 对应 $(ch)/h$，单位元 $I=h/h$；令 $s=h/h^{*2}$，则 $sh=I$。若 $f\in C^1[0,\infty)$，有
+\[
+ f'=sf-f(0)I.
+\]
+一般地，$f\in C^m$ 时
+\[
+ f^{(m)}=s^mf-\sum_{j=0}^{m-1}f^{(j)}(0)s^{m-1-j}.
+\]
+\end{proposition}
+\begin{proof}
+若 $h^{*n}*f=0$，对积分原函数连续求导 $n$ 次得 $f=0$。因此分母均可取消，交叉相乘的等价关系具有传递性，通分与相乘也不依赖代表；原函数嵌入单射。直接相乘验证 $I$、标量作用及 $s$ 的性质。
+
+Newton 公式给 $h*f'=f-f(0)h$。两侧乘 $s$ 得一阶公式，再归纳得到高阶公式。这里 $f(0)I$ 是标量算子，与常函数 $f(0)h$ 不同；二者相差一次积分。
+\end{proof}
+
+\begin{proposition}[指数核与常系数初值问题]
+对 $a\in\mathbb C$，$s-aI$ 可逆，且
+\[
+ (s-aI)^{-m}(t)=\frac{t^{m-1}}{(m-1)!}e^{at}\quad(m\ge1),
+\]
+右侧通过函数嵌入理解。
+\end{proposition}
+\begin{proof}
+对 $f(t)=e^{at}$ 用一阶微分规则，得 $(s-aI)f=I$，故 $f$ 为逆元。反复卷积指数核，每次积分产生 $t$ 的一阶原函数，归纳得公式。这使多项式 $P(s)$ 可按复根分解后求逆；分母非零来自其首项，或直接由各 $s-aI$ 可逆得到。
+\end{proof}
+
+例如 $y'+ay=f$、$y(0)=y_0$ 变为 $(s+aI)y=f+y_0I$，故
+\[
+ y(t)=y_0e^{-at}+\int_0^te^{-a(t-r)}f(r)\,\dd r.
+\]
+右侧可直接求导验证，所以形式运算给出的确为经典解，不是只得到一个未经解释的分式。连续 $f$ 已足够，不要求它具有 Laplace 变换。
+
+\begin{exercise}[二阶方程]\label{ex:y6-ode}
+求 $y''+y=1$、$y(0)=y'(0)=0$，并核对常函数 1 在算子环中的表达。
+\end{exercise}
+\begin{solution}
+常函数为 $h=s^{-1}$，故 $(s^2+I)y=s^{-1}$，即 $y=1/(s(s^2+I))=s^{-1}-s/(s^2+I)$。由指数核或直接求导，$s/(s^2+I)$ 对应 $\cos t$，所以 $y(t)=1-\cos t$。代回方程与初值均成立。
+\end{solution}
+
+\begin{exercise}[重复根]\label{ex:y6-repeated-root}
+计算 $(s-aI)^{-2}$，并证明它对应的函数在零点的值为零、导数为 1。
+\end{exercise}
+\begin{solution}
+两个 $e^{at}$ 因果卷积为 $\int_0^te^{a(t-r)}e^{ar}\,\dd r=te^{at}$。其零点值为 0，导数为 $e^{at}+ate^{at}$，在零点为 1。
+\end{solution}
