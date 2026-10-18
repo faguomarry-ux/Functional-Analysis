@@ -1,0 +1,145 @@
+\Needspace{11\baselineskip}
+\section{几例对偶空间}\label{sec:yosida-04-09}
+\noindent\textit{原书位置：中译本第 119--124 页；英文版第 114--119 页。}
+
+本节具体计算连续对偶。所有配对都对被作用的向量线性，故复情形写 $\sum x_jb_j$、$\int hg\,d\mu$，不在公式中附加共轭；需要校准相位时再显式使用 $\overline g/|g|$。这与第三章第一变量线性的 Hilbert 内积约定相容，但系数的对应方式必须区分。
+
+\begin{theorem}[零收敛序列与收敛序列的对偶]\label{thm:y4-c0-c-dual}
+采用上确界范数，有等距表示
+\[
+ \begin{aligned}
+ (c_0)'&\cong\ell^1,& f_b(x)&=\sum_{j\ge1}b_jx_j,
+ &\|f_b\|&=\sum_{j\ge1}|b_j|,\\
+ c'&\cong\ell^1(\{0,1,\ldots\}),& f(x)&=a\lim_jx_j+\sum_{j\ge1}b_jx_j,
+ &\|f\|&=|a|+\sum_{j\ge1}|b_j|.
+ \end{aligned}
+\]
+第二行的系数为 $(a,b_1,b_2,\ldots)$，并且唯一。
+\end{theorem}
+\begin{proof}
+对 $f\in(c_0)'$，令 $b_j=f(e_j)$。在前 $N$ 项选 $x_j=\overline b_j/|b_j|$（$b_j=0$ 时取零），其余为零，则 $\|x\|_\infty\le1$，并有
+\[
+ \sum_{j=1}^N|b_j|=f(x)\le\|f\|.
+\]
+所以 $b\in\ell^1$。每个 $x\in c_0$ 的有限截断在范数下趋于 $x$，因此 $f(x)=\sum b_jx_j$。反之，这个级数对 $b\in\ell^1$ 定义连续泛函，上界由绝对收敛得出，前述测试给出范数等号。坐标测试还给出唯一性。
+
+若 $f\in c'$，限制于 $c_0$ 得到 $b\in\ell^1$。因 $x-(\lim x_j)\mathbf1\in c_0$，有
+\[
+ f(x)=\left(f(\mathbf1)-\sum_jb_j\right)\lim_jx_j+\sum_jb_jx_j.
+\]
+令括号内系数为 $a$。范数上界为 $|a|+\|b\|_1$。为证下界，选 $|\zeta|=1$ 使 $a\zeta=|a|$（$a=0$ 时任取），令 $x_j=\overline b_j/|b_j|$（$j\le N$，零系数取零），而 $x_j=\zeta$（$j>N$）。此 $x\in c$ 且范数不超过一，并且
+\[
+ f(x)=|a|+\sum_{j\le N}|b_j|+\zeta\sum_{j>N}b_j
+ \longrightarrow |a|+\|b\|_1.
+\]
+故下界成立。坐标测试确定 $b_j$，再测试 $\mathbf1$ 确定 $a$。
+\end{proof}
+
+\begin{theorem}[$L^p$ 的对偶：$1\le p<\infty$]\label{thm:y4-Lp-dual}
+设 $(S,\Sigma,\mu)$ 为 $\sigma$ 有限测度空间，$1\le p<\infty$，$1/p+1/q=1$（$p=1$ 时 $q=\infty$）。则每个 $F\in(L^p)'$ 唯一表示为
+\[
+ F(h)=\int_Shg\,d\mu,\qquad g\in L^q,
+ \qquad \|F\|=\|g\|_q.
+\]
+唯一性按几乎处处相等理解。证明使用第一章的 Jordan 分解（定理 \ref{thm:y1-jordan}）和第三章非负测度的 Radon--Nikodym 定理，均已有前文证明。
+\end{theorem}
+\begin{proof}
+取互不相交的有限测度可测片 $S_j$ 覆盖 $S$，并置 $E_n=\bigcup_{j\le n}S_j$。在 $E_n$ 上定义 $\nu_n(B)=F(1_B)$。对可数不交分解，特征函数的有限和在 $L^p$ 中收敛于并集的特征函数，故 $\nu_n$ 可数可加；它还消灭 $\mu$ 零测集。
+
+对 $E_n$ 的任意有限分割 $B_k$，选 $|c_k|\le1$ 使 $c_k\nu_n(B_k)=|\nu_n(B_k)|$，则
+\[
+ \sum_k|\nu_n(B_k)|
+ =F\left(\sum_kc_k1_{B_k}\right)
+ \le\|F\|\mu(E_n)^{1/p}.
+\]
+所以实、虚部为有限变差符号测度。分别作 Jordan 分解，并对其非负部分使用定理 \ref{thm:y3-radon-nikodym}，得到 $g_n\in L^1(E_n)$，使 $\nu_n(B)=\int_Bg_n\,d\mu$。正负变差也消灭零测集，因为零测集的每个可测子集都被 $\nu_n$ 消灭。密度在交叠上几乎处处相同；为避免选择代表元的歧义，在不交片 $S_j$ 上用 $g_j|_{S_j}$ 拼成可测 $g$。这正处理了原书中译本关于不能在重叠覆盖片上任意拼代表元的校注。
+
+表示先在有限测度片上的简单函数成立。再在 $E_n$ 上均匀逼近任意有界可测 $h$：$L^p$ 误差与 $\int|g|$ 控制两端误差，故公式对这些 $h$ 也成立。
+
+当 $1<p<\infty$，令 $D_n=E_n\cap\{|g|\le n\}$，并取
+\[
+ h_n=1_{D_n}|g|^{q-1}\theta(g),\qquad
+ \theta(g)=\begin{cases}\overline g/|g|,&g\ne0,\\0,&g=0.\end{cases}
+\]
+$h_n$ 有界且支集于有限测度集。写 $A_n=\int_{D_n}|g|^q$，由 $(q-1)p=q$ 得
+$A_n=F(h_n)\le\|F\|A_n^{1/p}$，故 $A_n^{1/q}\le\|F\|$（$A_n=0$ 时直接成立）。单调收敛得 $g\in L^q$，$\|g\|_q\le\|F\|$。
+
+当 $p=1$，若 $\{|g|>\|F\|+\delta\}$ 有正测度，便可在其中取有限正测度子集 $B\subset E_n$，用 $h=1_B\theta(g)$ 得
+\[
+ (\|F\|+\delta)\mu(B)<\int_B|g|
+ =F(h)\le\|F\|\mu(B),
+\]
+矛盾。因此 $g\in L^\infty$ 且 $\|g\|_\infty\le\|F\|$。
+
+最后，有限测度支集的简单函数在 $L^p$ 中稠密；H\"older 不等式使 $h\mapsto\int hg$ 连续，故表示延拓到所有 $h\in L^p$，并给出 $\|F\|\le\|g\|_q$。若两个密度表示相同泛函，在有限片上测试特征函数，再按实、虚部的正负阈值集合测试，得二者几乎处处相同。反之，任意 $g\in L^q$ 由 H\"older 定义泛函；同样的截断相位测试给出范数等号。
+\end{proof}
+
+对计数测度，上式给出 $(\ell^p)'\cong\ell^q$（$1\le p<\infty$），特别地 $(\ell^1)'\cong\ell^\infty$。当 $1<p<\infty$，再对 $q$ 使用同一定理，有 $(L^q)'\cong L^p$；对应恰为自然映射 $J$，所以 $L^p$ 自反。
+
+\begin{example}[完备不蕴含自反]\label{ex:y4-nonreflexive}
+由 $(c_0)'=\ell^1$ 和 $(\ell^1)'=\ell^\infty$，自然嵌入 $J:c_0\to\ell^\infty$ 就是序列的通常包含，恒一序列不在其像中，所以 $c_0$ 不自反。
+
+$\ell^1$ 也不自反：在 $c\subset\ell^\infty$ 上，取普通极限泛函并保范延拓为 $L\in(\ell^\infty)'$。它满足 $L(e_j)=0$、$L(\mathbf1)=1$。若 $L=Jx$ 来自某个 $x\in\ell^1$，则 $x_j=L(e_j)=0$ 对所有 $j$ 成立，迫使 $L(\mathbf1)=0$，矛盾。
+\end{example}
+
+\begin{proposition}[非局部凸空间可能没有非零连续泛函]\label{prop:y4-L0-trivial-dual}
+设 $0<\mu(S)<\infty$，并假定每个正测度可测集 $B$ 对每个正整数 $n$ 都有子集 $B_n$ 满足
+\[
+ \frac{\mu(B)}{n+1}\le\mu(B_n)\le\frac{\mu(B)}n.
+\]
+则赋予依测度收敛拓扑的 $L^0(S,\mu)$ 的连续对偶只有零泛函。Lebesgue 区间满足此分割条件。
+\end{proposition}
+\begin{proof}
+若 $F$ 连续，存在 $\varepsilon,\delta>0$，使
+$\mu\{|h|>\varepsilon\}<\delta$ 时 $|F(h)|<1$。若 $h$ 支集于测度小于 $\delta$ 的集合，则所有标量倍 $th$ 都满足同一条件，故 $F(h)=0$。
+
+所设分割条件使 $S$ 可分成有限个测度小于 $\delta$ 的集合：只要剩余集测度至少为 $\delta$，选整数 $n$ 使从其中切出的部分测度介于 $\delta/4$ 与 $\delta/2$ 之间。例如对剩余测度 $r\ge\delta$ 取 $n=\lceil2r/\delta\rceil$，所设上下界即满足此要求。每次至少移去 $\delta/4$，所以有限步后剩余测度小于 $\delta$。将任意 $h$ 限制到这些片上，得到有限个都被 $F$ 消灭的函数之和，故 $F(h)=0$。
+\end{proof}
+
+这解释了局部凸假设的作用：$L^0$ 有非零元素，却没有非零连续泛函，因而不可能是 Hausdorff 局部凸空间。
+
+\begin{theorem}[$L^\infty$ 的对偶与有限可加集函数]\label{thm:y4-Linfty-ba}
+对任意测度空间，$(L^\infty)'$ 等距对应于所有消灭 $\mu$ 零测集的有限可加、有限全变差的 $\mathbb K$ 值集函数 $\nu:\Sigma\to\mathbb K$。其全变差范数定义为
+\[
+ \|\nu\|_{\mathrm{var}}=
+ \sup_{\{E_j\}}\sum_j|\nu(E_j)|,
+\]
+上确界遍历 $S$ 的有限可测分割。此处“消灭零测集”仅指 $\mu(E)=0\Rightarrow\nu(E)=0$，不预设可数可加性或小测度集合上的统一控制。
+\end{theorem}
+\begin{proof}
+对 $F\in(L^\infty)'$，令 $\nu(E)=F(1_E)$。线性性给有限可加性，$1_E=0$ 于 $L^\infty$ 当 $\mu(E)=0$，故消灭零测集。对任意有限分割，选相位 $|c_j|\le1$ 使 $c_j\nu(E_j)=|\nu(E_j)|$，则
+\[
+ \sum_j|\nu(E_j)|=F\left(\sum_jc_j1_{E_j}\right)\le\|F\|,
+\]
+所以 $\|\nu\|_{\mathrm{var}}\le\|F\|$。
+
+反过来，有限可加性使简单函数积分 $I(\sum_jc_j1_{E_j})=\sum_jc_j\nu(E_j)$ 与表示无关，且
+$|I(h)|\le\|h\|_\infty\|\nu\|_{\mathrm{var}}$。消灭零测集保证这只依赖等价类。每个本质有界函数可修改一个零测集而成为有界函数，再用值域分割作简单函数的一致逼近，所以 $I$ 唯一连续延拓到 $L^\infty$。它的范数不超过全变差；前述相位测试给反向不等式。这种由一致逼近定义的积分即原书在此使用的有限可加积分。
+\end{proof}
+
+例如，对例 \ref{ex:y4-nonreflexive} 中的 $L$，令 $\nu(E)=L(1_E)$（$E\subset\mathbb N$）。则每个单点的值为零而 $\nu(\mathbb N)=1$，所以不可能可数可加。这也直接显示 $(\ell^\infty)'$ 中有不能由 $\ell^1$ 级数配对表示的泛函。
+
+\begin{theorem}[采用的外部结论：Riesz--Markov--Kakutani 表示]\label{thm:y4-riesz-markov}
+若 $K$ 为紧 Hausdorff 空间，则 $C(K)'$ 等距对应于有限正则 Borel 符号测度（实情形）或复测度（复情形）：
+\[
+ F(h)=\int_Kh\,d\nu,\qquad \|F\|=|\nu|(K).
+\]
+表示测度唯一；实泛函为正，即 $h\ge0\Rightarrow F(h)\ge0$，当且仅当其表示测度非负。
+\end{theorem}
+
+此定理按原书作为外部结论采用，本章不证明。原书用 Baire 测度，本稿明确采用正则 Borel 表示；第三章 Hilbert 空间的 Riesz 表示不能替代它。在 $K=[0,1]$ 时，它将第 \ref{sec:yosida-04-05} 节的矩量条件解释为有限变差测度的存在条件。
+
+\begin{exercise}
+设 $b\in\ell^1$ 且每个 $b_j\ne0$。证明 $f_b(x)=\sum b_jx_j$ 在 $c_0$ 的闭单位球上不能达到范数。说明这与本章每个非零向量都有范数为一的支撑泛函并不矛盾。
+\end{exercise}
+\begin{solution}
+若 $|f_b(x)|=\sum|b_j|$ 且 $\|x\|_\infty\le1$，则
+$\sum|b_j||x_j|=\sum|b_j|$，所以每个 $|x_j|=1$，与 $x_j\to0$ 矛盾。支撑泛函结论是先给向量、再找泛函；这里是先给泛函、再问它能否在单位球达到最大值，量词不同。
+\end{solution}
+
+\begin{exercise}
+在 $C[0,1]$ 上令 $F(h)=h(0)-h(1)$。求其表示测度和范数，并说明 $C[0,1]'$ 的表示测度为何不能一律要求对 Lebesgue 测度绝对连续。
+\end{exercise}
+\begin{solution}
+表示测度为 $\delta_0-\delta_1$，全变差为二。也可直接由 $|h(0)-h(1)|\le2\|h\|_\infty$ 得上界，取 $h(t)=1-2t$ 达到二。该测度在单点上有非零质量，而 Lebesgue 单点测度为零，故不是 Lebesgue 绝对连续测度。这与 $L^p$ 的对偶表示具有不同的定义域与测度假设。
+\end{solution}

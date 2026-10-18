@@ -1,0 +1,40 @@
+\Needspace{11\baselineskip}
+\section{复线性空间中的 Hahn--Banach 扩张定理}\label{sec:yosida-04-04}
+\noindent\textit{原书位置：中译本第 111 页；英文版第 105--106 页。}
+
+复数没有与域运算相容的大小次序，所以不能直接写复泛函 $F\le p$。正确的控制是模长不等式；证明则从实部开始。
+
+\begin{lemma}[由实部重建复线性泛函]\label{lem:y4-real-part}
+设 $X$ 为复线性空间，$G:X\to\R$ 为将 $X$ 看作实空间时的实线性泛函。则
+\[
+ F(x)=G(x)-iG(ix)
+\]
+是复线性泛函，且 $\operatorname{Re}F=G$。反过来，每个复线性泛函都由其对应的实部这样唯一确定。
+\end{lemma}
+\begin{proof}
+$F$ 显然可加且实齐次，并且
+$F(ix)=G(ix)-iG(-x)=G(ix)+iG(x)=iF(x)$，故复线性。若 $f=g+ih$ 复线性，比较 $f(ix)=if(x)$ 的实部得 $g(ix)=-h(x)$，于是 $f(x)=g(x)-ig(ix)$。
+\end{proof}
+
+\begin{theorem}[复 Hahn--Banach 扩张定理]\label{thm:y4-complex-hahn-banach}
+设 $p$ 为复线性空间 $X$ 上的半范数，$M\subset X$ 为复线性子空间，$f:M\to\mathbb C$ 复线性且 $|f(m)|\le p(m)$。则存在复线性延拓 $F:X\to\mathbb C$ 满足 $|F(x)|\le p(x)$。
+\end{theorem}
+\begin{proof}
+将 $X,M$ 看作实线性空间，对 $g=\operatorname{Re}f\le p$ 用定理 \ref{thm:y4-real-hahn-banach}，得实线性延拓 $G\le p$。由引理 \ref{lem:y4-real-part} 定义 $F=G-iG\circ i$。它复线性，且在 $M$ 上等于 $f$。
+
+若 $F(x)\ne0$，选 $|\zeta|=1$，使 $\zeta F(x)=|F(x)|$ 为非负实数。于是
+\[
+ |F(x)|=\operatorname{Re}F(\zeta x)=G(\zeta x)
+ \le p(\zeta x)=p(x).
+\]
+$F(x)=0$ 时不等式显然。最后一步用到复半范数的绝对齐次性；仅分别控制实部、虚部通常只能给出不够精确的常数。
+\end{proof}
+
+半范数允许非零核；模长控制自动使 $F$ 在 $\ker p$ 上为零。本定理本身仍是代数结论，尚未要求 $p$ 连续。若 $p$ 连续，$|F|\le p$ 才进一步保证 $F$ 连续。
+
+\begin{exercise}
+在 $X=\mathbb C^2$ 上取 $p(z,w)=|z+w|$，$M=\{(z,0):z\in\mathbb C\}$，$f(z,0)=z$。求所有满足模长控制的复线性延拓。再用 $G(z)=\operatorname{Re}z$ 检查重建公式中的符号。
+\end{exercise}
+\begin{solution}
+因 $p(z,-z)=0$，任何延拓必在这些向量上为零。写 $F(z,w)=az+bw$，限制条件给 $a=1$，零核条件给 $b=1$，故唯一为 $F(z,w)=z+w$。若 $z=a+ib$，则 $G(iz)=-b$，所以 $G(z)-iG(iz)=a+ib=z$；改成加号则得到 $\overline z$，不再复线性。
+\end{solution}

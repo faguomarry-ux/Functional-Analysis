@@ -1,0 +1,63 @@
+\Needspace{12\baselineskip}
+\section{Dunford 定理和 Gelfand--Mazur 定理}\label{sec:yosida-05-03}
+\noindent\textit{原书起始页：中译本 133；英文版 128。}
+
+本节 $X$ 为复 Banach 空间，$U\subset\mathbb C$ 开。称 $u:U\to X$ 弱全纯，是指每个 $f\circ u$（$f\in X'$）都为标量全纯函数；强全纯指差商在 $X$ 的范数中处处有极限。
+
+\begin{theorem}[Dunford：弱全纯蕴含强全纯]\label{thm:y5-dunford}
+弱全纯的 $X$ 值函数强全纯。
+\end{theorem}
+\begin{proof}
+固定 $z\in U$，选 $\overline{D(z,r)}\subset U$。每个 $f\in X'$ 的 $f(u(\zeta))$ 在圆周上有界。把 $Ju(\zeta)$ 看作作用于 Banach 空间 $X'$ 的泛函，一致有界性给出 $M=\sup_{|\zeta-z|=r}\|u(\zeta)\|<\infty$。
+
+令 $q_h=(u(z+h)-u(z))/h$，$0<|h|<r/2$。标量 Cauchy 公式给出
+\[
+ f(q_h-q_k)=\frac{h-k}{2\pi i}\int_{|\zeta-z|=r}
+ \frac{f(u(\zeta))\,\dd\zeta}{(\zeta-z-h)(\zeta-z-k)(\zeta-z)}.
+\]
+三个分母分别至少为 $r/2,r/2,r$，故 $|f(q_h-q_k)|\le4M\|f\||h-k|/r^2$。取单位对偶球上确界得到范数估计，差商在 $h\to0$ 时为 Cauchy。由完备性，它有极限 $u'(z)$。
+\end{proof}
+
+\begin{corollary}[Cauchy 公式、幂级数与 Liouville 定理]
+在上述圆盘内，
+\[
+ u(w)=\frac1{2\pi i}\int_{|\zeta-z|=r}\frac{u(\zeta)}{\zeta-w}\,\dd\zeta
+ =\sum_{m=0}^{\infty}a_m(w-z)^m,\qquad \|a_m\|\le Mr^{-m}.
+\]
+级数在每个较小闭圆盘内范数一致收敛。整个复平面上有界的全纯 $X$ 值函数为常函数。
+\end{corollary}
+\begin{proof}
+强可微蕴含连续，圆周参数化后的连续函数可由 Riemann 和在完备的 $X$ 中积分。连续泛函与此积分可交换，标量 Cauchy 公式及对偶分离给出向量公式。几何级数在较小圆盘上一致收敛，逐项积分给出展开与系数估计。若整函数有界，令 $r\to\infty$ 使所有 $m\ge1$ 的系数为零。这里不预先使用后文的 Bochner 积分。
+\end{proof}
+
+\begin{theorem}[Gelfand--Mazur]\label{thm:y5-gelfand-mazur}
+设 $A$ 为含单位元 $e$ 的复 Banach 代数，$\|e\|=1$，$\|ab\|\le\|a\|\|b\|$。若每个非零元素都可逆，则 $A=\mathbb C e$，且 $\lambda\mapsto\lambda e$ 为等距代数同构。
+\end{theorem}
+\begin{proof}
+$\|b\|<1$ 时，完备性使 $\sum_{n\ge0}b^n$ 收敛；将部分和乘以 $e-b$ 得 $e-b^{N+1}\to e$，故其和为 $(e-b)^{-1}$。
+
+若 $a\notin\mathbb C e$，则 $R(\lambda)=(\lambda e-a)^{-1}$ 对全部 $\lambda\in\mathbb C$ 存在。在 $\lambda_0$ 邻域，由
+\[
+ R(\lambda_0+h)=\bigl(e+hR(\lambda_0)\bigr)^{-1}R(\lambda_0)
+\]
+及 Neumann 级数得到范数幂级数，故 $R$ 整全纯。对 $|\lambda|>\|a\|$，
+\[
+ R(\lambda)=\lambda^{-1}\sum_{n\ge0}(a/\lambda)^n,\qquad
+ \|R(\lambda)\|\le\frac1{|\lambda|-\|a\|}\longrightarrow0.
+\]
+它在充分大的闭圆盘上连续有界，在外部也有界；Liouville 定理迫使它恒为零，与其为逆元矛盾。故 $A=\mathbb C e$；$\|\lambda e\|=|\lambda|$ 给出等距性。证明不要求预先假设乘法可交换。
+\end{proof}
+
+\begin{exercise}[预解式导数的符号]\label{ex:y5-resolvent}
+若 $T\in\mathcal L(X)$ 且 $|z|>\|T\|$，证明 $(zI-T)^{-1}=\sum_{n\ge0}z^{-n-1}T^n$ 并求导数。
+\end{exercise}
+\begin{solution}
+对 $T/z$ 用 Neumann 级数得公式，在 $|z|\ge r>\|T\|$ 上一致收敛。预解式恒等式给出 $R(z+h)-R(z)=-hR(z+h)R(z)$，故 $R'(z)=-R(z)^2$。若改用 $(T-zI)^{-1}$，导数是其平方，必须先固定符号。
+\end{solution}
+
+\begin{exercise}[实数域的区别]\label{ex:y5-real-field}
+把 $\mathbb C$ 看作实 Banach 代数，说明为何不能把 Gelfand--Mazur 的“复”直接改为“实”。
+\end{exercise}
+\begin{solution}
+通常绝对值使其为完备实赋范除代数，但 $i$ 不是单位元的实倍数，故不等于 $\mathbb R e$。上述证明的全纯性和 Liouville 定理使用复标量结构。
+\end{solution}

@@ -1,0 +1,109 @@
+\section{弱收敛和弱\texorpdfstring{$^*$}{*}收敛}\label{sec:yosida-05-01}
+\noindent\textit{原书起始页：中译本 125；英文版 120。}
+
+\begin{definition}[三种测试方式]
+$x_n\rightharpoonup x$ 表示 $f(x_n)\to f(x)$ 对所有 $f\in X'$ 成立。若只要求每个 $f(x_n)$ 是 Cauchy 序列，称 $(x_n)$ 为弱 Cauchy 序列，亦称弱基本序列。若每个弱 Cauchy 序列都在 $X$ 中有弱极限，称 $X$ 序列弱完备。
+
+对 $f_n,f\in X'$，$f_n\overset{*}{\rightharpoonup}f$ 表示 $f_n(x)\to f(x)$ 对所有 $x\in X$ 成立。这是 $\sigma(X',X)$ 收敛；$X'$ 自身的弱收敛测试全部 $X''$。强收敛 $x_n\to x$ 表示 $\|x_n-x\|\to0$。
+\end{definition}
+
+\begin{theorem}[有界性、下半连续性与稠密测试]\label{thm:y5-weak-basic}
+范数收敛蕴含弱收敛。弱 Cauchy 序列范数有界；若 $x_n\rightharpoonup x$，则 $\|x\|\le\liminf_n\|x_n\|$。
+若 $\sup_n\|x_n\|<\infty$，在 $X'$ 的一个范数稠密子集上验证 $f(x_n)\to f(x)$，已足以推出弱收敛。
+\end{theorem}
+\begin{proof}
+第一句由 $|f(x_n-x)|\le\|f\|\|x_n-x\|$ 得到。令 $Jx_n(f)=f(x_n)$；$X'$ 无论 $X$ 是否完备都是 Banach 空间，且 $\|Jx_n\|=\|x_n\|$。一致有界性给出 $\sup_n\|x_n\|<\infty$。对 $\|f\|\le1$，$|f(x)|=\lim_n|f(x_n)|\le\liminf_n\|x_n\|$，再取上确界。
+
+设 $M=\sup_n\|x_n\|$，以稠密子集中的 $g$ 逼近任意 $f$，则
+\[
+ |f(x_n-x)|\le(M+\|x\|)\|f-g\|+|g(x_n-x)|.
+\]
+先令 $n\to\infty$，再令 $\|f-g\|\to0$ 即可。
+\end{proof}
+
+\begin{example}[坐标收敛与有界性]
+在 $\ell^2$ 中标准单位向量 $e_n\rightharpoonup0$，因为 $\ell^2$ 向量的坐标趋零；但 $\|e_n\|=1$。序列 $ne_n$ 每个固定坐标仍趋零，却不弱收敛，因为范数无界。因此只检查坐标需要统一范数界。
+\end{example}
+
+\begin{theorem}[凸闭包与 Mazur 引理]\label{thm:y5-mazur}
+Hausdorff 局部凸空间中，凸集的原拓扑闭包等于其弱闭包。若 $x_n\rightharpoonup x$，可选择尾部的有限凸组合
+\[
+ y_n\in\operatorname{conv}\{x_k:k\ge n\},\qquad \|y_n-x\|<1/n.
+\]
+\end{theorem}
+\begin{proof}
+原拓扑强于弱拓扑，故原闭包包含于弱闭包。若 $x\notin\overline C$，第四章严格分离给出 $f\in X'$ 与实数 $a$，使 $\operatorname{Re}f(x)>a\ge\sup_{z\in C}\operatorname{Re}f(z)$。这个弱开半空间将 $x$ 与 $C$ 分开。弱收敛保证 $x$ 属于每个尾部的弱闭包，因而属于其凸包的范数闭包；按误差 $1/n$ 选择即可。闭线性子空间也因此弱闭。
+\end{proof}
+
+\begin{proposition}[弱星极限与序列弱完备性]
+若 $X$ 为 Banach 空间，且每个 $f_n(x)$ 有有限极限，则存在 $f\in X'$ 使 $f_n\overset{*}{\rightharpoonup}f$，并有 $\sup_n\|f_n\|<\infty$。若 $X$ 自反，则它序列弱完备。
+\end{proposition}
+\begin{proof}
+一致有界性给出第一句的范数界。逐点极限线性且满足 $|f(x)|\le M\|x\|$，故连续。对自反空间中的弱 Cauchy 序列，定义 $F(g)=\lim_ng(x_n)$；定理 \ref{thm:y5-weak-basic} 给出 $F\in X''$，自反性使 $F=Jx$，故 $x_n\rightharpoonup x$。
+\end{proof}
+
+弱星测试也有稠密性判据：若 $(f_n)$ 范数有界，在 $X$ 的范数稠密子集上验证到给定 $f\in X'$ 的收敛即可，证明同前。有界性是额外条件；从逐点有界推出统一界才需要 $X$ 完备。
+
+\begin{proposition}[Hilbert 空间的范数判据]
+在 Hilbert 空间中，$x_n\to x$ 等价于 $x_n\rightharpoonup x$ 且 $\|x_n\|\to\|x\|$。
+\end{proposition}
+\begin{proof}
+必要性已知。充分性由内积对第一变量线性的约定及恒等式
+\[
+ \|x_n-x\|^2=\|x_n\|^2-2\operatorname{Re}(x_n,x)+\|x\|^2\longrightarrow0
+\]
+得到。一般 Banach 空间不能仅凭此恒等式作同样推论。
+\end{proof}
+
+\begin{proposition}[分布序列的弱星与强对偶收敛]
+若 $T_n\to T$ 逐测试函数收敛，则对 $\Test(\Omega)$ 的每个有界集 $B$，$\sup_{\varphi\in B}|(T_n-T)(\varphi)|\to0$。
+\end{proposition}
+\begin{proof}
+已有的有界集刻画给出共同紧支集 $K$ 及所有阶导数的统一界。固定支集空间 $\Test_K$ 为 Fr\'echet 空间；各阶导数的 Ascoli 定理及对角抽取使 $B$ 在其中相对紧。一致有界性给出 $(T_n-T)|_{\Test_K}$ 等度连续。给定 $\varepsilon>0$，取共同的零邻域 $U$，使这些泛函在 $U$ 上绝对值小于 $\varepsilon$。用有限个 $\varphi_j+U$ 覆盖 $\overline B$，得到
+$\sup_B|(T_n-T)(\varphi)|\le\max_j|(T_n-T)(\varphi_j)|+\varepsilon$，先令 $n\to\infty$ 再令 $\varepsilon\to0$。不据此声称两种拓扑相同。
+\end{proof}
+
+\begin{theorem}[$L^1$ 的逐集合判据与强收敛]\label{thm:y5-l1}
+设 $(S,\Sigma,\mu)$ 为 $\sigma$ 有限测度空间。序列 $(u_n)\subset L^1(\mu)$ 有弱极限，当且仅当 $\sup_n\|u_n\|_1<\infty$ 且每个可测 $A$ 的 $\int_Au_n\,\dd\mu$ 有有限极限。
+若已知 $u_n\rightharpoonup u$，则 $u_n\to u$ 在 $L^1$ 范数中成立，当且仅当在每个有限测度集合上依测度收敛。
+\end{theorem}
+\begin{proof}
+必要性由指示函数属于 $L^\infty=(L^1)'$ 及弱收敛有界性得出。反之令 $\nu_n(A)=\int_Au_n$。第二章推论 \ref{cor:y2-nikodym} 给出极限 $\nu$ 可数可加且对 $\mu$ 绝对连续；有限分割上取极限又有 $|\nu|(S)\le\sup_n\|u_n\|_1$。Radon--Nikodym 定理（复情形分解实虚部）给出 $\nu(A)=\int_Au$，$u\in L^1$。简单标量函数的测试因有限求和而收敛，且它们在 $L^\infty$ 范数中稠密；稠密测试判据给出 $u_n\rightharpoonup u$。
+
+对第二句可减去 $u$，设弱极限为零。引入有限控制测度
+\[
+ \lambda(A)=\sum_{n\ge1}2^{-n}\frac{\int_A|u_n|\,\dd\mu}{1+\|u_n\|_1}.
+\]
+每个 $\nu_n$ 都对 $\lambda$ 绝对连续，且 $\nu_n(A)\to0$。Vitali--Hahn--Saks 定理及第二章习题的估计
+$|\rho|(A)\le4\sup_{B\subset A}|\rho(B)|$ 给出 $\int_A|u_n|$ 对 $\lambda(A)$ 的一致绝对连续性。因此若 $A_k\downarrow\varnothing$，则 $\sup_n\int_{A_k}|u_n|\to0$。
+
+在固定有限测度集 $E$ 上，$\lambda\ll\mu$ 使 $\mu(A)\to0$ 蕴含 $\lambda(A)\to0$，所以这些积分也对 $\mu$ 一致绝对连续。给定 $\varepsilon>0$，在 $\{|u_n|>a\}\cap E$ 与其补集上拆分积分，先取 $a\mu(E)<\varepsilon/2$（$\mu(E)=0$ 时直接成立），再由依测度收敛及一致绝对连续性控制第一部分，得 $\int_E|u_n|\to0$。取有限测度集 $E_k\uparrow S$，上段对 $S\setminus E_k$ 的一致尾项控制使 $\|u_n\|_1\to0$。反方向由 Chebyshev 不等式 $\mu\{|u_n-u|>a\}\le\|u_n-u\|_1/a$ 得到。
+\end{proof}
+
+\begin{corollary}[Schur 性质]
+在 $\ell^1$ 中，序列弱收敛蕴含范数收敛。
+\end{corollary}
+\begin{proof}
+将 $\ell^1$ 视为 $\mathbb N$ 上计数测度的 $L^1$。有限测度集合是有限集；弱收敛给出逐坐标收敛，故在每个有限集上依测度收敛。上一条定理即适用。
+\end{proof}
+
+\begin{exercise}[弱星不等于弱]\label{ex:y5-star}
+把 $e_n$ 看作 $(c_0)'=\ell^1$ 的元素，证明它弱星趋零，却不在 $\ell^1$ 中弱趋零。
+\end{exercise}
+\begin{solution}
+对 $x\in c_0$，$e_n(x)=x_n\to0$。但 $\ell^1$ 的连续泛函包括由 $\mathbf1\in\ell^\infty$ 给出的 $a\mapsto\sum_ja_j$，它在 $e_n$ 上恒为 1。
+\end{solution}
+
+\begin{exercise}[弱 Cauchy 未必有弱极限]\label{ex:y5-cauchy}
+证明 $u_n(t)=t^n$ 在 $C[0,1]$ 中弱 Cauchy，但没有该空间内的弱极限。
+\end{exercise}
+\begin{solution}
+第四章采用的 Riesz--Markov 表示将连续泛函写成有限正则测度积分。$|u_n|\le1$ 且逐点趋于 $\mathbf1_{\{1\}}$，关于全变差测度的控制收敛给出每个积分收敛。若弱极限为连续函数 $u$，点值泛函迫使 $u(t)=0$（$t<1$）且 $u(1)=1$，矛盾。此题依赖第四章注明的外部表示定理。
+\end{solution}
+
+\begin{exercise}[凸组合恢复强收敛]\label{ex:y5-averages}
+在 $\ell^2$ 中计算 $n^{-1}\sum_{k=n}^{2n-1}e_k$ 的范数，并说明 Mazur 引理不保证原序列强收敛。
+\end{exercise}
+\begin{solution}
+范数平方为 $n/n^2=1/n$，故这些尾部平均强趋零；原序列 $e_n$ 的范数恒为 1。
+\end{solution}

@@ -1,46 +1,28 @@
 % !TeX encoding = UTF-8
-% 吉田第六版：中译本第 4 章；此文件当前仅为目录与正文占位。
-\SetChapterInfo{subtitle={吉田耕作第六版主线 · 正文待撰写}}
+% 吉田第六版：第四章九节正文。
+\SetChapterInfo{subtitle={从受控延拓到分离、对偶与自然嵌入},keywords={Hahn--Banach; 完备化; 分离; 算子拓扑; 二次对偶; 对偶表示},prereq={第零章 Zorn 引理与测度; 第一章半范数与商空间; 第三章 Radon--Nikodym},goals={掌握实复保范延拓; 用泛函分离点与凸集; 区分弱星与范数收敛; 计算常见对偶}}
 \chapter{Hahn--Banach 定理}\label{ch:yosida-04}
-\YosidaChapterPlaceholder{4}{The Hahn--Banach Theorems}{107--124}{102--118}
+\ChapterSource{本章依照 \cite{yosida-zh,yosida-en} 第四章九节顺序编写。前两节于 2026 年 10 月 13 日补写，其余七节于 10 月 17 日续写。累计查阅中译本印刷第 107--124 页（PDF 第 122--139 页）及英文版印刷第 102--119 页（PDF 第 117--134 页，末页下部已开始第五章）。正文采用本稿记号重组论证并补充十五道附解答习题，并非原文转录。Jordan 分解及 Radon--Nikodym 密度引用前文证明；Riesz--Markov 表示明列为外部结论。详细证明范围见本章 COVERAGE。}
 
-\section{实线性空间中的 Hahn--Banach 扩张定理}\label{sec:yosida-04-01}
-\YosidaSectionPlaceholder{107}{102}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
+本章的主线是把局部给定的泛函延拓为全空间的连续坐标，进而分离点与凸集、理解弱拓扑，并将空间嵌入其二次对偶。实或复标量域统一记为 $\mathbb K$；除特别说明外，局部凸空间均为 Hausdorff，$X'$ 始终表示连续线性对偶。
 
-\section{广义极限}\label{sec:yosida-04-02}
-\YosidaSectionPlaceholder{109}{103}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
+\input{books/yosida/chapter04/01-real-extension}
+\input{books/yosida/chapter04/02-generalized-limit}
 
-\section{局部凸的完备线性拓扑空间}\label{sec:yosida-04-03}
-\YosidaSectionPlaceholder{110}{104}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
+\input{books/yosida/chapter04/03-complete-locally-convex}
+\input{books/yosida/chapter04/04-complex-extension}
+\input{books/yosida/chapter04/05-normed-extension}
+\input{books/yosida/chapter04/06-separation}
+\input{books/yosida/chapter04/07-operator-topologies}
+\input{books/yosida/chapter04/08-bidual}
+\input{books/yosida/chapter04/09-dual-examples}
 
-\section{复线性空间中的 Hahn--Banach 扩张定理}\label{sec:yosida-04-04}
-\YosidaSectionPlaceholder{111}{105}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{赋范线性空间中的 Hahn--Banach 扩张定理}\label{sec:yosida-04-05}
-\YosidaSectionPlaceholder{112}{106}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{非平凡连续线性泛函的存在性}\label{sec:yosida-04-06}
-\YosidaSectionPlaceholder{113}{107}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{线性映射的拓扑}\label{sec:yosida-04-07}
-\YosidaSectionPlaceholder{115}{110}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{嵌 \texorpdfstring{$X$}{X} 入其二次对偶 \texorpdfstring{$X''$}{X''}}\label{sec:yosida-04-08}
-\YosidaSectionPlaceholder{117}{112}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{几例对偶空间}\label{sec:yosida-04-09}
-\YosidaSectionPlaceholder{119}{114}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section*{本章参考文献整理（占位）}
+\Needspace{9\baselineskip}
+\section*{本章参考文献与阅读衔接}
 \phantomsection
-\addcontentsline{toc}{section}{本章参考文献整理（占位）}
-待核对原书本章参考文献。中译本印刷第 124 页起；后续按实际引用合并至本书参考文献表。
+\addcontentsline{toc}{section}{本章参考文献与阅读衔接}
+本章直接查阅资料为两版吉田第四章 \cite{yosida-zh,yosida-en}。原书章末参考说明见中译本印刷第 124 页、英文版第 119 页：列举 Banach、Bourbaki、K\"othe 的相关文献，提及 Mazur 对凸集方法的贡献，并说明所用 Helly 证明来自 Y.~Mimura 的未发表论证。中译本将该姓写为 Miura；本稿按英文扫描页保留 Mimura，并不据此声称已核查其原始资料。
+
+本稿的完备化使用半范数商空间的 Banach 完备化之乘积，Helly 证明使用有限维商范数；这是为展开细节而采用的论证。Riesz--Markov--Kakutani 定理按原书一样注明为外部表示结果，不把原书列出的测度论参考书视为本轮已直接阅读。
+
+十五道补充习题的解答统一在书后输出。下一章利用这里的对偶与拓扑语言研究强弱收敛；第七章进一步讨论对偶算子。学习时应把三组区别保持清楚：代数延拓与连续延拓，弱星稠密与范数稠密，有限可加集函数与可数可加测度。

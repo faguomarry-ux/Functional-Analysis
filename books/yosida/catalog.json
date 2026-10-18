@@ -225,7 +225,7 @@
     "title": "Hahn--Banach 定理",
     "en_title": "The Hahn--Banach Theorems",
     "zh_range": "107--124",
-    "en_range": "102--118",
+    "en_range": "102--119",
     "sections": [
       {
         "title": "实线性空间中的 Hahn--Banach 扩张定理",
@@ -280,7 +280,7 @@
     "title": "强收敛和弱收敛",
     "en_title": "Strong Convergence and Weak Convergence",
     "zh_range": "125--150",
-    "en_range": "119--144",
+    "en_range": "119--145",
     "sections": [
       {
         "title": "弱收敛和弱\\texorpdfstring{$^*$}{*}收敛",

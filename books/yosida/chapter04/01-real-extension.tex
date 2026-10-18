@@ -1,0 +1,97 @@
+\Needspace{11\baselineskip}
+\section{实线性空间中的 Hahn--Banach 扩张定理}\label{sec:yosida-04-01}
+\noindent\textit{原书位置：中译本第 107--108 页；英文版第 102--103 页。}
+
+第三章借助 Hilbert 空间的内积表示连续线性泛函。本节换一个出发点：已知子空间上的线性泛函，能否把它延拓到整个空间，同时保留一个给定的上界？先在纯代数层面解决这个问题，连续性留到后面的赋范与局部凸情形讨论。
+
+\begin{definition}[次线性泛函]\label{def:y4-sublinear}
+设 $X$ 为实线性空间。实值函数 $p:X\to\R$ 称为次线性泛函，若
+\[
+ p(x+y)\le p(x)+p(y),\qquad p(tx)=tp(x)\quad(t\ge0).
+\]
+这里 $p$ 处处取有限实数，但不要求非负或满足 $p(-x)=p(x)$。取 $t=0$ 及 $y=-x$ 得
+\[
+ p(0)=0,\qquad -p(-x)\le p(x).
+\]
+半范数是次线性泛函的特例；任意实线性泛函也满足上述定义，即使它可以取负值。
+\end{definition}
+
+\begin{lemma}[一次增加一个方向]\label{lem:y4-one-step}
+设 $M\subset X$ 为线性子空间，$f:M\to\R$ 线性且 $f(m)\le p(m)$。若 $v\notin M$，则存在 $M+\R v$ 上的线性延拓 $g\le p$。所有可选的 $c=g(v)$ 恰好组成闭区间
+\[
+ \begin{aligned}
+ A&=\sup_{m\in M}\{f(m)-p(m-v)\},\\
+ B&=\inf_{m\in M}\{p(m+v)-f(m)\},\qquad A\le c\le B.
+ \end{aligned}
+\]
+两个端点均为有限实数。
+\end{lemma}
+\begin{proof}
+因为 $v\notin M$，表示 $m+tv$ 唯一，线性延拓必为
+\[
+ g(m+tv)=f(m)+tc.
+\]
+当 $t>0$ 时，$g(m+tv)\le p(m+tv)$ 等价于
+$c\le p(m/t+v)-f(m/t)$。当 $t=-s<0$ 时，除以 $s>0$，条件等价于
+$c\ge f(m/s)-p(m/s-v)$。$t=0$ 时则为原假设。因此全部条件正好是 $A\le c\le B$。
+
+对任意 $m,n\in M$，有
+\[
+ f(m)+f(n)=f(m+n)\le p(m+n)\le p(m-v)+p(n+v),
+\]
+所以每个下界项都不大于每个上界项。再分别取 $m=0$ 和 $n=0$，得到
+\[
+ -p(-v)\le A\le B\le p(v).
+\]
+这同时保证端点有限、区间非空。任取其中的 $c$ 即得所需延拓。
+\end{proof}
+
+\begin{theorem}[实 Hahn--Banach 扩张定理]\label{thm:y4-real-hahn-banach}
+设 $p$ 是实线性空间 $X$ 上的次线性泛函，$M\subset X$ 为任意线性子空间。若线性泛函 $f:M\to\R$ 满足 $f\le p$，则存在实线性泛函 $F:X\to\R$，使
+\[
+ F|_M=f,\qquad F(x)\le p(x)\quad(x\in X).
+\]
+因此还自动有 $-p(-x)\le F(x)\le p(x)$。
+\end{theorem}
+\begin{proof}
+令 $\mathcal P$ 为所有二元组 $(N,g)$ 的集合，其中 $M\subset N\subset X$ 为线性子空间，$g:N\to\R$ 为 $f$ 的线性延拓且 $g\le p$。按延拓关系排序：
+\[
+ (N_1,g_1)\preceq(N_2,g_2)
+ \quad\Longleftrightarrow\quad
+ N_1\subset N_2,\quad g_2|_{N_1}=g_1.
+\]
+它非空，因为含有 $(M,f)$。对任一非空链，取各定义域的并 $N$。链中任意两个定义域可比较，故 $N$ 是线性子空间；相应泛函在交集上一致，因而可以拼成 $N$ 上的线性泛函 $g$，并仍有 $g\le p$。这给出链的上界；空链也有 $(M,f)$ 作上界。
+
+由第零章的 Zorn 引理，存在极大元 $(N_*,g_*)$。若 $N_*\ne X$，取 $v\in X\setminus N_*$，引理 \ref{lem:y4-one-step} 给出更大定义域上的受控延拓，与极大性矛盾。故 $N_*=X$。最后对 $-x$ 使用 $F(-x)\le p(-x)$，由线性性得 $F(x)\ge-p(-x)$。
+\end{proof}
+
+证明分为两个层次：一次只选一个实数 $F(v)$，次线性保证可选区间非空；Zorn 引理把所有相容的局部延拓组织成全空间上的泛函。这里不要求 $M$ 闭，也不要求 $X$ 完备，甚至还没有给 $X$ 指定拓扑。定理保证存在性，但通常不提供唯一性或一个可计算的全局公式。
+
+\begin{corollary}[指定方向上的接触泛函]\label{cor:y4-supporting-functional}
+给定 $x_0\in X$，存在实线性泛函 $F\le p$，使 $F(x_0)=p(x_0)$。特别地，每个次线性泛函都至少支配一个线性泛函。
+\end{corollary}
+\begin{proof}
+若 $x_0=0$，从零子空间上的零泛函直接延拓。若 $x_0\ne0$，在 $\R x_0$ 上定义 $f(tx_0)=tp(x_0)$。对 $t\ge0$，它等于 $p(tx_0)$；对 $t<0$，由 $-p(x_0)\le p(-x_0)$ 得
+\[
+ tp(x_0)\le(-t)p(-x_0)=p(tx_0).
+\]
+应用定理即可。注意这里只在预先指定的方向上接触 $p$，不声称同一个 $F$ 在所有方向都与 $p$ 相等。
+\end{proof}
+
+\begin{example}[延拓可以有许多个]
+在 $X=\R^2$ 上取 $p(a,b)=|a|+|b|$，令 $M=\R(1,0)$，$f(a,0)=a$。延拓必为 $F_c(a,b)=a+cb$，而 $F_c\le p$ 当且仅当 $|c|\le1$。必要性由 $(a,b)=(0,1),(0,-1)$ 得到；充分性由 $a+cb\le|a|+|b|$ 得到。一次延拓引理的可选区间此时正是 $[-1,1]$。
+\end{example}
+
+\begin{exercise}
+证明：若 $q$ 为实线性空间上的半范数，$f$ 是子空间 $M$ 上的线性泛函且 $|f(m)|\le q(m)$，则存在延拓 $F$ 满足 $|F(x)|\le q(x)$。说明 $q$ 的对称性用在哪里。
+\end{exercise}
+\begin{solution}
+由 $f\le q$ 和实 Hahn--Banach 定理得到 $F\le q$。再对 $-x$ 应用此不等式：$-F(x)\le q(-x)=q(x)$，合并得绝对值控制。最后的等号使用半范数的对称性；一般次线性泛函只能保证 $-p(-x)\le F(x)\le p(x)$。
+\end{solution}
+
+\begin{exercise}
+在 $\R^2$ 上取 $p(a,b)=\max\{a,b\}$。求出所有满足 $F\le p$ 的实线性泛函，并说明为什么不能将次线性泛函直接当作半范数。
+\end{exercise}
+\begin{solution}
+写 $F(a,b)=ua+vb$。在 $(t,t)$ 上对正负 $t$ 使用不等式，得 $u+v=1$。在 $(-1,0)$ 和 $(0,-1)$ 上分别得 $u\ge0$、$v\ge0$。反过来，$u,v\ge0$ 且 $u+v=1$ 时，凸组合 $ua+vb\le\max\{a,b\}$。故所有解为 $F(a,b)=\theta a+(1-\theta)b$，$0\le\theta\le1$。此 $p$ 次可加且正齐次，但 $p(-1,-1)=-1$，也不满足对称性，所以不是半范数。
+\end{solution}

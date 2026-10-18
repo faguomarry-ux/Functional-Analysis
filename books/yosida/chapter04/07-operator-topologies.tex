@@ -1,0 +1,60 @@
+\Needspace{11\baselineskip}
+\section{线性映射的拓扑}\label{sec:yosida-04-07}
+\noindent\textit{原书位置：中译本第 115--117 页；英文版第 110--112 页。}
+
+设 $X,Y$ 为同一标量域上的 Hausdorff 局部凸空间，$\mathcal L(X,Y)$ 为连续线性映射全体。只有先指定算子空间上的拓扑，“算子收敛”才有明确含义。
+
+\begin{definition}[逐点收敛与有界集上一致收敛]\label{def:y4-operator-topologies}
+在 $\mathcal L(X,Y)$ 上，逐点收敛拓扑由半范数
+\[
+ p_{x_1,\ldots,x_n;q}(T)=\max_{1\le j\le n}q(Tx_j)
+\]
+生成，其中 $x_j\in X$，$q$ 为 $Y$ 上的连续半范数。记作 $\mathcal L_s(X,Y)$。网 $T_\alpha\to T$ 等价于每个 $x\in X$ 都有 $T_\alpha x\to Tx$。
+
+有界集上一致收敛拓扑由
+\[
+ p_{B;q}(T)=\sup_{x\in B}q(Tx)
+\]
+生成，其中 $B\subset X$ 为非空有界集，记作 $\mathcal L_b(X,Y)$。局部凸空间的有界集是指每个连续半范数在其上有界；连续线性映射保持有界集，故此上确界有限。有限集有界，所以 $b$ 拓扑比 $s$ 拓扑强或相等。
+\end{definition}
+
+\begin{proposition}[赋范空间中的算子拓扑]\label{prop:y4-operator-norm-topology}
+若 $X,Y$ 赋范，则 $\mathcal L_b(X,Y)$ 的拓扑就是算子范数拓扑，其中
+\[
+ \|T\|=\sup_{\|x\|\le1}\|Tx\|.
+\]
+逐点收敛拓扑通常称强算子拓扑，范数拓扑称一致算子拓扑。若 $Y$ 完备，$\mathcal L(X,Y)$ 在算子范数下完备，而 $X$ 不必完备。
+\end{proposition}
+\begin{proof}
+任意有界 $B$ 包含于某个 $RB_X$，故 $\sup_B\|Tx\|\le R\|T\|$；反之 $B_X$ 本身有界，所对应半范数就是算子范数。$Y$ 上任意连续半范数被其范数的常数倍控制，所以两族定义相同拓扑。完备性沿用第一章的逐点构造：算子范数 Cauchy 序列在每个 $x$ 处有极限 $Tx$，且取极限保留统一估计，得到 $T$ 有界以及范数收敛。
+\end{proof}
+
+\begin{definition}[弱、弱星与强对偶拓扑]\label{def:y4-dual-topologies}
+$X'=\mathcal L(X,\mathbb K)$ 始终只含连续线性泛函。弱星拓扑 $\sigma(X',X)$ 是 $\mathcal L_s(X,\mathbb K)$ 的逐点拓扑，由有限个 $x_j\in X$ 给出的 $\max_j|f(x_j)|$ 生成。强对偶拓扑 $\beta(X',X)$ 是 $\mathcal L_b(X,\mathbb K)$ 的有界收敛拓扑，由 $\sup_{x\in B}|f(x)|$ 生成。
+
+$X$ 上的弱拓扑 $\sigma(X,X')$ 则由有限个 $f_j\in X'$ 给出的 $\max_j|f_j(x)|$ 生成。它比原拓扑弱；第 \ref{sec:yosida-04-06} 节的点分离性质保证它仍为 Hausdorff。
+\end{definition}
+
+\begin{theorem}[赋范空间的强对偶为 Banach 空间]\label{thm:y4-dual-banach}
+若 $X$ 赋范，则 $\beta(X',X)$ 就是对偶范数拓扑，并且 $X'$ 是 Banach 空间，无需假设 $X$ 完备。
+\end{theorem}
+\begin{proof}
+拓扑相同由命题 \ref{prop:y4-operator-norm-topology} 在 $Y=\mathbb K$ 时得到。若 $f_n$ 在对偶范数下 Cauchy，则 $|f_n(x)-f_m(x)|\le\|f_n-f_m\|\|x\|$，故定义 $f(x)=\lim_nf_n(x)$。逐点极限保留线性；Cauchy 序列的范数有界，故 $|f(x)|\le C\|x\|$。对 $n,m\ge N$ 的估计先令 $m\to\infty$，再在单位球取上确界，即得 $\|f_n-f\|\to0$。
+\end{proof}
+
+术语需要分清：强算子拓扑在每个向量上测试；强对偶拓扑在有界集上统一测试。在赋范空间的对偶上，后者是范数拓扑。若进一步讨论 $X'$ 自身的弱拓扑，则它是 $\sigma(X',X'')$，测试全部 $X''$，而弱星拓扑 $\sigma(X',X)$ 只测试来自 $X$ 的点值；一般不能将两者等同。
+
+\begin{example}[逐点收敛不推出范数收敛]
+在 $\ell^2$ 上令 $P_n$ 为前 $n$ 个坐标的正交投影。对每个 $x$，
+\[
+ \|(I-P_n)x\|_2^2=\sum_{j>n}|x_j|^2\to0,
+\]
+故 $P_n\to I$ 为强算子收敛。但 $\|(I-P_n)e_{n+1}\|_2=1$，且 $I-P_n$ 是收缩，故 $\|I-P_n\|=1$ 对所有 $n$ 成立。
+\end{example}
+
+\begin{exercise}
+在 $X=\ell^1$ 上，令 $f_n(x)=x_n$。证明 $f_n\to0$ 于 $\sigma(X',X)$，却不在强对偶拓扑中收敛于零。
+\end{exercise}
+\begin{solution}
+每个 $x\in\ell^1$ 都满足 $x_n\to0$，所以按弱星定义收敛。另一方面 $|x_n|\le\|x\|_1$，而 $f_n(e_n)=1$，故 $\|f_n\|=1$；强对偶拓扑是范数拓扑，因此不收敛于零。
+\end{solution}

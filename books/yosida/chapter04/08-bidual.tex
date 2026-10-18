@@ -1,0 +1,74 @@
+\Needspace{11\baselineskip}
+\section{嵌 \texorpdfstring{$X$}{X} 入其二次对偶 \texorpdfstring{$X''$}{X''}}\label{sec:yosida-04-08}
+\noindent\textit{原书位置：中译本第 117--119 页；英文版第 112--114 页。}
+
+\begin{theorem}[弱星连续泛函恰是点值泛函]\label{thm:y4-weakstar-dual}
+设 $X$ 为 Hausdorff 局部凸空间。线性泛函 $\Phi:X'\to\mathbb K$ 对 $\sigma(X',X)$ 连续，当且仅当存在 $x_0\in X$，使 $\Phi(f)=f(x_0)$ 对所有 $f\in X'$ 成立。这样的 $x_0$ 唯一。
+\end{theorem}
+\begin{proof}
+点值连续直接来自弱星拓扑定义。反之，零点连续性和缩放给出有限个 $x_1,\ldots,x_n$ 及 $C>0$，使
+\[
+ |\Phi(f)|\le C\max_j|f(x_j)|.
+\]
+具体地，先取由这些点值限制构成、使 $|\Phi|<1$ 的零邻域；当右边的最大值非零时缩放，当它为零时任意倍乘，便得此估计。
+
+令 $Tf=(f(x_1),\ldots,f(x_n))$。估计说明 $\ker T\subset\ker\Phi$，故 $\Phi$ 可因子化为有限维子空间 $T(X')$ 上的线性泛函。将其用补基延拓到 $\mathbb K^n$，写成 $\sum_j a_jz_j$，则
+\[
+ \Phi(f)=\sum_ja_jf(x_j)=f\left(\sum_ja_jx_j\right).
+\]
+故 $x_0=\sum_ja_jx_j$。唯一性由 $X'$ 分离点得到。此处只用有限维线性代数，不需要再次作无限维延拓。
+\end{proof}
+
+\begin{definition}[自然嵌入与自反性]\label{def:y4-bidual}
+对赋范空间 $X$，二次对偶 $X''$ 指 Banach 对偶 $X'$ 的连续对偶，均用范数拓扑。自然映射为
+\[
+ J:X\to X'',\qquad (Jx)(f)=f(x).
+\]
+若 $J$ 满射，则称 $X$ 自反。这里要求满射的是自然映射，不只是存在某个抽象的空间同构。
+\end{definition}
+
+\begin{theorem}[自然嵌入等距]\label{thm:y4-canonical-isometry}
+$J$ 是线性等距嵌入，并有对偶范数公式
+\[
+ \|x\|=\sup_{\|f\|\le1}|f(x)|=\|Jx\|.
+\]
+$J(X)$ 在 $X''$ 中的范数闭包给出 $X$ 的完备化；$X$ 完备当且仅当 $J(X)$ 范数闭。自反空间必完备。
+\end{theorem}
+\begin{proof}
+泛函求值对 $x$ 和 $f$ 都线性，所以 $J$ 线性；$|f(x)|\le\|f\|\|x\|$ 给出 $\|Jx\|\le\|x\|$。对 $x\ne0$，定理 \ref{thm:y4-continuous-support} 的范数形式给出 $\|f\|=1$ 且 $f(x)=\|x\|$，故反向不等式成立。零向量情况显然。
+
+由定理 \ref{thm:y4-dual-banach}，$X''$ 完备，故 $\overline{J(X)}$ 完备且包含 $X$ 的等距稠密像。闭性与完备性的等价性由闭子空间性质得到。若 $J$ 满射，$X$ 等距于 Banach 空间 $X''$，故完备。
+\end{proof}
+
+一般局部凸空间中，点值仍定义强对偶上的连续线性泛函，因为单点集有界；但本节的等距、范数闭包和自反定义专指赋范情形。弱星连续对偶恰为 $X$，并不表示范数连续对偶 $X''$ 中每个元素都来自 $X$。
+
+\begin{theorem}[有限点精确插值与 Goldstine 稠密性]\label{thm:y4-goldstine}
+对赋范空间 $X$、$\Phi\in X''$、有限个 $f_1,\ldots,f_n\in X'$ 和 $\varepsilon>0$，存在 $x\in X$ 使
+\[
+ f_j(x)=\Phi(f_j),\qquad \|x\|\le\|\Phi\|+\varepsilon.
+\]
+因此 $J(B_X)$ 在 $B_{X''}$ 中对弱星拓扑 $\sigma(X'',X')$ 稠密，其中 $B$ 表示闭单位球。
+\end{theorem}
+\begin{proof}
+令 $a_j=\Phi(f_j)$，$\gamma=\|\Phi\|$。因
+\[
+ \left|\sum_jb_ja_j\right|
+ =\left|\Phi\left(\sum_jb_jf_j\right)\right|
+ \le\gamma\left\|\sum_jb_jf_j\right\|,
+\]
+定理 \ref{thm:y4-helly} 给出精确插值结论。
+
+对 $\Phi\in B_{X''}$，给定上述有限个测试泛函和任意容差 $\eta>0$，以足够小的 $\delta>0$ 得到 $\|x\|\le1+\delta$ 的精确插值点。令 $y=x/(1+\delta)\in B_X$，则
+\[
+ |f_j(y)-\Phi(f_j)|
+ =\frac{\delta}{1+\delta}|\Phi(f_j)|\le\delta\|f_j\|.
+\]
+选择 $\delta$ 使有限个误差均小于 $\eta$，即满足给定弱星邻域。这是单位球内的稠密性，不是范数稠密性，也不保证有序列可完成全部测试。
+\end{proof}
+
+\begin{exercise}
+设 $X$ 为 Banach 空间，且 $J(X)$ 在 $X''$ 中范数稠密。证明 $X$ 自反，并解释 Goldstine 定理为什么不能独自给出这个结论。
+\end{exercise}
+\begin{solution}
+$X$ 完备且 $J$ 等距，所以 $J(X)$ 范数闭；又范数稠密，故等于 $X''$。Goldstine 只给弱星稠密，而闭集对较强范数拓扑闭，不一定对较弱的弱星拓扑闭。因此不能将这两种闭性混用。下一节的 $c_0$ 即为非自反 Banach 空间。
+\end{solution}

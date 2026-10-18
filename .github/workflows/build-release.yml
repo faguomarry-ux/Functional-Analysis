@@ -40,6 +40,9 @@ jobs:
             /figures/
             /scripts/
 
+      - name: Validate source structure and references
+        run: python3 scripts/check-sources.py
+
       - name: Install XeLaTeX and Chinese typesetting packages
         run: |
           sudo apt-get update

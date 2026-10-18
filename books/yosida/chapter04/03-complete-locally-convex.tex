@@ -1,0 +1,57 @@
+\Needspace{11\baselineskip}
+\section{局部凸的完备线性拓扑空间}\label{sec:yosida-04-03}
+\noindent\textit{原书位置：中译本第 110--111 页；英文版第 104--105 页。}
+
+本节将第一章的度量完备性放到一般线性拓扑空间中。以下空间均为 Hausdorff；局部凸拓扑由一族分离点的连续半范数生成。
+
+\begin{definition}[Cauchy 网与完备性]\label{def:y4-completeness}
+线性拓扑空间 $X$ 中的网 $x_\alpha$ 收敛于 $x$，若对每个零邻域 $U$，充分靠后都有 $x_\alpha-x\in U$。它称为 Cauchy 网，若对每个零邻域 $U$，存在 $\alpha_0$，使
+\[
+ \alpha,\beta\succeq\alpha_0\quad\Longrightarrow\quad x_\alpha-x_\beta\in U.
+\]
+每个 Cauchy 网都在 $X$ 中收敛时，称 $X$ 完备；只要求每个 Cauchy 序列收敛时，称它序列完备。在半范数描述下，Cauchy 条件等价于每个连续半范数 $p$ 都满足 $p(x_\alpha-x_\beta)\to0$。
+\end{definition}
+
+\begin{proposition}[可度量情形的两种完备性]\label{prop:y4-metric-completeness}
+若拓扑由平移不变距离 $d$ 给出，则序列完备与完备等价。
+\end{proposition}
+\begin{proof}
+完备当然蕴含序列完备。反之，设 $x_\alpha$ 为 Cauchy 网。递归选指标 $\alpha_n$，使 $\alpha_{n+1}\succeq\alpha_n$，并使从 $\alpha_n$ 开始的尾部中任意两点距离小于 $2^{-n}$。序列 $x_{\alpha_n}$ 是 Cauchy 序列，故趋于某个 $x$。给定 $\varepsilon>0$，选足够大的 $n$，使 $2^{-n}+d(x_{\alpha_n},x)<\varepsilon$；对所有 $\alpha\succeq\alpha_n$，三角不等式即给出 $d(x_\alpha,x)<\varepsilon$。不要求所选指标序列在原指标集中共尾。
+\end{proof}
+
+\begin{example}[序列完备却不完备]
+取不可数集 $I$，令 $X$ 为 $\R^I$ 中所有至多可数支集的函数，赋以乘积拓扑的子空间拓扑。它局部凸且 Hausdorff。Cauchy 序列逐坐标收敛，而其极限的支集包含于各项支集的可数并，仍至多可数，所以 $X$ 序列完备。
+
+但令指标集为 $I$ 的所有有限子集，按包含关系排序；网 $x_F=1_F$ 逐坐标趋于恒一函数。它在 $X$ 中 Cauchy，却没有 $X$ 内的极限，因为任一极限的每个坐标都必须为一。故一般局部凸空间中不能把 Cauchy 网换成序列。
+\end{example}
+
+\begin{proposition}[测试函数空间的序列完备性]
+$\Test(\Omega)$ 在通常测试函数拓扑下序列完备；$\Smooth(\Omega)$ 完备。
+\end{proposition}
+\begin{proof}
+对 $\Test$ 中的 Cauchy 序列 $\varphi_j$，每个连续半范数下的数值都有统一上界：先固定一个充分靠后的项控制尾部，再控制有限首项。因此该序列组成有界集。由定理 \ref{thm:y1-D-bounded}，存在共同紧支集 $K\Subset\Omega$，各阶导数在 $K$ 上统一有界。又由 Cauchy 性，各阶导数在 $K$ 上一致 Cauchy。第一章固定支集空间的完备性（定理 \ref{thm:y1-smooth-complete}）给出 $\varphi\in\Test_K$，且 $\varphi_j\to\varphi$。包含映射 $\Test_K\to\Test$ 连续，故在 $\Test$ 中也收敛。
+
+第一章已证 $\Smooth(\Omega)$ 为 Fr\'echet 空间，故由命题 \ref{prop:y4-metric-completeness} 完备。这里不依靠 Ascoli 定理抽子列；各阶一致 Cauchy 与积分恒等式已足够。本段只证明 $\Test$ 的序列完备性，不以此替代其一般网完备性的证明。
+\end{proof}
+
+\begin{theorem}[局部凸空间的完备化]\label{thm:y4-lcs-completion}
+每个 Hausdorff 局部凸空间 $X$ 均可线性、拓扑地嵌入一个完备 Hausdorff 局部凸空间 $\widehat X$，且像稠密。这样的完备化在固定 $X$ 的意义下唯一。
+\end{theorem}
+\begin{proof}
+取生成拓扑并分离点的连续半范数族 $\mathcal P$。对每个 $p\in\mathcal P$，商空间 $X/\ker p$ 带范数 $\|[x]\|_p=p(x)$；令 $X_p$ 为它的 Banach 完备化，$j_p:X\to X_p$ 为自然映射。定义
+\[
+ j:X\longrightarrow\prod_{p\in\mathcal P}X_p,\qquad j(x)=(j_px)_p.
+\]
+半范数族分离点保证 $j$ 单射；乘积的有限坐标邻域在 $j$ 下恰对应 $X$ 的有限个半范数邻域，故 $j$ 是到其像的拓扑同构。
+
+Banach 空间对 Cauchy 网完备，由命题 \ref{prop:y4-metric-completeness} 可知。乘积中的 Cauchy 网在每个坐标收敛，坐标极限组成乘积中的极限；有限坐标邻域保证整网收敛。因此该乘积完备。取 $\widehat X=\overline{j(X)}$，它是闭线性子空间，故完备，且 $j(X)$ 在其中稠密。
+
+为说明唯一性，设另有完备化 $i:X\to Y$。对 $z\in\widehat X$，取 $j(x_\alpha)\to z$ 的网。由于 $i\circ j^{-1}$ 在线性子空间上一致连续，$i(x_\alpha)$ 为 Cauchy 网，在 $Y$ 中有极限。若换一个逼近网，将两指标集作乘积，二者的差趋于零，故极限相同。由此定义的映射延拓了 $i\circ j^{-1}$，且线性。对任意 $Y$ 的零邻域，先取闭零邻域 $V$ 包含于其中，再取 $X$ 中映入 $V$ 的零邻域；借 $X$ 的子空间拓扑选取 $\widehat X$ 的零邻域，并取更小的零邻域使其闭包仍位于前者。这保证延拓将后一邻域映入 $V$，所以延拓连续。反向同理构造；两复合在稠密子空间上为恒等，由连续性在全空间上仍为恒等。这证明唯一性。
+\end{proof}
+
+\begin{exercise}
+证明：完备 Hausdorff 线性拓扑空间中的闭线性子空间完备；任一完备线性子空间在 Hausdorff 线性拓扑空间中必为闭集。
+\end{exercise}
+\begin{solution}
+闭子空间中的 Cauchy 网在大空间收敛，闭性保证极限仍在子空间。反过来，若 $M$ 完备而 $x\in\overline M$，按 $x$ 的邻域取 $M$ 中逼近点组成趋于 $x$ 的网。该网在 $M$ 内 Cauchy，故还趋于某个 $m\in M$；Hausdorff 性保证 $x=m$，所以 $M$ 闭。
+\end{solution}

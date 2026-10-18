@@ -1,0 +1,122 @@
+\Needspace{11\baselineskip}
+\section{广义极限}\label{sec:yosida-04-02}
+\noindent\textit{原书位置：中译本第 109--110 页；英文版第 103--104 页。}
+
+本节先把数列极限推广到定向集上的网，再利用上一节的延拓定理，在所有有界实值网上定义一个线性的极限泛函。前者是收敛的概念；后者即使对不收敛的网也赋值，两者须区别。
+
+\begin{definition}[定向集、网与 Moore--Smith 极限]\label{def:y4-net}
+非空偏序集 $(A,\preceq)$ 称为定向集，若任意 $\alpha,\beta\in A$ 都有共同上界 $\gamma\in A$。以 $A$ 为指标集的族 $(x_\alpha)_{\alpha\in A}$ 称为网。实值网收敛到 $a\in\R$，是指
+\[
+ \forall\varepsilon>0\ \exists\alpha_0\in A\
+ \forall\alpha\succeq\alpha_0:\quad |x_\alpha-a|<\varepsilon.
+\]
+记为 $x_\alpha\to a$ 或 $\lim_{\alpha\in A}x_\alpha=a$。本稿采用含等号的偏序；定向性只要求共同上界，不要求指标集为全序或不可数。$A=\mathbb N$ 即恢复数列极限。
+\end{definition}
+
+原书还允许指标对应非空实数集 $E_\alpha$；收敛表示充分靠后的 $E_\alpha$ 都包含于 $(a-\varepsilon,a+\varepsilon)$，即同时控制所有可能值。中译本校注明确使用集合包含关系。下文的线性泛函作用于单值有界网，集合值形式用于 Riemann 和。
+
+\begin{example}[按加细排列的 Riemann 和]\label{ex:y4-riemann-net}
+令 $A$ 为 $[0,1]$ 的所有有限分割，按加细排序；两分割端点的并给出共同加细，故 $A$ 定向。对连续实函数 $h$ 及分割 $\Delta=(t_0,\ldots,t_n)$，令
+\[
+ E_\Delta=\left\{\sum_{j=0}^{n-1}(t_{j+1}-t_j)h(\xi_j):
+ \xi_j\in[t_j,t_{j+1}]\right\}.
+\]
+则 $E_\Delta\to\int_0^1h(t)\,dt$。证明如下：由一致连续性，给定 $\varepsilon>0$，可取 $\delta>0$，使 $|s-t|<\delta$ 时 $|h(s)-h(t)|<\varepsilon/2$。选取网格宽度小于 $\delta$ 的分割 $\Delta_0$。对任何加细 $\Delta\succeq\Delta_0$ 及任意选点，
+\[
+ \left|\sum_j(t_{j+1}-t_j)h(\xi_j)-\int_0^1h(t)\,dt\right|
+ \le\sum_j\int_{t_j}^{t_{j+1}}|h(\xi_j)-h(t)|\,dt
+ \le\varepsilon/2<\varepsilon.
+\]
+这说明任意选点都被同一个尾部控制。此处使用连续函数的经典 Riemann 可积性，不重新建立积分理论。
+\end{example}
+
+\begin{definition}[有界网的上下极限]\label{def:y4-tail-limits}
+令 $\ell^\infty(A;\R)$ 为 $A$ 上所有有界实函数组成的实线性空间，赋以范数 $\|x\|_\infty=\sup_{\alpha\in A}|x_\alpha|$。对 $x\in\ell^\infty(A;\R)$ 定义
+\[
+ \begin{aligned}
+ \overline\lambda(x)&=\inf_{\alpha\in A}\sup_{\beta\succeq\alpha}x_\beta,\\
+ \underline\lambda(x)&=\sup_{\alpha\in A}\inf_{\beta\succeq\alpha}x_\beta.
+ \end{aligned}
+\]
+它们分别称为沿 $A$ 的上极限、下极限。尾集非空且函数有界，故两者均为有限实数。
+\end{definition}
+
+\begin{proposition}[尾部控制与次线性]\label{prop:y4-limsup-sublinear}
+对任意有界实值网 $x,y$ 及 $t\ge0$，有
+\[
+ \begin{gathered}
+ \underline\lambda(x)\le\overline\lambda(x),\qquad
+ \underline\lambda(x)=-\overline\lambda(-x),\\
+ \overline\lambda(x+y)\le\overline\lambda(x)+\overline\lambda(y),\qquad
+ \overline\lambda(tx)=t\overline\lambda(x).
+ \end{gathered}
+\]
+而且 $x_\alpha\to a$ 当且仅当 $\underline\lambda(x)=\overline\lambda(x)=a$。
+\end{proposition}
+\begin{proof}
+任取指标 $\alpha,\gamma$，选共同上界 $\eta$，则
+$\inf_{\beta\succeq\alpha}x_\beta\le x_\eta\le\sup_{\beta\succeq\gamma}x_\beta$。先对 $\alpha$ 取上确界，再对 $\gamma$ 取下确界，得第一个不等式。取负号使上、下确界互换，得第二个恒等式。
+
+给定 $\varepsilon>0$，分别选 $\alpha_1,\alpha_2$，使相应尾部的 $x$、$y$ 的上确界小于 $\overline\lambda(x)+\varepsilon$、$\overline\lambda(y)+\varepsilon$。取两指标的共同上界 $\gamma$，则对 $\beta\succeq\gamma$ 有
+\[
+ x_\beta+y_\beta\le\overline\lambda(x)+\overline\lambda(y)+2\varepsilon.
+\]
+取尾部上确界，再取所有尾部的下确界，令 $\varepsilon\downarrow0$ 即得次可加性。$t>0$ 时可直接把 $t$ 移出上、下确界；$t=0$ 时两边均为零。
+
+若 $x_\alpha\to a$，充分靠后的值在 $(a-\varepsilon,a+\varepsilon)$ 内，结合已证上下极限的大小关系得二者等于 $a$。反之，若两者均为 $a$，可分别选尾部，使其下确界大于 $a-\varepsilon$、上确界小于 $a+\varepsilon$；在共同尾部上即有 $|x_\beta-a|<\varepsilon$。
+\end{proof}
+
+\begin{theorem}[有界实值网的广义极限泛函]\label{thm:y4-generalized-limit}
+对任一非空定向集 $A$，存在实线性泛函 $L:\ell^\infty(A;\R)\to\R$，使
+\[
+ \underline\lambda(x)\le L(x)\le\overline\lambda(x)
+ \qquad(x\in\ell^\infty(A;\R)).
+\]
+特别地，对每个有界收敛网，$L(x)=\lim_{\alpha\in A}x_\alpha$。它还满足正性、保序性及
+\[
+ L(\mathbf1)=1,\qquad |L(x)|\le\|x\|_\infty,\qquad \|L\|=1,
+\]
+其中 $\mathbf1$ 是恒为一的网。
+\end{theorem}
+\begin{proof}
+命题 \ref{prop:y4-limsup-sublinear} 表明 $p(x)=\overline\lambda(x)$ 是实线性空间 $\ell^\infty(A;\R)$ 上的次线性泛函。从零子空间上的零泛函出发，应用定理 \ref{thm:y4-real-hahn-banach}，得实线性泛函 $L\le p$。对 $-x$ 再用一次上界，得到
+\[
+ L(x)\ge-p(-x)=\underline\lambda(x).
+\]
+若有界网收敛，上下界相等即给出其极限。若 $x_\alpha\ge0$，则 $L(x)\ge\underline\lambda(x)\ge0$；对 $y-x$ 使用正性得保序性。常数网 $c\mathbf1$ 的上下极限均为 $c$，故 $L(c\mathbf1)=c$。由
+$-\|x\|_\infty\mathbf1\le x\le\|x\|_\infty\mathbf1$
+得范数上界；$\|\mathbf1\|_\infty=L(\mathbf1)=1$ 又给出范数下界。因此 $L$ 连续且范数为一。
+\end{proof}
+
+原书记此类泛函为 $\operatorname{LIM}$。它是对\emph{所有有界网同时定义}的同一个线性映射，不能对每个网任意挑选上下极限之间的数：例如 $x_n=(-1)^n$ 与 $-x$ 的上极限均为一，逐个选上极限就违背线性性。本节并未要求 $L$ 对序列平移不变；通常所谓 Banach 极限还附带这一条件，不能仅由本定理直接宣称已经得到。
+
+对一般定向集，收敛网未必整体有界，因为某个尾部以外仍可有无限多个无界的值。本定理的定义域始终是 $\ell^\infty(A;\R)$，所以“延拓普通极限”只涉及其中的收敛网。对于数列，收敛自动蕴含有界，这一区别才消失。
+
+\begin{example}[同一个振荡序列可以有不同的广义极限]\label{ex:y4-nonunique-limit}
+令 $A=\mathbb N$，$u_n=(-1)^n$。任取 $r\in[-1,1]$，在 $M=\operatorname{span}\{\mathbf1,u\}$ 上定义
+\[
+ f_r(a\mathbf1+bu)=a+br.
+\]
+由于两种符号都无穷多次出现，$p(a\mathbf1+bu)=a+|b|$，故 $f_r\le p$。Hahn--Banach 定理给出全空间上的延拓 $L_r\le p$；同前证明，它夹在上下极限之间，且 $L_r(u)=r$。因此一般既无唯一性，也不能把广义极限理解成原网必然存在的收敛值。
+\end{example}
+
+\begin{exercise}
+设有界实值网 $x,y$ 在某个尾部上一致。证明任何满足本节上下极限夹逼的广义极限泛函都满足 $L(x)=L(y)$。在数列情形，推出修改有限项不改变 $L$，并证明 $L$ 在趋于零的序列空间 $c_0$ 上为零。
+\end{exercise}
+\begin{solution}
+$z=x-y$ 在某个尾部恒为零，故 $z\to0$；它有界，夹逼给出 $L(z)=0$，由线性性得结论。数列的有限项都位于某个尾部之前，而 $c_0$ 中的序列本来就有界且收敛于零，故对应结论成立。
+\end{solution}
+
+\begin{exercise}
+在 $A=\mathbb N^2$ 上用逐坐标偏序。证明它是定向集，并构造一个收敛到零、却不属于 $\ell^\infty(A;\R)$ 的实值网。
+\end{exercise}
+\begin{solution}
+$(\max\{m_1,m_2\},\max\{n_1,n_2\})$ 是两指标的共同上界。令 $x_{m,1}=m$，$x_{m,n}=0$（$n\ge2$）。从指标 $(1,2)$ 开始的整个尾部恒为零，故该网收敛到零；但第一行上的值无界。本节 $L$ 无需在这个网上定义。
+\end{solution}
+
+\begin{exercise}
+令 $u_n=(-1)^n$。证明例 \ref{ex:y4-nonunique-limit} 中若再要求平移不变 $L(Sx)=L(x)$，其中 $(Sx)_n=x_{n+1}$，则必有 $L(u)=0$。这是否已经证明平移不变的广义极限存在？
+\end{exercise}
+\begin{solution}
+因 $Su=-u$，平移不变性及线性性给出 $L(u)=L(-u)=-L(u)$，故 $L(u)=0$。这只是附加条件的必要推论；例中选择 $r=0$ 仅指定了一个序列上的值，并未约束所有序列的平移。因此这里没有证明平移不变的广义极限存在。
+\end{solution}

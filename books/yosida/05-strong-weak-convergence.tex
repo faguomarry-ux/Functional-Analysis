@@ -1,60 +1,19 @@
 % !TeX encoding = UTF-8
-% 吉田第六版：中译本第 5 章；此文件当前仅为目录与正文占位。
-\SetChapterInfo{subtitle={吉田耕作第六版主线 · 正文待撰写}}
+\SetChapterInfo{subtitle={从对偶测试到弱紧性、可测性与向量积分},keywords={弱收敛; 一致凸性; 弱全纯; Pettis; Bochner},prereq={第二章一致有界性; 第四章分离与二次对偶},goals={区分强弱与弱星收敛; 理解自反性; 掌握向量可测性与积分}}
 \chapter{强收敛和弱收敛}\label{ch:yosida-05}
-\YosidaChapterPlaceholder{5}{Strong Convergence and Weak Convergence}{125--150}{119--144}
+\ChapterSource{依据 \cite{yosida-zh,yosida-en} 第五章五节及附录四个子目编写。2026 年 10 月 18 日查阅英文版印刷第 119--145 页（PDF 第 134--160 页），并核对中译本第 125、131、133、135、137、141、145、150 页的扫描图。采用原创中文论证与补充习题。中译本第 135 页 Pettis 定理首个“弱”应为“强”；英文第 145 页仍有本章附录结尾，亦为下一章起始页。一般 Eberlein--\v Smulian 定理等证明边界详见本章 COVERAGE。}
 
-\section{弱收敛和弱\texorpdfstring{$^*$}{*}收敛}\label{sec:yosida-05-01}
-\YosidaSectionPlaceholder{125}{120}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
+以下 $X$ 为实或复赋范空间，$X'$ 为连续线性对偶；需要完备时明确写 Banach 空间。原书 B-空间即 Banach 空间。在 $X$ 中强收敛指范数收敛，在一般强对偶中则指在原空间有界集上一致收敛。
 
-\section{自反 B-空间的局部弱列紧性、一致凸性}\label{sec:yosida-05-02}
-\YosidaSectionPlaceholder{131}{126}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
+\input{books/yosida/chapter05/01-weak-convergence}
+\input{books/yosida/chapter05/02-reflexivity-convexity}
+\input{books/yosida/chapter05/03-holomorphy}
+\input{books/yosida/chapter05/04-measurability}
+\input{books/yosida/chapter05/05-bochner}
 
-\section{Dunford 定理和 Gelfand--Mazur 定理}\label{sec:yosida-05-03}
-\YosidaSectionPlaceholder{133}{128}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
+\section*{本章参考文献与阅读衔接}
+\phantomsection\addcontentsline{toc}{section}{本章参考文献与阅读衔接}
+直接参考为两版吉田第五章 \cite{yosida-zh,yosida-en}。原书章末列举 Banach、Dunford--Schwartz 与 Hille--Phillips；附录提及 Bourbaki、Grothendieck、Eberlein 与 \v Smulian。本轮未直接查阅这些原始文献，不将其列为已核对来源。标量 Cauchy 公式、Liouville 定理与 Lebesgue 微分定理作为复分析、测度论前提。
 
-\section{弱可测性和强可测性、Pettis 定理}\label{sec:yosida-05-04}
-\YosidaSectionPlaceholder{135}{130}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{Bochner 积分}\label{sec:yosida-05-05}
-\YosidaSectionPlaceholder{137}{132}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section*{本章参考文献整理（占位）}
-\phantomsection
-\addcontentsline{toc}{section}{本章参考文献整理（占位）}
-待核对原书本章参考文献。中译本印刷第 141 页起；后续按实际引用合并至本书参考文献表。
-
-\section*{本章附录：局部凸空间中的弱拓扑和对偶性}
-\phantomsection
-\addcontentsline{toc}{section}{本章附录：局部凸空间中的弱拓扑和对偶性}
-\label{app:yosida-05}
-中译本印刷第 141--150 页；英文版印刷第 136--144 页。正文待撰写。
-% 中译本总目录未展开以下子目；依据英文版附录目录辅助补足。
-\subsection*{极集}
-\phantomsection
-\addcontentsline{toc}{subsection}{极集}
-\label{sec:yosida-05-app-01}
-正文待撰写；子目中文名称依据英文版辅助整理。
-
-\subsection*{桶空间}
-\phantomsection
-\addcontentsline{toc}{subsection}{桶空间}
-\label{sec:yosida-05-app-02}
-正文待撰写；子目中文名称依据英文版辅助整理。
-
-\subsection*{半自反性与自反性}
-\phantomsection
-\addcontentsline{toc}{subsection}{半自反性与自反性}
-\label{sec:yosida-05-app-03}
-正文待撰写；子目中文名称依据英文版辅助整理。
-
-\subsection*{Eberlein--Shmulyan 定理}
-\phantomsection
-\addcontentsline{toc}{subsection}{Eberlein--Shmulyan 定理}
-\label{sec:yosida-05-app-04}
-正文待撰写；子目中文名称依据英文版辅助整理。
+下一章将对偶测试与向量积分用于 Fourier 变换及微分方程；第七章研究对偶算子。可先完成五节正文再读附录。附录不计入原书 132 个编号节的进度分母。
+\input{books/yosida/chapter05/06-weak-duality-appendix}

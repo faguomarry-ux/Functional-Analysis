@@ -4,11 +4,13 @@
 
 以吉田耕作《泛函分析》第六版中译本为学习主线，英文原版辅助核对术语、目录与页码，结合施瓦尔茨、盖尔芳特与希烙夫的广义函数著作，以及汪林的反例教材，逐步整理中文个人学习讲义。正文使用 LaTeX 编写，统一符号、证明、例子和习题解答。
 
-**本项目仅用于个人、非商业学习，不开展教材销售、付费课程或其他商业活动。** 项目仍在编写和校对中：目前已有第零至第三章正文及八章广义函数专题，主线第四至十四章仍为占位。编译成功只表示排版构建通过，不表示数学内容已经全部完成或正确。
+**本项目仅用于个人、非商业学习，不开展教材销售、付费课程或其他商业活动。** 项目仍在编写和校对中：目前已有第零至第三章正文及八章广义函数专题，主线第四章九节、第五章五节及附录已有正文，第六至十四章仍为占位。编译成功只表示排版构建通过，不表示数学内容已经全部完成或正确。
 
-更新时间：**2026-10-11（北京时间）**。
+更新时间：**2026-10-18（北京时间）**。
 
-最新更新：完成第 0–3 章 36 节现有正文、证明和解答的作者复核，加入 **13 幅 TikZ 教学插图**，并补明控制收敛定理中极限函数的可测性要求。本地三遍 XeLaTeX 编译通过，讲义共 **207 页**；逐图及相邻页排版检查完成。具体范围与证明边界见 [复核记录](docs/REVIEW-CH00-03.md)，独立数学审校仍待完成。
+最新更新（2026-10-18）：补写第五章五节与附录四个子目，加入 **13 道附解答习题**，主线增至 **50/132 节（37.9%）**，剩余 82 节。详见 [第五章核查记录](books/yosida/chapter05/COVERAGE.md)。一般 Eberlein–Šmulian 定理作为外部结论，部分局部凸推广证明仍待展开。新增源码结构检查并接入 GitHub Actions。第四章既有九节、15 道习题一并纳入本次整理。完整三遍 XeLaTeX 编译通过，本地讲义共 **248 页**；第五章正文、附录与 13 份答案已检查排版，独立数学审校仍待完成。
+
+前次更新（2026-10-11）：完成第 0–3 章 36 节现有正文、证明和解答的作者复核，加入 **13 幅 TikZ 教学插图**，并补明控制收敛定理中极限函数的可测性要求。本地三遍 XeLaTeX 编译通过，讲义共 **207 页**；逐图及相邻页排版检查完成。具体范围与证明边界见 [复核记录](docs/REVIEW-CH00-03.md)，独立数学审校仍待完成。
 
 ## 阅读入口
 
@@ -36,7 +38,7 @@
 
 ## 内容范围与当前进度
 
-第一部分保留吉田原书 **第 0–14 章，共 15 章、132 个编号节**。第零章四节、第一章十四节、第二章七节及第三章十一节已有正文和核查记录，合计 **36/132 节，约 27.3%**；这是已有正文的节数比例，不代表阅读比例、工作量比例或最终校对完成率。第五、十章的原书附录保留在各自章末。
+第一部分保留吉田原书 **第 0–14 章，共 15 章、132 个编号节**。第零章四节、第一章十四节、第二章七节及第三章十一节已有正文和核查记录，第四章九节、第五章五节及附录亦已有正文，合计 **50/132 节，约 37.9%**；这是已有正文的节数比例，不代表阅读比例、工作量比例或最终校对完成率。第五、十章的原书附录保留在各自章末。
 
 | 模块 | 当前状态 | 下一步 |
 | --- | --- | --- |
@@ -44,14 +46,16 @@
 | 第一章：半范数 | 十四节正文、8 道附解答习题；本轮复核并加入 3 幅图 | 独立数学校对 |
 | 第二章：Baire–Hausdorff 定理的应用 | 七节正文、8 道附解答习题；本轮复核并加入 3 幅图 | 独立数学校对与后续章节衔接 |
 | 第三章：正交投影及 F. Riesz 表示定理 | 十一节正文、11 道附解答习题；本轮复核并加入 5 幅图 | 独立核查共轭约定及局部表示范围 |
-| 第四至十四章 | 96 个编号节保留标题、两版页码和占位提示 | 从第四章开始逐节补写 |
+| 第四章：Hahn–Banach 定理 | 九节正文、15 道附解答习题及 COVERAGE | 独立复核分离、完备化、对偶表示与外部前提 |
+| 第五章：强收敛和弱收敛 | 五节与附录四子目正文、13 道附解答习题及 COVERAGE | 独立审校；展开一般 Eberlein–Šmulian 与局部凸推广证明 |
+| 第六至十四章 | 82 个编号节保留标题、两版页码和占位提示 | 按主线逐节补写 |
 | 广义函数专题：第 15–22 章 | 八章已有正文、证明、例子和习题 | 逐章复核与主线的衔接及出处 |
 | 版本对照与参考对照 | 已有附录框架与主要映射 | 随正文补写更新 |
 | 补充说明、索引、空间记号表、原书总书目 | 仍有占位；第零章相关五组文献已核对 | 整理实际引用、生成可检索索引 |
 | 汪林反例专题 | 参考书已列入，未系统整合 | 按定理条件建立反例索引 |
 | GitHub 工程配置 | 已有构建/发布流程，第二、三章阶段 Release 已成功 | 持续核验新提交的 Actions 构建与阶段快照 |
 
-核查依据见 [第零章 COVERAGE](books/yosida/chapter00/COVERAGE.md)、[第一章 COVERAGE](books/yosida/chapter01/COVERAGE.md)、[第二章 COVERAGE](books/yosida/chapter02/COVERAGE.md)、[第三章 COVERAGE](books/yosida/chapter03/COVERAGE.md) 和 [目录数据](books/yosida/catalog.json)。不把目录、占位或仅有编译产物的章节计为完成。
+核查依据见 [第零章 COVERAGE](books/yosida/chapter00/COVERAGE.md)、[第一章 COVERAGE](books/yosida/chapter01/COVERAGE.md)、[第二章 COVERAGE](books/yosida/chapter02/COVERAGE.md)、[第三章 COVERAGE](books/yosida/chapter03/COVERAGE.md)、[第四章 COVERAGE](books/yosida/chapter04/COVERAGE.md)、[第五章 COVERAGE](books/yosida/chapter05/COVERAGE.md) 和 [目录数据](books/yosida/catalog.json)。不把目录、占位或仅有编译产物的章节计为完成。
 
 ## 时间线与近期待办
 
@@ -76,7 +80,7 @@
 - [x] 对第 0–3 章进行本轮作者复核，加入 13 幅插图并完成本地编译及排版检查（2026-10-11）。
 - [x] 补写第二章七节，更新核查记录并加入 8 道附解答习题（2026-10-11）。
 - [x] 补写第三章十一节与 11 道附解答习题，记录数学自查与证明边界（2026-10-11）。
-- [ ] 完成第 0–3 章独立数学校对，继续第四章。
+- [ ] 完成已写内容的独立数学校对，补全第五章注明的证明边界并继续第六章。
 - [ ] 建立反例索引，标明每个反例针对哪个定理条件。
 
 ## 仓库结构
@@ -99,6 +103,8 @@ books/
   yosida/chapter01/                 第一章逐节正文与 COVERAGE.md
   yosida/chapter02/                 第二章逐节正文与 COVERAGE.md
   yosida/chapter03/                 第三章逐节正文与 COVERAGE.md
+  yosida/chapter04/                 第四章逐节正文与 COVERAGE.md
+  yosida/chapter05/                 第五章五节、附录与 COVERAGE.md
   yosida/catalog.json               两版目录、节名与原书页码
   yosida/15-...18-*.tex              版本对照、补充说明、索引及记号表
   00-preface.tex                    前言和数学约定
@@ -111,6 +117,7 @@ figures/                           教学插图统一目录
   README.md                        第 0–3 章 13 幅插图索引与维护约定
   tikz-styles.tex                   共用 TikZ 样式
   ch00-*.tex ... ch03-*.tex          随正文载入的插图、图注及标签
+scripts/check-sources.py            源码、标签、引用及目录一致性检查
 scripts/build-book.sh               Linux/macOS 完整编译入口
 build-book.ps1 / build.bat          Windows 编译入口
 五本教材 PDF                       参考资料，使用原有文件名
@@ -135,6 +142,8 @@ Linux / macOS（已安装 TeX 环境）：
 bash scripts/build-book.sh
 ```
 
+编译前可运行 `python scripts/check-sources.py`（仅需 Python 3 标准库）；GitHub Actions 自动执行同一结构检查，检查输入文件、标签、引用、环境、习题答案数量及 132 节目录基线。该检查不替代数学审校。
+
 两个脚本均连续编译三遍，以稳定目录、交叉引用与页码。讲义 PDF、日志及辅助文件位于 `output/pdf/`。`.gitignore` 排除该目录及根目录旧的 `main.pdf`，因此阅读时应使用新编译结果或对应 Release。
 
 GitHub Actions 在 Ubuntu 上安装 texlive-xetex、texlive-lang-chinese、texlive-latex-extra、texlive-fonts-recommended、texlive-science、texlive-pictures。`fontpreset=auto` 按平台选择字体：Windows 优先系统中文字体；Linux 无适配字体时退回 TeX 自带的 Fandol。不同平台的字体可能造成分页差异。编译不依赖五本参考 PDF，也不依赖本地 `fonts/`。
@@ -156,7 +165,7 @@ GitHub Actions 在 Ubuntu 上安装 texlive-xetex、texlive-lang-chinese、texli
 
 ```powershell
 git add README.md docs books figures .github/workflows/build-release.yml main.tex functional-analysis.sty
-git commit -m "docs: 完成第三章学习笔记 [release]"
+git commit -m "notes: 整理第四、第五章学习笔记 [release]"
 git push
 ```
 
@@ -201,7 +210,7 @@ git push -u origin main
 | 第二章（3 幅） | 一致有界性的平移；开映射的逐次修正；闭图像的投影分解 |
 | 第三章（5 幅） | 正交投影；Ascoli 三段误差；Radon–Nikodym 密度；再生核极小问题；分布局部结构 |
 
-插图使用现有主题颜色，无需外部绘图程序或 shell escape。图号按章编排，图注注明二维示意和一般结论的区别。最终本地检查没有未定义引用、重复标签或 Overfull；原有专题中的两处 Underfull 提示保留。207 页是 Windows 本地字体下的页数，GitHub 的 Linux 构建可能有分页差异。
+插图使用现有主题颜色，无需外部绘图程序或 shell escape。图号按章编排，图注注明二维示意和一般结论的区别。最终本地检查没有未定义引用、重复标签或 Overfull；原有专题中的两处 Underfull 提示保留。207 页是 2026-10-11 插图复核版本在 Windows 本地字体下的历史页数，GitHub 的 Linux 构建可能有分页差异。
 
 ## 写作和数学约定
 

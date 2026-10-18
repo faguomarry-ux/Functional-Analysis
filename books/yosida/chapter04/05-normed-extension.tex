@@ -1,0 +1,53 @@
+\Needspace{11\baselineskip}
+\section{赋范线性空间中的 Hahn--Banach 扩张定理}\label{sec:yosida-04-05}
+\noindent\textit{原书位置：中译本第 112--113 页；英文版第 106--107 页。}
+
+本节与后文统一令标量域 $\mathbb K=\R$ 或 $\mathbb C$，$X'$ 表示连续线性泛函空间。
+
+\begin{theorem}[保范延拓]\label{thm:y4-norm-preserving}
+设 $X$ 为赋范空间，$M\subset X$ 为任意线性子空间，$f\in M'$。则存在 $F\in X'$ 满足
+\[
+ F|_M=f,\qquad \|F\|=\|f\|.
+\]
+不要求 $X$ 完备或 $M$ 闭。
+\end{theorem}
+\begin{proof}
+取 $p(x)=\|f\|\|x\|$。实情形使用第 1 节的半范数模长控制结论，复情形用定理 \ref{thm:y4-complex-hahn-banach}，得 $|F(x)|\le\|f\|\|x\|$，因而 $\|F\|\le\|f\|$。限制回 $M$ 得反向不等式。$f=0$ 时可直接取零延拓，结论也包括零子空间。
+\end{proof}
+
+\begin{theorem}[指定泛函值的充要条件：矩量问题]\label{thm:y4-moment-condition}
+给定 $x_j\in X$、$a_j\in\mathbb K$（$j\ge1$）及 $\gamma\ge0$。存在 $F\in X'$ 使 $F(x_j)=a_j$、$\|F\|\le\gamma$，当且仅当对任意有限个标量 $b_1,\ldots,b_n$ 都有
+\[
+ \left|\sum_{j=1}^n b_ja_j\right|
+ \le\gamma\left\|\sum_{j=1}^n b_jx_j\right\|.
+\]
+\end{theorem}
+\begin{proof}
+必要性直接来自有界性。反之，在 $M=\operatorname{span}\{x_j:j\ge1\}$ 上定义
+$f(\sum b_jx_j)=\sum b_ja_j$。若同一向量有两种表示，相减后的向量为零，假设使相应的值之差也为零，故定义良好。它线性，且 $|f(m)|\le\gamma\|m\|$。保范延拓给出 $F$。
+\end{proof}
+
+例如在 $C[0,1]$ 中令 $x_j(t)=t^{j-1}$，条件成为
+\[
+ \left|\sum_{j=1}^n b_ja_j\right|
+ \le\gamma\max_{0\le t\le1}\left|\sum_{j=1}^n b_jt^{j-1}\right|.
+\]
+它先保证存在连续泛函。结合第 \ref{sec:yosida-04-09} 节注明的 Riesz--Markov 表示定理，才将其解释为有限变差测度的矩量；本条件本身不保证该测度非负。
+
+\begin{example}[稠密性决定唯一性]
+若 $M$ 在 $X$ 中稠密，任何两个连续延拓在稠密集上一致，所以处处一致。若 $M$ 不稠密，则通常有不同延拓；第 1 节的 $\R^2$ 例子已经展示同范数的多种选择。Hahn--Banach 保证保范延拓存在，但不保证唯一。
+\end{example}
+
+\begin{exercise}
+在 $C[0,1]$ 上用上确界范数。求所有满足 $F(1)=1$ 的连续线性泛函中最小的可能范数，并给出两个不同的达到者。若还规定 $F(t^j)=1/(j+1)$（$j\ge0$），证明满足这些值的连续泛函唯一。
+\end{exercise}
+\begin{solution}
+由 $\|1\|_\infty=1$ 得 $\|F\|\ge1$。点值 $F_0(h)=h(0)$ 和 $F_1(h)=h(1)$ 均范数为一且不同。对后一组矩量，$F(h)=\int_0^1h(t)\,dt$ 满足要求，范数为一。任意另一连续泛函与它在所有多项式上一致，而多项式在 $C[0,1]$ 中稠密（实、复情形分别逼近实部和虚部），故唯一。
+\end{solution}
+
+\begin{exercise}
+设 $x_1\ne0$、$x_2=2x_1$。证明存在 $\|F\|\le\gamma$ 且 $F(x_1)=a_1,F(x_2)=a_2$ 的连续泛函，当且仅当 $a_2=2a_1$ 且 $|a_1|\le\gamma\|x_1\|$。
+\end{exercise}
+\begin{solution}
+必要性由线性性与范数估计得到。反之，$\sum_{j=1}^2b_ja_j=(b_1+2b_2)a_1$，而 $\sum_{j=1}^2b_jx_j=(b_1+2b_2)x_1$，所以矩量条件成立，应用定理 \ref{thm:y4-moment-condition} 即得。这也说明指定的泛函值必须尊重原向量之间的一切线性关系。
+\end{solution}

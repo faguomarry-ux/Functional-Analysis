@@ -1,0 +1,106 @@
+\section*{本章附录：局部凸空间中的弱拓扑和对偶性}
+\phantomsection\addcontentsline{toc}{section}{本章附录：局部凸空间中的弱拓扑和对偶性}
+\label{app:yosida-05}
+\noindent\textit{原书位置：中译本 141--150；英文版 136--145。}
+
+本附录 $E$ 为 Hausdorff 局部凸空间，$E'_\beta$ 为带强对偶拓扑 $\beta(E',E)$ 的连续对偶，$(E'_\beta)'$ 为其连续对偶。写明拓扑才能区分局部凸空间的双对偶与纯代数双对偶。
+
+\subsection*{极集}\phantomsection\addcontentsline{toc}{subsection}{极集}
+\label{sec:yosida-05-app-01}
+对 $A\subset E$、$M\subset E'$，定义右极集与左极集
+\[
+ A^\circ=\{f\in E':|f(x)|\le1\ (x\in A)\},\qquad
+ {}^\circ M=\{x\in E:|f(x)|\le1\ (f\in M)\}.
+\]
+极集是闭、凸、均衡集，其中右极集对弱星拓扑闭，左极集对弱拓扑闭，因为它们是相应连续点值函数的闭单位圆盘原像之交。包含关系反向：$A\subset B$ 蕴含 $B^\circ\subset A^\circ$。有限集的极集及其缩放描述弱或弱星零邻域，有界集的极集描述强对偶零邻域。
+
+\begin{theorem}[双极定理]\label{thm:y5-bipolar}
+若 $A\subset E$，则 ${}^\circ(A^\circ)$ 是 $A\cup\{0\}$ 的闭绝对凸包，即最小的闭、凸、均衡且包含 $A\cup\{0\}$ 的集合。
+\end{theorem}
+\begin{proof}
+记该闭包为 $C$。极集的闭性、凸性和均衡性给出 $C\subset{}^\circ(A^\circ)$。若 $x\notin C$，第四章对闭均衡凸集的分离给出 $f\in E'$，使 $|f(x)|>1$ 且 $\sup_C|f|\le1$。因此 $f\in A^\circ$，但 $x\notin{}^\circ(A^\circ)$。当 $A$ 为空时，两边都为 $\{0\}$。
+\end{proof}
+
+\begin{theorem}[Alaoglu--Bourbaki：零邻域极集紧性]\label{thm:y5-alaoglu}
+若 $U$ 为 $E$ 的绝对凸零邻域，则 $U^\circ$ 弱星紧。特别地，赋范空间对偶的闭单位球弱星紧。
+\end{theorem}
+\begin{proof}
+设 $p_U$ 为 $U$ 的连续 Minkowski 半范数。若 $f\in U^\circ$，对任意 $t>p_U(x)$ 有 $x/t\in U$，故 $|f(x)|\le t$；令 $t\downarrow p_U(x)$ 得 $|f(x)|\le p_U(x)$。所以点值映射将 $U^\circ$ 嵌入紧乘积
+\[
+ P=\prod_{x\in E}\{z\in\mathbb K:|z|\le p_U(x)\}.
+\]
+紧性使用第零章 Tychonoff 定理。乘积中满足所有线性关系的点构成闭集；这样的点定义线性函数 $f$，由 $|f(x)|\le p_U(x)$ 自动连续，且在 $U$ 上至多为 1。因此该闭集恰为 $U^\circ$。乘积相对拓扑就是逐点弱星拓扑，所以紧。赋范情形取 $U=B_E$ 即得结论，无需 $E$ 完备。
+\end{proof}
+
+\subsection*{桶空间}\phantomsection\addcontentsline{toc}{subsection}{桶空间}
+\label{sec:yosida-05-app-02}
+桶是闭、凸、均衡、吸收的集合；每个桶均为零邻域的局部凸空间称桶空间。
+
+\begin{proposition}[Baire 空间为桶空间]
+若 $E$ 为 Baire 局部凸空间，则它为桶空间。特别地，Banach 空间、Fr\'echet 空间及固定紧支集测试空间 $\Test_K$ 都是桶空间。
+\end{proposition}
+\begin{proof}
+若 $B$ 为桶，吸收性给出 $E=\bigcup_{n\ge1}nB$。Baire 性迫使某个 $nB$ 有内点，故 $B$ 有内点。取 $x+V\subset B$，其中 $V$ 为对称零邻域；均衡性使 $-x+V\subset B$，凸性使 $V\subset(B+B)/2=B$。故 $B$ 为零邻域。
+\end{proof}
+
+\begin{proposition}[桶空间的一致有界性]
+若 $E$ 为桶空间，$H\subset E'$ 逐点有界，则 $H$ 等度连续。
+\end{proposition}
+\begin{proof}
+令 $B={}^\circ H$，它闭、凸、均衡。逐点有界保证每个 $x$ 可适当缩放进入 $B$，故吸收。桶空间条件使 $B$ 为零邻域，而 $\sup_{f\in H}|f(x)|\le1$ 在 $B$ 上成立，正是等度连续性。
+\end{proof}
+
+\subsection*{半自反性与自反性}\phantomsection\addcontentsline{toc}{subsection}{半自反性与自反性}
+\label{sec:yosida-05-app-03}
+自然映射 $J:E\to(E'_\beta)'$ 由 $(Jx)(f)=f(x)$ 定义。因为 $\{x\}$ 有界，点值对强对偶连续，故映射良定义。称 $E$ 半自反，若 $J$ 满射；若 $J$ 还是到强双对偶 $(E'_\beta)'_\beta$ 的拓扑同构，则称自反。
+
+\begin{proposition}[桶空间上的自然嵌入]
+若 $E$ 为桶空间，$J$ 为到强双对偶的拓扑嵌入。因此半自反的桶空间自反。
+\end{proposition}
+\begin{proof}
+强双对偶的半范数在 $E$ 上拉回为 $p_H(x)=\sup_{f\in H}|f(x)|$，其中 $H$ 在 $E'_\beta$ 中有界。这样的 $H$ 逐点有界，故由上个命题等度连续，所以 $p_H$ 连续，证明 $J$ 连续。
+
+反之，对任意闭绝对凸零邻域 $U$，$U^\circ$ 在强对偶中有界：若 $A\subset E$ 有界，取 $A\subset cU$，则 $\sup_{f\in U^\circ,x\in A}|f(x)|\le c$。由双极定理，$p_{U^\circ}$ 的闭单位球就是 $U$。因此强双对偶诱导的拓扑至少与原拓扑一样强，合并得到相同拓扑。Hausdorff 性及对偶分离保证 $J$ 单射。
+\end{proof}
+
+\begin{theorem}[Banach 空间的弱紧单位球判据]\label{thm:y5-reflexive-ball}
+Banach 空间 $X$ 自反，当且仅当其闭单位球弱紧。
+\end{theorem}
+\begin{proof}
+自反时，$J$ 将 $B_X$ 的弱拓扑对应于 $B_{X''}$ 的弱星拓扑，后者由定理 \ref{thm:y5-alaoglu} 紧。反之，若 $B_X$ 弱紧，则 $J(B_X)$ 在 Hausdorff 弱星拓扑中紧因而闭；Goldstine 定理又说它在 $B_{X''}$ 中弱星稠密，所以两者相同，缩放得 $JX=X''$。
+\end{proof}
+
+一般局部凸空间还有“半自反当且仅当每个闭、有界、绝对凸集弱紧”的刻画，以及测试空间 $\Test,\Smooth$ 的自反性。原书在此展开这些推广；本轮仅给出上述定义、桶空间嵌入及 Banach 情形的完整证明，不将一般推广计作已证明结论。
+
+\subsection*{Eberlein--Shmulyan 定理}\phantomsection\addcontentsline{toc}{subsection}{Eberlein--Shmulyan 定理}
+\label{sec:yosida-05-app-04}
+\begin{theorem}[Eberlein--\v Smulian：一般形式，作为外部定理使用]
+Banach 空间中的子集 $A$ 相对弱紧，当且仅当 $A$ 的每个序列都有在空间中弱收敛的子列。特别地，Banach 空间自反当且仅当每个有界序列有弱收敛子列。
+\end{theorem}
+
+这里相对弱紧指弱闭包紧；子列的极限可在 $A$ 之外。本轮不展开一般形式的完整证明，尤其不把 Alaoglu 紧性直接当作序列紧性。原书证明还用到弱星有界闭性的引理与迭代构造。正文定理 \ref{thm:y5-reflexive-sequence} 已独立证明自反空间的子列提取方向，不依赖这里的外部定理。
+
+\begin{proposition}[可分自反情形的可度量化]
+若 $X$ 可分且自反，取 $X'$ 单位球内范数稠密序列 $(f_j)$，则在 $RB_X$ 上
+\[
+ d(x,y)=\sum_{j=1}^{\infty}2^{-j}\min\{1,|f_j(x-y)|\}
+\]
+诱导弱拓扑。因此这个弱紧球也是弱序列紧的。
+\end{proposition}
+\begin{proof}
+$X'$ 可分由引理 \ref{lem:y5-dual-separable} 作用于 $X'$ 得到。$f_j$ 分离点，故 $d$ 为度量。控制级数尾项可见有限个 $f_j$ 的测试控制 $d$；反向利用球上的统一界 $2R$ 及 $X'$ 单位球的范数稠密性，任意 $f$ 的测试都能由有限个 $f_j$ 的测试逼近。两拓扑相同。紧度量空间序列紧，给出结论；该论证的有界性和可分性均有明确用途。
+\end{proof}
+
+\begin{exercise}[极集的具体计算]\label{ex:y5-polar}
+在 $\mathbb R^2$ 的通常配对下，计算 $\ell^1$ 单位球的极集和再次取极集的结果。
+\end{exercise}
+\begin{solution}
+若 $|x_1|+|x_2|\le1$，$\sup|a_1x_1+a_2x_2|=\max(|a_1|,|a_2|)$，所以极集为 $\ell^\infty$ 单位球。对 $|a_i|\le1$ 再取上确界得到 $|x_1|+|x_2|$，故双极集恢复原球。
+\end{solution}
+
+\begin{exercise}[弱星紧并非弱紧]\label{ex:y5-compactness}
+利用 $e_n\in\ell^1=(c_0)'$，说明 Alaoglu 定理不能改为“对偶单位球总是弱紧”。
+\end{exercise}
+\begin{solution}
+$e_n$ 弱星趋零，所以处于弱星紧单位球内。若有弱收敛子列，坐标泛函迫使极限为零，但求和泛函在其上恒为 1，矛盾。由 Eberlein--\v Smulian 的外部一般形式，单位球不弱紧；也可由 $c_0$ 对偶的已知非自反性与单位球判据得出。该例区分 $\sigma(\ell^1,c_0)$ 与 $\sigma(\ell^1,\ell^\infty)$。
+\end{solution}

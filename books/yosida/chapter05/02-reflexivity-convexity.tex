@@ -1,0 +1,63 @@
+\section{自反 B-空间的局部弱列紧性、一致凸性}\label{sec:yosida-05-02}
+\noindent\textit{原书起始页：中译本 131；英文版 126。}
+
+“局部弱列紧”沿用原书术语，表示每个范数有界序列有弱收敛子列。
+
+\begin{lemma}[对偶可分推出原空间可分]\label{lem:y5-dual-separable}
+若赋范空间 $X$ 的对偶 $X'$ 范数可分，则 $X$ 可分。
+\end{lemma}
+\begin{proof}
+零空间情形显然。取 $X'$ 单位球面的可数稠密集 $(f_n)$，选 $\|x_n\|=1$ 使 $|f_n(x_n)|>1/2$。若 $Y=\overline{\operatorname{span}}\{x_n\}\ne X$，Hahn--Banach 给出 $\|g\|=1$、$g|_Y=0$。选 $\|f_n-g\|<1/2$，则 $1/2<|f_n(x_n)|=|(f_n-g)(x_n)|<1/2$，矛盾。因此 $Y=X$，有理实部与虚部的有限线性组合构成可数稠密集。
+\end{proof}
+
+\begin{theorem}[自反空间的子列提取]\label{thm:y5-reflexive-sequence}
+自反 Banach 空间的每个范数有界序列都有弱收敛子列，不要求整个空间可分。
+\end{theorem}
+\begin{proof}
+先设 $X$ 可分且自反，则 $X''=JX$ 可分。对 $X'$ 用引理 \ref{lem:y5-dual-separable} 得 $X'$ 可分。取其范数稠密序列 $(f_j)$。标量序列 $f_j(x_n)$ 均有界，逐次抽子列并取对角线，得到 $(x_{n_k})$ 使每个 $f_j(x_{n_k})$ 收敛。范数界与稠密逼近使每个 $f(x_{n_k})$ 都为 Cauchy，序列弱完备性给出弱极限。
+
+一般情形令 $Y=\overline{\operatorname{span}}\{x_n:n\ge1\}$。它可分且自反：限制映射 $R:X'\to Y'$ 由 Hahn--Banach 满射。对 $F\in Y''$，$F\circ R\in X''$，故存在 $x\in X$ 使 $F(Rf)=f(x)$。所有消灭 $Y$ 的泛函也消灭 $x$，闭子空间分离迫使 $x\in Y$，所以 $F=J_Yx$。在 $Y$ 内用第一段即可；任意 $f\in X'$ 限制到 $Y$ 都连续，故子列在 $X$ 中仍弱收敛。
+\end{proof}
+
+\begin{definition}[一致凸性]
+对每个 $0<\varepsilon\le2$ 存在 $\delta(\varepsilon)>0$，使
+\[
+ \|x\|,\|y\|\le1,\quad\|x-y\|\ge\varepsilon
+ \ \Longrightarrow\ \left\|\frac{x+y}{2}\right\|\le1-\delta(\varepsilon).
+\]
+满足此条件的空间称一致凸。Hilbert 空间的平行四边形公式给出 $\delta(\varepsilon)=1-\sqrt{1-\varepsilon^2/4}$。
+\end{definition}
+
+\begin{theorem}[Milman：一致凸 Banach 空间自反]\label{thm:y5-milman}
+一致凸且完备的赋范空间 $X$ 自反。
+\end{theorem}
+\begin{proof}
+取 $F\in X''$，$\|F\|=1$。选择 $f_j\in X'$，$\|f_j\|=1$，旋转相位使 $\operatorname{Re}F(f_j)>1-1/j$。第四章 Goldstine 定理给出 $x_n\in B_X$，使
+\[
+ |f_j(x_n)-F(f_j)|<1/n\qquad(1\le j\le n).
+\]
+给定 $\varepsilon>0$，选 $j$ 使 $1/j<\delta(\varepsilon)/3$，再取充分大的 $n,m\ge j$。则 $\operatorname{Re}f_j((x_n+x_m)/2)>1-\delta(\varepsilon)$，一致凸性迫使 $\|x_n-x_m\|<\varepsilon$。完备性给出 $x_n\to x\in B_X$，且 $f_j(x)=F(f_j)$ 对每个 $j$ 成立。
+
+单位球内满足这些方程的向量唯一：若 $x,y$ 都满足而距离为正，一致凸性使中点范数严格小于 1，但 $\operatorname{Re}f_j((x+y)/2)\to1$，矛盾。对任意 $g\in X'$，用 Goldstine 同时逼近 $g,f_1,\ldots,f_n$，重复构造得到 $y\in B_X$ 满足 $g(y)=F(g)$ 及全部 $f_j$ 方程。唯一性给出 $y=x$，所以 $F=Jx$。缩放并处理 $F=0$ 即得自反性。
+\end{proof}
+
+\begin{proposition}[一致凸空间的范数判据]
+若 $X$ 一致凸，$x_n\rightharpoonup x$ 且 $\|x_n\|\to\|x\|$，则 $x_n\to x$。
+\end{proposition}
+\begin{proof}
+$x=0$ 时直接成立。否则从某项起令 $u_n=x_n/\|x_n\|$，$u=x/\|x\|$，则 $u_n\rightharpoonup u$。若某子列 $\|u_n-u\|\ge\varepsilon$，中点范数至多 $1-\delta(\varepsilon)$，而中点弱趋于 $u$。范数下半连续给出 $1\le1-\delta(\varepsilon)$，矛盾。恢复归一化即得结论。
+\end{proof}
+
+\begin{exercise}[可分性不能倒推对偶可分]\label{ex:y5-separability}
+证明 $\ell^1$ 可分而 $(\ell^1)'=\ell^\infty$ 不可分。
+\end{exercise}
+\begin{solution}
+有限支集、有理实虚部的序列在 $\ell^1$ 中稠密。$\{0,1\}^{\mathbb N}\subset\ell^\infty$ 不可数，不同元素距离为 1。若有可数稠密集，其半径 $1/3$ 的球最多各覆盖一点，无法覆盖全部。
+\end{solution}
+
+\begin{exercise}[完备性不可省]\label{ex:y5-completeness}
+在有限支集序列空间 $c_{00}$ 上取 $\ell^2$ 范数。说明它一致凸但不自反。
+\end{exercise}
+\begin{solution}
+平行四边形公式仍成立，所以一致凸。截断序列逼近 $\ell^2\setminus c_{00}$ 的向量，故不完备。若 $J:c_{00}\to c_{00}''$ 满射，它等距于 Banach 空间 $c_{00}''$，必完备，矛盾。
+\end{solution}

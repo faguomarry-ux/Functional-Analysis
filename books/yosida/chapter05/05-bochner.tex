@@ -1,0 +1,92 @@
+\section{Bochner 积分}\label{sec:yosida-05-05}
+\noindent\textit{原书起始页：中译本 137；英文版 132。}
+
+沿用上一节的测度空间假设。对简单函数 $v=\sum_jx_j\mathbf1_{E_j}$，定义
+\[
+ \int_Av\,\dd\mu=\sum_j\mu(A\cap E_j)x_j,\qquad
+ \left\|\int_Av\,\dd\mu\right\|\le\int_A\|v\|\,\dd\mu.
+\]
+细分两个表示的集合可见定义不依赖表示方式，不等式来自三角不等式。
+
+\begin{definition}[Bochner 可积]
+强可测的 $u:S\to X$ 称 Bochner 可积，是指存在简单函数 $v_n$ 使 $\int_S\|u-v_n\|\,\dd\mu\to0$。定义
+\[
+ \int_Au\,\dd\mu=\lim_n\int_Av_n\,\dd\mu\quad\text{（范数极限）}.
+\]
+\end{definition}
+
+\begin{proposition}[定义的良定性]
+上述极限存在，且与逼近序列无关；并有
+\[
+ \left\|\int_Au\,\dd\mu\right\|\le\int_A\|u\|\,\dd\mu.
+\]
+\end{proposition}
+\begin{proof}
+对简单函数的估计给出
+\[
+ \left\|\int_Av_n-\int_Av_m\right\|\le\int_S\|v_n-v_m\|
+ \le\int_S\|v_n-u\|+\int_S\|u-v_m\|.
+\]
+$X$ 完备，故积分序列收敛。对另一逼近序列 $w_n$ 用同一估计比较 $v_n,w_n$，得到极限相同。$|\|v_n\|-\|u\||\le\|v_n-u\|$ 使标量积分收敛，故简单函数的范数估计传到极限。这里及以下省略部分积分式中的 $\dd\mu$，均对同一测度积分。
+\end{proof}
+
+\begin{theorem}[Bochner 可积判别]\label{thm:y5-bochner}
+$u$ Bochner 可积，当且仅当 $u$ 强可测且 $\int_S\|u\|\,\dd\mu<\infty$。
+\end{theorem}
+\begin{proof}
+必要性由 $\|u\|\le\|v_n\|+\|u-v_n\|$ 得到。反之，取简单函数 $v_n\to u$ 几乎处处，在可测集合 $\{\|v_n\|\le2\|u\|\}$ 上保留 $v_n$，其余地方令为零，所得仍为简单函数 $w_n$。若 $u(s)\ne0$，从某项起 $w_n(s)=v_n(s)$；若 $u(s)=0$，$w_n(s)=0$。所以 $w_n\to u$ 几乎处处，且 $\|w_n-u\|\le3\|u\|$。标量控制收敛给出 $\int\|w_n-u\|\to0$。
+\end{proof}
+
+本定义还可要求同一简单函数序列几乎处处收敛，不改变可积函数类：$L^1$ 逼近可抽子列使误差积分可求和，再由 Tonelli 得误差几乎处处趋零。
+
+\begin{theorem}[积分运算与控制收敛]\label{thm:y5-bochner-properties}
+Bochner 积分线性。若 $T:X\to Y$ 有界线性，$Y$ 为 Banach 空间，则 $Tu$ 可积且
+\[
+ T\left(\int_Au\,\dd\mu\right)=\int_ATu\,\dd\mu.
+\]
+若 $u_n$ 强可测、$u_n\to u$ 几乎处处且 $\|u_n(s)\|\le g(s)$，其中 $g\in L^1$，则 $u$ 可积且 $\int\|u_n-u\|\to0$，从而积分在范数中收敛。集合函数 $A\mapsto\int_Au$ 在范数中可数可加，并对 $\mu$ 绝对连续。
+\end{theorem}
+\begin{proof}
+简单函数上的线性和交换关系由有限和得到，以 $L^1$ 逼近传到一般情形，使用 $\|Tu-Tv_n\|\le\|T\|\|u-v_n\|$。
+
+强可测函数的几乎处处极限强可测：可将所有值域的可分闭线性包合并为一个可分空间，标量极限保证弱可测，故 Pettis 定理适用。于是 $\|u_n-u\|\le2g$，标量控制收敛即得积分收敛。
+
+对两两不交的 $A_j$，有限可加性已由线性给出。尾项范数不超过 $\int_{\cup_{j>N}A_j}\|u\|$，该量趋零，故可数可加。$\int_A\|u\|$ 的标量绝对连续性给出向量积分的绝对连续性。
+\end{proof}
+
+\begin{theorem}[向量值 Lebesgue 微分]
+若 $u\in L^1(\mathbb R^d;X)$，对几乎处处的 $t$，以 $t$ 为中心、边长 $2r$ 的立方体 $Q(t,r)$ 满足
+\[
+ \lim_{r\downarrow0}\left\|\frac1{|Q(t,r)|}\int_{Q(t,r)}u(s)\,\dd s-u(t)\right\|=0.
+\]
+\end{theorem}
+\begin{proof}
+取简单函数 $v_k\to u$ 几乎处处且 $L^1$ 收敛。对每个 $k$，标量 Lebesgue 微分定理适用于有限个指示函数，故 $v_k$ 的平均趋于 $v_k(t)$；它也适用于 $\|u-v_k\|\in L^1$。删掉这可数族的共同例外零测集，则三角不等式给出
+\[
+ \limsup_{r\downarrow0}\left\|\frac1{|Q|}\int_Qu-u(t)\right\|
+ \le 2\|u(t)-v_k(t)\|.
+\]
+令 $k\to\infty$ 即得结论。使用的是标量微分定理，不预设一般向量测度都存在密度。
+\end{proof}
+
+\begin{example}[绝对连续向量测度未必有 Bochner 密度]
+取 $X=L^1[0,1]$，令 $m(A)=\mathbf1_A$。不交集的指示函数尾和在 $L^1$ 中范数趋零，故 $m$ 范数可数可加，且 $\|m(A)\|_1=\mu(A)$；其全变差也等于 $\mu$。假设有 Bochner 可积 $g$ 使 $m(A)=\int_Ag(t)\,\dd t$，则
+\[
+ F(t)=m([0,t])=\mathbf1_{[0,t]}
+\]
+由一维微分定理应几乎处处有对称差商的范数极限。可对任意 $t\in(0,1)$ 及充分小 $h>0$，其对称差商为 $q_h=(2h)^{-1}\mathbf1_{(t-h,t+h]}$，而 $\|q_h-q_{h/2}\|_1=1$。差商不为 Cauchy，矛盾。因此不能无条件把标量 Radon--Nikodym 定理搬到任意 Banach 目标空间。
+\end{example}
+
+\begin{exercise}[积分与求和]\label{ex:y5-series}
+设 $A_n$ 两两不交、可测、测度有限，且 $\sum_n\mu(A_n)\|x_n\|<\infty$。证明 $u=\sum_nx_n\mathbf1_{A_n}$ 可积并计算积分。
+\end{exercise}
+\begin{solution}
+部分和为简单函数并逐点趋于 $u$，故强可测。$\int\|u\|=\sum_n\mu(A_n)\|x_n\|<\infty$，故可积；积分为绝对收敛的向量级数 $\sum_n\mu(A_n)x_n$，尾项积分由对应范数级数尾项控制。
+\end{solution}
+
+\begin{exercise}[所有标量测试可积仍不足]\label{ex:y5-scalarly-integrable}
+在 $S=\mathbb N$ 的计数测度上，令 $u(n)=e_n/n\in\ell^2$。证明每个连续泛函的标量测试绝对可积，但 $u$ 不 Bochner 可积。
+\end{exercise}
+\begin{solution}
+对 $a\in\ell^2$，Cauchy--Schwarz 给出 $\sum_n|a_n|/n\le\|a\|_2(\sum_n n^{-2})^{1/2}<\infty$。但 $\sum_n\|u(n)\|_2=\sum_n1/n=\infty$，违反 Bochner 判别。这里目标空间可分，$u$ 强可测，因此失败发生于范数可积性。
+\end{solution}

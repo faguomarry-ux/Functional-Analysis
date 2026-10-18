@@ -1,0 +1,113 @@
+\Needspace{11\baselineskip}
+\section{非平凡连续线性泛函的存在性}\label{sec:yosida-04-06}
+\noindent\textit{原书位置：中译本第 113--115 页；英文版第 107--110 页。}
+
+线性泛函能否分辨不同的点，取决于空间的拓扑。本节的局部凸空间均为 Hausdorff，因而连续半范数分离点。
+
+\begin{theorem}[连续半范数的支撑泛函]\label{thm:y4-continuous-support}
+设 $p$ 为实或复线性拓扑空间 $X$ 上的连续半范数。对每个 $x_0\in X$，存在 $f\in X'$，使
+\[
+ f(x_0)=p(x_0),\qquad |f(x)|\le p(x)\quad(x\in X).
+\]
+\end{theorem}
+\begin{proof}
+$x_0\ne0$ 时，在 $\mathbb K x_0$ 上定义 $f_0(tx_0)=tp(x_0)$，则 $|f_0(tx_0)|=p(tx_0)$，由实或复延拓得 $f$。$x_0=0$ 可取 $f=0$。连续性由 $|f|\le p$ 得到。若 $x_0\ne0$ 且空间局部凸 Hausdorff，取 $p(x_0)>0$ 即得非零值。赋范情形取 $p=\|\cdot\|$，得到 $\|f\|\le1$，在 $x_0/\|x_0\|$ 处测试则得等号。
+\end{proof}
+
+因此 Hausdorff 局部凸空间的连续对偶分离点；赋范空间的每个非零 $x_0$ 都有范数为一的泛函满足 $f(x_0)=\|x_0\|$。
+
+\begin{proposition}[局部凸空间子空间上的连续延拓]\label{prop:y4-lcs-extension}
+局部凸空间 $X$ 的任意线性子空间 $M$ 上的连续线性泛函，都可连续延拓到 $X$。
+\end{proposition}
+\begin{proof}
+取绝对凸开零邻域 $U$，使 $m\in M\cap U$ 时 $|f(m)|\le1$。其 Minkowski 泛函 $p_U$ 是连续半范数，且 $U=\{p_U<1\}$。对 $t>p_U(m)$ 有 $m/t\in U$，从而 $|f(m)|\le t$；令 $t\downarrow p_U(m)$，得 $|f(m)|\le p_U(m)$。用实或复 Hahn--Banach 延拓，所得泛函由同一连续半范数控制。
+\end{proof}
+
+\begin{lemma}[开凸零邻域的非对称泛函]\label{lem:y4-open-gauge}
+实线性拓扑空间中，若 $V$ 是含零的开凸集，则
+$p_V(x)=\inf\{t>0:x\in tV\}$ 为有限、非负、连续的次线性泛函，且 $V=\{p_V<1\}$。不要求 $V$ 均衡。若实线性泛函 $g\le p_V$，则 $g$ 连续。
+\end{lemma}
+\begin{proof}
+零邻域吸收每个向量，故泛函有限。凸性给出次可加性，缩放定义给出正齐次性。开性和凸性给出 $V=\{p_V<1\}$：若 $x\in V$，可将 $x$ 沿射线稍向外伸仍留在 $V$；反向由 $tV\subset V$（$0<t<1$）得到。在 $\varepsilon V\cap(-\varepsilon V)$ 上，$p_V(x),p_V(-x)<\varepsilon$；又由次可加性
+$-p_V(-h)\le p_V(x+h)-p_V(x)\le p_V(h)$，故连续。最后，$g\le p_V$ 和 $-g(x)=g(-x)\le p_V(-x)$ 在零点给出连续性。
+\end{proof}
+
+\begin{theorem}[点与闭凸集的严格分离]\label{thm:y4-convex-separation}
+设 $C$ 是 Hausdorff 局部凸空间 $X$ 的非空闭凸集，$x_0\notin C$。则存在 $f\in X'$ 及实数 $a$，使
+\[
+ \sup_{c\in C}\operatorname{Re}f(c)<a<\operatorname{Re}f(x_0).
+\]
+实空间中省略实部。若 $C$ 还均衡，则可将结论写成
+\[
+ \sup_{c\in C}|f(c)|\le1<f(x_0),
+\]
+其中 $f(x_0)$ 为实数。均衡凸集常称绝对凸集。
+\end{theorem}
+\begin{proof}
+先在实空间中证明。因 $C$ 闭，取凸、均衡开零邻域 $U$，使 $(x_0+U)\cap C=\varnothing$。令 $D=C+U$，则 $x_0\notin D$，且 $D$ 开凸。取 $c_0\in C$，则 $V=D-c_0$ 是开凸零邻域。以 $p=p_V$ 记其泛函，有 $p(x_0-c_0)\ge1$。由推论 \ref{cor:y4-supporting-functional} 得实线性 $g\le p$，满足 $g(x_0-c_0)=p(x_0-c_0)$；引理 \ref{lem:y4-open-gauge} 保证 $g$ 连续且非零。
+
+对每个 $d\in D$，$g(d-c_0)\le p(d-c_0)<1$。因 $g\ne0$ 且 $U$ 吸收，存在 $u\in U$ 使 $\delta=g(u)>0$。于是对所有 $c\in C$，
+\[
+ g(c)+\delta=g(c+u)<g(c_0)+1\le g(x_0).
+\]
+故 $\sup_Cg\le g(x_0)-\delta<g(x_0)$，在两者之间选 $a$ 即可。复空间视为实空间先得 $g$，再令 $f(x)=g(x)-ig(ix)$，由引理 \ref{lem:y4-real-part} 得连续复线性泛函，且 $\operatorname{Re}f=g$。
+
+若 $C$ 均衡，包含零，且对所有单位标量旋转不变，故
+$s=\sup_C|f|=\sup_C\operatorname{Re}f\ge0$。取 $s<t<\operatorname{Re}f(x_0)$，再将 $f$ 乘一个单位标量，使它在 $x_0$ 的值成为正实数，最后除以 $t$，即得模长形式。
+\end{proof}
+
+\begin{corollary}[闭子空间与距离]\label{cor:y4-distance-dual}
+闭线性子空间 $M$ 与其外一点 $x_0$ 可以被连续线性泛函分离：可取 $f|_M=0$、$f(x_0)=1$。赋范空间中更有
+\[
+ \operatorname{dist}(x,M)=\max_{\substack{f\in X',\ \|f\|\le1\\ f|_M=0}}|f(x)|.
+\]
+\end{corollary}
+\begin{proof}
+分离定理给出在 $M$ 上模长有界的非零分离泛函。线性子空间可任意倍乘，迫使它在 $M$ 上恒为零，归一化即可。
+
+对赋范情形，每个候选 $f$ 都满足 $|f(x)|=|f(x-m)|\le\|x-m\|$，故不超过距离 $d$。若 $x\notin M$，则 $d>0$，在 $M+\mathbb Kx$ 上令 $h(m+tx)=td$。它良定义，且 $|t|d\le\|m+tx\|$，所以范数不超过一。保范延拓给出 $h(x)=d$ 的达到者。若 $x\in M$，两边为零，零泛函即达到。这个最大值的存在不意味着 $M$ 中必有最近点。
+\end{proof}
+
+若 $U$ 是开绝对凸零邻域、$x_0\notin U$，则 $p_U(x_0)\ge1$。定理 \ref{thm:y4-continuous-support} 给出 $f(x_0)=p_U(x_0)\ge1\ge\sup_U|f|$，这就是原书的开邻域支撑形式；边界点处不保证严格分离。
+
+\begin{theorem}[Helly 有限约束定理]\label{thm:y4-helly}
+设 $X$ 为赋范空间，$f_1,\ldots,f_n\in X'$，$a_1,\ldots,a_n\in\mathbb K$，$\gamma\ge0$。对每个 $\varepsilon>0$ 都存在 $x_\varepsilon\in X$ 满足
+\[
+ f_j(x_\varepsilon)=a_j\ (1\le j\le n),\qquad
+ \|x_\varepsilon\|\le\gamma+\varepsilon,
+\]
+当且仅当对全部 $b_1,\ldots,b_n\in\mathbb K$，
+\[
+ \left|\sum_{j=1}^n b_ja_j\right|
+ \le\gamma\left\|\sum_{j=1}^n b_jf_j\right\|.
+\]
+这里采用一个同样适用于非完备 $X$ 的证明；原书在 Banach 空间中陈述。
+\end{theorem}
+\begin{proof}
+必要性由对 $x_\varepsilon$ 测试并令 $\varepsilon\downarrow0$ 得到。为证充分，令 $Tx=(f_1(x),\ldots,f_n(x))$，$E=T(X)\subset\mathbb K^n$，$a=(a_j)$。若 $a\notin E$，有限维线性代数给出线性泛函 $\ell$，使 $\ell|_E=0$ 却 $\ell(a)\ne0$；写成 $\ell(z)=\sum b_jz_j$，便与假设矛盾。故 $a\in E$。
+
+在有限维 $E$ 上定义商范数
+\[
+ q(z)=\inf\{\|x\|:Tx=z\}.
+\]
+三角不等式和齐次性由下确界得出；$\|z\|_2\le\|T\|\|x\|$ 保证正定性（$T=0$ 时 $E=\{0\}$，结论直接成立）。任意 $E$ 上线性泛函 $\ell$ 都可延拓到 $\mathbb K^n$，并有
+\[
+ \|\ell\|_{q,*}=\|\ell\circ T\|.
+\]
+一向由 $q(Tx)\le\|x\|$；另一向对 $Tx=z$ 的所有原像取范数下确界即可。假设因此成为 $|\ell(a)|\le\gamma\|\ell\|_{q,*}$。在赋范空间 $(E,q)$ 上用定理 \ref{thm:y4-continuous-support} 的范数形式，得到 $q(a)\le\gamma$。最后由下确界定义，选 $Tx_\varepsilon=a$ 且 $\|x_\varepsilon\|<q(a)+\varepsilon$ 即得结论。
+\end{proof}
+
+\begin{exercise}
+设 $M\subset X$ 为线性子空间。证明 $\overline M=X$ 当且仅当每个满足 $f|_M=0$ 的 $f\in X'$ 都为零，其中 $X$ 为 Hausdorff 局部凸空间。
+\end{exercise}
+\begin{solution}
+若 $M$ 稠密，连续性使 $f$ 在 $X$ 上为零。反之，若 $\overline M\ne X$，取外点，以闭子空间分离结论构造在 $\overline M$ 上为零、在外点为一的泛函，即得反例。
+\end{solution}
+
+\begin{exercise}
+在 $c_0$ 上令 $f(x)=\sum_{j\ge1}2^{-j}x_j$。证明 $\|f\|=1$，但不存在 $\|x\|_\infty\le1$ 且 $f(x)=1$ 的 $x\in c_0$。由此说明 Helly 定理中的 $\varepsilon$ 通常不能删去。
+\end{exercise}
+\begin{solution}
+三角不等式给上界一；前 $N$ 项为一、其余为零的序列使 $f(x)=1-2^{-N}\to1$，故范数为一。若 $\|x\|_\infty\le1$ 且 $f(x)=1$，则
+$\sum2^{-j}(1-\operatorname{Re}x_j)=0$，非负各项均为零，故 $x_j=1$ 对所有 $j$ 成立，与 $x\in c_0$ 矛盾。取 $n=1,a_1=1,\gamma=1$，Helly 的不等式成立，却没有范数不超过一的精确解。
+\end{solution}

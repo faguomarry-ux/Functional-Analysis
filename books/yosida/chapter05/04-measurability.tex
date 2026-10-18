@@ -1,0 +1,59 @@
+\section{弱可测性和强可测性、Pettis 定理}\label{sec:yosida-05-04}
+\noindent\textit{原书起始页：中译本 135；英文版 130。}
+
+本节与下一节固定完备的 $\sigma$ 有限测度空间 $(S,\Sigma,\mu)$ 和 Banach 空间 $X$。完备性使零测集上的修改仍可测；$\sigma$ 有限性使有限测度支集的简单函数足够用于逼近。这个明确的范围也避免在任意测度空间上混用两种简单函数约定。
+
+\begin{definition}[可测性与本质可分值域]
+若每个 $f\in X'$ 都使 $f(u(s))$ 可测，称 $u:S\to X$ 弱可测。简单函数指有限和 $v=\sum_{j=1}^m x_j\mathbf1_{E_j}$，其中 $E_j$ 可测、两两不交且 $\mu(E_j)<\infty$。若有简单函数 $v_n$ 在范数中几乎处处趋于 $u$，称 $u$ 强可测。
+
+若存在零测集 $N$，使 $u(S\setminus N)$ 包含于某个可分闭线性子空间，称 $u$ 本质可分值。可分值域与其闭线性包的可分性等价。
+\end{definition}
+
+\begin{lemma}[可分空间的可数范数化泛函]\label{lem:y5-norming}
+若 $Y\subset X$ 为可分闭子空间，存在 $g_j\in X'$，$\|g_j\|\le1$，使
+\[
+ \|y\|=\sup_{j\ge1}|g_j(y)|\qquad(y\in Y).
+\]
+\end{lemma}
+\begin{proof}
+若 $Y=\{0\}$ 可全取零泛函。否则取 $Y$ 单位球面的稠密序列 $y_j$，用 Hahn--Banach 选 $\|g_j\|=1$、$g_j(y_j)=1$。对单位向量 $y$，$|g_j(y)|\ge1-\|y-y_j\|$，取趋近 $y$ 的子列即得下界，上界由范数估计给出。注意这里只需一族范数化泛函，并未声称 $X'$ 范数可分。
+\end{proof}
+
+\begin{theorem}[Pettis 可测性定理]\label{thm:y5-pettis}
+$u:S\to X$ 强可测，当且仅当它弱可测且本质可分值。
+\end{theorem}
+\begin{proof}
+若 $v_n\to u$ 几乎处处，则 $f(v_n)\to f(u)$，故 $u$ 弱可测。所有 $v_n$ 的有限值集合的并可数，其闭线性包可分且包含零测集外的全部 $u(s)$。
+
+反之，将零测集上的 $u$ 改为零，可设其值域包含于可分闭子空间 $Y$。取 $Y$ 中稠密序列 $(a_j)$，其中 $a_1=0$。引理 \ref{lem:y5-norming} 给出
+\[
+ \|u(s)-a_j\|=\sup_k|g_k(u(s))-g_k(a_j)|,
+\]
+所以距离函数可测。对每个 $n$，从 $a_1,\ldots,a_n$ 中选距离 $u(s)$ 最近者，距离相等时取最小下标，得到有限值可测函数 $w_n$；其选择集合由有限个可测距离的比较给出。稠密性使 $\|w_n(s)-u(s)\|\to0$。
+
+由 $\sigma$ 有限性取 $S_n\uparrow S$ 且 $\mu(S_n)<\infty$，令 $v_n=\mathbf1_{S_n}w_n$。这是定义中的简单函数；每个 $s$ 最终属于 $S_n$，故 $v_n(s)\to u(s)$。恢复原来的零测集修改即得结论。
+\end{proof}
+
+\begin{remark}[原书校注与量词]
+中译本印刷第 135 页定理首句将“强可测”排成“弱可测”；英文版第 131 页表述为强可测当且仅当弱可测并几乎可分值。不能删去本质可分条件，也不能将“对每个泛函各自几乎处处成立”直接换成“存在同一个零测集使全部泛函同时成立”。可数范数化族正是控制共同零测集的工具。
+\end{remark}
+
+\begin{example}[弱可测但不强可测]
+取 $X=\ell^2([0,1])$，$u(t)=e_t$，测度为完备 Lebesgue 测度。每个 $a\in X$ 至多有可数个非零坐标：对每个 $m$，$|a_t|\ge1/m$ 的指标只有有限个。因此连续泛函 $x\mapsto(x,a)$ 在 $u(t)$ 上除可数点外为零，故可测。
+
+但 $\|e_t-e_s\|=\sqrt2$（$t\ne s$），可分子空间最多容纳可数个这样的向量。删掉零测集后仍有不可数个 $t$，所以 $u$ 不是本质可分值，因而不强可测。
+\end{example}
+
+\begin{exercise}[可分目标空间]\label{ex:y5-separable-measurable}
+设 $X$ 可分。证明弱可测就足以推出强可测，并证明强可测的 $u$ 使 $s\mapsto\|u(s)\|$ 可测。
+\end{exercise}
+\begin{solution}
+可分的 $X$ 本身包含值域，故 Pettis 定理适用。若 $u$ 强可测，可由简单函数 $v_n$ 几乎处处逼近，$\|v_n\|\to\|u\|$ 几乎处处，完备性保证零测集上的数值修改不破坏可测性。
+\end{solution}
+
+\begin{exercise}[标量零不保证向量零]\label{ex:y5-nullsets}
+对上述 $u(t)=e_t$，说明为何每个 $f(u(t))=0$ 几乎处处，而 $u(t)$ 无一处为零。这与对偶分离有无冲突？
+\end{exercise}
+\begin{solution}
+对固定 $f$，非零值只发生于其代表向量的可数支集，故几乎处处为零。但 $\|u(t)\|=1$。对偶分离说的是固定 $t$ 后存在某个依赖于 $t$ 的泛函检测 $e_t$，不能把不可数个各自的例外零测集之并仍当零测集，因此没有冲突。
+\end{solution}
