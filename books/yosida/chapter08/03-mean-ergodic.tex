@@ -1,0 +1,58 @@
+\Needspace{12\baselineskip}
+\section{平均遍历定理}\label{sec:yosida-08-03}
+\noindent\textit{原书起始页：中译本 223；英文版 213。}
+
+设 $T\in\mathcal L(X)$ 幂有界，即 $M=\sup_{n\ge0}\|T^n\|<\infty$。采用从零次幂开始的 Ces\`aro 平均
+\[
+ A_n=\frac1n\sum_{k=0}^{n-1}T^k,\quad F=\ker(I-T),\quad
+ Z=\overline{R(I-T)}.
+\]
+原书从一次幂开始；两种平均相差 $(I-T^n)/n$，在本节假设下范数趋零，极限相同。
+
+\begin{theorem}[收敛子空间与弱聚点]\label{thm:y8-mean-ergodic}
+有 $\|A_n\|\le M$，且
+\begin{equation}\label{eq:y8-ergodic-kernel}
+ Z=\{x:A_nx\to0\},\qquad F\cap Z=\{0\}.
+\end{equation}
+若给定 $x$ 的平均列有弱收敛子列 $A_{n_j}x\rightharpoonup y$，则整个 $A_nx$ 强收敛于 $y$，且 $y\in F$、$x-y\in Z$。特别地，若 $X$ 自反，则
+\begin{equation}\label{eq:y8-ergodic-decomposition}
+ X=F\oplus Z,\qquad A_n\xrightarrow{\mathrm{strong}}P,
+ \quad P^2=P,\quad PT=TP=P.
+\end{equation}
+并有 $R(P)=F$、$\ker P=Z$。
+\end{theorem}
+\begin{proof}
+望远镜恒等式给出
+\[
+ A_n(I-T)=(I-T)A_n=\frac{I-T^n}{n}\longrightarrow0
+\]
+的算子范数收敛；再用 $A_n$ 一致有界把强收敛从 $R(I-T)$ 延拓到 $Z$。反向注意
+\[
+ x-A_nx=\frac1n\sum_{k=0}^{n-1}(I-T^k)x\in R(I-T),
+\]
+所以若 $A_nx\to0$，则 $x\in Z$。在 $F$ 上 $A_n=I$，交为零。
+
+若有弱聚点 $y$，望远镜式推出 $(I-T)y=0$。又 $x-A_{n_j}x\in Z$；闭线性子空间由 Hahn--Banach 也是弱闭的，故 $x-y\in Z$。于是 $A_nx=y+A_n(x-y)\to y$。自反时，有界列 $A_nx$ 有弱收敛子列，这一步使用第五章的自反空间弱序列紧性。逐点极限 $P$ 线性且 $\|P\|\le M$，其值域、核与交换关系由前述分解立即得到。
+\end{proof}
+
+同一证明给出更精确的结论：即使 $X$ 不自反，$A_nx$ 强收敛当且仅当 $x\in F+Z$。原书还对等度连续的幂族在局部凸空间中给出版本；本稿这里证明的是 Banach 版本，未展开一般半范数与弱序列紧性的推广。
+
+\begin{example}[Hilbert 投影与非自反反例]
+若 $U$ 是 Hilbert 空间上的酉算子，$R(I-U)^\perp=\ker(I-U^*)=\ker(I-U)$，故上述 $P$ 正是到不动点空间的正交投影。保测变换诱导的 Koopman 算子在 $L^2$ 中为等距算子，亦适用自反空间结论；不要求变换可逆。这里得到的是 $L^2$ 范数平均收敛，并非逐点遍历定理。
+
+反之，在 $\ell^1$ 上令 $S$ 为右移。$A_ne_1$ 的前 $n$ 个坐标均为 $1/n$，其范数始终为 $1$，每个坐标却趋零，所以不可能在 $\ell^1$ 范数中收敛。幂有界本身不足以保证每个向量都有平均极限。
+\end{example}
+
+\begin{exercise}[收敛未必一致]\label{ex:y8-ergodic-norm}
+在 $\ell^2$ 上对右移 $S$ 证明 $A_nx\to0$，但 $\|A_n\|=1$。
+\end{exercise}
+\begin{solution}
+右移没有非零不动点，由自反情形的定理得强极限零。又 $\|A_n\|\le1$。令 $x^{(N)}$ 的前 $N$ 坐标为 $N^{-1/2}$，其余为零；当 $N\ge n$，平均向量至少有 $N-n+1$ 个坐标仍为 $N^{-1/2}$，故 $\|A_nx^{(N)}\|\ge\sqrt{(N-n+1)/N}\to1$。所以强收敛不能升级为范数收敛。
+\end{solution}
+
+\begin{exercise}[提取其他特征值]\label{ex:y8-twisted-mean}
+若 $T$ 幂有界，$X$ 自反，$|\alpha|=1$，说明如何用平均算子投影到 $\ker(T-\alpha I)$。
+\end{exercise}
+\begin{solution}
+对 $\alpha^{-1}T$ 应用定理，得到 $n^{-1}\sum_{k=0}^{n-1}\alpha^{-k}T^k$ 的强极限。其值域是 $\ker(I-\alpha^{-1}T)=\ker(T-\alpha I)$，核为 $\overline{R(I-\alpha^{-1}T)}$。
+\end{solution}

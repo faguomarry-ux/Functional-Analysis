@@ -1,0 +1,72 @@
+\Needspace{12\baselineskip}
+\section{预解方程和谱半径}\label{sec:yosida-08-02}
+\noindent\textit{原书起始页：中译本 221；英文版 211。}
+
+\begin{theorem}[预解恒等式与局部展开]\label{thm:y8-resolvent-identity}
+若 $\lambda,\mu\in\rho(T)$，则
+\begin{equation}\label{eq:y8-resolvent-identity}
+ R(\lambda,T)-R(\mu,T)=(\mu-\lambda)R(\lambda,T)R(\mu,T).
+\end{equation}
+两个预解式可交换，$\rho(T)$ 为开集，$R$ 在其中按算子范数全纯，且
+\begin{align}
+ R(\lambda+h,T)&=\sum_{n=0}^\infty(-h)^nR(\lambda,T)^{n+1},
+ &&|h|\|R(\lambda,T)\|<1,\label{eq:y8-local-series}\\
+ \frac{d^n}{d\lambda^n}R(\lambda,T)&=(-1)^n n!R(\lambda,T)^{n+1}.\label{eq:y8-resolvent-derivative}
+\end{align}
+\end{theorem}
+\begin{proof}
+对任意 $y\in X$，两个逆都把 $y$ 送进 $D(T)$，故可合法计算
+\[
+ R(\lambda)[(\mu I-T)-(\lambda I-T)]R(\mu)
+ =R(\lambda)-R(\mu).
+\]
+交换 $\lambda,\mu$ 得可交换性。又在 $D(T)$ 上
+$(\lambda+h)I-T=(I+hR(\lambda))(\lambda I-T)$。
+若 $|h|\|R(\lambda,T)\|<1$，$I+hR(\lambda,T)$ 的 Neumann 级数在范数中收敛，乘积因而可逆，得到局部展开与导数公式。这里从未把无界 $T$ 当作 $\mathcal L(X)$ 的元素。
+\end{proof}
+
+\begin{theorem}[有界算子的谱与谱半径]\label{thm:y8-spectral-radius}
+若 $T\in\mathcal L(X)$，则 $\sigma(T)$ 非空且紧，并有
+\begin{equation}\label{eq:y8-spectral-radius}
+ r(T):=\max_{\lambda\in\sigma(T)}|\lambda|
+ =\lim_{n\to\infty}\|T^n\|^{1/n}
+ =\inf_{n\ge1}\|T^n\|^{1/n}\le\|T\|.
+\end{equation}
+对 $|\lambda|>r(T)$，在算子范数中有
+\begin{equation}\label{eq:y8-infinity-series}
+ R(\lambda,T)=\sum_{n=0}^\infty\lambda^{-n-1}T^n.
+\end{equation}
+\end{theorem}
+\begin{proof}
+先对 $|\lambda|>\|T\|$ 用 Neumann 级数，得谱位于闭圆盘；由预解集开得谱紧。若谱空，$f(R(\lambda)x)$ 对每个 $x\in X,f\in X'$ 是整函数，在无穷远趋零，因而由 Liouville 定理恒为零。Hahn--Banach 分离点推出 $R(\lambda)=0$，与 $(\lambda I-T)R(\lambda)=I$ 矛盾。
+
+令 $a_n=\|T^n\|$，有 $a_{n+m}\le a_na_m$。若某个 $a_k=0$，极限和下确界都为零。否则固定 $k$，写 $n=qk+j$，$0\le j<k$，有
+$a_n\le a_k^q\max(1,a_1,\ldots,a_{k-1})$，故 $\limsup a_n^{1/n}\le a_k^{1/k}$。取下确界，得到极限 $s=\inf a_k^{1/k}$。根值判别给出 \eqref{eq:y8-infinity-series} 在 $|\lambda|>s$ 收敛，左右乘 $\lambda I-T$ 均为 $I$，因此 $r(T)\le s$。
+
+反向固定 $b>r(T)$。大圆上的 Neumann 级数给出
+\[
+ T^n=\frac1{2\pi i}\int_{|z|=b}z^nR(z,T)\,\dd z.
+\]
+此等式先在大于 $\|T\|$ 的圆上逐项积分得到，再在不穿过谱的圆环中用 Cauchy 定理缩小围道。故
+$\|T^n\|\le b^{n+1}\max_{|z|=b}\|R(z,T)\|$，取 $n$ 次根得 $s\le b$，再让 $b\downarrow r(T)$。
+\end{proof}
+
+这里的向量值 Cauchy 定理可对连续线性泛函逐一应用标量定理，再用对偶分离点得到；沿紧围道的积分为 Bochner 积分。谱非空、有界及上述无穷远展开均依赖 $T$ 有界，不能原样推广给一般闭算子。
+
+\begin{example}[范数与谱半径相差很大]
+令 $N=\left(\begin{smallmatrix}0&M\\0&0\end{smallmatrix}\right)$。则 $N^2=0$，故 $r(N)=0$，而欧氏算子范数为 $|M|$。对 $\lambda\ne0$，$R(\lambda,N)=\lambda^{-1}I+\lambda^{-2}N$；即使离谱的距离固定，预解式范数也可随 $M$ 任意增大。因此不能把自伴算子的距离估计无条件用于一般算子。
+\end{example}
+
+\begin{exercise}[谱的下界控制]\label{ex:y8-distance}
+证明对 $\lambda\in\rho(T)$，$\operatorname{dist}(\lambda,\sigma(T))\ge\|R(\lambda,T)\|^{-1}$，其中空谱的距离约定为无穷大。
+\end{exercise}
+\begin{solution}
+式 \eqref{eq:y8-local-series} 保证以 $\lambda$ 为中心、半径 $\|R(\lambda,T)\|^{-1}$ 的开圆盘包含于预解集，故谱不与此圆盘相交。注意这是 $\|R(\lambda,T)\|\ge1/\operatorname{dist}(\lambda,\sigma(T))$，一般不是反方向。
+\end{solution}
+
+\begin{exercise}[幂趋零与谱半径]\label{ex:y8-powers}
+设 $T$ 有界，证明 $r(T)<1$ 当且仅当存在 $C>0$、$0<q<1$ 使 $\|T^n\|\le Cq^n$。此时求 $\sum_{n\ge0}T^n$。
+\end{exercise}
+\begin{solution}
+若 $r(T)<q<1$，由谱半径公式，大 $n$ 时 $\|T^n\|^{1/n}\le q$，把有限个初值吸收到 $C$ 中。反向取根得 $r(T)\le q<1$。范数级数绝对收敛，望远镜相乘给出和为 $(I-T)^{-1}$。
+\end{solution}

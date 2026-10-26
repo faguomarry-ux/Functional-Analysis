@@ -1,0 +1,90 @@
+\Needspace{12\baselineskip}
+\section{Dunford 积分}\label{sec:yosida-08-07}
+\noindent\textit{原书起始页：中译本 236；英文版 225。}
+
+本节固定 $T\in\mathcal L(X)$。设 $f$ 在包含 $\sigma(T)$ 的开集 $V$ 上全纯；$V$ 可不连通。取边界由有限条分段光滑 Jordan 曲线组成的有界开集 $W$，使
+$\sigma(T)\subset W$、$\overline W\subset V$、$\partial W\subset\rho(T)$。边界按区域的正向定向，内边界为顺时针；记 $\Gamma=\partial W$。
+
+\begin{definition}[全纯函数的算子值]
+定义
+\begin{equation}\label{eq:y8-dunford}
+ f(T)=\frac1{2\pi i}\int_\Gamma f(z)R(z,T)\,\dd z.
+\end{equation}
+积分在 Banach 空间 $\mathcal L(X)$ 中按范数进行。只要求 $f$ 在谱的邻域全纯，而不要求它在整个包围大圆盘内全纯。
+\end{definition}
+
+\begin{theorem}[全纯演算的代数性质]\label{thm:y8-holomorphic-calculus}
+式 \eqref{eq:y8-dunford} 与上述围道的选择无关，并满足
+\[
+ 1(T)=I,\quad z(T)=T,\quad
+ (af+bg)(T)=af(T)+bg(T),\quad (fg)(T)=f(T)g(T).
+\]
+特别地，多项式得到通常的代入。若 $f_n\to f$ 在谱的某个固定邻域的紧子集上一致收敛，则 $f_n(T)\to f(T)$ 于算子范数。
+\end{theorem}
+\begin{proof}
+两条允许围道在谱附近可用共同的更小围道比较；差围道的绕数只在 $fR$ 全纯处可能非零，Cauchy 定理给出积分相同。对 $1,z$ 可把围道扩大到 $|z|>\|T\|$，用式 \eqref{eq:y8-infinity-series} 逐项积分得到 $I,T$。线性直接成立。
+
+证明乘法时，选两条相互不交的允许围道，$z$ 的外围道包围 $w$ 的内围道，且相关闭区域包含于共同全纯邻域。由预解恒等式
+\[
+ R(z)R(w)=\frac{R(z)-R(w)}{w-z}.
+\]
+在双积分中，含 $R(z)$ 的项对内变量 $w$ 积分为零，因为 $z$ 在内围道之外；含 $-R(w)$ 的项先对外变量 $z$ 积分，Cauchy 公式给出 $f(w)R(w)$。因而
+\[
+ f(T)g(T)=\frac1{2\pi i}\int_{\Gamma_{\rm in}}f(w)g(w)R(w)\,\dd w.
+\]
+紧围道上被积函数连续且范数有界，保证 Fubini 交换合法。
+\par\Needspace{5\baselineskip}
+最后固定一条允许围道，连续性来自以下估计：
+\begin{equation}\label{eq:y8-calculus-bound}
+ \|f_n(T)-f(T)\|\le
+ \frac{\operatorname{length}(\Gamma)}{2\pi}
+ \max_{z\in\Gamma}|f_n(z)-f(z)|\max_{z\in\Gamma}\|R(z,T)\|,
+\end{equation}
+从而得连续性。
+\end{proof}
+
+若 $f(z)=\sum_{n\ge0}a_nz^n$ 的收敛圆盘包含谱及其邻域，上述连续性给出 $f(T)=\sum_{n\ge0}a_nT^n$ 的范数收敛。特别地
+$e^{tT}=\sum_{n\ge0}t^nT^n/n!$，但这还不是一般无界生成元的指数定义。
+
+\begin{theorem}[谱映射与复合]\label{thm:y8-spectral-mapping}
+若 $f$ 在 $\sigma(T)$ 的邻域全纯，则
+\begin{equation}\label{eq:y8-spectral-mapping}
+ \sigma(f(T))=f(\sigma(T)).
+\end{equation}
+若 $g$ 在 $f(\sigma(T))$ 的邻域全纯，则 $g(f(T))=(g\circ f)(T)$。
+\end{theorem}
+\begin{proof}
+若 $w\notin f(\sigma(T))$，$h(z)=(w-f(z))^{-1}$ 在谱的充分小邻域全纯，乘法性质给出 $(wI-f(T))h(T)=h(T)(wI-f(T))=I$，所以 $w\notin\sigma(f(T))$。
+反向，给定 $a\in\sigma(T)$，令
+$q(z)=(f(z)-f(a))/(z-a)$，在 $a$ 处取可去值，则
+\[
+ f(T)-f(a)I=(T-aI)q(T)=q(T)(T-aI).
+\]
+若左边可逆，两个可交换因子中 $T-aI$ 也可逆：其逆为 $q(T)(f(T)-f(a)I)^{-1}$，左右乘均为 $I$。矛盾，故 $f(a)\in\sigma(f(T))$。
+
+为证明复合，围住 $f(\sigma(T))$ 取允许围道 $\Lambda$，再把 $z$ 围道缩入使 $f(z)$ 位于 $\Lambda$ 内部的谱邻域。由乘法性质，对 $w\in\Lambda$ 有
+\[
+ R(w,f(T))=\frac1{2\pi i}\int_\Gamma
+ \frac{R(z,T)}{w-f(z)}\,\dd z.
+\]
+代入 $g(f(T))$ 并交换两个紧围道积分，对 $w$ 应用 Cauchy 公式，得 $g(f(z))$，即所需复合公式。
+\end{proof}
+
+\begin{example}[分离两块谱]
+若 $\sigma(T)=K_1\cup K_2$，其中两紧集不交，取 $f$ 在 $K_1$ 附近为一、$K_2$ 附近为零，便有 $f^2=f$，故 $P=f(T)$ 满足 $P^2=P$ 且与 $T$ 交换。它称为相应的 Riesz 投影；不是任意 Banach 空间上的正交投影。下一节直接对闭算子的孤立谱点构造这种投影。
+\end{example}
+
+\begin{exercise}[Jordan 块的函数]\label{ex:y8-jordan-function}
+令 $T=aI+N$，$N^m=0$。若 $f$ 在 $a$ 附近全纯，证明
+$f(T)=\sum_{k=0}^{m-1}f^{(k)}(a)N^k/k!$。
+\end{exercise}
+\begin{solution}
+预解式为 $R(z,T)=\sum_{k=0}^{m-1}N^k/(z-a)^{k+1}$。沿围住 $a$ 的小圆积分，逐项应用 Cauchy 导数公式即可；只有有限项，故无无限级数交换问题。
+\end{solution}
+
+\begin{exercise}[指数与谱]\label{ex:y8-exponential}
+对有界 $T$ 证明 $e^{sT}e^{tT}=e^{(s+t)T}$，并求 $\sigma(e^{tT})$。
+\end{exercise}
+\begin{solution}
+由演算的乘法性质，标量恒等式 $e^{sz}e^{tz}=e^{(s+t)z}$ 代入即得第一式。谱映射给出 $\sigma(e^{tT})=\{e^{t\lambda}:\lambda\in\sigma(T)\}$。不同谱点可能映到同一点，不能据此逐点反演指数。
+\end{solution}

@@ -1,0 +1,55 @@
+\Needspace{12\baselineskip}
+\section{预解式和谱}\label{sec:yosida-08-01}
+\noindent\textit{原书起始页：中译本 219；英文版 209。}
+
+\begin{definition}[预解集与三类谱]
+若 $\lambda I-T:D(T)\to X$ 双射且其逆为 $X$ 上有界算子，称 $\lambda\in\rho(T)$，并记
+\[
+ R(\lambda,T)=(\lambda I-T)^{-1},\qquad \sigma(T)=\mathbb C\setminus\rho(T).
+\]
+其中 $R(\lambda,T)X=D(T)$，逆算子虽在全空间有界，$T$ 本身仍可能无界。依次按下列互斥条件分类：不单射为点谱 $\sigma_p(T)$；单射、值域稠密但非全空间为连续谱 $\sigma_c(T)$；单射而值域不稠密为剩余谱 $\sigma_r(T)$。
+\end{definition}
+
+\begin{proposition}[闭性与稳定可解性]\label{prop:y8-lower-bound}
+对闭算子 $T$，$\lambda\in\rho(T)$ 当且仅当 $R(\lambda I-T)$ 稠密，且存在 $c>0$ 使
+\begin{equation}\label{eq:y8-lower-bound}
+ \|(\lambda I-T)x\|\ge c\|x\|\quad(x\in D(T)).
+\end{equation}
+此时 $\|R(\lambda,T)\|\le c^{-1}$。特别地，闭算子的双射条件已蕴含逆有界。
+\end{proposition}
+\begin{proof}
+逆有界立即给出下界与满射。反向中下界给出单射。若 $y_n=(\lambda I-T)x_n\to y$，则 $x_n$ 为 Cauchy 列，故 $x_n\to x$；又 $Tx_n=\lambda x_n-y_n$ 收敛，由闭性 $x\in D(T)$ 且 $(\lambda I-T)x=y$。所以值域闭，结合稠密性即满射，下界给出逆的范数估计。若只知双射，逆的图是闭图，闭图像定理给出有界性。
+\end{proof}
+
+原书先在拓扑空间中把预解式定义在稠密值域上；在本章闭算子的 Banach 框架内，以上命题说明该定义等价于处处定义的有界逆。去掉闭性就不能用这一步，因此三类谱的表述也不能脱离本章假设照搬。
+
+\begin{example}[连续谱与剩余谱]
+在 $L^2(\mathbb R)$ 上令 $Tf(t)=tf(t)$，$D(T)=\{f:tf\in L^2\}$。这是闭的稠密定义算子：从 $f_n\to f$、$tf_n\to g$ 可抽取共同的几乎处处收敛子列，得 $g=tf$。对 $\lambda\notin\mathbb R$，逆为乘子 $(\lambda-t)^{-1}$，范数为 $|\operatorname{Im}\lambda|^{-1}$。对实数 $a$，$aI-T$ 单射，值域稠密，因为截去 $|t-a|<\varepsilon$ 的任意 $L^2$ 函数都属于其值域；但取归一化且支于 $|t-a|<1/n$ 的 $f_n$，有 $\|(aI-T)f_n\|\le1/n$，与有界逆矛盾。故 $\sigma(T)=\sigma_c(T)=\mathbb R$。
+
+在 $\ell^2$ 上的右移 $S(x_1,x_2,\ldots)=(0,x_1,x_2,\ldots)$ 单射，其值域为 $\{y:y_1=0\}$，故 $0\in\sigma_r(S)$。谱点并不一定是特征值。
+\end{example}
+
+\begin{proposition}[自伴算子的非实预解式]\label{prop:y8-self-adjoint-resolvent}
+若 $T=T^*$ 是复 Hilbert 空间上的自伴算子，则
+\[
+ \sigma(T)\subset\mathbb R,\qquad
+ \|R(\lambda,T)\|\le |\operatorname{Im}\lambda|^{-1}\quad(\operatorname{Im}\lambda\ne0).
+\]
+\end{proposition}
+\begin{proof}
+第一变量线性的内积给出 $\operatorname{Im}((\lambda I-T)x,x)=\operatorname{Im}\lambda\,\|x\|^2$，故有下界 \eqref{eq:y8-lower-bound}。值域的正交补是 $\ker(\overline\lambda I-T^*)$；同一下界说明它为零。由上一命题即可，不需要预先调用谱定理。
+\end{proof}
+
+\begin{exercise}[谱的三种失效方式]\label{ex:y8-spectrum-types}
+求 $\mathbb C^2$ 上 $A=\operatorname{diag}(1,2)$ 的谱与预解式，并解释为何有限维没有连续谱和剩余谱。
+\end{exercise}
+\begin{solution}
+$R(\lambda,A)=\operatorname{diag}((\lambda-1)^{-1},(\lambda-2)^{-1})$，$\rho(A)=\mathbb C\setminus\{1,2\}$。有限维中单射等价于满射，逆自动连续，故谱只能由不单射造成，两个谱点均为点谱。
+\end{solution}
+
+\begin{exercise}[下界不保证满射]\label{ex:y8-shift-bound}
+对右移 $S$ 证明 $\|Sx\|=\|x\|$，并说明这为何不意味着 $0\in\rho(S)$。
+\end{exercise}
+\begin{solution}
+移位不改变平方和，故下界常数为 $1$。但值域是余维一闭子空间，缺少稠密性。预解集要求对每个右端可解；下界只控制单射与已有解的稳定性。
+\end{solution}

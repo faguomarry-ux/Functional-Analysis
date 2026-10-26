@@ -1,0 +1,84 @@
+\Needspace{12\baselineskip}
+\section{预解式的孤立奇点}\label{sec:yosida-08-08}
+\noindent\textit{原书起始页：中译本 238；英文版 228。}
+
+重新允许 $T$ 无界而闭。设 $\lambda_0\in\sigma(T)$ 孤立，即存在 $r>0$ 使 $0<|z-\lambda_0|<r$ 全在 $\rho(T)$。算子值全纯性给出范数 Laurent 展开
+\begin{equation}\label{eq:y8-laurent}
+ R(z,T)=\sum_{k=-\infty}^\infty A_k(z-\lambda_0)^k,\qquad
+ A_k=\frac1{2\pi i}\int_\Gamma
+ \frac{R(z,T)}{(z-\lambda_0)^{k+1}}\,\dd z,
+\end{equation}
+其中 $\Gamma$ 为充分小的正向圆周。收敛在穿孔圆盘的紧子圆环上一致。记 $P=A_{-1}$。
+
+\begin{theorem}[留数投影与局部分解]\label{thm:y8-riesz-projection}
+$P$ 是非零有界投影，$PX\subset D(T)$，$TP$ 有界；$P$ 保持 $D(T)$ 且在该定义域与 $T$ 交换。令
+\[
+ X_1=PX,\quad X_2=(I-P)X,\quad B=(T-\lambda_0I)|_{X_1}.
+\]
+则 $B\in\mathcal L(X_1)$ 且 $r(B)=0$，在直和 $X=X_1\oplus X_2$ 下有
+\begin{equation}\label{eq:y8-local-resolvent-split}
+ R(z,T)=\sum_{n=0}^\infty\frac{B^nP}{(z-\lambda_0)^{n+1}}+H(z),
+\end{equation}
+其中把 $B^nP$ 视为 $X\to X_1\subset X$，$H$ 在整个小圆盘全纯且在 $X_1$ 上为零。限制算子 $T_2=T|_{D(T)\cap X_2}$ 满足 $\lambda_0\in\rho(T_2)$，且 $H(\lambda_0)|_{X_2}=R(\lambda_0,T_2)$。
+\end{theorem}
+\begin{proof}
+给 $D(T)$ 图范数 $\|x\|_T=\|x\|+\|Tx\|$。由 $TR(z)=zR(z)-I$，$R(z):X\to D(T)$ 在紧围道上按图范数连续。因此式 \eqref{eq:y8-laurent} 的每个系数都把 $X$ 有界送入 $D(T)$，可在积分号下施加 $T$。预解式的交换性还说明各系数彼此交换，并在 $D(T)$ 上与 $T$ 交换。
+
+对 $z$ 在小圆外、穿孔圆盘内，对内圆变量 $w$ 积分预解恒等式，得到
+\[
+ PR(z)=\frac1{2\pi i}\int_{\Gamma_{\rm in}}
+ \frac{R(w)-R(z)}{z-w}\,\dd w
+ =\sum_{n=0}^\infty A_{-n-1}(z-\lambda_0)^{-n-1}.
+\]
+即 $PR(z)$ 恰为 Laurent 主部。比较 $z$ 的留数给出 $P^2=P$，比较非负系数给出 $PA_k=0$（$k\ge0$）。再由
+$(zI-T)R(z)=I$ 比较系数，得到
+\begin{equation}\label{eq:y8-laurent-recursion}
+ (T-\lambda_0I)A_{-n-1}=A_{-n-2},\qquad
+ (\lambda_0I-T)A_0=I-P.
+\end{equation}
+于是 $A_{-n-1}=B^nP$，$H=(I-P)R$ 可去奇点，且 $H(\lambda_0)=A_0$。同样在 $D(T)$ 上比较 $R(z)(zI-T)=I$ 的常数项，得 $A_0(\lambda_0I-T)=I-P$。这两式说明 $A_0|_{X_2}$ 为 $\lambda_0I-T_2$ 的双侧有界逆。若 $P=0$，所有主部系数为零，$A_0$ 将在全空间给出 $\lambda_0I-T$ 的有界逆，与谱点假设矛盾，故 $P\ne0$。
+
+对任意 $0<\varepsilon<r$，系数估计给出
+\[
+ \|B^nP\|\le\varepsilon^{n+1}
+ \max_{|z-\lambda_0|=\varepsilon}\|R(z,T)\|.
+\]
+由非零空间 $X_1$ 上有界算子 $B$ 的谱半径公式得 $r(B)\le\varepsilon$，所以 $r(B)=0$。
+\end{proof}
+
+\begin{theorem}[极点、幂零性与广义特征空间]\label{thm:y8-pole}
+在上述条件下，$\lambda_0$ 是预解式的 $m$ 阶极点，当且仅当 $B$ 幂零且幂零指数为 $m$。此时 $\lambda_0$ 是特征值，且对所有 $n\ge m$，
+\begin{equation}\label{eq:y8-pole-decomposition}
+ PX=\ker(T-\lambda_0I)^n,\qquad
+ (I-P)X=R((T-\lambda_0I)^n).
+\end{equation}
+其中幂的定义域为逐次复合定义域。若 $PX$ 有限维，则孤立谱点必为极点；反过来极点不保证 $P$ 有限秩。
+\end{theorem}
+\begin{proof}
+式 \eqref{eq:y8-local-resolvent-split} 中主部系数为 $B^nP$，故有限终止恰等价于幂零性，阶数由最后一个非零系数确定。若 $B^{m-1}u\ne0$，则它是 $T-\lambda_0I$ 的非零核向量。$X_1$ 上该算子的 $m$ 次幂为零，$X_2$ 上它可逆，其 $n$ 次幂也从逐次复合定义域双射到 $X_2$，得到核与值域公式。
+
+若 $PX$ 有限维，$r(B)=0$ 使其所有特征值为零，由特征多项式和 Cayley--Hamilton 定理知 $B$ 幂零。反向取无限维 $X$ 上的 $T=\lambda_0I$，则预解式为 $(z-\lambda_0)^{-1}I$，是一阶极点而 $P=I$ 无限秩。
+\end{proof}
+
+\begin{example}[孤立谱点也可能是本性奇点]
+在 $L^2(0,1)$ 上取 Volterra 算子 $(Vf)(x)=\int_0^xf(t)\,\dd t$。由反复积分
+\[
+ (V^nf)(x)=\frac1{(n-1)!}\int_0^x(x-t)^{n-1}f(t)\,\dd t
+ \quad(n\ge1).
+\]
+将 $f$ 零延拓并用卷积的 $L^1$--$L^2$ 估计，得 $\|V^n\|\le1/n!$，所以 $r(V)=0$；非空谱定理给出 $\sigma(V)=\{0\}$。但 $V^n1=x^n/n!\ne0$，所以 $V$ 不幂零。于是零是预解式的孤立本性奇点，$P=I$；又 $V$ 单射，故零甚至不是特征值。不能将孤立谱点一律视为矩阵的 Jordan 极点。
+\end{example}
+
+\begin{exercise}[二阶极点与留数]\label{ex:y8-pole-jordan}
+令 $T=\left(\begin{smallmatrix}a&1&0\\0&a&0\\0&0&b\end{smallmatrix}\right)$，$a\ne b$。计算 $R(z,T)$ 在 $a$ 附近的主部、留数投影及广义特征空间。
+\end{exercise}
+\begin{solution}
+左上块逆为 $(z-a)^{-1}I_2+(z-a)^{-2}\left(\begin{smallmatrix}0&1\\0&0\end{smallmatrix}\right)$，第三坐标为 $(z-b)^{-1}$，在 $a$ 附近全纯。故 $P=\operatorname{diag}(1,1,0)$，主部为 $(z-a)^{-1}P+(z-a)^{-2}E_{12}$，是二阶极点，$PX=\ker(T-aI)^2=\operatorname{span}\{e_1,e_2\}$，而普通特征空间仅为 $\operatorname{span}\{e_1\}$。
+\end{solution}
+
+\begin{exercise}[一阶极点的含义]\label{ex:y8-simple-pole}
+证明一阶极点等价于 $T|_{PX}=\lambda_0I$，并说明它不意味着特征空间为一维。
+\end{exercise}
+\begin{solution}
+一阶极点恰指主部只有 $(z-\lambda_0)^{-1}P$，即 $BP=0$，所以在 $PX$ 上 $T=\lambda_0I$；反向显然。$PX$ 可以为任意非零维数，甚至无限维。极点阶数控制幂零部分的长度，不等于特征空间维数。
+\end{solution}

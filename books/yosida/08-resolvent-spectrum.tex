@@ -1,42 +1,26 @@
 % !TeX encoding = UTF-8
-% 吉田第六版：中译本第 8 章；此文件当前仅为目录与正文占位。
-\SetChapterInfo{subtitle={吉田耕作第六版主线 · 正文待撰写}}
+\SetChapterInfo{subtitle={从方程的可解性到谱分解与全纯演算},keywords={预解式; 谱半径; 遍历; 殆周期; Dunford 积分; Riesz 投影},prereq={Banach 空间与闭图像; 强弱收敛; 对偶和伴随; 向量全纯函数},goals={控制预解式的定义域; 用平均提取不动点; 用围道积分分离谱}}
 \chapter{预解式和谱}\label{ch:yosida-08}
-\YosidaChapterPlaceholder{8}{Resolvent and Spectrum}{219--242}{209--230}
+\ChapterSource{按 \cite{yosida-zh,yosida-en} 第八章八节组织，2026 年 10 月 27 日补写为学习讲义。原书位置为中译本印刷 219--242 页、英文版印刷 209--230 页。已查看英文全章扫描图及中文选页，实际范围见本章 COVERAGE。证明采用本稿的记号重组，不逐句翻写教材；原书的局部凸结论与本稿采用的 Banach 假设在各节分开说明。}
 
-\section{预解式和谱}\label{sec:yosida-08-01}
-\YosidaSectionPlaceholder{219}{209}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
+上一章研究 $T$ 与 $T'$、$T^*$ 的关系；本章把问题集中到带参数的方程
+\[
+ (\lambda I-T)x=y.
+\]
+一个参数是否属于谱，取决于这个方程是否对每个右端有唯一且稳定的解。预解式把这种可解性编码为算子值全纯函数；平均过程提取不动点，围道积分则提取谱子空间。除特别说明外，$X\ne\{0\}$ 是复 Banach 空间，$\mathcal L(X)$ 带算子范数，$T:D(T)\subset X\to X$ 为闭线性算子；不默认 $D(T)$ 稠密。涉及对偶时再加入稠密性。实空间的谱论须先复化。
 
-\section{预解方程和谱半径}\label{sec:yosida-08-02}
-\YosidaSectionPlaceholder{221}{211}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
+\input{books/yosida/chapter08/01-resolvent}
+\input{books/yosida/chapter08/02-spectral-radius}
+\input{books/yosida/chapter08/03-mean-ergodic}
+\input{books/yosida/chapter08/04-pseudo-resolvent}
+\input{books/yosida/chapter08/05-almost-periodic}
+\input{books/yosida/chapter08/06-dual-resolvent}
+\input{books/yosida/chapter08/07-dunford}
+\input{books/yosida/chapter08/08-isolated}
 
-\section{平均遍历定理}\label{sec:yosida-08-03}
-\YosidaSectionPlaceholder{223}{213}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
+\Needspace{10\baselineskip}
+\section*{本章参考与后续阅读衔接}
+\phantomsection\addcontentsline{toc}{section}{本章参考与后续阅读衔接}
+直接查阅的材料为吉田两版第八章 \cite{yosida-zh,yosida-en}。原书本章提及的 Hille、Yosida、Kakutani、von Neumann、Weil、Phillips、Dunford--Schwartz、Nagumo 与 Taylor 等原始文献，本次未直接查阅，不列为本稿独立核验的来源。中文章末评注把第六节与第八节分别追溯到 Phillips 及 Nagumo、Taylor，并指向下一章的局部凸推广。
 
-\section{关于伪预解式的 Hille 型遍历定理}\label{sec:yosida-08-04}
-\YosidaSectionPlaceholder{226}{215}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{殆周期函数的平均值}\label{sec:yosida-08-05}
-\YosidaSectionPlaceholder{229}{218}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{对偶算子的预解式}\label{sec:yosida-08-06}
-\YosidaSectionPlaceholder{235}{224}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{Dunford 积分}\label{sec:yosida-08-07}
-\YosidaSectionPlaceholder{236}{225}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{预解式的孤立奇点}\label{sec:yosida-08-08}
-\YosidaSectionPlaceholder{238}{228}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section*{本章评注和参考文献整理（占位）}
-\phantomsection
-\addcontentsline{toc}{section}{本章评注和参考文献整理（占位）}
-待核对原书本章评注和参考文献（中译本印刷第 242 页），并整理相应论述。
+本章已证明的平均遍历定理在幂有界 Banach 情形成立，伪预解式采用一致有界的序列版本；不把它们冒充原书一般局部凸表述的完整证明。全纯演算先对有界算子建立；最后一节对无界闭算子使用图范数控制围道积分。下一章将以 $\lambda R(\lambda,T)$ 和预解式幂估计构造半群，届时必须继续区分强极限、范数极限与生成元的定义域。

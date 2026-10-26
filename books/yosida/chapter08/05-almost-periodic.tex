@@ -1,0 +1,77 @@
+\Needspace{12\baselineskip}
+\section{殆周期函数的平均值}\label{sec:yosida-08-05}
+\noindent\textit{原书起始页：中译本 229；英文版 218。}
+
+本节 $G$ 为抽象群，不预设交换性。对有界复函数 $h$，考察双侧平移族
+\[
+ h_s(a,b)=h(asb),\qquad s,a,b\in G.
+\]
+若 $\{h_s:s\in G\}$ 在 $\ell^\infty(G\times G)$ 的一致范数中全有界，称 $h$ 殆周期。这是原书采用的双侧定义。有限个此类函数的向量值平移族仍全有界；取有限乘积的网即可证明。因此线性组合、共轭、绝对值、乘积与 $h(g^{-1})$ 也殆周期，一致极限仍殆周期。
+
+\begin{lemma}[从函数得到紧度量群]\label{lem:y8-compact-group}
+给定殆周期函数 $h$，存在紧度量群 $K$、像稠密的群同态 $\iota:G\to K$ 和 $H\in C(K)$，使 $h=H\circ\iota$。有限个函数可使用同一个 $K$。
+\end{lemma}
+\begin{proof}
+定义双侧不变伪距离
+\[
+ d(s,t)=\sup_{a,b\in G}|h(asb)-h(atb)|.
+\]
+左乘或右乘同一元素不改变 $d$。令 $N=\{s:d(s,e)=0\}$，双侧不变性与三角不等式说明 $N$ 是正规子群，$d$ 在 $G/N$ 上成为距离。映射 $s\mapsto h_s$ 保距，故 $G/N$ 全有界。乘法满足
+$d(st,s't')\le d(s,s')+d(t,t')$，取逆也保距，因而二者唯一延拓到其完备化 $K$，群公理由稠密性延续。全有界且完备的度量空间紧。又 $|h(s)-h(t)|\le d(s,t)$，故 $h$ 降到商上并延拓为 $H\in C(K)$。有限个函数时改用各伪距离的最大值即可。
+\end{proof}
+
+\begin{theorem}[唯一的双侧不变平均]\label{thm:y8-ap-mean}
+殆周期函数空间上存在唯一线性泛函 $M$ 满足 $M(1)=1$、正性及左右平移不变性。并且
+\[
+ |M(h)|\le\|h\|_\infty,\quad M(\overline h)=\overline{M(h)},\quad
+ M(h(g^{-1}))=M(h),\quad |M(h)|\le M(|h|).
+\]
+若 $h\ge0$ 且 $h$ 不恒为零，则 $M(h)>0$。
+\end{theorem}
+\Needspace{7\baselineskip}
+\begin{proof}
+先在引理得到的紧度量群 $K$ 上构造平均，不预用 Haar 测度。取稠密列 $s_j$ 及 $\alpha_j>0$、$\sum_j\alpha_j=1$，令
+\[
+ (LH)(g)=\sum_j\alpha_jH(s_jg),\qquad
+ (UH)(g)=\sum_j\alpha_jH(gs_j).
+\]
+二者为 $C(K)$ 上的正压缩，保持常数且相互交换。固定 $H$ 的左右平移族在一致范数中紧：平移参数在紧群中变化，一致连续性使参数到函数的映射连续。紧集的闭凸包在 Banach 空间中也紧；确实，用有限 $\varepsilon$ 网把凸包逼近到有限个点的紧凸包，便得全有界性，再用完备性。
+
+所以 $L$ 的 Ces\`aro 平均作用于 $H$ 后有范数聚点，由定理 \ref{thm:y8-mean-ergodic} 的弱聚点论证，整个平均列一致收敛到 $L$ 的不动点。实值不动点 $V$ 在 $g_0$ 达到最大值；由
+$V(g_0)=\sum_j\alpha_jV(s_jg_0)$ 及权重严格为正，每个 $V(s_jg_0)$ 都等于该最大值，稠密性推出 $V$ 常值。实部、虚部分别处理，故平均极限为 $m_L(H)1$。同理右平均为 $m_U(H)1$。
+
+左右平均交换且范数不超过一，对双平均先后取极限即得 $m_L(H)=m_U(H)=m(H)$。因为 $L$ 与任意右平移交换，$m_L$ 右不变；因为 $U$ 与任意左平移交换，$m_U$ 左不变。因此 $m$ 双侧不变、正、线性且 $m(1)=1$，其范数为一。任意有界的归一化左不变泛函作用于 $L$ 的各次平均，值始终为该泛函在 $H$ 上的值；取一致极限便被迫等于 $m(H)$，给出唯一性。正且归一化的泛函自动有界。
+
+于是常数 $m(H)$ 属于 $h$ 的左平移闭凸包。不同有限组函数的模型可以用伪距离的最大值共同加细；加细模型到原模型的自然满射是连续群同态，拉回函数后，其归一化不变平均由刚证的唯一性保持不变。因此各模型给出的数值相容，对有限组函数使用共同模型就得到原群上 $M$ 的线性、正性与不变性。任何其他归一化正不变泛函在左平移凸组合上保持原值，再取一致极限，故必等于 $M$。取逆把左右平移互换，唯一性给出逆不变性；共轭性质由实值正性得出。取相位 $c$ 使 $cM(h)=|M(h)|$，则
+$|M(h)|=M(\operatorname{Re}(ch))\le M(|h|)$。
+
+最后若连续非负 $H(g_0)>0$，其正值邻域的有限个左平移覆盖 $K$，故存在 $t_1,\ldots,t_m$、$\delta>0$ 使 $\sum_jH(t_jg)\ge\delta$ 对所有 $g$ 成立。取平均得 $mM(h)\ge\delta>0$。
+\end{proof}
+
+\begin{proposition}[实直线上的区间平均]\label{prop:y8-real-mean}
+若 $h:\mathbb R\to\mathbb C$ 连续且殆周期，则
+\[
+ \lim_{T\to\infty}\frac1T\int_a^{a+T}h(t)\,\dd t=M(h),
+\]
+收敛关于 $a\in\mathbb R$ 一致。
+\end{proposition}
+\begin{proof}
+上一证明提供有限平移凸组合 $v(t)=\sum_{j=1}^m\beta_jh(t+s_j)$，使 $\|v-M(h)\|_\infty<\varepsilon$。这里可用有限组合，因为无限凸组合可在一致范数中由有限组合逼近。对任意 $a$，$h(t+s_j)$ 与 $h(t)$ 的区间平均之差至多 $2|s_j|\|h\|_\infty/T$。因此原平均与 $M(h)$ 之差至多
+$\varepsilon+2\|h\|_\infty\sum_j\beta_j|s_j|/T$，与 $a$ 无关。
+\end{proof}
+
+这个证明覆盖原书的抽象群平均值，而没有把一般殆周期函数的平均值仅归结为三角多项式的计算。它使用紧度量完备化、闭凸包紧性与前节平均定理；没有在此证明 Bohr 一致逼近定理或 Peter--Weyl 定理。
+
+\begin{exercise}[频率与平均]\label{ex:y8-ap-frequency}
+求 $h(t)=3+2e^{it}-e^{i\sqrt2t}$ 的平均值，并求 $M(e^{i\omega t})$（$\omega\in\mathbb R$）。
+\end{exercise}
+\begin{solution}
+若 $\omega\ne0$，平移 $s$ 给出 $M(e^{i\omega t})=e^{i\omega s}M(e^{i\omega t})$，选择 $e^{i\omega s}\ne1$，得平均为零。$\omega=0$ 时为一，故 $M(h)=3$。有限个指数函数的平移系数落在紧环面的子集内，验证了它们殆周期。
+\end{solution}
+
+\begin{exercise}[平均值不是乘法泛函]\label{ex:y8-ap-product}
+用 $h(t)=e^{it}$、$k(t)=e^{-it}$ 说明 $M(hk)=M(h)M(k)$ 一般不成立。
+\end{exercise}
+\begin{solution}
+两函数均值为零，乘积却恒为一，故 $M(hk)=1\ne0$。平均提取常数分量，两个非零频率相乘时可能产生零频率。
+\end{solution}

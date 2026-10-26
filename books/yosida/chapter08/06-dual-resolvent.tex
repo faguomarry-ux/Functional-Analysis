@@ -1,0 +1,63 @@
+\Needspace{12\baselineskip}
+\section{对偶算子的预解式}\label{sec:yosida-08-06}
+\noindent\textit{原书起始页：中译本 235；英文版 224。}
+
+本节 $T$ 为复 Banach 空间 $X$ 上稠密定义的闭算子，$T'$ 是第七章的线性对偶算子。定义域稠密使 $T'$ 单值；并不假定 $D(T')$ 在 $X'$ 的范数中稠密。
+
+\begin{theorem}[对偶预解式与谱]\label{thm:y8-dual-resolvent}
+有
+\begin{equation}\label{eq:y8-dual-resolvent}
+ \rho(T')=\rho(T),\qquad R(\lambda,T')=R(\lambda,T)',
+ \qquad\sigma(T')=\sigma(T).
+\end{equation}
+Hilbert 伴随相应满足
+\begin{equation}\label{eq:y8-adjoint-resolvent}
+ R(\overline\lambda,T^*)=R(\lambda,T)^*,\qquad
+ \sigma(T^*)=\{\overline\lambda:\lambda\in\sigma(T)\}.
+\end{equation}
+\end{theorem}
+\begin{proof}
+写 $A=\lambda I-T$。若 $\lambda\in\rho(T)$，令 $B=A^{-1}\in\mathcal L(X)$。对 $g\in X'$、$x\in D(T)$，
+\[
+ (B'g)(Ax)=g(BAx)=g(x).
+\]
+因此 $B'g\in D(A')$ 且 $A'B'g=g$。若 $f\in D(A')$，则对 $y\in X$ 有
+$(B'A'f)(y)=(A'f)(By)=f(ABy)=f(y)$，故 $B'A'=I$，得 $R(\lambda,T')=B'$。
+
+反向设 $\lambda\in\rho(T')$，令 $C=(A')^{-1}$，$\|C\|=c$。由对偶范数公式，对 $x\in D(T)$ 有
+\[
+ \|x\|=\sup_{\|g\|\le1}|g(x)|
+ =\sup_{\|g\|\le1}|(Cg)(Ax)|\le c\|Ax\|.
+\]
+所以 $A$ 单射且值域闭。又 $R(A)$ 的零化子等于 $\ker A'$，后者为零，Hahn--Banach 推出 $R(A)$ 稠密，于是 $A$ 满射，逆有界。这就证明预解集相等。
+
+在线性对偶中 $(\lambda I-T)'=\lambda I-T'$；Hilbert 识别涉及共轭线性，故 $(\lambda I-T)^*=\overline\lambda I-T^*$，得到式 \eqref{eq:y8-adjoint-resolvent}。
+\end{proof}
+
+证明没有把 $X$ 直接等同于 $X''$，故不需要自反性。它也避免了无界算子复合的无条件转置法则：每个恒等式均通过配对和定义域直接验证。
+
+\begin{proposition}[剩余谱与伴随特征向量]
+对稠密定义的 $T$，
+\[
+ \overline{R(\lambda I-T)}=X
+ \quad\Longleftrightarrow\quad\ker(\lambda I-T')=\{0\}.
+\]
+Hilbert 情形右边为 $\ker(\overline\lambda I-T^*)=0$。因此 $\lambda\in\sigma_r(T)$ 当且仅当 $\lambda I-T$ 单射且 $T'$ 有特征值 $\lambda$。
+\end{proposition}
+\begin{proof}
+泛函 $f$ 零化 $R(\lambda I-T)$，等价于 $f\in D(T')$ 且 $(\lambda I-T')f=0$。再用 Hahn--Banach 的稠密性判别即可。点谱与剩余谱按第一节的互斥约定区分，不能省略单射条件。
+\end{proof}
+
+\begin{exercise}[移位的谱型变化]\label{ex:y8-dual-shift}
+在 $\ell^2$ 上对右移 $S$ 和左移 $L=S^*$，证明 $0$ 对 $S$ 是剩余谱点，对 $L$ 是点谱点。这与两者的谱相同是否矛盾？
+\end{exercise}
+\begin{solution}
+$S$ 单射而值域为 $\{x:x_1=0\}$，所以 $0\in\sigma_r(S)$；$Le_1=0$，所以 $0\in\sigma_p(L)$。谱集相同不表示点谱、连续谱、剩余谱逐类相同；这里 Hilbert 伴随还需注意复共轭，零点不受影响。
+\end{solution}
+
+\begin{exercise}[标量的共轭]\label{ex:y8-dual-scalar}
+令 $T=iI$。分别求 $T'$、$T^*$ 的谱与预解式，核对两种公式。
+\end{exercise}
+\begin{solution}
+$T'=iI$，谱为 $\{i\}$，$R(\lambda,T')=(\lambda-i)^{-1}I=R(\lambda,T)'$。而 $T^*=-iI$，谱为 $\{-i\}$，$R(\overline\lambda,T^*)=(\overline\lambda+i)^{-1}I=R(\lambda,T)^*$。
+\end{solution}

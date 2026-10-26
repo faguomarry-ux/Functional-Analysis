@@ -1,0 +1,81 @@
+\Needspace{12\baselineskip}
+\section{关于伪预解式的 Hille 型遍历定理}\label{sec:yosida-08-04}
+\noindent\textit{原书起始页：中译本 226；英文版 215。}
+
+\begin{definition}[伪预解式]
+在含至少两个点的集合 $\Omega\subset\mathbb C$ 上，一族 $J_\lambda\in\mathcal L(X)$ 若满足
+\begin{equation}\label{eq:y8-pseudo-identity}
+ J_\lambda-J_\mu=(\mu-\lambda)J_\lambda J_\mu\quad(\lambda,\mu\in\Omega),
+\end{equation}
+称为伪预解式。不要求它预先来自某个算子，也不要求 $\Omega$ 开。
+\end{definition}
+
+\begin{proposition}[共同核、共同值域与算子的重建]\label{prop:y8-pseudo-reconstruction}
+全部 $J_\lambda$ 彼此交换，并有共同的核 $N$ 和共同的值域 $D$；全部 $I-\lambda J_\lambda$ 也有共同的核 $F$ 和共同的值域 $E$。若 $N=\{0\}$，则在 $D$ 上
+\begin{equation}\label{eq:y8-reconstructed-operator}
+ B=\lambda I-J_\lambda^{-1}
+\end{equation}
+与参数无关，是闭算子，且 $J_\lambda=R(\lambda,B)$。其定义域稠密当且仅当 $\overline D=X$。
+\end{proposition}
+\begin{proof}
+交换参数得交换性。恒等式可写为
+$J_\lambda=J_\mu[I+(\mu-\lambda)J_\lambda]$，故各值域相同；代入 $J_\mu x=0$ 得各核相同。又
+\[
+ I-\lambda J_\lambda
+ =[I+(\mu-\lambda)J_\lambda](I-\mu J_\mu).
+\]
+方括号可逆，其逆为 $I+(\lambda-\mu)J_\mu$，并与各因子交换，所以相应核与值域相同。若 $N=0$，对 $x=J_\mu y\in D$ 有
+$J_\lambda^{-1}x=y+(\lambda-\mu)x$，得式 \eqref{eq:y8-reconstructed-operator} 无关参数。若 $x_n\to x$、$Bx_n\to z$，则
+$x_n=J_\lambda(\lambda x_n-Bx_n)\to J_\lambda(\lambda x-z)$，故 $x\in D$ 且 $Bx=z$。其余由定义得到。
+\end{proof}
+
+\begin{theorem}[零端与无穷端的平均分解]\label{thm:y8-pseudo-ergodic}
+设 $\lambda_n\in\Omega$ 非零，$Q_n=\lambda_nJ_{\lambda_n}$，且 $\sup_n\|Q_n\|<\infty$。
+若 $\lambda_n\to0$，则
+\[
+ \overline E=\{x:Q_nx\to0\},\qquad
+ F=\{x:Q_nx=x\text{ 对所有 }n\}.
+\]
+若 $\lambda_n\to\infty$（即模趋无穷），则
+\[
+ \overline D=\{x:Q_nx\to x\},\qquad N\cap\overline D=\{0\}.
+\]
+若 $X$ 自反，两端分别给出强极限及分解
+\begin{align*}
+ \lambda_n\to0:&\quad X=F\oplus\overline E,\quad Q_n\to P_0,\\
+ |\lambda_n|\to\infty:&\quad X=\overline D\oplus N,\quad Q_n\to P_\infty.
+\end{align*}
+其中 $R(P_0)=F$、$\ker P_0=\overline E$，$R(P_\infty)=\overline D$、$\ker P_\infty=N$。
+\end{theorem}
+\begin{proof}
+固定 $\mu\in\Omega$。对充分大的 $n$，$\lambda_n\ne\mu$。用伪预解恒等式整理得
+\begin{align}
+ Q_n(I-\mu J_\mu)&=\frac{\lambda_n}{\mu-\lambda_n}(\mu J_\mu-Q_n),\label{eq:y8-pseudo-zero}\\
+ Q_nJ_\mu-J_\mu&=\frac{\mu J_\mu-Q_n}{\lambda_n-\mu}.\label{eq:y8-pseudo-infinity}
+\end{align}
+零端可取固定的非零 $\mu$，第一式在 $E$ 上趋零，一致有界性把收敛延拓到 $\overline E$。若 $Q_nx\to0$，则 $x-Q_nx\in E$ 推出 $x\in\overline E$；$F$ 上 $Q_n=I$。
+无穷端由第二式在 $D$ 上趋恒等，再延拓到 $\overline D$。若 $Q_nx\to x$，因 $Q_nx\in D$ 得 $x\in\overline D$；$N$ 上 $Q_n=0$，故交为零。
+
+自反时给定 $x$，抽取 $Q_{n_j}x\rightharpoonup y$。零端由第一式与交换性得 $(I-\mu J_\mu)y=0$，故 $y\in F$；又 $x-Q_{n_j}x\in E$，弱闭性得 $x-y\in\overline E$，于是 $Q_nx\to y$。
+无穷端由第二式得 $J_\mu(y-x)=0$，故 $x-y\in N$；又 $y\in\overline D$，于是 $Q_nx=Q_ny\to y$。这些极限为有界投影，值域与核如上。
+\end{proof}
+
+当 $J_\lambda=R(\lambda,B)$ 时，$F=\ker B$，$E=R(B)$，$N=0$。所以零端抽取 $B$ 的零特征空间，无穷端检验定义域的稠密性。原书给出等度连续的局部凸版本；以上只使用 Banach 一致有界和弱聚点，未重证其全部推广。
+
+\begin{example}[不是单值算子预解式的伪预解式]
+若 $P$ 为有界投影，$J_\lambda=P/\lambda$（$\lambda\ne0$），则直接计算可验证伪预解恒等式，而 $\lambda J_\lambda=P$。当 $\ker P\ne0$ 时，各 $J_\lambda$ 不单射，因而不可能是单值算子的预解式；其无穷端极限也不是恒等算子。
+\end{example}
+
+\begin{exercise}[有限维两端极限]\label{ex:y8-pseudo-diagonal}
+令 $B=\operatorname{diag}(0,-1)$，$\lambda>0$。求 $\lambda R(\lambda,B)$ 在 $\lambda\downarrow0$ 及 $\lambda\to\infty$ 的极限。
+\end{exercise}
+\begin{solution}
+$\lambda R(\lambda,B)=\operatorname{diag}(1,\lambda/(\lambda+1))$。零端为投影 $\operatorname{diag}(1,0)$，对应 $\ker B$；无穷端为 $I$，对应全空间的定义域闭包。这两种极限不能混同。
+\end{solution}
+
+\begin{exercise}[无穷端与稠密性]\label{ex:y8-pseudo-density}
+在无穷端的假设下，若 $N=0$ 且 $X$ 自反，证明共同值域 $D$ 稠密，重建的 $B$ 为稠密定义闭算子。
+\end{exercise}
+\begin{solution}
+分解 $X=\overline D\oplus N$ 给出 $\overline D=X$。再由命题 \ref{prop:y8-pseudo-reconstruction} 重建闭算子。这里自反性用于获得弱聚点；单凭伪预解式各点单射不能推出值域稠密。
+\end{solution}
