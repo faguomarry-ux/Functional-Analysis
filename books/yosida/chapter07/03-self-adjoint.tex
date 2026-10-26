@@ -1,0 +1,82 @@
+\Needspace{12\baselineskip}
+\section{对称算子和自伴算子}\label{sec:yosida-07-03}
+\noindent\textit{原书起始页：中译本 205；英文版 197。}
+
+\begin{definition}[三个不同的概念]
+稠密定义 $A:D(A)\subset H\to H$ 称为对称，若 $(Ax,y)=(x,Ay)$ 对 $x,y\in D(A)$ 成立，即 $A\subset A^*$；称为自伴，若 $A=A^*$，这同时要求定义域相等；称为本质自伴，若可闭且 $\overline A$ 自伴。对称算子可闭，闭包仍对称，因为 $A\subset A^*$ 给出 $\overline A=A^{**}\subset A^*$，再用 $(\overline A)^*=A^*$。
+\end{definition}
+
+\begin{example}[实乘法算子]
+在 $L^2(\mathbb R)$ 上令 $M_mf=mf$，$m$ 为几乎处处有限的实可测函数，取最大定义域 $D(M_m)=\{f\in L^2:mf\in L^2\}$。这是自伴算子。
+\end{example}
+\begin{proof}
+截断 $E_n=\{|t|\le n,\ |m(t)|\le n\}$，则 $\mathbf1_{E_n}f\to f$ 于 $L^2$，证明定义域稠密。$m$ 实保证对称。若 $g\in D(M_m^*)$ 且 $M_m^*g=h$，在 $E_n$ 上用任意 $L^2$ 探针得 $h=mg$ 几乎处处于 $E_n$。取并集得 $mg=h\in L^2$，故 $g\in D(M_m)$。于是两个定义域相等。取 $m(t)=t$ 得坐标算子，其无界性由支于 $[n,n+1]$ 的单位向量得到。
+\end{proof}
+
+\begin{example}[同一微分表达式，不同定义域]\label{exm:y7-boundary}
+在 $L^2(0,1)$ 上，令 $Pf=-if'$，$D(P)=H_0^1(0,1)$。这里 $H^1$ 元素取绝对连续代表且弱导数属于 $L^2$，$H_0^1$ 等于两端迹为零的子空间。则
+\[
+ P^*g=-ig',\qquad D(P^*)=H^1(0,1).
+\]
+所以 $P$ 闭且对称，却不自伴。对 $\theta\in\mathbb R$，同一表达式在
+\[
+ D(P_\theta)=\{f\in H^1(0,1):f(1)=e^{i\theta}f(0)\}
+\]
+上定义自伴算子。
+\end{example}
+\begin{proof}
+一维 Sobolev 事实可由积分直接看出：若 $f'=h\in L^2$（分布意义），则 $f(t)-\int_0^th(s)\,\dd s$ 的分布导数为零，故为常数。迹估计 $|f(0)|+|f(1)|\le C\|f\|_{H^1}$ 来自绝对连续公式和 Cauchy--Schwarz。零迹函数的零延拓仍在 $H^1(\mathbb R)$，经向内部缩放和光滑化可由 $C_c^\infty(0,1)$ 在 $H^1$ 中逼近，说明零迹刻画。
+
+分部积分给出边界型
+\[
+ (Pf,g)-(f,-ig')=-i[f\overline g]_0^1.
+\]
+若 $g\in D(P^*)$，先用紧支集探针推出 $g$ 的弱导数属于 $L^2$；反向 $g\in H^1$ 时，$f$ 的零迹消去边界项。导数及迹的闭性给出 $P$ 闭。对 $P_\theta$，任意允许的端点值均能由仿射函数实现，边界型对全部 $f\in D(P_\theta)$ 消失当且仅当 $e^{i\theta}\overline{g(1)}=\overline{g(0)}$，即 $g(1)=e^{i\theta}g(0)$。于是伴随定义域恰好相等。
+\end{proof}
+
+\begin{proposition}[逆算子与满射对称算子]
+若 $A$ 自伴且单射，则 $A^{-1}:R(A)\to H$ 稠密定义且自伴，逆算子未必有界。若稠密定义的对称算子 $B$ 满射，则 $B$ 自伴。
+\end{proposition}
+\begin{proof}
+$R(A)^\perp=\ker A^*=0$ 保证逆算子稠密定义。$z\in D((A^{-1})^*)$ 且 $(A^{-1})^*z=w$，等价于 $(x,z)=(Ax,w)$ 对全部 $x\in D(A)$ 成立，亦即 $w\in D(A^*)=D(A)$ 且 $Aw=z$。故 $z\in R(A)$，$w=A^{-1}z$；反向同理，所以逆算子自伴。
+对满射对称算子 $B$，有 $\ker B^*=R(B)^\perp=0$。若 $z\in D(B^*)$，选 $x\in D(B)$ 使 $Bx=B^*z$，则 $B^*(z-x)=0$，故 $z=x\in D(B)$，得到自伴。
+\end{proof}
+
+\begin{theorem}[从闭算子构造非负自伴算子]\label{thm:y7-tstar-t}
+若 $T:D(T)\subset H\to K$ 闭且稠密定义，则 $T^*T$ 与 $TT^*$ 自伴且非负，且
+\[
+ (I+T^*T)^{-1}\in\mathcal L(H),\qquad\|(I+T^*T)^{-1}\|\le1.
+\]
+这里 $D(T^*T)=\{x\in D(T):Tx\in D(T^*)\}$。
+\end{theorem}
+\begin{proof}
+闭图像的正交分解给出，对任意 $h\in H$，唯一存在 $x\in D(T),y\in D(T^*)$ 使
+\[
+ (h,0)=(x,Tx)+(-T^*y,y).
+\]
+第二分量给出 $y=-Tx$，第一分量即 $h=x+T^*Tx$。故 $I+T^*T$ 双射，且 $\|x\|\le\|h\|$，因为 $(h,x)=\|x\|^2+\|Tx\|^2$。
+令 $B=(I+T^*T)^{-1}$。对 $h=(I+T^*T)x,k=(I+T^*T)z$，有 $(Bh,k)=(x,z)+(Tx,Tz)=(h,Bk)$，所以 $B$ 有界自伴且单射；$R(B)^\perp=\ker B^*=0$，说明 $D(T^*T)$ 稠密。记 $A=T^*T$。它对称且非负。若 $u\in D(A^*)$，取 $v\in D(A)$ 使 $(I+A)v=(I+A^*)u$，则 $u-v\in\ker(I+A^*)=R(I+A)^\perp=0$。故 $A=A^*$。$T^*$ 也闭且稠密定义，且 $T^{**}=T$，对 $T^*$ 重复论证即得 $TT^*$。
+\end{proof}
+
+\begin{proposition}[有界自伴算子的范数]
+若 $A\in\mathcal L(H)$ 自伴，则 $\|A\|=\sup_{\|x\|=1}|(Ax,x)|$。
+\end{proposition}
+\begin{proof}
+令右侧为 $c\le\|A\|$，$q(x)=(Ax,x)$ 为实数。由
+$4t\operatorname{Re}(Ax,y)=q(x+ty)-q(x-ty)$，$t>0$，得
+$|\operatorname{Re}(Ax,y)|\le c(\|x\|^2+t^2\|y\|^2)/(2t)$。取 $t=\|x\|/\|y\|$，并在复情形旋转 $y$ 的相位，使实部等于模，得到 $|(Ax,y)|\le c\|x\|\|y\|$。再对单位 $y$ 取上确界即得 $\|A\|\le c$；零向量情形显然。
+\end{proof}
+
+\begin{exercise}[亏空间检验]\label{ex:y7-deficiency}
+对例 \ref{exm:y7-boundary} 的 $P$，求 $\ker(P^*-iI)$ 和 $\ker(P^*+iI)$。说明为何不能从形式表达式实对称推出自伴。
+\end{exercise}
+\begin{solution}
+$-ig'=ig$ 给出 $g=ce^{-t}$，$-ig'=-ig$ 给出 $g=ce^t$；两者均在 $H^1(0,1)$，故两个亏空间各一维。$P$ 要求两个零端点而 $P^*$ 不要求，二者虽有相同微分表达式却不是同一算子。
+\end{solution}
+
+\begin{exercise}[实轴动量算子]\label{ex:y7-momentum}
+借助第六章 Plancherel 定理，证明 $-i\,\dd/\dd t$ 在 $L^2(\mathbb R)$ 上取定义域 $H^1(\mathbb R)$ 时自伴。
+\end{exercise}
+\begin{solution}
+令 $\mathcal U=(2\pi)^{-1/2}\FT$，则 $\mathcal U$ 酉，分布恒等式给出 $\mathcal U(-if')=\xi\mathcal Uf$。$f\in H^1$ 恰等价于 $\xi\mathcal Uf\in L^2$。故该算子为 $\mathcal U^{-1}M_\xi\mathcal U$，定义域也完整对应。实乘法算子自伴，酉变换保持伴随关系和定义域，结论成立。
+\end{solution}

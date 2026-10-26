@@ -1,0 +1,63 @@
+\Needspace{12\baselineskip}
+\section{酉算子、Cayley 变换}\label{sec:yosida-07-04}
+\noindent\textit{原书起始页：中译本 210；英文版 202。}
+
+以下 $H$ 为复 Hilbert 空间。全空间上线性等距算子满足 $U^*U=I$，由极化恒等式可见保范数等价于保内积。若还满射，称为酉算子，此时 $U^{-1}=U^*$ 且 $UU^*=I$。$\ell^2$ 上右移保范数但不满射。平移 $f(t)\mapsto f(t+a)$ 及归一化 Fourier 变换均为酉算子。有界算子称为正规，若 $A^*A=AA^*$；无界情形同一等式还必须包含两个乘积的定义域相等，不能仅比较形式表达式。
+
+\begin{theorem}[Cayley 变换及其逆]\label{thm:y7-cayley}
+设 $A$ 闭、对称、稠密定义。则 $R(A\pm iI)$ 闭，且
+\[
+ U_A=(A-iI)(A+iI)^{-1}:R(A+iI)\longrightarrow R(A-iI)
+\]
+是两个闭子空间之间的满射等距映射。$I-U_A$ 单射，$R(I-U_A)=D(A)$，且
+\[
+ A=i(I+U_A)(I-U_A)^{-1}.
+\]
+反向，若 $U:M\to H$ 是定义于闭子空间 $M$ 的线性等距映射，$R(I-U)$ 稠密，则 $I-U$ 单射，以上逆公式在 $D(A)=R(I-U)$ 上定义唯一的闭对称算子，其 Cayley 变换为 $U$。
+\end{theorem}
+\begin{proof}
+对称性使 $(Ax,x)$ 为实，故
+\begin{equation}\label{eq:y7-shift-estimate}
+ \|(A\pm iI)x\|^2=\|Ax\|^2+\|x\|^2.
+\end{equation}
+这保证单射及逆映射的界；若 $(A+iI)x_n$ 收敛，则 $x_n,Ax_n$ 均为 Cauchy，由闭性得极限仍在图像，故值域闭，负号同理。式 \eqref{eq:y7-shift-estimate} 也给出 $U_A$ 等距。写 $y=(A+iI)x$，则 $(I-U_A)y=2ix$，$(I+U_A)y=2Ax$，立即得到单射、值域与逆公式。
+
+反向若 $Uy=y$，则对任意 $z\in M$，$(y,(I-U)z)=(y,z)-(Uy,Uz)=0$，由稠密性得 $y=0$。故可定义
+$A((I-U)y)=i(I+U)y$。利用 $(Uy,Uz)=(y,z)$ 展开，得
+$(i(I+U)y,(I-U)z)=((I-U)y,i(I+U)z)$，所以对称。
+若 $x_n=(I-U)y_n\to x$，$Ax_n=i(I+U)y_n\to v$，则
+$y_n=(x_n-iAx_n)/2$ 收敛。$M$ 闭及 $U$ 连续给出 $x=(I-U)y$、$v=i(I+U)y$，故 $A$ 闭。最后 $(A+iI)(I-U)y=2iy$、$(A-iI)(I-U)y=2iUy$，说明变换正好恢复 $U$，也证明唯一性。
+\end{proof}
+
+\begin{theorem}[自伴判据与亏空间分解]\label{thm:y7-deficiency}
+对闭稠密定义的对称算子 $A$，下列等价：$A$ 自伴；$R(A+iI)=R(A-iI)=H$；$U_A$ 是 $H$ 上的酉算子。置
+\[
+ N_+=\ker(A^*-iI)=R(A+iI)^\perp,\qquad
+ N_-=\ker(A^*+iI)=R(A-iI)^\perp.
+\]
+则有代数直和（不声称为 $H$ 内积正交直和）
+\[
+ D(A^*)=D(A)\mathbin{\dot+}N_+\mathbin{\dot+}N_-,
+ \quad A^*(x_0+x_++x_-)=Ax_0+ix_+-ix_-.
+\]
+\end{theorem}
+\begin{proof}
+一般恒等式 $R(B)^\perp=\ker B^*$ 直接来自伴随定义，注意 $(A+iI)^*=A^*-iI$。若 $A=A^*$，则由式 \eqref{eq:y7-shift-estimate} 两个核均为零；两个值域既闭又稠密，故等于 $H$。反之若两者满射，任取 $y\in D(A^*)$，取 $x\in D(A)$ 使 $(A+iI)x=(A^*+iI)y$，于是 $y-x\in\ker(A^*+iI)=0$，得 $D(A^*)=D(A)$。酉判据随后由前一定理成立。
+
+对分解，任取 $y\in D(A^*)$，在 $H=R(A+iI)\oplus N_+$ 中分解
+$(A^*+iI)y=(A+iI)x_0+w_+$。令 $x_+=w_+/(2i)$，则 $x_-=y-x_0-x_+$ 属于 $N_-$，给出存在性。若 $x_0+x_++x_-=0$，施以 $A^*+iI$ 得 $(A+iI)x_0+2ix_+=0$；两项在正交子空间中，故均为零。由式 \eqref{eq:y7-shift-estimate} 得 $x_0=0$，继而 $x_+=x_-=0$。作用公式来自各子空间的定义。
+\end{proof}
+
+\begin{exercise}[乘法算子的 Cayley 变换]\label{ex:y7-cayley-mult}
+求 $M_t$ 在 $L^2(\mathbb R)$ 上的 Cayley 变换，并检验逆公式的定义域。
+\end{exercise}
+\begin{solution}
+$U$ 为乘以 $u(t)=(t-i)/(t+i)$ 的算子，$|u(t)|=1$，故为酉算子。$I-U$ 乘以 $2i/(t+i)$。其值域正是 $\{f:tf\in L^2\}$：写 $f=2ig/(t+i)$ 时 $tf\in L^2$；反之 $g=(t+i)f/(2i)\in L^2$。逆公式乘数为 $i(1+u)/(1-u)=t$，定义域也相等。
+\end{solution}
+
+\begin{exercise}[为什么两个符号都要检查]\label{ex:y7-halfline}
+在 $L^2(0,\infty)$ 上取 $Af=-if'$，$D(A)=H_0^1(0,\infty)$。已知同样的弱导数论证给出 $D(A^*)=H^1(0,\infty)$。求两个亏空间，判断 $A$ 是否自伴。
+\end{exercise}
+\begin{solution}
+$\ker(A^*-iI)$ 由 $e^{-t}$ 张成，$\ker(A^*+iI)=\{0\}$，因为 $e^t\notin L^2(0,\infty)$。$A$ 闭且对称，故 $R(A-iI)=H$，而 $R(A+iI)$ 的正交补一维。一个符号满射并不足以推出自伴；这里 $A\ne A^*$。
+\end{solution}

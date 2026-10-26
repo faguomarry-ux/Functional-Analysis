@@ -1,30 +1,19 @@
 % !TeX encoding = UTF-8
-% 吉田第六版：中译本第 7 章；此文件当前仅为目录与正文占位。
-\SetChapterInfo{subtitle={吉田耕作第六版主线 · 正文待撰写}}
+\SetChapterInfo{subtitle={由对偶配对、定义域与闭图像理解无界算子},keywords={对偶; 伴随; 自伴; Cayley 变换; 亏空间; 闭值域},prereq={第三章正交投影与 Riesz 表示; 第四章 Hahn--Banach; 闭图像与开映射},goals={区分转置与伴随; 把定义域纳入算子等式; 证明闭值域及可解性判据}}
 \chapter{对偶算子}\label{ch:yosida-07}
-\YosidaChapterPlaceholder{7}{Dual Operators}{201--218}{193--208}
+\ChapterSource{按 \cite{yosida-zh,yosida-en} 第七章五节组织，2026 年 10 月 26 日补写首轮学习正文。原书位置为中译本印刷第 201--218 页、英文版第 193--208 页。实际查看英文全章扫描页及中文五节入口页；范围详见本章 COVERAGE。本稿用 $T'$ 表示线性对偶算子、$T^*$ 表示 Hilbert 伴随，内积对第一变量线性。闭值域证明的图空间步骤使用限制映射与商拓扑，回应中译本第 214 页校注指出的对偶空间识别问题。}
 
-\section{对偶算子}\label{sec:yosida-07-01}
-\YosidaSectionPlaceholder{201}{193}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
+无界算子的公式只有连同定义域才构成算子。本章从连续泛函的延拓定义出发，经图像正交补研究闭性，再由边界条件、Cayley 变换和闭值域刻画自伴性及方程可解性。五节均包含证明、模型与附解答习题；这里的首轮写作不替代独立数学审校。
 
-\section{伴随算子}\label{sec:yosida-07-02}
-\YosidaSectionPlaceholder{204}{195}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
+\input{books/yosida/chapter07/01-dual}
+\input{books/yosida/chapter07/02-adjoint}
+\input{books/yosida/chapter07/03-self-adjoint}
+\input{books/yosida/chapter07/04-cayley}
+\input{books/yosida/chapter07/05-closed-range}
 
-\section{对称算子和自伴算子}\label{sec:yosida-07-03}
-\YosidaSectionPlaceholder{205}{197}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
+\Needspace{10\baselineskip}
+\section*{本章参考文献与阅读衔接}
+\phantomsection\addcontentsline{toc}{section}{本章参考文献与阅读衔接}
+直接参考为两版吉田第七章 \cite{yosida-zh,yosida-en}。原书章末列出的 Stone、Akhiezer--Glazman、Dunford--Schwartz、Banach 以及节内 von Neumann 原始文献本轮未直接查阅。上述论证按本稿记号重新组织；Banach 闭值域定理已给出有界情形的分离与逐次逼近证明，再借助图空间商映射推广到闭算子。
 
-\section{酉算子、Cayley 变换}\label{sec:yosida-07-04}
-\YosidaSectionPlaceholder{210}{202}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{闭值域定理}\label{sec:yosida-07-05}
-\YosidaSectionPlaceholder{214}{205}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section*{本章参考文献整理（占位）}
-\phantomsection
-\addcontentsline{toc}{section}{本章参考文献整理（占位）}
-待核对原书本章参考文献。中译本印刷第 217 页起；后续按实际引用合并至本书参考文献表。
+第六章的形式转置决定微分表达式，本章边界条件决定 Hilbert 伴随。下一章讨论预解式和谱；式 \eqref{eq:y7-shift-estimate} 与 $T^*T$ 构造是其基础。自伴延拓分类和无界谱理论留待后续，十道习题的答案集中在书后。

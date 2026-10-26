@@ -1,0 +1,60 @@
+\Needspace{12\baselineskip}
+\section{伴随算子}\label{sec:yosida-07-02}
+\noindent\textit{原书起始页：中译本 204；英文版 195。}
+
+本节 $H,K$ 为 Hilbert 空间，内积对第一变量线性。令 $J_H:H\to H'$ 为共轭线性等距映射 $J_Hy=(\,\cdot\,,y)$。对稠密定义 $T:D(T)\subset H\to K$，定义
+\[
+ D(T^*)=\{y\in K:\exists z\in H,\ (Tx,y)_K=(x,z)_H\quad\forall x\in D(T)\},
+ \qquad T^*y=z.
+\]
+于是 $T^*=J_H^{-1}T'J_K$，其定义域也按此复合确定。等价地，$y\in D(T^*)$ 当且仅当存在 $C_y$ 使 $|(Tx,y)|\le C_y\|x\|$ 对全部 $x\in D(T)$ 成立。这里控制的是 $\|x\|$，并非图范数。
+
+\begin{theorem}[图像、闭性和可闭性]\label{thm:y7-closure}
+写 $G(T)=\{(x,Tx):x\in D(T)\}$。在 $K\oplus H$ 中有
+\[
+ G(T^*)=\{(-Tx,x):x\in D(T)\}^{\perp}.
+\]
+因此 $T^*$ 总为闭算子。$T$ 可闭当且仅当 $D(T^*)$ 在 $K$ 中稠密，此时 $\overline T=T^{**}$。特别地，稠密定义的 $T$ 闭当且仅当 $T=T^{**}$。
+\end{theorem}
+\begin{proof}
+$(y,z)$ 与所有 $(-Tx,x)$ 正交，等价于 $-(Tx,y)+(x,z)=0$，这正是伴随定义。正交补闭，故 $T^*$ 闭。
+
+再看图像闭包 $M=\overline{G(T)}\subset H\oplus K$。有
+\[
+ G(T)^\perp=\{(-T^*y,y):y\in D(T^*)\}.
+\]
+故 $(0,v)\in M=(G(T)^\perp)^\perp$ 当且仅当 $v\perp D(T^*)$。图像闭包为单值算子的图像，当且仅当其竖直截面只有零，即 $D(T^*)$ 稠密。这也是可闭性的充要条件。此时用同一正交补公式再取一次伴随，得到 $G(T^{**})=M$，从而 $T^{**}=\overline T$。
+\end{proof}
+
+可闭性的另一表述是：若 $x_n\in D(T)$，$x_n\to0$ 且 $Tx_n\to y$，则 $y=0$。闭图像定理只在 $D(T)=H$ 时推出有界性；稠密定义、闭、无界可以同时成立。若 $T\in\mathcal L(H,K)$，由 Riesz 表示可知 $D(T^*)=K$，且 $\|T^*\|=\|T\|$。算子包含 $S\subset T$ 总导致 $T^*\subset S^*$。
+
+\begin{example}[一个不可闭的稠密定义算子]
+在 $H=\ell^2$ 的有限支集序列空间 $c_{00}$ 上令
+\[
+ Tx=\Big(\sum_{n\ge1}n x_n\Big)e_1.
+\]
+取 $x^{(n)}=e_n/n$，则 $x^{(n)}\to0$ 而 $Tx^{(n)}=e_1$，故不可闭。由 $(Tx,y)=(\sum n x_n)\overline{y_1}$，该泛函对 $\ell^2$ 范数有界当且仅当 $y_1=0$。于是 $D(T^*)=e_1^\perp$，$T^*y=0$，其定义域果然不稠密。
+\end{example}
+
+\begin{exercise}[积分核的伴随]\label{ex:y7-kernel}
+设 $k\in L^2((a,b)^2)$，$(Kf)(s)=\int_a^bk(s,t)f(t)\,\dd t$。证明 $K$ 有界并求 $K^*$。
+\end{exercise}
+\begin{solution}
+由积分的 Cauchy--Schwarz 不等式得到 $\|Kf\|_2\le\|k\|_2\|f\|_2$。交换积分的依据为
+\[
+ \iint|k(s,t)f(t)\overline{g(s)}|\,\dd s\,\dd t
+ \le\|k\|_2\|f\|_2\|g\|_2<\infty.
+\]
+因此 Fubini 定理给出
+\[
+ (K^*g)(t)=\int_a^b\overline{k(s,t)}g(s)\,\dd s.
+\]
+若 $k(s,t)=\overline{k(t,s)}$ 几乎处处，则 $K=K^*$。
+\end{solution}
+
+\begin{exercise}[图范数与闭算子]\label{ex:y7-graph}
+证明闭算子 $T:D(T)\subset H\to K$ 的定义域在 $\|x\|_T=(\|x\|^2+\|Tx\|^2)^{1/2}$ 下完备。说明这为何不推出 $T$ 对原范数有界。
+\end{exercise}
+\begin{solution}
+图范数 Cauchy 列使 $(x_n,Tx_n)$ 在 $H\oplus K$ 中 Cauchy，极限因图像闭而属于图像，故图范数完备。闭图像定理此时给出的是从图范数定义域到 $K$ 的有界性，这已由 $\|Tx\|\le\|x\|_T$ 直接成立。原范数定义域可能不完备，不能偷换两个范数。
+\end{solution}

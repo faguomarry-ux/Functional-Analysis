@@ -1,0 +1,55 @@
+\Needspace{12\baselineskip}
+\section{对偶算子}\label{sec:yosida-07-01}
+\noindent\textit{原书起始页：中译本 201；英文版 193。}
+
+本节 $X,Y$ 为 Hausdorff 局部凸空间，$X',Y'$ 表示连续线性对偶，配对写作 $\langle x,f\rangle=f(x)$，对两个变量均线性。若无特别说明，$T:D(T)\subset X\to Y$ 为线性算子，且 $D(T)$ 在 $X$ 中稠密。
+
+\begin{definition}[对偶算子及其定义域]
+令
+\[
+ D(T')=\{g\in Y':\text{存在 }f\in X',\quad g(Tx)=f(x)\ (x\in D(T))\},
+ \qquad T'g=f.
+\]
+稠密性保证 $f$ 唯一：两个连续泛函在稠密子空间相等，便在全空间相等。若 $D(T)$ 不稠密，Hahn--Banach 给出非零泛函在其上为零，此时以上关系一般只能定义多值关系。
+\end{definition}
+
+\begin{proposition}[连续算子的转置]\label{prop:y7-transpose}
+若 $T:X\to Y$ 连续，则 $D(T')=Y'$，且 $T'g=g\circ T$。$T'$ 对弱星拓扑 $\sigma(Y',Y)\to\sigma(X',X)$ 连续，也对强对偶拓扑 $\beta(Y',Y)\to\beta(X',X)$ 连续。若 $X,Y$ 为赋范空间，则
+\[
+ \|T'\|=\|T\|.
+\]
+\end{proposition}
+\begin{proof}
+复合泛函连续，故定义域为全空间。弱星连续性由 $(T'g)(x)=g(Tx)$ 直接得出。强对偶半范数为 $p_B(f)=\sup_{x\in B}|f(x)|$，其中 $B$ 遍历有界集；由 $T(B)$ 有界及 $p_B(T'g)=p_{T(B)}(g)$ 得连续性。
+赋范情形有 $\|T'g\|\le\|T\|\|g\|$。反向由 Hahn--Banach 的对偶范数公式
+$\|Tx\|=\sup_{\|g\|\le1}|g(Tx)|\le\|T'\|\|x\|$ 得到。
+\end{proof}
+
+\begin{proposition}[代数运算的定义域]
+有界算子的线性组合满足 $(aS+bT)'=aS'+bT'$，复数标量也不取共轭。在赋范空间间，若 $T:D(T)\subset X\to Y$ 稠密定义，$S:Y\to Z$ 有界，则
+\[
+ (ST)'=T'S',\qquad D(T'S')=\{h\in Z':S'h\in D(T')\}.
+\]
+若 $S,T$ 均稠密定义、可能无界，且 $ST$ 也稠密定义，则一般只有 $T'S'\subset(ST)'$；此处复合的定义域必须逐项保留。
+\end{proposition}
+\begin{proof}
+线性组合代入配对即可。$S$ 有界时 $D(ST)=D(T)$，故 $h(STx)=(S'h)(Tx)$ 能延拓为 $X$ 上连续泛函，当且仅当 $S'h\in D(T')$。两者无界时，对 $h\in D(T'S')$ 仍可作同样计算，但反向未必成立，因为 $D(ST)$ 可能严格小于 $D(T)$。
+\end{proof}
+
+\begin{example}[转置不保持算子强收敛]
+在 $\ell^2$ 上令 $L(x_1,x_2,\ldots)=(x_2,x_3,\ldots)$，$R(x_1,x_2,\ldots)=(0,x_1,x_2,\ldots)$。有 $L^nx\to0$ 对每个 $x$ 成立。以线性对偶配对 $f_a(x)=\sum_jx_ja_j$ 识别 $\ell^2$ 与其对偶，则 $(L^n)'f_a=f_{R^na}$。非零 $a$ 满足 $\|R^na\|=\|a\|$，所以对偶算子未强收敛到零；但对每个 $x$，$((L^n)'f_a)(x)\to0$，即仍弱星收敛。
+\end{example}
+
+\begin{exercise}[矩阵与标量]\label{ex:y7-matrix}
+在 $\mathbb C^n$ 上分别用双线性配对 $f_a(x)=\sum_jx_ja_j$ 和第一变量线性的标准内积表示矩阵 $A$ 的对偶算子、Hilbert 伴随。计算 $(iA)'$ 与 $(iA)^*$。
+\end{exercise}
+\begin{solution}
+$A'$ 在 $a$ 坐标下为 $A^{\mathsf T}$；由 $(Ax,y)=(x,A^*y)$ 得 $A^*=\overline A^{\mathsf T}$。所以 $(iA)'=iA'$，$(iA)^*=-iA^*$。共轭来自 Riesz 识别的共轭线性，而不是线性对偶配对。
+\end{solution}
+
+\begin{exercise}[分布求导的转置]\label{ex:y7-distribution}
+令 $D=\partial_j:\Test(\Omega)\to\Test(\Omega)$。求其对偶算子，并说明它与分布导数的关系。
+\end{exercise}
+\begin{solution}
+测试空间上求导连续，故转置在全部 $\Dist(\Omega)$ 定义，$\langle\varphi,D'u\rangle=\langle\partial_j\varphi,u\rangle$。按分布导数定义，这等于 $-\langle\varphi,\partial_ju\rangle$，故 $D'u=-\partial_ju$。这里使用双线性分布配对，不插入复共轭。
+\end{solution}

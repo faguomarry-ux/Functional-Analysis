@@ -4,11 +4,13 @@
 
 以吉田耕作《泛函分析》第六版中译本为学习主线，英文原版辅助核对术语、目录与页码，结合施瓦尔茨、盖尔芳特与希烙夫的广义函数著作，以及汪林的反例教材，逐步整理中文个人学习讲义。正文使用 LaTeX 编写，统一符号、证明、例子和习题解答。
 
-**本项目仅用于个人、非商业学习，不开展教材销售、付费课程或其他商业活动。** 项目仍在编写和校对中：目前已有第零至第三章正文及八章广义函数专题，主线第四章九节、第五章五节及附录已有正文，第六章十二节亦已有首轮正文，第七至十四章仍为占位。编译成功只表示排版构建通过，不表示数学内容已经全部完成或正确。
+**本项目仅用于个人、非商业学习，不开展教材销售、付费课程或其他商业活动。** 项目仍在编写和校对中：目前已有第零至第三章正文及八章广义函数专题，主线第四章九节、第五章五节及附录已有正文，第六章十二节、第七章五节亦已有首轮正文，第八至十四章仍为占位。编译成功只表示排版构建通过，不表示数学内容已经全部完成或正确。
 
-更新时间：**2026-10-19（北京时间）**。
+更新时间：**2026-10-26（北京时间）**。
 
-最新更新（2026-10-18，第六章）：补写第六章十二节首轮正文，加入 **24 道附解答习题**，主线增至 **62/132 节（47.0%）**，剩余 70 节。展开 Fourier 反演、Paley–Wiener、Sobolev、Gårding、常系数椭圆正则性及 Malgrange–Ehrenpreis 存在性证明；一般 Titchmarsh、Hardy 逆命题、变系数 Friedrichs、定量右逆和一般亚椭圆刻画的未展开部分明确标注。详见 [第六章核查记录](books/yosida/chapter06/COVERAGE.md)。2026-10-19 完整三遍 XeLaTeX 编译和页面验收通过，本地讲义共 **271 页**；独立数学审校仍待完成。
+最新更新（2026-10-26，第七章）：补写“对偶算子”五节，加入 **10 道附解答习题**；主线增至 **67/132 节（50.8%）**，剩余 65 节。展开对偶与伴随、图像闭包、自伴与边界条件、Cayley 变换和亏空间分解，以及 Banach 闭值域定理的证明；图空间对偶以限制映射和商空间处理。详见 [第七章核查记录](books/yosida/chapter07/COVERAGE.md)。完整三遍 XeLaTeX 编译及页面检查通过，本地讲义 **282 页**；独立数学审校仍待完成。
+
+前次更新（2026-10-18，第六章）：补写第六章十二节首轮正文，加入 **24 道附解答习题**，主线增至 **62/132 节（47.0%）**，剩余 70 节。展开 Fourier 反演、Paley–Wiener、Sobolev、Gårding、常系数椭圆正则性及 Malgrange–Ehrenpreis 存在性证明；一般 Titchmarsh、Hardy 逆命题、变系数 Friedrichs、定量右逆和一般亚椭圆刻画的未展开部分明确标注。详见 [第六章核查记录](books/yosida/chapter06/COVERAGE.md)。2026-10-19 完整三遍 XeLaTeX 编译和页面验收通过，本地讲义共 **271 页**；独立数学审校仍待完成。
 
 前次更新（2026-10-18，第五章）：补写第五章五节与附录四个子目，加入 **13 道附解答习题**，主线增至 **50/132 节（37.9%）**，剩余 82 节。详见 [第五章核查记录](books/yosida/chapter05/COVERAGE.md)。一般 Eberlein–Šmulian 定理作为外部结论，部分局部凸推广证明仍待展开。新增源码结构检查并接入 GitHub Actions。第四章既有九节、15 道习题一并纳入本次整理。完整三遍 XeLaTeX 编译通过，本地讲义共 **248 页**；第五章正文、附录与 13 份答案已检查排版，独立数学审校仍待完成。
 
@@ -40,7 +42,7 @@
 
 ## 内容范围与当前进度
 
-第一部分保留吉田原书 **第 0–14 章，共 15 章、132 个编号节**。第零章四节、第一章十四节、第二章七节及第三章十一节已有正文和核查记录，第四章九节、第五章五节及附录、第六章十二节亦已有正文，合计 **62/132 节，约 47.0%**；这是已有正文的节数比例，不代表阅读比例、工作量比例或最终校对完成率。第五、十章的原书附录保留在各自章末。
+第一部分保留吉田原书 **第 0–14 章，共 15 章、132 个编号节**。第零章四节、第一章十四节、第二章七节及第三章十一节已有正文和核查记录，第四章九节、第五章五节及附录、第六章十二节、第七章五节亦已有正文，合计 **67/132 节，约 50.8%**；这是已有正文的节数比例，不代表阅读比例、工作量比例或最终校对完成率。第五、十章的原书附录保留在各自章末。
 
 | 模块 | 当前状态 | 下一步 |
 | --- | --- | --- |
@@ -51,14 +53,15 @@
 | 第四章：Hahn–Banach 定理 | 九节正文、15 道附解答习题及 COVERAGE | 独立复核分离、完备化、对偶表示与外部前提 |
 | 第五章：强收敛和弱收敛 | 五节与附录四子目正文、13 道附解答习题及 COVERAGE | 独立审校；展开一般 Eberlein–Šmulian 与局部凸推广证明 |
 | 第六章：Fourier 变换和微分方程 | 十二节首轮正文、24 道附解答习题及 COVERAGE | 独立审校；补全明确注明的外部定理证明 |
-| 第七至十四章 | 70 个编号节保留标题、两版页码和占位提示 | 按主线逐节补写 |
+| 第七章：对偶算子 | 五节首轮正文、10 道附解答习题及 COVERAGE | 独立复核定义域、边界条件与闭值域证明 |
+| 第八至十四章 | 65 个编号节保留标题、两版页码和占位提示 | 按主线逐节补写 |
 | 广义函数专题：第 15–22 章 | 八章已有正文、证明、例子和习题 | 逐章复核与主线的衔接及出处 |
 | 版本对照与参考对照 | 已有附录框架与主要映射 | 随正文补写更新 |
 | 补充说明、索引、空间记号表、原书总书目 | 仍有占位；第零章相关五组文献已核对 | 整理实际引用、生成可检索索引 |
 | 汪林反例专题 | 参考书已列入，未系统整合 | 按定理条件建立反例索引 |
 | GitHub 工程配置 | 已有构建/发布流程，第二、三、五章阶段 Release 已成功 | 持续核验新提交的 Actions 构建与阶段快照 |
 
-核查依据见 [第零章 COVERAGE](books/yosida/chapter00/COVERAGE.md)、[第一章 COVERAGE](books/yosida/chapter01/COVERAGE.md)、[第二章 COVERAGE](books/yosida/chapter02/COVERAGE.md)、[第三章 COVERAGE](books/yosida/chapter03/COVERAGE.md)、[第四章 COVERAGE](books/yosida/chapter04/COVERAGE.md)、[第五章 COVERAGE](books/yosida/chapter05/COVERAGE.md)、[第六章 COVERAGE](books/yosida/chapter06/COVERAGE.md) 和 [目录数据](books/yosida/catalog.json)。不把目录、占位或仅有编译产物的章节计为完成。
+核查依据见 [第零章 COVERAGE](books/yosida/chapter00/COVERAGE.md)、[第一章 COVERAGE](books/yosida/chapter01/COVERAGE.md)、[第二章 COVERAGE](books/yosida/chapter02/COVERAGE.md)、[第三章 COVERAGE](books/yosida/chapter03/COVERAGE.md)、[第四章 COVERAGE](books/yosida/chapter04/COVERAGE.md)、[第五章 COVERAGE](books/yosida/chapter05/COVERAGE.md)、[第六章 COVERAGE](books/yosida/chapter06/COVERAGE.md)、[第七章 COVERAGE](books/yosida/chapter07/COVERAGE.md) 和 [目录数据](books/yosida/catalog.json)。不把目录、占位或仅有编译产物的章节计为完成。
 
 ## 时间线与近期待办
 
@@ -83,7 +86,7 @@
 - [x] 对第 0–3 章进行本轮作者复核，加入 13 幅插图并完成本地编译及排版检查（2026-10-11）。
 - [x] 补写第二章七节，更新核查记录并加入 8 道附解答习题（2026-10-11）。
 - [x] 补写第三章十一节与 11 道附解答习题，记录数学自查与证明边界（2026-10-11）。
-- [ ] 完成已写内容的独立数学校对，补全第五、六章注明的证明边界并继续第七章。
+- [ ] 完成已写内容的独立数学校对，补全第五、六章注明的证明边界并继续第八章。
 - [ ] 建立反例索引，标明每个反例针对哪个定理条件。
 
 ## 仓库结构
@@ -109,6 +112,7 @@ books/
   yosida/chapter04/                 第四章逐节正文与 COVERAGE.md
   yosida/chapter05/                 第五章五节、附录与 COVERAGE.md
   yosida/chapter06/                 第六章十二节正文与 COVERAGE.md
+  yosida/chapter07/                 第七章五节正文与 COVERAGE.md
   yosida/catalog.json               两版目录、节名与原书页码
   yosida/15-...18-*.tex              版本对照、补充说明、索引及记号表
   00-preface.tex                    前言和数学约定
@@ -169,7 +173,7 @@ GitHub Actions 在 Ubuntu 上安装 texlive-xetex、texlive-lang-chinese、texli
 
 ```powershell
 git add README.md docs books figures .github/workflows/build-release.yml main.tex functional-analysis.sty
-git commit -m "notes: 补写第六章学习笔记 [release]"
+git commit -m "notes: 补写第七章学习笔记 [release]"
 git push
 ```
 

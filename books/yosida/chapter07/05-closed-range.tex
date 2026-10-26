@@ -1,0 +1,80 @@
+\Needspace{12\baselineskip}
+\section{闭值域定理}\label{sec:yosida-07-05}
+\noindent\textit{原书起始页：中译本 214；英文版 205。}
+
+此节 $X,Y$ 为 Banach 空间，$T:D(T)\subset X\to Y$ 闭且稠密定义。记 $N(T)=\ker T$，$R(T)=T(D(T))$。对 $M\subset X$ 写 $M^\perp=\{f\in X':f|_M=0\}$；对 $F\subset X'$ 写 ${}^\perp F=\{x\in X:f(x)=0\ \forall f\in F\}$。在 Hilbert 空间中通过 Riesz 识别后可用通常的正交补。
+
+\begin{lemma}[有界算子的闭值域]\label{lem:y7-bounded-range}
+若 $S:E\to F$ 为 Banach 空间间有界算子，则 $R(S)$ 范数闭当且仅当 $R(S')$ 范数闭。
+\end{lemma}
+\begin{proof}
+若 $R(S)$ 闭，则 $E/N(S)\to R(S)$ 为 Banach 空间间有界双射，开映射定理给出 $\operatorname{dist}(x,N(S))\le C\|Sx\|$。对 $f\in N(S)^\perp$，令 $g_0(Sx)=f(x)$，则良定义且 $|g_0(Sx)|\le C\|f\|\|Sx\|$。Hahn--Banach 延拓给出 $g\in F'$ 且 $S'g=f$，因此 $R(S')=N(S)^\perp$ 闭。
+
+反向设 $R(S')$ 闭。置 $Z=\overline{R(S)}$，将 $S$ 看成 $S_0:E\to Z$。限制映射 $F'\to Z'$ 满射，故 $R(S_0')=R(S')$；$S_0'$ 单射且有闭值域，逆映射定理给出 $\|g\|\le C\|S_0'g\|$（$g\in Z'$）。令 $B_E$ 为闭单位球，$K=\overline{S_0(B_E)}$。分离定理说明 $C^{-1}B_Z\subset K$：否则存在 $g$ 使某个 $\|z\|\le C^{-1}$ 满足
+$\operatorname{Re}g(z)>\sup_{w\in K}\operatorname{Re}g(w)=\|S_0'g\|$，与 $|g(z)|\le C^{-1}\|g\|\le\|S_0'g\|$ 矛盾。
+因此对任意余项 $r\in Z$，可选 $x$ 使 $\|x\|\le C\|r\|$ 且 $\|r-S_0x\|\le\|r\|/2$。从 $r=z$ 迭代，得到 $\sum\|x_n\|\le2C\|z\|$，余项趋零。$E$ 完备及 $S_0$ 连续保证 $S_0(\sum x_n)=z$，故 $R(S)=Z$ 闭。
+\end{proof}
+
+\begin{theorem}[Banach 闭值域定理]\label{thm:y7-closed-range}
+以下四个条件等价：
+\[
+ \begin{aligned}
+ &R(T)\text{ 在 }Y\text{ 中范数闭};\qquad
+ R(T')\text{ 在 }X'\text{ 中范数闭};\\
+ &R(T)={}^\perp N(T');\qquad R(T')=N(T)^\perp.
+ \end{aligned}
+\]
+不附闭值域条件时，总有 $\overline{R(T)}={}^\perp N(T')$，但不能一般去掉闭包。
+\end{theorem}
+\begin{proof}
+第一步将无界算子约化为有界算子，同时明确图空间的对偶。$G=G(T)$ 在 $\|(x,Tx)\|=\|x\|+\|Tx\|$ 下为 Banach 空间，令 $S:G\to Y$，$S(x,Tx)=Tx$。显然 $R(S)=R(T)$。
+
+令 $q:X'\times Y'\to G'$ 为限制映射，$q(f,g)(x,Tx)=f(x)+g(Tx)$。Hahn--Banach 保证 $q$ 满射，它是 Banach 空间间有界满射，因而是商映射。由定义
+\[
+ \ker q=\{(-T'g,g):g\in D(T')\},\qquad S'g=q(0,g).
+\]
+于是
+\[
+ q^{-1}(R(S'))=\ker q+(\{0\}\times Y')=R(T')\times Y'.
+\]
+商拓扑说明 $R(S')$ 闭当且仅当 $R(T')$ 闭。用引理 \ref{lem:y7-bounded-range}，即得前两个条件等价。这一步把 $G'$ 处理为商空间，不能把它直接当成 $X'\times Y'$ 的子空间。
+
+第二步，$N(T')$ 恰为 $R(T)$ 的湮灭子：若 $g$ 在 $R(T)$ 上为零，则 $g\in D(T')$ 且 $T'g=0$。Hahn--Banach 分离给出 $\overline{R(T)}={}^\perp N(T')$，所以第一、第三条件等价。
+
+第三步，假设 $R(T)$ 闭，证明 $R(T')=N(T)^\perp$。包含 $R(T')\subset N(T)^\perp$ 直接来自配对。对反向，$N(T)$ 在 $X$ 中闭，由 $G/N(S)\to R(T)$ 的开映射定理有
+\[
+ \operatorname{dist}(x,N(T))+\|Tx\|\le C\|Tx\|\quad(x\in D(T)).
+\]
+故对 $f\in N(T)^\perp$，$g_0(Tx)=f(x)$ 良定义，且 $|g_0(Tx)|\le C\|f\|\|Tx\|$。将 $g_0$ 延拓到 $Y$ 得 $g\in Y'$，定义保证 $g\in D(T')$ 且 $T'g=f$。最后若第四条件成立，$N(T)^\perp$ 本来就是范数闭子空间，故第二条件成立，完成等价性证明。
+\end{proof}
+
+\begin{corollary}[Hilbert 空间中的可解性与估计]
+若 $T:D(T)\subset H\to K$ 闭且稠密定义，则值域闭当且仅当存在 $C$ 使
+\[
+ \|x\|\le C\|Tx\|\quad(x\in D(T)\cap N(T)^\perp).
+\]
+此时 $R(T)=N(T^*)^\perp$，$R(T^*)=N(T)^\perp$。故 $Tx=f$ 可解当且仅当 $f\perp N(T^*)$，且存在唯一的 $x\perp N(T)$ 的解。
+\end{corollary}
+\begin{proof}
+闭值域时，上述图空间开映射估计及 $\operatorname{dist}(x,N(T))=\|x\|$ 给出不等式。反向若 $Tx_n\to y$，减去 $x_n$ 的核投影不改变值域，且所得向量仍在定义域；估计使其为 Cauchy，闭性推出 $y\in R(T)$。余下等式由 Riesz 识别转译闭值域定理。
+\end{proof}
+
+当 $H=K$ 且 $\operatorname{Re}(Tx,x)\ge c\|x\|^2$（$c>0$）时，Cauchy--Schwarz 给出 $\|Tx\|\ge c\|x\|$。故 $T$ 核为零且值域闭，闭值域定理推出 $T^*$ 满射。该不等式本身不保证 $T$ 满射。
+
+\begin{example}[稠密值域却不闭]
+在 $\ell^2$ 上令 $(Tx)_n=x_n/n$，则 $T=T^*$ 为有界单射，有限支集序列均在其值域中，故值域稠密。$y=(1/n)_{n\ge1}\in\ell^2$ 不在值域，因为其唯一形式原像为 $(1,1,\ldots)\notin\ell^2$。截断 $y$ 却都在值域中。因此 $N(T^*)^\perp=\ell^2$ 严格大于 $R(T)$；也有 $\|Te_n\|=1/n$，直接否定闭值域估计。
+\end{example}
+
+\begin{exercise}[满射与下界]\label{ex:y7-surjectivity}
+设 $T:D(T)\subset H\to K$ 闭且稠密定义。证明 $T$ 满射当且仅当存在 $c>0$ 使 $\|T^*y\|\ge c\|y\|$（$y\in D(T^*)$）。
+\end{exercise}
+\begin{solution}
+满射时 $R(T)$ 闭且 $N(T^*)=R(T)^\perp=0$；闭值域定理给出 $R(T^*)$ 闭，再用前一推论的估计。反向下界使 $T^*$ 单射、值域闭（用其闭性），故 $R(T)$ 闭，又因 $N(T^*)=0$ 得 $\overline{R(T)}=K$，所以 $R(T)=K$。
+\end{solution}
+
+\begin{exercise}[周期微分方程的相容条件]\label{ex:y7-periodic}
+对例 \ref{exm:y7-boundary} 的 $P_0$，证明 $R(P_0)=\{g\in L^2(0,1):\int_0^1g=0\}$，并求 $P_0f=g$ 的全部解。
+\end{exercise}
+\begin{solution}
+积分 $-if'=g$ 得 $f(t)=c+i\int_0^tg(s)\,\dd s$。周期端点条件等价于 $\int_0^1g=0$。反向该条件下公式定义 $H^1$ 周期解；$c$ 任意，选择 $c=-i\int_0^1\int_0^tg(s)\,\dd s\,\dd t$ 得唯一零均值解。右侧是连续泛函的核，因而值域闭，也等于常数函数空间 $N(P_0^*)$ 的正交补。
+\end{solution}
