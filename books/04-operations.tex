@@ -63,7 +63,7 @@ $-T(a\partial_j\varphi)=-T(\partial_j(a\varphi))+T((\partial_ja)\varphi)$，正�
 
 \section{跳跃函数与界面项}
 \begin{proposition}[一维跳跃公式]
-设 $f$ 在 $a$ 两侧分片 $C^1$，且有有限单侧极限。令 $f'_{\mathrm{reg}}$ 为两侧的普通导数组成的局部可积函数，则
+设 $f$ 在 $a$ 两侧分别为 $C^1$，具有有限单侧极限，并显式假设两侧普通导数组成的函数 $f'_{\mathrm{reg}}\in L^1_{\Loc}$（包括跨过 $a$ 的紧邻域）。则
 \begin{equation}\label{eq:jump}
  (T_f)'=T_{f'_{\mathrm{reg}}}+[f]_a\delta_a,
  \qquad [f]_a=f(a+)-f(a-).
@@ -72,7 +72,9 @@ $-T(a\partial_j\varphi)=-T(\partial_j(a\varphi))+T((\partial_ja)\varphi)$，正�
 \begin{proof}
 把 $-\int f\varphi'$ 分成 $(-\infty,a)$ 与 $(a,\infty)$ 两部分，在探针支集范围内分别分部积分。左右边界项之和为 $(f(a+)-f(a-))\varphi(a)$，其余积分为 $\int f'_{\mathrm{reg}}\varphi$。
 \end{proof}
-若两侧分片 $C^2$，还有 $f''=f''_{\mathrm{reg}}+[f']_a\delta_a+[f]_a\delta_a'$。多界面时把各跳跃项求和。
+若两侧分别为 $C^2$，$f,f'$ 有有限单侧极限且 $f''_{\mathrm{reg}}\in L^1_{\Loc}$，则同样有 $f''=f''_{\mathrm{reg}}+[f']_a\delta_a+[f]_a\delta_a'$。多界面时把各跳跃项求和。
+
+有限单侧极限本身不保证普通导数局部可积。例如 $f(x)=x^2\sin(x^{-2})$（$x>0$）、$f(x)=0$（$x\le0$）连续且在零点两侧分别光滑，但 $f'(x)=2x\sin(x^{-2})-2x^{-1}\cos(x^{-2})$ 在零点附近不绝对可积。因此不能仅凭连续性就把分布导数写成一个正则分布；上面的可积性假设有实际作用。
 
 在高维，若 $D$ 有光滑边界，外法向为 $\nu$，则散度定理给出
 \[

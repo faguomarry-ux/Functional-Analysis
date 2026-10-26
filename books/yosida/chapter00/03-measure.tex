@@ -134,7 +134,7 @@
 
 \subsection{乘积测度与 Fubini--Tonelli 定理}
 \begin{lemma}[$\pi$--$\lambda$ 原理]\label{lem:y0-pi-lambda}
-集合族 $\mathcal P$ 若对有限交封闭，称为 $\pi$-系。集合族 $\mathcal D$ 若含全集、对补集及可数不交并封闭，称为 $\lambda$-系。若 $\mathcal P\subseteq\mathcal D$，则 $\sigma(\mathcal P)\subseteq\mathcal D$。
+集合族 $\mathcal P$ 若对有限交封闭，称为 $\pi$-系。集合族 $\mathcal D$ 若含全集、对补集及可数不交并封闭，称为 $\lambda$-系。若 $\mathcal P$ 是 $\pi$-系、$\mathcal D$ 是 $\lambda$-系且 $\mathcal P\subseteq\mathcal D$，则 $\sigma(\mathcal P)\subseteq\mathcal D$。
 \end{lemma}
 \begin{proof}
 令 $\mathcal L$ 为包含 $\mathcal P$ 的最小 $\lambda$-系。$\lambda$-系对两个嵌套成员的差封闭。固定 $A\in\mathcal P$，集合族 $\{B:A\cap B\in\mathcal L\}$ 为 $\lambda$-系并包含 $\mathcal P$，所以包含 $\mathcal L$。再固定 $B\in\mathcal L$，同样论证 $\{A:A\cap B\in\mathcal L\}$ 包含 $\mathcal L$。于是 $\mathcal L$ 对有限交封闭，结合补集可得有限并封闭，再将可数并分为不交差集，得它对可数并封闭。因此 $\mathcal L$ 是 $\sigma$-代数，必包含 $\sigma(\mathcal P)$，结论成立。
@@ -233,7 +233,7 @@
 对有限测度 $E$，取体积总和小于 $m(E)+\varepsilon$ 的开矩形覆盖，并集 $U$ 开，且 $m(U\setminus E)<\varepsilon$，得外正则性。为得内正则性，先取足够大的闭立方体 $Q$，使 $m(E\setminus Q)<\varepsilon$；对 $Q\setminus E$ 外逼近为开集 $V$，使 $m(V\setminus(Q\setminus E))<\varepsilon$。则 $K=Q\setminus V$ 紧、$K\subseteq E$，且 $m(E\setminus K)<2\varepsilon$。
 \end{proof}
 
-在实线上，单调不减且右连续函数 $F$ 决定的区间值 $\mu_F((a,b])=F(b)-F(a)$ 称为 Lebesgue--Stieltjes 测度的起点；一般 $F$ 可用区间覆盖的外测度构造完成延拓。\emph{只有 $F(t)=t$ 时才是通常的 Lebesgue 测度}，例如阶跃函数决定点质量。这里不把一般 Stieltjes 测度统称为 Lebesgue 测度。
+在实线上，单调不减且右连续的实值函数 $F$ 决定的区间值 $\mu_F((a,b])=F(b)-F(a)$ 称为 Lebesgue--Stieltjes 测度的起点；一般 $F$ 可用区间覆盖的外测度构造完成延拓。\emph{恰在 $F(t)=t+C$（$C$ 为常数）时得到通常的 Lebesgue 测度}：区间增量不受加常数影响；反之，若每个 $(a,b]$ 的测度为 $b-a$，则 $F(b)-b=F(a)-a$。例如阶跃函数决定点质量。这里不把一般 Stieltjes 测度统称为 Lebesgue 测度。
 
 \begin{theorem}[紧支集连续函数的 $L^1$ 稠密性]\label{thm:y0-cc-density}
 若 $G\subseteq\R^n$ 开，$f\in L^1(G)$，则对任意 $\varepsilon>0$，存在 $\varphi\in C_c(G)$ 使 $\int_G|f-\varphi|\,\dd x<\varepsilon$。

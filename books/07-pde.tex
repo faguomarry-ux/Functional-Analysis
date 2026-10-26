@@ -15,6 +15,7 @@ $u\in\Dist(\Omega)$ 是 $Pu=f$ 的分布解，是指对每个 $\varphi\in\Test(\
 \end{definition}
 它不要求 $u$ 具有普通导数。然而，分布解也不自动具有边界值；边界条件须在具有迹算子的函数空间中解释，或另行使用适合的分布框架。
 
+\Needspace{10\baselineskip}
 \section{基本解与卷积求解}
 \begin{definition}[基本解]
 常系数算子 $P(\partial)$ 的基本解是满足 $P(\partial)E=\delta_0$ 的分布 $E$。
@@ -46,7 +47,7 @@ $n=1$ 时来自 $|x|''=2\delta_0$。当 $n\ge2$ 时，$E_n$ 在原点外调和�
 \[
  \int_{|x|>\varepsilon}E_n(-\Delta\varphi)\,\dd x
  =\int_{|x|=\varepsilon}
- [E_n\partial_r\varphi-\varphi\partial_rE_n],\dd S.
+ [E_n\partial_r\varphi-\varphi\partial_rE_n]\,\dd S.
 \]
 第一项的绝对值为 $O(\varepsilon)$（$n\ge3$）或 $O(\varepsilon|\log\varepsilon|)$（$n=2$），趋于零。第二项等于球面上 $\varphi$ 的平均值，趋于 $\varphi(0)$。局部可积性允许补回小球中的积分，得到结论。
 \end{proof}
@@ -72,6 +73,7 @@ Poincaré 不等式使 $\|u\|_{H_0^1}$ 可等价地取为 $\|\nabla u\|_2$。双
 Dirac 源并非在任何维数都属于 $H^{-1}$。在内点附近，$\delta_a\in H^{-1}$ 需要 $1>n/2$，所以仅在一维成立；二维临界情形也不成立。高维点源可有分布基本解，但不能据此直接套用上述 $H_0^1$ 弱解定理。
 \end{pitfall}
 
+\Needspace{10\baselineskip}
 \section{热方程与温和分布初值}
 考虑 $\partial_tu=\Delta u$，$u(0)=u_0\in\Temp(\R^n)$。Fourier 变换把方程化为 $\partial_t\widehat u=-|\xi|^2\widehat u$，自然令
 \begin{equation}\label{eq:heat-solution}
@@ -111,6 +113,7 @@ Hadamard 适定性要求在选定数据空间和解空间中，解存在、唯�
 \]
 若该矩阵乘子的各阶导数在每个有限时间区间具有统一多项式增长，就能在 $\Temp$ 上定义连续演化。若增长更快，则需要更强衰减的测试空间和相应对偶。盖尔芳特、希烙夫对这些增长、唯一性类和适定性类进行了系统研究；其一般分类定理需要更多加权空间工具，不能仅由这条形式公式推出。
 
+\Needspace{28\baselineskip}
 \section{习题}
 \begin{exercise}[三维点源]
 求 $-\Delta u=\delta_a$ 在 $\R^3$ 上的一个分布解，并说明为什么不能仅由这个方程得到唯一性。

@@ -23,7 +23,7 @@
 设 $f,g$ 连续、非负且均不恒为零，记 $a=\inf\supp f$、$b=\inf\supp g$（均以半轴为底空间）。则 $\inf\supp(f*g)=a+b$。
 \end{proposition}
 \begin{proof}
-若 $t<a+b$，积分的每个位置至少一个因子为零，故卷积为零。给定 $\varepsilon>0$，可在 $[a,a+\varepsilon/2)$、$[b,b+\varepsilon/2)$ 各找到严格正值点 $r,s$。连续性使两函数在这些点附近正；取 $t=r+s$，相应积分区间的一个正长度子区间上被积函数严格正，所以 $(f*g)(t)>0$。故左端点不大于 $a+b+\varepsilon$，令 $\varepsilon\downarrow0$。
+若 $t<a+b$，积分的每个位置至少一个因子为零，故卷积为零。给定 $\varepsilon>0$，可在 $(a,a+\varepsilon/2)$、$(b,b+\varepsilon/2)$ 各找到严格正值点 $r,s$（若左端点本身为正，由连续性可向右稍移）。连续性使两函数在这些点附近正；取 $t=r+s$，相应积分区间的一个正长度子区间上被积函数严格正，所以 $(f*g)(t)>0$。故左端点不大于 $a+b+\varepsilon$，令 $\varepsilon\downarrow0$。
 \end{proof}
 
 \begin{remark}[符号抵消的困难]

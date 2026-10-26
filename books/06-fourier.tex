@@ -1,4 +1,4 @@
-\SetChapterInfo{subtitle={Schwartz 对偶与微分的乘子化},keywords={温和分布; Fourier 自同构; Sobolev 空间},prereq={第 2、4、5 章; 经典 Fourier 反演},goals={统一常数并使用对偶定义 Fourier 变换}}
+\SetChapterInfo{subtitle={Schwartz 对偶与微分的乘子化},keywords={温和分布; Fourier 自同构; Sobolev 空间},prereq={测试函数拓扑; 分布运算与卷积; 经典 Fourier 反演},goals={统一常数并使用对偶定义 Fourier 变换}}
 \chapter{温和分布与傅里叶变换}\label{ch:fourier}
 \ChapterSource{对应施瓦尔茨 \cite{schwartz} 第 VII 章 §§2--6，特别是原书印刷第 169、172 页。全章使用式 \eqref{eq:fourier-convention}，与原书频率归一化不同。}
 
@@ -81,6 +81,7 @@ $\Test\to\Sch$ 连续，故限制得到 $\Temp\to\Dist$；由于 $\Test$ 在 $\S
 一维高斯积分与张量积计算给出 $\widehat G_t(\xi)=e^{-t|\xi|^2}$。由于 $\int G_t=1$，$G_t\to\delta_0$ 于分布意义；变换侧则 $e^{-t|\xi|^2}\to1$ 于温和分布意义。
 \end{example}
 
+\Needspace{10\baselineskip}
 \section{卷积定理的合法范围}
 对 Schwartz 函数 $f,g$，Fubini 直接给出 $\widehat{f*g}=\widehat f\widehat g$。若 $S\in\CompactDist$、$T\in\Temp$，则 $S*T\in\Temp$，并且
 \begin{equation}\label{eq:convolution-fourier}
@@ -107,7 +108,13 @@ Plancherel 定理给出 $H^0=L^2$。对非负整数 $m$，权重 $(1+|\xi|^2)^m$
  \partial_j:H^s\to H^{s-1}\quad\text{连续},\qquad
  s_1\ge s_2\Rightarrow H^{s_1}\subset H^{s_2}.
 \]
-用加权 Cauchy--Schwarz 可把 $H^{-s}$ 识别为 $H^s$ 的连续对偶，注意与 Hilbert 内积对应时的复共轭约定。
+在本稿的双线性分布配对下，$H^{-s}$ 与 $H^s$ 的连续线性对偶的对应明确为
+\[
+ \langle u,v\rangle=(2\pi)^{-n}\int_{\R^n}
+ \widehat u(\xi)\widehat v(-\xi)\,\dd\xi,
+ \qquad |\langle u,v\rangle|\le\|u\|_{H^{-s}}\|v\|_{H^s}.
+\]
+先在 Schwartz 函数上由反演得到公式，再用加权 Cauchy--Schwarz 延拓。反向将 $v\mapsto\langle\xi\rangle^s\widehat v(\xi)$ 作为到 $L^2$ 的同构，对任意连续泛函用 Riesz 表示，再反射频率并共轭表示函数，即得到唯一 $u\in H^{-s}$，且泛函范数等于 $\|u\|_{H^{-s}}$。因此这里的识别是线性的；若改写成 Hilbert 内积形式，必须同时调整共轭位置。
 \begin{example}[点质量的正则性门槛]
 因 $\widehat{\delta_0}=1$，有
 \[

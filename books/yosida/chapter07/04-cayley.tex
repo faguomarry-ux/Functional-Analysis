@@ -48,6 +48,20 @@ $y_n=(x_n-iAx_n)/2$ 收敛。$M$ 闭及 $U$ 连续给出 $x=(I-U)y$、$v=i(I+U)y
 $(A^*+iI)y=(A+iI)x_0+w_+$。令 $x_+=w_+/(2i)$，则 $x_-=y-x_0-x_+$ 属于 $N_-$，给出存在性。若 $x_0+x_++x_-=0$，施以 $A^*+iI$ 得 $(A+iI)x_0+2ix_+=0$；两项在正交子空间中，故均为零。由式 \eqref{eq:y7-shift-estimate} 得 $x_0=0$，继而 $x_+=x_-=0$。作用公式来自各子空间的定义。
 \end{proof}
 
+\begin{proposition}[自伴算子的非实参数估计]\label{prop:y7-nonreal-inverse}
+若 $A$ 自伴，$z=a+ib$、$b\ne0$，则 $A-zI:D(A)\to H$ 双射，且
+\[
+ \|(A-zI)^{-1}\|\le |b|^{-1}.
+\]
+\end{proposition}
+\begin{proof}
+对称性使 $((A-aI)x,x)$ 为实数，因此
+\[
+ \|(A-zI)x\|^2=\|(A-aI)x\|^2+b^2\|x\|^2.
+\]
+故 $A-zI$ 单射且有上述逆的估计。它闭，所以这一界也保证值域闭。又 $(A-zI)^*=A-\overline z I$，同一估计使其核为零；由值域与伴随核的正交补关系，值域稠密，因而为全空间。此证明不使用谱定理。若只知道 $A$ 闭且对称，则只能直接得到单射、闭值域及逆在值域上的界，不能省略满射性的论证。
+\end{proof}
+
 \begin{exercise}[乘法算子的 Cayley 变换]\label{ex:y7-cayley-mult}
 求 $M_t$ 在 $L^2(\mathbb R)$ 上的 Cayley 变换，并检验逆公式的定义域。
 \end{exercise}
