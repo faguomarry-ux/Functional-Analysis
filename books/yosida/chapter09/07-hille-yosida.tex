@@ -1,0 +1,54 @@
+\Needspace{12\baselineskip}
+\section{\texorpdfstring{$(C_0)$}{(C0)} 类等度连续半群用其无穷小生成元的表示和刻画}\label{sec:yosida-09-07}
+\noindent\textit{原书起始页：中译本 258；英文版 246。}
+
+\begin{theorem}[Hille--Yosida，Banach 版本]\label{thm:y9-hille-yosida}
+固定 $M\ge1$、$\omega\in\mathbb R$。线性算子 $A$ 生成满足 $\|T(t)\|\le Me^{\omega t}$ 的 $C_0$ 半群，当且仅当 $A$ 稠密定义且闭，并且对所有实数 $\lambda>\omega$、整数 $n\ge1$，
+\begin{equation}\label{eq:y9-hille-yosida}
+ \lambda\in\rho(A),\qquad
+ \|R(\lambda,A)^n\|\le\frac{M}{(\lambda-\omega)^n}.
+\end{equation}
+生成的半群唯一。
+\end{theorem}
+\begin{proof}
+必要性是定理 \ref{thm:y9-generator-properties} 和定理 \ref{thm:y9-laplace}。充分性先取 $\omega=0$；一般情形对 $A-\omega I$ 应用结论，再乘 $e^{\omega t}$。
+
+令 $J_\lambda=\lambda R(\lambda,A)$、$A_\lambda=\lambda(J_\lambda-I)$。由假设 $\|J_\lambda^n\|\le M$（含 $n=0$），所以
+\begin{equation}\label{eq:y9-yosida-semigroup}
+ T_\lambda(t)=e^{tA_\lambda}
+ =e^{-\lambda t}\sum_{k=0}^\infty\frac{(\lambda t)^k}{k!}J_\lambda^k,
+ \qquad \|T_\lambda(t)\|\le M.
+\end{equation}
+这些是有界生成元的半群。对 $x\in D(A)$，$J_\lambda x-x=R(\lambda,A)Ax\to0$；由稠密性及 $\|J_\lambda\|\le M$ 推广到全空间，进而 $A_\lambda x=J_\lambda Ax\to Ax$。
+
+预解恒等式保证不同参数的 $A_\lambda$ 彼此交换。对 $x\in D(A)$ 微分 $T_\lambda(t-s)T_\mu(s)x$ 并积分，得到
+\[
+ \|(T_\lambda(t)-T_\mu(t))x\|
+ \le M^2t\|(A_\lambda-A_\mu)x\|.
+\]
+故在每个紧时间区间上轨道为一致 Cauchy 列，先对 $D(A)$、再由一致有界性对所有 $X$ 成立。取 $\lambda\to\infty$ 得 $T(t)x$；局部一致极限保证轨道连续，乘积取强极限得到半群律，且 $\|T(t)\|\le M$。
+
+设其生成元为 $G$。对 $x\in D(A)$，在
+$T_\lambda(t)x-x=\int_0^tT_\lambda(s)A_\lambda x\,\dd s$ 中取极限，得 $T(t)x-x=\int_0^tT(s)Ax\,\dd s$，故 $A\subset G$。取实数 $\eta>0$，$\eta I-A$ 由假设满射，$\eta I-G$ 由 Laplace 定理单射。给定 $x\in D(G)$，令 $z=R(\eta,A)(\eta I-G)x$，则 $z\in D(A)$ 且 $(\eta I-G)(x-z)=0$，故 $x=z\in D(A)$。因此 $A=G$。唯一性见命题 \ref{prop:y9-classical-solution}。
+\end{proof}
+
+证明同时得到表示公式
+\begin{equation}\label{eq:y9-yosida-limit}
+ T(t)x=\lim_{\lambda\to\infty}
+ \exp\!\bigl(t\lambda A(\lambda I-A)^{-1}\bigr)x,
+\end{equation}
+对每个 $x$ 在紧时间区间上一致。原书使用整数参数与半范数等度连续族给出局部凸版本；上面完整证明的是 Banach 版本，其一般局部凸推广尚未在本稿重证。
+
+\begin{exercise}[压缩情形为何只需一次幂]\label{ex:y9-hy-contraction}
+设 $A$ 稠密定义且闭，$(0,\infty)\subset\rho(A)$，$\|R(\lambda,A)\|\le1/\lambda$。证明它生成压缩半群。
+\end{exercise}
+\begin{solution}
+算子范数的次乘性给出 $\|R(\lambda,A)^n\|\le\lambda^{-n}$，所以 Hille--Yosida 取 $M=1,\omega=0$ 适用。若一次幂估计的常数为 $M>1$，相乘只产生 $M^n$，不能同样处理。
+\end{solution}
+
+\begin{exercise}[标量 Yosida 极限]\label{ex:y9-yosida-scalar}
+对 $A=-bI$、$b>0$，求 $A_\lambda$ 和 $T_\lambda(t)$，核对极限公式。
+\end{exercise}
+\begin{solution}
+$J_\lambda=\lambda(\lambda+b)^{-1}I$，$A_\lambda=-\lambda b(\lambda+b)^{-1}I$，故 $T_\lambda(t)=\exp(-t\lambda b/(\lambda+b))I\to e^{-bt}I$，对有界时间区间一致。
+\end{solution}

@@ -1,0 +1,49 @@
+\Needspace{12\baselineskip}
+\section{无穷小生成元 \texorpdfstring{$A$}{A} 的预解式}\label{sec:yosida-09-04}
+\noindent\textit{原书起始页：中译本 252；英文版 240。}
+
+\begin{theorem}[Laplace 表示与预解式幂估计]\label{thm:y9-laplace}
+若 $T$ 满足 $\|T(t)\|\le Me^{\omega t}$，生成元为 $A$，则 $\operatorname{Re}\lambda>\omega$ 时 $\lambda\in\rho(A)$，并对每个 $x\in X$ 有
+\begin{align}
+ R(\lambda,A)x&=\int_0^\infty e^{-\lambda t}T(t)x\,\dd t,\label{eq:y9-laplace}\\
+ R(\lambda,A)^nx&=\frac1{(n-1)!}\int_0^\infty t^{n-1}e^{-\lambda t}T(t)x\,\dd t,\quad n\ge1,\label{eq:y9-laplace-powers}\\
+ \|R(\lambda,A)^n\|&\le\frac{M}{(\operatorname{Re}\lambda-\omega)^n}.\label{eq:y9-resolvent-powers}
+\end{align}
+积分先按每个向量的 Bochner 积分理解；不要求 $t\mapsto T(t)$ 在算子范数中连续。
+\end{theorem}
+\begin{proof}
+指数界使第一式右端定义有界算子 $Q_\lambda$。变换积分变量有
+\[
+ T(h)Q_\lambda x=e^{\lambda h}
+ \left(Q_\lambda x-\int_0^he^{-\lambda s}T(s)x\,\dd s\right).
+\]
+取差商可得 $Q_\lambda x\in D(A)$ 且 $AQ_\lambda x=\lambda Q_\lambda x-x$。对 $x\in D(A)$，积分 $e^{-\lambda t}T(t)x$ 的导数；无穷远边界由指数界趋零，得到 $Q_\lambda(\lambda I-A)x=x$。因此 $Q_\lambda$ 是双侧逆。
+
+反复乘积的积分中使用半群律，把 $T(t_1)\cdots T(t_n)$ 合成 $T(t_1+\cdots+t_n)$。绝对可积性允许 Fubini 交换；固定和为 $t$ 的单纯形体积因子为 $t^{n-1}/(n-1)!$，可用归纳积分验证。由此得到幂的公式，进而积分 $t^{n-1}e^{-(\operatorname{Re}\lambda-\omega)t}$，得到同一个常数 $M$ 的估计。
+\end{proof}
+
+仅知道 $\|R(\lambda,A)\|\le M/(\lambda-\omega)$，反复相乘只能得到 $M^n$；生成定理要求的却是所有幂共用一个 $M$。当 $M=1$ 时，一次幂估计足够，这解释了压缩半群刻画的特殊简洁性。
+
+\begin{proposition}[预解式逼近恒等算子]\label{prop:y9-resolvent-approx}
+沿实数 $\lambda\to\infty$，有 $\lambda R(\lambda,A)x\to x$ 对所有 $x\in X$ 成立。对 $x\in D(A)$，
+\[
+ A\lambda R(\lambda,A)x=\lambda R(\lambda,A)Ax\longrightarrow Ax.
+\]
+\end{proposition}
+\begin{proof}
+对 $x\in D(A)$，$\lambda R(\lambda,A)x-x=R(\lambda,A)Ax$，范数至多 $M\|Ax\|/(\lambda-\omega)$；由定义域稠密及 $\lambda R(\lambda,A)$ 最终一致有界，推广到全空间。交换关系在定义域上来自 $(\lambda I-A)R=I$ 与 $R(\lambda I-A)=I$，再应用第一结论于 $Ax$。
+\end{proof}
+
+\begin{exercise}[标量生成元]\label{ex:y9-scalar-laplace}
+取 $T(t)=e^{bt}I$。直接计算其 Laplace 积分及 $n$ 次预解式幂，核对收敛半平面。
+\end{exercise}
+\begin{solution}
+生成元为 $bI$，当 $\operatorname{Re}\lambda>\operatorname{Re}b$ 时，积分为 $(\lambda-b)^{-1}I$；幂为 $(\lambda-b)^{-n}I$。实际预解集是 $\mathbb C\setminus\{b\}$，大于增长率的半平面是 Laplace 表示的充分范围，不必是全部预解集。
+\end{solution}
+
+\begin{exercise}[Yosida 近似的形式]\label{ex:y9-yosida-form}
+对实数 $\lambda>\max(\omega,0)$，证明 $A_\lambda=\lambda AR(\lambda,A)$ 为有界算子，给出不含无界复合的表达，并说明它在 $D(A)$ 上的极限。
+\end{exercise}
+\begin{solution}
+$AR(\lambda,A)=\lambda R(\lambda,A)-I$，所以 $A_\lambda=\lambda^2R(\lambda,A)-\lambda I\in\mathcal L(X)$。对 $x\in D(A)$，$A_\lambda x=\lambda R(\lambda,A)Ax\to Ax$。这个收敛不声称在全空间存在强极限，也不声称范数收敛于无界 $A$。
+\end{solution}

@@ -1,0 +1,48 @@
+\Needspace{12\baselineskip}
+\section{\texorpdfstring{$(C_0)$}{(C0)} 类半群}\label{sec:yosida-09-01}
+\noindent\textit{原书起始页：中译本 243；英文版 232。}
+
+\begin{definition}[强连续半群]
+一族 $T(t)\in\mathcal L(X)$（$t\ge0$）若满足
+\[
+ T(0)=I,\qquad T(t+s)=T(t)T(s),\qquad
+ \lim_{t\to t_0}\|T(t)x-T(t_0)x\|=0
+\]
+对每个 $x\in X$、$t_0\ge0$ 成立，称为 $C_0$ 半群。$t_0=0$ 时取右极限。若 $\|T(t)\|\le1$，称为压缩半群；若 $\sup_{t\ge0}\|T(t)\|<\infty$，称为有界半群。
+\end{definition}
+
+\begin{theorem}[原点连续性与指数界]\label{thm:y9-growth}
+在半群律和 $T(0)=I$ 的前提下，只需检验 $T(t)x\to x$（$t\downarrow0$）。任意 $C_0$ 半群存在 $M\ge1$、$\omega\in\mathbb R$ 使
+\begin{equation}\label{eq:y9-growth}
+ \|T(t)\|\le Me^{\omega t}\qquad(t\ge0).
+\end{equation}
+\end{theorem}
+\begin{proof}
+先证某个 $\delta>0$ 上的算子范数有界。否则可选 $t_n\downarrow0$ 使 $\|T(t_n)\|\to\infty$，但每个 $x$ 的 $T(t_n)x$ 收敛，和一致有界原理矛盾。记 $K=\sup_{0\le t\le\delta}\|T(t)\|\ge1$。写 $t=n\delta+r$，$0\le r<\delta$，得
+$\|T(t)\|\le K^{n+1}\le K\exp(t\log K/\delta)$。这也给出任意有限时间区间的局部范数界。
+右连续性来自 $T(t+h)x-T(t)x=T(t)(T(h)x-x)$；左连续性来自
+\[
+ T(t)x-T(t-h)x=T(t-h)(T(h)x-x),\qquad0<h<t,
+\]
+结合局部范数界即可。
+\end{proof}
+
+把 $T(t)$ 换成 $e^{-\omega t}T(t)$ 就得到有界半群，但生成元也相应减去 $\omega I$。并不是在不改算子的情况下消去了增长。后文常先证明有界情形，再用这种平移恢复一般指数界。
+
+\begin{example}[强连续不要求范数连续]
+在 $L^2(\mathbb R)$ 上令 $T(t)f(s)=f(s+t)$。平移等距，且由紧支集光滑函数的稠密性得强连续。然而 Fourier 变换后 $T(t)$ 是乘子 $e^{it\xi}$，故每个 $t>0$ 都有 $\|T(t)-I\|=2$。无穷小时间内，高频向量仍可发生很大的变化。
+\end{example}
+
+\begin{exercise}[改变增长率]\label{ex:y9-growth-shift}
+设 $T$ 满足 \eqref{eq:y9-growth}，令 $S(t)=e^{-at}T(t)$。验证半群律、强连续性，并求其范数界。
+\end{exercise}
+\begin{solution}
+标量指数的乘法律给出 $S(t+s)=S(t)S(s)$，逐向量连续性由乘积连续性得到；$\|S(t)\|\le Me^{(\omega-a)t}$。当 $a=\omega$ 时有界，但只有 $M=1$ 时这一估计才直接说明压缩性。
+\end{solution}
+
+\begin{exercise}[一般半群没有逆]\label{ex:y9-no-inverse}
+在 $L^2(0,\infty)$ 上令 $T(t)f(s)=f(s+t)$。证明它是压缩 $C_0$ 半群，且 $t>0$ 时不单射。
+\end{exercise}
+\begin{solution}
+积分区间平移给出 $\|T(t)f\|_2\le\|f\|_2$，半群律直接成立；把 $f$ 零延拓至实线，利用平移的 $L^2$ 连续性得到强连续。支于 $(0,t)$ 的非零函数被 $T(t)$ 消去，所以不存在逆算子。
+\end{solution}

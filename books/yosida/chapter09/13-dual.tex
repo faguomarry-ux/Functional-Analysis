@@ -1,0 +1,67 @@
+\Needspace{12\baselineskip}
+\section{对偶半群、Phillips 定理}\label{sec:yosida-09-13}
+\noindent\textit{原书起始页：中译本 284；英文版 272。}
+
+设 $T$ 为 Banach 空间上的 $C_0$ 半群，生成元为 $A$，指数界为 $Me^{\omega t}$。线性对偶族 $T'(t)$ 满足半群律和同样的范数界。对每个 $f\in X'$、$x\in X$，
+\[
+ (T'(t)f)(x)=f(T(t)x)
+\]
+随 $t$ 连续，故它总是弱星连续。然而在 $X'$ 的范数中可能不连续。定义其连续部分
+\begin{equation}\label{eq:y9-sun-dual}
+ X^\odot=\{f\in X':\|T'(h)f-f\|\to0\ (h\downarrow0)\}.
+\end{equation}
+这是闭的、$T'(t)$ 不变的线性子空间；闭性来自小时间的一致算子界，不变性来自半群的交换性。
+
+\begin{theorem}[Phillips 定理，Banach 版本]\label{thm:y9-phillips}
+以 $A'$ 表示稠密定义算子 $A$ 的线性对偶，则
+\begin{equation}\label{eq:y9-sun-domain}
+ X^\odot=\overline{D(A')}^{\|\cdot\|_{X'}}.
+\end{equation}
+限制 $T^\odot(t)=T'(t)|_{X^\odot}$ 为 $C_0$ 半群，其生成元 $A^\odot$ 为 $A'$ 在该空间中的部分：
+\begin{equation}\label{eq:y9-sun-generator}
+ D(A^\odot)=\{f\in D(A'):A'f\in X^\odot\},\qquad A^\odot f=A'f.
+\end{equation}
+并有 $R(\lambda,A^\odot)=R(\lambda,A)'|_{X^\odot}$（实数 $\lambda>\omega$）。
+\end{theorem}
+\begin{proof}
+若 $f\in D(A')$，先对 $x\in D(A)$ 使用轨道微分和配对，再以稠密性延拓到所有 $x$，得
+\begin{equation}\label{eq:y9-dual-integral}
+ (T'(t)f-f)(x)=\int_0^t(A'f)(T(s)x)\,\dd s.
+\end{equation}
+所以 $\|T'(t)f-f\|\le(\int_0^tMe^{\omega s}\,\dd s)\|A'f\|\to0$，从而 $\overline{D(A')}\subset X^\odot$。
+反向若 $f\in X^\odot$，对偶预解式的 Laplace 表示在这个连续部分是范数 Bochner 积分。近似恒等性质给出
+\[
+ f_\lambda=\lambda R(\lambda,A)'f\longrightarrow f
+ \quad\text{于对偶范数}.
+\]
+由第八章 $R(\lambda,A)'=R(\lambda,A')$，$f_\lambda\in D(A')$，故得闭包等式。
+
+原点范数连续加局部范数界说明限制半群为 $C_0$。若其生成元为 $G$，对 $x\in D(A)$ 配对差商，得到 $Gf=A'f$，故 $G$ 包含于所述部分。反向若 $f\in D(A')$ 且 $A'f\in X^\odot$，式 \eqref{eq:y9-dual-integral} 的右端可表示为 $X^\odot$ 中的范数积分 $\int_0^tT^\odot(s)A'f\,\dd s$，除以 $t$ 得范数差商趋于 $A'f$，故该部分包含于 $G$。预解式公式直接由限制半群的 Laplace 积分得到。
+\end{proof}
+
+\begin{corollary}[自反空间上的对偶半群]
+若 $X$ 自反，则 $X^\odot=X'$，$T'$ 为整个对偶空间上的 $C_0$ 半群，生成元为 $A'$。
+\end{corollary}
+\begin{proof}
+若 $D(A')$ 不范数稠密，Hahn--Banach 给出非零 $F\in X''$ 零化该定义域；自反性使 $F$ 由某个 $x\in X$ 表示。因 $R(\lambda,A)'X'=D(A')$，有 $f(R(\lambda,A)x)=0$ 对所有 $f$ 成立，故 $R(\lambda,A)x=0$，推出 $x=0$，矛盾。再用上一定理即可。
+\end{proof}
+
+\begin{example}[整个对偶上的强连续性会失败]
+实线平移在 $L^1(\mathbb R)$ 上强连续。其线性对偶在 $L^\infty$ 中为反向平移；对 $f=\mathbf1_{[0,\infty)}$，任意 $h>0$ 都有 $\|T'(h)f-f\|_\infty=1$。所以弱星连续不能升级为范数连续，且 $X^\odot$ 严格小于全部 $L^\infty$。
+\end{example}
+
+原书本节还处理序列完备局部凸空间，并另要求适当对偶空间的完备性。中译本第 284 页校注明确提醒对偶拓扑的区分。本节始终使用 Banach 对偶范数定义连续部分，其一般局部凸推广与不同对偶拓扑的全部比较尚未展开。
+
+\begin{exercise}[有限维对偶]\label{ex:y9-dual-finite}
+若 $X=\mathbb C^d$ 且 $T(t)=e^{tB}$，求 $X^\odot$、$A'$ 与 $T'(t)$。若改用 Hilbert 伴随，有何变化？
+\end{exercise}
+\begin{solution}
+有限维中所有生成元处处定义且有界，$X^\odot=X'$。以双线性坐标配对表示，$A'=B^{\mathsf T}$、$T'(t)=e^{tB^{\mathsf T}}$。Hilbert 伴随改为共轭转置 $B^*=\overline B^{\mathsf T}$；实时间 $t$ 下 $T(t)^*=e^{tB^*}$。
+\end{solution}
+
+\begin{exercise}[连续部分的最大性]\label{ex:y9-sun-maximal}
+若 $Y\subset X'$ 是闭的 $T'$ 不变子空间，且 $T'|_Y$ 为范数强连续半群，证明 $Y\subset X^\odot$。
+\end{exercise}
+\begin{solution}
+对每个 $f\in Y$，强连续性恰指 $\|T'(h)f-f\|_{X'}\to0$，所以由定义属于 $X^\odot$。因此 Phillips 连续部分包含所有满足此性质的闭不变子空间。
+\end{solution}

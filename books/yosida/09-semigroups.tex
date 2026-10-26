@@ -1,57 +1,27 @@
 % !TeX encoding = UTF-8
-% 吉田第六版：中译本第 9 章；此文件当前仅为目录与正文占位。
-\SetChapterInfo{subtitle={吉田耕作第六版主线 · 正文待撰写}}
+\SetChapterInfo{subtitle={从预解式构造时间演化},keywords={强连续半群; 生成元; Hille--Yosida; 耗散; Stone; 分数幂; Trotter--Kato},prereq={第八章预解式和全纯演算; Bochner 积分; 闭算子与对偶},goals={证明生成元刻画; 控制近似过程; 识别微分算子的定义域}}
 \chapter{半群的分析理论}\label{ch:yosida-09}
-\YosidaChapterPlaceholder{9}{Analytical Theory of Semi-groups}{243--286}{231--273}
+\ChapterSource{按 \cite{yosida-zh,yosida-en} 第九章十三节组织，2026 年 10 月 27 日补写为学习讲义。直接查看英文印刷 231--274 页全章扫描图及中文选页，详细范围见本章 COVERAGE。英文第 231 页上部仍属第八章，第 274 页下部开始第十章，故相邻章的参考范围重叠。中文范围为印刷 243--286 页。}
 
-\section{\texorpdfstring{$(C_0)$}{(C0)} 类半群}\label{sec:yosida-09-01}
-\YosidaSectionPlaceholder{243}{232}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
+第八章把 $(\lambda I-A)^{-1}$ 作为可解性的函数。本章反过来问：怎样的 $A$ 能决定时间演化 $T(t)$，使 $u(t)=T(t)x$ 解 $u'=Au$？无界生成元不能直接代入范数收敛的指数级数；我们将用有界的 Yosida 近似构造半群，再证明它与原算子的定义域完全一致。
 
-\section{局部凸空间中 \texorpdfstring{$(C_0)$}{(C0)} 类等度连续半群、几例半群}\label{sec:yosida-09-02}
-\YosidaSectionPlaceholder{246}{234}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
+除第二、六节明确讨论局部凸空间外，$X$ 为复 Banach 空间，$\mathcal L(X)$ 表示有界线性算子。$T(t)$ 表示半群，$A$ 表示生成元，始终采用 $u'=Au$ 的符号；在分数幂一节另令 $B=-A$。$T'$ 为线性对偶，Hilbert 伴随写作 $T^*$，内积对第一变量线性。
 
-\section{\texorpdfstring{$(C_0)$}{(C0)} 类等度连续半群的无穷小生成元}\label{sec:yosida-09-03}
-\YosidaSectionPlaceholder{248}{237}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
+\input{books/yosida/chapter09/01-c0}
+\input{books/yosida/chapter09/02-locally-convex}
+\input{books/yosida/chapter09/03-generator}
+\input{books/yosida/chapter09/04-laplace}
+\input{books/yosida/chapter09/05-examples}
+\input{books/yosida/chapter09/06-exponential}
+\input{books/yosida/chapter09/07-hille-yosida}
+\input{books/yosida/chapter09/08-dissipative}
+\input{books/yosida/chapter09/09-stone}
+\input{books/yosida/chapter09/10-holomorphic}
+\input{books/yosida/chapter09/11-fractional}
+\input{books/yosida/chapter09/12-trotter-kato}
+\input{books/yosida/chapter09/13-dual}
 
-\section{无穷小生成元 \texorpdfstring{$A$}{A} 的预解式}\label{sec:yosida-09-04}
-\YosidaSectionPlaceholder{252}{240}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{几例无穷小生成元}\label{sec:yosida-09-05}
-\YosidaSectionPlaceholder{254}{242}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{具等度连续幂的连续线性算子的指数函数}\label{sec:yosida-09-06}
-\YosidaSectionPlaceholder{256}{244}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{\texorpdfstring{$(C_0)$}{(C0)} 类等度连续半群用其无穷小生成元的表示和刻画}\label{sec:yosida-09-07}
-\YosidaSectionPlaceholder{258}{246}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{压缩半群和耗散算子}\label{sec:yosida-09-08}
-\YosidaSectionPlaceholder{261}{250}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{\texorpdfstring{$(C_0)$}{(C0)} 类等度连续群、Stone 定理}\label{sec:yosida-09-09}
-\YosidaSectionPlaceholder{263}{251}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{全纯半群}\label{sec:yosida-09-10}
-\YosidaSectionPlaceholder{266}{254}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{闭算子的分数幂}\label{sec:yosida-09-11}
-\YosidaSectionPlaceholder{271}{259}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{半群的收敛性、Trotter--Kato 定理}\label{sec:yosida-09-12}
-\YosidaSectionPlaceholder{281}{269}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{对偶半群、Phillips 定理}\label{sec:yosida-09-13}
-\YosidaSectionPlaceholder{284}{272}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
+\Needspace{6\baselineskip}
+\section*{本章参考与后续阅读衔接}
+\phantomsection\addcontentsline{toc}{section}{本章参考与后续阅读衔接}
+本章直接参考吉田两版第九章 \cite{yosida-zh,yosida-en}；一般局部凸、全纯围道及一般从属核的未展开范围见各节与 COVERAGE。原书所引原始文献本次未直接阅读。后续紧算子理论将用于分析紧预解式和正时间紧半群，两者的联系仍需相应连续性与谱条件。

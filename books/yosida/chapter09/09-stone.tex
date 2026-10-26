@@ -1,0 +1,47 @@
+\Needspace{12\baselineskip}
+\section{\texorpdfstring{$(C_0)$}{(C0)} 类等度连续群、Stone 定理}\label{sec:yosida-09-09}
+\noindent\textit{原书起始页：中译本 263；英文版 251。}
+
+\begin{proposition}[从两个方向生成群]\label{prop:y9-group-generation}
+若 $A$ 与 $-A$ 分别生成 $C_0$ 半群 $T_+(t)$、$T_-(t)$，则它们互为逆，拼接为 $C_0$ 群。反过来，群 $U(t)$ 的正、负时间半群生成元分别为 $A$ 与 $-A$，定义域相同。
+\end{proposition}
+\begin{proof}
+正反半群的预解式是 $A$ 的预解式的标量变形，故彼此交换；也可先由定义域上的唯一性证明交换。对 $x\in D(A)$，半群都保持定义域，且
+\[
+ \frac{d}{dt}\bigl(T_+(t)T_-(t)x\bigr)
+ =T_+(t)(A-A)T_-(t)x=0.
+\]
+初值为 $x$，故乘积为 $I$，稠密性给出全空间恒等式。反向若 $U$ 是群，则
+$(U(-h)x-x)/h=-U(-h)(U(h)x-x)/h$；一个差商存在就等价于另一个存在，且极限相反。
+\end{proof}
+
+\begin{theorem}[Stone 定理，不预用谱表示]\label{thm:y9-stone}
+复 Hilbert 空间的强连续酉群 $U(t)$ 的生成元 $A$ 满足 $A^*=-A$。因此 $H=-iA$ 自伴，$A=iH$。反过来，每个自伴 $H$ 都使 $iH$ 生成唯一强连续酉群，通常记作 $e^{itH}$。
+\end{theorem}
+\begin{proof}
+若 $U$ 酉，对 $x,y\in D(A)$ 微分 $(U(t)x,U(t)y)=(x,y)$，得 $(Ax,y)+(x,Ay)=0$，故 $A\subset-A^*$。正、负时间都是压缩半群，所以对 $\lambda>0$，$\lambda I-A$ 与 $\lambda I+A$ 都满射。
+给 $y\in D(A^*)$，取 $x\in D(A)$ 使 $(\lambda I-A)x=(\lambda I+A^*)y$。由于 $A^*x=-Ax$，得 $(\lambda I+A^*)(y-x)=0$。该核为 $R(\lambda I+A)^\perp=0$，故 $y=x\in D(A)$，从而 $A^*=-A$。
+
+\par\Needspace{5\baselineskip}
+反向若 $H=H^*$，$A=iH$ 与 $-A$ 都耗散，因为 $\operatorname{Re}(iHx,x)=0$；第八章的自伴预解式保证 $\lambda I\mp iH$ 满射。Lumer--Phillips 产生两个压缩半群，前一命题使它们互逆。于是 $\|U(t)x\|\le\|x\|\le\|U(-t)U(t)x\|$，得到等距且满射，即酉群。$H=-iA$ 的自伴性也由 $(cA)^*=\overline c A^*$ 直接验证。
+\end{proof}
+
+这里 $e^{itH}$ 是生成元决定的群的记号；本证明没有把无界 $H$ 代入全空间范数指数级数，也没有预用第十一章的自伴谱积分。
+
+\begin{example}[平移群的动量算子]
+在 $L^2(\mathbb R)$ 上，$U(t)f(s)=f(s+t)$ 是酉群，$A=\partial_s$，$D(A)=H^1$，因此 $H=-i\partial_s$ 自伴。正时间的半直线平移通常不能逆转；边界条件会破坏群结构。
+\end{example}
+
+\begin{exercise}[核对符号]\label{ex:y9-stone-sign}
+若 $U(t)f(s)=f(s-t)$，求生成元 $A$ 及满足 $U(t)=e^{itH}$ 的 $H$。
+\end{exercise}
+\begin{solution}
+$A=-\partial_s$，定义域 $H^1(\mathbb R)$，故 $H=-iA=i\partial_s$。平移方向改变会反转动量算子的符号；指数中的 $it$ 约定也必须同时保留。
+\end{solution}
+
+\begin{exercise}[不动向量与零能量]\label{ex:y9-stone-fixed}
+对 Stone 定理的酉群，证明 $U(t)x=x$ 对所有实数 $t$ 成立，当且仅当 $x\in D(H)$ 且 $Hx=0$。
+\end{exercise}
+\begin{solution}
+不动向量的差商恒为零，所以属于 $D(A)=D(H)$ 且 $Hx=0$。反向由轨道微分 $U'(t)x=U(t)iHx=0$，得到轨道恒等于 $x$。
+\end{solution}

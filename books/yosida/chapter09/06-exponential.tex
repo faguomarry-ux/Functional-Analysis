@@ -1,0 +1,49 @@
+\Needspace{12\baselineskip}
+\section{具等度连续幂的连续线性算子的指数函数}\label{sec:yosida-09-06}
+\noindent\textit{原书起始页：中译本 256；英文版 244。}
+
+\begin{proposition}[局部凸空间中的指数级数]\label{prop:y9-lcs-exponential}
+设 $X$ 为 Hausdorff 序列完备局部凸空间，$B:X\to X$ 连续，且 $\{B^n:n\ge0\}$ 等度连续。则
+\[
+ e^{tB}x=\sum_{n=0}^\infty\frac{t^nB^nx}{n!},\qquad t\in\mathbb R,
+\]
+收敛并定义强连续群，逐轨道可微，生成元为处处定义的 $B$。每个连续半范数 $p$ 有 $q$ 使
+\[
+ p(e^{tB}x)\le e^{|t|}q(x).
+\]
+\end{proposition}
+\begin{proof}
+等度连续给 $p(B^nx)\le q(x)$，指数级数的尾和因而被标量尾和乘 $q(x)$ 控制，局部关于 $t$ 一致；序列完备保证极限在 $X$ 中。估计也给出极限算子的连续性。双级数在每个半范数下绝对可控，故可重排得到 $e^{sB}e^{tB}=e^{(s+t)B}$。导数级数有同样的局部控制，或直接用差商余项 $\sum_{n\ge2}|h|^{n-1}q(x)/n!\to0$，得生成元为 $B$。
+\end{proof}
+
+\begin{theorem}[Banach 空间中的一致连续半群]\label{thm:y9-uniform-continuity}
+Banach 空间的 $C_0$ 半群满足 $\|T(h)-I\|\to0$，当且仅当其生成元 $A$ 有界且 $D(A)=X$。此时
+\[
+ T(t)=e^{tA}=\sum_{n=0}^\infty\frac{t^nA^n}{n!}
+\]
+在算子范数中收敛。
+\end{theorem}
+\begin{proof}
+有界 $A$ 的指数级数不需要幂有界，因为 $\|A^n\|\le\|A\|^n$；其和为一致连续半群，生成元是 $A$，由唯一性等于 $T$。
+反向令 $K_h=h^{-1}\int_0^hT(s)\,\dd s$。范数连续使积分成为算子范数积分，$\|K_h-I\|\to0$，故小 $h$ 时 $K_h$ 可逆。由 \eqref{eq:y9-integrated-orbit}，$K_hX\subset D(A)$，可逆性迫使 $D(A)=X$，而
+\[
+ A=\frac{T(h)-I}{h}K_h^{-1}
+\]
+有界。也可由 $A$ 闭及闭图像定理得到有界性。
+\end{proof}
+
+一般局部凸空间的连续算子不一定满足足以保证指数级数收敛的幂估计；不能把 Banach 范数论证直接照搬过去。前一个命题明确给出了可用的充分条件。
+
+\begin{exercise}[可交换生成元]\label{ex:y9-commuting}
+对 $B,C\in\mathcal L(X)$ 且 $BC=CB$，证明 $e^{tB}e^{tC}=e^{t(B+C)}$。说明可交换性在哪里使用。
+\end{exercise}
+\begin{solution}
+双范数级数绝对收敛，可按总次数重排；$BC=CB$ 使二项式公式成立，故第 $n$ 次齐次项为 $t^n(B+C)^n/n!$。不交换时，二次项中 $BC$ 与 $CB$ 的系数已经不同，不能这样合并。
+\end{solution}
+
+\begin{exercise}[有界性与半群的区别]\label{ex:y9-exponential-bound}
+设 $\|B\|\le c$。证明 $\|e^{tB}\|\le e^{tc}$，并说明有界生成元是否必然产生有界半群。
+\end{exercise}
+\begin{solution}
+逐项估计级数得到 $e^{tc}$。取 $B=I$ 则 $e^{tB}=e^tI$ 随时间无界，所以“生成元有界”与“半群在全时间有界”是不同条件。
+\end{solution}

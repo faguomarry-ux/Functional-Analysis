@@ -1,0 +1,50 @@
+\Needspace{12\baselineskip}
+\section{局部凸空间中 \texorpdfstring{$(C_0)$}{(C0)} 类等度连续半群、几例半群}\label{sec:yosida-09-02}
+\noindent\textit{原书起始页：中译本 246；英文版 234。}
+
+本节允许 $X$ 为 Hausdorff 局部凸空间。强连续指每个轨道 $t\mapsto T(t)x$ 按 $X$ 的拓扑连续。称半群等度连续，是指对每个连续半范数 $p$，存在连续半范数 $q$，使
+\begin{equation}\label{eq:y9-equicontinuity}
+ p(T(t)x)\le q(x)\qquad(t\ge0,\ x\in X).
+\end{equation}
+若 $q$ 可以依赖预先给定的 $\tau$，只要求 $0\le t\le\tau$，则称局部等度连续。Banach 空间中两者分别对应全时间有界和有限时间一致有界。
+
+\begin{example}[局部与全局等度连续]
+在 $C^\infty(\mathbb R)$ 的紧集上各阶一致拓扑中，$T(t)f(s)=f(s+t)$ 强连续且局部等度连续：
+\[
+ \max_{s\in K,\,j\le m}|(T(t)f)^{(j)}(s)|
+ \le\max_{s\in K+[0,\tau],\,j\le m}|f^{(j)}(s)|.
+\]
+它不全局等度连续。若 $p(f)=|f(0)|$ 能被某个固定连续半范数 $q$ 控制所有 $p(T(t)f)=|f(t)|$，则 $q$ 只由一个固定紧集上的有限阶导数控制；在该紧集外取非零光滑隆起即矛盾。相反，在 $C^\infty(\mathbb R/2\pi\mathbb Z)$ 上，平移保持全圆周各阶导数的上确界半范数，故全局等度连续。
+\end{example}
+
+\begin{example}[平移、热流与跳跃]
+对 $1\le p<\infty$，实线平移是 $L^p$ 上的等距 $C_0$ 群；在有界一致连续函数空间 $BUC(\mathbb R)$ 上也成立。它在整个 $L^\infty$ 上不强连续，阶跃函数已给出反例。
+
+在 $L^2(\mathbb R^d)$ 上令
+\begin{equation}\label{eq:y9-heat}
+ H(t)f=k_t*f,\qquad k_t(x)=(4\pi t)^{-d/2}e^{-|x|^2/(4t)},\quad t>0.
+\end{equation}
+高斯卷积律与 $\|k_t\|_1=1$ 给出压缩半群；Fourier 乘子 $e^{-t|\xi|^2}$ 和支配收敛给出强连续。这里生成元将是 $\Delta$，原书使用方差为 $t$ 的核，对应 $\Delta/2$，需换算时间尺度。
+
+若 $S\in\mathcal L(X)$、$\|S\|\le1$、$c>0$，则
+\[
+ P(t)=e^{-ct}\sum_{n=0}^\infty\frac{(ct)^n}{n!}S^n
+\]
+是压缩半群，代表按 Poisson 权重叠加的离散跳跃。范数级数允许相乘并重排，强连续甚至可升级为范数连续。
+\end{example}
+
+原书在序列完备局部凸空间中继续发展生成元理论。本稿保留等度连续的半范数定义与具体例子，第三节起主要证明 Banach 情形；不默认一般局部凸空间存在统一算子范数或某个通用指数增长率。
+
+\begin{exercise}[周期平移]\label{ex:y9-periodic}
+在光滑圆周函数空间中，用 $p_m(f)=\max_{j\le m}\|f^{(j)}\|_\infty$ 证明平移强连续且等度连续。
+\end{exercise}
+\begin{solution}
+周期平移不改变每阶导数的上确界，所以 $p_m(T(t)f)=p_m(f)$。各阶导数在紧圆周上一致连续，故 $p_m(T(t)f-f)\to0$；每个 $m$ 都成立，即为该 Fr\'echet 拓扑中的强连续。
+\end{solution}
+
+\begin{exercise}[跳跃过程的常数项]\label{ex:y9-poisson}
+设 $S$ 是函数空间上的平移且 $S1=1$。证明 $P(t)1=1$，并解释权重之和为何必须为一。
+\end{exercise}
+\begin{solution}
+每个 $S^n1=1$，故 $P(t)1=e^{-ct}\sum_n(ct)^n/n!=1$。权重非负且和为一，使压缩算子的凸组合仍为压缩，并保持常数函数；缺少归一化会改变总质量。
+\end{solution}

@@ -1,0 +1,79 @@
+\Needspace{12\baselineskip}
+\section{闭算子的分数幂}\label{sec:yosida-09-11}
+\noindent\textit{原书起始页：中译本 271；英文版 259。}
+
+本节先在明确的可逆框架中构造闭分数幂：设 $-B$ 生成 $T(t)$，且存在 $M\ge1,b>0$ 使
+\begin{equation}\label{eq:y9-fractional-stability}
+ \|T(t)\|\le Me^{-bt}.
+\end{equation}
+一般有界半群可先以 $B+\varepsilon I$ 作正平移，但移回零谱附近的所有极限性质需另行证明。
+
+\begin{theorem}[负幂积分与闭正幂]\label{thm:y9-fractional-powers}
+对 $\alpha>0$，定义有界算子
+\begin{equation}\label{eq:y9-negative-power}
+ B^{-\alpha}x=\frac1{\Gamma(\alpha)}\int_0^\infty t^{\alpha-1}T(t)x\,\dd t.
+\end{equation}
+有 $B^{-1}=R(0,-B)$、$B^{-\alpha}B^{-\beta}=B^{-(\alpha+\beta)}$。对 $0<\alpha<1$，$B^{-\alpha}$ 单射且值域稠密，所以
+\[
+ B^\alpha=(B^{-\alpha})^{-1},\qquad D(B^\alpha)=R(B^{-\alpha})
+\]
+是稠密定义闭算子。对 $x\in D(B)$，有
+\begin{align}
+ B^\alpha x&=\frac{\sin(\pi\alpha)}\pi\int_0^\infty
+ \lambda^{\alpha-1}B(\lambda I+B)^{-1}x\,\dd\lambda,\label{eq:y9-balakrishnan}\\
+ &=\frac{\alpha}{\Gamma(1-\alpha)}\int_0^\infty
+ \frac{x-T(t)x}{t^{1+\alpha}}\,\dd t.\label{eq:y9-fractional-semigroup}
+\end{align}
+并且 $D(B)$ 在 $D(B^\alpha)$ 中关于图范数稠密；即限制到 $D(B)$ 后再取图闭包，仍得到 $B^\alpha$。
+\end{theorem}
+\begin{proof}
+稳定性使 \eqref{eq:y9-negative-power} 绝对收敛，范数至多 $Mb^{-\alpha}$。两次积分用半群律合并，再用 Beta 积分，得到负幂乘法；$\alpha=1$ 是零参数的 Laplace 逆。因
+$B^{-\alpha}B^{-(1-\alpha)}=B^{-1}$，$B^{-1}$ 的单射性推出 $B^{-\alpha}$ 单射，且其值域包含稠密的 $D(B)=R(B^{-1})$。逆的图是有界算子的闭图的转置图，故正幂闭。
+
+对 $x\in D(B)$，式 \eqref{eq:y9-balakrishnan} 的被积函数在零附近以常数乘 $\lambda^{\alpha-1}\|x\|$ 控制，在无穷远以常数乘 $\lambda^{\alpha-2}\|Bx\|$ 控制。代入
+$(\lambda I+B)^{-1}Bx=\int_0^\infty e^{-\lambda t}T(t)Bx\,\dd t$，绝对可积性允许交换，得到
+\[
+ \frac1{\Gamma(1-\alpha)}\int_0^\infty t^{-\alpha}T(t)Bx\,\dd t
+ =B^{-(1-\alpha)}Bx.
+\]
+这里使用 $\Gamma(\alpha)\Gamma(1-\alpha)=\pi/\sin(\pi\alpha)$。左乘 $B^{-\alpha}$ 得 $B^{-1}Bx=x$，所以它等于 $B^\alpha x$。又 $x-T(t)x=\int_0^tT(s)Bx\,\dd s$，积分交换或分部积分得到 \eqref{eq:y9-fractional-semigroup}；两端边界由 $O(t)$ 和全时间有界性消失。
+
+最后令 $J_n=n(nI+B)^{-1}$。$J_n\to I$ 强收敛，且与负幂积分交换。若 $x=B^{-\alpha}y\in D(B^\alpha)$，则 $J_nx\in D(B)$，并有 $B^\alpha J_nx=J_ny\to y=B^\alpha x$，证明图范数稠密性。
+\end{proof}
+
+\begin{proposition}[平方根的从属半群]\label{prop:y9-square-root-subordination}
+在 \eqref{eq:y9-fractional-stability} 下，令
+\begin{equation}\label{eq:y9-subordination}
+ S(t)x=\int_0^\infty\eta_t(s)T(s)x\,\dd s,\qquad
+ \eta_t(s)=\frac{t}{2\sqrt\pi}s^{-3/2}e^{-t^2/(4s)},\quad t,s>0.
+\end{equation}
+则 $S$ 是生成元为 $-B^{1/2}$ 的 $C_0$ 半群，且 $\|S(t)\|\le Me^{-t\sqrt b}$。
+\end{proposition}
+\begin{proof}
+高斯积分换元给出 $\eta_t\ge0$、$\int\eta_t=1$ 及
+\[
+ \int_0^\infty e^{-\lambda s}\eta_t(s)\,\dd s=e^{-t\sqrt\lambda}\quad(\lambda>0).
+\]
+上述变换可令 $r=t/(2\sqrt s)$ 化为高斯积分：$K(c)=\int_0^\infty e^{-r^2-c^2/r^2}\,\dd r$ 满足 $K'(c)=-2K(c)$（在导数积分中作 $u=c/r$），而 $K(0)=\sqrt\pi/2$，所以 $K(c)=(\sqrt\pi/2)e^{-2c}$。由 Laplace 变换唯一性，$\eta_t*\eta_u=\eta_{t+u}$，所以 $S$ 满足半群律。$\int_\delta^\infty\eta_t(s)\,\dd s\le t/\sqrt{\pi\delta}\to0$，结合 $T(s)x\to x$ 得强连续；取 $\lambda=b$ 的变换得稳定性估计。
+对 $x\in D(B)$，$\|T(s)x-x\|\le C_x\min(s,1)$，所以差商用支配收敛得生成元 $G$ 在 $D(B)$ 上为
+\[
+ Gx=\frac1{2\sqrt\pi}\int_0^\infty (T(s)x-x)s^{-3/2}\,\dd s=-B^{1/2}x.
+\]
+图范数稠密性和 $G$ 闭说明 $-B^{1/2}\subset G$。$B^{1/2}$ 由构造为双射，其逆为有界 $B^{-1/2}$；$G$ 的指数稳定性也给 $0\in\rho(G)$。两个算子具有包含关系且共同参数零均有双侧逆，故相等。
+\end{proof}
+
+一般 $0<\alpha<1$ 的稳定密度满足 Laplace 变换 $e^{-t\lambda^\alpha}$，可类似得到 $-B^\alpha$ 的从属全纯半群。原书还证明一般稳定核的正性、复参数估计和更广闭算子的分数幂性质；这些一般结论本稿未全部重证，此处完整展开的是指数稳定框架的闭分数幂与平方根从属。
+
+\begin{exercise}[标量分数幂]\label{ex:y9-fractional-scalar}
+取 $B=cI$、$c>0$。从负幂积分求 $B^\alpha$，再核对平方根从属半群。
+\end{exercise}
+\begin{solution}
+Gamma 积分给 $B^{-\alpha}=c^{-\alpha}I$，取逆得 $B^\alpha=c^\alpha I$。从属公式中的 Laplace 变换给 $S(t)=e^{-t\sqrt c}I$，所以生成元为 $-\sqrt c\,I$。
+\end{solution}
+
+\begin{exercise}[零点处的积分条件]\label{ex:y9-fractional-integrability}
+证明对 $x\in D(B)$，式 \eqref{eq:y9-fractional-semigroup} 在零附近范数可积；仅知 $T(t)x\to x$ 是否足以用同一估计？
+\end{exercise}
+\begin{solution}
+由轨道积分，$\|x-T(t)x\|\le Ct\|Bx\|$，被积函数至多为 $C\|Bx\|t^{-\alpha}$，因 $\alpha<1$ 可积。仅有强连续只给 $o(1)$，乘 $t^{-1-\alpha}$ 后未必可积，不能据此把公式的初始定义域扩为全空间。
+\end{solution}

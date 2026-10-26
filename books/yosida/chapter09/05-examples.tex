@@ -1,0 +1,60 @@
+\Needspace{12\baselineskip}
+\section{几例无穷小生成元}\label{sec:yosida-09-05}
+\noindent\textit{原书起始页：中译本 254；英文版 242。}
+
+\begin{proposition}[平移的生成元]\label{prop:y9-translation-generator}
+在 $L^p(\mathbb R)$（$1\le p<\infty$）上，$T(t)f(s)=f(s+t)$ 的生成元为
+\[
+ Af=f',\qquad D(A)=W^{1,p}(\mathbb R),
+\]
+其中导数为分布导数。在 $BUC(\mathbb R)$ 上，定义域为 $f\in C^1$ 且 $f,f'\in BUC$ 的函数。
+\end{proposition}
+\begin{proof}
+若 $f\in W^{1,p}$，其局部绝对连续代表满足
+$T(h)f-f=\int_0^hT(s)f'\,\dd s$；除以 $h$ 用平移强连续得极限 $f'$。反向若差商在 $L^p$ 中趋于 $g$，对任意紧支集光滑 $\varphi$ 换元，有
+\[
+ \int g\varphi=\lim_{h\downarrow0}\int f(s)\frac{\varphi(s-h)-\varphi(s)}h\,\dd s
+ =-\int f\varphi',
+\]
+所以 $f'=g\in L^p$。$BUC$ 情形中，同一分布论证先给 $f'=g\in BUC$，连续的弱导数使 $f$ 有 $C^1$ 代表；反向用积分恒等式和 $f'$ 的一致连续性。
+\end{proof}
+
+\begin{proposition}[热半群的最大定义域]\label{prop:y9-heat-generator}
+式 \eqref{eq:y9-heat} 在 $L^2(\mathbb R^d)$ 上的生成元为 $A=\Delta$，且
+\[
+ D(A)=H^2(\mathbb R^d)=\{f\in L^2:|\xi|^2\widehat f(\xi)\in L^2\}.
+\]
+\end{proposition}
+\begin{proof}
+在该空间内，$|(e^{-h|\xi|^2}-1)/h|\le|\xi|^2$，逐点趋于 $-|\xi|^2$；Plancherel 与支配收敛给出差商极限为 $\Delta f$。反向若差商在 $L^2$ 收敛，抽取几乎处处收敛子列；其逐点极限必为 $-|\xi|^2\widehat f$，故此函数属于 $L^2$。由 Sobolev 的 Fourier 刻画，恰为 $H^2$。
+\end{proof}
+
+\begin{example}[乘法衰减与有界跳跃]
+设 $q\ge0$ 为测度空间上的几乎处处有限可测函数。$T(t)f=e^{-tq}f$ 在 $L^p$（$1\le p<\infty$）上为压缩 $C_0$ 半群，生成元为
+\[
+ Af=-qf,\qquad D(A)=\{f:qf\in L^p\}.
+\]
+定义域内用 $|(e^{-hq}-1)/h|\le q$ 作支配收敛；反向用差商收敛的几乎处处子列识别极限。支配收敛也直接给出半群强连续性。
+
+对第二节的 $P(t)$，其范数导数给出有界生成元 $c(S-I)$，定义域为全空间。当 $S$ 是平移时，$c(S-I)$ 为差分算子，和连续平移的无界导数生成元不同。
+\end{example}
+
+这些例子说明：形式上写出 $f'$ 或 $\Delta f$ 还没有确定生成元。空间、边界条件和收敛拓扑共同决定 $D(A)$。
+
+\begin{exercise}[吸收边界的运输]\label{ex:y9-transport-boundary}
+在 $L^p(0,\infty)$（$1\le p<\infty$）上令
+\[
+ (S(t)f)(s)=\begin{cases}0,&0<s<t,\\f(s-t),&s\ge t.\end{cases}
+\]
+求其生成元和定义域。
+\end{exercise}
+\begin{solution}
+把 $f$ 零延拓为实线函数 $Ef$，则 $E(S(t)f)(s)=Ef(s-t)$。因此差商收敛等价于零延拓属于 $W^{1,p}(\mathbb R)$；这恰要求 $f\in W^{1,p}(0,\infty)$ 且迹 $f(0)=0$，否则导数含边界 Dirac 质量。生成元为 $-f'$，定义域即上述零迹空间。
+\end{solution}
+
+\begin{exercise}[对角耗散]\label{ex:y9-diagonal}
+在 $\ell^2$ 上令 $T(t)x=(e^{-nt}x_n)_{n\ge1}$。求生成元定义域，并判断它是否有界。
+\end{exercise}
+\begin{solution}
+$Ax=(-nx_n)$，$D(A)=\{x:\sum n^2|x_n|^2<\infty\}$，证明与乘法例相同。$\|Ae_n\|=n$，所以 $A$ 无界。尽管每个 $T(t)$ 都有界，$A$ 的定义域仍严格小于全空间。
+\end{solution}

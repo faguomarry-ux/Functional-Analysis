@@ -1,0 +1,69 @@
+\Needspace{12\baselineskip}
+\section{全纯半群}\label{sec:yosida-09-10}
+\noindent\textit{原书起始页：中译本 266；英文版 254。}
+
+记 $\Sigma_\theta=\{z\ne0:|\arg z|<\theta\}$。称有界 $C_0$ 半群为有界全纯半群，若存在 $0<\theta<\pi/2$，使其延拓为 $\Sigma_\theta$ 上的算子范数全纯函数，满足复参数半群律，在每个较小闭扇形上一致有界，并且 $T(z)x\to x$ 当 $z\to0$ 限于较小扇形。一般指数型情形可先平移生成元。
+
+\begin{theorem}[正时间平滑与全纯性]\label{thm:y9-analytic-criterion}
+设 $T$ 为有界 $C_0$ 半群，生成元为 $A$。它能在某个非零角度扇形内成为有界全纯半群，当且仅当
+\begin{equation}\label{eq:y9-analytic-criterion}
+ T(t)X\subset D(A)\quad(t>0),\qquad
+ \sup_{t>0}t\|AT(t)\|<\infty.
+\end{equation}
+此时 $T(t)X\subset D(A^n)$，且 $T^{(n)}(t)=A^nT(t)$。
+\end{theorem}
+\begin{proof}
+全纯时，在中心 $t>0$、半径 $ct$ 的小圆上用 Cauchy 导数估计，得到 $\|T'(t)\|\le C/t$。又
+\[
+ \frac{T(h)-I}{h}T(t)=\frac{T(t+h)-T(t)}h\longrightarrow T'(t)
+\]
+于算子范数，故 $T(t)X\subset D(A)$ 且 $AT(t)=T'(t)$。重复这一论证或把 $T(t)$ 分为 $n$ 个正时间因子，得到高阶定义域与导数。
+
+反向设 $\|AT(t)\|\le C/t$，不妨 $C\ge1$。把 $T(t)$ 分为 $n$ 个 $T(t/n)$，利用生成元交换关系逐次验证定义域，得
+\begin{equation}\label{eq:y9-analytic-higher}
+ \|A^nT(t)\|\le(Cn/t)^n.
+\end{equation}
+于是以 $t$ 为中心的级数
+\[
+ \sum_{n=0}^\infty\frac{(z-t)^n}{n!}A^nT(t)
+\]
+至少在 $|z-t|<t/(eC)$ 内范数收敛。实轴 Taylor 余项用 $s\in[t/2,3t/2]$ 上的同类估计控制，在 $|z-t|<t/(4eC)$ 的实区间趋零，故级数确实延拓原半群。相邻圆盘的延拓由恒等定理相容；这些比例圆盘的并包含一个固定角度的扇形，几何级数估计给出其中较小扇形的一致范数界。半群律由全纯唯一性延拓。
+
+对 $x\in D(A)$，级数中 $A^nT(t)x=A^{n-1}T(t)Ax$ 使复参数值与 $T(t)x$ 的差被常数乘 $t\|Ax\|$ 控制，因此 $z\to0$ 时趋于 $x$。最后用定义域稠密及扇形一致范数界推广到所有 $x$。
+\end{proof}
+
+\begin{proposition}[旋转后的 Laplace 表示]
+若 $T$ 在 $\Sigma_\theta$ 内有界全纯，固定 $|\phi|<\theta$，则 $S_\phi(s)=T(e^{i\phi}s)$ 是生成元为 $e^{i\phi}A$ 的有界半群，且在 $\operatorname{Re}(\lambda e^{i\phi})>0$ 时
+\begin{equation}\label{eq:y9-rotated-laplace}
+ R(\lambda,A)x=e^{i\phi}\int_0^\infty
+ e^{-\lambda e^{i\phi}s}T(e^{i\phi}s)x\,\dd s.
+\end{equation}
+因而对 $0<\theta'<\theta$，存在 $C_{\theta'}$ 使
+\[
+ \Sigma_{\pi/2+\theta'}\subset\rho(A),\qquad
+ \|R(\lambda,A)\|\le C_{\theta'}/|\lambda|.
+\]
+\end{proposition}
+\begin{proof}
+对 $x\in D(A)$，由全纯延拓后的 $T'(z)x=T(z)Ax$ 沿射线积分并趋近原点，得旋转半群的生成元 $G_\phi$ 包含 $e^{i\phi}A$。取 $\eta>0$，$\eta I-e^{i\phi}A$ 满射，因为 $\operatorname{Re}(\eta e^{-i\phi})>0$；$\eta I-G_\phi$ 则由 Laplace 定理单射。与 Hille--Yosida 证明末尾相同的包含关系论证给出 $G_\phi=e^{i\phi}A$，包括定义域相等。对 $S_\phi$ 使用 Laplace 定理并提出标量 $e^{i\phi}$ 得公式。对允许的 $\lambda$ 选择角度 $\phi$，使 $\lambda e^{i\phi}$ 留在固定较小右半平面夹角内，便得到 $\operatorname{Re}(\lambda e^{i\phi})\ge c|\lambda|$ 的估计。
+\end{proof}
+
+扇形预解式的反向围道构造及原书局部凸全纯刻画尚未重证；本节证明限于 Banach 导数刻画和旋转 Laplace 方向。
+
+\begin{example}[热流平滑，平移不平滑]
+热半群在 $L^2$ 中满足 $\|\Delta H(t)\|=\sup_{r\ge0}re^{-tr}=1/(et)$，故全纯。对平移群，乘子 $i\xi e^{it\xi}$ 无界，正时间也不能把所有 $L^2$ 函数送入 $H^1$，所以不满足此全纯性条件。
+\end{example}
+
+\begin{exercise}[热流的高阶估计]\label{ex:y9-heat-smoothing}
+求 $\|(-\Delta)^nH(t)\|_{L^2\to L^2}$（$n\ge1$），并核对 $t^{-n}$ 的阶。
+\end{exercise}
+\begin{solution}
+Fourier 乘子的模为 $r^ne^{-tr}$，其最大值在 $r=n/t$ 取得，故范数为 $(n/(et))^n$。它与 \eqref{eq:y9-analytic-higher} 的阶相同，并直接验证每个正时间的任意阶平滑性。
+\end{solution}
+
+\begin{exercise}[有界生成元未必给出有界全纯延拓]\label{ex:y9-bounded-analytic}
+令 $A=iI$。解释为何 $e^{zA}$ 是整函数，但在任意非零对称扇形 $\Sigma_\theta$ 上不是有界全纯半群。
+\end{exercise}
+\begin{solution}
+$e^{zi}I$ 为整函数，实轴上范数为一；在 $\operatorname{Im}z<0$ 的射线上，其范数为 $e^{-\operatorname{Im}z}$，随 $|z|\to\infty$ 增长。相应地 $t\|AT(t)\|=t$ 无界。可全纯延拓与在整个扇形上有界是不同条件。
+\end{solution}

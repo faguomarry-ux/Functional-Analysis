@@ -1,0 +1,60 @@
+\Needspace{12\baselineskip}
+\section{压缩半群和耗散算子}\label{sec:yosida-09-08}
+\noindent\textit{原书起始页：中译本 261；英文版 250。}
+
+\begin{definition}[耗散与极大耗散]
+线性算子 $A:D(A)\subset X\to X$ 称为耗散的，若
+\begin{equation}\label{eq:y9-dissipative}
+ \|(\lambda I-A)x\|\ge\lambda\|x\|\qquad(x\in D(A),\ \lambda>0).
+\end{equation}
+本稿称闭耗散算子为极大耗散的，若至少一个 $\lambda_0>0$ 满足 $R(\lambda_0I-A)=X$。对下面的稠密定义闭算子，这等价于所有正参数均满射，也蕴含不存在真耗散扩张。
+\end{definition}
+
+\begin{proposition}[支持泛函与 Hilbert 内积]
+对每个 $x\ne0$，记 $J(x)=\{f\in X':\|f\|=\|x\|,\ f(x)=\|x\|^2\}$。耗散性等价于：对每个非零 $x\in D(A)$，存在 $f\in J(x)$ 使 $\operatorname{Re}f(Ax)\le0$。Hilbert 情形等价于
+\begin{equation}\label{eq:y9-hilbert-dissipative}
+ \operatorname{Re}(Ax,x)\le0\qquad(x\in D(A)).
+\end{equation}
+\end{proposition}
+\begin{proof}
+支持泛函条件给出
+$\|x\|\|(\lambda I-A)x\|\ge\operatorname{Re}f((\lambda I-A)x)\ge\lambda\|x\|^2$。
+反向对小 $h>0$，取范数为一且在 $x-hAx$ 上取值 $\|x-hAx\|$ 的支持泛函 $g_h$。耗散性给出 $\|x-hAx\|\ge\|x\|$，而 $\operatorname{Re}g_h(x)\le\|x\|$，所以 $\operatorname{Re}g_h(Ax)\le0$。由弱星紧性取子网聚点 $g$；当 $h\downarrow0$，$g(x)=\|x\|$、$\|g\|=1$，取 $f=\|x\|g$ 即得所需条件。Hilbert 空间的支持泛函由 Riesz 表示唯一对应于 $x$，所以得到内积条件；也可展开 $\|x-hAx\|^2$ 并令 $h\downarrow0$ 验证。
+\end{proof}
+
+\begin{theorem}[Lumer--Phillips，闭算子版本]\label{thm:y9-lumer-phillips}
+稠密定义闭算子 $A$ 生成压缩 $C_0$ 半群，当且仅当 $A$ 耗散且存在 $\lambda_0>0$ 使 $\lambda_0I-A$ 满射。
+\end{theorem}
+\begin{proof}
+若生成压缩半群，Laplace 公式给出所有正参数的有界逆及 $\|R(\lambda,A)\|\le1/\lambda$，从而耗散。
+反向由耗散性知 $\lambda I-A$ 单射，已有逆满足 $1/\lambda$ 范数界。令 $S=\{\lambda>0:\lambda\in\rho(A)\}$，它非空且由 Neumann 级数在正实轴上开。
+若 $\lambda_n\in S$ 趋于 $\lambda>0$，则预解恒等式给出
+\[
+ \|R(\lambda_n,A)-R(\lambda_m,A)\|
+ \le\frac{|\lambda_n-\lambda_m|}{\lambda_n\lambda_m}.
+\]
+因而逆算子在范数中收敛到 $R$；$A$ 的闭性以及两侧逆恒等式分别给出 $(\lambda I-A)R=I$ 和 $R(\lambda I-A)=I$，故 $\lambda\in S$。所以 $S$ 又闭，正实轴连通迫使 $S=(0,\infty)$。由压缩情形的 Hille--Yosida 定理完成生成证明。
+\end{proof}
+
+若 $A$ 满足定理条件，任意耗散扩张 $\widetilde A$ 中的 $x$ 可与 $z=R(\lambda,A)(\lambda I-\widetilde A)x$ 比较；$x-z$ 被 $\lambda I-\widetilde A$ 消去，耗散性迫使 $x=z\in D(A)$。这解释“极大”的含义。仅有能量不增的形式计算，还没有验证满射条件。
+
+\begin{corollary}[Hilbert 伴随判别]
+若 Hilbert 空间上 $A$ 稠密定义且闭，$A$ 与 $A^*$ 都耗散，则 $A$ 生成压缩半群。
+\end{corollary}
+\begin{proof}
+耗散下界和闭性给出 $R(\lambda I-A)$ 闭；其正交补为 $\ker(\lambda I-A^*)$，由 $A^*$ 的耗散下界为零，故值域稠密并满射。
+\end{proof}
+
+\begin{exercise}[Laplace 算子的耗散]\label{ex:y9-laplacian-dissipative}
+在 $L^2(\mathbb R^d)$ 上，对 $A=\Delta$、$D(A)=H^2$，验证耗散与 $\lambda I-A$ 的满射。
+\end{exercise}
+\begin{solution}
+Fourier 变换给出 $\operatorname{Re}(\Delta f,f)=-\|\nabla f\|_2^2\le0$。对 $g\in L^2$，取 $\widehat f=(\lambda+|\xi|^2)^{-1}\widehat g$，则 $f\in H^2$ 且 $(\lambda I-\Delta)f=g$。因此满射来自实际预解式构造。
+\end{solution}
+
+\begin{exercise}[耗散仍可缺少边界可解性]\label{ex:y9-dissipative-not-maximal}
+在 $L^2(0,1)$ 上令 $Af=f'$，$D(A)=H_0^1(0,1)$（两端均零）。证明 $A$ 耗散，但任意 $\lambda>0$ 的 $\lambda I-A$ 都不满射。
+\end{exercise}
+\begin{solution}
+分部积分给 $\operatorname{Re}(f',f)=(|f(1)|^2-|f(0)|^2)/2=0$。若 $\lambda f-f'=g$ 且 $f(0)=0$，则 $f(s)=-e^{\lambda s}\int_0^se^{-\lambda r}g(r)\,\dd r$。再要求 $f(1)=0$ 就强迫 $\int_0^1e^{-\lambda r}g(r)\,\dd r=0$，并非任意 $g$ 满足；所以它不生成压缩半群。
+\end{solution}

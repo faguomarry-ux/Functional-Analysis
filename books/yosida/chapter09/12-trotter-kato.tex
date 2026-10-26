@@ -1,0 +1,76 @@
+\Needspace{12\baselineskip}
+\section{半群的收敛性、Trotter--Kato 定理}\label{sec:yosida-09-12}
+\noindent\textit{原书起始页：中译本 281；英文版 269。}
+
+先固定有界半群 $\|T(t)\|\le M$，生成元为 $A$。式 \eqref{eq:y9-laplace-powers} 说明 $\lambda^nR(\lambda,A)^n$ 是 $T(s)$ 关于 Gamma 概率密度
+\[
+ g_{n,\lambda}(s)=\frac{\lambda^ns^{n-1}e^{-\lambda s}}{(n-1)!},\quad s>0,
+\]
+的平均，其均值为 $n/\lambda$、方差为 $n/\lambda^2$。这些矩由 Gamma 积分直接计算，不需要引入随机过程。
+
+\begin{lemma}[Euler 与 Yosida 近似的误差]\label{lem:y9-approx-error}
+对 $x\in D(A)$、$t>0$，
+\begin{align}
+ \|T(t)x-(I-tA/n)^{-n}x\|&\le\frac{Mt}{\sqrt n}\|Ax\|,\label{eq:y9-euler-error}\\
+ \|T(t)x-e^{tA_\lambda}x\|&\le M\sqrt{2t/\lambda}\,\|Ax\|,\quad\lambda>0.\label{eq:y9-yosida-error}
+\end{align}
+若 $x\in D(A^2)$，第一式可改为 $Mt^2\|A^2x\|/(2n)$。因此 Euler 乘积强收敛到 $T(t)$，对每个向量在紧时间区间上一致（$t=0$ 时定义乘积为 $I$）。
+\end{lemma}
+\begin{proof}
+由轨道积分，$\|T(s)x-T(t)x\|\le M|s-t|\|Ax\|$。取 $\lambda=n/t$，用上面的 Gamma 密度平均，再用 Cauchy--Schwarz 把绝对偏差控制为标准差，即得第一式。若 $x\in D(A^2)$，Taylor 一次余项至多 $M(s-t)^2\|A^2x\|/2$，一次项的平均因均值为 $t$ 而消失，得改进估计。
+
+对第二式，式 \eqref{eq:y9-yosida-semigroup} 是 Gamma 平均的 Poisson 混合：第 $k$ 项权重为 $e^{-\lambda t}(\lambda t)^k/k!$，$k=0$ 时取 $s=0$ 的点质量，其余用 $g_{k,\lambda}$。总质量一，平均时间为 $t$，方差为 $2t/\lambda$，可由 $\sum k p_k=\lambda t$、$\sum k^2p_k=(\lambda t)^2+\lambda t$ 计算。再次平均轨道的 Lipschitz 估计即可。对一般 $x$，用 $D(A)$ 的稠密性与所有近似算子的统一范数界推广收敛。
+\end{proof}
+
+\begin{theorem}[Trotter--Kato，已知极限生成元的版本]\label{thm:y9-trotter-kato}
+设 $A_n,A$ 分别生成 $T_n,T$，存在共同的 $M\ge1,\omega\in\mathbb R$ 使
+$\|T_n(t)\|,\|T(t)\|\le Me^{\omega t}$。则以下等价：
+\begin{enumerate}
+ \item 存在实数 $\lambda_0>\omega$，使 $R(\lambda_0,A_n)x\to R(\lambda_0,A)x$ 对所有 $x\in X$ 成立；
+ \item 对每个 $x\in X,\tau>0$，$\sup_{0\le t\le\tau}\|T_n(t)x-T(t)x\|\to0$。
+\end{enumerate}
+成立时，强预解式收敛也对每个 $\operatorname{Re}\lambda>\omega$ 成立，并在该半平面的每个紧子集上关于 $\lambda$ 逐向量一致。
+\end{theorem}
+\begin{proof}
+先平移到 $\omega=0$。预解恒等式整理为
+\[
+\begin{aligned}
+ R(\mu,A_n)-R(\mu,A)
+ ={}&[I+(\lambda_0-\mu)R(\mu,A_n)]\\
+ &\cdot[R(\lambda_0,A_n)-R(\lambda_0,A)]
+ [I+(\lambda_0-\mu)R(\mu,A)].
+\end{aligned}
+\]
+外因子由共同的 $M/\operatorname{Re}\mu$ 界一致有界，中因子强趋零，所以对每个 $\operatorname{Re}\mu>0$ 均强收敛。预解恒等式还在较小闭半平面给出共同的 Lipschitz 界，有限网论证使该收敛在紧参数集上逐向量一致。固定实数 $\mu>0$，Yosida 算子 $A_{n,\mu}=\mu^2R(\mu,A_n)-\mu I$ 强收敛到 $A_\mu$，且范数一致有界；指数级数的有限项与统一尾项估计给出 $e^{tA_{n,\mu}}x\to e^{tA_\mu}x$，在紧时间区间上一致。
+
+对 $x\in D(A)$，令
+\[
+ x_n=R(\lambda_0,A_n)(\lambda_0I-A)x.
+\]
+则 $x_n\to x$，$x_n\in D(A_n)$，且 $A_nx_n=\lambda_0x_n-(\lambda_0I-A)x\to Ax$。将 $T_n(t)x$ 先换为 $T_n(t)x_n$，再分别用 \eqref{eq:y9-yosida-error} 比较 $T_n$ 与其 Yosida 半群、$T$ 与其 Yosida 半群。误差由常数乘 $\sqrt{\tau/\mu}$ 控制，且 $\|A_nx_n\|$ 一致有界。先固定 $\mu$ 令 $n\to\infty$，再令 $\mu\to\infty$，得到 $D(A)$ 上的局部一致收敛，最后用稠密性推广到全空间。
+
+反向把 Laplace 积分分成 $[0,\tau]$ 和尾部。前一部分由局部一致强收敛趋零，尾部由共同指数界控制；先让 $n\to\infty$、再令 $\tau\to\infty$ 即得预解式收敛。
+\end{proof}
+
+\begin{corollary}[从稠密值域的预解式极限构造半群]
+若 $T_n$ 有共同指数界，且某个实数 $\lambda_0>\omega$ 的 $R(\lambda_0,A_n)$ 强收敛到有界算子 $J_0$，其值域稠密，则存在唯一生成元 $A$，使 $J_0=R(\lambda_0,A)$，且 $T_n\to T$ 逐向量、局部时间一致强收敛。
+\end{corollary}
+\begin{proof}
+平移到 $\omega=0$。在 $|\mu-\lambda|M/\lambda<1$ 的小邻域内，Neumann 展开及共同幂估计把一个正参数的强极限延续到相邻参数；沿任意紧正实区间用有限步即可得到全部 $J(\mu)$。极限满足伪预解恒等式，并有 $\|J(\mu)^k\|\le M/\mu^k$。伪预解式有共同值域，故其闭包为 $X$。第八章无穷端的稠密值域论证给出 $\mu J(\mu)x\to x$，共同核因而为零。于是可重建稠密定义闭算子 $A=\mu I-J(\mu)^{-1}$；幂估计满足 Hille--Yosida，再用前一定理完成收敛证明。
+\end{proof}
+
+原书证明一般序列完备局部凸等度连续版本。本节的完整论证限于共同指数界的 Banach 半群；“预解式收敛”必须与稳定界及极限值域条件一起使用。这里的 Euler 乘积也不是两个不同无界生成元的 Trotter 乘积公式。
+
+\begin{exercise}[有界生成元的范数扰动]\label{ex:y9-bounded-perturbation}
+设 $A_n,A\in\mathcal L(X)$，$\|A_n-A\|\to0$。证明在每个有限时间区间上 $e^{tA_n}\to e^{tA}$ 于算子范数。
+\end{exercise}
+\begin{solution}
+这些算子的范数共同受 $C$ 控制。微分 $e^{(t-s)A_n}e^{sA}$ 并积分，得到差的范数至多 $t e^{Ct}\|A_n-A\|$；不要求 $A_n$ 与 $A$ 交换，所以这也是本例比一般强预解式收敛更强的结论。
+\end{solution}
+
+\begin{exercise}[Euler 的标量检验]\label{ex:y9-euler-scalar}
+对 $A=-bI$、$b>0$，计算 $(I-tA/n)^{-n}$，并解释其时间步长与 Yosida 指数近似的区别。
+\end{exercise}
+\begin{solution}
+Euler 乘积为 $(1+tb/n)^{-n}I\to e^{-tb}I$，其中 $n$ 次逆对应步长 $t/n$；Yosida 指数为 $e^{-t\lambda b/(\lambda+b)}I$，先固定正参数 $\lambda$ 构造有界生成元，再令 $\lambda\to\infty$。两者都是强近似，但有限参数时不同。
+\end{solution}

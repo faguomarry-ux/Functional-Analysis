@@ -1,0 +1,60 @@
+\Needspace{12\baselineskip}
+\section{\texorpdfstring{$(C_0)$}{(C0)} 类等度连续半群的无穷小生成元}\label{sec:yosida-09-03}
+\noindent\textit{原书起始页：中译本 248；英文版 237。}
+
+\begin{definition}[生成元及其定义域]
+对 Banach 空间上的 $C_0$ 半群，定义
+\begin{equation}\label{eq:y9-generator}
+ D(A)=\left\{x:\lim_{h\downarrow0}\frac{T(h)x-x}{h}\text{ 在 }X\text{ 中存在}\right\},
+ \qquad Ax=\lim_{h\downarrow0}\frac{T(h)x-x}{h}.
+\end{equation}
+这只是强极限，通常不对所有 $x$ 存在，也不是算子范数的极限。
+\end{definition}
+
+\begin{theorem}[稠密性、闭性与轨道微分]\label{thm:y9-generator-properties}
+$A$ 稠密定义且闭。对 $x\in D(A)$，$T(t)x\in D(A)$，并有
+\begin{equation}\label{eq:y9-orbit-derivative}
+ \frac{d}{dt}T(t)x=AT(t)x=T(t)Ax,\qquad
+ T(t)x-x=\int_0^tT(s)Ax\,\dd s.
+\end{equation}
+对任意 $x\in X$，$V_tx=\int_0^tT(s)x\,\dd s$ 属于 $D(A)$，且
+\begin{equation}\label{eq:y9-integrated-orbit}
+ AV_tx=T(t)x-x.
+\end{equation}
+\end{theorem}
+\begin{proof}
+半群律给出
+\[
+ \frac{T(h)V_tx-V_tx}{h}
+ =\frac1h\left(\int_t^{t+h}T(s)x\,\dd s-\int_0^hT(s)x\,\dd s\right)
+ \longrightarrow T(t)x-x.
+\]
+故 \eqref{eq:y9-integrated-orbit} 成立。又 $t^{-1}V_tx\to x$，说明定义域稠密。
+若 $x\in D(A)$，把 $T(t)$ 移入差商得 $AT(t)x=T(t)Ax$ 及右导数；左差商为
+$T(t-h)(T(h)x-x)/h$，由局部范数界及强连续性也趋于 $T(t)Ax$。连续导数的积分即为 \eqref{eq:y9-orbit-derivative}。
+
+若 $x_n\in D(A)$、$x_n\to x$、$Ax_n\to y$，在积分恒等式中取极限得
+$T(t)x-x=\int_0^tT(s)y\,\dd s$。除以 $t$ 再令 $t\downarrow0$，得到 $x\in D(A)$ 且 $Ax=y$，所以 $A$ 闭。
+\end{proof}
+
+\begin{proposition}[经典解与唯一性]\label{prop:y9-classical-solution}
+若 $x\in D(A)$，$u(t)=T(t)x$ 是 $u'=Au$、$u(0)=x$ 的经典解。若 $u\in C^1([0,\tau];X)$，$u(t)\in D(A)$ 且 $Au(t)$ 连续并满足方程，则该解唯一。两个 $C_0$ 半群有同一生成元时也相同。
+\end{proposition}
+\begin{proof}
+固定 $t$，对 $0<s<t$ 微分 $T(t-s)u(s)$，得到
+$-T(t-s)Au(s)+T(t-s)u'(s)=0$；定义域与图范数连续性由假设保证。故端点值相等，$u(t)=T(t)x$。若另有半群 $S$，对 $x\in D(A)$ 用同一计算比较 $T(t-s)S(s)x$，得 $T(t)x=S(t)x$，再以稠密性延拓到全部 $X$。
+\end{proof}
+
+\begin{exercise}[积分平滑]\label{ex:y9-time-average}
+说明 $x_h=h^{-1}\int_0^hT(s)x\,\dd s$ 为何是定义域中的近似，并求 $Ax_h$。
+\end{exercise}
+\begin{solution}
+由 \eqref{eq:y9-integrated-orbit}，$x_h\in D(A)$ 且 $Ax_h=(T(h)x-x)/h$；连续性给出 $x_h\to x$。但 $Ax_h$ 只在 $x\in D(A)$ 时保证收敛，不能由 $x_h\to x$ 推出导数也收敛。
+\end{solution}
+
+\begin{exercise}[生成元的平移]\label{ex:y9-generator-shift}
+若 $A$ 生成 $T(t)$，证明 $e^{-at}T(t)$ 的生成元为 $A-aI$，定义域仍为 $D(A)$。
+\end{exercise}
+\begin{solution}
+差商写成 $e^{-ah}(T(h)x-x)/h+(e^{-ah}-1)x/h$。第二项总趋于 $-ax$，第一项收敛当且仅当原差商收敛，故定义域不变，极限为 $Ax-ax$。
+\end{solution}
