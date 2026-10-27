@@ -1,34 +1,22 @@
 % !TeX encoding = UTF-8
-% 吉田第六版：中译本第 14 章；此文件当前仅为目录与正文占位。
-\SetChapterInfo{subtitle={吉田耕作第六版主线 · 正文待撰写}}
-\chapter{发展方程的积分}\label{ch:yosida-14}
-\YosidaChapterPlaceholder{14}{The Integration of the Equation of Evolution}{437--486}{418--465}
+\SetChapterInfo{subtitle={扩散、波动、非时齐演化与非线性指数公式},keywords={发展方程; 能量空间; 演化族; Tanabe; Komura; Crandall--Liggett},prereq={强连续半群; 全纯半群; 谱积分; Sobolev; 弱紧性},goals={确定解与初值拓扑; 构造时间有序演化; 区分指数极限与强解}}
+\chapter[发展方程的积分]{发展方程\\的积分}\label{ch:yosida-14}
+\ChapterSource{按 \cite{yosida-zh,yosida-en} 第十四章七节组织，2026 年 10 月 28 日补写。直接查看英文印刷 418--465 页全部扫描图及第 468 页补充说明；中译本范围为 437--486 页，选页与证明边界见本章 COVERAGE。英文第 418 页上部接前章、下部开始本章；中译第 486 页为空白页。}
 
-\section{在 \texorpdfstring{$L^2(\R^m)$}{L2(Rm)} 中扩散方程的积分}\label{sec:yosida-14-01}
-\YosidaSectionPlaceholder{438}{419}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-相关模型：第 \ref{ch:pde} 章的热方程。\par
+本章把前面建立的算子方法用于初值问题：热流由耗散生成元控制，波流在位置与速度的能量空间中成为群；时间依赖系数产生演化族，非线性增生图则通过预解式迭代产生收缩流。贯穿全章的问题是确定闭定义域、初值拓扑，以及极限是否确实可以微分。
 
-\section{紧 Riemann 空间中扩散方程的积分}\label{sec:yosida-14-02}
-\YosidaSectionPlaceholder{444}{425}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
+线性方程使用 $u'=A(t)u$；非线性部分改用增生符号 $B=-A$，写作 $u'+Bu\ni0$。因此非线性预解式统一为 $J_h=(I+hB)^{-1}$，与原书耗散符号的 $I-hA$ 对应。
 
-\section{Euclid 空间 \texorpdfstring{$\R^m$}{Rm} 中波动方程的积分}\label{sec:yosida-14-03}
-\YosidaSectionPlaceholder{446}{427}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
+\input{books/yosida/chapter14/01-euclidean-diffusion}
+\input{books/yosida/chapter14/02-compact-diffusion}
+\input{books/yosida/chapter14/03-wave}
+\input{books/yosida/chapter14/04-nonautonomous}
+\input{books/yosida/chapter14/05-tanabe-sobolevski}
+\input{books/yosida/chapter14/06-komura-kato}
+\input{books/yosida/chapter14/07-crandall-liggett}
 
-\section{B-空间中非时齐发展方程的积分}\label{sec:yosida-14-04}
-\YosidaSectionPlaceholder{449}{430}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
+\Needspace{6\baselineskip}
+\section*{本章参考说明与主线收束}
+直接来源为吉田中英文第六版及本次实际查阅的补充说明。扩散用 Fourier 与弱型实现，波动用能量群，非时齐问题用共同图范数的冻结乘积和误差核；非线性问题分别在 Hilbert 空间证明强解，在一般 Banach 空间证明指数与 Yosida 极限。一般变系数正则性、较弱 Kato 条件、分数幂及变域推广、一般积分解唯一性等边界在正文和 COVERAGE 中明确记录。
 
-\section{Tanabe 和 Sobolevski 的方法}\label{sec:yosida-14-05}
-\YosidaSectionPlaceholder{457}{438}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{非线性发展方程 1（Komura--Kato 方法）}\label{sec:yosida-14-06}
-\YosidaSectionPlaceholder{464}{445}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{非线性发展方程 2（立足于 Crandall--Liggett 收敛定理的方法）}\label{sec:yosida-14-07}
-\YosidaSectionPlaceholder{473}{454}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
+至此，第零至第十四章共 132 个编号节均有首轮正文，章内附录及八章广义函数专题继续按各自记录复核。这表示主线正文框架已补齐，不表示全部外部前提已重证、证明边界已消除或全书独立数学审校已经完成。

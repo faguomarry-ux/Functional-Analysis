@@ -1,0 +1,46 @@
+\Needspace{10\baselineskip}
+\section{紧 Riemann 空间中扩散方程的积分}\label{sec:yosida-14-02}
+\noindent\textit{原书起始页：中译本 444；英文版 425。}
+
+设 $M$ 为紧、连通、无边界的光滑 Riemann 流形。一般坐标下写 $a^{ij}\partial_i\partial_j+b^j\partial_j$ 时，漂移系数随坐标变化还含二阶坐标导数；不能把它们单独误看成向量场的坐标。几何上写成 $L=\operatorname{div}_g(a\nabla_g)+V\cdot\nabla_g$ 可避免这一混淆，其中 $a$ 为正定对称张量、$V$ 为光滑向量场。
+
+\begin{theorem}[紧流形上的 Markov 实现]\label{thm:y14-compact-markov}
+设 $L$ 为上述实光滑一致椭圆算子，无零阶项。采用标准紧流形椭圆可解性与正则性：对充分大的 $\lambda$，$(\lambda-L)u=f$ 对光滑 $f$ 有唯一光滑解。则 $L$ 在 $C(M)$ 中的图闭包生成正、保常数的收缩半群 $T(t)$，并有概率核表示
+\[
+ T(t)f(x)=\int_M f(y)P_t(x,\dd y).
+\]
+对光滑初值，轨道给出扩散方程的光滑解；对一般连续初值，正时间平滑化另由标准抛物正则性得到。
+\end{theorem}
+\begin{proof}
+若实光滑 $u$ 在 $x_0$ 取最大值，则梯度为零、Hessian 半负定，故 $Lu(x_0)\le0$。对最小值同理，从而
+\[
+ \|u\|_\infty\le\lambda^{-1}\|(\lambda-L)u\|_\infty.
+\]
+若 $f\ge0$，解不能有负最小值，所以预解式正；又 $L1=0$，故 $R_\lambda1=1/\lambda$。借助光滑函数在 $C(M)$ 中稠密及上述估计，将光滑预解式延为有界正算子。预解式恒等式由光滑解的唯一性成立，再经连续延拓保留。
+
+对光滑 $f$，$\lambda R_\lambda f-f=R_\lambda Lf\to0$；由稠密性与收缩估计，该极限对每个 $f\in C(M)$ 成立。这使预解式单射、值域稠密并定义闭算子 $\overline L$。光滑右端的解仍光滑，故逼近右端同时逼近解与其像，证明它正是 $L$ 的图闭包。由充分大参数的可解性和 $1/\lambda$ 估计，Neumann 级数沿正轴逐步延拓预解式到所有 $\lambda>0$。Hille--Yosida 给出半群；指数近似由正、保常数的 $\lambda R_\lambda$ 组成，故极限正且保持常数。逐点用 Riesz--Markov 得概率核，半群律给出 Chapman--Kolmogorov 方程。可测性先对连续函数成立，再由单调类延到 Borel 集。
+\end{proof}
+
+上一定理把椭圆可解性与算子论部分分开：最大值原理给出估计与正性，却不能单独证明预解式满射。这里的椭圆可解性及正时间正则性为外部 PDE 前提。
+
+\begin{example}[Laplace--Beltrami 的谱积分]
+令 $B=-\Delta_g\ge0$。采用紧流形 Laplace 算子的自伴紧预解式与椭圆正则性，可取光滑正交基 $\phi_j$ 及 $0=\lambda_0<\lambda_1\le\cdots\to\infty$，使
+\[
+ e^{t\Delta_g}f=\sum_{j=0}^\infty e^{-t\lambda_j}(f,\phi_j)\phi_j.
+\]
+该式先在 $L^2$ 收敛；正时间用高阶估计及 Sobolev 嵌入得到光滑收敛。连通性使零特征空间为常数：$\int|\nabla\phi|^2=0$ 迫使 $\phi$ 常值。归一化体积因此是此半群的不变概率。一般漂移 $V$ 存在时，不能直接断言原 Riemann 体积仍不变。
+\end{example}
+
+\begin{exercise}[散度决定体积不变性]\label{ex:y14-invariant-volume}
+证明 $L=\Delta_g+V\cdot\nabla_g$ 保持 Riemann 体积当且仅当 $\operatorname{div}_g V=0$。
+\end{exercise}
+\begin{solution}
+无边界的分部积分给出 $\int Lf\,\dd\mathrm{vol}_g=-\int f\operatorname{div}_gV\,\dd\mathrm{vol}_g$。若散度为零，沿光滑轨道积分的导数为零，再由稠密性延拓。不变性反过来对光滑初值在零点微分，得到对所有光滑 $f$ 的右侧为零，故散度恒零。
+\end{solution}
+
+\begin{exercise}[圆周扩散的速率]\label{ex:y14-circle-heat}
+在长度 $2\pi$ 的圆周上，证明零均值 $f$ 满足 $\|e^{t\Delta}f\|_2\le e^{-t}\|f\|_2$；说明紧性与连通性分别在哪一步出现。
+\end{exercise}
+\begin{solution}
+Fourier 模 $e^{ikx}$ 的特征值为 $k^2$，零均值排除 $k=0$，故乘子至多 $e^{-t}$。紧性对应离散谱及正谱隙，连通性使零空间只有一个常数方向；不连通紧空间还会保留各分支分别为常数的函数。
+\end{solution}

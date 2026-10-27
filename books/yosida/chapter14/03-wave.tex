@@ -1,0 +1,59 @@
+\Needspace{10\baselineskip}
+\section{Euclid 空间 \texorpdfstring{$\R^m$}{Rm} 中波动方程的积分}\label{sec:yosida-14-03}
+\noindent\textit{原书起始页：中译本 446；英文版 427。}
+
+波动方程需要同时记录位置与速度。扩散采用的单个 $L^2$ 空间因而改为能量空间；其演化通常是双向群，具有与热流不同的正则性。
+
+\begin{theorem}[能量空间中的波动群]\label{thm:y14-wave-group}
+设 $H$ 为 Hilbert 空间，$B\ge0$ 自伴，取
+\[
+ \mathcal E=D((I+B)^{1/2})\times H,\qquad
+ \mathcal G\binom uv=\binom v{-Bu},
+\]
+\[
+ D(\mathcal G)=D(B)\times D((I+B)^{1/2}).
+\]
+则 $\mathcal G$ 生成强连续群，作用为
+\[
+ \binom{u(t)}{v(t)}=
+ \begin{pmatrix}C(t)&S(t)\\-BS(t)&C(t)\end{pmatrix}\binom fg,
+\]
+其中 $C(t)=\cos(t\sqrt B)$，$S(t)=\sin(t\sqrt B)/\sqrt B$ 在谱值零处定义为 $t$。对 $f\in D(B)$、$g\in D(B^{1/2})$，这是 $u''+Bu=0$ 的经典能量解，且
+\[
+ \|B^{1/2}u(t)\|^2+\|v(t)\|^2
+ =\|B^{1/2}f\|^2+\|g\|^2.
+\]
+\end{theorem}
+\begin{proof}
+谱表示把每个正谱值化为标量振子。$|\sin(t\sqrt\lambda)|/\sqrt\lambda\le|t|$ 保证低频不发散；$\sqrt\lambda S(t)$ 与 $C(t)$ 的模至多一，保证矩阵将 $\mathcal E$ 映入自身。逐谱值的三角恒等式给出群律与能量恒等式，控制收敛给出强连续性。
+
+对所列定义域用谱积分微分，得到生成式。反向若轨道在零点于 $\mathcal E$ 可微，则先投影到有界谱区间，在其中差商极限必须是 $(g,-Bf)$；再用谱截断的单调估计得 $g\in D(B^{1/2})$、$f\in D(B)$，故生成元定义域恰为上述集合。经典解的唯一性由对差解应用能量估计，或群的唯一性得到。
+\end{proof}
+
+对 $B=-\Delta$，$\mathcal E=H^1(\R^m)\times L^2(\R^m)$，上述公式就是
+\[
+ \widehat u(t,\xi)=\cos(t|\xi|)\widehat f(\xi)
+ +\frac{\sin(t|\xi|)}{|\xi|}\widehat g(\xi).
+\]
+守恒能量只含 $\|\nabla u\|_2$ 与速度，不含位移的低频 $L^2$ 项。因此在完整 $H^1\times L^2$ 范数中不能由该恒等式直接声称群为等距；$\|u(t)\|_2\le\|f\|_2+|t|\|g\|_2$ 补足低频控制。
+
+\begin{proposition}[低阶非对称项的能量扰动]\label{prop:y14-wave-perturbation}
+若 $K:D(B^{1/2})\to H$ 对型范数有界，则 $u''+Bu=Ku$ 在 $\mathcal E$ 上仍生成强连续群，并满足某个指数能量界。特别地，实光滑一致椭圆主部的对称散度实现可作为 $B$，有界一阶及零阶项作为 $K$。
+\end{proposition}
+\begin{proof}
+矩阵扰动 $\mathcal K(u,v)=(0,Ku)$ 在 $\mathcal E$ 上有界。对未扰动群作 Duhamel 迭代，逐项估计的时间单纯形体积为 $|t|^n/n!$，得到在紧时间区间一致收敛的 Dyson 级数与指数范数界。先在稠密光滑数据上微分，再由生成元的有界扰动论证识别闭生成元为 $\mathcal G+\mathcal K$，定义域不变。一般不对称情形不再有上述精确能量守恒。
+\end{proof}
+
+\begin{exercise}[波流没有热流平滑性]\label{ex:y14-no-wave-smoothing}
+若 $g=0$ 且 $f\in H^1\setminus H^2$，解释为什么不能声称对每个正 $t$ 都有 $u(t)\in H^2$、$u_t(t)\in H^1$。
+\end{exercise}
+\begin{solution}
+若某个 $t>0$ 的状态属于生成元定义域 $H^2\times H^1$，则用反向群以及 $D(\mathcal G)$ 的不变性，初态也属于该定义域，矛盾。故波流不能像全纯热半群那样把任意能量初值在正时间送入生成元定义域。
+\end{solution}
+
+\begin{exercise}[零频的正确取值]\label{ex:y14-wave-zero}
+若 $B\phi=0$，初值为 $(a\phi,b\phi)$，求解并比较 $\sin(t\sqrt B)/\sqrt B$ 的零频定义与能量。
+\end{exercise}
+\begin{solution}
+$u(t)=(a+tb)\phi$、$v(t)=b\phi$，所以零频乘子必须取 $t$，不能取零。能量为 $|b|^2\|\phi\|^2$，而位移范数可线性增长。这种零模出现在紧连通流形的常数方向。
+\end{solution}

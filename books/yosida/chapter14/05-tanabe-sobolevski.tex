@@ -1,0 +1,82 @@
+\Needspace{10\baselineskip}
+\section{Tanabe 和 Sobolevski 的方法}\label{sec:yosida-14-05}
+\noindent\textit{原书起始页：中译本 457；英文版 438。}
+
+此方法利用全纯半群的 $1/t$ 正则化估计，把冻结系数造成的误差写成可积核。以下固定有限区间 $[0,T]$，为避免在边界处引入多种约定，仍用共同定义域 $D$。
+
+\begin{theorem}[Lipschitz 图系数的全纯演化构造]\label{thm:y14-tanabe}
+设 $A(t)$ 闭且稠密定义，$D(A(t))=D$，每个 $A(t)$ 生成收缩全纯半群 $E_t(r)$。假定有共同的扇形预解式围道与一致估计
+\[
+ \|E_s(r)\|\le M,\quad \|A(s)E_s(r)\|\le M/r,\quad
+ \|(z-A(s))^{-1}\|\le\frac{M}{1+|z|},
+\]
+最后一式在共同区域 $\Sigma_\theta\cup\{0\}$ 成立，其中 $\Sigma_\theta=\{z\ne0:|\arg z|<\theta\}$、$\pi/2<\theta<\pi$；并设
+\[
+ \|[A(t)-A(s)]A(s)^{-1}\|\le L|t-s|.
+\]
+则存在收缩演化族，$U(t,s)X\subset D$（$t>s$），满足 $\partial_tU(t,s)=A(t)U(t,s)$，并有 $\|A(t)U(t,s)\|\le C_T/(t-s)$。
+\end{theorem}
+
+\begin{proof}
+置 $R_1(t,s)=[A(t)-A(s)]E_s(t-s)$，$t>s$；定义卷积与级数
+\[
+ R_{n+1}(t,s)=\int_s^tR_1(t,r)R_n(r,s)\,\dd r,
+ \qquad R=\sum_{n=1}^\infty R_n.
+\]
+因为 $R_1=[A(t)-A(s)]A(s)^{-1}A(s)E_s(t-s)$，所以 $\|R_1\|\le LM=:K$，进而
+\[
+ \|R_n(t,s)\|\le\frac{K^n(t-s)^{n-1}}{(n-1)!},\qquad
+ R=R_1+R_1*R.
+\]
+由此可定义候选算子
+\begin{equation}\label{eq:y14-parametrix}
+ U(t,s)=E_s(t-s)+W(t,s),\qquad
+ W(t,s)=\int_s^tE_r(t-r)R(r,s)\,\dd r.
+\end{equation}
+它有界、强连续，且 $W(t,s)=O(t-s)$，故满足初值。
+
+关键是不能直接把 $A(t)$ 移入这个积分，因为 $\|A(t)E_t(t-r)\|$ 的上界不可积。所需消去估计如下，$s<r<t$、$\delta=t-r$：
+\begin{align*}
+ \|R(t,s)-R(r,s)\|&\le C_T\left[\frac\delta{r-s}+\delta\left(1+\log\frac{t-s}{\delta}\right)\right],\\
+ \|A(t)(E_r(t-r)-E_t(t-r))\|&\le C_T.
+\end{align*}
+说明这些估计的来源：对 $R_1$ 的差，图 Lipschitz 性及 $\|A(s)^2E_s(h)\|\le C/h^2$ 给出 $C\delta/(r-s)$；对卷积项，把积分分成距 $r$ 小于 $\delta$ 和大于 $\delta$ 两段，分别使用有界性和 $\delta/(r-\tau)$ 估计，积分得到对数项。卷积级数的阶乘界保证求和一致。第二式在共同围道上用预解式恒等式：
+\[
+ A(t)(E_t(h)-E_r(h))=
+ \frac1{2\pi i}\int_\Gamma e^{hz}A(t)R(z,A(t))
+ [A(t)-A(r)]R(z,A(r))\,\dd z.
+\]
+图系数差给出 $O(t-r)$，围道积分给出 $O(1/h)$；取 $h=t-r$ 得有界性。这里使用标准全纯半群的围道表示，并没有从一般强连续半群假定该表示。
+
+将 $W$ 分为三项：
+\begin{align*}
+ W={}&\int_s^tE_t(t-r)R(t,s)\,\dd r\\
+ &+\int_s^t[E_r(t-r)-E_t(t-r)]R(r,s)\,\dd r\\
+ &+\int_s^tE_t(t-r)[R(r,s)-R(t,s)]\,\dd r.
+\end{align*}
+第一项作用 $A(t)$ 后恰为 $(E_t(t-s)-I)R(t,s)$；第二项使用围道差估计；第三项在 $r$ 远离 $t$ 时直接估计，靠近 $t$ 时用差核估计消去 $1/(t-r)$ 奇性。三项均在图范数中收敛，闭性给出 $W(t,s)X\subset D$ 和 $\|A(t)W(t,s)\|\le C_T$。加上冻结项即得所需 $1/(t-s)$ 界。
+
+最后先把积分截于 $t-\varepsilon$ 再微分。微分残差在 $\varepsilon\downarrow0$ 时为
+\[
+ (\partial_t-A(t))U(t,s)=R(t,s)-R_1(t,s)-(R_1*R)(t,s)=0.
+\]
+上述消去估计与闭性保证这是强导数，而非只是一项形式计算。收缩生成元的预解式给出上一节的唯一性与范数不增论证；先从正时间开始，再趋于初始时间即可。唯一性还给出拼接律，完成演化族构造。
+\end{proof}
+
+对 $f\in L^1([s,T];X)$，$U(t,s)x+\int_s^tU(t,r)f(r)\,\dd r$ 总给出连续的温和解。若要断言经典可微，还需 $f$ 的适当 Hölder 或 Dini 正则性，以便对积分中的 $1/(t-r)$ 奇性再次作差消去；不能只因写出 Duhamel 公式就省略这一步。
+
+原书还讨论图系数 Hölder、分数幂共同域和随时变域的推广，以及 Komatsu 的时间全纯性。这些不包含在上面的共同域 Lipschitz 定理中。
+
+\begin{exercise}[时间变换的平滑估计]\label{ex:y14-parabolic-time-change}
+若 $A(t)=a(t)A_0$、$0<a_0\le a(t)\le a_1$，且 $\|A_0e^{rA_0}\|\le C/r$，证明 $\|A(t)U(t,s)\|\le Ca_1/[a_0(t-s)]$。
+\end{exercise}
+\begin{solution}
+由上一节的时间变换公式，$A(t)U(t,s)=a(t)A_0\exp((\int_s^ta)A_0)$。积分至少为 $a_0(t-s)$，代入正时间估计即得结论。这一计算明确展示了抛物正则化的时间尺度。
+\end{solution}
+
+\begin{exercise}[常强迫项的消去]\label{ex:y14-forcing-cancellation}
+设 $B\ge I$ 自伴，解 $u'+Bu=g$、$u(0)=0$，$g\in H$。证明 $u(t)=B^{-1}(I-e^{-tB})g$ 属于 $D(B)$，并解释为何直接积分 $\|Be^{-rB}\|\le C/r$ 会给出错误印象。
+\end{exercise}
+\begin{solution}
+谱积分给出 $Bu(t)=(I-e^{-tB})g$，所以 $u(t)\in D(B)$ 且 $u'(t)=e^{-tB}g$，方程成立。直接积分 $C/r$ 发散，但实际向量积分由 $\int_0^tBe^{-rB}g\,\dd r=(I-e^{-tB})g$ 的端点消去控制；粗糙算子范数上界不能替代积分本身的结构。
+\end{solution}

@@ -1,0 +1,99 @@
+\Needspace{10\baselineskip}
+\section{B-空间中非时齐发展方程的积分}\label{sec:yosida-14-04}
+\noindent\textit{原书起始页：中译本 449；英文版 430。}
+
+\begin{definition}[演化族]
+三角域 $0\le s\le t\le T$ 上的有界算子族 $U(t,s)$ 称为演化族，若强连续且满足 $U(s,s)=I$、$U(t,r)U(r,s)=U(t,s)$。它把时刻 $s$ 的初值送到时刻 $t$。除非系数与时间无关，一般不存在仅依赖 $t-s$ 的半群表示。
+\end{definition}
+
+\begin{theorem}[有界系数的时间有序积分]\label{thm:y14-bounded-evolution}
+若 $A:[0,T]\to\mathcal L(X)$ 算子范数连续，$M=\sup_t\|A(t)\|$，则
+\[
+ U(t,s)=I+\sum_{n=1}^\infty
+ \int_{s<r_n<\cdots<r_1<t}A(r_1)\cdots A(r_n)\,\dd r_n\cdots\dd r_1
+\]
+在算子范数中一致收敛，$\|U(t,s)\|\le e^{M(t-s)}$，且
+\[
+ \partial_tU(t,s)=A(t)U(t,s),\qquad
+ \partial_sU(t,s)=-U(t,s)A(s).
+\]
+对 $f\in C([s,T];X)$，唯一经典解为
+\[
+ u(t)=U(t,s)x+\int_s^tU(t,r)f(r)\,\dd r.
+\]
+\end{theorem}
+\begin{proof}
+第 $n$ 项被 $M^n(t-s)^n/n!$ 控制。将级数代入 $U=I+\int_s^tA(r)U(r,s)\,\dd r$ 可逐项积分，得到正向导数。对任意两个解的差应用 Gronwall 不等式，得唯一性，进而得到拼接律。对拼接律在初始时间微分，得到反向导数；最后微分 Duhamel 公式验证带非齐次项的方程及初值。
+\end{proof}
+
+对无界系数，仅有 $t\mapsto A(t)x$ 连续还不够，冻结近似必须在共同定义域的图范数中稳定。下面完整给出原书 Kato 路线的一个较强、便于核对的版本。
+
+\begin{theorem}[共同定义域的冻结乘积]\label{thm:y14-kato}
+设每个 $A(t)$ 在 $X$ 上生成收缩半群，具有共同稠密定义域 $D$。假定 $0\in\rho(A(t))$，且
+\[
+ B(t)=A(t)A(0)^{-1}\in\mathcal L(X)
+ \quad\text{在算子范数中为 }C^1\text{ 函数}.
+\]
+则按分割 $\pi$ 从早到晚依次作用的冻结乘积
+\[
+ U_\pi(t,s)=\cdots e^{(t_{j+1}-t_j)A(t_j)}\cdots
+\]
+在每个 $x\in X$ 上一致收敛为收缩演化族。对 $x\in D$，$U(t,s)x\in D$，轨道为经典解，并满足两端微分式。非可逆情形可先作统一标量平移，只要平移后满足上述条件。
+\end{theorem}
+\begin{proof}
+$B(t)$ 的有界逆在紧时间区间一致有界，故各图范数等价。记 $C(t)=B'(t)B(t)^{-1}=A'(t)A(t)^{-1}$，其中导数从 $D$ 的固定图范数映到 $X$。相邻节点满足
+\[
+ A(t_i)A(t_{i-1})^{-1}=I+(t_i-t_{i-1})C(t_{i-1})+o(t_i-t_{i-1}),
+\]
+余项一致。每个冻结半群与自己的生成元交换。把相邻的图范数换算插在乘积因子之间，得到某个统一常数 $K_T$ 使
+\begin{equation}\label{eq:y14-graph-stability}
+ \|A(t)U_\pi(t,s)A(s)^{-1}\|\le K_T.
+\end{equation}
+这是 $\prod_i(1+K\Delta t_i)\le e^{KT}$ 的直接结果，不是单靠 $\|U_\pi\|\le1$ 可得。
+
+在两组分割的公共细分区间上微分 $U_\pi(t,r)U_\rho(r,s)x$，对 $x\in D$ 得比较式
+\[
+ (U_\pi-U_\rho)(t,s)x
+ =\int_s^tU_\pi(t,r)[A_\pi(r)-A_\rho(r)]U_\rho(r,s)x\,\dd r.
+\]
+$A_\pi$ 表示所在子区间左端冻结值。范数 $C^1$ 正则性与式\eqref{eq:y14-graph-stability}使右侧不超过 $K_T(|\pi|+|\rho|)\|A(s)x\|$。因此在 $D$ 上一致 Cauchy，再用收缩性和稠密性推广到全部 $X$。图估计还给出 $D$ 上的时间等度连续性，故极限强连续；拼接有限乘积后取极限得到演化律。
+
+必须另证图中收敛，不能直接对强算子极限微分。令 $W_\pi(t,s)=A(t)U_\pi(t,s)A(s)^{-1}$。在节点处把每个相邻换算因子按上述一阶式展开；选出零次、一次、二次等插入项，其极限分别是
+\[
+ W_0(t,s)=U(t,s),\qquad
+ W_{n+1}(t,s)=\int_s^tU(t,r)C(r)W_n(r,s)\,\dd r.
+\]
+第 $n$ 次插入项被 $\|C\|_\infty^n(t-s)^n/n!$ 控制，一致余项的总和趋零。因此 $W_\pi x\to Wx=\sum_{n\ge0}W_nx$，在紧三角域一致；有限阶项的 Riemann 和收敛使用 $U$ 的强连续性和一致有界性。闭性给出 $U(t,s)x\in D$ 及 $A(t)U(t,s)x=W(t,s)A(s)x$。
+
+将 $U_\pi(t,s)x-x=\int_s^tA_\pi(r)U_\pi(r,s)x\,\dd r$ 取极限，得到导数 $A(t)U(t,s)x$，其连续性由 $W$ 的级数得到。反向导数由拼接律得到。唯一性可用收缩预解式：任一差解 $v$ 满足
+\[
+ v(t+h)=(I-hA(t))^{-1}v(t)+o(h).
+\]
+故范数的右上 Dini 导数非正，$\|v(t)\|\le\|v(s)\|$，零初值时只能为零。
+\end{proof}
+
+原书允许较弱的强可微及有界变差条件，证明还比较隐式差分乘积；这里采用范数 $C^1$ 的充分条件，不声称已证明所有 Kato 型推广。若 $D(A(t))$ 随时间变化，更不能直接沿用共同图范数估计。
+
+\begin{exercise}[非交换的时间顺序]\label{ex:y14-time-order}
+令 $A(t)=N_1$ 于 $0\le t<1$，$A(t)=N_2$ 于 $1\le t\le2$，其中 $N_1=\left(\begin{smallmatrix}0&1\\0&0\end{smallmatrix}\right)$、$N_2=N_1^{\mathsf T}$。计算 $U(2,0)$ 并与 $e^{N_1+N_2}$ 比较。
+\end{exercise}
+\begin{solution}
+分段拼接给出 $U(2,0)=e^{N_2}e^{N_1}=(I+N_2)(I+N_1)=\left(\begin{smallmatrix}1&1\\1&2\end{smallmatrix}\right)$。而 $e^{N_1+N_2}=\left(\begin{smallmatrix}\cosh1&\sinh1\\\sinh1&\cosh1\end{smallmatrix}\right)$，并不相同。分段常系数是有界演化构造的直接拼接应用；不能省掉时间顺序而把积分放入一个普通指数。
+\end{solution}
+
+\begin{exercise}[可交换的时间变换]\label{ex:y14-time-change}
+若 $A(t)=a(t)A_0$，其中 $a>0$ 连续、$A_0$ 生成收缩半群，证明
+\[
+ U(t,s)=\exp\left(\left(\int_s^ta(r)\,\dd r\right)A_0\right).
+\]
+\end{exercise}
+\begin{solution}
+对 $x\in D(A_0)$ 用标量链式法则得到 $\partial_tU=a(t)A_0U$，初值为恒等；半群律和积分可加性给出演化律，收缩性使定义延到所有初值。这里相同算子的标量倍确实可交换，故普通积分指数合法。
+\end{solution}
+
+\begin{exercise}[有界系数的扰动误差]\label{ex:y14-evolution-error}
+若 $\|A(t)\|,\|\widetilde A(t)\|\le M$ 且 $\sup_t\|A(t)-\widetilde A(t)\|\le\delta$，证明 $\|U_A(t,s)-U_{\widetilde A}(t,s)\|\le\delta(t-s)e^{M(t-s)}$。
+\end{exercise}
+\begin{solution}
+微分 $U_A(t,r)U_{\widetilde A}(r,s)$ 并积分，得到含一个系数差的 Duhamel 比较式。两个演化因子的范数乘积至多 $e^{M(t-s)}$，积分区间长度为 $t-s$，即得结论。
+\end{solution}

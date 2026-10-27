@@ -1,0 +1,75 @@
+\Needspace{10\baselineskip}
+\section{非线性发展方程 1（Komura--Kato 方法）}\label{sec:yosida-14-06}
+\noindent\textit{原书起始页：中译本 464；英文版 445。}
+
+本章非线性部分改用增生符号 $B=-A$，把方程写成 $u'+Bu\ni0$。原书的耗散图 $A$ 因而对应这里的 $-B$；预解式是 $J_h=(I+hB)^{-1}$。允许多值不是形式修饰：有限时间到达障碍的流，往往需要在障碍点补上一个区间值，预解式才处处有定义。
+
+\begin{definition}[增生图与满值域条件]
+在实或复 Hilbert 空间 $H$ 中，图 $B\subset H\times H$ 称为单调或增生的，若
+\[
+ \operatorname{Re}(y-w,x-z)\ge0\quad((x,y),(z,w)\in B).
+\]
+若另有 $R(I+hB)=H$ 对所有 $h>0$ 成立，称为 $m$-增生。$Bx=\{y:(x,y)\in B\}$，$D(B)=\{x:Bx\ne\varnothing\}$。强解指局部绝对连续、几乎处处强可微，且有 $u'(t)+b(t)=0$、$b(t)\in Bu(t)$ 几乎处处成立的轨道。
+\end{definition}
+
+\begin{lemma}[非线性预解式与 Yosida 近似]\label{lem:y14-yosida}
+若 $B$ 为 $m$-增生，则 $J_h$ 单值且为收缩，$B_h=(I-J_h)/h$ 是处处定义的单值单调映射，Lipschitz 常数至多 $1/h$。并且
+\[
+ B_hx\in B(J_hx),\qquad
+ \|B_hx\|\le\|y\|\quad(x\in D(B),\ y\in Bx).
+\]
+$B$ 是极大单调图，且对强收敛的第一坐标、弱收敛的第二坐标闭。
+\end{lemma}
+\begin{proof}
+写 $f=u+hy$、$g=v+hw$，单调性给出 $\|u-v\|^2\le\operatorname{Re}(f-g,u-v)$，从而 $J_h$ 单值且收缩。又
+\[
+ \|f-g\|^2=\|u-v\|^2+2h\operatorname{Re}(u-v,y-w)+h^2\|y-w\|^2,
+\]
+所以 $B_h$ 的 Lipschitz 常数至多 $1/h$；$\operatorname{Re}(y-w,f-g)\ge0$ 给出其单调性。将 $(J_hx,B_hx)$ 与 $(x,y)$ 比较得 $\|B_hx\|^2\le\operatorname{Re}(y,B_hx)$，即所需范数界。
+
+若 $(z,w)$ 可加入图中而仍单调，取 $u=J_h(z+hw)$、$v=(z+hw-u)/h\in Bu$，单调性迫使 $-\|z-u\|^2/h\ge0$，所以 $(z,w)\in B$，得极大性。对强--弱极限，先与图中每一对元素比较再取极限，得到仍可加入图的单调关系，极大性即给出闭性。
+\end{proof}
+
+\begin{theorem}[Komura 的 Hilbert 空间构造]\label{thm:y14-komura}
+若 $B$ 为 $m$-增生，$x\in D(B)$，则初值问题 $u'+Bu\ni0$、$u(0)=x$ 有唯一强解。对任意 $y\in Bx$，有 $\|u(t)-u(s)\|\le\|y\||t-s|$；两解满足收缩估计。其流延拓为 $\overline{D(B)}$ 上的强连续收缩半群。
+\end{theorem}
+\begin{proof}
+先解全局 Lipschitz 常微分方程 $u_h'=-B_hu_h$、$u_h(0)=x$。单调性使两个近似解的距离不增；比较同一轨道的时间平移，得 $\|u_h'(t)\|\le\|B_hx\|\le M:=\|y\|$。置 $b_h=B_hu_h$，则 $b_h\in B(J_hu_h)$、$u_h=J_hu_h+hb_h$。两种参数的单调性给出
+\[
+ \tfrac12\frac\dd{\dd t}\|u_h-u_k\|^2
+ \le-\operatorname{Re}(b_h-b_k,hb_h-kb_k)
+ \le2(h+k)M^2.
+\]
+故 $\|u_h(t)-u_k(t)\|^2\le4t(h+k)M^2$，在每个紧时间区间一致 Cauchy。记极限为 $u$；它 $M$-Lipschitz，且 $J_hu_h\to u$ 一致。
+
+为证明微分包含式，不能仅对极限逐点求导。$b_h$ 在 $L^2(0,T;H)$ 中有弱收敛子序列，记极限为 $b$。在此 Hilbert 空间上定义逐点图 $\mathbb B$；它的预解式是逐点应用 $J_\alpha$。由 Lipschitz 性及 $\|J_\alpha f\|\le\|f\|+\|J_\alpha0\|$，该预解式在有限时间区间的 $L^2$ 上处处有定义，故 $\mathbb B$ 亦极大单调。强--弱闭性给出 $b(t)\in Bu(t)$ 几乎处处。对 $u_h(t)=x-\int_0^t b_h(r)\,\dd r$ 作弱极限，得到
+\[
+ u(t)=x-\int_0^t b(r)\,\dd r,
+\]
+所以 $u$ 是强解，且 $\|u'\|\le M$ 几乎处处。固定任一时间，再对有界的 $b_h(t)$ 抽取弱子序列，用 $B$ 的强--弱闭性还得 $u(t)\in D(B)$。
+
+两强解的差满足 $\tfrac12(\|u-v\|^2)'=-\operatorname{Re}(b-c,u-v)\le0$，故唯一且收缩。唯一性给出时间拼接；对 $\overline{D(B)}$ 中初值用 $D(B)$ 内的初值逼近，收缩性使轨道在紧时间区间一致收敛，得到强连续收缩半群。对闭包中的一般初值，此延拓先只保证连续轨道，未声称零点有强导数。
+\end{proof}
+
+Hilbert 空间的弱紧性与 $L^2$ 图的极大单调性，是上述证明的重要步骤。一般 Banach 空间没有相同的自动强可微性；下一节的指数公式正是为更广空间构造轨道。
+
+\begin{exercise}[到达障碍与多值补全]\label{ex:y14-obstacle}
+在 $\mathbb R$ 上先取 $Bx=1$（$x>0$）、$Bx=0$（$x\le0$）。说明 $I+hB$ 缺少哪些值，再在零点补成 $B0=[0,1]$，求预解式与流。
+\end{exercise}
+\begin{solution}
+原值域为 $(-\infty,0]\cup(h,\infty)$，缺少 $(0,h]$。补全后 $J_hf=f$（$f<0$）、$J_hf=0$（$0\le f\le h$）、$J_hf=f-h$（$f>h$）。流对负初值保持不动，对正初值为 $u(t)=\max(x-t,0)$。在到达零点的时刻不一定可微，但几乎处处满足微分包含式；零点的区间值保证预解式处处定义。
+\end{solution}
+
+\begin{exercise}[凸函数的近端预解式]\label{ex:y14-proximal}
+设 $\Phi:H\to(-\infty,\infty]$ 为适当下半连续凸函数。证明其凸次微分 $\partial\Phi$ 为 $m$-增生，并把 $J_hf$ 表示为唯一极小点。
+\end{exercise}
+\begin{solution}
+次梯度不等式相加给出单调性。泛函 $\Phi(v)+(2h)^{-1}\|v-f\|^2$ 具有仿射下界加二次项，故强制且弱下半连续；Hilbert 弱紧性给出极小点，严格凸性给出唯一性。一阶凸最优条件为 $(f-v)/h\in\partial\Phi(v)$，所以 $v=J_hf$，满值域条件成立。由此得凸梯度流，但不要求 $\Phi$ 处处可微。
+\end{solution}
+
+\begin{exercise}[外力的稳定性]\label{ex:y14-forced-monotone}
+若强解满足 $u'+Bu\ni f$、$v'+Bv\ni g$，证明 $\|u(t)-v(t)\|\le\|u(0)-v(0)\|+\int_0^t\|f-g\|\,\dd r$。
+\end{exercise}
+\begin{solution}
+单调性给出 $\tfrac12(\|u-v\|^2)'\le\|f-g\|\|u-v\|$。对 $\sqrt{\|u-v\|^2+\varepsilon}$ 微分并积分，再令 $\varepsilon\downarrow0$ 即得结论，避免在两轨道相交时除以零。
+\end{solution}

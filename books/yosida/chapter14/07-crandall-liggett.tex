@@ -1,0 +1,110 @@
+\Needspace{10\baselineskip}
+\section{非线性发展方程 2（立足于 Crandall--Liggett 收敛定理的方法）}\label{sec:yosida-14-07}
+\noindent\textit{原书起始页：中译本 473；英文版 454。}
+
+\begin{definition}[Banach 空间的增生性]
+图 $B\subset X\times X$ 称为增生的，若对图中任意 $(x,y),(z,w)$ 与每个 $h>0$，
+\[
+ \|x-z\|\le\|x-z+h(y-w)\|.
+\]
+若 $R(I+hB)=X$ 对每个 $h>0$ 成立，称为 $m$-增生。此时 $J_h=(I+hB)^{-1}$ 单值且收缩，$B_h=(I-J_h)/h$ 的 Lipschitz 常数至多 $2/h$。在 Hilbert 空间，该增生性等价于上一节的单调性。
+\end{definition}
+
+实际上满值域只需在一个 $h$ 验证。若 $J_h$ 处处定义，则对 $k>h/2$，映射 $v\mapsto J_h((h/k)f+(1-h/k)v)$ 为严格收缩，其不动点解决 $(I+kB)v=f$。反复缩小已知参数即可覆盖全部正参数。
+
+\begin{lemma}[两组隐式网格的比较]\label{lem:y14-grid}
+设 $B$ 为 $m$-增生，$x\in D(B)$、$y\in Bx$，$M=\|y\|$。对 $h,k>0$、整数 $i,j\ge0$，
+\begin{equation}\label{eq:y14-grid}
+ \|J_h^ix-J_k^jx\|
+ \le M\sqrt{(ih-jk)^2+ih^2+jk^2}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+令 $u_i=J_h^ix$、$v_j=J_k^jx$，则 $(u_{i-1}-u_i)/h\in Bu_i$，另一列同理。增生性取参数 $hk/(h+k)$，再用三角不等式，得距离 $d_{ij}$ 的递推式
+\[
+ d_{ij}\le\alpha d_{i-1,j}+\beta d_{i,j-1},\qquad
+ \alpha=\frac{k}{h+k},\quad\beta=\frac{h}{h+k}.
+\]
+又 $J_h(x+hy)=x$，收缩性使 $\|J_hx-x\|\le hM$，继而 $d_{i0}\le ihM$、$d_{0j}\le jkM$。令 $E_{ij}=\sqrt{(ih-jk)^2+ih^2+jk^2}$。边界上 $E_{i0}\ge ih$，且直接展开得到
+\[
+ \alpha E_{i-1,j}^2+\beta E_{i,j-1}^2=E_{ij}^2.
+\]
+平方根的凹性使 $\alpha E_{i-1,j}+\beta E_{i,j-1}\le E_{ij}$。按 $i+j$ 归纳，得到比较式。
+\end{proof}
+
+\begin{theorem}[Crandall--Liggett 指数公式]\label{thm:y14-crandall-liggett}
+若 $B$ 为 Banach 空间上的 $m$-增生图，则对每个 $x\in\overline{D(B)}$，
+\[
+ S(t)x=\lim_{n\to\infty}(I+(t/n)B)^{-n}x
+\]
+在紧时间区间一致存在，$S$ 为 $\overline{D(B)}$ 上的强连续收缩半群。对 $x\in D(B)$、$y\in Bx$，轨道 $\|y\|$-Lipschitz；一般 Banach 空间中不据此断言轨道几乎处处强可微。
+\end{theorem}
+\begin{proof}
+在式\eqref{eq:y14-grid}中取 $ih=jk=t$，得两种等分近似的距离至多 $Mt\sqrt{1/i+1/j}$，故在 $[0,T]$ 上一致 Cauchy。收缩性将极限延到 $\overline{D(B)}$；零点连续性由 $\|J_h^ix-x\|\le ihM$ 及稠密逼近得到。
+
+同一网格估计还说明 $J_h^{\lfloor t/h\rfloor}x\to S(t)x$ 一致，误差至多 $M\sqrt{h^2+Th}$。对固定网格，两次迭代次数之和与 $\lfloor(t+s)/h\rfloor$ 最多相差一，额外一步的误差不超过 $hM$。先对 $x\in D(B)$ 取极限，再用收缩性延拓，就得到 $S(t)S(s)=S(t+s)$。同一列在两个时刻的差至多 $M(|t-s|+h)$，取极限得到 Lipschitz 性。
+\end{proof}
+
+\begin{theorem}[Yosida 常微分近似产生同一流]\label{thm:y14-yosida-exponential}
+令 $u_h'=-B_hu_h$、$u_h(0)=x\in\overline{D(B)}$。则 $u_h(t)\to S(t)x$ 在紧时间区间一致成立。
+\end{theorem}
+\begin{proof}
+先取 $x\in D(B)$、$M=\|y\|$，$y\in Bx$。固定一个收缩 $J=J_h$，时间缩放后解 $v'=Jv-v$。该方程的流收缩：一个小时间步的距离至多 $(1-\delta)\|v-w\|+\delta\|Jv-Jw\|+o(\delta)$。因此速度不增，至多 $M_1=\|Jx-x\|\le hM$。
+
+变常数式 $v(\tau)=e^{-\tau}x+\int_0^\tau e^{r-\tau}Jv(r)\,\dd r$ 给出
+\[
+ d_n(\tau):=\|v(\tau)-J^nx\|
+ \le nM_1e^{-\tau}+\int_0^\tau e^{r-\tau}d_{n-1}(r)\,\dd r.
+\]
+令 $g_n(\tau)=\sqrt{(n-\tau)^2+\tau}$。有 $d_0(\tau)\le\tau M_1\le M_1g_0(\tau)$；平方根的凹性给出 $g_n'+g_n\ge g_{n-1}$，且 $g_n(0)=n$。对上述积分递推归纳，得 $d_n\le M_1g_n$。还原时间，
+\[
+ \|u_h(t)-J_h^nx\|\le M\sqrt{(nh-t)^2+th}.
+\]
+取 $n=\lfloor t/h\rfloor$，与前一条定理结合即得收敛。一般初值再由两类近似的收缩性及稠密性延拓。
+\end{proof}
+
+\begin{proposition}[与 Hilbert 强解的识别]\label{prop:y14-euler-strong}
+在上一节 Hilbert 假设下，指数公式所得 $S(t)x$ 对 $x\in D(B)$ 就是 Komura 强解。
+\end{proposition}
+\begin{proof}
+在步长 $h$ 上对 $u_i=J_h^ix$ 作仿射插值 $w_h$，记右端阶梯值为 $v_h=u_i$，斜率为 $-b_i$，其中 $b_i\in Bu_i$。有 $\|b_i\|\le M$、$\|w_h-v_h\|\le hM$。若 $u'+b=0$ 为上一节强解，则 $\|b\|\le M$，单调性给出
+\[
+ \tfrac12(\|w_h-u\|^2)'
+ \le| (b_i-b,w_h-v_h)|\le2hM^2.
+\]
+同初值积分后得 $\|w_h(t)-u(t)\|^2\le4hTM^2$。仿射插值与阶梯近似又相差至多 $hM$，所以两种极限相同。
+\end{proof}
+
+\paragraph{积分解与强可微性的边界。}
+一般 Banach 空间的 Lipschitz 曲线不必几乎处处强可微。令
+\[
+ \mathcal J(z)=\{\phi\in X':\|\phi\|=\|z\|,\ \operatorname{Re}\phi(z)=\|z\|^2\},\qquad
+ [w,z]_+=\sup_{\phi\in\mathcal J(z)}\operatorname{Re}\phi(w).
+\]
+对每个 $(z,w)\in B$ 要求连续轨道满足
+\[
+ \|u(t)-z\|^2\le\|u(s)-z\|^2
+ +2\int_s^t[-w,u(r)-z]_+\,\dd r
+\]
+给出 B\'enilan 积分解概念。原书最后引用其存在唯一性定理，将一般指数极限识别为积分解；这一一般积分解定理在本稿列为外部前提。上面已完整证明指数极限、Yosida 极限及 Hilbert 强解识别，未把它们在所有 Banach 空间中无条件升级为经典解。
+
+\begin{exercise}[线性情形的核对]\label{ex:y14-linear-euler}
+对 $B=aI$、$a\ge0$，求 $J_h$、$B_h$ 与指数极限，并比较两种近似。
+\end{exercise}
+\begin{solution}
+$J_h=(1+ha)^{-1}I$，$B_h=a(1+ha)^{-1}I$。隐式 Euler 为 $(1+ta/n)^{-n}x\to e^{-ta}x$；Yosida ODE 为 $e^{-ta/(1+ha)}x\to e^{-ta}x$。二者在有界时间区间一致趋于同一半群，且 $a=0$ 时均为恒等。
+\end{solution}
+
+\begin{exercise}[软阈值与精确迭代]\label{ex:y14-soft-threshold}
+在 $\mathbb R$ 上令 $B=\partial|x|$，求 $J_h$ 与 $S(t)x$，证明等分隐式迭代在每个步数已经给出精确流值。
+\end{exercise}
+\begin{solution}
+$J_hx=\operatorname{sgn}(x)(|x|-h)^+$，其中 $B0=[-1,1]$。连续减去阈值使 $J_{t/n}^nx=\operatorname{sgn}(x)(|x|-t)^+$，与步数无关。这也展示了到达零点后停止的强解，其到达时刻可有折角。
+\end{solution}
+
+\begin{exercise}[非线性标量流]\label{ex:y14-cubic-flow}
+对 $B(x)=x^3$，证明 $m$-增生，求 $u'+u^3=0$ 的解，并说明其隐式步与指数极限。
+\end{exercise}
+\begin{solution}
+$x\mapsto x+hx^3$ 严格递增且满射，故 $J_h$ 处处定义且收缩。解为 $u(t)=x/\sqrt{1+2tx^2}$，对零初值也按此式理解。隐式步求唯一实根 $v+hv^3=x$；本节的 Hilbert 识别定理保证等分迭代趋于该显式解，无需把非线性算子形式上放进线性幂级数。
+\end{solution}

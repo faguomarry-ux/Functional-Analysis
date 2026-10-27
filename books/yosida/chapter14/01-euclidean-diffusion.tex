@@ -1,0 +1,76 @@
+\Needspace{10\baselineskip}
+\section{在 \texorpdfstring{$L^2(\R^m)$}{L2(Rm)} 中扩散方程的积分}\label{sec:yosida-14-01}
+\noindent\textit{原书起始页：中译本 438；英文版 419。}
+
+\begin{definition}[三种解的层次]
+对生成元 $A$ 的初值问题 $u'=Au$，经典解指 $u\in C([0,T];X)\cap C^1((0,T];X)$、$u(t)\in D(A)$ 且方程逐正时间成立；若还在零点满足相应图范数与导数条件，另行说明。半群轨道 $u(t)=T(t)f$ 对任意 $f\in X$ 有意义，称为温和解；它未必在零点可微。分布解则通过与测试函数配对定义，不能省去初值的拓扑及唯一性所要求的函数类。
+\end{definition}
+
+\begin{theorem}[热方程的 Fourier 积分]\label{thm:y14-heat}
+在 $X=L^2(\R^m)$ 上，$A=\Delta$、$D(A)=H^2(\R^m)$ 生成收缩全纯半群
+\[
+ \widehat{H(t)f}(\xi)=e^{-t|\xi|^2}\widehat f(\xi),\qquad
+ H(t)f=(4\pi t)^{-m/2}e^{-|\cdot|^2/(4t)}*f.
+\]
+对每个 $f\in L^2$，$u(t)=H(t)f\to f$ 于 $L^2$，且正时间属于任意阶 Sobolev 空间，给出 $u_t=\Delta u$ 的经典 $L^2$ 解。若 $f\in H^2$，则在 $t=0$ 也可微。
+\end{theorem}
+\begin{proof}
+Plancherel 定理给出收缩性，乘子相乘给出半群律，控制收敛给出强连续性。对 $f\in H^2$，差商由 $|\xi|^2|\widehat f|$ 控制，故生成元为 $\Delta$。反之，若零点差商在 $L^2$ 中有极限，取几乎处处收敛子序列，极限只能为 $-|\xi|^2\widehat f$，所以 $|\xi|^2\widehat f\in L^2$，即 $f\in H^2$。
+
+对 $t>0$，$\sup_{r\ge0}r^ke^{-tr}=(k/(et))^k$，所以 $H(t)f\in D(A^k)$，$\|A^kH(t)\|=(k/(et))^k$。乘子在 $\operatorname{Re}z>0$ 全纯且在较小扇形有界，直接给出全纯延拓。Gaussian 的 Fourier 反演给出卷积式。用任意高阶 Sobolev 嵌入还得到正时间的光滑代表。
+\end{proof}
+
+下面说明原书一般严格椭圆算子为何仍可在 $L^2$ 中处理。取实对称矩阵 $a=(a^{ij})\in W^{1,\infty}$、$b,c\in L^\infty$，满足 $\kappa|\xi|^2\le a^{ij}(x)\xi_i\xi_j\le K|\xi|^2$。令 $\beta^j=b^j-\sum_i\partial_i a^{ij}$，则形式上
+\[
+ A_0u=a^{ij}\partial_i\partial_j u+b^j\partial_j u+cu
+ =\operatorname{div}(a\nabla u)+\beta\cdot\nabla u+cu.
+\]
+本节用下述弱定义固定闭实现，避免在未证明整体正则性时把定义域直接写成 $H^2$。
+
+\begin{theorem}[变系数扩散的弱实现]\label{thm:y14-elliptic-form}
+在 $V=H^1(\R^m)$ 上定义
+\[
+ \mathfrak a(u,v)=\int a\nabla u\cdot\overline{\nabla v}
+ -\int(\beta\cdot\nabla u)\bar v-\int cu\bar v.
+\]
+令 $D(A)=\{u\in V:\exists g\in L^2,\ \mathfrak a(u,v)=-(g,v)\ (v\in V)\}$，$Au=g$。则 $A$ 闭且稠密定义，包含 $A_0$ 在 $C_c^\infty$ 上的作用；存在 $\omega$ 使 $A$ 生成满足 $\|T(t)\|\le e^{\omega t}$ 的强连续半群。
+\end{theorem}
+\begin{proof}
+有界性给出 $|\mathfrak a(u,v)|\le C\|u\|_{H^1}\|v\|_{H^1}$。Young 不等式给出
+\[
+ \operatorname{Re}\mathfrak a(u,u)\ge\tfrac\kappa2\|\nabla u\|_2^2-\omega\|u\|_2^2.
+\]
+故对 $\lambda>\omega$，$\lambda(u,v)+\mathfrak a(u,v)$ 在 $H^1$ 上强制。Lax--Milgram 给出唯一 $u=R_\lambda f$，且 $\|R_\lambda f\|_2\le(\lambda-\omega)^{-1}\|f\|_2$。同样应用于伴随型，得到 $R_\lambda^*$ 单射，故 $R_\lambda$ 的值域稠密。$R_\lambda$ 也单射；定义中的 $A=\lambda I-R_\lambda^{-1}$ 因而闭且稠密定义。
+
+分部积分给出对 $C_c^\infty$ 的一致性。$A-\omega I$ 耗散，且 $\alpha I-(A-\omega I)$ 对每个 $\alpha>0$ 满射，Lumer--Phillips 定理得到半群及增长界。
+\end{proof}
+
+平移后的型还满足扇形估计 $|\operatorname{Im}\mathfrak a_{\omega+1}(u,u)|\le C\operatorname{Re}\mathfrak a_{\omega+1}(u,u)$。若使用标准的闭扇形型生成定理，可进一步得到全纯性；该生成定理在此列为外部前提。对原书的光滑系数，空间光滑化还使用变系数椭圆正则性。这里完整证明弱实现与半群生成，未把前章仅证明的常系数正则性当成变系数定理，也未无条件断言该实现就是最小算子的图闭包。
+
+\begin{proposition}[局部零值的时间延拓]\label{prop:y14-time-uniqueness}
+设 $T$ 全纯，$A$ 是局部微分算子的闭实现，并已知正时间轨道具有所需空间光滑性。若 $T(t_0)f$ 在开集 $G$ 上为零，则 $T(t)f$ 在 $G$ 上对所有 $t>0$ 为零。
+\end{proposition}
+\begin{proof}
+局部性使 $A^kT(t_0)f$ 在 $G$ 上为零。限制算子 $L^2(\R^m)\to L^2(G)$ 有界，全纯轨道的 Taylor 级数因此在 $t_0$ 的邻域限制为零。恒等定理沿连通的正时间区间延拓，得到结论。这只是时间方向的结论；更强的空间唯一延拓需要额外定理。
+\end{proof}
+
+\begin{exercise}[反向热流不稳定]\label{ex:y14-backward-heat}
+证明 $H(t_0)$ 单射但其值域上的逆不有界，$t_0>0$。
+\end{exercise}
+\begin{solution}
+乘子 $e^{-t_0|\xi|^2}$ 处处正，故核为零。选范数为一的 $f_N$，其 Fourier 支集位于 $N\le|\xi|\le N+1$，则 $\|H(t_0)f_N\|_2\le e^{-t_0N^2}\to0$。有界逆会推出 $1\le C\|H(t_0)f_N\|_2$，矛盾。反向唯一性与反向稳定性不同。
+\end{solution}
+
+\begin{exercise}[初值与零点导数]\label{ex:y14-heat-domain}
+对 $f\in L^2$，证明 $\sup_{0<t<1}\|(H(t)f-f)/t\|_2<\infty$ 当且仅当 $f\in H^2$。
+\end{exercise}
+\begin{solution}
+正向由 Fatou 引理得到 $\int|\xi|^4|\widehat f|^2<\infty$；反向由 $|1-e^{-tr}|\le tr$ 得差商范数不超过 $\|\Delta f\|_2$。结合定理，存在有界差商已迫使零点可微。
+\end{solution}
+
+\begin{exercise}[零阶项的增长]\label{ex:y14-growth-shift}
+对 $A=\Delta+qI$、$q\in\mathbb R$，求半群、范数与能量恒等式。
+\end{exercise}
+\begin{solution}
+$T(t)=e^{qt}H(t)$，范数为 $e^{qt}$。对正时间解或 $H^2$ 初值，$\tfrac12(\|u\|_2^2)'=-\|\nabla u\|_2^2+q\|u\|_2^2$。正零阶项允许增长，不能仅由椭圆主部便声称收缩。
+\end{solution}
