@@ -1,0 +1,122 @@
+\Needspace{10\baselineskip}
+\section{向量格的集合函数表示}\label{sec:yosida-12-06}
+\noindent\textit{原书起始页：中译本 391；英文版 375。}
+
+本节 $E$ 为 Dedekind $\sigma$ 完备实向量格。对任意集合 $A\subset E$，定义
+\[
+ A^\perp=\{x:|x|\wedge|a|=0\text{ 对所有 }a\in A\}.
+\]
+称 $x,y$ 不交或正交，若 $|x|\wedge|y|=0$。固定 $e\ge0$，$B_e=\{e\}^{\perp\perp}$ 称为 $e$ 生成的带。此处 $e$ 不必为全空间的强序单位。
+
+\begin{theorem}[主带投影与抽象 Lebesgue 分解]\label{thm:y12-band-projection}
+对 $x\ge0$ 令
+\[
+ P_ex=\sup_n(x\wedge ne).
+\]
+它延拓为正线性投影，且
+\[
+ E=B_e\oplus\{e\}^\perp,\qquad x=P_ex+(I-P_e)x.
+\]
+正元素的两个分量均正，分解唯一。
+\end{theorem}
+\begin{proof}
+截断序列递增且被 $x$ 控制，所以其上确界存在。上一节的截断不等式在格中取上确界，给出可加性；缩放参数给出非负齐次性，从而能线性延拓。
+
+记 $q_n=x\wedge ne$、$q=P_ex$、$r=x-q\ge0$。若 $z\perp e$，则 $z\perp q_n$，而递增上确界与有限格运算相容，故 $z\perp q$，所以 $q\in B_e$。又 $q_n+(r\wedge e)\le x$ 且不超过 $(n+1)e$，所以
+\[
+ q_n+(r\wedge e)\le q_{n+1}.
+\]
+取上确界得 $q+(r\wedge e)\le q$，故 $r\wedge e=0$。两个子空间均为固体格理想，交为零，正元素的分解已存在；再分解 $x^+,x^-$ 得一般存在性。交为零同时给出唯一性与投影性质。
+\end{proof}
+
+\begin{definition}[分量与阶梯元]
+$e$ 的分量指满足 $0\le p\le e$、$p\wedge(e-p)=0$ 的元素。记其全体为 $\mathcal C_e$。有限个两两不交的分量的实线性组合称为 $e$-阶梯元。
+\end{definition}
+
+分量按格中的并、交及补 $p\mapsto e-p$ 构成布尔代数；可数并由格的可数上确界给出。对分量 $p$，$P_pe=p$。带投影保持格运算，且不同分量的投影可交换；这些性质也可由带及其不交补中的唯一分解逐项验证。
+
+\begin{theorem}[Freudenthal 阶梯逼近]\label{thm:y12-freudenthal}
+若 $0\le x\le Me$，则任意 $\delta>0$ 都有阶梯元 $s$ 使 $0\le x-s\le\delta e$。一般 $x\in B_e$ 当且仅当 $x$ 是一列 $e$-阶梯元的序极限。
+\end{theorem}
+\begin{proof}
+取正整数 $N$ 使 $h=M/N\le\delta$，并置
+\[
+ p_k=P_{(x-khe)^+}e\quad(0\le k\le N),\qquad
+ d_k=p_{k-1}-p_k\quad(1\le k\le N).
+\]
+$p_k$ 是递减的分量，$p_N=0$，所以 $d_k$ 两两不交。说明阈值控制：在 $(x-khe)^+$ 生成的带中，$(x-khe)^-$ 的投影为零，故投影后的 $x$ 至少为 $kh$ 倍的投影后的 $e$；在该带的补中则至多为此值。投影到 $d_k$ 对应的带，得到
+\[
+ (k-1)h d_k\le P_{d_k}x\le kh d_k.
+\]
+在 $e-p_0$ 的带中 $x$ 为零，且 $x\le Me$ 使 $x\in B_e$。因此 $s=\sum_{k=1}^N(k-1)h d_k$ 满足所需误差界。$M=0$ 时直接取零。
+
+若 $x\in B_e$、$x\ge0$，定理\ref{thm:y12-band-projection}给出 $x\wedge ne\uparrow x$。对每个截断取阶梯逼近 $s_n$，使 $0\le(x\wedge ne)-s_n\le e/n$，于是
+\[
+ 0\le x-s_n\le x-x\wedge ne+e/n\downarrow0.
+\]
+带 $B_e$ 对序极限闭：若所有 $s_n$ 均与 $z\perp e$ 不交，格运算的序连续性使极限也与 $z$ 不交。故反向成立。一般有符号元素分别逼近正负部即可。
+\end{proof}
+
+因此可把 $B_e$ 中元素叫作相对于 $e$ 的抽象绝对连续元素，把 $\{e\}^\perp$ 中元素叫作奇异元素。接下来验证这些名称在测度格中与通常定义一致。
+
+\begin{proposition}[有限测度构成的格]\label{prop:y12-measure-lattice}
+在可测空间 $(\Omega,\Sigma)$ 上，有限实有符号可数可加测度组成的空间 $\mathcal M$，按正测度定义次序，构成 Dedekind 完备 Banach 格。其范数为 $\|\nu\|=|\nu|(\Omega)$，严格单调且序列序连续。
+\end{proposition}
+\begin{proof}
+Hahn--Jordan 分解给出 $\nu^+(A)=\sup_{B\subset A}\nu(B)$ 及 $\nu\vee\eta=\eta+(\nu-\eta)^+$。变差范数的完备性可直接用级数证明：若 $\sum\|\nu_n\|<\infty$，则逐集合绝对收敛的和定义测度，可数可加性由绝对收敛交换求和得到，尾项变差被尾部范数和控制。由可求和差分子序列即得所有 Cauchy 列收敛。
+
+若 $0\le\nu_n\uparrow$ 且 $\nu_n\le\lambda$，则 $\nu(A)=\lim_n\nu_n(A)$ 有限；对两指标非负级数交换上确界，得到可数可加性。这证明递增序列有上确界，进而由有限上确界得到 Dedekind $\sigma$ 完备。对 $\nu_n\downarrow0$，逐集合极限也为有限测度并代表其下确界，故 $\nu_n(\Omega)\to0$，即序列序连续。正测度范数等于总质量，严格单调。应用定理\ref{thm:y12-dedekind-complete}即得完全 Dedekind 完备。整个论证未使用 Radon--Nikodym 定理。
+\end{proof}
+
+\begin{lemma}[格不交即测度互相奇异]\label{lem:y12-measure-singular}
+对有限正测度 $\mu,\nu$，$\mu\wedge\nu=0$ 当且仅当有 $A\in\Sigma$ 使 $\mu(A)=0$、$\nu(A^c)=0$。$\mu$ 的分量恰为限制测度 $\mu|_A$。
+\end{lemma}
+\begin{proof}
+由正部公式，
+\[
+ (\mu\wedge\nu)(\Omega)=\inf_{A\in\Sigma}\{\mu(A)+\nu(A^c)\}.
+\]
+若左端为零，选 $A_n$ 使右侧小于 $2^{-n}$，令 $A=\limsup_nA_n$。尾部并估计给出 $\mu(A)=0$；而 $A^c=\liminf_nA_n^c$ 的 $\nu$ 测度为零，因为各项测度趋零。反向，任何同时不超过 $\mu,\nu$ 的正测度在 $A$ 与 $A^c$ 上都为零。
+
+若 $\eta$ 为 $\mu$ 的分量，$\eta\perp\mu-\eta$，按两者的分离集合可得 $\eta=\mu|_A$。反之，限制于互补集合的两个测度显然奇异，所以每个限制都是分量。
+\end{proof}
+
+\begin{theorem}[有限测度的 Lebesgue--Radon--Nikodym 表示]\label{thm:y12-measure-representation}
+给定有限正测度 $\mu$，每个有限实有符号测度 $\nu$ 唯一分解为
+\[
+ \nu=h\mu+\nu_s,\qquad h\in L^1(\mu),\quad \nu_s\perp\mu.
+\]
+其中 $h$ 在几乎处处意义下唯一，$h\mu=P_\mu\nu$。此外 $B_\mu$ 恰为所有满足 $\nu\ll\mu$ 的测度。
+\end{theorem}
+\begin{proof}
+先设 $\nu\ge0$。抽象分解给出 $\nu_a=P_\mu\nu$ 和 $\nu_s=(I-P_\mu)\nu$，均正。因为 $\nu_a=\sup_n(\nu\wedge n\mu)$，每个截断在 $\mu$ 零集上为零，逐集合取极限得 $\nu_a\ll\mu$。若 $\nu\ll\mu$，则 $0\le\nu_s\le\nu$ 也绝对连续；引理\ref{lem:y12-measure-singular}又使它集中于一个 $\mu$ 零集，故 $\nu_s=0$。这识别了带与通常的绝对连续性。
+
+Freudenthal 逼近把 $\nu_a$ 写为阶梯测度 $s_n$ 的序极限。分量就是限制测度，故 $s_n=h_n\mu$，其中 $h_n$ 为实简单函数。变差范数序连续给出 $s_n\to\nu_a$，且
+\[
+ \|s_n-s_m\|=\int|h_n-h_m|\,\dd\mu.
+\]
+因此 $h_n$ 为 $L^1$ Cauchy 列；第一章的完备性给出 $h\in L^1$，并且 $h_n\mu\to h\mu$，故 $\nu_a=h\mu$。一般 $\nu$ 以 Jordan 正负部相减处理。带分解唯一，密度之差积分在一切可测集上为零则几乎处处为零，故密度也唯一。
+\end{proof}
+
+与第三章的 Hilbert 空间证明相比，这一证明把测度表示理解为格中投影和阶梯逼近的结果。有限性保证全变差与 $L^1$ 估计直接可用；不能未经说明便把相同范数论证移到无限总质量的测度上。
+
+\begin{exercise}[显式分解]\label{ex:y12-concrete-lebesgue}
+设 $\mu$ 为 $[0,1]$ 上 Lebesgue 测度，$\nu=(1+t)\mu+\delta_0$。求 $P_\mu\nu$、奇异部分及密度，并解释 $\mu(\{0\})=0$ 的作用。
+\end{exercise}
+\begin{solution}
+$P_\mu\nu=(1+t)\mu$，奇异部分为 $\delta_0$，密度为 $1+t$。零点集合的 $\mu$ 质量为零，$\delta_0$ 全集中于此，故二者奇异；带分解唯一保证这正是投影结果。
+\end{solution}
+
+\begin{exercise}[带的参考元不必为单位]\label{ex:y12-reference-band}
+在逐坐标序 $\mathbb R^2$ 中令 $e=(1,0)$。求 $P_e$ 与 $B_e$，并指出为什么 $e$ 不是强序单位。
+\end{exercise}
+\begin{solution}
+对正元素 $(a,b)$，截断 $(a,b)\wedge(n,0)=(\min(a,n),0)$，所以 $P_e(a,b)=(a,0)$，线性延拓后公式不变。$B_e=\mathbb R\times\{0\}$，奇异带为 $\{0\}\times\mathbb R$。元素 $(0,1)$ 不被任何 $ce$ 控制，所以 $e$ 不是强序单位。
+\end{solution}
+
+\begin{exercise}[密度的变差范数]\label{ex:y12-density-variation}
+对实 $h\in L^1(\mu)$ 证明 $|h\mu|=|h|\mu$，进而得到 $\|h\mu\|=\|h\|_1$。
+\end{exercise}
+\begin{solution}
+把空间分成 $\{h\ge0\}$ 与 $\{h<0\}$，分别是 $h\mu$ 的正集与负集；Jordan 正负部为 $h^+\mu$、$h^-\mu$。相加即得变差测度，取总质量得到范数公式。这也验证了正文简单密度的 Cauchy 估计以及一般密度极限的连续性。
+\end{solution}

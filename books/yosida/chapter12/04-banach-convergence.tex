@@ -1,0 +1,69 @@
+\Needspace{10\baselineskip}
+\section{Banach 收敛定理}\label{sec:yosida-12-04}
+\noindent\textit{原书起始页：中译本 386；英文版 370。}
+
+此处的收敛指格中的序收敛。完备度量用于 Baire 论证和闭性，不能直接把“依测度收敛”换作定理结论中的“几乎处处收敛”。
+
+\begin{theorem}[Banach 的序收敛原理]\label{thm:y12-banach-convergence}
+设 $X$ 为实 Banach 空间，$Y$ 为 Dedekind $\sigma$ 完备 F-格，其度量函数 $\rho$ 序列序连续。设 $T_n:X\to Y$ 为连续线性算子。若
+\[
+ G=\{x\in X:T_nx\text{ 序收敛}\}
+\]
+不是第一纲集，则 $G=X$，且 $Tx=o\text{-}\lim_nT_nx$ 为连续线性算子。并且 $V(x)=\sup_n|T_nx|$ 对每个 $x$ 存在，映射 $V$ 在零点连续。
+\end{theorem}
+\begin{proof}
+序极限的代数性质使 $G$ 为线性子空间。若其闭包真包含于 $X$，该闭线性子空间无内点，是第一纲集；故 $G$ 稠密。记
+\[
+ V_N(x)=\bigvee_{n\le N}|T_nx|.
+\]
+有限格运算连续，且
+\[
+ V_N(x+y)\le V_N(x)+V_N(y),\qquad
+ |V_N(x)-V_N(y)|\le V_N(x-y).
+\]
+
+固定 $\varepsilon>0$，对正整数 $k$ 取闭集
+\[
+ C_k=\{x:\rho(V_N(x)/k)\le\varepsilon\text{ 对所有 }N\}.
+\]
+若 $g\in G$，序收敛使 $\{|T_ng|\}$ 序有界，故 $V(g)$ 存在；数乘连续性使 $g\in\bigcup_kC_k$。$G$ 非第一纲，因此某个 $C_k$ 有内点，包含球 $B(x_0,r)$。当 $\|h\|<r$ 时，$x_0+h,x_0\in C_k$，次可加性给出 $\rho(V_N(h)/k)\le2\varepsilon$。以 $h=ku$ 得
+\begin{equation}\label{eq:y12-envelope-equicont}
+ \sup_N\rho(V_N(u))\le2\varepsilon\quad(\|u\|<r/k).
+\end{equation}
+
+任给 $x$，选取足够接近的 $g\in G$。$V_N(g)\uparrow V(g)$，由序连续性在度量中收敛。结合
+\[
+ \rho(V_N(x)-V_M(x))\le
+ \rho(V_N(x-g))+\rho(V_N(g)-V_M(g))+\rho(V_M(x-g))
+\]
+和式\eqref{eq:y12-envelope-equicont}，得到 $V_N(x)$ 为 Cauchy 列。完备性给出极限 $v$。由于正锥闭，$v\ge V_N(x)$ 对每个 $N$ 成立；任何共同上界也大于等于 $v$，所以 $v=V(x)$。对式\eqref{eq:y12-envelope-equicont}取极限，便知 $V$ 在零点连续。
+
+现在每个 $\{T_nx\}$ 都序有界，可定义 $L^+(x)=o\text{-}\limsup T_nx$ 与 $L^-(x)=o\text{-}\liminf T_nx$。尾部上、下确界给出
+\[
+ |L^\pm(x)-L^\pm(y)|\le V(x-y).
+\]
+故二者连续，$G=\{x:L^+(x)-L^-(x)=0\}$ 闭。结合稠密性得 $G=X$。最后序极限保持线性，且 $|Tx|\le V(x)$，从而 $T$ 连续。
+\end{proof}
+
+这里 $V$ 一般只具正齐次性与次可加性，并不是线性算子。证明也说明收敛集只有两种可能：全空间，或第一纲线性子空间；单有稠密性不足以得到全空间收敛。
+
+\begin{corollary}[几乎处处收敛的传递]
+设 $T_n:X\to L^0(\mu)$ 连续线性，$\mu$ 有限。若在一个非第一纲子集上 $T_nx$ 几乎处处收敛，则对每个 $x\in X$ 都几乎处处收敛，其极限算子在依测度收敛的拓扑中连续。
+\end{corollary}
+\begin{proof}
+使用 $L^0$ 的 F-格度量以及习题\ref{ex:y12-ae-order}的序列判别，再应用定理。
+\end{proof}
+
+\begin{exercise}[稠密的收敛集]\label{ex:y12-dense-convergence}
+在实 $\ell^2$ 上令 $T_nx=nx_n\in\mathbb R$。证明收敛集稠密却为第一纲。
+\end{exercise}
+\begin{solution}
+每个 $T_n$ 连续且范数为 $n$。有限支撑序列均在收敛集中，故该集稠密。取 $x_n=(-1)^n/n$，它属于 $\ell^2$，但 $T_nx=(-1)^n$ 不收敛。因此收敛集不是全空间，由定理必为第一纲。这也展示了算子范数增长与点态收敛障碍。
+\end{solution}
+
+\begin{exercise}[包络的非线性]\label{ex:y12-envelope}
+令 $X=Y=\mathbb R$，$T_nx=(-1)^nx/n$。求 $T$ 和 $V$，并检验 $V$ 的连续性、次可加性与非线性。
+\end{exercise}
+\begin{solution}
+序极限与通常实数极限相同，所以 $T=0$，而 $V(x)=|x|$。绝对值连续并满足三角不等式，但 $V(1)+V(-1)=2\ne V(0)$，不线性。
+\end{solution}

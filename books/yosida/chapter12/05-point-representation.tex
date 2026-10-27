@@ -1,0 +1,84 @@
+\Needspace{10\baselineskip}
+\section{向量格的点函数表示}\label{sec:yosida-12-05}
+\noindent\textit{原书起始页：中译本 388；英文版 372。}
+
+\begin{definition}[序单位、状态与格理想]
+称 $e>0$ 为强序单位，若每个 $x\in E$ 都满足 $|x|\le ce$，其中 $c$ 为某正数。定义
+\[
+ p(x)=\inf\{a\in\mathbb R:x\le ae\},\qquad
+ \|x\|_e=\inf\{c\ge0:|x|\le ce\}.
+\]
+状态为满足 $\phi(e)=1$ 的正实线性泛函。格理想指实线性子空间 $I$ 满足 $|x|\le|y|$、$y\in I$ 时 $x\in I$。记
+\[
+ N=\{x:n|x|\le e\text{ 对一切正整数 }n\}.
+\]
+它称为无穷小理想。
+\end{definition}
+
+$p$ 有限且次线性，$p(e)=1$、$p(-e)=-1$。例如若实数倍 $ae$ 有上界，则系数也有上界，因 $e>0$；强序单位因而保证 $p$ 不取无穷值。容易验证 $\|x\|_e=\max(p(x),p(-x))$ 为半范数，核恰为固体线性子空间 $N$。若格具有 Archimedes 性，则 $N=\{0\}$，且取下确界的界限也成立：$\|x\|_e\le c$ 推出 $|x|\le ce$。
+
+\begin{lemma}[状态的紧性与定范性]\label{lem:y12-states}
+所有状态组成的集合 $S$ 非空、凸，按逐点收敛拓扑紧，且
+\[
+ \sup_{\phi\in S}|\phi(x)|=\|x\|_e.
+\]
+\end{lemma}
+\begin{proof}
+由实 Hahn--Banach 支撑形式，对任意 $x$ 可找实线性 $\phi\le p$ 且 $\phi(x)=p(x)$。在 $e,-e$ 上的不等式迫使 $\phi(e)=1$；若 $u\ge0$，则 $\phi(-u)\le p(-u)\le0$，故 $\phi$ 正。这也证明状态非空并达到 $p(x)$，将 $x$ 换为 $-x$ 得定范等式。
+
+每个状态满足 $|\phi(x)|\le\|x\|_e$。线性、正性及单位条件在紧乘积 $\prod_x[-\|x\|_e,\|x\|_e]$ 中闭，故 $S$ 紧。
+\end{proof}
+
+\begin{lemma}[端状态恰为格同态]\label{lem:y12-extreme-states}
+状态 $\phi$ 为 $S$ 的端点，当且仅当 $\phi(|x|)=|\phi(x)|$ 对每个 $x$ 成立。这样的泛函保持有限上、下确界。
+\end{lemma}
+\begin{proof}
+先设 $\phi$ 为端点。若 $0\le\psi\le\phi$，令 $c=\psi(e)$；当 $0<c<1$ 时写成状态的凸组合，端点性给出 $\psi=c\phi$。当 $c=0$ 或 $1$ 时，用序单位控制任意元素也得到同一结论。
+
+固定 $u\ge0$，对 $z\ge0$ 定义
+\[
+ \psi_u(z)=\lim_{n\to\infty}\phi(z\wedge nu).
+\]
+极限存在且不超过 $\phi(z)$。格中的截断不等式
+\[
+ (z+w)\wedge nu\le(z\wedge nu)+(w\wedge nu)
+ \le(z+w)\wedge2nu
+\]
+在取极限后给出可加性；重标参数给出非负齐次性。因此 $\psi_u$ 唯一延拓为正线性泛函，且 $0\le\psi_u\le\phi$，所以 $\psi_u=c\phi$。若 $u\wedge v=0$ 且 $\phi(u)>0$，则 $\psi_u(u)=\phi(u)>0$、$\psi_u(v)=0$，从而 $\phi(v)=0$。应用于 $x^+,x^-$，得二者像至少一个为零，即 $\phi(|x|)=|\phi(x)|$。
+
+反之，若此等式成立且 $\phi=(\psi+\eta)/2$，其中 $\psi,\eta$ 为状态，则 $0\le\psi\le2\phi$。取 $z=x-\phi(x)e$，有 $\phi(|z|)=0$，故 $|\psi(z)|\le\psi(|z|)\le2\phi(|z|)=0$。于是 $\psi(x)=\phi(x)$，同理 $\eta=\phi$。格运算保持性由第二节的公式得到。
+\end{proof}
+
+\begin{theorem}[带序单位的点函数表示]\label{thm:y12-point-representation}
+令 $K$ 为全部保持 $e\mapsto1$ 的实值格同态，取逐点收敛拓扑。则 $K$ 非空紧 Hausdorff，映射
+\[
+ J:E\longrightarrow C(K,\mathbb R),\qquad (Jx)(\phi)=\phi(x)
+\]
+为保序单位的格同态，核为 $N$，且 $\|Jx\|_\infty=\|x\|_e$，像一致稠密。因此 $E/N$ 的序单位范数完备化等距格同构于 $C(K,\mathbb R)$。特别地，若 $E$ 为 Archimedes 格且序单位范数完备，则 $J$ 为满的等距格同构。
+\end{theorem}
+\begin{proof}
+由引理，$K=\operatorname{Ext}S$；条件 $\phi(|x|)=|\phi(x)|$ 在 $S$ 中闭，所以此处端点集确实紧。Krein--Milman 定理使它非空且 $S=\overline{\operatorname{co}}K$，从而引理\ref{lem:y12-states}中的上确界可改在 $K$ 上取。于是得到核与等距性。$J(E)$ 包含常数、保持格运算，并区分不同状态。格形式的 Stone--Weierstrass 定理给出一致稠密性。对商空间取完备化便得到结论。
+\end{proof}
+
+\begin{proposition}[极大格理想与无穷小]\label{prop:y12-maximal-lattice-ideals}
+每个真格理想包含于极大格理想。极大格理想恰为上述格同态的核，故 $N$ 是所有极大格理想的交。
+\end{proposition}
+\begin{proof}
+强序单位使格理想真当且仅当不含 $e$。链的并仍不含 $e$，所以可用 Zorn 引理。格理想的商仍为向量格：绝对值在商上良定义，因为 $\bigl||x|-|y|\bigr|\le|x-y|$，且其理想固体。对极大理想 $M$，商格只有零与全空间两个格理想，且有序单位 $e+M$。上一定理给出一个商格到 $\mathbb R$ 的单位格同态，核是真理想，故为零；像含所有常数，因而商格为 $\mathbb R$。反向同样由一维商得到极大性。最后用 $\ker J=N$ 取所有核的交。
+\end{proof}
+
+这里的格理想由次序定义，不是第十一章由乘法定义的代数理想。一般 Banach 格也未必有强序单位；表示定理的这些条件不能略去。
+
+\begin{exercise}[字典序的无穷小]\label{ex:y12-infinitesimal}
+在字典序 $\mathbb R^2$ 中取 $e=(1,0)$。求 $\|\cdot\|_e$、$N$ 及表示空间 $K$。
+\end{exercise}
+\begin{solution}
+对 $x=(a,b)$，每个 $c>|a|$ 都有 $|x|\le ce$，而 $c<|a|$ 不可能，故 $\|x\|_e=|a|$、$N=\{(0,b)\}$。状态必须消去 $N$，且单位值为一，所以唯一为 $(a,b)\mapsto a$，它保持字典序的格运算。$K$ 为单点，表示消去了第二坐标；原格非 Archimedes，不能把此表示说成单射。
+\end{solution}
+
+\begin{exercise}[有限维函数表示]\label{ex:y12-finite-representation}
+对逐坐标序的 $E=\mathbb R^m$、$e=(1,\ldots,1)$，求所有单位格同态及序单位范数。
+\end{exercise}
+\begin{solution}
+设坐标向量为 $e_j$。正性给出 $\phi(e_j)\ge0$，单位条件使其和为一；$e_i\wedge e_j=0$ 迫使不同坐标值不能同时为正。因此恰有一个坐标值为一，其余为零，格同态即坐标取值。序单位范数为 $\max_j|x_j|$，表示恰为有限点集上的全部实函数。
+\end{solution}

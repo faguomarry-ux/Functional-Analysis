@@ -1,0 +1,54 @@
+\Needspace{10\baselineskip}
+\section{端点、Krein--Milman 定理}\label{sec:yosida-12-01}
+\noindent\textit{原书起始页：中译本 377；英文版 362。}
+
+\begin{definition}[端点与面]
+凸集 $K$ 中的点 $x$ 称为端点或极端点，若 $x=ty+(1-t)z$、$y,z\in K$、$0<t<1$ 必推出 $y=z=x$。全体记为 $\operatorname{Ext}K$。凸子集 $F\subset K$ 称为面，若上述凸组合属于 $F$ 必推出 $y,z\in F$。单点面恰为端点。
+\end{definition}
+
+\begin{theorem}[Krein--Milman]\label{thm:y12-krein-milman}
+Hausdorff 局部凸空间中的非空紧凸集 $K$ 有端点，且
+\[
+ K=\overline{\operatorname{co}}(\operatorname{Ext}K).
+\]
+闭包取原局部凸拓扑。
+\end{theorem}
+\begin{proof}
+考虑非空紧面按反包含排序。全序子族的有限交非空，紧性使全交非空；交仍为紧面。因此 Zorn 引理给出包含意义下极小的非空紧面 $F$。若 $a,b\in F$ 不同，局部凸 Hausdorff 性给出连续实线性泛函 $\ell$ 区分二者。$\ell$ 在 $F$ 上的最大值集是 $F$ 的非空真紧面，也是 $K$ 的面，与极小性矛盾。故 $F$ 为单点。
+
+令 $C=\overline{\operatorname{co}}(\operatorname{Ext}K)\subset K$。若 $x\in K\setminus C$，严格分离定理给出 $\ell(x)>\sup_C\ell$。$\ell$ 在 $K$ 上的最大值集 $F_\ell$ 为非空紧面；将前段用于它，得到 $K$ 的端点 $a\in F_\ell$。于是 $\ell(a)\ge\ell(x)>\sup_C\ell$，而 $a\in C$，矛盾。
+\end{proof}
+
+此结论允许用有限凸组合的网逼近任意点；一般非可度量紧集中不能直接把网改成序列。它本身也没有给出支于端点集的概率测度表示；后者属于 Choquet 理论，需要另外论证。
+
+\begin{example}[Hilbert 球]
+实 Hilbert 空间闭单位球的端点为单位球面。若 $\|x\|<1$，取小的非零 $h$ 使 $x\pm h$ 都在球中。若 $\|x\|=1$ 且 $x=(y+z)/2$，平行四边形恒等式给出 $y=z=x$。无限维时闭球在范数拓扑中不紧；在弱拓扑中紧，可应用上述定理。
+\end{example}
+
+\begin{proposition}[概率测度的端点]\label{prop:y12-probability-extreme}
+若 $K$ 为非空紧 Hausdorff 空间，正则 Borel 概率测度集 $\mathcal P(K)$ 在 $C(K,\mathbb R)'$ 的弱星拓扑中紧凸，其端点恰为 $\delta_t$，$t\in K$。
+\end{proposition}
+\begin{proof}
+借助第四章采用的 Riesz--Markov 表示，概率测度对应满足 $\phi(1)=1$ 的正线性泛函。它们位于紧乘积 $\prod_f[-\|f\|_\infty,\|f\|_\infty]$ 中，线性、正性和单位条件均闭，故紧。若 $\mu$ 不是点质量，正则性给出可测集 $A$ 使 $0<\mu(A)<1$：其支集至少有两点，取不交的正质量开邻域即可。按 $A,A^c$ 限制并归一化，便把 $\mu$ 分成两个不同概率测度的真凸组合。反之，若 $\delta_t=a\mu+(1-a)\nu$，正性使 $\mu,\nu$ 均集中于 $\{t\}$，故二者皆为 $\delta_t$。
+\end{proof}
+
+\begin{exercise}[面中的端点]\label{ex:y12-face}
+证明若 $F$ 为 $K$ 的面，则 $\operatorname{Ext}F=F\cap\operatorname{Ext}K$；两个面的交若非空仍为面。
+\end{exercise}
+\begin{solution}
+若 $x\in\operatorname{Ext}F$ 且 $x=ty+(1-t)z\in F$，面的性质先使 $y,z\in F$，端点性质再使二者等于 $x$。反向直接限制凸组合即可。对交集中的凸组合，分别应用两个面的性质，两个端点均落在交集中。
+\end{solution}
+
+\begin{exercise}[有符号测度球]\label{ex:y12-signed-extreme}
+证明 $C(K,\mathbb R)'$ 闭单位球的端点为 $\pm\delta_t$，并与概率测度集的结论比较。
+\end{exercise}
+\begin{solution}
+用 Riesz--Markov 把对偶范数识别为全变差。范数小于 $1$ 时可沿非零点质量作小扰动，故不是端点。范数等于 $1$ 时，若 Jordan 正负部均非零，便是一个概率测度与一个负概率测度的真凸组合；若只有一部分非零，命题\ref{prop:y12-probability-extreme}将非点质量进一步分解。最后，若 $\delta_t=(\nu+\eta)/2$ 且二者变差至多 $1$，则在 $\{t\}$ 上的质量相加为 $2$，每个都至多 $1$，所以都等于 $1$；变差预算使其余部分为零。负号同理。概率测度集额外要求正性与总质量 $1$，故不含负点质量。
+\end{solution}
+
+\begin{exercise}[紧性不可省略]\label{ex:y12-open-ball}
+证明非零赋范空间的开单位球没有端点。
+\end{exercise}
+\begin{solution}
+给定球内 $x$，取非零 $h$ 满足 $\|h\|<1-\|x\|$，则 $x=\tfrac12((x+h)+(x-h))$，两个不同端点均在开球内。
+\end{solution}

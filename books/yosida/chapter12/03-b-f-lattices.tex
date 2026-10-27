@@ -1,0 +1,51 @@
+\Needspace{10\baselineskip}
+\section{B-格和 F-格}\label{sec:yosida-12-03}
+\noindent\textit{原书起始页：中译本 385；英文版 369。}
+
+\begin{definition}[拓扑格与序连续性]
+Banach 格（原书 B-格）是带完备范数的向量格，满足 $|x|\le|y|\Rightarrow\|x\|\le\|y\|$。本章 F-格指带完备平移不变度量 $d(x,y)=\rho(x-y)$ 的拓扑向量格，其中 $\rho$ 对称、次可加、$\rho(0)=0$ 且仅在零点为零，并满足
+\[
+ |x|\le|y|\Longrightarrow\rho(x)\le\rho(y).
+\]
+标量乘法须连续，但不要求 $\rho(ax)=|a|\rho(x)$。称 $\rho$ 序列序连续，若 $w_n\downarrow0$ 推出 $\rho(w_n)\to0$；称严格单调，若 $0\le x<y$ 推出 $\rho(x)<\rho(y)$。
+\end{definition}
+
+格不等式保证格运算连续，正锥闭。例如若 $x_n\ge0$ 且 $x_n\to x$，则 $\rho(x^-)\le\rho(x-x_n)\to0$。序连续性等价于 $x_n\xrightarrow{o}x$ 推出 $\rho(x_n-x)\to0$。原书 F-空间允许非局部凸空间，与常见的局部凸 Fr\'echet 空间术语不同。
+
+\begin{theorem}[从可数完备到完全完备]\label{thm:y12-dedekind-complete}
+若 F-格 Dedekind $\sigma$ 完备，且 $\rho$ 严格单调并序列序连续，则它 Dedekind 完备。
+\end{theorem}
+\begin{proof}
+先考虑 $0\le x_\alpha\le u$。全体有限上确界 $z_F=\bigvee_{\alpha\in F}x_\alpha$ 的 $\rho$ 值有有限上界 $M$。选 $F_n$ 使 $\rho(z_{F_n})\to M$，以累积并替换 $F_n$，可令 $w_n=z_{F_n}\uparrow w$。序连续性给出 $\rho(w)=M$。任取 $\alpha$，$w_n\vee x_\alpha\uparrow w\vee x_\alpha$，故其 $\rho$ 极限至多 $M$。严格单调性与 $w\le w\vee x_\alpha$ 迫使 $x_\alpha\le w$。任何原族上界也是 $w_n$ 的上界，故 $w$ 为原族上确界。
+
+对一般有上界族，固定其中 $x_0$，改用 $x_\alpha\vee x_0-x_0\ge0$，上确界再平移回去即可。
+\end{proof}
+
+\begin{example}[函数格]
+有限测度空间中的 $L^p$（$1\le p<\infty$）具备上述范数性质。$L^0$ 的完备度量可取
+\[
+ \rho(f)=\int\frac{|f|}{1+|f|}\,\dd\mu;
+\]
+它严格单调且序列序连续，后者由控制收敛得到；完备性见第一章依测度收敛的讨论。$L^\infty$ 的范数一般不序连续：$\mathbf1_{(0,1/n)}\downarrow0$，范数却恒为 $1$。
+\end{example}
+
+\begin{proposition}[相对一致子序列判别]\label{prop:y12-relative-uniform}
+在 F-格中，$x_n\to x$ 当且仅当每个子序列都有进一步子序列 $y_k$，满足某个 $z\ge0$ 控制 $|y_k-x|\le z/k$。
+\end{proposition}
+\begin{proof}
+正向利用数乘连续性逐次选取 $\rho(k(y_k-x))\le2^{-k}$。级数 $\sum k|y_k-x|$ 的部分和为 Cauchy 列，由完备性收敛到 $z\ge0$；正锥闭保证每项不超过 $z$。反向若不收敛，可选子序列始终避开某个零邻域；而任何受 $z/k$ 控制的进一步子序列因数乘连续性收敛到零，矛盾。
+\end{proof}
+
+\begin{exercise}[连续函数中的序]\label{ex:y12-continuous-order}
+证明 $C[0,1]$ 中 $f_n(t)=t^n$ 的格下确界为零，虽其逐点极限在 $1$ 处为 $1$。说明这为何不与范数完备矛盾。
+\end{exercise}
+\begin{solution}
+连续下界 $g\le f_n$ 对所有 $n$ 成立时，$t<1$ 上有 $g(t)\le0$，连续性使 $g(1)\le0$。零本身为下界，故格下确界零。范数恒为 $1$，序收敛不推出范数收敛；完备性只涉及范数 Cauchy 列，这列并非范数 Cauchy。
+\end{solution}
+
+\begin{exercise}[依测度与逐点]\label{ex:y12-typewriter}
+在 $[0,1)$ 上逐层列出所有二进区间的示性函数：第 $m$ 层为 $\mathbf1_{[j2^{-m},(j+1)2^{-m})}$，$0\le j<2^m$。说明它在 $L^0$ 中趋零，却不序收敛，并说明子序列判别的作用。
+\end{exercise}
+\begin{solution}
+每项支集长度趋零，所以 $\rho$ 值为支集长度的一半，趋零。每一点在每层恰好遇到一次 $1$，也无限次遇到 $0$，不逐点收敛，因而不序收敛。命题\ref{prop:y12-relative-uniform}仍保证每个子序列可再抽出几乎处处趋零的子序列；它没有声称整个原序列几乎处处收敛。
+\end{solution}

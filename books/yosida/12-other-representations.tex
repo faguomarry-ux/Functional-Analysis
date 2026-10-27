@@ -1,29 +1,19 @@
 % !TeX encoding = UTF-8
-% 吉田第六版：中译本第 12 章；此文件当前仅为目录与正文占位。
-\SetChapterInfo{subtitle={吉田耕作第六版主线 · 正文待撰写}}
-\chapter{线性空间中其他表示定理}\label{ch:yosida-12}
-\YosidaChapterPlaceholder{12}{Other Representation Theorems in Linear Spaces}{377--396}{362--378}
+\SetChapterInfo{subtitle={从凸集端点到函数与测度表示},keywords={Krein--Milman; 向量格; 序收敛; 序单位; 带投影},prereq={分离定理; Baire; 测度; Stone--Weierstrass},goals={区分序与拓扑收敛; 构造点函数表示; 解释测度分解}}
+\chapter[线性空间中其他表示定理]{线性空间中\\其他表示定理}\label{ch:yosida-12}
+\ChapterSource{按 \cite{yosida-zh,yosida-en} 第十二章六节组织，2026 年 10 月 27 日补写。直接查看英文印刷 362--378 页全部扫描图及中译本选页；中译本参考范围为 377--396 页。选页与证明边界见本章 COVERAGE。}
 
-\section{端点、Krein--Milman 定理}\label{sec:yosida-12-01}
-\YosidaSectionPlaceholder{377}{362}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
+本章把表示问题从乘法转向凸性与次序。紧凸集由端点生成；向量格的序单位产生连续函数表示；格中的带投影则把抽象分解化为测度的绝对连续部分与奇异部分。Banach 收敛定理连接序收敛与完备度量。
 
-\section{向量格}\label{sec:yosida-12-02}
-\YosidaSectionPlaceholder{379}{364}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
+以下向量格均为实空间；复空间的凸性按底层实空间理解。统一采用非负负部 $x^-=(-x)\vee0$，所以 $x=x^+-x^-$。原书的负部为 $x\wedge0=-x^-$，使用原书公式时须作换算。“序有界”与“范数有界”分别表述。
 
-\section{B-格和 F-格}\label{sec:yosida-12-03}
-\YosidaSectionPlaceholder{385}{369}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
+\input{books/yosida/chapter12/01-extreme}
+\input{books/yosida/chapter12/02-vector-lattices}
+\input{books/yosida/chapter12/03-b-f-lattices}
+\input{books/yosida/chapter12/04-banach-convergence}
+\input{books/yosida/chapter12/05-point-representation}
+\input{books/yosida/chapter12/06-set-representation}
 
-\section{Banach 收敛定理}\label{sec:yosida-12-04}
-\YosidaSectionPlaceholder{386}{370}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{向量格的点函数表示}\label{sec:yosida-12-05}
-\YosidaSectionPlaceholder{388}{372}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{向量格的集合函数表示}\label{sec:yosida-12-06}
-\YosidaSectionPlaceholder{391}{375}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
+\Needspace{6\baselineskip}
+\section*{本章参考说明与阅读衔接}
+本章依照原书六节次序，以现代正负部记法重写证明。点函数表示通过状态空间与格形式的 Stone--Weierstrass 定理构造；集合函数表示先建立带投影与阶梯逼近，再在有限测度情形导出 Lebesgue--Radon--Nikodym 分解。一般 Choquet 表示、无序单位空间的局部表示不在此处另作证明；$\sigma$ 有限测度的推广参见第三章。下一章将把正算子与收敛理论用于遍历和扩散。

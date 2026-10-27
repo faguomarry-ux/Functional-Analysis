@@ -1,0 +1,51 @@
+\Needspace{10\baselineskip}
+\section{向量格}\label{sec:yosida-12-02}
+\noindent\textit{原书起始页：中译本 379；英文版 364。}
+
+\begin{definition}[格序与序收敛]
+实线性空间 $E$ 的偏序若与加法、非负数乘相容，且任意两元素有上确界 $x\vee y$ 和下确界 $x\wedge y$，则称 $E$ 为向量格。记 $E_+=\{x:x\ge0\}$、$|x|=x\vee(-x)$。若存在 $w_n\downarrow0$ 使 $|x_n-x|\le w_n$，称 $x_n$ 序收敛到 $x$，记 $x_n\xrightarrow{o}x$；这里 $w_n\downarrow0$ 指递减且格内下确界为零。
+\end{definition}
+
+格序不是全序。例如函数按逐点次序、可测函数的等价类按几乎处处次序，都构成向量格。基本恒等式为
+\[
+ x\vee y=\tfrac12(x+y+|x-y|),\quad
+ x\wedge y=\tfrac12(x+y-|x-y|),\quad |x|=x^++x^-.
+\]
+这些公式可从 $x\vee y=y+(x-y)^+$ 得到，且给出
+\[
+ \bigl||x|-|y|\bigr|\le|x-y|,\qquad
+ |(x\vee z)-(y\vee z)|\le|x-y|.
+\]
+因而序极限唯一，且加法、正负部、有限上确界与序极限相容。
+
+\begin{definition}[完备性与 Archimedes 性]
+每个非空、有上界的可数子集均有上确界时，称 $E$ 为 Dedekind $\sigma$ 完备；去掉可数限制时称 Dedekind 完备。若 $u\ge0$ 且 $nu\le v$ 对一切正整数成立必有 $u=0$，称为 Archimedes 向量格。
+\end{definition}
+
+\begin{proposition}[序极限的判别]\label{prop:y12-order-limit}
+Dedekind $\sigma$ 完备向量格具有 Archimedes 性。对序有界序列，令
+\[
+ \overline x=\inf_m\sup_{n\ge m}x_n,\qquad
+ \underline x=\sup_m\inf_{n\ge m}x_n.
+\]
+则 $x_n\xrightarrow{o}x$ 当且仅当 $\overline x=\underline x=x$。
+\end{proposition}
+\begin{proof}
+若 $nu\le v$，取 $a=\sup_n nu$，平移保持上确界，故 $a+u=a$，即 $u=0$。序收敛时尾部上、下确界分别被 $x+w_m$、$x-w_m$ 控制。反之，记尾部上、下确界为 $b_m,a_m$，则 $b_m\downarrow x$、$a_m\uparrow x$，且 $|x_n-x|\le(b_m-x)+(x-a_m)$ 对 $n\ge m$ 成立，右侧递减到零。
+\end{proof}
+
+Archimedes 性还等价于 $u/n\downarrow0$ 对每个 $u\ge0$ 成立。不能在任意格中默用它：字典序 $\mathbb R^2$ 中 $(0,1)>0$，却有 $n(0,1)\le(1,0)$ 对所有 $n$ 成立。
+
+\begin{exercise}[Riesz 分解]\label{ex:y12-riesz-decomposition}
+若 $0\le w\le u+v$ 且 $u,v\ge0$，证明可写 $w=w_1+w_2$，其中 $0\le w_1\le u$、$0\le w_2\le v$。再证 $u\wedge v=0$ 时 $u+v=u\vee v$。
+\end{exercise}
+\begin{solution}
+取 $w_1=w\wedge u$，则 $w_2=w-w_1=(w-u)^+\le v$，其余不等式直接成立。又 $u+v=(u\vee v)+(u\wedge v)$，故不交时和等于上确界。
+\end{solution}
+
+\begin{exercise}[几乎处处极限]\label{ex:y12-ae-order}
+在有限测度空间的实可测、几乎处处有限函数等价类空间 $L^0$ 中，证明序列序收敛当且仅当几乎处处收敛。
+\end{exercise}
+\begin{solution}
+序收敛的控制序列在除去可数个零测集后逐点递减，其逐点下确界代表格下确界零，故逐点控制给出几乎处处收敛。反之，几乎处处收敛使 $w_m=\sup_{n\ge m}|f_n-f|$ 几乎处处有限，且 $w_m\downarrow0$。这些可测函数的等价类正是所需控制序列。可数性保证可统一除去例外零测集。
+\end{solution}
