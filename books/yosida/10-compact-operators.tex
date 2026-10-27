@@ -1,35 +1,21 @@
 % !TeX encoding = UTF-8
-% 吉田第六版：中译本第 10 章；此文件当前仅为目录与正文占位。
-\SetChapterInfo{subtitle={吉田耕作第六版主线 · 正文待撰写}}
+\SetChapterInfo{subtitle={从紧性判别到 Fredholm 择一},keywords={全有界; 核算子; Rellich; Schauder; Fredholm; Dirichlet; 核空间},prereq={Ascoli 定理; Hahn--Banach; Sobolev 空间; 闭值域; Riesz 投影},goals={证明紧算子的谱结构; 识别相容条件; 用紧嵌入处理椭圆边值问题}}
 \chapter{紧算子}\label{ch:yosida-10}
-\YosidaChapterPlaceholder{10}{Compact Operators}{287--306}{274--293}
+\ChapterSource{按 \cite{yosida-zh,yosida-en} 第十章六节及附录组织，2026 年 10 月 27 日补写为学习讲义。直接查看英文印刷 274--293 页全部扫描图，以及中译本印刷 287、290、294--296、299、302、306 页。两版参考范围分别为 287--306、274--293；英文第 274 页上部仍属第九章。查阅范围与未展开结果详见本章 COVERAGE。}
 
-\section{B-空间中的紧集}\label{sec:yosida-10-01}
-\YosidaSectionPlaceholder{287}{274}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
+有界集在无限维空间中未必有收敛子列，紧算子却把每个有界序列送到具有收敛子列的序列。本章利用这一性质证明：紧算子在非零谱点附近保留有限维线性代数的结构，方程的障碍由有限多个对偶条件描述。应用中，椭圆方程的估计先给出有界解算子，Sobolev 紧嵌入再把它变为紧算子。
 
-\section{紧算子与核算子}\label{sec:yosida-10-02}
-\YosidaSectionPlaceholder{290}{277}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
+除另有说明，$X,Y$ 为实或复 Banach 空间，讨论谱时取复数域；$B_X$ 为闭单位球，$T'$ 为线性对偶算子。Hilbert 内积对第一变量线性，Hilbert 伴随写作 $T^*$。本章的核算子指 nuclear operator，不能与泛指由积分核定义的算子混同。
 
-\section{Rellich--Gårding 定理}\label{sec:yosida-10-03}
-\YosidaSectionPlaceholder{294}{281}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
+\input{books/yosida/chapter10/01-compact-sets}
+\input{books/yosida/chapter10/02-operators}
+\input{books/yosida/chapter10/03-rellich}
+\input{books/yosida/chapter10/04-schauder}
+\input{books/yosida/chapter10/05-riesz-schauder}
+\input{books/yosida/chapter10/06-dirichlet}
+\input{books/yosida/chapter10/07-nuclear-spaces}
 
-\section{Schauder 定理}\label{sec:yosida-10-04}
-\YosidaSectionPlaceholder{295}{282}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{Riesz--Schauder 理论}\label{sec:yosida-10-05}
-\YosidaSectionPlaceholder{296}{283}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{Dirichlet 问题}\label{sec:yosida-10-06}
-\YosidaSectionPlaceholder{299}{286}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section*{本章附录：A. Grothendieck 的核空间}
-\phantomsection
-\addcontentsline{toc}{section}{本章附录：A. Grothendieck 的核空间}
-\label{app:yosida-10}
-正文待撰写。中译本印刷第 302--306 页；英文版印刷第 289--293 页。
+\Needspace{6\baselineskip}
+\section*{本章参考说明与阅读衔接}
+\phantomsection\addcontentsline{toc}{section}{本章参考说明与阅读衔接}
+直接来源为吉田第十章及章内附录 \cite{yosida-zh,yosida-en}；原书所引 Grothendieck、Gårding、Minlos 等原始文献未计为直接阅读。讲义补充有限网、商空间估计与变分形式的推导。核空间的一般稳定性和 Minlos 定理仅说明位置，未在此证明。下一章将从有限秩谱投影进一步走向正规与自伴算子的谱表示。

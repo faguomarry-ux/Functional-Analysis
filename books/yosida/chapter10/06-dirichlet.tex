@@ -1,0 +1,65 @@
+\Needspace{10\baselineskip}
+\section{Dirichlet 问题}\label{sec:yosida-10-06}
+\noindent\textit{原书起始页：中译本 299；英文版 286。}
+
+原书用高阶强椭圆算子说明紧性与可解性的联系。这里先在变分形式中给出完整论证，再说明它与分布方程的对应。设 $G\subset\R^d$ 有界开，$V=H_0^m(G)$，$H=L^2(G)$，$J:V\to H$ 为自然嵌入。令 $V^\dagger$ 表示连续共轭线性泛函空间，使 $u\mapsto a(u,\cdot)$ 线性。
+
+\begin{theorem}[Gårding 形式的 Fredholm 择一]\label{thm:y10-dirichlet}
+设 $a:V\times V\to\mathbb C$ 是有界半双线性形式，对第一变量线性，且存在 $c>0$、$\beta\ge0$ 使
+\[
+ \operatorname{Re}a(u,u)+\beta\|Ju\|_H^2\ge c\|u\|_V^2.
+\]
+则 $Au=a(u,\cdot):V\to V^\dagger$ 的值域闭，核与余核有限维且维数相同。方程 $a(u,v)=F(v)$ 对所有 $v\in V$ 可解，当且仅当
+\[
+ F(v)=0\quad\text{对所有满足 }a(w,v)=0\ (w\in V)\text{ 的 }v.
+\]
+特别地，或者齐次问题有非零解，或者对每个 $F\in V^\dagger$ 都有唯一解，且解连续依赖 $F$。
+\end{theorem}
+\begin{proof}
+取实数 $\gamma>\beta$，令 $b(u,v)=a(u,v)+\gamma(Ju,Jv)_H$。由 Lax--Milgram 定理 \ref{thm:y3-lax-milgram}，$B:u\mapsto b(u,\cdot)$ 是 $V$ 到 $V^\dagger$ 的有界同构。定义 $M:V\to V^\dagger$ 为 $Mu(v)=(Ju,Jv)_H$。因为 $J$ 紧而 $H\to V^\dagger$，$h\mapsto(h,J\cdot)_H$ 有界，$M$ 紧。于是
+\[
+ A=B(I-C),\qquad C=\gamma B^{-1}M\in\mathcal K(V).
+\]
+Riesz--Schauder 理论说明 $I-C$ 以及 $A$ 值域闭，核与余核维数相同且有限。
+
+为得到具体相容条件，给 $V$ 任选其标准 Hilbert 内积，写 $a(u,v)=(\mathcal Au,v)_V$，$F(v)=(g,v)_V$。因 $\mathcal A$ 值域闭，$g\in R(\mathcal A)$ 等价于 $g\perp\ker\mathcal A^*$。而 $v\in\ker\mathcal A^*$ 恰指 $a(w,v)=0$ 对所有 $w$ 成立，故得到所写条件。若核为零，则余核为零，$A$ 双射，有界逆定理给出稳定估计。
+\end{proof}
+
+\begin{example}[高阶算子与非齐次边界数据]
+设
+\[
+ Lu=\sum_{|\alpha|,|\eta|\le m}(-1)^{|\alpha|}
+ \partial^\alpha\bigl(a_{\alpha\eta}(x)\partial^\eta u\bigr),\quad
+ a(u,v)=\sum_{\alpha,\eta}\int_G a_{\alpha\eta}
+ \partial^\eta u\,\overline{\partial^\alpha v}\,\dd x.
+\]
+假定系数有界，并明确假定此形式满足上述 Gårding 不等式；第 \ref{sec:yosida-06-08} 节提供相应强椭圆、系数正则条件下的来源。给定 $f\in L^2(G)$ 与一个边界提升 $u_1\in H^m(G)$，寻求 $u-u_1\in V$。写 $u=u_1+w$，则
+\[
+ a(w,v)=(f,Jv)_H-a(u_1,v)=F(v),\qquad v\in V.
+\]
+右侧属于 $V^\dagger$，故上一定理给出精确可解条件。在形式对称时，相容条件直接对所有齐次解 $v$ 检验；若齐次核为零，每对 $f,u_1$ 都产生唯一弱解，并有
+\[
+ \|w\|_{H^m}\le C\bigl(\|f\|_2+\|u_1\|_{H^m}\bigr).
+\]
+测试 $v\in C_c^\infty(G)$ 并分部积分可知这是分布意义的 $Lu=f$。反之，在 $u-u_1\in H_0^m(G)$ 的前提下，分布等式由测试函数稠密性延至 $V$。这里没有把弱解自动提升为 $H^{2m}$ 解；那需要额外正则性与边界假设。任意开集上的 $H_0^m$ 条件也不直接写成逐点边界导数条件。
+\end{example}
+
+原书采取 $I+\alpha L$ 的可逆平移，再构造紧算子 $S_1T$；本节用 $A+\gamma M$ 的变分同构实现同一机制。两种写法均先取得强制性，再借助紧嵌入撤去平移。非齐次问题只有在齐次核为零时才对所有数据唯一可解。
+
+\begin{exercise}[区间上的共振]\label{ex:y10-dirichlet-resonance}
+在区间 $(0,\pi)$ 上考察零边界问题
+\[
+ -u''-u=f,\qquad u\in H_0^1(0,\pi).
+\]
+证明它可解当且仅当 $\int_0^\pi f(x)\sin x\,\dd x=0$，并描述全体解。
+\end{exercise}
+\begin{solution}
+形式为 $a(u,v)=\int u'\overline{v'}-\int u\overline v$，加 $2\|u\|_2^2$ 后强制。齐次弱解满足分布方程 $u''=-u$，在一维可积分或由常系数方程得 $u=A\sin x+B\cos x$；零端点使 $B=0$。形式对称，故相容条件正为对 $\sin x$ 正交。有解时任一特解加 $A\sin x$ 为全体解。
+\end{solution}
+
+\begin{exercise}[强制情形没有共振]\label{ex:y10-coercive}
+设 $a(u,u)=\|\nabla u\|_2^2+\|u\|_2^2$，$u\in H_0^1(G)$。证明每个 $F\in V^\dagger$ 都有唯一解并给出估计。
+\end{exercise}
+\begin{solution}
+用 $\|u\|_V^2=\|u\|_2^2+\|\nabla u\|_2^2$，形式强制常数为 $1$。Lax--Milgram 给出唯一解；取 $v=u$ 得 $\|u\|_V^2\le\|F\|\|u\|_V$，故 $\|u\|_V\le\|F\|$。此时不必再用紧性撤去平移。
+\end{solution}

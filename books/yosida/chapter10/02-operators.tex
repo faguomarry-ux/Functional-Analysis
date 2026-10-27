@@ -1,0 +1,78 @@
+\Needspace{10\baselineskip}
+\section{紧算子与核算子}\label{sec:yosida-10-02}
+\noindent\textit{原书起始页：中译本 290；英文版 277。}
+
+\begin{definition}[紧算子]
+$T\in\mathcal L(X,Y)$ 称为紧算子，若 $T(B_X)$ 相对紧，记 $T\in\mathcal K(X,Y)$。等价地，任何有界列 $x_n$ 的像 $Tx_n$ 都有范数收敛子列。
+\end{definition}
+
+\begin{proposition}[闭理想性质]\label{prop:y10-ideal}
+紧算子的线性组合仍紧；与有界算子在任意一侧复合仍紧。若紧算子 $T_n$ 在算子范数下收敛于 $T$，则 $T$ 紧。特别地，有限秩算子及其范数极限紧。
+\end{proposition}
+\begin{proof}
+线性组合的像包含在两个相对紧集的和中；右复合将单位球送入一个有界集，左复合则保持紧闭包的连续像紧。给定 $\varepsilon>0$，选 $n$ 使 $\|T-T_n\|<\varepsilon$，再取 $T_n(B_X)$ 的有限 $\varepsilon$ 网，便得到 $T(B_X)$ 的有限 $2\varepsilon$ 网。有限维有界集全有界，故有限秩情形成立。
+\end{proof}
+
+本命题只推出有限秩范数极限必紧；一般 Banach 空间上，反方向涉及逼近性质，不在此作无条件断言。
+
+\begin{example}[连续核与平方可积核]
+若 $k\in C([a,b]^2)$，则 $Tf(x)=\int_a^b k(x,y)f(y)\,\dd y$ 在 $C[a,b]$ 上紧。事实上 $\|Tf\|_\infty\le(b-a)\|k\|_\infty\|f\|_\infty$，且对 $\|f\|_\infty\le1$，
+\[
+ |Tf(x)-Tf(z)|\le(b-a)\sup_y|k(x,y)-k(z,y)|.
+\]
+核的一致连续性和 Ascoli 定理给出紧性。
+
+若 $(S,\mu)$ 为 $\sigma$-有限测度空间，$k\in L^2(S\times S)$，则对应积分算子在 $L^2(S)$ 上紧，且 $\|T\|\le\|k\|_2$。Cauchy--Schwarz 后积分给出此界。矩形乘积函数的有限线性组合在 $L^2(S\times S)$ 中稠密：可先用 $\sigma$-有限分解截到有限测度，再用生成乘积 $\sigma$-代数的矩形逼近简单函数。它们的积分算子为有限秩，且核的 $L^2$ 逼近给出算子范数逼近。这类算子称 Hilbert--Schmidt 积分算子。
+\end{example}
+
+\begin{definition}[核算子与核范数]\label{def:y10-nuclear}
+若存在 $f_n\in X'$、$y_n\in Y$ 满足
+\[
+ Tx=\sum_{n=1}^\infty f_n(x)y_n,\qquad
+ \sum_{n=1}^\infty\|f_n\|\,\|y_n\|<\infty,
+\]
+则 $T$ 为核算子。其核范数 $\nu(T)$ 为所有此类表示的上式总和之下确界。这等价于原书使用的 $\ell^1$ 系数乘以两个有界序列的表示。
+\end{definition}
+\begin{proposition}[核算子必紧]
+上式在单位球上一致绝对收敛，部分和 $T_N$ 为有限秩，且
+\[
+ \|T-T_N\|\le\sum_{n>N}\|f_n\|\,\|y_n\|.
+\]
+因此核算子紧，$\|T\|\le\nu(T)$，且 $\nu(ATB)\le\|A\|\nu(T)\|B\|$。
+\end{proposition}
+\begin{proof}
+对 $\|x\|\le1$ 逐项估计即得尾和界，紧性由命题 \ref{prop:y10-ideal}。对复合把表示改成 $(f_n\circ B)(x)Ay_n$，再取下确界。
+\end{proof}
+
+\begin{proposition}[Sobolev 阶差足够大时的核嵌入]\label{prop:y10-nuclear-sobolev}
+设 $G\subset\R^d$ 有界开，$k>j\ge0$ 为整数且 $k-j>d$。则自然嵌入 $H_0^k(G)\to H_0^j(G)$ 为核算子。
+\end{proposition}
+\begin{proof}
+把 $\overline G$ 放在一个周期立方体 $Q$ 的内部。$H_0^s(G)$ 的零延拓是 $H^s(Q)$ 中的闭子空间，因其由测试函数的闭包定义；导数范数与 Fourier 范数等价。周期空间的正交模 $e_m$，$m\in\mathbb Z^d$，在 $H^s(Q)$ 的范数等价于 $(1+|m|^2)^{s/2}$。于是嵌入 $H^k(Q)\to H^j(Q)$ 有秩一展开，归一化后的系数为
+\[
+ (1+|m|^2)^{-(k-j)/2},\qquad
+ \sum_{m\in\mathbb Z^d}(1+|m|^2)^{-(k-j)/2}<\infty.
+\]
+最后一个和由格点球壳计数 $O(r^{d-1})$ 收敛。将零延拓、此嵌入、$H^j(Q)$ 到零延拓闭子空间的正交投影以及逆零延拓复合，得到所求映射。等价范数不改变核性。
+\end{proof}
+
+原书随后联系迹类。这里可直接证明：两个 Hilbert--Schmidt 算子 $A:H\to K$、$B:K\to H$ 的乘积 $BA$ 为核算子。取 $K$ 的正交基 $e_n$，有
+\[
+ BAx=\sum_n(x,A^*e_n)Be_n,\quad
+ \sum_n\|A^*e_n\|\,\|Be_n\|\le\|A\|_{\rm HS}\|B\|_{\rm HS}.
+\]
+一般迹类与奇异值理论留待谱表示以后讨论。
+
+\begin{exercise}[对角紧算子]\label{ex:y10-diagonal}
+设 $D_a:\ell^2\to\ell^2$，$D_ax=(a_nx_n)$，$a\in\ell^\infty$。证明 $D_a$ 紧当且仅当 $a_n\to0$，并证明 $a\in\ell^1$ 时它为核算子。
+\end{exercise}
+\begin{solution}
+截断前 $N$ 项的有限秩算子与 $D_a$ 的范数差为 $\sup_{n>N}|a_n|$。若 $a_n$ 不趋于零，存在子列 $|a_{n_k}|\ge\varepsilon$，其像 $a_{n_k}e_{n_k}$ 两两距离至少 $\sqrt2\varepsilon$，故不紧。核表示是 $D_ax=\sum_n a_nx_ne_n$，绝对范数和为 $\sum_n|a_n|$。
+\end{solution}
+
+\begin{exercise}[紧算子改善弱收敛]\label{ex:y10-weak-strong}
+若 $T$ 紧且 $x_n\rightharpoonup x$，证明 $Tx_n\to Tx$。
+\end{exercise}
+\begin{solution}
+弱收敛列由一致有界原理有界。若范数收敛失败，可选子列距 $Tx$ 至少 $\varepsilon$；紧性再给出范数收敛子列。它同时弱收敛于 $Tx$，因 $f(Tx_n)=T'f(x_n)$，故范数极限只能为 $Tx$，矛盾。
+\end{solution}

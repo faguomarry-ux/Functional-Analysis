@@ -1,0 +1,51 @@
+\Needspace{10\baselineskip}
+\section{Rellich--Gårding 定理}\label{sec:yosida-10-03}
+\noindent\textit{原书起始页：中译本 294；英文版 281。}
+
+\begin{theorem}[零边界 Sobolev 紧嵌入]\label{thm:y10-rellich}
+设 $G\subset\R^d$ 为有界开集，$k>j\ge0$ 为整数。则 $H_0^k(G)\hookrightarrow H_0^j(G)$ 紧。更一般地，若
+\[
+ T\in\mathcal L(H_0^k(G),H_0^k(G)),\qquad
+ \|T\varphi\|_{H^k}\le C\|\varphi\|_{H^j}
+ \quad(\varphi\in C_c^\infty(G)),
+\]
+则 $T$ 在 $H_0^k(G)$ 上紧。
+\end{theorem}
+\begin{proof}
+令 $u_n$ 在 $H_0^k(G)$ 中有界。由测试函数闭包定义，零延拓 $\widetilde u_n\in H^k(\R^d)$，其导数也是相应导数的零延拓，且范数保持。它们具有共同有界支集，因而 $L^2$ 范数有界且 $L^1$ 范数一致有界。
+
+Fourier 变换满足 $|\widehat {\widetilde u_n}(\xi)|\le C$，且
+\[
+ |\widehat {\widetilde u_n}(\xi)-\widehat {\widetilde u_n}(\eta)|
+ \le |\xi-\eta|\int|x|\,|\widetilde u_n(x)|\,\dd x\le C_1|\xi-\eta|.
+\]
+在频率闭球上应用 Ascoli，再取对角子列，得到每个频率球上的一致收敛。由 Plancherel 及整数 Sobolev 范数的 Fourier 等价式，频率高于 $R$ 的差满足
+\[
+ \int_{|\xi|>R}(1+|\xi|^2)^j
+ |\widehat {\widetilde u_n}-\widehat {\widetilde u_m}|^2\,\dd\xi
+ \le C_2(1+R^2)^{j-k}.
+\]
+先令 $R$ 大，再令 $m,n$ 大，得到该子列在 $H^j(\R^d)$ 中 Cauchy。限制回 $G$ 后在 $H^j(G)$ 中收敛；每个 $u_n\in H_0^j(G)$，而后者闭，极限仍属于它。这证明嵌入紧。
+
+对第二项，先由 $C_c^\infty$ 在 $H_0^k$ 中稠密，将不等式延至全空间。对任意有界列选出在 $H_0^j$ 中 Cauchy 的子列，不等式使其 $T$ 像在 $H_0^k$ 中 Cauchy，即得紧性。
+\end{proof}
+
+这里不要求 $G$ 的边界光滑，因为使用的是零边界闭包空间。若改成 $H^k(G)$，则需另行提供延拓条件，例如有界 Lipschitz 域。全空间上的同类嵌入通常不紧：固定函数的远距离平移仍保持所有 Sobolev 范数。
+
+\begin{example}[正则性如何产生紧性]
+设 $S:L^2(G)\to H_0^1(G)$ 有界，则作为 $L^2(G)\to L^2(G)$ 的算子 $JS$ 紧，其中 $J$ 为自然嵌入。紧性来自解算子与紧嵌入的复合；不要求 $S$ 在目标 $H_0^1$ 范数下紧。
+\end{example}
+
+\begin{exercise}[平移估计的另一条证明]\label{ex:y10-translation-estimate}
+证明 $u\in H^1(\R^d)$ 时，$\|u(\cdot+h)-u\|_2\le |h|\|\nabla u\|_2$。用它及定理 \ref{thm:y10-kolmogorov} 重证 $H_0^1(G)\hookrightarrow L^2(G)$ 紧。
+\end{exercise}
+\begin{solution}
+对光滑函数写差为 $\int_0^1h\cdot\nabla u(x+th)\,\dd t$，由 Minkowski 与平移等距性得界，再由稠密性推广。零延拓的有界族满足此一致估计，且共同有界支集给出尾部条件，故相对紧。
+\end{solution}
+
+\begin{exercise}[紧性与核性的阶差]\label{ex:y10-orders}
+比较 $H_0^k(G)\to H_0^j(G)$ 的本节结论与命题 \ref{prop:y10-nuclear-sobolev}；为何不应将两者的条件混用？
+\end{exercise}
+\begin{solution}
+紧性只需 $k-j>0$，Fourier 高频因子即趋于零。所给核性充分条件需 $k-j>d$，因为要求格点上的系数绝对可和。系数趋于零与系数可和是不同要求；核性证明提供更强结论，也需要更强估计。
+\end{solution}

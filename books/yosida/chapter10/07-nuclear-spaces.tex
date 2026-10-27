@@ -1,0 +1,78 @@
+\Needspace{10\baselineskip}
+\section*{本章附录：A. Grothendieck 的核空间}
+\phantomsection\addcontentsline{toc}{section}{本章附录：A. Grothendieck 的核空间}
+\label{app:yosida-10}
+\noindent\textit{原书页码：中译本 302--306；英文版 289--293。}
+
+核空间把一个算子的可和分解提升为局部凸拓扑的性质。以下设 $E$ 为 Hausdorff 局部凸空间。对连续半范数 $p$，记 $E_p=E/\ker p$，范数为 $p$，其 Banach 完备化记为 $\widehat E_p$。若 $q\ge p$，则有范数至多为 $1$ 的自然映射 $i_{q,p}:\widehat E_q\to\widehat E_p$；它未必单射。
+
+\begin{definition}[局部凸空间到 Banach 空间的核映射]
+连续线性映射 $T:E\to Y$ 称为核映射，若存在等度连续的 $f_n\in E'$、有界的 $y_n\in Y$ 及 $c\in\ell^1$，使
+\[
+ Tx=\sum_n c_nf_n(x)y_n.
+\]
+等度连续意味着存在连续半范数 $p$ 使 $|f_n(x)|\le p(x)$。级数在每个 $p$-有界集上一致绝对收敛，且
+\[
+ \Bigl\|Tx-\sum_{n\le N}c_nf_n(x)y_n\Bigr\|
+ \le p(x)\sup_n\|y_n\|\sum_{n>N}|c_n|.
+\]
+因此 $T$ 连续，并将某个零邻域送入相对紧集。
+\end{definition}
+
+\begin{definition}[核空间]\label{def:y10-nuclear-space}
+$E$ 称为核空间，若对每个连续半范数 $p$，存在连续半范数 $q\ge p$，使 $i_{q,p}:\widehat E_q\to\widehat E_p$ 为 Banach 空间间的核算子。这与原书用凸平衡零邻域及其 Minkowski 泛函的定义一致。
+\end{definition}
+
+\begin{theorem}[到 Banach 空间的映射判别]\label{thm:y10-nuclear-characterization}
+$E$ 为核空间，当且仅当从 $E$ 到任意 Banach 空间的每个连续线性映射都为核映射。
+\end{theorem}
+\begin{proof}
+若 $E$ 核且 $T:E\to Y$ 连续，选连续半范数 $p$ 使 $\|Tx\|\le p(x)$。$T$ 因子分解为 $E\to\widehat E_p\to Y$。再选核映射 $i_{q,p}$，便有分解 $E\to\widehat E_q\to\widehat E_p\to Y$，其可和表示拉回 $E$ 后是核表示。
+
+反之，对自然映射 $j_p:E\to\widehat E_p$ 使用假设，写 $j_px=\sum c_nf_n(x)y_n$。取连续半范数 $q_0$ 使 $|f_n(x)|\le q_0(x)$，令 $q=p+q_0$。每个 $f_n$ 都在 $\ker q$ 上为零，故延为 $\widehat E_q$ 上范数至多为 $1$ 的泛函。级数因此定义核算子 $\widehat E_q\to\widehat E_p$，它在稠密的 $E/\ker q$ 上恰是自然映射，故等于 $i_{q,p}$。
+\end{proof}
+
+\begin{proposition}[Hilbert 半范数的来源]\label{prop:y10-hilbert-seminorm}
+若 $E$ 核，对任意连续半范数 $p$，都存在由内积诱导的连续半范数 $r\ge p$。因而核空间的拓扑可由 Hilbert 半范数生成。
+\end{proposition}
+\begin{proof}
+将自然映射写成 $j_px=\sum c_nf_n(x)y_n$，吸收相位后可取 $c_n\ge0$，并设 $|f_n(x)|\le q(x)$。定义
+\[
+ \alpha x=(\sqrt{c_n}f_n(x))_n\in\ell^2,\qquad
+ \beta t=\sum_n\sqrt{c_n}t_ny_n\in\widehat E_p.
+\]
+Cauchy--Schwarz 给出 $\|\alpha x\|_2\le(\sum c_n)^{1/2}q(x)$，且 $\|\beta\|\le(\sum c_n\|y_n\|^2)^{1/2}$。于是 $j_p=\beta\alpha$，从而 $p(x)\le\|\beta\|\|\alpha x\|_2$。令 $r(x)=\max(1,\|\beta\|)\|\alpha x\|_2$ 即可。商掉 $\ker r$ 后是预 Hilbert 空间，其完备化为 Hilbert 空间。
+\end{proof}
+
+\begin{example}[乘积空间与快速下降序列]
+对任意指标集 $I$，赋乘积拓扑的 $\mathbb C^I$ 为核空间。每个连续半范数 $p$ 都满足 $p(x)\le C\max_{i\in F}|x_i|$，其中 $F$ 有限：这是因为一个控制 $p$ 的基本零邻域仅限制有限坐标，其他坐标可任意伸缩。选右侧为 $q$，则 $\widehat E_q$ 有限维，$i_{q,p}$ 有限秩，因而核。
+
+令 $s$ 为快速下降序列空间，使用 Hilbert 范数
+\[
+ p_k(x)^2=\sum_{n\ge1}(1+n)^{2k}|x_n|^2,\qquad k=0,1,\ldots.
+\]
+这些范数与通常的加权上确界半范数定义相同拓扑：上确界由同阶 $p_k$ 控制，而 $p_k$ 由更高一阶的加权上确界控制。$\widehat s_{p_k}$ 是加权 $\ell^2$，其间自然嵌入 $p_{k+2}\to p_k$ 的归一化对角系数为 $(1+n)^{-2}$，绝对可和。任意连续半范数都被某个 $Cp_k$ 控制，再与该核嵌入复合，得到 $s$ 为核空间。
+\end{example}
+
+\begin{proposition}[Banach 核空间只能有限维]
+若 Banach 空间 $E$ 带其范数拓扑且为核空间，则 $\dim E<\infty$。
+\end{proposition}
+\begin{proof}
+由定理 \ref{thm:y10-nuclear-characterization}，恒等映射 $I_E$ 核，因而紧，Riesz 引理迫使 $E$ 有限维。反之有限维恒等映射有有限秩表示，所以有限维空间核。
+\end{proof}
+
+原书还列出核性的子空间、Hausdorff 商、乘积及适当归纳极限稳定性，进而联系 $\Test$、$\Smooth$、$\Sch$ 及其强对偶的核性。这些一般稳定性定理的证明本附录未展开，也不从上述两个例子直接推出。原书末尾的 Minlos 定理把核空间上的适当连续柱分布延拓为测度；仅有有限维相容性并不足以省去连续性条件。本讲义不在此陈述其全部版本或证明，后续专题如需使用应另列准确假设。
+
+\begin{exercise}[等度连续不可省略]\label{ex:y10-equicontinuity}
+在 $E=\mathbb C^{\mathbb N}$ 的乘积拓扑上，坐标泛函 $f_n(x)=x_n$ 各自连续。证明 $\{f_n\}$ 不等度连续。
+\end{exercise}
+\begin{solution}
+每个零邻域都包含只限制有限坐标的基本零邻域。任选未受限制的坐标 $n$，该坐标可任意大，故不存在零邻域使所有 $|f_n(x)|\le1$。因此逐个连续不等于等度连续；甚至 $\sum2^{-n}x_n$ 也不对所有乘积空间元素收敛。
+\end{solution}
+
+\begin{exercise}[自然映射不必单射]\label{ex:y10-canonical-kernel}
+在 $E=\mathbb C^2$ 上取 $q(x)=|x_1|+|x_2|$、$p(x)=|x_1|$。计算 $i_{q,p}$ 的核，并说明这为何不妨碍核空间定义。
+\end{exercise}
+\begin{solution}
+$\widehat E_q=\mathbb C^2$，$\widehat E_p\cong\mathbb C$，自然映射为 $(x_1,x_2)\mapsto x_1$，核为 $\{0\}\times\mathbb C$。核空间的条件要求映射具有可和秩一展开，并不要求其单射；此例为有限秩映射，当然满足要求。
+\end{solution}

@@ -1,0 +1,99 @@
+\Needspace{10\baselineskip}
+\section{Riesz--Schauder 理论}\label{sec:yosida-10-05}
+\noindent\textit{原书起始页：中译本 296；英文版 283。}
+
+\begin{lemma}[闭值域与商空间估计]\label{lem:y10-closed-range}
+设 $K\in\mathcal K(X)$，$\lambda\ne0$，$A=\lambda I-K$。则 $N=\ker A$ 有限维，$R(A)$ 闭，且存在 $c>0$ 使
+\[
+ \|Ax\|\ge c\,\operatorname{dist}(x,N)\quad(x\in X).
+\]
+\end{lemma}
+\begin{proof}
+在 $N$ 上 $K=\lambda I$，所以 $N$ 的单位球相对紧；$N$ 闭，故由 Riesz 引理它有限维。
+
+若估计不成立，可按距离归一化并减去核向量，选 $x_n$ 使 $\operatorname{dist}(x_n,N)=1$、$\|x_n\|\le2$、$Ax_n\to0$。取 $Kx_n$ 的收敛子列，利用 $\lambda x_n=Ax_n+Kx_n$ 得 $x_n\to x$，且 $Ax=0$，与距离为 $1$ 矛盾。
+
+若 $Ax_n\to y$，估计使 $\operatorname{dist}(x_n,N)$ 有界。选核向量 $z_n$ 使 $x_n-z_n$ 有界，取 $K(x_n-z_n)$ 收敛子列。同一恒等式给出 $x_n-z_n\to x$，于是 $Ax=y$，所以值域闭。
+\end{proof}
+
+\begin{theorem}[Fredholm 择一的可逆性部分]\label{thm:y10-alternative}
+对紧算子 $K$ 及 $\lambda\ne0$，$A=\lambda I-K$ 单射当且仅当满射，此时有有界逆。因此紧算子的每个非零谱点都是特征值。
+\end{theorem}
+\begin{proof}
+设 $A$ 单射但不满射。令 $R_n=A^nX$，$R_0=X$。因为 $A^n=\lambda^nI-K_n$，其中 $K_n$ 是紧算子的多项式且常数项为零，上一引理说明每个 $R_n$ 闭。所有包含 $R_{n+1}\subset R_n$ 均严格：若某处相等，$A^nx=A^{n+1}y$，由单射性消去 $A^n$ 得 $x=Ay$，将推出满射。
+
+由 Riesz 引理选 $x_n\in R_n$，$\|x_n\|=1$，$\operatorname{dist}(x_n,R_{n+1})>1/2$。若 $m>n$，则
+\[
+ \lambda^{-1}(Kx_n-Kx_m)=x_n-x_m-\lambda^{-1}(Ax_n-Ax_m),
+\]
+右侧除 $x_n$ 外均在 $R_{n+1}$，所以 $\|Kx_n-Kx_m\|>|\lambda|/2$，与紧性矛盾。故单射推出满射。
+
+若 $A$ 满射，$A'$ 单射；$K'$ 由 Schauder 定理紧，已证方向使 $A'$ 满射。若 $Ax=0$，则对任意 $f\in X'$ 可写 $f=A'g$，从而 $f(x)=g(Ax)=0$。Hahn--Banach 分离点，故 $x=0$。有界逆由开映射定理得到。
+\end{proof}
+
+\begin{theorem}[非零谱的离散性]\label{thm:y10-discrete-spectrum}
+紧算子 $K$ 的非零谱点至多可数，每个均孤立且特征空间有限维。对每个 $\varepsilon>0$，满足 $|\lambda|\ge\varepsilon$ 的谱点只有有限个；故非零谱的唯一可能聚点为零。
+\end{theorem}
+\begin{proof}
+有限维特征空间已证。若存在无穷多个不同特征值 $\lambda_n$ 且 $|\lambda_n|\ge\varepsilon$，由 $|\lambda_n|\le\|K\|$ 取子列使 $\lambda_n\to\lambda\ne0$。取对应特征向量 $v_n$，令 $E_n=\operatorname{span}(v_1,\ldots,v_n)$。不同特征值的特征向量线性无关，故可选 $y_n\in E_n$，$\|y_n\|=1$、$\operatorname{dist}(y_n,E_{n-1})>1/2$。
+
+因 $(K-\lambda_nI)E_n\subset E_{n-1}$，对于 $m<n$，$\lambda_n^{-1}Ky_n-\lambda_m^{-1}Ky_m$ 是 $y_n$ 与 $E_{n-1}$ 中向量之和，其范数大于 $1/2$。但 $Ky_n$ 有收敛子列，且 $\lambda_n\to\lambda\ne0$，这迫使 $\lambda_n^{-1}Ky_n$ 也有收敛子列，矛盾。于是每个远离零的区域只有有限谱点，按 $\varepsilon=1/r$ 取并即得可数性与孤立性。
+\end{proof}
+
+\begin{theorem}[有限秩谱投影与相容条件]\label{thm:y10-fredholm}
+设 $\lambda\ne0$ 是 $K$ 的谱点，$P$ 为其 Riesz 投影。则 $P$ 有限秩，$\lambda$ 是预解式的有限阶极点；对充分大 $r$，
+\[
+ X=\ker(\lambda I-K)^r\oplus R((\lambda I-K)^r).
+\]
+此外，对所有 $\lambda\ne0$，
+\begin{align*}
+ \dim\ker(\lambda I-K)&=\dim\ker(\lambda I-K'),\\
+ (\lambda I-K)x=y\text{ 可解}
+ &\Longleftrightarrow f(y)=0\quad\text{对所有 }f\in\ker(\lambda I-K').
+\end{align*}
+有解时全体解为一个特解加上 $\ker(\lambda I-K)$。
+\end{theorem}
+\begin{proof}
+取只包围 $\lambda$ 且不包围零的小圆 $\Gamma$。由 $R(z,K)=z^{-1}I+z^{-1}R(z,K)K$，得到
+\[
+ P=\frac1{2\pi i}\int_\Gamma z^{-1}R(z,K)K\,\dd z.
+\]
+被积算子紧，积分是有限和的算子范数极限，故 $P$ 紧。投影在闭空间 $PX$ 上是恒等算子，所以 $PX$ 有限维。定理 \ref{thm:y8-riesz-projection} 和 \ref{thm:y8-pole} 给出极点、幂零部分和直和分解。
+
+令 $E=PX$、$F=(I-P)X$。$A=\lambda I-K$ 在 $F$ 上可逆，在 $E$ 上为有限维算子。因此 $\dim\ker A=\operatorname{codim}R(A)$，后者由闭值域的湮灭子对应等于 $\dim\ker A'$。若 $\lambda\in\rho(K)$，等式两侧同为零。又 Hahn--Banach 给出闭子空间 $R(A)={}^{\perp}\ker A'$，这恰是相容条件。解集描述由线性性直接得到。
+\end{proof}
+
+这里的维数等式是普通特征空间的维数相等；$\operatorname{rank}P$ 则是代数重数，可能严格大于普通特征空间维数。对 Hilbert 伴随，相容条件中的核写成 $\ker(\overline\lambda I-K^*)$，共轭来自 Riesz 对应。
+
+\begin{proposition}[幂紧推广]\label{prop:y10-power-compact}
+若 $V\in\mathcal L(X)$ 且某个 $V^q$ 紧，则上述非零谱结构、闭值域与 Fredholm 相容条件仍对 $V$ 成立。
+\end{proposition}
+\begin{proof}
+对 $\lambda\ne0$，若 $\lambda^q\notin\sigma(V^q)$，由
+\[
+ (\lambda I-V)(\lambda^{q-1}I+\lambda^{q-2}V+\cdots+V^{q-1})
+ =\lambda^qI-V^q
+\]
+及各因子交换可知 $\lambda I-V$ 可逆。若 $\lambda^q\in\sigma(V^q)$，取 $V^q$ 在该谱点的有限秩投影 $Q$。它与 $V$ 交换。$QX$ 有限维，而在 $(I-Q)X$ 上 $\lambda^qI-V^q$ 可逆，故 $\lambda I-V$ 也可逆。问题完全归结为 $QX$ 上的矩阵。因此非零谱均由有限维块产生，闭值域、零指数与极点性质随之成立。远离零的谱点有限，由其 $q$ 次幂的有限性得到。
+\end{proof}
+
+\begin{exercise}[共振的相容条件]\label{ex:y10-resonance}
+在 $\ell^2$ 上取 $Ke_n=n^{-1}e_n$。解 $(I-K)x=y$ 并给出可解条件及全体解。
+\end{exercise}
+\begin{solution}
+第一坐标要求 $y_1=0$；对 $n\ge2$，$x_n=y_n/(1-1/n)$，乘子至多为 $2$，故所得尾部属于 $\ell^2$。$x_1$ 任意。这正是 $y\perp\ker(I-K)$ 的条件，其中 $\ker(I-K)=\operatorname{span}\{e_1\}$。
+\end{solution}
+
+\begin{exercise}[零谱点的例外]\label{ex:y10-zero}
+证明无限维 Banach 空间上的紧算子必有 $0\in\sigma(K)$，并说明零不一定是特征值。
+\end{exercise}
+\begin{solution}
+若 $K$ 有有界逆，则 $I=K^{-1}K$ 紧，迫使空间有限维。$\ell^2$ 上 $Ke_n=n^{-1}e_n$ 单射，故其零谱点不是特征值；同理第八章的 Volterra 算子给出另一个例子。
+\end{solution}
+
+\begin{exercise}[代数重数与几何重数]\label{ex:y10-jordan}
+取 $K=\left(\begin{smallmatrix}a&1\\0&a\end{smallmatrix}\right)\oplus0$ 作用于 $\mathbb C^2\oplus\ell^2$，$a\ne0$。求 $a$ 的 Riesz 投影、两种重数和预解式极点阶数。
+\end{exercise}
+\begin{solution}
+$K$ 有限秩，故紧。$P=I_{\mathbb C^2}\oplus0$，代数重数为 $2$，几何重数为 $1$。左上块逆为 $(z-a)^{-1}I_2+(z-a)^{-2}E_{12}$，故是二阶极点；无限维补空间在 $a$ 附近的逆 $z^{-1}I$ 全纯。
+\end{solution}

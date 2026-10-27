@@ -1,0 +1,40 @@
+\Needspace{10\baselineskip}
+\section{Schauder 定理}\label{sec:yosida-10-04}
+\noindent\textit{原书起始页：中译本 295；英文版 282。}
+
+\begin{theorem}[紧性的对偶刻画]\label{thm:y10-schauder}
+有界线性算子 $T:X\to Y$ 紧，当且仅当 $T':Y'\to X'$ 紧。
+\end{theorem}
+\begin{proof}
+若 $T$ 紧，令 $K=\overline{T(B_X)}$，它为紧度量空间。对任意 $f_n\in B_{Y'}$，将其限制于 $K$，得到函数 $F_n(y)=f_n(y)$。它们一致有界且满足
+\[
+ |F_n(y)-F_n(z)|\le\|y-z\|.
+\]
+Ascoli 给出在 $K$ 上一致收敛的子列。因此
+\[
+ \|T'f_n-T'f_m\|
+ =\sup_{x\in B_X}|(f_n-f_m)(Tx)|\longrightarrow0.
+\]
+$X'$ 完备，故 $T'$ 紧。
+
+反之，已证方向应用于 $T'$，得到 $T'':X''\to Y''$ 紧。自然等距嵌入 $J_X,J_Y$ 满足 $T''J_X=J_YT$。故 $J_YT(B_X)$ 相对紧于 $Y''$。$J_Y(Y)$ 是闭子空间，因为 $Y$ 完备；其闭包因此仍在 $J_Y(Y)$ 内。由等距性拉回，$T(B_X)$ 相对紧于 $Y$。
+\end{proof}
+
+此证明使用自然嵌入的等距性与闭像，不要求 $X$ 或 $Y$ 自反。Hilbert 空间中经 Riesz 对应可写成 $T$ 紧当且仅当 $T^*$ 紧，但 Banach 空间中的 $T'$ 始终作用在对偶空间上。
+
+\begin{exercise}[对偶方向的估计]\label{ex:y10-adjoint-net}
+若 $\{y_1,\ldots,y_N\}$ 是 $T(B_X)$ 的 $\varepsilon$ 网，证明对 $f,g\in B_{Y'}$ 有
+\[
+ \|T'f-T'g\|\le\max_{1\le i\le N}|(f-g)(y_i)|+2\varepsilon.
+\]
+\end{exercise}
+\begin{solution}
+对每个 $x\in B_X$ 选 $i$ 使 $\|Tx-y_i\|<\varepsilon$。因 $\|f-g\|\le2$，有 $|(f-g)(Tx)|\le|(f-g)(y_i)|+2\varepsilon$，对 $x$ 取上确界即得。
+\end{solution}
+
+\begin{exercise}[恒等算子]\label{ex:y10-identity}
+用 Schauder 定理说明：$I_X$ 紧当且仅当 $I_{X'}$ 紧，并给出这两个条件的维数含义。
+\end{exercise}
+\begin{solution}
+$I_X'=I_{X'}$，故二者等价。由 Riesz 引理，无限维赋范空间的单位球不全有界，所以 $I_X$ 紧当且仅当 $X$ 有限维；这时 $X'$ 也有限维。逆向也可由自然等距嵌入 $X\hookrightarrow X''$ 得到。
+\end{solution}

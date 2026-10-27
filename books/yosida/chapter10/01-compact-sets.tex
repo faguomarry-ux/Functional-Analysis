@@ -1,0 +1,55 @@
+\Needspace{10\baselineskip}
+\section{B-空间中的紧集}\label{sec:yosida-10-01}
+\noindent\textit{原书起始页：中译本 287；英文版 274。}
+
+\begin{definition}[全有界与相对紧]
+集合 $M\subset X$ 称为全有界，若对每个 $\varepsilon>0$ 可用有限多个半径 $\varepsilon$ 的球覆盖；称为相对紧，若其闭包紧。在 Banach 空间中，两者等价。闭且有界本身不够，例如 $\ell^2$ 的单位向量满足 $\|e_n-e_m\|=\sqrt2$。
+\end{definition}
+\begin{proof}
+紧性蕴含有限网。反之，逐次用半径 $2^{-j}$ 的有限覆盖作对角选取，得到 Cauchy 子列；完备性保证其收敛。因此闭包序列紧，因而紧。
+\end{proof}
+
+\begin{theorem}[Fréchet--Kolmogorov 判别]\label{thm:y10-kolmogorov}
+设 $1\le p<\infty$。$M\subset L^p(\R^d)$ 相对紧，当且仅当以下三项成立：
+\begin{align*}
+ &\sup_{f\in M}\|f\|_p<\infty,\\
+ &\lim_{h\to0}\sup_{f\in M}\|f(\cdot+h)-f\|_p=0,\\
+ &\lim_{R\to\infty}\sup_{f\in M}\|1_{\{|x|>R\}}f\|_p=0.
+\end{align*}
+第二项排除越来越快的振荡，第三项排除质量逃向无穷远。
+\end{theorem}
+\begin{proof}
+必要性：紧闭包有界。对单个 $f\in L^p$，平移连续性由 $C_c^\infty$ 的稠密性和移位等距性得到，尾部范数则由积分的绝对连续性趋于零。在 $M$ 中取有限 $\varepsilon$ 网，将这两个性质从有限个网点传给全体元素；平移差的误差至多 $2\varepsilon$，尾部误差至多 $\varepsilon$，故为一致极限。
+
+充分性：取非负 $\rho\in C_c^\infty(B(0,1))$，$\int\rho=1$，令 $\rho_\delta(x)=\delta^{-d}\rho(x/\delta)$。Minkowski 不等式给出
+\[
+ \sup_{f\in M}\|\rho_\delta*f-f\|_p
+ \le\sup_{|h|\le\delta,\,f\in M}\|f(\cdot-h)-f\|_p\longrightarrow0.
+\]
+固定 $\delta$，由 Hölder 不等式，函数 $g_f=\rho_\delta*f$ 及其一阶导数在全空间一致有界，常数可依赖 $\delta$。这对 $p=1$ 同样成立，因为卷积核及其导数有界。故 $\{g_f\}$ 在每个闭球上一致有界且等度连续。Ascoli 定理使其限制在该球上的集合在一致范数、从而在 $L^p$ 范数下全有界。
+
+又当 $R>\delta$ 时，由卷积核的支集和 Minkowski 不等式，
+\[
+ \|1_{\{|x|>R\}}g_f\|_p
+ \le\|1_{\{|x|>R-\delta\}}f\|_p.
+\]
+先选 $\delta$ 使平滑误差小，再选 $R$ 使尾部一致小，最后选球上的有限网并将网点在球外延零，得到 $M$ 的任意精度有限网。$L^p$ 完备，故 $M$ 相对紧。
+\end{proof}
+
+\begin{example}[紧性的两种损失]
+固定非零 $f\in C_c^\infty(\R)$，$f_n(x)=f(x-n)$ 的平移连续性对 $n$ 一致，但尾部条件失败。另一方面，在 $L^2(\R)$ 中取 $g_n(x)=1_{[0,2\pi]}(x)e^{inx}$，它们有共同紧支集且范数相同，却彼此正交，故不相对紧；此时失败的是一致平移连续性。
+\end{example}
+
+\begin{exercise}[紧闭包的凸化]\label{ex:y10-convex}
+证明 Banach 空间中全有界集的凸包仍全有界，其闭凸包因而紧。
+\end{exercise}
+\begin{solution}
+取有限 $\varepsilon$ 网 $F$。每个有限凸组合与 $\operatorname{conv}F$ 中某点的距离至多 $\varepsilon$。$\operatorname{conv}F$ 位于有限维子空间且有界，故有有限 $\varepsilon$ 网；合成即得 $2\varepsilon$ 网。闭包的紧性使用环境空间完备性。
+\end{solution}
+
+\begin{exercise}[去掉尾部条件]\label{ex:y10-tail}
+对上述 $f_n$，证明一致平移连续性，并用支集分离说明没有收敛子列。
+\end{exercise}
+\begin{solution}
+$\|f_n(\cdot+h)-f_n\|_p=\|f(\cdot+h)-f\|_p$。若两个平移量相差大于支集直径，则支集不交，$\|f_n-f_m\|_p^p=2\|f\|_p^p$。任意无限子列都含任意远的两项，故不可能是 Cauchy 列。
+\end{solution}
