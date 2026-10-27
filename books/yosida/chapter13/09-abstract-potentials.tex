@@ -1,0 +1,85 @@
+\Needspace{10\baselineskip}
+\section{抽象位势算子和半群}\label{sec:yosida-13-09}
+\noindent\textit{原书起始页：中译本 430；英文版 411。}
+
+本节不要求有次序或正性。$X$ 为实或复 Banach 空间，$T_t$ 为收缩强连续半群，$A$ 为其生成元。把连续对偶伴随写为 $V^*$，配对按对偶线性泛函理解。
+
+\noindent\textit{原书校注：}末尾与 Hunt 理论比较的段落，把预解式位势的极限下标排成趋于无穷，与本节式 (7) 的零端极限不符。本稿统一采用 $\lambda\downarrow0$；实际上收缩半群满足 $\|R_\lambda\|\le1/\lambda$，若令 $\lambda\to\infty$，未乘 $\lambda$ 的预解式只能趋于零。
+
+\begin{theorem}[零端 Abel 极限与抽象位势]\label{thm:y13-abstract-potential}
+下列条件等价：$A$ 单射且 $\overline{R(A)}=X$；对每个 $x\in X$ 有 $\lambda R_\lambda x\to0$（$\lambda\downarrow0$）。此时
+\[
+ V=-A^{-1},\quad D(V)=R(A),\quad R(V)=D(A)
+\]
+为闭、定义域及值域均稠密的算子，称为抽象位势，满足
+\[
+ D(V)=\{x:\lim_{\lambda\downarrow0}R_\lambda x\text{ 在范数中存在}\},\qquad
+ Vx=\lim_{\lambda\downarrow0}R_\lambda x.
+\]
+\end{theorem}
+\begin{proof}
+若 $x=Ay$，则 $\lambda R_\lambda x=\lambda(\lambda R_\lambda y-y)\to0$。因 $\|\lambda R_\lambda\|\le1$，值域稠密时此极限扩展到全部 $X$。反向若全部极限为零，则 $Ah=0$ 蕴含 $\lambda R_\lambda h=h=0$；又 $x-\lambda R_\lambda x=-AR_\lambda x\in R(A)$ 趋于 $x$，故值域稠密。
+
+取 $x=-Ay$，则 $R_\lambda x=y-\lambda R_\lambda y\to y=Vx$。反之，若 $R_\lambda x\to y$，闭性与 $AR_\lambda x=\lambda R_\lambda x-x\to-x$ 给出 $Ay=-x$，所以 $x\in R(A)$。逆算子的图由 $A$ 的图交换坐标得到，故 $V$ 闭；两个稠密性由假设及生成元定义域稠密得到。
+\end{proof}
+
+\begin{theorem}[位势的双侧范数刻画]\label{thm:y13-potential-characterization}
+设 $V$ 为闭线性算子，$D(V)$ 与 $R(V)$ 均在 $X$ 中稠密。则 $V$ 是某收缩强连续半群的抽象位势，当且仅当对每个 $\lambda>0$ 有
+\begin{align}
+ \|\lambda Vx\|&\le\|x+\lambda Vx\|&& (x\in D(V)),\label{eq:y13-potential-primal}\\
+ \|\lambda V^*\phi\|&\le\|\phi+\lambda V^*\phi\|&& (\phi\in D(V^*)).\label{eq:y13-potential-dual}
+\end{align}
+此时 $A=-V^{-1}$，且 $R_\lambda=V(I+\lambda V)^{-1}$。
+\end{theorem}
+\begin{proof}
+先证明充分性。令 $B_\lambda=I+\lambda V$。第一不等式还给出 $\|x\|\le2\|B_\lambda x\|$，所以 $B_\lambda$ 单射。若 $B_\lambda x_n$ 收敛，同一估计使 $x_n,Vx_n$ 均 Cauchy，闭性使极限仍在图中。因此 $R(B_\lambda)$ 闭。其零化子为 $\ker(I+\lambda V^*)$；第二不等式使该核为零。Hahn--Banach 于是给出值域稠密，结合闭性得满射。
+
+令 $J_\lambda=VB_\lambda^{-1}$，则 $\|\lambda J_\lambda\|\le1$。直接在 $D(V)$ 上代入并利用 $V$ 与其有界预解算子的交换关系可得
+\[
+ J_\lambda-J_\mu=(\mu-\lambda)J_\lambda J_\mu.
+\]
+对 $y=Vx$，$\lambda J_\lambda y=y-J_\lambda x\to y$（$\lambda\to\infty$），因 $R(V)$ 稠密，这个极限对全部 $y$ 成立。伪预解式的核与参数无关，故其核为零；又 $R(J_\lambda)=R(V)$ 稠密。因此第八章的伪预解式构造给出稠密定义的闭算子 $A$，其预解式为 $J_\lambda$。$\|\lambda J_\lambda\|\le1$ 蕴含各幂的 Hille--Yosida 估计，故 $A$ 生成收缩强连续半群。
+
+由 $J_\lambda(B_\lambda x)=Vx$ 得 $AVx=-x$。$V$ 单射也可从 $\ker J_\lambda=0$ 得到，故 $A=-V^{-1}$、$R(A)=D(V)$ 稠密。上一条定理将 $V$ 识别为该半群的抽象位势。
+
+必要性方面，若 $V=-A^{-1}$，预解式给出
+\[
+ B_\lambda^{-1}=I-\lambda R_\lambda,\qquad
+ VB_\lambda^{-1}=R_\lambda.
+\]
+所以 $\lambda VB_\lambda^{-1}$ 为收缩，得到第一不等式。闭稠密算子的伴随逆关系给出 $B_\lambda^{*-1}=(B_\lambda^{-1})^*$，且 $\lambda V^*B_\lambda^{*-1}=(\lambda VB_\lambda^{-1})^*$ 仍为收缩，得到第二不等式。这里未假定伴随半群在整个 $X^*$ 上强连续。
+\end{proof}
+
+\begin{corollary}[Hilbert 空间的增生表述]
+在 Hilbert 空间中，上述两条范数不等式分别等价于
+\[
+ \operatorname{Re}\langle Vx,x\rangle\ge0,\qquad
+ \operatorname{Re}\langle V^*y,y\rangle\ge0.
+\]
+因此闭、定义域和值域稠密的 $V$ 是抽象位势，当且仅当 $V,V^*$ 均增生。
+\end{corollary}
+\begin{proof}
+展开 $\|x+\lambda Vx\|^2-\|\lambda Vx\|^2=\|x\|^2+2\lambda\operatorname{Re}\langle Vx,x\rangle$。它对所有 $\lambda>0$ 非负恰好等价于增生性；伴随同理。
+\end{proof}
+
+\begin{example}[乘法位势的定义域]
+在 $L^2(0,1)$ 上取 $(T_tf)(s)=e^{-ts}f(s)$。则 $Af=-sf$，它单射但逆不有界，
+\[
+ (Vg)(s)=g(s)/s,\qquad D(V)=\{g:g(s)/s\in L^2(0,1)\}.
+\]
+$R_\lambda g=g/(\lambda+s)$；$\lambda R_\lambda g\to0$ 由控制收敛成立。只有满足上述定义域条件的 $g$ 才有位势范数极限，不能把所有有界预解式的零端极限称为处处定义的有界算子。
+\end{example}
+
+\begin{exercise}[Abel 位势不要求普通积分收敛]\label{ex:y13-abel-oscillation}
+在 $X=\mathbb C$ 上令 $T_tz=e^{it}z$。求 $A,V$，并比较 $\int_0^R T_tz\,\dd t$ 与 $\int_0^\infty e^{-\lambda t}T_tz\,\dd t$ 的极限。
+\end{exercise}
+\begin{solution}
+$A=iI$、$V=-1/i=iI$。普通积分为 $(e^{iR}-1)z/i$，对非零 $z$ 随 $R\to\infty$ 不收敛；折扣积分为 $z/(\lambda-i)$，随 $\lambda\downarrow0$ 趋于 $iz$。故抽象位势容纳 Abel 可和但普通占用积分不收敛的情形，也不要求格意义下的正性。
+\end{solution}
+
+\begin{exercise}[乘法位势的临界指数]\label{ex:y13-potential-domain}
+在上例取 $g(s)=s^\beta$、$\beta>-1/2$。判断何时 $g\in D(V)$，并说明不在定义域时预解式范数的行为。
+\end{exercise}
+\begin{solution}
+$g\in D(V)$ 等价于 $\int_0^1s^{2\beta-2}\,\dd s<\infty$，即 $\beta>1/2$。若 $\beta\le1/2$，则 $\|R_\lambda g\|_2^2=\int_0^1s^{2\beta}/(\lambda+s)^2\,\dd s\uparrow\infty$，不可能有范数极限，虽对每个正 $\lambda$ 都是良定义的预解式值。
+\end{solution}

@@ -1,0 +1,64 @@
+\Needspace{10\baselineskip}
+\section{遍历假设和 \texorpdfstring{$H$}{H}-定理}\label{sec:yosida-13-03}
+\noindent\textit{原书起始页：中译本 407；英文版 389。}
+
+\begin{definition}[遍历与混合]
+保持概率 $m$ 的 Markov 算子称为遍历的，若每个 $f\in L^1$ 的时间平均均趋于常数 $\int f\,\dd m$。集合 $B$ 称为不变集，若 $T\mathbf1_B=\mathbf1_B$ 几乎处处。不变集构成的完备化 $\sigma$ 代数记为 $\mathcal I$。若对每对 $f,g\in L^2$ 都有
+\[
+ \langle T^nf,g\rangle\longrightarrow
+ \left(\int f\,\dd m\right)\overline{\left(\int g\,\dd m\right)},
+\]
+则称一步算子混合；连续半群用 $t\to\infty$ 作相应定义。
+\end{definition}
+
+\begin{theorem}[遍历性的等价表述]\label{thm:y13-ergodic-equivalence}
+下列条件等价：遍历性；$\ker(I-T)|_{L^2}$ 只有常数；每个不变集的概率为 $0$ 或 $1$；对任意可测集 $B,C$，
+\[
+ \frac1n\sum_{k=0}^{n-1}\int_B P^k(x,C)\,m(\dd x)
+ \longrightarrow m(B)m(C).
+\]
+一般情形下，平均投影是条件期望 $Qf=\mathbb E_m(f\mid\mathcal I)$。
+\end{theorem}
+\begin{proof}
+前两条件由平均投影的值域及 $L^2$ 在 $L^1$ 中稠密得到。若所有不动函数为常数，不变集的示性函数只能为零或一。反向先考虑实不动函数 $f\in L^2$。Jensen 及不变性给出
+\[
+ T(f^2)-(Tf)^2\ge0,\qquad \int[T(f^2)-f^2],\dd m=0.
+\]
+故对几乎每个 $x$，$P(x,\cdot)$ 集中于 $f(y)=f(x)$ 的集合。于是每个水平集 $\{f>a\}$ 都不变。若不变集概率只能为零或一，$f$ 必为常数。水平集判别也说明一般不动空间恰为 $L^2(\mathcal I)$；不变集在核下几乎必然保持其内外，故确实对补及可数并封闭。
+
+第一节证明的 $\ker(I-T)=\ker(I-T^*)$ 表明不变示性函数也被 $T^*$ 保持。因此 $\int_B A_nf=\int_B f$ 对 $B\in\mathcal I$ 成立，取极限得到条件期望的刻画，先在 $L^2$ 后在 $L^1$ 成立。最后取 $f=\mathbf1_C$、$g=\mathbf1_B$ 得集合相关式；反向由简单函数稠密性及收缩性，将该式延伸到任意 $L^2$ 函数，识别平均投影只有常数。
+\end{proof}
+
+混合蕴含遍历，因为普通极限必有相同的 Ces\`aro 极限；反向不成立。还须区分固定一步 $T_1$ 的遍历与全连续半群的遍历：二者的不动空间可能不同，离散采样可产生共振。
+
+\begin{example}[无理旋转遍历但不混合]
+圆周上 $\tau(x)=x+\alpha\pmod1$，$\alpha$ 无理。Fourier 模 $e_k(x)=e^{2\pi ikx}$ 满足 $Te_k=e^{2\pi ik\alpha}e_k$，不动函数只有常数，故遍历。但 $|\langle T^ne_1,e_1\rangle|=1$，所以不混合。更一般地，遍历 Markov 算子的单位模本征函数满足 $|f|$ 为常数：$T|f|\ge|Tf|=|f|$，积分相等迫使等号，再用不动空间的刻画。这正是原书角变量的来源。
+\end{example}
+
+\Needspace{14\baselineskip}
+\begin{theorem}[$H$-定理：熵的单调性]\label{thm:y13-entropy}
+若 $f\ge0$、$\int f\,\dd m=1$ 且 $\int f\log^+f\,\dd m<\infty$，定义
+\[
+ \mathcal H(f)=-\int f\log f\,\dd m,\qquad 0\log0=0.
+\]
+则 $\mathcal H(T_tf)\ge\mathcal H(f)$，且对 $t_2\ge t_1$ 有 $\mathcal H(T_{t_2}f)\ge\mathcal H(T_{t_1}f)$。相反号的相对熵 $\int f\log f$ 单调不增。
+\end{theorem}
+\begin{proof}
+$\Phi(r)=r\log r$ 凸且下界为 $-e^{-1}$，核的 Jensen 不等式给出 $\Phi(T_tf)\le T_t\Phi(f)$。通过截断凸函数或积分形式的 Jensen 可处理无界 $f$；右侧可积，且不变性给出 $\int\Phi(T_tf)\le\int\Phi(f)$。再用半群性质得到随时间的单调性。该结论只利用保积分与 Markov 性，不依赖遍历性，也不自动给出熵趋于最大值。
+\end{proof}
+
+这里证明的是 $T_t$ 对非负函数的 Jensen 不等式。若把 $f$ 解释为给定过程的分布密度，其前向演化通常由核的对偶决定，须在相应对偶空间中另行核对上述性质。
+
+\begin{exercise}[采样共振]\label{ex:y13-sampling}
+圆周上的连续平移 $T_tf(x)=f(x+t)$ 的共同不动函数有哪些？比较 $T_1$ 的不动空间。
+\end{exercise}
+\begin{solution}
+所有 $t\ge0$ 的平移共同不变时，Fourier 系数中只有零频可以非零，故为常数。但 $T_1=I$，其不动空间为整个 $L^2$。连续时间平均投到常数，整数时间采样平均却保持原函数。
+\end{solution}
+
+\begin{exercise}[熵不保证混合]\label{ex:y13-entropy-rotation}
+若 $T$ 来自保测变换，证明每个具有有限熵的概率密度满足 $\mathcal H(Tf)=\mathcal H(f)$。结合无理旋转说明熵单调性的限度。
+\end{exercise}
+\begin{solution}
+因为 $Tf=f\circ\tau$，$\Phi(Tf)=\Phi(f)\circ\tau$，保测性使两者积分相等。无理旋转遍历却不混合，熵在每一步都保持；熵单调并不意味着严格增长、分布收敛或混合。
+\end{solution}

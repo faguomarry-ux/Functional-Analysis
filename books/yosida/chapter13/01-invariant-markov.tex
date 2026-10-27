@@ -1,0 +1,56 @@
+\Needspace{10\baselineskip}
+\section{具有不变测度的 Markov 过程}\label{sec:yosida-13-01}
+\noindent\textit{原书起始页：中译本 397；英文版 379。}
+
+\begin{definition}[转移核]
+可测空间 $(S,\Sigma)$ 上的概率转移核 $P$ 满足：$P(x,\cdot)$ 为概率测度，$P(\cdot,B)$ 可测。时间齐次转移族满足 $P_0(x,\cdot)=\delta_x$ 以及 Chapman--Kolmogorov 方程
+\[
+ P_{t+s}(x,B)=\int_S P_s(y,B)P_t(x,\dd y).
+\]
+\end{definition}
+
+测度 $m$ 不变，指 $\int P_t(x,B)\,m(\dd x)=m(B)$。有限非零不变测度可归一化，本章遍历部分约定 $m(S)=1$。记
+\[
+ (T_tf)(x)=\int_S f(y)P_t(x,\dd y).
+\]
+
+本章主要研究转移核与其算子。转移族的存在不自动等于已构造出具有连续样本路径的随机过程；样本路径构造所需的概率空间与正则性应另外说明。
+
+\begin{proposition}[Markov 收缩]\label{prop:y13-markov-contraction}
+若 $m$ 不变，则 $T_t$ 在每个 $L^p(m)$（$1\le p\le\infty$）上诱导正收缩，满足 $T_t1=1$、$\int T_tf\,\dd m=\int f\,\dd m$ 以及半群性质。
+\end{proposition}
+\begin{proof}
+对 $m$ 零集 $N$，$\int P_t(x,N)\,\dd m=0$，故 $P_t(x,N)=0$ 几乎处处；算子因而与代表元无关。对有界函数由核积分得到正性、单位与保积分；单调收敛延伸到非负可积函数。Jensen 不等式给出 $|T_tf|^p\le T_t|f|^p$，积分并用不变性即得有限 $p$ 的估计。$p=\infty$ 用概率加权平均估计。截断及完备性将算子延拓到各 $L^p$；Fubini 与 Chapman--Kolmogorov 方程给出半群性质。
+\end{proof}
+
+\begin{theorem}[有限不变测度下的平均遍历]\label{thm:y13-markov-mean}
+固定一步转移 $T=T_1$，置 $A_n=n^{-1}\sum_{k=0}^{n-1}T^k$。对每个 $f\in L^p(m)$、$1\le p<\infty$，$A_nf$ 在 $L^p$ 中收敛到 $Qf$，满足
+\[
+ TQf=Qf,\quad Q^2=Q,\quad Q1=1,\quad
+ \int Qf\,\dd m=\int f\,\dd m.
+\]
+$Q$ 为正收缩投影。若 $T_t$ 在 $L^p$ 上强连续，相同结论适用于 $t^{-1}\int_0^tT_sf\,\dd s$，其极限投到全半群的共同不动空间。
+\end{theorem}
+\begin{proof}
+在 $L^2$ 上应用第八章的 Hilbert 空间平均遍历定理。对 $L^1$，有界函数在其中稠密，且 $\|g\|_1\le\|g\|_2$。先对有界函数得到 $L^1$ 收敛，再用 $\sup_n\|A_n\|_1\le1$ 延拓到全部 $L^1$。对有界 $g$，$A_ng$ 一致有界，故其 $L^1$ 收敛通过 $|h|^p\le C^{p-1}|h|$ 提升到任意有限 $p$；再次使用有界函数的稠密性完成证明。
+
+$TA_n-A_n=(T^n-I)/n$，所以极限不动；不动元素被每个平均保持，故 $Q^2=Q$。其余性质由极限得到。连续时间在 $L^2$ 上使用连续平均遍历，再作同样稠密延拓；端段积分估计给出对所有 $T_s$ 的不变性。
+\end{proof}
+
+\begin{example}[确定性过程与有限状态链]
+若可测变换 $\tau$ 保持 $m$，则 $P(x,B)=\mathbf1_B(\tau x)$，$Tf=f\circ\tau$，是 Markov 核的特殊情形。有限状态时 $P=(p_{ij})$ 为行随机矩阵，不变概率是行向量 $\pi P=\pi$；算子在函数列向量上左乘 $P$，不要把两个方向混用。
+\end{example}
+
+\begin{exercise}[周期链]\label{ex:y13-periodic-chain}
+对 $P=\left(\begin{smallmatrix}0&1\\1&0\end{smallmatrix}\right)$ 求不变概率和 $A_nf$ 的极限，并说明 $P^nf$ 未必收敛。
+\end{exercise}
+\begin{solution}
+不变概率为 $(1/2,1/2)$。常数方向特征值为 $1$，$(1,-1)$ 方向特征值为 $-1$，故 $A_n(f_1,f_2)\to((f_1+f_2)/2,(f_1+f_2)/2)$。在第二个方向，$P^n$ 交替变号。平均收敛与各时刻的分布收敛是不同命题。
+\end{solution}
+
+\begin{exercise}[不变性不可省略]\label{ex:y13-noninvariant}
+在两点空间取均匀概率，令两行转移概率均为 $(1,0)$。证明该算子保持常数，却不是 $L^1$ 收缩。
+\end{exercise}
+\begin{solution}
+$T(a,b)=(a,a)$，故 $T1=1$。取 $f=(1,0)$，则 $\|f\|_1=1/2$ 而 $\|Tf\|_1=1$。均匀概率不满足 $\pi P=\pi$，不能从 Markov 性单独推得相对于给定测度的 $L^1$ 收缩。
+\end{solution}

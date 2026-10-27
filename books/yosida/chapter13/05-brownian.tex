@@ -1,0 +1,61 @@
+\Needspace{10\baselineskip}
+\section{齐次 Riemann 空间上的 Brown 运动}\label{sec:yosida-13-05}
+\noindent\textit{原书起始页：中译本 416；英文版 398。}
+
+Riemann 空间在本章理解为 Riemann 流形。转移核与二阶微分算子的联系，来自短时间内位移的一阶、二阶矩，而不是单靠“随机运动”一词。
+
+\begin{definition}[局部性条件与空间齐次]
+若对每个 $\varepsilon>0$、固定 $x$ 有
+\[
+ t^{-1}P_t(x,\{y:d(x,y)>\varepsilon\})\longrightarrow0,
+\]
+称满足 Lindeberg 型小时间条件；一致版本要求在所讨论的 $x$ 集合上一致。若传递等距群 $G$ 满足 $P_t(gx,gB)=P_t(x,B)$，称转移在空间上齐次。该条件使算子与群作用交换。
+\end{definition}
+
+\begin{proposition}[从局部矩得到生成元]\label{prop:y13-local-moments}
+在点 $x$ 附近取坐标 $z^1,\ldots,z^d$，令 $\Delta z^i=z^i(y)-z^i(x)$。设上述小时间条件成立，截断一阶矩及二阶矩满足
+\[
+ t^{-1}\int_{d(x,y)<\varepsilon}\Delta z^i\,P_t(x,\dd y)\to b^i(x),\qquad
+ t^{-1}\int_{d(x,y)<\varepsilon}\Delta z^i\Delta z^j\,P_t(x,\dd y)\to q^{ij}(x),
+\]
+极限不依赖充分小的 $\varepsilon$，且局部二阶矩除以 $t$ 一致有界。若 $f$ 有界、在 $x$ 附近为 $C^2$，则点态生成元为
+\[
+ Af(x)=\sum_i b^i(x)\partial_i f(x)+\tfrac12\sum_{i,j}q^{ij}(x)\partial_i\partial_j f(x).
+\]
+矩阵 $q$ 半正定。要把点态极限识别为某 Banach 空间生成元，还需相应范数收敛与定义域条件。
+\end{proposition}
+\begin{proof}
+将积分分成小球内外。外部的差商绝对值不超过 $2\|f\|_\infty P_t(x,B_\varepsilon^c)/t$，趋零。内部作二阶 Taylor 展开，余项为 $o(|\Delta z|^2)$。先取 $t\downarrow0$，再令 $\varepsilon\downarrow0$，二阶矩的有界性使余项消失，主项即上式。对实向量 $\xi$，截断积分 $t^{-1}\int(\sum_i\xi_i\Delta z^i)^2\,\dd P_t\ge0$，取极限得到半正定性。原书把二阶系数直接记作 $b^{ij}$；此处以 $q/2$ 保留协方差的通常约定。
+\end{proof}
+
+\begin{example}[欧氏 Brownian 半群的完整模型]\label{exm:y13-gaussian-semigroup}
+在 $\mathbb R^d$ 上取
+\[
+ p_t(z)=(4\pi ct)^{-d/2}e^{-|z|^2/(4ct)},\qquad T_tf=p_t*f,\quad c>0.
+\]
+Gaussian 卷积给出 $p_t*p_s=p_{t+s}$，总质量为一，故为正收缩半群。在 $C_0(\mathbb R^d)$ 上，近似单位估计给出强连续性；在 $C_c^\infty$ 上 Taylor 展开与 Gaussian 尾部估计给出 $Af=c\Delta f$，且差商在一致范数中收敛。位移均值为零、协方差为 $2ctI$；尾概率以指数速度衰减，满足 Lindeberg 条件。此为生成元 $c\Delta$ 的约定；常见概率论约定 $\tfrac12\Delta$ 对应 $c=1/2$。
+\end{example}
+
+\begin{proposition}[各向同性下的唯一微分形式]\label{prop:y13-isotropic}
+若球面 $S^d$ 上的保守 Markov 生成元具有局部二阶形式，且与所有等距变换交换，则它为 $c\Delta_{S^d}$，$c\ge0$。在欧氏空间中相同结论适用于与全部欧氏等距变换交换的局部扩散生成元。
+\end{proposition}
+\Needspace{4\baselineskip}
+\begin{proof}
+在一点的法坐标中，稳定该点的等距群在切空间上包含全正交群。其不变向量只能为零，故漂移为零；其不变对称二阶型只能是单位型的数倍。正最大值性质使该倍数非负。传递性使系数在所有点相同，保常数性排除零阶项，故得到 Laplace--Beltrami 算子。
+\end{proof}
+
+一般齐次流形上的不变二阶型未必只有一个，因此“齐次”本身不能推出唯一的 $c\Delta$。一般流形热核的存在、保总质量及连续路径构造属于额外几何/PDE/概率理论，本节不把局部矩计算当成这些存在性定理的证明。紧连通流形上标准热半群保持归一化体积；其长期行为可再结合 Laplace 谱论分析。
+
+\begin{exercise}[生成元的归一化]\label{ex:y13-brownian-scale}
+一维核 $(2\pi t)^{-1/2}e^{-z^2/(2t)}$ 的生成元是什么？比较其二阶矩与 $p_t$ 在 $c=1$ 时的二阶矩。
+\end{exercise}
+\begin{solution}
+该核方差为 $t$，故生成元为 $\tfrac12\,\dd^2/\dd x^2$。$c=1$ 的核方差为 $2t$，生成元为 $\dd^2/\dd x^2$。Taylor 展开的二分之一正是两个约定相差的来源。
+\end{solution}
+
+\begin{exercise}[平移不等于各向同性]\label{ex:y13-anisotropic}
+对常向量 $b$ 和对称正定矩阵 $Q$，说明 $Af=b\cdot\nabla f+\tfrac12 Q:D^2f$ 的 Gaussian 半群为何平移齐次；何时还与全部正交变换交换？
+\end{exercise}
+\begin{solution}
+转移为从 $x$ 出发、均值 $x+tb$、协方差 $tQ$ 的 Gaussian 分布，只依赖位移，故平移齐次。与所有正交变换交换要求 $Rb=b$、$RQR^{\mathsf T}=Q$ 对所有 $R$ 成立，所以 $b=0$、$Q=\sigma^2I$。平移齐次允许漂移与各向异性。
+\end{solution}

@@ -1,0 +1,68 @@
+\Needspace{10\baselineskip}
+\section{Markov 过程和位势}\label{sec:yosida-13-08}
+\noindent\textit{原书起始页：中译本 429；英文版 410。}
+
+设 $T_t$ 为 Banach 空间上的有界强连续半群，生成元 $A$，此节先假定为正收缩。记
+\[
+ R_\lambda=(\lambda I-A)^{-1}
+ =\int_0^\infty e^{-\lambda t}T_t\,\dd t,\qquad\lambda>0.
+\]
+右侧对每个向量是 Bochner 积分。核表示下它也是折扣占用算子。$h\in D(A)$ 满足 $Ah=0$ 称为调和元素；等价地 $T_th=h$，或 $\lambda R_\lambda h=h$ 对所有 $\lambda>0$ 成立。
+
+\Needspace{12\baselineskip}
+\begin{proposition}[位势与 Poisson 方程]\label{prop:y13-poisson}
+若 $R_\lambda g$ 在 $\lambda\downarrow0$ 时有范数极限 $v$，则 $v\in D(A)$ 且 $Av=-g$。特别地，若 $\int_0^\infty\|T_tg\|\,\dd t<\infty$，则
+\[
+ v=\int_0^\infty T_tg\,\dd t=\lim_{\lambda\downarrow0}R_\lambda g.
+\]
+反向，$Av=-g$ 的解可以相差调和元素，不能仅凭方程断言唯一。
+\end{proposition}
+\begin{proof}
+$AR_\lambda g=\lambda R_\lambda g-g\to-g$，而 $R_\lambda g\to v$，生成元闭性给出结论。绝对可积时，Bochner 控制收敛给出积分极限。两个解之差属于 $\ker A$，故最后的限制必要。
+\end{proof}
+
+\begin{theorem}[正格中的 Riesz 型分解]\label{thm:y13-riesz-potential}
+设空间为 Dedekind $\sigma$ 完备 Banach 格，范数序列序连续。若 $u\in D(A)$、$u\ge0$、$Au\le0$，则
+\[
+ h=\lim_{\lambda\downarrow0}\lambda R_\lambda u,\qquad
+ p=u-h=\lim_{\lambda\downarrow0}R_\lambda(-Au)
+\]
+均以范数收敛，$h\ge0$ 调和，$p\ge0$ 为位势。$h$ 是所有不超过 $u$ 的调和元素中的最大者。相应地，若次调和 $x\in D(A)$、$Ax\ge0$ 有调和上界，则它有最小调和上界，并分解为该上界加一个非正位势。
+\end{theorem}
+\begin{proof}
+恒等式 $\lambda R_\lambda u-u=R_\lambda Au\le0$ 给出 $0\le\lambda R_\lambda u\le u$。对 $\lambda>\mu>0$，预解式恒等式给出
+\[
+ (\lambda R_\lambda-\mu R_\mu)u
+ =-(\lambda-\mu)R_\lambda R_\mu Au\ge0.
+\]
+故 $\lambda\downarrow0$ 时该族递减。先沿 $\lambda_n\downarrow0$ 取格下确界，序连续范数使序列趋于 $h$；任意中间参数由单调夹逼得到同一范数极限。由于
+\[
+ A(\lambda R_\lambda u)=\lambda(\lambda R_\lambda u-u)\longrightarrow0,
+\]
+闭性给出 $Ah=0$。再用 $R_\lambda(-Au)=u-\lambda R_\lambda u$ 得 $p$ 及其位势表示。若 $k\le u$ 调和，则 $k=\lambda R_\lambda k\le\lambda R_\lambda u$，取极限得 $k\le h$。次调和情形对 $u=H-x\ge0$ 应用以上结论，其中 $H$ 是任一调和上界，即得最小调和上界。
+\end{proof}
+
+此定理是原书次调和分解的一个明确 Banach 格版本；一般局部凸序空间的弱单调完备假设不在此处另作推广。特别地，$C_0(S)$ 的一致范数通常不满足序连续假设，不能把此定理未经检查就用于所有连续函数位势。
+
+\begin{example}[欧氏热核的暂留与再返界限]\label{exm:y13-green}
+取生成元 $\Delta$。当 $d\ge3$ 且 $g\in C_c(\mathbb R^d)$，有 $\int_0^\infty\|T_tg\|_\infty\,\dd t<\infty$：小时间用收缩性，大时间用 $(4\pi t)^{-d/2}\|g\|_1$。因而
+\[
+ Vg(x)=\int_{\mathbb R^d}G_d(x-y)g(y)\,\dd y,\qquad
+ G_d(z)=\frac{|z|^{2-d}}{(d-2)|\mathbb S^{d-1}|}.
+\]
+该核由 $\int_0^\infty(4\pi t)^{-d/2}e^{-|z|^2/(4t)}\,\dd t$ 换元计算，$-\Delta Vg=g$ 按生成元及分布意义成立；不据此声称一般连续 $g$ 的位势有连续二阶导数。对 $d=1,2$ 和非零非负 $g\in C_c$，固定 $x$ 时大时间的 $T_tg(x)$ 与 $t^{-d/2}\int g$ 同阶，故占用积分发散。该例说明无折扣位势可能不存在，虽每个 $R_\lambda$ 都存在。
+\end{example}
+
+\begin{exercise}[平衡态的障碍]\label{ex:y13-potential-obstruction}
+在保概率 Markov 半群上，证明 $g=1$ 没有有限范数 Abel 位势；并证明 $Av=-g$ 有可积定义域中的解时必有 $\int g\,\dd m=0$。
+\end{exercise}
+\begin{solution}
+$R_\lambda1=1/\lambda$，范数随 $\lambda\downarrow0$ 发散。若 $v\in D(A)\subset L^1$，保积分性对差商取极限给出 $\int Av=0$，所以 $Av=-g$ 要求 $\int g=0$。非零均值是 Poisson 方程的平衡态障碍。
+\end{solution}
+
+\begin{exercise}[有限链上的调和与位势]\label{ex:y13-two-state-potential}
+令 $A=\left(\begin{smallmatrix}-a&a\\b&-b\end{smallmatrix}\right)$、$a,b>0$。求不变概率、平均投影，并在零均值子空间求位势。
+\end{exercise}
+\begin{solution}
+不变概率为 $\pi=(b,a)/(a+b)$，$Qf=(\pi f)1$。零均值子空间由 $(a,-b)$ 张成，$A$ 在其上为 $-(a+b)I$，故位势 $Vg=g/(a+b)$。全空间上常数调和分量阻止无折扣逆，但投到零均值空间后可逆。
+\end{solution}

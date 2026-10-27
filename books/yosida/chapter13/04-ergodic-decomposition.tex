@@ -1,0 +1,62 @@
+\Needspace{10\baselineskip}
+\section{带局部紧相空间的 Markov 过程的遍历分解}\label{sec:yosida-13-04}
+\noindent\textit{原书起始页：中译本 411；英文版 393。}
+
+以下先固定一步核 $P$。设 $S$ 为局部紧、第二可数 Hausdorff 空间，$C_0(S)$ 表示无穷远消失的连续函数。假定 $T C_0(S)\subset C_0(S)$；这是一项 Feller 性质，不由核的可测性自动推出。$C_c(S)$ 则表示紧支集连续函数，勿与旧文献中相近的记号混用。
+
+\begin{theorem}[不变测度与不逃逸的平均质量]\label{thm:y13-invariant-existence}
+存在非零有限不变正测度，当且仅当某个点 $x$ 与非负函数 $g\in C_0(S)$ 满足
+\[
+ \limsup_n A_ng(x)>0.
+\]
+若对每个 $x$ 和每个 $f\in C_0(S)$ 都有 $A_nf(x)\to0$，则不存在这样的不变测度。
+\end{theorem}
+\begin{proof}
+令 $\eta_n=n^{-1}\sum_{k=0}^{n-1}P^k(x,\cdot)$。这些概率测度作为 $C_0(S)$ 上的泛函，其范数为一。$C_0(S)$ 可分，用可数稠密集及对角抽取得到某子序列在所有 $C_0$ 函数上收敛到正泛函 $L$；相应正则测度 $\eta$ 满足 $\eta(S)\le1$。选择子序列时保留 $\eta_n(g)$ 的正下界，故 $\eta\ne0$。由于 $Tf\in C_0$ 且
+\[
+ \eta_n(Tf)-\eta_n(f)=\frac{T^nf(x)-f(x)}n\longrightarrow0,
+\]
+$\eta$ 不变。这里使用 Riesz--Markov 表示及测度由 $C_0$ 积分确定的性质。
+
+反之，若 $\eta$ 为非零有限不变测度，选非负 $g\in C_0$ 使 $\eta(g)>0$。第二节应用于归一化的 $\eta$，给出 $A_ng\to Qg$ 几乎处处且 $\int Qg\,\dd\eta=\eta(g)>0$，所以至少有一点的极限为正。最后的断言也可直接由控制收敛与不变性推出。
+\end{proof}
+
+非紧空间中上述子序列只有弱星即模糊收敛，极限可能丢失总质量；故必须先证明它非零，再归一化。紧空间时常数 $1\in C(S)$，极限质量仍为一，这就是 Krylov--Bogoliubov 平均构造的离散版本。
+
+\begin{theorem}[紧可度量 Feller 情形的遍历分解]\label{thm:y13-ergodic-decomposition}
+设 $S$ 紧可度量、$TC(S)\subset C(S)$，$m$ 为不变概率。存在可测概率核 $x\mapsto m_x$，使对 $m$ 几乎每个 $x$，$m_x$ 为遍历不变概率，并有
+\[
+ Qf(x)=\int f(y)m_x(\dd y)\quad(f\in C(S)),\qquad
+ m(B)=\int m_x(B)m(\dd x).
+\]
+第一式可选共同的满测集，对所有连续函数同时成立。
+\end{theorem}
+\begin{proof}
+取包含常数的可数实函数族，其线性包在 $C(S,\mathbb R)$ 中稠密。第二节给出一个共同满测集 $N$，在其中所有这些函数的平均收敛。由于 $\|A_n\|_\infty\le1$，对每个 $x\in N$，极限延拓为 $C(S)$ 上的正单位泛函 $L_x$。Riesz--Markov 给出概率 $m_x$。同样的端项估计说明 $L_x(Tf)=L_x(f)$，故 $m_x$ 不变。对连续函数，$x\mapsto m_x(f)$ 可测；单调类论证将其延伸为 Borel 概率核。积分平均保持性给出重心公式，也说明 $m_x(N)=1$ 对几乎每个 $x$ 成立。零测补集上的核可任取一点质量。
+
+还须证明分量遍历，不能只从重心公式推断。记可数稠密族为 $f_j$，$q_j=Qf_j$，取上述极限代表。由第三节 $Q=\mathbb E(\cdot\mid\mathcal I)$，故
+\[
+ Qq_j=q_j,\qquad Q(q_j^2)=q_j^2.
+\]
+重心核在所有有界 Borel 函数上代表条件期望，因此
+\[
+ \int(q_j(y)-q_j(x))^2m_x(\dd y)=0
+\]
+对几乎每个 $x$、所有 $j$ 成立。于是 $m_x$ 集中在 $N$ 中使全部 $q_j(y)=q_j(x)$ 的共同水平集上。对其中的 $y$，$A_nf_j(y)\to q_j(x)=m_x(f_j)$。由于一致有界，控制收敛给出相对于 $m_x$ 的 $L^2$ 收敛到常数。连续函数在 $L^2(m_x)$ 中稠密，平均收缩使全部 $L^2(m_x)$ 函数的平均都趋于其积分，故 $m_x$ 遍历。
+\end{proof}
+
+一般局部紧空间中的完整“耗散部分加遍历部分”的逐点划分还涉及模糊极限的质量及共同例外集。上面完整证明了不变测度的存在判别与紧可度量情形的概率分解；原书更一般的全局划分及连续时间共同分解不在此处无条件推广。
+
+\begin{exercise}[向无穷远逃逸]\label{ex:y13-escape}
+在 $S=[0,\infty)$ 上取 $\tau(x)=x+1$。证明它保持 $C_0(S)$，且对每个 $f\in C_0(S)$、每个 $x$ 有 $A_nf(x)\to0$，故无不变概率。
+\end{exercise}
+\begin{solution}
+$Tf(x)=f(x+1)$ 连续且无穷远消失。固定 $x$，$f(x+k)\to0$，其 Ces\`aro 平均也趋零。定理\ref{thm:y13-invariant-existence}排除非零有限不变测度。这说明非紧空间中的平均概率质量可能全部逃逸。
+\end{solution}
+
+\begin{exercise}[两个封闭类]\label{ex:y13-closed-classes}
+四点链的转移矩阵为两个 $\left(\begin{smallmatrix}0&1\\1&0\end{smallmatrix}\right)$ 的直和。求全部不变概率、遍历不变概率及分解。
+\end{exercise}
+\begin{solution}
+不变概率为 $(a/2,a/2,(1-a)/2,(1-a)/2)$，$0\le a\le1$。两个封闭类上的均匀概率 $m_1,m_2$ 分别遍历，全部不变概率为 $am_1+(1-a)m_2$。条件分量 $m_x$ 在第一个类等于 $m_1$，第二个类等于 $m_2$；周期性不妨碍各类的平均遍历性。
+\end{solution}

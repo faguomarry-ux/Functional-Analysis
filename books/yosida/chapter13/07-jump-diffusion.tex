@@ -1,0 +1,70 @@
+\Needspace{10\baselineskip}
+\section{扩散算子的一种推广}\label{sec:yosida-13-07}
+\noindent\textit{原书起始页：中译本 426；英文版 408。}
+
+去掉 Lindeberg 条件后，短时间内发生远距离跳跃的概率可以是一阶小量。生成元因而出现积分项，通常不再具有局部性。
+
+\begin{proposition}[有限跳跃测度的生成元]\label{prop:y13-compound-poisson}
+设 $\nu$ 为 $\mathbb R^d\setminus\{0\}$ 上有限正测度，$r=\nu(\mathbb R^d)>0$、$\pi=\nu/r$。定义 $Kf(x)=\int f(x+z)\pi(\dd z)$。则 $B=r(K-I)$ 是 $C_0(\mathbb R^d)$ 上的有界生成元，
+\[
+ e^{tB}f=e^{-rt}\sum_{n=0}^\infty\frac{(rt)^n}{n!}K^nf,
+ \qquad Bf(x)=\int[f(x+z)-f(x)]\nu(\dd z).
+\]
+这是保守的正收缩半群，且为强连续。
+\end{proposition}
+\begin{proof}
+$K$ 正且范数至多一；连续性由控制收敛，无穷远消失性由先把 $\pi$ 的质量限制在大球再估计尾部得到。级数在算子范数中收敛，系数为总和等于一的非负 Poisson 权重，所以正且收缩。半群性质由指数级数得到，差商在算子范数中趋于 $B$。核可理解为以 Poisson 次数抽取独立位移；这里公式本身已构成转移核，无需先援引样本路径构造。
+\end{proof}
+
+与常系数漂移 Gaussian 半群复合，因各部分都是平移卷积而交换，得到跳跃扩散，其生成式为
+\[
+ Af=b\cdot\nabla f+\tfrac12Q:D^2f+
+ \int[f(x+z)-f(x)]\nu(\dd z),\qquad Q\ge0.
+\]
+在测试函数上可直接对复合半群求导验证此式。
+
+\begin{definition}[补偿后的跳跃项]
+允许 $\nu$ 在原点附近有无限质量，但要求
+\[
+ \int_{\mathbb R^d\setminus\{0\}}(1\wedge|z|^2)\nu(\dd z)<\infty.
+\]
+对 $f\in C_c^\infty$，定义
+\[
+ \mathcal Jf(x)=\int\bigl[f(x+z)-f(x)-\mathbf1_{\{|z|\le1\}}z\cdot\nabla f(x)\bigr]\nu(\dd z).
+\]
+一阶补偿使小位移余项为 $O(|z|^2)$，所以积分绝对收敛。截断函数的改变须由漂移项的相应调整补偿，不能单独更改积分项。
+\end{definition}
+
+\paragraph{一般结构定理的边界。}
+对 $\mathbb R^d$ 上具有 $C_c^\infty\subset D(A)$ 的 Feller 生成元，正最大值原理的结构表示通常写为
+\begin{align*}
+ Af(x)={}&-\kappa(x)f(x)+b(x)\cdot\nabla f(x)+\tfrac12Q(x):D^2f(x)\\
+ &+\int\bigl[f(x+z)-f(x)-\mathbf1_{\{|z|\le1\}}z\cdot\nabla f(x)\bigr]\nu(x,\dd z),
+\end{align*}
+其中 $\kappa\ge0$、$Q\ge0$，每个 $x$ 的跳跃测度满足上述二阶可积条件；保守且单位函数可合法纳入定义域时杀死项为零。这是广义扩散的标准形式。原书在固定时空点的截断测度有界、紧性及差商存在条件下给出相应的子序列表示。本节将一般结构表示列为外部定理，完整构造并证明的是有限跳跃与常系数复合模型；任意给定的变系数组合是否生成 Feller 半群还需要额外存在性条件。
+
+\begin{proposition}[最大值原理并不等于局部性]
+上述跳跃积分在 $f$ 的全局最大点非正，而 $f$ 在该点邻域恒为零时积分仍可非零。对有限非零 $\nu$，相应过程不满足 Lindeberg 条件。
+\end{proposition}
+\begin{proof}
+最大点处梯度为零，每个差分非正。若 $f$ 远处为正，且跳跃测度能跳到该处，则 $\mathcal Jf(x)>0$，显示非局部性。选 $\varepsilon>0$ 使 $\nu\{|z|>\varepsilon\}>0$，Poisson 级数的一次跳跃项给出
+\[
+ \liminf_{t\downarrow0}t^{-1}P_t(x,\{|y-x|>\varepsilon\})
+ \ge\nu\{|z|>\varepsilon\}>0.
+\]
+故局部扩散所需的小时间条件失败。
+\end{proof}
+
+\begin{exercise}[对称跳跃的符号]\label{ex:y13-jump-symbol}
+在实线上取 $\nu=\tfrac r2(\delta_a+\delta_{-a})$、$a\ne0$。写出 $A$，并求它在有界 Fourier 模 $e^{i\xi x}$ 上的形式作用。
+\end{exercise}
+\begin{solution}
+$Af(x)=\tfrac r2[f(x+a)+f(x-a)-2f(x)]$。形式代入得到 $Ae^{i\xi x}=r(\cos(a\xi)-1)e^{i\xi x}$。这些模不在 $C_0$ 中，等式在有界函数扩张或符号计算意义下理解；乘以测试截断后仍可用于辨认跳跃项，不能当作 $C_0$ 的本征向量结论。
+\end{solution}
+
+\begin{exercise}[小跳跃的补偿]\label{ex:y13-small-jumps}
+实线上 $\nu(\dd z)=\mathbf1_{0<|z|<1}|z|^{-1-\alpha}\,\dd z$，$0<\alpha<2$。验证二阶可积条件，并说明何时未补偿的一阶绝对估计足够。
+\end{exercise}
+\begin{solution}
+$\int z^2\,\dd\nu=2\int_0^1r^{1-\alpha}\,\dd r=2/(2-\alpha)<\infty$，所以补偿后的 Taylor 余项可积。一阶绝对估计要求 $\int|z|\,\dd\nu=2\int_0^1r^{-\alpha}\,\dd r<\infty$，恰在 $\alpha<1$ 时成立。对称性可允许主值抵消，但主值与绝对收敛不能混称。
+\end{solution}

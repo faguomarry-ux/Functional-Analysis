@@ -1,41 +1,22 @@
 % !TeX encoding = UTF-8
-% 吉田第六版：中译本第 13 章；此文件当前仅为目录与正文占位。
-\SetChapterInfo{subtitle={吉田耕作第六版主线 · 正文待撰写}}
-\chapter{遍历理论和扩散理论}\label{ch:yosida-13}
-\YosidaChapterPlaceholder{13}{Ergodic Theory and Diffusion Theory}{397--436}{379--417}
+\SetChapterInfo{subtitle={从时间平均到扩散生成元与抽象位势},keywords={Markov; 遍历; 熵; Brownian; Feller; 跳跃; 位势},prereq={平均遍历; 正算子; 强连续半群; 向量格; 测度表示},goals={区分平均与逐点收敛; 解释局部与跳跃生成元; 控制位势定义域}}
+\chapter[遍历理论和扩散理论]{遍历理论\\和扩散理论}\label{ch:yosida-13}
+\ChapterSource{按 \cite{yosida-zh,yosida-en} 第十三章九节组织，2026 年 10 月 27 日补写。直接查看英文印刷 379--418 页全部扫描图，第 418 页上部仍为本章结尾、下部开始第十四章，故修正本章英文范围。中译本范围为 397--436 页，选页与证明边界详见本章 COVERAGE。}
 
-\section{具有不变测度的 Markov 过程}\label{sec:yosida-13-01}
-\YosidaSectionPlaceholder{397}{379}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
+遍历理论研究长时间平均，扩散理论研究短时间变化；半群把两端联系起来。不变测度产生各 $L^p$ 空间上的收缩，极大不等式使平均收敛提升为几乎处处收敛；局部矩与跳跃测度决定生成式，无折扣预解式极限则产生位势与 Poisson 方程。
 
-\section{个别遍历定理及其应用}\label{sec:yosida-13-02}
-\YosidaSectionPlaceholder{401}{383}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
+遍历部分先用概率空间与固定一步算子 $T=T_1$；连续时间结论另列假设。记 $A_n=n^{-1}(I+T+\cdots+T^{n-1})$，它与生成元 $A$ 的记号按上下文区分。扩散部分采用 $b\cdot\nabla+\tfrac12Q:D^2$，热核模型的生成元为 $c\Delta$。抽象位势统一取 $V=-A^{-1}$，以 $\lambda\downarrow0$ 的 Abel 极限定义。
 
-\section{遍历假设和 \texorpdfstring{$H$}{H}-定理}\label{sec:yosida-13-03}
-\YosidaSectionPlaceholder{407}{389}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
+\input{books/yosida/chapter13/01-invariant-markov}
+\input{books/yosida/chapter13/02-individual-ergodic}
+\input{books/yosida/chapter13/03-ergodicity-entropy}
+\input{books/yosida/chapter13/04-ergodic-decomposition}
+\input{books/yosida/chapter13/05-brownian}
+\input{books/yosida/chapter13/06-feller-laplacian}
+\input{books/yosida/chapter13/07-jump-diffusion}
+\input{books/yosida/chapter13/08-markov-potentials}
+\input{books/yosida/chapter13/09-abstract-potentials}
 
-\section{带局部紧相空间的 Markov 过程的遍历分解}\label{sec:yosida-13-04}
-\YosidaSectionPlaceholder{411}{393}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{齐次 Riemann 空间上的 Brown 运动}\label{sec:yosida-13-05}
-\YosidaSectionPlaceholder{416}{398}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{W. Feller 的广义 Laplace 算子}\label{sec:yosida-13-06}
-\YosidaSectionPlaceholder{422}{403}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{扩散算子的一种推广}\label{sec:yosida-13-07}
-\YosidaSectionPlaceholder{426}{408}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{Markov 过程和位势}\label{sec:yosida-13-08}
-\YosidaSectionPlaceholder{429}{410}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{抽象位势算子和半群}\label{sec:yosida-13-09}
-\YosidaSectionPlaceholder{430}{411}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
+\Needspace{6\baselineskip}
+\section*{本章参考说明与阅读衔接}
+直接来源为吉田中英文第六版。个别遍历证明以有限极大不等式重组；不变测度分解在紧可度量 Feller 情形展开；扩散部分以局部矩、尺度速度与显式跳跃模型解释生成元。一般比值遍历、非紧空间的完整逐点分解、广义尺度速度的反向刻画、一般 Feller 边界分类及变系数跳跃表示的证明边界均明确记录，不把模型计算等同于全部结构定理。下一章将转向发展方程的积分与初值问题。

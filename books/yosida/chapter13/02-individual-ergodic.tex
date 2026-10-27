@@ -1,0 +1,67 @@
+\Needspace{10\baselineskip}
+\section{个别遍历定理及其应用}\label{sec:yosida-13-02}
+\noindent\textit{原书起始页：中译本 401；英文版 383。}
+
+本节 $T$ 为上一节的 Markov 收缩，$m(S)=1$，$A_n$ 从 $k=0$ 起求和。将原书从 $k=1$ 起的记法改到此处约定，不改变下述极限。证明采用有限极大不等式；它把稠密子空间上的逐点收敛延拓到 $L^1$，避免误把稠密集视为非第一纲集。
+
+\begin{lemma}[Hopf 有限极大不等式]\label{lem:y13-hopf-maximal}
+对实 $f\in L^1$，令 $S_kf=\sum_{j=0}^{k-1}T^jf$，$E_N=\{\max_{1\le k\le N}S_kf>0\}$。则 $\int_{E_N}f\,\dd m\ge0$。因而对任意 $f\in L^1$ 和 $\alpha>0$，
+\begin{equation}\label{eq:y13-maximal-weak}
+ m\{\sup_{n\ge1}|A_nf|>\alpha\}\le\|f\|_1/\alpha.
+\end{equation}
+\end{lemma}
+\Needspace{4\baselineskip}
+\begin{proof}
+设 $g_N=\max(0,S_1f,\ldots,S_Nf)$、$g_0=0$。由于 $T$ 正，$S_kf=f+TS_{k-1}f\le f+Tg_{N-1}$。在 $E_N$ 上取最大值得 $g_N\le f+Tg_{N-1}$，故
+\[
+ \int_{E_N}f\ge\int g_N-\int_{E_N}Tg_{N-1}
+ \ge\int g_N-\int g_{N-1}\ge0.
+\]
+对 $|f|-\alpha$ 应用此式；$T1=1$ 使正部分和事件恰为 $\max_{k\le N}A_k|f|>\alpha$。于是 $\alpha m(E_N)\le\|f\|_1$。用 $|A_nf|\le A_n|f|$ 并令 $N\to\infty$，得到所需估计。
+\end{proof}
+
+\begin{theorem}[Markov 算子的个别遍历定理]\label{thm:y13-individual}
+对每个 $f\in L^1(m)$，$A_nf$ 几乎处处收敛到有限函数 $Qf$，且在 $L^1$ 中收敛。对 $f\in L^p$、$1\le p<\infty$，极限也与上一节的 $L^p$ 极限相同。
+\end{theorem}
+\begin{proof}
+在 Hilbert 空间 $L^2$ 中，收缩性给出 $\ker(I-T)=\ker(I-T^*)$，因此
+\[
+ L^2=\ker(I-T)\oplus\overline{(I-T)L^2}.
+\]
+为说明第一个等式，若 $Th=h$，则 $\|T^*h\|\le\|h\|$ 且 $\langle T^*h,h\rangle=\|h\|^2$，Cauchy--Schwarz 的等号情形给出 $T^*h=h$；反向同理。由于有界函数在 $L^2$ 中稠密，
+\[
+ \mathcal D=\ker(I-T)|_{L^2}+(I-T)L^\infty
+\]
+在 $L^2$ 及 $L^1$ 中稠密。对不动函数，平均本来不变；对 $g=(I-T)h$、$h\in L^\infty$，有 $A_ng=(h-T^nh)/n\to0$ 几乎处处，甚至本质一致。因此 $\mathcal D$ 中每个元素都有有限逐点极限。
+
+先取实 $f\in L^1$。极大估计在 $\alpha\to\infty$ 时说明 $\sup_n|A_nf|<\infty$ 几乎处处。其上、下极限之差记为 $\omega(f)$。任取 $g\in\mathcal D$，由于 $A_ng$ 收敛，
+\[
+ \omega(f)\le2\sup_n A_n|f-g|,
+ \qquad m\{\omega(f)>2\alpha\}\le\|f-g\|_1/\alpha.
+\]
+令 $g\to f$，得到 $\omega(f)=0$ 几乎处处。复函数分别处理实虚部。上一节已有 $L^1$ 极限；抽取几乎处处收敛的子序列后，极限的唯一性识别该函数为 $Qf$。有限 $p$ 情形亦然。
+\end{proof}
+
+这与第十二章的 Banach 收敛思想一致：关键是先证明控制收敛集闭性的估计。仅在一个稠密子空间验证收敛并不足够。对连续时间，本节结论先用于一步平均 $g=\int_0^1T_sf\,\dd s$ 得整数时刻的积分平均；一般几乎处处连续时间版本还需共同可测代表与余项控制，此处不据此省略这些条件。
+
+\Needspace{7\baselineskip}
+\paragraph{原书的比值推广。}
+Chacon--Ornstein 比值遍历定理对一般正 $L^1$ 收缩 $T$ 断言：若 $f,p\in L^1$、$p\ge0$，则
+\[
+ \frac{\sum_{k=0}^{n-1}T^kf}{\sum_{k=0}^{n-1}T^kp}
+\]
+在 $\{\sum_{k\ge0}T^kp>0\}$ 上几乎处处有有限极限；分母最终为正后才定义比值。本节完整证明的是上述保概率 Markov 情形；一般比值定理及原书的消去引理作为明确标注的外部推广保留，不将极大不等式的证明说成已证明整个比值理论。
+
+\begin{exercise}[上同调差的平均]\label{ex:y13-coboundary}
+若 $g=(I-T)h$ 且 $h\in L^\infty$，求 $A_ng$ 的显式误差界。说明同一公式在 $h\in L^1$ 时只立即给出哪种收敛。
+\end{exercise}
+\begin{solution}
+$A_ng=(h-T^nh)/n$，故 $\|A_ng\|_\infty\le2\|h\|_\infty/n$。若只有 $h\in L^1$，同样得到 $\|A_ng\|_1\le2\|h\|_1/n$，但该范数估计本身不推出全序列几乎处处收敛；本节定理另给出后者。
+\end{solution}
+
+\begin{exercise}[保持变换的时间平均]\label{ex:y13-birkhoff}
+若 $\tau$ 保持概率测度且 $f\in L^1$，把本节定理写成轨道函数公式，并说明例外集对一个给定 $f$ 的含义。
+\end{exercise}
+\begin{solution}
+取 $Tf=f\circ\tau$，则 $n^{-1}\sum_{k=0}^{n-1}f(\tau^kx)\to Qf(x)$ 几乎处处，并且积分保持。可为这个 $f$ 选一个零测例外集；可数个给定函数可以统一例外集。不能在任意不可数函数族上直接取零测集的并，声称得到所有可积函数同时逐点收敛。
+\end{solution}

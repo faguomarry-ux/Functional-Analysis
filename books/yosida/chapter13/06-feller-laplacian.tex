@@ -1,0 +1,78 @@
+\Needspace{10\baselineskip}
+\section{W. Feller 的广义 Laplace 算子}\label{sec:yosida-13-06}
+\noindent\textit{原书起始页：中译本 422；英文版 403。}
+
+本节在连续函数空间上理解生成元，差商的一致范数收敛保证可逐点计算；常数不在空间中时，保守性由转移核表述。
+
+\begin{proposition}[最大值性质与局部性]\label{prop:y13-local-maximum}
+保常数的 Markov 生成元在其定义域上满足正最大值原理：若 $f$ 在 $x_0$ 达到非负全局最大值，则 $Af(x_0)\le0$。若另有上一节的 Lindeberg 条件，且 $f$ 在 $x_0$ 的邻域恒为零，则 $Af(x_0)=0$；因此达到局部最大值时也有相应不等式。
+\end{proposition}
+\begin{proof}
+全局情形由 $T_tf(x_0)\le f(x_0)$ 后除以 $t$ 得到。局部为零时，$|T_tf(x_0)|\le\|f\|_\infty P_t(x_0,B_\varepsilon^c)=o(t)$。局部最大值时，同样将小球内的差分与小球外的 $o(t)$ 分开。若空间包含常数，保守性还给出 $1\in D(A)$ 时 $A1=0$；在非紧空间 $C_0$ 中，常数通常不属于该空间，须在核或适当扩张上理解此式。
+\end{proof}
+
+\begin{theorem}[光滑系数的尺度与速度表示]\label{thm:y13-scale-speed}
+在开区间 $I=(l,r)$ 上考虑 $Lf=a(x)f''+b(x)f'$，其中 $a>0$ 连续、$b$ 连续。固定 $x_0\in I$，令
+\[
+ s'(x)=\exp\left(-\int_{x_0}^x\frac{b(u)}{a(u)}\,\dd u\right),\qquad
+ m'(x)=\frac1{a(x)s'(x)}.
+\]
+则 $s$ 严格递增，且
+\[
+ L=D_mD_s,\qquad D_sf=\frac{f'}{s'},\qquad D_mg=\frac{g'}{m'}.
+\]
+调和方程 $Lf=0$ 的解为 $\alpha+\beta s$。尺度 $s$ 允许正仿射变换；相应速度测度需作逆比例调整。
+\end{theorem}
+\begin{proof}
+由 $(\log s')'=-b/a$，直接计算
+\[
+ \frac1{m'}\left(\frac{f'}{s'}\right)'
+ =a f''-a\frac{s''}{s'}f'=a f''+bf'.
+\]
+若该式为零，则 $D_sf$ 为常数，所以解恰为上述形式。将 $s$ 换为 $\gamma s+\delta$、$\gamma>0$ 时，$\dd m$ 换为 $\gamma^{-1}\dd m$，乘积算子不变。
+\end{proof}
+
+\paragraph{广义速度测度。}
+令 $s$ 连续严格递增，$m$ 为局部有限且在每个开子区间有正质量的测度。广义表达式 $Lf=g$ 可用积分关系定义：$D_sf$ 有局部有界变差的适当代表，并满足
+\[
+ D_sf(v)-D_sf(u)=\int_{(u,v]}g\,\dd m.
+\]
+当 $m$ 有原子时，$D_sf$ 可以跳跃，故 $D_mD_s$ 不必是普通光滑系数的微分式。这是 Feller 广义 Laplace 表示容纳黏滞等现象的原因。原书从局部性、最大值原理及非退化条件反向构造尺度和速度；其完整反向表示定理不由本节的光滑计算替代，列入进一步阅读范围。
+
+\paragraph{边界类型与定义域。}
+选 $c\in(l,r)$，定义左端测试量
+\[
+ \Sigma_l=\int_{(l,c)}[s(x)-s(l)]\,m(\dd x),\qquad
+ N_l=\int_{(l,c)}[s(c)-s(x)]\,m(\dd x),
+\]
+端点尺度取单侧极限，允许无穷值。右端相应使用 $s(r)-s(x)$ 与 $s(x)-s(c)$。Feller 边界分类定理在其一维正则扩散假设下给出
+\[
+ \begin{array}{c|cc}
+ &N_l<\infty&N_l=\infty\\\hline
+ \Sigma_l<\infty&\text{正则}&\text{流出}\\
+ \Sigma_l=\infty&\text{流入}&\text{自然}
+ \end{array}
+\]
+本节采用该分类作为外部结构定理，并计算典型例子；不声称已证明一般边界可达性的概率刻画。正则端点还须选择吸收、反射或其他允许的边界条件，才能确定闭生成元。内部的 $D_mD_s$ 表达式本身不决定半群。
+
+\begin{example}[三种左端行为]
+在 $(0,\infty)$ 上，$L=f''$ 有 $s=x$、$m'=1$，故零端两个测试量均有限，为正则端点。$L=xf''$ 有 $s=x$、$m'=1/x$，于是 $\Sigma_0<\infty$、$N_0=\infty$，零端为流出端点。对三维 Bessel 表达式 $L=f''+2f'/x$，有 $s=-1/x$、$m'=x^2$，所以 $\Sigma_0=\infty$、$N_0<\infty$，零端为流入端点。
+\end{example}
+
+\begin{exercise}[自然端点]\label{ex:y13-natural-boundary}
+对 $Lf=x^2f''+xf'$、$x>0$，求尺度、速度密度与零端类型，并解释对数坐标的作用。
+\end{exercise}
+\begin{solution}
+可取 $s=\log x$、$m'=1/x$。由于 $s(0)=-\infty$，有 $\Sigma_0=\infty$，且
+\[
+ N_0=\int_0^c\log(c/x)\,\frac{\dd x}{x}=\infty.
+\]
+所以零端为自然端点。若 $f(x)=g(\log x)$，则 $Lf=g''(\log x)$，零端对应实轴 Brownian 运动的负无穷远。
+\end{solution}
+
+\begin{exercise}[边界条件改变转移]\label{ex:y13-boundary-kernels}
+令 $p_t(z)=(4\pi t)^{-1/2}e^{-z^2/(4t)}$。比较半直线上 $p_t(y-x)-p_t(y+x)$ 与 $p_t(y-x)+p_t(y+x)$ 的总质量和零端边界条件。
+\end{exercise}
+\begin{solution}
+对 $x>0$，差核在 $y\ge0$ 上质量小于一，给出到达零端后被杀死的次 Markov 半群，边界为 Dirichlet。和核总质量为一，给出反射半群；其关于 $x$ 的零端导数为零，对应 Neumann 条件。二者内部生成式均为二阶导数，保守性与状态空间的边界处理不同。
+\end{solution}
