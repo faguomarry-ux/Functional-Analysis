@@ -1,0 +1,42 @@
+\Needspace{10\baselineskip}
+\section{具有简单谱的自伴算子的标准型}\label{sec:yosida-11-14}
+\noindent\textit{原书起始页：中译本 360；英文版 347。}
+
+\begin{theorem}[循环谱的乘法模型]\label{thm:y11-cyclic-model}
+若自伴 $A$ 有循环向量 $v$，令 $\mu(B)=(E(B)v,v)$。则
+\[
+ W:L^2(\R,\mu)\longrightarrow H,\qquad Wf=f(A)v
+\]
+先对有界简单函数定义，再延拓为酉映射，并满足
+\[
+ W^{-1}AW=M_t,\qquad
+ D(M_t)=\{f\in L^2(\mu):tf\in L^2(\mu)\}.
+\]
+谱投影变成乘 $1_B$。此处 $v$ 不必属于 $D(A)$。
+\end{theorem}
+\begin{proof}
+对简单函数 $f,g$，正交投影关系给出 $(Wf,Wg)=\int f\bar g\,\dd\mu$。简单函数在 $L^2(\mu)$ 中稠密，故可等距延拓；其像闭，且包含所有 $E(B)v$，循环性使其满射。又 $E(B)Wf=W(1_Bf)$，从而 $Wf$ 的谱测度为 $|f|^2\mu$。因此 $Wf\in D(A)$ 恰等价于 $tf\in L^2(\mu)$；对谱截断先验证 $AWf=W(tf)$，再由闭性得全定义域上的等式。
+\end{proof}
+
+\begin{proposition}[简单谱的酉不变量]\label{prop:y11-measure-class}
+两个有限正测度的坐标乘法算子 $M_t$ 具有循环向量 $1$，且它们酉等价当且仅当这两个测度相互绝对连续。因而谱集相同不足以确定自伴算子的酉等价类。
+\end{proposition}
+\begin{proof}
+常数 $1$ 循环，因为简单函数稠密。若 $\mu\sim\nu$，以 $f\mapsto\sqrt{\dd\mu/\dd\nu}\,f$ 定义酉映射；它与乘 $t$ 交换，并保持对应定义域。反之，若 $U:L^2(\mu)\to L^2(\nu)$ 交织两个自伴乘法算子，它也交织谱投影。置 $h=U1$，则 $\mu(B)=\|U1_B\|^2=\int_B|h|^2\,\dd\nu$。因为 $h$ 循环，它不能在一个正 $\nu$ 测度集合上为零，故 $\mu\sim\nu$。
+\end{proof}
+
+例如 $[0,1]$ 上的 Lebesgue 测度与 $\nu=\sum_n2^{-n}\delta_{q_n}$（$q_n$ 枚举互异有理数）均有全支集 $[0,1]$。两个乘法算子的谱都为 $[0,1]$，但前者无点谱、后者为纯点谱，不酉等价。
+
+\begin{exercise}[换循环向量]\label{ex:y11-change-cyclic}
+在 $L^2(\mu)$ 的坐标乘法模型中，证明 $h$ 为循环向量当且仅当 $h\ne0$ 几乎处处。
+\end{exercise}
+\begin{solution}
+若 $h$ 在正测度集上为零，所有 $1_Bh$ 也为零，无法稠密。反之，对任意 $f\in L^2(\mu)$，令 $f_n=f1_{\{|f|\le n,\,1/n\le|h|\le n\}}$。则 $f_n/h$ 有界，故 $f_n$ 属于有界 Borel 乘子作用于 $h$ 的闭包；$f_n\to f$，故循环。
+\end{solution}
+
+\begin{exercise}[离散简单谱]\label{ex:y11-discrete-cyclic}
+对 $Ae_n=ne_n$ 作用于 $\ell^2$，给出一个循环向量及对应有限谱测度。
+\end{exercise}
+\begin{solution}
+取 $v=\sum_{n\ge1}2^{-n}e_n$。每个 $E(\{n\})v=2^{-n}e_n$，故循环；对应 $\mu=\sum_{n\ge1}4^{-n}\delta_n$。此例还说明循环向量不要求范数为 $1$；测度总质量为 $\|v\|^2$。
+\end{solution}

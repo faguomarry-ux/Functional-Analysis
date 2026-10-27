@@ -1,0 +1,56 @@
+\Needspace{10\baselineskip}
+\section{有界正规算子的谱分解}\label{sec:yosida-11-03}
+\noindent\textit{原书起始页：中译本 315；英文版 302。}
+
+\begin{theorem}[连续函数演算]\label{thm:y11-continuous-calculus}
+若 $N\in\mathcal L(H)$ 正规，则存在唯一等距含单位 $*$ 同态
+\[
+ C(\sigma(N))\longrightarrow\mathcal L(H),\qquad f\longmapsto f(N),
+\]
+把坐标函数 $z$ 送到 $N$，并满足 $\|f(N)\|=\|f\|_\infty$。
+\end{theorem}
+\begin{proof}
+令 $\mathcal A=C^*(I,N)$，即 $N,N^*$ 的多项式的范数闭包。它交换，故应用定理 \ref{thm:y11-commutative-cstar}。映射 $\chi\mapsto\chi(N)$ 单射，因为这些多项式稠密。还需验证 $\sigma_{\mathcal A}(N)=\sigma_{\mathcal L(H)}(N)$。
+
+若 $T\in\mathcal A$ 在 $\mathcal L(H)$ 中可逆，则 $S=T^*T$ 有 $cI\le S\le MI$，$c>0$。对自伴算子的二次型范数公式给出 $\|I-S/M\|\le1-c/M<1$，故 $S^{-1}$ 的 Neumann 级数属于 $\mathcal A$。于是 $T^{-1}=S^{-1}T^*\in\mathcal A$。取 $T=N-\lambda I$ 便得谱相等，故特征空间与 $\sigma(N)$ 同胚。逆 Gelfand 变换给出演算，唯一性由 $z,\bar z$ 多项式在 $C(\sigma(N))$ 中稠密得到。
+\end{proof}
+
+\begin{theorem}[正规算子的投影值测度]\label{thm:y11-normal-pvm}
+存在唯一 Borel 投影值测度 $E$，使 $E(\sigma(N))=I$，
+\[
+ E(B)E(C)=E(B\cap C),\qquad
+ N=\int_{\sigma(N)}z\,\dd E(z).
+\]
+$E$ 的可列可加性采用强算子拓扑。对任意有界 Borel 函数 $f$，
+\[
+ \|f(N)x\|^2=\int|f|^2\,\dd\mu_x,\qquad
+ \mu_x(B)=(E(B)x,x).
+\]
+\end{theorem}
+\begin{proof}
+先固定 $x$。泛函 $f\mapsto(f(N)x,x)$ 为正，因为非负连续函数有连续平方根。用外部前提 Riesz--Markov 定理 \ref{thm:y4-riesz-markov} 得到有限正测度 $\mu_x$。映射 $f\mapsto f(N)x$ 满足
+\[
+ (f(N)x,g(N)x)=\int f\overline g\,\dd\mu_x.
+\]
+连续函数在 $L^2(\mu_x)$ 中稠密，因此该映射延为 $L^2(\mu_x)$ 到循环空间 $H_x=\overline{C(\sigma(N))x}$ 的酉映射。在此映射下 $N$、$N^*$ 分别为乘 $z$、乘 $\bar z$，所以 $H_x$ 为约化子空间。
+
+以 Zorn 引理取极大正交循环空间族；若其正交和不为 $H$，补空间仍约化，可再取一个非零循环空间，矛盾。因此 $H=\bigoplus_\alpha H_{x_\alpha}$。在每个 $L^2(\mu_{x_\alpha})$ 上以乘 $1_B$ 定义 $E(B)$，再作正交直和。乘法关系和强可加性由指示函数及控制收敛得到。即使直和不可数，每个向量也只有至多可数个非零分量，故此步骤无可分性要求。相同构造定义 $f(N)$ 并给出范数公式。
+
+若另有这样的投影值测度，积分多项式先给出同一连续演算。各向量的标量测度由连续积分唯一决定；极化后得到所有 $(E(B)x,y)$，故投影测度唯一。其支集恰为 $\sigma(N)$，否则一个非零连续函数被演算为零，会违背等距性。
+\end{proof}
+
+本节将原书的交换正规族结论完整证明到单个正规算子的演算及谱测度。有限个两两交换且连同伴随一起交换的正规算子也可对其生成的交换 C 星代数作同样构造，得到联合谱上的投影值测度；任意族的原书双交换子与范畴集构造不在此重写。
+
+\begin{exercise}[正规性不可省略]\label{ex:y11-jordan-normal}
+证明 $J=\left(\begin{smallmatrix}0&1\\0&0\end{smallmatrix}\right)$ 没有使 $J=\int z\,\dd E(z)$ 的正交投影值谱表示。
+\end{exercise}
+\begin{solution}
+投影值积分与其伴随分别为乘 $z$ 与乘 $\bar z$，必交换，故必正规。但 $JJ^*=\operatorname{diag}(1,0)$，$J^*J=\operatorname{diag}(0,1)$，不相等。
+\end{solution}
+
+\begin{exercise}[投影的谱测度]\label{ex:y11-projection-pvm}
+设 $P=P^*=P^2$。写出其谱测度和 $f(P)$。
+\end{exercise}
+\begin{solution}
+$E(B)=1_B(0)(I-P)+1_B(1)P$，故 $f(P)=f(0)(I-P)+f(1)P$。若某个子空间为零，相应谱点可从支集中删去。
+\end{solution}

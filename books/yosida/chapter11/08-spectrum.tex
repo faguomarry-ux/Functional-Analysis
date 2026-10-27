@@ -1,0 +1,54 @@
+\Needspace{10\baselineskip}
+\section[自伴算子的谱、Rayleigh 原理和 Krylov--Weinstein 定理、谱的重数]{自伴算子的谱、Rayleigh 原理和\\Krylov--Weinstein 定理、谱的重数}\label{sec:yosida-11-08}
+\noindent\textit{原书起始页：中译本 332；英文版 319。}
+
+\begin{theorem}[谱、原子与残差]\label{thm:y11-spectral-tests}
+设 $A=A^*$。实数 $\lambda\in\sigma(A)$ 当且仅当每个 $\varepsilon>0$ 都有 $E((\lambda-\varepsilon,\lambda+\varepsilon))\ne0$；并且
+\[
+ E(\{\lambda\})H=\ker(A-\lambda I),\qquad \sigma_r(A)=\varnothing.
+\]
+对每个单位向量 $x\in D(A)$ 及实数 $a$，
+\[
+ \operatorname{dist}(a,\sigma(A))\le\|(A-aI)x\|.
+\]
+\end{theorem}
+\begin{proof}
+若某邻域投影为零，$(t-\lambda)^{-1}$ 在测度意义下有界，谱积分给出有界逆；反之，任意小邻域有非零投影时，选其中单位向量 $x$，它属 $D(A)$ 且 $\|(A-\lambda)x\|\le\varepsilon$，与有界逆不相容。原子断言由平方范数积分直接得到。又 $\overline{R(A-\lambda)}^\perp=\ker(A-\lambda)$，故单射时值域必稠密，没有残余谱。最后对 $d=\operatorname{dist}(a,\sigma(A))$，有 $\|(A-a)x\|^2=\int|t-a|^2\,\dd\mu_x\ge d^2$。
+\end{proof}
+
+\begin{theorem}[Rayleigh 与 Krylov--Weinstein 估计]\label{thm:y11-rayleigh}
+对自伴 $A$，以扩展实数理解，有
+\[
+ \inf\sigma(A)=\inf_{\|x\|=1,\,x\in D(A)}(Ax,x),\quad
+ \sup\sigma(A)=\sup_{\|x\|=1,\,x\in D(A)}(Ax,x).
+\]
+若 $a=(Ax,x)$、$\|x\|=1$、$r=\|Ax-ax\|$，则 $\sigma(A)$ 中有一点距 $a$ 至多为 $r$；而且
+\[
+ r^2=\|Ax\|^2-a^2.
+\]
+\end{theorem}
+\begin{proof}
+Rayleigh 商是概率测度 $\mu_x$ 的均值，故受谱上下界约束。反向在谱边缘任意小的有界区间取非零投影中的单位向量，其均值就在该区间，逼近谱边缘；无界时取任意远的谱区间，得到扩展实数结论。残差恒等式由展开平方得到，距离界用上一项。实轴上的非空闭谱到固定点的距离可达到，故可把原书带任意正误差的区间估计加强为闭区间估计。
+\end{proof}
+
+残差只保证附近有谱，不能无条件保证附近有特征值。只有额外知道该区间的谱离散时，才能把它用于本征值误差估计。
+
+\begin{definition}[简单谱与重数]
+若存在 $x$ 使 $\overline{\operatorname{span}\{E(B)x:B\text{ 为 Borel 集}\}}=H$，称 $A$ 有简单谱，$x$ 为循环向量。对于纯点谱，特征值的重数为 $\dim E(\{\lambda\})H$。连续谱处的重数需用循环分解或直积分中的纤维维数描述，不能用单点投影的维数代替。
+\end{definition}
+
+例如 $M_t$ 作用于 $L^2(0,1)$ 有简单谱，但所有单点投影均为零；$M_t\oplus M_t$ 在每个频率有两个分量，因而不是简单谱。一般可分情形的测度类与重数函数分类不在本节完整证明，第 \ref{sec:yosida-11-14} 节证明循环情形。
+
+\begin{exercise}[残差不保证特征值]\label{ex:y11-residual}
+对 $A=M_t$ 在 $L^2(0,1)$ 上，取归一化指示函数 $x_\varepsilon$ 支于 $(a-\varepsilon,a+\varepsilon)\subset(0,1)$。计算 Rayleigh 商及残差。
+\end{exercise}
+\begin{solution}
+均值为 $a$，方差为 $\varepsilon^2/3$，故残差为 $\varepsilon/\sqrt3$。谱为 $[0,1]$，却没有任何特征值，因为单点测度为零。
+\end{solution}
+
+\begin{exercise}[循环与重数二]\label{ex:y11-multiplicity}
+证明 $M_t\oplus M_t$ 作用于 $L^2(0,1;\mathbb C^2)$ 不存在循环向量。
+\end{exercise}
+\begin{solution}
+给定 $x=(f,g)$，若 $x=0$ 则显然不循环；否则 $y=(\bar g,-\bar f)$ 非零且属于同一空间。对每个标量 Borel 乘子 $h$，逐点有 $hf\,\overline{\bar g}+hg\,\overline{-\bar f}=0$，故 $y$ 与所有 $h x$ 正交，尤其与全部 $E(B)x$ 正交。
+\end{solution}

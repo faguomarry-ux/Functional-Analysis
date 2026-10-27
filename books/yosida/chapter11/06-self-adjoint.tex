@@ -1,0 +1,53 @@
+\Needspace{10\baselineskip}
+\section{自伴算子的谱分解}\label{sec:yosida-11-06}
+\noindent\textit{原书起始页：中译本 327；英文版 313。}
+
+\begin{theorem}[无界自伴谱定理]\label{thm:y11-self-adjoint}
+每个自伴算子 $A$ 都有唯一的实轴投影值测度 $E$，使
+\[
+ A=\int_\R t\,\dd E(t),\qquad
+ D(A)=\{x:\int_\R t^2\,\dd\mu_x(t)<\infty\}.
+\]
+对于 $z\notin\R$，
+\[
+ (A-zI)^{-1}=\int_\R(t-z)^{-1}\,\dd E(t).
+\]
+\end{theorem}
+\begin{proof}
+由定理 \ref{thm:y7-cayley}，$U=(A-iI)(A+iI)^{-1}=I-2i(A+iI)^{-1}$ 酉，且 $\ker(I-U)=0$。取其单位圆谱测度 $P$，则 $P(\{1\})=0$。以下映射为 Borel 同构：
+\[
+ c(t)=\frac{t-i}{t+i}:\R\longrightarrow\mathbb T\setminus\{1\},\qquad
+ c^{-1}(z)=i\frac{1+z}{1-z}
+\]
+\par\Needspace{6\baselineskip}
+定义 $E(B)=P(c(B))$，按上一节构造自伴算子 $A_0=\int t\,\dd E(t)$，则
+\[
+ (A_0+iI)^{-1}=\frac{I-U}{2i}=(A+iI)^{-1}.
+\]
+相同逆算子的值域给出相同定义域，再取逆得 $A_0=A$。一般非实预解式由有界乘子 $(t-z)^{-1}$ 与 $t-z$ 相乘检验双侧逆。若另有谱测度表示 $A$，经 $c$ 推回后表示同一 $U$；酉谱测度唯一，故 $E$ 唯一。
+\end{proof}
+
+若 $z=e^{i\theta}$，直接计算得 $c^{-1}(z)=-\cot(\theta/2)$。中译本此处有半角校注；不能写成 $-\cot\theta$。端点 $z=1$ 的投影质量为零，而不要求 $1$ 不属于 $U$ 的谱：无界 $A$ 常使它成为连续谱点。
+
+\begin{example}[动量算子的定义域]
+令 $\mathcal F_0=(2\pi)^{-1/2}\mathcal F$ 为 $L^2(\R)$ 上的酉 Fourier 变换。对 $P=-i\,\dd/\dd x$，$D(P)=H^1(\R)$，有
+\[
+ \mathcal F_0P\mathcal F_0^{-1}=M_\xi,\qquad
+ E_P(B)=\mathcal F_0^{-1}1_B(\xi)\mathcal F_0.
+\]
+先对 Schwartz 函数分部积分，再用 Fourier 加权范数闭包得到定义域相等。$C_c^\infty$ 上同一微分表达式只是其稠密限制，不能直接把该限制称作自伴算子。
+\end{example}
+
+\begin{exercise}[Cayley 的端点]\label{ex:y11-cayley-endpoint}
+对 $A=M_t$ 作用于 $L^2(\R)$，证明 $1\in\sigma(c(A))$，但 $P(\{1\})=0$。
+\end{exercise}
+\begin{solution}
+$c(t)$ 对有限实数从不等于 $1$，故单点投影为零；但 $c(t)\to1$ 当 $|t|\to\infty$。取支于 $(n,n+1)$ 的单位向量 $u_n$，则 $\|(c(A)-I)u_n\|\to0$，故不存在有界逆，$1$ 属于谱。
+\end{solution}
+
+\begin{exercise}[谱截断是图范数逼近]\label{ex:y11-spectral-core}
+设 $P_n=E([-n,n])$。证明 $P_nx\to x$ 对每个 $x\in H$ 成立，且对 $x\in D(A)$ 有 $AP_nx\to Ax$。
+\end{exercise}
+\begin{solution}
+两项误差的平方分别为 $\mu_x(\{|t|>n\})$ 与 $\int_{|t|>n}t^2\,\dd\mu_x$，均趋于零。因此 $\bigcup_nP_nH$ 在 $D(A)$ 的图范数中稠密。
+\end{solution}

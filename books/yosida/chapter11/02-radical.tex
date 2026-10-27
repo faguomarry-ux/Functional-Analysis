@@ -1,0 +1,40 @@
+\Needspace{10\baselineskip}
+\section{根、半单性}\label{sec:yosida-11-02}
+\noindent\textit{原书起始页：中译本 312；英文版 298。}
+
+\begin{definition}[Gelfand 变换与根]
+对 $a\in\mathcal A$ 定义 $\widehat a(\chi)=\chi(a)$。赋 $\Delta(\mathcal A)$ 逐点收敛拓扑，称为特征空间。根为 $\operatorname{rad}\mathcal A=\bigcap_{\chi}\ker\chi$；根为零时称半单。
+\end{definition}
+
+\begin{theorem}[交换 Banach 代数的函数表示]\label{thm:y11-gelfand}
+$\Delta(\mathcal A)$ 为紧 Hausdorff 空间；Gelfand 变换是到 $C(\Delta(\mathcal A))$ 的连续代数同态，并且
+\[
+ \sigma_{\mathcal A}(a)=\{\chi(a):\chi\in\Delta(\mathcal A)\},\qquad
+ \|\widehat a\|_\infty=r(a)=\lim_n\|a^n\|^{1/n}.
+\]
+其核为根。因此交换代数中，根由所有拟幂零元素组成；半单性等价于 Gelfand 变换单射，不自动等价于等距。
+\end{theorem}
+\begin{proof}
+把特征嵌入 $\prod_{a\in\mathcal A}\{z:|z|\le\|a\|\}$。线性、乘法与 $\chi(1)=1$ 均为闭条件，故特征空间是紧乘积的闭子集，且坐标函数分离点。若 $a-\lambda1$ 不可逆，其生成理想真，故包含于某极大理想；相应特征满足 $\chi(a)=\lambda$。反向已在上一节证明。谱半径公式的证明与第八章相同：Neumann 展开与预解式的 Cauchy 系数估计只用代数乘法及完备性，因此适用于 $\mathcal A$。由谱等式即得范数等式，核和根的断言随定义得到。
+\end{proof}
+
+\begin{theorem}[交换算子 C 星代数]\label{thm:y11-commutative-cstar}
+设 $\mathcal A\subset\mathcal L(H)$ 为含单位、范数闭、对伴随封闭的交换子代数。则 Gelfand 变换是到 $C(\Delta(\mathcal A))$ 的等距满 $*$ 同构。
+\end{theorem}
+\begin{proof}
+每个元素正规。由 $\|T^*T\|=\|T\|^2$ 及交换性，反复平方得 $\|T^{2^n}\|=\|T\|^{2^n}$，故 $r(T)=\|T\|$。于是 Gelfand 变换等距，像闭。若 $S=S^*$，$e^{itS}$ 酉，所以 $|e^{it\chi(S)}|\le1$ 对正负 $t$ 均成立，迫使 $\chi(S)$ 实。分解 $T$ 为实部与虚部，得 $\chi(T^*)=\overline{\chi(T)}$。像因而含常数、分离点且对共轭封闭，Stone--Weierstrass 定理使其一致稠密；闭性给出满射。
+\end{proof}
+
+\begin{exercise}[非零根]\label{ex:y11-radical}
+在代数 $\mathbb C[\varepsilon]/(\varepsilon^2)$ 上取范数 $\|a+b\varepsilon\|=|a|+|b|$。求特征、根和谱。
+\end{exercise}
+\begin{solution}
+特征使 $\chi(\varepsilon)^2=0$，故唯一特征为 $a+b\varepsilon\mapsto a$。根为 $\mathbb C\varepsilon$，$\sigma(a+b\varepsilon)=\{a\}$。非零元素 $\varepsilon$ 幂零，说明一般交换 Banach 代数不一定半单。
+\end{solution}
+
+\begin{exercise}[Wiener 逆定理的离散版本]\label{ex:y11-wiener-discrete}
+证明 $\ell^1(\mathbb Z)$ 卷积代数的特征为 $a\mapsto\sum_n a_nz^n$，$|z|=1$；从而绝对收敛 Fourier 级数处处非零时，其倒数也有绝对收敛 Fourier 级数。
+\end{exercise}
+\begin{solution}
+令 $z=\chi(\delta_1)$，因 $\delta_1\delta_{-1}=\delta_0$，有 $|z|\le1$ 且 $|z^{-1}|\le1$，故 $|z|=1$。由有限支集序列稠密及特征连续性得到级数公式。反向这些公式显然为特征。处处非零即在每个极大理想商中非零，所以元素可逆；其逆属于 $\ell^1$，给出所求倒数级数。
+\end{solution}

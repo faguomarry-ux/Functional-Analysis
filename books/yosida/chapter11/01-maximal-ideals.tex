@@ -1,0 +1,38 @@
+\Needspace{10\baselineskip}
+\section{赋范环的极大理想}\label{sec:yosida-11-01}
+\noindent\textit{原书起始页：中译本 309；英文版 295。}
+
+\begin{definition}[Banach 代数与特征]
+复 Banach 空间 $\mathcal A$ 若具有结合、双线性的乘法且 $\|ab\|\le\|a\|\|b\|$，称为 Banach 代数。以下先假定其交换、有单位 $1$ 且 $\|1\|=1$。特征指非零复线性乘法泛函 $\chi:\mathcal A\to\mathbb C$，全体记为 $\Delta(\mathcal A)$。真理想中的极大元称为极大理想。
+\end{definition}
+
+本节的理想是满足 $\mathcal A M\subset M$ 的线性子空间 $M$；“真”表示 $M\ne\mathcal A$。有单位时，这等价于 $1\notin M$。
+
+\begin{theorem}[极大理想与特征对应]\label{thm:y11-characters}
+每个真理想包含于某极大理想。每个极大理想 $M$ 闭，$\mathcal A/M\cong\mathbb C$，且唯一对应 $\chi\in\Delta(\mathcal A)$ 使 $M=\ker\chi$。每个特征自动连续，$\|\chi\|=\chi(1)=1$。
+\end{theorem}
+\begin{proof}
+用包含给定真理想的真理想族及 Zorn 引理取极大元；链的并仍真，因为它不含 $1$。若 $\overline M=\mathcal A$，则有 $a\in M$ 使 $\|1-a\|<1$；Neumann 级数使 $a$ 可逆，导致 $1\in M$，矛盾。闭包为理想，由极大性 $M=\overline M$。
+
+商代数是复 Banach 除代数。对其元素 $b$，谱非空：若预解式处处存在，则在无穷远趋零，逐连续泛函应用 Liouville 定理会使预解式恒为零，矛盾。取 $\lambda\in\sigma(b)$，除代数中不可逆元素只能为零，故 $b=\lambda1$。这给出 Gelfand--Mazur 结论及商特征。反之，特征的核的商是一维域，所以核极大。
+
+对任意特征，$\chi(1)=1$；$a-\chi(a)1$ 不可逆，否则对其逆应用 $\chi$ 得矛盾。又 $|\lambda|>\|a\|$ 时 Neumann 级数给出逆，故 $|\chi(a)|\le\|a\|$。结合单位值，得到范数为 $1$，无需预先假定连续性。
+\end{proof}
+
+\begin{example}[连续函数代数]
+若 $K$ 紧 Hausdorff，则 $C(K)$ 的特征恰为点值 $f\mapsto f(t)$。若极大理想 $M$ 的函数无公共零点，紧性给出 $f_1,\ldots,f_n\in M$ 使 $h=\sum|f_j|^2>0$；$h\in M$ 且可逆，矛盾。因此 $M\subset\{f:f(t)=0\}$，极大性使它们相等。
+\end{example}
+
+\begin{exercise}[单位化]\label{ex:y11-unitization}
+对无单位 Banach 代数 $\mathcal B$，在 $\mathbb C\oplus\mathcal B$ 上写出乘法与范数，使 $(1,0)$ 成为单位，并验证乘法估计。
+\end{exercise}
+\begin{solution}
+定义 $(\lambda,a)(\mu,b)=(\lambda\mu,\lambda b+\mu a+ab)$，范数 $|\lambda|+\|a\|$。三角不等式和 $\|ab\|\le\|a\|\|b\|$ 给出积的范数至多两范数之积；完备性来自直和完备性。
+\end{solution}
+
+\begin{exercise}[交换性的位置]\label{ex:y11-noncommutative}
+说明矩阵代数 $M_2(\mathbb C)$ 不能套用本节极大理想到复数特征的对应。
+\end{exercise}
+\begin{solution}
+$M_2(\mathbb C)$ 的双边理想只有零与全代数，故零理想极大，但商仍为矩阵代数而非域。若有复特征，其核只能为零，得到从四维复空间到一维空间的单射，矛盾。交换性用于将极大理想商变成除代数。
+\end{solution}

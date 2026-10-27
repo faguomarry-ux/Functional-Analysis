@@ -1,0 +1,43 @@
+\Needspace{10\baselineskip}
+\section{关于非交换紧群的 Tannaka 对偶性定理}\label{sec:yosida-11-11}
+\noindent\textit{原书起始页：中译本 345；英文版 332。}
+
+交换紧群可用一维特征描述，非交换紧群则需要所有有限维表示及其乘法关系。下面采用与原书同型的代表函数环表述，避免把“任意一组酉矩阵”误认为群的一个点。
+
+\begin{theorem}[Tannaka 的代表函数表述]\label{thm:y11-tannaka}
+设 $G$ 为紧 Hausdorff 群，$\mathcal R(G)$ 为代表函数代数。每个含单位、保持复共轭的复代数同态
+\[
+ \chi:\mathcal R(G)\longrightarrow\mathbb C
+\]
+都是唯一的点值泛函 $\chi(f)=f(g)$。在所有此类 $\chi$ 上赋逐点收敛拓扑及下述群运算，点值映射给出 $G$ 到该空间的拓扑群同构。这里没有预先假定 $\chi$ 对一致范数连续。
+\end{theorem}
+\begin{proof}
+对每个不可约酉表示 $\pi$，矩阵 $U_\pi(\chi)=(\chi(\pi_{ij}))$ 是酉矩阵：直接把 $\pi(g)^*\pi(g)=I$ 的各系数恒等式送入保持共轭的 $\chi$。代表函数由这些系数线性张成，所以 $\chi$ 由所有 $U_\pi$ 决定。线性关系、乘法关系、共轭及单位关系均为闭条件，故所有这样的 $\chi$ 组成乘积 $\prod_\pi U(d_\pi)$ 的闭子集 $K$，从而紧。
+
+代表函数有代数余乘法 $\Delta f(g,h)=f(gh)$，其值在 $\mathcal R(G)\otimes\mathcal R(G)$ 中，因为 $\Delta\pi_{ij}=\sum_k\pi_{ik}\otimes\pi_{kj}$。定义
+\[
+ (\chi\psi)(f)=(\chi\otimes\psi)(\Delta f),\qquad
+ \chi^{-1}(f)=\chi(f\circ\mathrm{inv}).
+\]
+这些公式在系数上就是矩阵乘法与取逆，代数恒等式保证它们仍为含单位、保持共轭的同态。于是 $K$ 为紧拓扑群。点值映射 $G\to K$ 连续，Peter--Weyl 分离点使它单射；紧性使其像为闭子群。
+
+将 $f\in\mathcal R(G)$ 变成 $\widetilde f(\chi)=\chi(f)$。这些函数在 $K$ 上含常数、分离点且对共轭封闭，所以一致稠密于 $C(K)$。每个 $\pi$ 的矩阵 $U_\pi$ 是 $K$ 上的连续酉表示；它限制到 $G$ 后是不可约 $\pi$，所以在 $K$ 上也不可约，且非平凡表示仍非平凡。对 $K$ 和 $G$ 分别使用 Haar 平均：平凡表示系数的平均为 $1$，其他不可约系数的平均均为零。因此两种平均对每个 $\widetilde f$ 相同，再由一致稠密性对所有 $C(K)$ 函数相同。
+
+若 $G$ 的像是真闭子群，Urysohn 引理给出非负连续函数在其上为零、在像外某点为正。它对 $G$ 的积分为零，对 $K$ 的积分为正，因为非空开集 Haar 测度为正，矛盾。故 $G=K$，得到满射；唯一性及拓扑同构随分离点和紧 Hausdorff 性得到。
+\end{proof}
+
+等价地，群的一个点作用在每个有限维表示上，且与所有交织算子、直和、张量积、共轭及平凡表示相容。代表函数中的代数关系正编码这些条件。仅要求每个表示对应一个酉矩阵，没有这些相容条件，会得到远大于 $G$ 的乘积空间。
+
+\begin{exercise}[圆群的重构]\label{ex:y11-tannaka-circle}
+对 $G=\mathbb T$，用 Laurent 多项式代数证明上述重构。
+\end{exercise}
+\begin{solution}
+$\mathcal R(\mathbb T)=\mathbb C[z,z^{-1}]$，共轭满足 $z^*=z^{-1}$。同态由 $w=\chi(z)$ 决定，保持共轭及 $zz^{-1}=1$ 给出 $|w|=1$，于是 $\chi(p)=p(w)$，恰是点值。
+\end{solution}
+
+\begin{exercise}[张量相容性]\label{ex:y11-tannaka-tensor}
+圆群的第 $n$ 个特征记为 $\pi_n$。若为每个 $n$ 任取 $u_n\in\mathbb T$，写出来自同一群元素所需的条件。
+\end{exercise}
+\begin{solution}
+需 $u_0=1$、$u_{m+n}=u_mu_n$、$u_{-n}=\overline{u_n}$。这些条件使 $u_n=u_1^n$，于是由唯一的 $u_1\in\mathbb T$ 决定。独立选择各个 $u_n$ 通常不满足乘法关系。
+\end{solution}

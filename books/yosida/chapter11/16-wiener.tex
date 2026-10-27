@@ -1,0 +1,70 @@
+\Needspace{10\baselineskip}
+\section{群环 \texorpdfstring{$L^1$}{L1} 及 Wiener 的 Tauber 定理}\label{sec:yosida-11-16}
+\noindent\textit{原书起始页：中译本 367；英文版 354。}
+
+在 $L^1(\R)$ 上取卷积乘法和 $f^*(x)=\overline{f(-x)}$。Fubini 给出 $\|f*g\|_1\le\|f\|_1\|g\|_1$，所以这是交换 Banach 代数，但没有卷积单位：形式上的单位 $\delta_0$ 不属于 $L^1$。以下用 $\widetilde{L^1}=\mathbb C1\oplus L^1$ 表示单位化。
+
+\begin{theorem}[群环的特征与半单性]\label{thm:y11-group-characters}
+$L^1(\R)$ 的所有非零特征为
+\[
+ \chi_\xi(f)=\widehat f(\xi)=\int_\R e^{-it\xi}f(t)\,\dd t,\qquad \xi\in\R.
+\]
+单位化的特征另外包含 $\chi_\infty(\lambda1+f)=\lambda$，其他特征为 $\lambda+\widehat f(\xi)$。该代数半单。
+\end{theorem}
+\begin{proof}
+非零特征延为单位化的含单位特征，故自动连续。选 $g$ 使 $\chi(g)\ne0$，令 $\tau_tg(x)=g(x-t)$，$c(t)=\chi(\tau_tg)/\chi(g)$。恒等式 $(\tau_tg)*h=g*(\tau_th)$ 说明此比值与所选非零特征值函数无关，且 $\chi(\tau_th)=c(t)\chi(h)$ 对所有 $h$ 成立。于是 $c(t+s)=c(t)c(s)$，$c(0)=1$。平移的 $L^1$ 连续性给出 $c$ 连续，等距性给出全轴有界。群律使 $|c(t)|=1$，故 $c(t)=e^{-it\xi}$，其中实数 $\xi$ 唯一。
+
+Bochner 积分恒等式 $f*g=\int f(t)\tau_tg\,\dd t$ 使
+\[
+ \chi(f)\chi(g)=\chi(g)\int f(t)c(t)\,\dd t.
+\]
+消去 $\chi(g)$ 得 Fourier 公式。反向由 Fubini 验证这些都是特征；单位化中限制到 $L^1$ 为零时只剩 $\chi_\infty$。若所有特征在 $\lambda1+f$ 上为零，则先由 $\chi_\infty$ 得 $\lambda=0$，再由 Fourier 变换的单射性得 $f=0$，故根为零。
+\end{proof}
+
+\begin{theorem}[Wiener 平移稠密定理]\label{thm:y11-wiener}
+对 $f\in L^1(\R)$，其所有平移的线性张成在 $L^1(\R)$ 中稠密，当且仅当 $\widehat f(\xi)\ne0$ 对所有实数 $\xi$ 成立。
+\end{theorem}
+\begin{proof}
+必要性：若 $\widehat f(\xi_0)=0$，连续非零泛函 $\chi_{\xi_0}$ 消灭所有平移及其闭包，故不稠密。
+
+充分性：先证明闭卷积理想 $I=\overline{f*L^1}$ 为全空间。取 $\varphi$ 满足 $\widehat\varphi\in C_c^\infty(\R)$。选 $h$ 使 $\widehat h\in C_c^\infty$、$0\le\widehat h\le1$，且在 $\operatorname{supp}\widehat\varphi$ 上恒为 $1$；由 Fourier 反演 $h\in\Sch\subset L^1$。
+\par\Needspace{4\baselineskip}
+在单位化代数中令
+\[
+ d=1-h+f*f^*.
+\]
+每个有限特征给出 $1-\widehat h(\xi)+|\widehat f(\xi)|^2>0$，而无穷特征值为 $1$。极大理想判据使 $d$ 可逆。置 $g=d^{-1}*(f^* *\varphi)\in L^1$。在 $\widehat\varphi$ 的支集上 $\widehat h=1$，所以 $\widehat{f*g}=\widehat\varphi$；支集外两者均为零。Fourier 单射性给出 $f*g=\varphi$，故所有这类 $\varphi$ 均在 $I$ 中。
+
+这些 $\varphi$ 在 $L^1$ 中稠密。具体地，先把任意 $L^1$ 函数逼近为 Schwartz 函数 $v$，再取 $\eta\in\Sch$ 满足 $\widehat\eta\in C_c^\infty$、$\widehat\eta(0)=1$。$\eta_\varepsilon(x)=\varepsilon^{-1}\eta(x/\varepsilon)$ 为有界 $L^1$ 近似单位，故 $v*\eta_\varepsilon\to v$ 于 $L^1$，而其 Fourier 变换光滑且紧支。因此 $I=L^1$。
+
+最后 $f*g$ 是平移 $f$ 的 Bochner 加权积分，所以属于平移张成的闭包；可由简单函数逼近积分验证。反向每个 $\tau_af$ 都由 $f*(\tau_a\eta_\varepsilon)$ 逼近。因此闭理想恰为平移张成的闭包，结论成立。
+\end{proof}
+
+这里使用的是 $f$ 的平移稠密性，不是 $f$ 在 $L^1$ 卷积代数中可逆。事实上 $\widehat f(\xi)\to0$ 于无穷远，不能把它的倒数当作某个 $L^1$ 函数的 Fourier 变换。
+
+\begin{corollary}[有界函数的 Tauber 传递]\label{cor:y11-tauber-transfer}
+若 $h\in L^\infty(\R)$、$\widehat f$ 处处非零，并且
+\[
+ (f*h)(x)\longrightarrow C\int f\quad(x\to+\infty),
+\]
+则对每个 $g\in L^1$，$(g*h)(x)\to C\int g$。
+\end{corollary}
+\begin{proof}
+结论对 $f$ 的平移成立，因为 $(\tau_af*h)(x)=(f*h)(x-a)$，故对它们的有限线性组合成立。用 Wiener 稠密定理逼近 $g$，并估计 $\|(g-p)*h\|_\infty\le\|g-p\|_1\|h\|_\infty$、$|\int(g-p)|\le\|g-p\|_1$，即可先控制逼近误差，再令 $x\to\infty$。
+\end{proof}
+
+原书末尾还讨论 Littlewood 的 Abel--Tauber 推论。本节未展开其证明；通常级数收敛还需 $na_n$ 有界等条件，不能仅凭 Abel 可和性推出。
+
+\begin{exercise}[高斯平移]\label{ex:y11-gaussian-translates}
+证明 $f(x)=e^{-x^2}$ 的有限平移线性组合在 $L^1(\R)$ 中稠密。
+\end{exercise}
+\begin{solution}
+由本书 Fourier 约定，$\widehat f(\xi)=\sqrt\pi e^{-\xi^2/4}$，处处非零，因此应用 Wiener 定理。结论允许复系数的有限线性组合，不要求正系数。
+\end{solution}
+
+\begin{exercise}[一个零点就足够阻碍稠密]\label{ex:y11-zero-obstruction}
+取 $f=1_{[0,1]}$。证明其平移张成不在 $L^1(\R)$ 中稠密，并写出一个消灭该闭包的非零连续泛函。
+\end{exercise}
+\begin{solution}
+$\widehat f(2\pi)=\int_0^1e^{-2\pi ix}\,\dd x=0$。泛函 $g\mapsto\int e^{-2\pi ix}g(x)\,\dd x$ 非零且有界，并在每个平移 $f$ 上取零，故其核包含整个闭包。
+\end{solution}

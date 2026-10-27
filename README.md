@@ -4,11 +4,13 @@
 
 以吉田耕作《泛函分析》第六版中译本为学习主线，英文原版辅助核对术语、目录与页码，结合施瓦尔茨、盖尔芳特与希烙夫的广义函数著作，以及汪林的反例教材，逐步整理中文个人学习讲义。正文使用 LaTeX 编写，统一符号、证明、例子和习题解答。
 
-**本项目仅用于个人、非商业学习，不开展教材销售、付费课程或其他商业活动。** 项目仍在编写和校对中：目前已有第零至第三章正文及八章广义函数专题，主线第四章九节、第五章五节及附录已有正文，第六章十二节、第七章五节、第八章八节、第九章十三节及第十章六节与附录亦已有首轮正文，第十一至十四章仍为占位。编译成功只表示排版构建通过，不表示数学内容已经全部完成或正确。
+**本项目仅用于个人、非商业学习，不开展教材销售、付费课程或其他商业活动。** 项目仍在编写和校对中：主线第零至第十一章及第五、十章附录已有首轮正文，另有八章广义函数专题；第十二至十四章仍为占位。编译成功只表示排版构建通过，不表示数学内容已经全部完成或正确。
 
 更新时间：**2026-10-27（北京时间）**。
 
-最新更新（2026-10-27，第十章）：补写“紧算子”六节及核空间附录，新增 **15 道附解答习题**。主线已有正文 **94/132 节（71.2%）**，剩余 38 节，主线习题共 154 道。展开 Fréchet–Kolmogorov 判别、紧与核算子、Rellich–Gårding、Schauder、Riesz–Schauder、幂紧推广及 Dirichlet 弱解的 Fredholm 相容条件；核空间附录含半范数定义、Banach 映射判别和 Hilbert 半范数构造。完整 XeLaTeX 构建及正文、答案页面检查通过，本地讲义 **341 页**。具体查阅范围、证明边界和构建验收见 [第十章 COVERAGE](books/yosida/chapter10/COVERAGE.md)。独立数学审校仍待完成。
+最新更新（2026-10-27，第十一章）：补写“赋范环和谱表示”十六节，新增 **32 道附解答习题**。主线已有正文 **110/132 节（83.3%）**，剩余 22 节，主线题解共 186 份。展开 Gelfand 表示、投影值谱测度、Friedrichs 扩张、谱估计与展开、Peter–Weyl、Tannaka、Borel 函数演算、Stone–Bochner、简单谱、亏指数及 Wiener 稠密定理；修正英文第十一章范围为 294–362 页。完整 XeLaTeX 构建及正文、答案页面检查通过，本地讲义 **369 页**，本轮验收文件为 `output/pdf/chapter11-notes.pdf`。直接查阅范围、外部前提和证明边界见 [第十一章 COVERAGE](books/yosida/chapter11/COVERAGE.md)。独立数学审校仍待完成。
+
+前次更新（2026-10-27，第十章）：补写“紧算子”六节及核空间附录，新增 **15 道附解答习题**。主线已有正文 **94/132 节（71.2%）**，剩余 38 节，主线习题共 154 道。展开 Fréchet–Kolmogorov 判别、紧与核算子、Rellich–Gårding、Schauder、Riesz–Schauder、幂紧推广及 Dirichlet 弱解的 Fredholm 相容条件；核空间附录含半范数定义、Banach 映射判别和 Hilbert 半范数构造。完整 XeLaTeX 构建及正文、答案页面检查通过，本地讲义 **341 页**。具体查阅范围、证明边界和构建验收见 [第十章 COVERAGE](books/yosida/chapter10/COVERAGE.md)。独立数学审校仍待完成。
 
 前次更新（2026-10-27，第九章）：补写“半群的分析理论”十三节及 **26 道附解答习题**；主线已有正文 **88/132 节（66.7%）**，剩余 44 节，主线习题共 139 道。展开生成元、Laplace 预解式、Hille–Yosida、Lumer–Phillips、Stone、全纯半群导数刻画、分数幂、Trotter–Kato 与 Phillips 对偶半群。完整三遍 XeLaTeX 构建与正文、解答页面检查通过，本地讲义 **325 页**。同步修正英文第八、九章的共页范围；一般局部凸推广及稳定核的证明边界见 [第九章 COVERAGE](books/yosida/chapter09/COVERAGE.md)。独立数学审校仍待完成。
 
@@ -50,7 +52,7 @@
 
 ## 内容范围与当前进度
 
-第一部分保留吉田原书 **第 0–14 章，共 15 章、132 个编号节**。第零章四节、第一章十四节、第二章七节及第三章十一节已有正文和核查记录，第四章九节、第五章五节及附录、第六章十二节、第七章五节、第八章八节、第九章十三节及第十章六节亦已有正文，合计 **94/132 节，约 71.2%**；这是已有正文的节数比例，不代表阅读比例、工作量比例或最终校对完成率。第五、十章的原书附录保留在各自章末。
+第一部分保留吉田原书 **第 0–14 章，共 15 章、132 个编号节**。第零章四节、第一章十四节、第二章七节及第三章十一节已有正文和核查记录，第四章九节、第五章五节及附录、第六章十二节、第七章五节、第八章八节、第九章十三节、第十章六节及第十一章十六节亦已有正文，合计 **110/132 节，约 83.3%**；这是已有正文的节数比例，不代表阅读比例、工作量比例或最终校对完成率。第五、十章的原书附录保留在各自章末。
 
 | 模块 | 当前状态 | 下一步 |
 | --- | --- | --- |
@@ -65,14 +67,15 @@
 | 第八章：预解式和谱 | 八节首轮正文、16 道附解答习题及 COVERAGE | 独立复核全纯演算、图范数与遍历证明；局部凸推广待展开 |
 | 第九章：半群的分析理论 | 十三节首轮正文、26 道附解答习题及 COVERAGE | 独立复核生成元、全纯与分数幂、稳定收敛；一般推广待展开 |
 | 第十章：紧算子 | 六节与核空间附录首轮正文、15 道附解答习题及 COVERAGE | 独立复核谱论、变分条件及核空间；一般稳定性待展开 |
-| 第十一至十四章 | 38 个编号节保留标题、两版页码和占位提示 | 按主线逐节补写 |
+| 第十一章：赋范环和谱表示 | 十六节首轮正文、32 道附解答习题与 COVERAGE | 独立复核谱演算、群重构及无界定义域；一般推广边界见记录 |
+| 第十二至十四章 | 22 个编号节保留标题、两版页码和占位提示 | 按主线逐节补写 |
 | 广义函数专题：第 15–22 章 | 八章已有正文、证明、例子和习题 | 逐章复核与主线的衔接及出处 |
 | 版本对照与参考对照 | 已有附录框架与主要映射 | 随正文补写更新 |
 | 补充说明、索引、空间记号表、原书总书目 | 仍有占位；第零章相关五组文献已核对 | 整理实际引用、生成可检索索引 |
 | 汪林反例专题 | 参考书已列入，未系统整合 | 按定理条件建立反例索引 |
 | GitHub 工程配置 | 已有构建/发布流程，第二、三、五章阶段 Release 已成功 | 持续核验新提交的 Actions 构建与阶段快照 |
 
-核查依据见 [第零章 COVERAGE](books/yosida/chapter00/COVERAGE.md)、[第一章 COVERAGE](books/yosida/chapter01/COVERAGE.md)、[第二章 COVERAGE](books/yosida/chapter02/COVERAGE.md)、[第三章 COVERAGE](books/yosida/chapter03/COVERAGE.md)、[第四章 COVERAGE](books/yosida/chapter04/COVERAGE.md)、[第五章 COVERAGE](books/yosida/chapter05/COVERAGE.md)、[第六章 COVERAGE](books/yosida/chapter06/COVERAGE.md)、[第七章 COVERAGE](books/yosida/chapter07/COVERAGE.md)、[第八章 COVERAGE](books/yosida/chapter08/COVERAGE.md)、[第九章 COVERAGE](books/yosida/chapter09/COVERAGE.md)、[第十章 COVERAGE](books/yosida/chapter10/COVERAGE.md) 和 [目录数据](books/yosida/catalog.json)。不把目录、占位或仅有编译产物的章节计为完成。
+核查依据见 [第零章 COVERAGE](books/yosida/chapter00/COVERAGE.md)、[第一章 COVERAGE](books/yosida/chapter01/COVERAGE.md)、[第二章 COVERAGE](books/yosida/chapter02/COVERAGE.md)、[第三章 COVERAGE](books/yosida/chapter03/COVERAGE.md)、[第四章 COVERAGE](books/yosida/chapter04/COVERAGE.md)、[第五章 COVERAGE](books/yosida/chapter05/COVERAGE.md)、[第六章 COVERAGE](books/yosida/chapter06/COVERAGE.md)、[第七章 COVERAGE](books/yosida/chapter07/COVERAGE.md)、[第八章 COVERAGE](books/yosida/chapter08/COVERAGE.md)、[第九章 COVERAGE](books/yosida/chapter09/COVERAGE.md)、[第十章 COVERAGE](books/yosida/chapter10/COVERAGE.md)、[第十一章 COVERAGE](books/yosida/chapter11/COVERAGE.md) 和 [目录数据](books/yosida/catalog.json)。不把目录、占位或仅有编译产物的章节计为完成。
 
 ## 时间线与近期待办
 
@@ -97,7 +100,7 @@
 - [x] 对第 0–3 章进行本轮作者复核，加入 13 幅插图并完成本地编译及排版检查（2026-10-11）。
 - [x] 补写第二章七节，更新核查记录并加入 8 道附解答习题（2026-10-11）。
 - [x] 补写第三章十一节与 11 道附解答习题，记录数学自查与证明边界（2026-10-11）。
-- [ ] 完成已写内容的独立数学校对，补全第五、六、八、九、十章注明的证明边界并继续第十一章。
+- [ ] 完成已写内容的独立数学校对，补全第五、六、八、九、十、十一章注明的证明边界并继续第十二章。
 - [ ] 建立反例索引，标明每个反例针对哪个定理条件。
 
 ## 仓库结构
@@ -127,6 +130,7 @@ books/
   yosida/chapter08/                 第八章八节正文与 COVERAGE.md
   yosida/chapter09/                 第九章十三节正文与 COVERAGE.md
   yosida/chapter10/                 第十章六节、核空间附录与 COVERAGE.md
+  yosida/chapter11/                 第十一章十六节正文与 COVERAGE.md
   yosida/catalog.json               两版目录、节名与原书页码
   yosida/15-...18-*.tex              版本对照、补充说明、索引及记号表
   00-preface.tex                    前言和数学约定

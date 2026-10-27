@@ -1,0 +1,59 @@
+\Needspace{10\baselineskip}
+\section{Stone 定理和 Bochner 定理}\label{sec:yosida-11-13}
+\noindent\textit{原书起始页：中译本 358；英文版 345。}
+
+\begin{theorem}[Stone 定理的谱积分形式]\label{thm:y11-stone}
+若 $A=A^*$，则
+\[
+ U(t)=e^{itA}=\int_\R e^{it\lambda}\,\dd E(\lambda)
+\]
+为强连续酉群，生成元为 $iA$，包括定义域相等。每个强连续酉群都唯一以此形式表示。
+\end{theorem}
+\begin{proof}
+乘子乘法和 $|e^{it\lambda}|=1$ 给出群律与酉性。控制收敛给出强连续。对 $x\in D(A)$，$|(e^{it\lambda}-1)/t|\le|\lambda|$，差商在平方积分中趋于 $i\lambda$，故生成元包含 $iA$。
+
+反之，若差商在 $H$ 中收敛，则其范数有界。沿 $t_n\to0$ 用 Fatou 引理，得到 $\int\lambda^2\,\dd\mu_x<\infty$，所以 $x\in D(A)$，生成元正好为 $iA$。对任意强连续酉群，第九章定理 \ref{thm:y9-stone} 已在不使用谱定理的前提下证明生成元为某个 $iA$。本节积分群与它生成元相同，由生成元唯一性两群相同。
+\end{proof}
+
+\begin{definition}[正定函数]
+函数 $\varphi:\R\to\mathbb C$ 称为正定，若对任意有限组 $t_j\in\R$、$c_j\in\mathbb C$，
+\[
+ \sum_{j,k}c_j\overline{c_k}\varphi(t_j-t_k)\ge0.
+\]
+该条件蕴含 $\varphi(0)\ge0$、$\varphi(-t)=\overline{\varphi(t)}$ 及 $|\varphi(t)|\le\varphi(0)$，可由一阶与二阶矩阵检验得到。
+\end{definition}
+
+\begin{theorem}[Bochner 表示]\label{thm:y11-bochner}
+$\varphi$ 是连续正定函数，当且仅当存在唯一有限正 Borel 测度 $\mu$ 使
+\[
+ \varphi(t)=\int_\R e^{it\lambda}\,\dd\mu(\lambda),\qquad
+ \mu(\R)=\varphi(0).
+\]
+\end{theorem}
+\begin{proof}
+若存在测度，正定性由积分 $|\sum_jc_je^{it_j\lambda}|^2$ 得到，连续性由控制收敛得到。
+
+反向在有限形式和 $\sum c_j\delta_{t_j}$ 上定义半内积 $(\delta_s,\delta_t)=\varphi(s-t)$。正定性保证非负；Cauchy--Schwarz 使零范数向量构成可商掉的子空间。商后完备化为 Hilbert 空间 $K$，平移 $V(a)\delta_s=\delta_{s+a}$ 保内积，逆为 $V(-a)$。又
+\[
+ \|\delta_{s+a}-\delta_s\|^2=2\varphi(0)-2\operatorname{Re}\varphi(a)\longrightarrow0,
+\]
+故先在稠密有限和上、再由等距性在全空间上得到强连续酉群。记 $v=\delta_0$ 的商像，则 $\varphi(t)=(V(t)v,v)$。对 $V(t)$ 使用 Stone 谱积分，取 $\mu(B)=(E(B)v,v)$ 即得表示。
+
+若两有限测度有同一 Fourier 变换，对任意 Schwartz 测试函数应用 Fourier 反演与 Fubini，得到它们对所有 $C_c^\infty$ 函数的积分相同；有限测度的正则性使它们相等。因此表示唯一。
+\end{proof}
+
+这里正定与逐点非负不同；概率测度对应额外条件 $\varphi(0)=1$。积分指数取正号，与本书函数 Fourier 变换的负号约定配套。
+
+\begin{exercise}[含负值的正定函数]\label{ex:y11-positive-definite}
+证明 $\cos t$ 正定，求其表示测度，并说明正定不意味着逐点非负。
+\end{exercise}
+\begin{solution}
+$\cos t=(e^{it}+e^{-it})/2$，对应正测度 $(\delta_1+\delta_{-1})/2$，所以正定；但 $\cos\pi=-1$。
+\end{solution}
+
+\begin{exercise}[有界生成元与范数连续]\label{ex:y11-unitary-norm-continuity}
+证明 $e^{itA}$ 在 $t=0$ 范数连续当且仅当自伴 $A$ 有界。
+\end{exercise}
+\begin{solution}
+有界时指数级数给出范数连续。若 $A$ 无界，谱中存在 $|\lambda_n|\to\infty$，取 $t_n=\pi/|\lambda_n|$，则 $|e^{it_n\lambda_n}-1|=2$。连续演算的等距性或谱支集判别给出 $\|e^{it_nA}-I\|=2$，故不范数连续。
+\end{solution}

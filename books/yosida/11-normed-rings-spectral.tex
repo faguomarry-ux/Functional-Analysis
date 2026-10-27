@@ -1,70 +1,30 @@
 % !TeX encoding = UTF-8
-% 吉田第六版：中译本第 11 章；此文件当前仅为目录与正文占位。
-\SetChapterInfo{subtitle={吉田耕作第六版主线 · 正文待撰写}}
-\chapter{赋范环和谱表示}\label{ch:yosida-11}
-\YosidaChapterPlaceholder{11}{Normed Rings and Spectral Representation}{307--376}{294--361}
+\SetChapterInfo{subtitle={从极大理想到谱积分与调和分析},keywords={Gelfand 表示; 谱测度; 自伴算子; Friedrichs; 紧群; Tannaka; Wiener},prereq={预解式; Cayley 变换; 紧算子; Riesz--Markov; Stone--Weierstrass},goals={构造谱表示; 控制无界演算定义域; 连接群表示与 Fourier 分析}}
+\chapter[赋范环和谱表示]{赋范环\\和谱表示}\label{ch:yosida-11}
+\ChapterSource{按 \cite{yosida-zh,yosida-en} 第十一章十六节组织，2026 年 10 月 27 日补写。直接查看英文印刷 294--362 页扫描图，第 362 页上部为本章结尾、下部开始第十二章，故更正本章英文范围。中译本参考范围为 307--376 页，选页及证明边界详见本章 COVERAGE。}
 
-\section{赋范环的极大理想}\label{sec:yosida-11-01}
-\YosidaSectionPlaceholder{309}{295}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
+第十章的紧性使非零谱问题归结为有限维空间，本章转向一般正规与自伴算子。第一条线索是把交换 Banach 代数的元素表示为函数；第二条线索是用投影值测度把这些函数重新解释为算子；第三条线索则把谱分解用于群表示、正定函数和 Tauber 型逼近。
 
-\section{根、半单性}\label{sec:yosida-11-02}
-\YosidaSectionPlaceholder{312}{298}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
+本章 $H$ 为非零复 Hilbert 空间，内积对第一变量线性。$\mathcal A$ 表示代数，$A$ 或 $S$ 表示算子，$E$ 表示投影值测度。实轴谱族统一采用右连续约定 $E_t=E((-\infty,t])$。Fourier 变换仍取 $\widehat f(\xi)=\int e^{-ix\xi}f(x)\,\dd x$，原书约定在对应公式中换算。测度表示的外部前提在使用处注明。
 
-\section{有界正规算子的谱分解}\label{sec:yosida-11-03}
-\YosidaSectionPlaceholder{315}{302}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
+\input{books/yosida/chapter11/01-maximal-ideals}
+\input{books/yosida/chapter11/02-radical}
+\input{books/yosida/chapter11/03-normal}
+\input{books/yosida/chapter11/04-unitary}
+\input{books/yosida/chapter11/05-resolution}
+\input{books/yosida/chapter11/06-self-adjoint}
+\input{books/yosida/chapter11/07-friedrichs}
+\input{books/yosida/chapter11/08-spectrum}
+\input{books/yosida/chapter11/09-expansion}
+\input{books/yosida/chapter11/10-peter-weyl}
+\input{books/yosida/chapter11/11-tannaka}
+\input{books/yosida/chapter11/12-functions}
+\input{books/yosida/chapter11/13-stone-bochner}
+\input{books/yosida/chapter11/14-simple-spectrum}
+\input{books/yosida/chapter11/15-deficiency}
+\input{books/yosida/chapter11/16-wiener}
 
-\section{酉算子的谱分解}\label{sec:yosida-11-04}
-\YosidaSectionPlaceholder{319}{306}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{单位分解}\label{sec:yosida-11-05}
-\YosidaSectionPlaceholder{322}{309}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{自伴算子的谱分解}\label{sec:yosida-11-06}
-\YosidaSectionPlaceholder{327}{313}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{实算子和半有界算子、Friedrichs 定理}\label{sec:yosida-11-07}
-\YosidaSectionPlaceholder{329}{316}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section[自伴算子的谱、Rayleigh 原理和 Krylov--Weinstein 定理、谱的重数]{自伴算子的谱、Rayleigh 原理和\\Krylov--Weinstein 定理、谱的重数}\label{sec:yosida-11-08}
-\YosidaSectionPlaceholder{332}{319}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{一般展开定理、连续谱不出现的一个条件}\label{sec:yosida-11-09}
-\YosidaSectionPlaceholder{336}{323}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-扩展阅读：第 \ref{ch:weighted} 章的广义固有函数。\par
-
-\section{Peter--Weyl--Neumann 理论}\label{sec:yosida-11-10}
-\YosidaSectionPlaceholder{339}{326}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{关于非交换紧群的 Tannaka 对偶性定理}\label{sec:yosida-11-11}
-\YosidaSectionPlaceholder{345}{332}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{自伴算子的函数}\label{sec:yosida-11-12}
-\YosidaSectionPlaceholder{351}{338}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{Stone 定理和 Bochner 定理}\label{sec:yosida-11-13}
-\YosidaSectionPlaceholder{358}{345}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{具有简单谱的自伴算子的标准型}\label{sec:yosida-11-14}
-\YosidaSectionPlaceholder{360}{347}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{对称算子的亏指数、广义单位分解}\label{sec:yosida-11-15}
-\YosidaSectionPlaceholder{362}{349}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
-
-\section{群环 \texorpdfstring{$L^1$}{L1} 及 Wiener 的 Tauber 定理}\label{sec:yosida-11-16}
-\YosidaSectionPlaceholder{367}{354}
-% TODO: 定义与记号；定理与完整证明；例子；习题；中英文核对。
+\Needspace{6\baselineskip}
+\section*{本章参考说明与阅读衔接}
+\phantomsection\addcontentsline{toc}{section}{本章参考说明与阅读衔接}
+直接来源为吉田第十一章 \cite{yosida-zh,yosida-en}。本章采用循环子空间构造谱测度，以紧群卷积和 Fourier 局部逆组织后半章证明；与原书的范畴集、殆周期均值及赋范环路线作适用范围对照。原书所引 Gelfand、Neumann、Friedrichs、Tannaka、Wiener 等原始文献未计为直接阅读。闭算子的可测函数判别一般版本、非可分谱重数分类及 Littlewood 的最终 Tauber 推论等未展开范围见 COVERAGE。下一章转向凸集端点、向量格及其表示。

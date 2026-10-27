@@ -1,0 +1,51 @@
+\Needspace{10\baselineskip}
+\section{实算子和半有界算子、Friedrichs 定理}\label{sec:yosida-11-07}
+\noindent\textit{原书起始页：中译本 329；英文版 316。}
+
+\begin{definition}[实性与半有界性]
+共轭算子 $C$ 是满足 $C^2=I$ 的反线性等距映射，例如 $L^2$ 上的复共轭。若 $CD(S)=D(S)$ 且 $SC=CS$，称 $S$ 对 $C$ 为实算子。稠密定义的对称算子 $S$ 称下半有界，若存在 $m\in\R$ 使 $(Su,u)\ge m\|u\|^2$；上半有界可化为 $-S$ 下半有界。
+\end{definition}
+
+\begin{theorem}[Friedrichs 扩张]\label{thm:y11-friedrichs}
+每个稠密定义、下半有界的对称算子 $S$ 都有保持同一下界的自伴扩张 $S_F$。该扩张由 $S$ 的二次型闭包唯一确定，不意味着所有自伴扩张唯一。
+\end{theorem}
+\begin{proof}
+平移后先设 $S\ge I$，令 $q(u,v)=(Su,v)$，$u,v\in D(S)$。这是内积，且 $\|u\|\le\|u\|_q$。以 $V$ 表示其完备化，映入 $H$ 的连续延拓记为 $j$。关键是 $j$ 单射：若 $u_n$ 在 $q$ 范数中收敛于 $u\in V$，且 $u_n\to0$ 于 $H$，则对 $v\in D(S)$，
+\[
+ q(u_n,v)=(u_n,Sv)\longrightarrow0.
+\]
+故 $u$ 与 $V$ 中的稠密子空间 $D(S)$ 正交，$u=0$。这也证明原二次型可闭。因而可把 $V$ 看成 $H$ 中的稠密子空间，并把 $q$ 延为闭形式。
+
+对 $f\in H$，Riesz 表示给出唯一 $Rf\in V$ 使 $q(Rf,v)=(f,v)$。由 $q\ge\|\cdot\|^2$ 得 $R:H\to H$ 有界、正、自伴、单射：单射使用 $V$ 在 $H$ 中稠密；自伴由 $q$ 的对称性得到。故 $R$ 值域稠密。定义 $S_F=R^{-1}$，$D(S_F)=R(H)$。它对称，且 $S_F\pm iI$ 满射，因为 $I\pm iR$ 满射：其范数下界为 $1$，伴随有同一下界，故闭值域且稠密。自伴判据给出 $S_F=S_F^*$。
+
+若 $u\in D(S)$，则 $q(u,v)=(Su,v)$ 先对 $v\in D(S)$ 成立，再延到 $V$，故 $u=RSu$，从而 $S_Fu=Su$。又 $(S_Fu,u)=q(u,u)\ge\|u\|^2$，保持下界。一般 $m$ 情形对 $S+(1-m)I$ 应用此构造再移回。闭形式决定 $R$，故决定此扩张。
+\end{proof}
+
+\begin{proposition}[实算子的扩张]
+稠密定义的实对称算子有自伴扩张。若还半有界，则 Friedrichs 扩张本身为实算子。
+\end{proposition}
+\begin{proof}
+对闭包仍有实性。共轭将 $\ker(S^*-iI)$ 反线性等距映到 $\ker(S^*+iI)$，故亏指数相等；第 \ref{sec:yosida-11-15} 节的 Cayley 扩张判据给出自伴扩张。半有界时，$C$ 保持型范数和闭型空间 $V$，Riesz 定义的 $R$ 与 $C$ 交换，因此其逆 $S_F$ 与 $C$ 交换。
+\end{proof}
+
+\begin{example}[最小 Laplace 算子]
+在有界开集 $G$ 上，$S=-\Delta$、$D(S)=C_c^\infty(G)$ 为正对称算子。平移形式 $q_1(u,v)=\int\nabla u\cdot\overline{\nabla v}+\int u\bar v$ 的闭包定义域为 $H_0^1(G)$。其 Friedrichs 扩张满足
+\[
+ D(S_F)=\{u\in H_0^1(G):-\Delta u\in L^2(G)\},\qquad S_Fu=-\Delta u,
+\]
+其中导数按分布理解。只有另有边界正则性时，才能再把定义域写成 $H^2(G)\cap H_0^1(G)$。
+\end{example}
+
+\begin{exercise}[型范数与图范数]\label{ex:y11-form-graph}
+对 $Ae_n=n^2e_n$，比较型域 $D(A^{1/2})$ 与算子域 $D(A)$。
+\end{exercise}
+\begin{solution}
+型域要求 $\sum n^2|x_n|^2<\infty$，算子域要求 $\sum n^4|x_n|^2<\infty$。取 $x_n=n^{-2}$，前者成立、后者不成立。闭型空间不是算子图范数完备化。
+\end{solution}
+
+\begin{exercise}[扩张不唯一]\label{ex:y11-friedrichs-nonunique}
+在 $L^2(0,1)$ 上解释 $-\dd^2/\dd x^2$ 的最小算子为何同时有 Dirichlet 与 Neumann 自伴扩张，但 Friedrichs 扩张选择前者。
+\end{exercise}
+\begin{solution}
+两种定义域分别为 $H^2\cap H_0^1$ 与 $\{u\in H^2:u'(0)=u'(1)=0\}$；分部积分的边界型和非实边值问题给出自伴性，也可分别用正弦、余弦基对角化。测试函数的能量型闭包是 $H_0^1$，而非 $H^1$，故 Friedrichs 构造选 Dirichlet 扩张。
+\end{solution}

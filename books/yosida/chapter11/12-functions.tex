@@ -1,0 +1,49 @@
+\Needspace{20\baselineskip}
+\section{自伴算子的函数}\label{sec:yosida-11-12}
+\noindent\textit{原书起始页：中译本 351；英文版 338。}
+
+令 $A=\int t\,\dd E(t)$。对有限值 Borel 函数 $f$，定义 $f(A)$ 为定理 \ref{thm:y11-spectral-integral} 中的闭算子。允许在 $E$-零集上修改函数。其定义域取决于向量的谱测度，而不仅取决于形式表达式。
+
+\begin{theorem}[无界函数演算的运算规则]\label{thm:y11-borel-calculus}
+设 $f,g$ 为有限值 Borel 函数。则 $f(A)^*=\bar f(A)$，并且
+\begin{align*}
+ D(g(A)f(A))&=D(f(A))\cap D((gf)(A)),\\
+ g(A)f(A)x&=(gf)(A)x\quad(x\text{ 属于左侧定义域}),\\
+ (f+g)(A)x&=f(A)x+g(A)x\quad(x\in D(f(A))\cap D(g(A))).
+\end{align*}
+$f(A)$ 正规；$f$ 实值时自伴。复合满足 $h(f(A))=(h\circ f)(A)$，其中复值 $f$ 时左侧用正规算子的 Borel 演算，并取对应的最大定义域。
+\end{theorem}
+\begin{proof}
+对谱投影 $E(B)$ 和 $x\in D(f(A))$，截断后取极限得 $E(B)f(A)x=f(A)E(B)x$，且
+\[
+ \mu_{f(A)x}(B)=\int_B|f|^2\,\dd\mu_x.
+\]
+故 $f(A)x\in D(g(A))$ 等价于 $\int|gf|^2\,\dd\mu_x<\infty$，连同先验的 $x\in D(f(A))$ 得出定义域公式。等式对共同截断成立，再由平方积分极限推广。和的公式同理，但一般只能在定义域交上断言。
+
+伴随等式已证。$f(A)^*f(A)$ 与 $f(A)f(A)^*$ 的定义域均为 $D(|f|^2(A))$，因为四次可积结合 $x\in H$ 蕴含二次可积；两者都等于 $|f|^2(A)$，故正规。$f(A)$ 的谱测度是 $E$ 经 $f$ 的推前，复合的定义域条件就是 $\int|h(f(t))|^2\,\dd\mu_x<\infty$，由截断给出复合公式。
+\end{proof}
+
+例如若 $f(t)=t$、$g(t)=1/t$（在零处另行有限定义），即使乘积在谱上等于 $1$，$g(A)f(A)$ 仍只在 $D(A)$ 上定义，未必是处处定义的恒等算子。它的闭包可以是 $I$，而算子本身不等于 $I$。
+
+\begin{proposition}[与谱投影交换]\label{prop:y11-commutation}
+有界算子 $B$ 若与自伴 $A$ 在定义域上交换，即 $BD(A)\subset D(A)$ 且 $ABx=BAx$，则与每个 $E(C)$ 交换；因此保持 $D(f(A))$ 并满足 $Bf(A)x=f(A)Bx$。
+\end{proposition}
+\begin{proof}
+定义域上的关系先给出 $B(A\pm iI)^{-1}=(A\pm iI)^{-1}B$，从而与 Cayley 变换及其伴随交换。连续演算、再以有界 Borel 函数的强逼近得到 $BE(C)=E(C)B$。为处理无界 $f$，令 $P_n=E(\{|f|\le n\})$，则 $f(A)P_nBx=Bf(A)P_nx$，右侧收敛，左侧由闭性得到 $Bx\in D(f(A))$ 及交换等式。
+\end{proof}
+
+原书进一步证明 Neumann--Riesz--Mimura 的闭算子判别：在可分空间上，适当的交换子包含关系刻画 $T=f(A)$。这里证明正向的谱交换关系及循环模型中的乘法解释；一般闭算子判别的反向拼接证明尚未展开，不能把“与 $A$ 交换”本身当作“是 $A$ 的标量函数”的充分条件，重数大于一时尤其如此。
+
+\begin{exercise}[定义域使恒等式失效]\label{ex:y11-product-domain}
+在 $L^2(1,\infty)$ 上取 $A=M_t$。比较 $A^{-1}A$ 与 $AA^{-1}$ 的定义域。
+\end{exercise}
+\begin{solution}
+$A^{-1}=M_{1/t}$ 有界且值域为 $D(A)$。所以 $AA^{-1}=I$ 处处定义；$A^{-1}A=I|_{D(A)}$，只在 $D(A)$ 定义。其闭包才是 $I$。
+\end{solution}
+
+\begin{exercise}[实函数与复函数]\label{ex:y11-functional-examples}
+对 $A\ge0$ 定义 $A^{1/2}$ 与 $e^{-tA}$，证明前者自伴，后者在 $t\ge0$ 时为压缩算子且强连续。
+\end{exercise}
+\begin{solution}
+使用乘子 $\sqrt\lambda$ 与 $e^{-t\lambda}$。前者实值，定义域要求 $\int\lambda\,\dd\mu_x<\infty$，故自伴。后者绝对值至多 $1$，给出压缩；$t\to s\ge0$ 时乘子逐点收敛且有界，控制收敛给出强连续。
+\end{solution}

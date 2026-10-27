@@ -1,0 +1,62 @@
+\Needspace{10\baselineskip}
+\section{对称算子的亏指数、广义单位分解}\label{sec:yosida-11-15}
+\noindent\textit{原书起始页：中译本 362；英文版 349。}
+
+设 $S$ 闭、稠密定义且对称，沿用第七章
+\[
+ N_+=\ker(S^*-iI),\quad N_-=\ker(S^*+iI),\quad
+ n_\pm=\dim N_\pm.
+\]
+其 Cayley 变换从 $M_+=R(S+iI)$ 等距映到 $M_-=R(S-iI)$，且 $M_\pm^\perp=N_\pm$。亏指数是 Hilbert 维数，允许无穷；取相反 Cayley 约定会交换两者，必须同时改动符号。
+
+\begin{theorem}[自伴扩张与最大对称性]\label{thm:y11-extensions}
+$S$ 在同一 $H$ 中有自伴扩张当且仅当 $n_+=n_-$。其自伴扩张与所有酉映射 $V:N_+\to N_-$ 一一对应，定义为
+\begin{align*}
+ D(S_V)&=D(S)\mathbin{\dot+}\{h+Vh:h\in N_+\},\\
+ S_V(u+h+Vh)&=Su+ih-iVh.
+\end{align*}
+$S$ 为最大对称算子当且仅当 $n_+=0$ 或 $n_-=0$；最大对称未必自伴。$S$ 自伴当且仅当两亏指数皆为零。
+\end{theorem}
+\begin{proof}
+任何对称扩张对应 Cayley 等距映射的扩张。它为自伴恰对应定义域与值域均为 $H$ 的酉扩张，所以须以酉映射配对缺少的两个正交补；这恰等价于亏指数相等。任一补空间的酉配对都给出酉扩张 $\widetilde U$。因为 $R(I-\widetilde U)$ 包含稠密的 $D(S)$，$\widetilde U$ 不含不动向量，逆 Cayley 公式有效。将补空间配对取为 $-V$，代入 $(I-\widetilde U)h=h+Vh$、$i(I+\widetilde U)h=ih-iVh$，得到所写定义域及作用式。反向每个自伴扩张都如此取得。
+
+若两个缺陷空间均非零，可在各取一维等距配对，扩张原 Cayley 映射，得到严格的对称扩张。若其中一个为零，则原等距映射的定义域或值域已经为全空间，无法再扩大定义域而保持等距性，故最大对称。最后一项就是第七章自伴判据。
+\end{proof}
+
+\begin{theorem}[扩空间与广义谱测度]\label{thm:y11-generalized-resolution}
+每个闭稠密对称算子 $S$ 都有某个更大 Hilbert 空间 $\widetilde H\supset H$ 中的自伴扩张 $\widetilde A$。若 $P_H$ 为正交投影，则
+\[
+ F(B)=P_HE_{\widetilde A}(B)|_H
+\]
+是正算子值测度，$F(\R)=I_H$，并且对 $x\in D(S)$，
+\[
+ Sx=\int t\,\dd F(t)x,\qquad
+ \int t^2\,\dd(F(t)x,x)=\|Sx\|^2.
+\]
+一般 $F(B)$ 不是投影；二阶积分有限可能只保证 $x\in D(\widetilde A)\cap H$，未必 $x\in D(S)$。若 $S$ 最大对称，则该条件等价于 $x\in D(S)$。
+\end{theorem}
+\begin{proof}
+取 $\widetilde H=H\oplus H$，在其上考虑 $S\oplus(-S)$。亏指数均为 $n_++n_-$，故有自伴扩张 $\widetilde A$。把原 $H$ 视为第一分量便得到所需扩张。压缩谱测度保持正性、单位质量和强可加性。对 $x\in D(S)$，$\widetilde Ax=Sx\in H$，所以压缩谱积分给出作用式，二阶矩等于 $\|\widetilde Ax\|^2$。
+
+对于任意 $x\in H$，二阶矩有限等价于 $x\in D(\widetilde A)\cap H$。算子 $T=P_H\widetilde A|_{D(\widetilde A)\cap H}$ 对称且扩张 $S$；若 $S$ 最大对称，则 $T=S$，从而定义域相等。一般情形没有这个最大性推论。
+\end{proof}
+
+\begin{example}[区间与半直线上的动量]
+对 $S=-i\,\dd/\dd x$，$D(S)=H_0^1(0,1)$，伴随定义域为 $H^1(0,1)$。解 $S^*u=\pm iu$ 得 $e^{-x}$ 与 $e^x$，均平方可积，所以亏指数为 $(1,1)$。自伴扩张可写成边界条件 $u(1)=e^{i\theta}u(0)$，本征值为 $\theta+2\pi n$。
+
+在半直线 $(0,\infty)$ 上，$e^{-x}$ 可积而 $e^x$ 不可积，故同一符号约定下亏指数为 $(1,0)$，算子最大对称但无同空间自伴扩张。可把它扩到整直线的自伴动量算子，再压缩其谱测度。
+\end{example}
+
+\begin{exercise}[压缩未必为投影]\label{ex:y11-compressed-pvm}
+在 $\mathbb C^2$ 上取 $\widetilde A=\operatorname{diag}(-1,1)$，把 $H$ 取为 $(1,1)$ 张成的直线。求 $F(\{1\})$ 并检验幂等性。
+\end{exercise}
+\begin{solution}
+以 $(1,1)/\sqrt2$ 为 $H$ 的单位基，$F(\{1\})=\tfrac12I_H$，其平方为 $\tfrac14I_H$，不是投影。这说明广义单位分解应理解为正算子值测度。
+\end{solution}
+
+\begin{exercise}[区间边界相位]\label{ex:y11-boundary-phase}
+对 $u(1)=e^{i\theta}u(0)$ 的动量算子写出归一化本征函数，并解释不同 $\theta$ 给出不同扩张。
+\end{exercise}
+\begin{solution}
+$u_n(x)=e^{i(\theta+2\pi n)x}$，范数为 $1$。乘 $e^{i\theta x}$ 将周期 Fourier 基变成该基，故完备。不同模 $2\pi$ 的相位给出不同边界定义域及不同本征值序列；它们都包含 $H_0^1$ 上的最小算子。
+\end{solution}

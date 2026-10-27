@@ -1,0 +1,55 @@
+\Needspace{10\baselineskip}
+\section{单位分解}\label{sec:yosida-11-05}
+\noindent\textit{原书起始页：中译本 322；英文版 309。}
+
+\begin{definition}[实轴单位分解]
+一族正交投影 $E_t$ 称为右连续单位分解，若
+\[
+ E_sE_t=E_{\min(s,t)},\quad
+ \mathop{\mathrm{s\!-!lim}}_{t\to-\infty}E_t=0,\quad
+ \mathop{\mathrm{s\!-!lim}}_{t\to+\infty}E_t=I,\quad
+ \mathop{\mathrm{s\!-!lim}}_{h\downarrow0}E_{t+h}=E_t.
+\]
+它对应 $E((a,b])=E_b-E_a$ 的唯一投影值测度；反过来每个实轴投影值概率测度给出此谱族。这里的“单位分解”是 resolution of identity，与光滑单位分解不是同一概念。
+\end{definition}
+
+\begin{proposition}[从谱族到测度]
+对 $x,y\in H$，$t\mapsto(E_tx,y)$ 有界变差，其全变差至多 $\|x\|\|y\|$。相应标量 Stieltjes 测度 $\mu_{x,y}$ 满足 $\mu_x=\mu_{x,x}\ge0$，并定义上述唯一投影值测度。
+\end{proposition}
+\begin{proof}
+对递增分割 $t_j$，令 $P_j=E_{t_j}-E_{t_{j-1}}$，这些投影两两正交。因此
+\[
+ \sum_j|(P_jx,y)|=\sum_j|(P_jx,P_jy)|
+ \le\Bigl(\sum_j\|P_jx\|^2\Bigr)^{1/2}
+     \Bigl(\sum_j\|P_jy\|^2\Bigr)^{1/2}\le\|x\|\|y\|.
+\]
+标量 Stieltjes 延拓和极化得到所有 $\mu_{x,y}$。对每个 Borel 集 $B$，由此界及 Riesz 表示定义有界算子 $E(B)$，使 $(E(B)x,y)=\mu_{x,y}(B)$。区间上的投影乘法关系，依次固定一个变量再用有界单调类延拓到所有 Borel 集，得到 $E(B)E(C)=E(B\cap C)$ 及自伴性。标量可加性先给弱可加性；不交投影的正交性使余项的范数平方等于相应正测度余项，故为强可加性。
+\end{proof}
+
+\begin{theorem}[谱积分的定义域]\label{thm:y11-spectral-integral}
+对有限值 Borel 函数 $f:\R\to\mathbb C$，定义
+\[
+ D(T_f)=\{x:\int|f|^2\,\dd\mu_x<\infty\},\qquad
+ T_fx=\lim_{n\to\infty}\int f1_{\{|f|\le n\}}\,\dd E\,x.
+\]
+此极限存在，定义稠密闭算子，且 $\|T_fx\|^2=\int|f|^2\,\dd\mu_x$，$T_f^*=T_{\bar f}$。实值 $f$ 给出自伴算子。
+\end{theorem}
+\begin{proof}
+对简单函数由正交性直接得到范数公式。用有界简单函数一致逼近有界 Borel 函数，公式传到有界演算。截断之差的平方范数恰为 $|f|^2$ 在相应层集的积分，故其 Cauchy 性等价于定义域条件。投影 $P_n=E(\{|f|\le n\})$ 强趋于 $I$，且 $P_nH\subset D(T_f)$，故定义域稠密。
+
+若 $x_j\to x$、$T_fx_j\to y$，则 $f1_{\{|f|\le n\}}(E)x=P_ny$。于是截断平方积分有界于 $\|y\|^2$，单调收敛使 $x\in D(T_f)$，再令 $n\to\infty$ 得 $T_fx=y$。这证明闭性。显然 $T_{\bar f}\subset T_f^*$。若 $y\in D(T_f^*)$，在 $P_nH$ 上比较伴随得 $T_{\bar f}P_ny=P_nT_f^*y$，同样的积分估计使 $y\in D(T_{\bar f})$。故伴随恰相等。
+\end{proof}
+
+\begin{exercise}[强收敛与范数收敛]\label{ex:y11-projection-limits}
+在 $\ell^2$ 上令 $P_n$ 为前 $n$ 个坐标的投影。证明 $P_n\to I$ 强收敛，但不按算子范数收敛。
+\end{exercise}
+\begin{solution}
+$\|(I-P_n)x\|^2=\sum_{j>n}|x_j|^2\to0$，而 $\|(I-P_n)e_{n+1}\|=1$，所以 $\|I-P_n\|=1$。
+\end{solution}
+
+\begin{exercise}[无界积分]\label{ex:y11-integral-domain}
+在 $L^2(\R)$ 的坐标谱测度上取 $f(t)=t^2$。求 $D(T_f)$，并说明 $D(T_f)$ 与 $D(T_t)$ 的关系。
+\end{exercise}
+\begin{solution}
+$D(T_f)=\{u:\int t^4|u(t)|^2\,\dd t<\infty\}$，而 $D(T_t)$ 只要求二阶加权平方积分有限。前者真包含于后者；例如 $u(t)=1_{(1,\infty)}t^{-2}$ 属于后者而不属于前者。
+\end{solution}

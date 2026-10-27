@@ -1,0 +1,53 @@
+\Needspace{10\baselineskip}
+\section{Peter--Weyl--Neumann 理论}\label{sec:yosida-11-10}
+\noindent\textit{原书起始页：中译本 339；英文版 326。}
+
+本节完整证明紧 Hausdorff 群 $G$ 的 Peter--Weyl 定理。采用外部前提：$G$ 有唯一归一化 Haar 概率测度 $m$，它左右不变，且每个非空开集有正测度。原书还对全有界群和抽象群上的殆周期函数使用不变均值；那一推广在此仅作衔接。
+
+\begin{definition}[有限维表示与矩阵系数]
+连续酉表示是连续同态 $\pi:G\to U(V_\pi)$，$V_\pi$ 有限维。函数 $g\mapsto(\pi(g)v,w)$ 称矩阵系数，其有限线性组合构成代表函数代数 $\mathcal R(G)$。常数、乘积和共轭分别来自平凡、张量积和共轭表示。
+\end{definition}
+
+\begin{lemma}[Schur 正交关系]\label{lem:y11-schur}
+每个有限维酉表示是不可约表示的正交直和。取不可约代表 $\pi,\rho$ 的正交基，有
+\[
+ \int_G\pi_{ij}(g)\overline{\rho_{kl}(g)}\,\dd m(g)
+ =\begin{cases}d_\pi^{-1}\delta_{ik}\delta_{jl},&\pi=\rho,\\0,&\pi\not\cong\rho.\end{cases}
+\]
+\end{lemma}
+\begin{proof}
+不变子空间的正交补仍不变，按维数归纳得到完全可约性。若 $T$ 是两个不可约表示间的交织算子，其核与像不变，所以非零时为同构；同一不可约表示的交织算子取一个复特征值，$T-\lambda I$ 的核非零，故 $T=\lambda I$。这就是 Schur 引理。
+
+给定线性映射 $B:V_\rho\to V_\pi$，平均 $\int\pi(g)B\rho(g)^{-1}\,\dd m(g)$ 为交织算子。不同不可约时它为零；相同时它为 $(\operatorname{tr}B/d_\pi)I$，因取迹不改变。对矩阵单位 $B$ 比较各矩阵元，便得公式。
+\end{proof}
+
+\begin{theorem}[Peter--Weyl]\label{thm:y11-peter-weyl}
+$\mathcal R(G)$ 在 $C(G)$ 中一致稠密；各不可约表示的归一化系数 $\sqrt{d_\pi}\,\pi_{ij}$ 构成 $L^2(G,m)$ 的完备正交系。尤其有限维连续酉表示分离 $G$ 中的点。
+\end{theorem}
+\begin{proof}
+先构造紧的平滑算子。取连续实函数 $k\ge0$，$k(g^{-1})=k(g)$，支于单位元的对称小邻域，且 $\int k=1$。定义
+\[
+ T_kf(x)=\int_G k(y^{-1}x)f(y)\,\dd m(y).
+\]
+核连续，故 $T_k:L^2(G)\to C(G)$ 有界：Cauchy--Schwarz 给出一致界，核的平移在 $L^2$ 中连续给出连续性。它在 $L^2$ 上为紧自伴算子，并与左平移 $L_af(x)=f(a^{-1}x)$ 交换。所有非零特征空间有限维、左平移不变，其中的函数连续。因此左平移在这些空间上给出有限维连续酉表示，而其中每个函数通过在单位元处取值可写成该表示或其对偶表示的矩阵系数。
+
+若 $v\in L^2$ 与所有有限维系数正交，紧自伴展开使 $T_kv=0$。当单位元邻域缩小时，$T_kv\to v$ 于 $L^2$：先对连续函数用一致连续性，再由它们在 $L^2$ 中稠密及 $\|T_k\|\le1$ 推广。故 $v=0$，证明矩阵系数 $L^2$ 稠密。结合 Schur 关系即得完备正交系。
+
+最后取 $f\in C(G)$，先选 $k$ 使 $\|T_kf-f\|_\infty<\varepsilon$，再选 $p\in\mathcal R(G)$ 使 $\|f-p\|_2<\varepsilon/\|T_k\|_{2\to\infty}$。卷积一个矩阵系数仍为同一有限维表示的系数线性组合，所以 $T_kp\in\mathcal R(G)$，且 $\|T_kp-f\|_\infty<2\varepsilon$。这证明一致稠密。若表示不分离两个点，所有代表函数均在两点取相同值，与连续函数分离点及一致稠密矛盾。
+\end{proof}
+
+不可分 $L^2(G)$ 的正交基可不可数，展开按有限子集的网理解。圆群结论只保证三角多项式一致稠密，不保证普通 Fourier 部分和一致收敛。
+
+\begin{exercise}[紧交换群的不可约表示]\label{ex:y11-abelian-representations}
+证明紧交换群的有限维不可约酉表示都是一维；对圆群写出这些表示。
+\end{exercise}
+\begin{solution}
+交换性使每个 $\pi(g)$ 都是交织算子，Schur 引理使它为标量。若空间维数大于一，任意一维子空间都不变，违反不可约性。圆群的一维连续特征为 $e^{i\theta}\mapsto e^{in\theta}$，$n\in\mathbb Z$，由实轴特征及 $2\pi$ 周期性得到。
+\end{solution}
+
+\begin{exercise}[有限群的维数公式]\label{ex:y11-finite-group}
+若 $G$ 有限，证明 $\sum_{\pi\in\widehat G}d_\pi^2=|G|$。
+\end{exercise}
+\begin{solution}
+归一化计数测度下 $L^2(G)$ 的维数为 $|G|$；Peter--Weyl 的正交基每个不可约表示贡献 $d_\pi^2$ 个系数，数基向量便得等式。
+\end{solution}

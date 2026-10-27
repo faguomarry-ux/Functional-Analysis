@@ -1,0 +1,56 @@
+\Needspace{10\baselineskip}
+\section{一般展开定理、连续谱不出现的一个条件}\label{sec:yosida-11-09}
+\noindent\textit{原书起始页：中译本 336；英文版 323。}
+
+\begin{theorem}[一般展开与预解式反演]\label{thm:y11-stone-formula}
+若 $A=A^*$，则对每个 $x\in H$，$x=\lim_{R\to\infty}E([-R,R])x$。更具体地，对有限 $a<b$，令 $Q(z)=(A-zI)^{-1}$，则
+\[
+ \lim_{\varepsilon\downarrow0}\frac1{2\pi i}
+ \int_a^b\bigl(Q(t+i\varepsilon)-Q(t-i\varepsilon)\bigr)x\,\dd t
+ =\bigl(E((a,b))+\tfrac12E(\{a\})+\tfrac12E(\{b\})\bigr)x.
+\]
+极限为强极限；积分端点如有原子，各计一半。
+\end{theorem}
+\begin{proof}
+对固定 $\varepsilon>0$，有界预解式的 Bochner 积分可与谱积分交换，所得标量乘子为
+\[
+ k_\varepsilon(s)=\frac1\pi\int_a^b
+ \frac{\varepsilon}{(s-t)^2+\varepsilon^2}\,\dd t
+ =\frac1\pi\left(\arctan\frac{b-s}{\varepsilon}-\arctan\frac{a-s}{\varepsilon}\right).
+\]
+它在 $0$ 与 $1$ 之间，逐点趋于开区间指示函数加上两个端点的半质量。用谱积分平方范数公式和控制收敛得到强极限。一般展开来自 $\mu_x([-R,R])\to\mu_x(\R)=\|x\|^2$。
+\end{proof}
+
+注意本节 $Q(z)=(A-zI)^{-1}$ 与第八章 $R(z,A)=(zI-A)^{-1}$ 差一个负号；反演公式中的次序也随之固定。
+
+\begin{theorem}[紧自伴展开与紧预解式]\label{thm:y11-compact-expansion}
+紧自伴算子 $K$ 的空间可正交分解为其核与所有非零特征空间，且
+\[
+ x=P_0x+\sum_{\lambda\ne0}P_\lambda x,\qquad
+ Kx=\sum_{\lambda\ne0}\lambda P_\lambda x.
+\]
+后一式按 $|\lambda|>\varepsilon$ 截断时算子范数误差至多 $\varepsilon$。若自伴 $A$ 的一个非实预解式紧，则 $A$ 有完备特征向量系，各特征空间有限维，有界实区间内仅有有限多个特征值；无限特征值序列只能逃向无穷远。
+\end{theorem}
+\begin{proof}
+紧性和第十章说明非零谱离散、各特征空间有限维。其正交和的补空间约化 $K$，且限制算子的谱只能含零；否则非零谱投影会再给出特征向量。自伴性给出 $\|K|_{H_0}\|=r(K|_{H_0})=0$，所以补空间正是核。范数余项由谱乘子在 $|\lambda|\le\varepsilon$ 上至多为 $\varepsilon$ 得到。
+
+令 $Q=(A-iI)^{-1}$，它是紧正规算子且单射。紧正规算子的同一结论由 $\|N\|=r(N)$ 和正交谱投影证明，其非零特征空间正交张成全空间，因为剩余部分范数为零且核为零。$Q$ 的特征值 $\mu\ne0$ 对应 $A$ 的特征值 $i+\mu^{-1}$，且 $Q$ 的特征向量在 $D(A)$ 中。紧性使非零 $\mu$ 只能聚于零，故 $A$ 的特征值只会逃向无穷远。若最初紧的是另一非实预解式，预解恒等式将紧性传到 $i$。
+\end{proof}
+
+\begin{example}[有界域上的 Dirichlet Laplace 算子]
+第 \ref{sec:yosida-11-07} 节的 $A=-\Delta_D$ 满足 $(A+I)^{-1}:L^2(G)\to H_0^1(G)$ 有界；由 Rellich 紧嵌入，作为 $L^2$ 上算子它紧。因此 $A$ 有正交本征展开。无须在此预先证明 $H^2$ 边界正则性；有界域与零边界型空间已经给出紧性。
+\end{example}
+
+\begin{exercise}[端点半质量]\label{ex:y11-stone-endpoints}
+若 $A=aI$，求反演公式在区间 $[a,b]$、$b>a$ 上的极限，解释为何不是 $I$。
+\end{exercise}
+\begin{solution}
+谱为集中于 $a$ 的单原子，核乘子在该点趋于 $1/2$，故极限为 $I/2$。要恢复含端点全质量的投影，应另加端点的一半投影，或选避开原子的端点。
+\end{solution}
+
+\begin{exercise}[一维本征展开]\label{ex:y11-dirichlet-basis}
+对 $(0,\pi)$ 上的 Dirichlet Laplace 算子，写出归一化本征函数、本征值和算子定义域的序列条件。
+\end{exercise}
+\begin{solution}
+$e_n(x)=\sqrt{2/\pi}\sin(nx)$，$\lambda_n=n^2$。写 $u=\sum u_ne_n$，则 $D(A)=\{u:\sum n^4|u_n|^2<\infty\}$，$Au=\sum n^2u_ne_n$。型域只要求 $\sum n^2|u_n|^2<\infty$。
+\end{solution}
