@@ -40,6 +40,20 @@ $\Test$ 只观察局部，因此允许指数乃至更快增长的正则分布，
 
 由于 $M(ar)$ 比任何线性函数增长更快，$E_{M,a}\subset\Sch$ 连续。任意紧支集光滑函数属于每个 $E_{M,a}$。若 $M(r)=r^p/p$，则选择整数 $k$ 使 $2k\ge p$ 后，$e^{-x^{2k}}$ 也属于某个 $E_{M,a}$：每阶导数只是多项式乘以同一指数，而适当选 $a$ 能留出指数衰减余量。这说明模型含有非紧支撑测试函数。
 
+\begin{proposition}[模型空间的稠密嵌入]\label{prop:weighted-density}
+包含 $\Test(\R)\to E_M\to\Sch(\R)$ 连续，且 $\Test(\R)$ 在 $E_M$ 中稠密。因此限制映射 $E_M'\to\Dist(\R)$ 单射，$\Temp(\R)\to E_M'$ 也单射。
+\end{proposition}
+\begin{proof}
+第一种连续性逐固定紧集验证：每个带权半范数被该紧集上的相应导数半范数控制。第二种连续性逐 $E_{M,a}$ 验证，超线性增长吸收任意多项式权重，再用归纳极限的泛性质。
+
+对 $\varphi\in E_{M,a}$，选 $0<b<a$，并取 $\chi_R(x)=\chi(x/R)$，其中 $\chi\in\Test$ 在 $[-1,1]$ 附近为 $1$。因
+\[
+ M(ar)-M(br)=\int_{br}^{ar}\mu(t)\,\dd t
+ \ge (a-b)r\mu(br)\longrightarrow\infty,
+\]
+Leibniz 公式给出对每个 $q$，$p_{b,q}((1-\chi_R)\varphi)\to0$：所有项支于 $|x|\ge R$，由该指数差及 $R^{-j}$ 控制。于是 $\chi_R\varphi\to\varphi$ 于较弱的一层 $E_{M,b}$，也在 $E_M$ 中收敛。这不要求在原层 $E_{M,a}$ 中稠密。对偶单射性分别来自此稠密性及 $\Test$ 在 $\Sch$ 中稠密。
+\end{proof}
+
 \section{快速增长函数如何作用于加权探针}
 设 $|f(x)|\le Ce^{b|x|}$。对 $\varphi\in E_{M,a}$，
 \[
@@ -115,7 +129,14 @@ $\Test$ 只观察局部，因此允许指数乃至更快增长的正则分布，
 
 本稿已证明的具体模型是式 \eqref{eq:generalized-expansion} 的 Fourier 展开。一般自伴算子的广义本征展开在此作为后续研究方向，不把“任意自伴算子在任意测试空间都有完整广义本征基”作为结论。对于有界区域的椭圆算子，紧预解式常带来离散谱；对于全空间算子，连续谱与广义固有函数则更自然。
 
+\Needspace{24\baselineskip}
 \section{习题}
+\begin{exercise}[固定层可积不等于在并空间可积]
+令 $M(r)=r^2/2$，$b>0$，$f(x)=e^{b^2x^2/2}$。证明当 $a>b$ 时 $\varphi\mapsto\int f\varphi$ 在 $E_{M,a}$ 上连续，但同一积分不能对整个 $E_M$ 定义泛函。
+\end{exercise}
+\begin{solution}
+若 $a>b$，积分绝对值不超过 $p_{a,0}(\varphi)\int e^{-(a^2-b^2)x^2/2}\,\dd x$。取 $0<c<b$ 与 $\varphi(x)=e^{-c^2x^2/2}$；对任意 $0<a<c$，所有阶带权导数有界，故 $\varphi\in E_M$，但 $f\varphi=e^{(b^2-c^2)x^2/2}$ 不可积。若存在延拓 $f$ 的连续 $E_M$ 泛函，用非负切断逼近该 $\varphi$，稠密性命题迫使配对收敛，而这些积分发散，矛盾。因此量词差异确实改变对偶对象。
+\end{solution}
 \begin{exercise}[Gaussian 权重的对偶]
 令 $M(r)=r^2/2$，求 $M^*$，并由式 \eqref{eq:entire-growth} 写出虚部方向的增长估计。
 \end{exercise}

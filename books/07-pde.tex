@@ -69,6 +69,12 @@ Poincaré 不等式使 $\|u\|_{H_0^1}$ 可等价地取为 $\|\nabla u\|_2$。双
 \]
 这同时说明解对数据稳定。取 $v=\overline\varphi$ 可得 $\int\nabla u\cdot\nabla\varphi=f(\varphi)$，即 $-\Delta u=f$ 于分布意义。反过来，若 $u\in H_0^1$ 满足分布方程，则先对光滑紧支集探针分部积分，再由稠密性延拓，得到能量弱解。
 
+\begin{methodnote}[能量估计中的两个前提]
+有界性已足以给出 $H_0^1$ 上的 Poincaré 估计。把 $\Omega$ 放进边长 $L$ 的立方体，对 $\varphi\in\Test(\Omega)$ 零延拓，沿第一坐标从立方体外侧积分，Cauchy--Schwarz 与 Fubini 给出 $\|\varphi\|_2\le L\|\partial_1\varphi\|_2$；再由闭包定义推广到 $H_0^1$。这里无需先使用边界迹定理。
+
+Lipschitz 边界使迹算子有定义且 $H_0^1=\ker\gamma$；这是标准迹定理的零迹刻画，此处作为外部结论使用。书后\hyperref[sec:supp-trace]{“迹与边界值”节}证明其半空间基本估计，并说明光滑区域的局部化。任意分布没有自动定义的边界值。
+\end{methodnote}
+
 \begin{pitfall}[分布解与能量解的条件差别]
 Dirac 源并非在任何维数都属于 $H^{-1}$。在内点附近，$\delta_a\in H^{-1}$ 需要 $1>n/2$，所以仅在一维成立；二维临界情形也不成立。高维点源可有分布基本解，但不能据此直接套用上述 $H_0^1$ 弱解定理。
 \end{pitfall}
@@ -113,8 +119,27 @@ Hadamard 适定性要求在选定数据空间和解空间中，解存在、唯�
 \]
 若该矩阵乘子的各阶导数在每个有限时间区间具有统一多项式增长，就能在 $\Temp$ 上定义连续演化。若增长更快，则需要更强衰减的测试空间和相应对偶。盖尔芳特、希烙夫对这些增长、唯一性类和适定性类进行了系统研究；其一般分类定理需要更多加权空间工具，不能仅由这条形式公式推出。
 
-\Needspace{28\baselineskip}
+\Needspace{10\baselineskip}
+\section{一个完全可解的椭圆正则性模型}\label{sec:topic-bessel-regularity}
+\begin{proposition}[带质量项的全空间方程]\label{prop:topic-bessel-inverse}
+对任意 $s\in\R$ 和 $f\in H^s(\R^n)$，方程 $(1-\Delta)u=f$ 有唯一温和分布解，且
+\[
+ u\in H^{s+2}(\R^n),\qquad \|u\|_{H^{s+2}}=\|f\|_{H^s}.
+\]
+\end{proposition}
+\begin{proof}
+令 $\widehat u=(1+|\xi|^2)^{-1}\widehat f$。该光滑乘子及其各阶导数有多项式界，故在 $\Temp$ 上合法；代入加权范数即得等式。若齐次解 $v\in\Temp$ 满足 $(1+|\xi|^2)\widehat v=0$，再乘逆乘子得 $v=0$，故唯一。
+\end{proof}
+这说明椭圆算子在该模型中增加两阶正则性。唯一性依赖温和增长类：在一维，普通分布 $e^x$ 满足 $(1-\partial_x^2)e^x=0$，故不能把结论改成所有 $\Dist$ 中唯一。对 $-\Delta$，逆符号在零频率奇异；变系数和有边界的问题另需局部估计与边界条件，不能套用本命题。
+
+\Needspace{29\baselineskip}
 \section{习题}
+\begin{exercise}[迭代的正则性增益]
+设 $m\ge1$ 为整数，$f\in H^s(\R^n)$。求 $(1-\Delta)^mu=f$ 的唯一温和分布解，并写出它属于 $C^k$ 的一个充分条件。
+\end{exercise}
+\begin{solution}
+$\widehat u=(1+|\xi|^2)^{-m}\widehat f$，故 $\|u\|_{H^{s+2m}}=\|f\|_{H^s}$。唯一性用逆乘子。若 $s+2m>k+n/2$，命题 \ref{prop:topic-sobolev-embedding} 给出 $C^k$ 代表元及导数的一致估计。
+\end{solution}
 \begin{exercise}[三维点源]
 求 $-\Delta u=\delta_a$ 在 $\R^3$ 上的一个分布解，并说明为什么不能仅由这个方程得到唯一性。
 \end{exercise}

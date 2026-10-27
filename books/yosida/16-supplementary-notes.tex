@@ -1,6 +1,93 @@
 \chapter{补充说明}\label{back:yosida-notes}
-本章为吉田第六版书后补充说明的整理占位。中译本印刷第 487--490 页，英文版印刷第 466--468 页。
-\begin{methodnote}[待整理内容]
-后续逐项核对第六版补充说明中的结果、勘误和文献线索，并记录它们与主线各章的对应关系。
-当前仅建立入口，不提前编造补充结论。
-\end{methodnote}
+本章依据吉田第六版中译本印刷第 487--490 页（PDF 502--505）、英文版第 466--468 页（PDF 481--483）整理。按原书主题顺序记录与本稿的联系，并补写迹估计、Markov 密度演化及非时齐唯一性的推导。原书所说的“近期发展”指该版出版时的文献状况；书目线索不表示已直接阅读所列原始论文。
+
+\section*{广义函数、超函数与 Sobolev 嵌入}
+\phantomsection
+原书第一、六章补注指向 Schwartz 的增订本及 Gelfand 系列英文版。本稿第二部分以分布、温和分布和加权探针构成具体阅读路线。Sato 的超函数及 Schapira 的相关工作属于另一理论框架，不能把任意超函数直接当成 $\Dist$ 元素；本稿未建立其定义或运算。
+
+第六章补注指出原书 Sobolev 引理只是一般嵌入定理的特例，并列 Sobolev、Adams、Stein 的线索。本稿第六章 §7 与命题 \ref{prop:topic-sobolev-embedding} 给出全空间 $H^s\hookrightarrow C^k$ 的 Fourier 证明，条件是 $s>k+n/2$。一般 $W^{m,p}$ 嵌入、临界指数及非光滑区域的延拓不从这个特例自动得到。
+
+\section*{迹与边界值}
+\phantomsection\addcontentsline{toc}{section}{迹与边界值}\label{sec:supp-trace}
+原书第十章补注在有界 $C^2$ 区域上陈述 $W^{1,2}$ 的 $L^2$ 边界迹，并提及沿法线的几乎处处极限。这里先证明用于能量方法的基本范数估计。
+\begin{proposition}[半空间的迹估计]\label{prop:supp-trace}
+令 $\R^n_+=\{(x',t):t>0\}$。对 $u\in C_c^\infty(\overline{\R^n_+})$，其中该记号指邻域内光滑函数的限制，有
+\[
+ \|u(\cdot,0)\|_2^2
+ \le 2\|u\|_{L^2(\R^n_+)}\|\partial_tu\|_{L^2(\R^n_+)}
+ \le \|u\|_{H^1(\R^n_+)}^2.
+\]
+因此边界限制唯一连续延拓为 $\gamma:H^1(\R^n_+)\to L^2(\R^{n-1})$。
+\end{proposition}
+\begin{proof}
+微积分基本定理给出
+\[
+ |u(x',0)|^2=-2\operatorname{Re}\int_0^\infty
+ \partial_tu(x',t)\overline{u(x',t)}\,\dd t.
+\]
+对 $x'$ 积分，用 Cauchy--Schwarz 和 $2ab\le a^2+b^2$ 即得估计。光滑至边界且紧支撑的函数在半空间 $H^1$ 中稠密：先切断，再沿内法向平移后用半径小于平移距离的光滑核正则化；平移及卷积在 $L^2$ 中逼近函数和弱导数。故估计延伸到闭包，延拓与逼近序列无关。
+\end{proof}
+在有界 $C^2$ 区域上，用有限边界图展平边界，再用光滑单位分解；坐标 Jacobian 及其逆有界，链式法则控制 $H^1$ 范数，于是同一估计给出
+\[
+ \|\gamma u\|_{L^2(\partial\Omega)}\le C_\Omega\|u\|_{H^1(\Omega)}.
+\]
+内部片无边界贡献。标准边界图延拓与正则化提供这里的光滑稠密性；Lipschitz 区域的完整迹定理及 $H_0^1=\ker\gamma$ 的逆向包含仍作为外部结论使用。此处直接可见 $H_0^1\subset\ker\gamma$，因为紧支集光滑逼近的迹全为零。
+
+迹是 $L^2(\partial\Omega)$ 等价类，不是任意代表元的边界点值。原书更强的沿法线极限表述须选择合适代表元并使用切片定理；上面的范数延拓证明没有单独证明该几乎处处极限。第 \ref{ch:pde} 章的能量弱解使用连续迹与零迹空间。
+
+\section*{核空间、收缩算子与凸表示的线索}
+\phantomsection
+第十章附录补注把 Minlos 的柱分布延拓指向 Schwartz 的统一处理。第 \pageref{app:yosida-10} 页已定义核空间并证明到 Banach 空间的核映射判别；这与概率测度延拓之间仍隔着独立的存在性定理，不能只用有限维相容性代替连续性及可数可加性。
+
+第十一章补注推荐 Sz.-Nagy--Foias 的 Hilbert 空间收缩算子理论。第九章的收缩半群和第十一章的酉谱表示提供本稿入口；一般收缩的酉扩张与函数模型未在这里证明。第十二章补注以 Phelps 为 Choquet 理论线索：Krein--Milman 的闭凸包结论不等于已经构造了集中于端点集的表示测度，可测性、紧性及唯一性须另立条件。
+
+\section*{不变测度下的反向密度演化}
+\phantomsection\addcontentsline{toc}{section}{不变测度下的反向密度演化}\label{sec:supp-markov}
+沿用第十三章 §1 的核 $P_t$、不变概率 $m$ 和 $T_tg(x)=\int g(y)P_t(x,\dd y)$。
+\begin{proposition}[密度的对偶 Markov 半群]\label{prop:supp-markov-density}
+对每个 $f\in L^1(m)$，存在唯一 $U_tf\in L^1(m)$，使对所有可测 $B$，
+\[
+ \int_B U_tf\,\dd m=\int_S f(x)P_t(x,B)\,m(\dd x).
+\]
+$U_t$ 是正收缩，保积分且 $U_t1=1$，满足半群律，以及
+\[
+ \int (U_tf)g\,\dd m=\int f(T_tg)\,\dd m
+ \qquad(f\in L^1,\ g\in L^\infty).
+\]
+\end{proposition}
+\begin{proof}
+右端定义有限复测度 $\nu_f$，可数可加性由控制收敛得到。对有限可测分割 $\{B_i\}$，
+\[
+ \sum_i|\nu_f(B_i)|\le\int |f(x)|\sum_iP_t(x,B_i)\,m(\dd x)
+ \le\|f\|_1,
+\]
+故全变差至多为 $\|f\|_1$。若 $m(B)=0$，不变性给出 $P_t(x,B)=0$ 几乎处处，故 $\nu_f\ll m$。Radon--Nikodym 定理得到唯一密度及收缩估计。正性、保积分和 $U_t1=1$ 分别由非负源、$B=S$ 和不变性得到。对偶公式先对示性函数，再对简单函数和有界极限成立。由 $T_{t+s}=T_tT_s$ 与对偶分离性得 $U_{t+s}=U_sU_t$；时间参数可交换，所以也是半群律。
+\end{proof}
+原书将 $U_tf$ 记作 $f_{-t}$。若 $P_t$ 来自可逆保测流 $\tau_t$，则 $T_tf=f\circ\tau_t$，$U_tf=f\circ\tau_{-t}$。一般随机转移中，$U_t$ 不是 $T_t$ 的逆；也不能据此推出细致平衡 $U_t=T_t$。有限状态、不变概率 $\pi_i>0$ 时，反向转移为
+\[
+ q_{ij}(t)=\frac{\pi_jp_{ji}(t)}{\pi_i},\qquad
+ (U_tf)_i=\sum_jq_{ij}(t)f_j.
+\]
+例如三点单向循环链有不变均匀概率，但反向循环核与原核不同。
+
+对一步算子 $U=U_1$，$n^{-1}\sum_{k=1}^nU^kf$ 在 $L^1$ 中收敛，极限保积分。证明与定理 \ref{thm:y13-markov-mean} 相同：对有界 $f$ 先在 $L^2$ 中平均，再用概率空间的 $L^2\subset L^1$；最后以 $L^1$ 收缩及有界函数稠密性推广。$U$ 的 $L^2$ 收缩性由其正性、$U1=1$ 和保积分的 Jensen 估计得到。求和从 $k=1$ 开始仅与从 $k=0$ 开始相差 $(U^nf-f)/n$。
+
+\Needspace{16\baselineskip}
+\section*{非时齐经典解的唯一性}
+\phantomsection\addcontentsline{toc}{section}{非时齐经典解的唯一性}\label{sec:supp-uniqueness}
+原书第十四章 §4 补注用每一时刻的收缩预解式证明唯一性。以下将该论证单独写出。
+\begin{proposition}[冻结时刻的预解式估计]
+设每个 $A(t)$ 为稠定线性算子，且所有充分小 $h>0$ 的 $J_h(t)=(I-hA(t))^{-1}$ 在全空间上存在、$\|J_h(t)\|\le1$。若 $x\in C^1([0,T];X)$、$x(t)\in D(A(t))$ 且 $x'=A(t)x$，则 $\|x(t)\|\le\|x(0)\|$。同一初值的经典解至多一个。
+\end{proposition}
+\begin{proof}
+固定 $t$。对 $z\in D(A(t))$，$J_h(t)z-z=hJ_h(t)A(t)z\to0$；稠密性及一致有界性推广到所有 $z\in X$。可微性给出
+\[
+ x(t+h)=x(t)+hA(t)x(t)+o(h)=J_h(t)x(t)+o(h),
+\]
+因为 $J_h(t)x(t)=x(t)+hJ_h(t)A(t)x(t)$。于是范数的右上 Dini 导数至多为零，连续函数的 Dini 单调性引理推出范数不增。该引理可对函数减去 $\varepsilon t$，用紧区间极值点的右侧差商反证，再令 $\varepsilon\downarrow0$。两个解之差满足同一齐次方程，故唯一。
+\end{proof}
+第十四章 §4 的冻结乘积还承担存在性和演化族构造，需要共同定义域与稳定性等额外假设。本命题仅说明经典解已经存在时，唯一性可由上述较少条件得到。
+
+\section*{发展方程与凸分析的后续阅读}
+\phantomsection
+第九、十四章补注列出 Krein、Lax--Phillips、Lions、Tr\`eves 的线性发展方程著作，以及 Barbu、Browder、Martin、Masuda、Miyadera、Tanabe 的线性或非线性理论；凸分析指向 Rockafellar 和 Ekeland--Temam。本稿第十四章已给出线性演化、极大单调算子及隐式 Euler 指数公式的具体入口。书目定位见参考文献后的对照表；原书有关译本“正在准备”的措辞不作为当前出版状态使用。

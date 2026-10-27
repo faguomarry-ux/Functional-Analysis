@@ -42,6 +42,9 @@ def check():
     for target in re.findall(r"\\(?:ref|pageref|eqref|autoref)\{([^}]+)\}", combined):
         if target not in labels:
             errors.append(f"Undefined reference: {target}")
+    for target in re.findall(r"\\hyperref\[([^]]+)\]", combined):
+        if target not in labels:
+            errors.append(f"Undefined hyperlink: {target}")
     bibliography = set(re.findall(r"\\bibitem(?:\[[^]]*\])?\{([^}]+)\}", combined))
     for group in re.findall(r"\\cite(?:\[[^]]*\])?\{([^}]+)\}", combined):
         for key in group.split(","):

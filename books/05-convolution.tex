@@ -105,6 +105,12 @@ $H*H=xH(x)$，因为在 $x\ge0$ 时积分范围是 $0\le y\le x$，积分值为 
 \end{example}
 
 \section{习题}
+\begin{exercise}[因果基本解的唯一性]
+证明 $E_a=He^{-ax}$ 是 $\partial_x+a$ 的唯一支于 $[0,\infty)$ 的基本解。这里 $a\in\mathbb C$，不预设温和增长。
+\end{exercise}
+\begin{solution}
+若两个因果基本解之差为 $S$，则 $(\partial_x+a)S=0$。光滑乘子公式给出 $(e^{ax}S)'=0$，故 $e^{ax}S$ 是常数分布。它又支于右半轴；非零常数的支集为全直线，故只能为零。因此因果条件消除齐次解，而与 $\operatorname{Re}a$ 的符号无关。
+\end{solution}
 \begin{exercise}[卷积单位]
 证明 $\delta_0*T=T$ 与 $\delta_a*T=\tau_aT$。解释这些等式为何对任意分布都有意义。
 \end{exercise}

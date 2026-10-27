@@ -123,7 +123,33 @@ Plancherel 定理给出 $H^0=L^2$。对非负整数 $m$，权重 $(1+|\xi|^2)^m$
 积分在原点附近有限，在无穷远需 $\int_1^\infty r^{2s+n-1}\,\dd r<\infty$。类似地，$\partial^\alpha\delta_0\in H^s$ 当且仅当 $s<-n/2-|\alpha|$，可在球面上一块多项式不为零的区域给出必要性。
 \end{example}
 
+\section{从 Sobolev 范数到普通函数}\label{sec:topic-sobolev-embedding}
+\begin{proposition}[全空间的连续嵌入]\label{prop:topic-sobolev-embedding}
+若 $k\in\N_0$ 且 $s>k+n/2$，则 $H^s(\R^n)$ 中每个元素有唯一的 $C^k$ 代表元，各阶 $|\alpha|\le k$ 的导数有界且在无穷远趋于零，并满足
+\[
+ \max_{|\alpha|\le k}\|\partial^\alpha u\|_\infty
+ \le C_{s,k,n}\|u\|_{H^s}.
+\]
+\end{proposition}
+\begin{proof}
+加权 Cauchy--Schwarz 不等式给出
+\[
+ \int |\xi|^{|\alpha|}|\widehat u(\xi)|\,\dd\xi
+ \le \left(\int(1+|\xi|^2)^s|\widehat u|^2\,\dd\xi\right)^{1/2}
+ \left(\int |\xi|^{2|\alpha|}(1+|\xi|^2)^{-s}\,\dd\xi\right)^{1/2}.
+\]
+最后的积分由 $s>|\alpha|+n/2$ 保证有限。因此 $u$ 及这些导数均由绝对收敛的逆 Fourier 积分表示；控制收敛保证连续性与逐阶微分，Riemann--Lebesgue 引理保证无穷远消失。该函数代表原分布，连续代表元的唯一性由几乎处处相等推出。
+\end{proof}
+这把分布意义的正则性变成点值和导数估计，与主线第六章 §7 的 Sobolev 引理衔接。严格不等号是本证明中积分收敛的条件，不能直接改为临界等号。区域上的嵌入还需要延拓或局部化；边界迹是另一类结论，见书后补充说明第 \pageref{sec:supp-trace} 页。
+
+\Needspace{12\baselineskip}
 \section{习题}
+\begin{exercise}[高阶导数的有界性]
+设 $u\in H^s(\R^n)$ 且 $s>1+n/2$。证明 $u$ 的连续代表元为全局 Lipschitz 函数，并估计其 Lipschitz 常数。
+\end{exercise}
+\begin{solution}
+上面的嵌入给出 $u\in C^1$ 且 $\|\nabla u\|_\infty\le C\|u\|_{H^s}$。沿 $x$ 到 $y$ 的线段积分，有 $|u(x)-u(y)|\le\|\nabla u\|_\infty|x-y|$。
+\end{solution}
 \begin{exercise}[二次变换]
 证明 $\FT^2T=(2\pi)^n\Reflected T$，其中 $\Reflected T(\varphi)=T(\varphi(-\cdot))$。
 \end{exercise}

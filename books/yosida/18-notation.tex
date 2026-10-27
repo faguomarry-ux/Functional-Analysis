@@ -1,5 +1,78 @@
-\chapter{空间记号表（英文版辅助）}\label{back:notation}
-英文第六版书后目录列有空间记号表（Notation of Spaces，印刷第 501 页起），
-本书在此建立辅助占位；它不是中译本总目录中另列的主线章节。
-后续按本书实际采用的记号整理空间、对偶、算子和拓扑，并注明同一符号在不同参考书中的含义。
-当前广义函数的核心记号与 Fourier 约定见前言。
+\chapter{空间、算子与拓扑记号表}\label{back:notation}
+本表按本稿实际约定整理，不复制英文原书的记号表。未特别注明时，标量域为 $\mathbb C$；分布对探针线性，Hilbert 内积对第一变量线性。每组末列给出正文入口；同一字母的含义以所在节为准。
+
+\Needspace{12\baselineskip}
+\section*{空间与对偶}
+\begin{longtable}{p{0.24\linewidth}p{0.67\linewidth}}
+\toprule 记号 & 含义与约定\\\midrule\endhead
+$X,Y;H$ & Banach 空间；Hilbert 空间。一般局部凸空间也常记 $E$。\\
+$X',X''$ & 连续线性对偶与二次对偶；$Jx(f)=f(x)$。不是反对偶。\\
+$\mathcal L(X,Y)$ & 有界线性算子；$X=Y$ 时写 $\mathcal L(X)$。\\
+$C(K),C_0(S)$ & 紧空间上的连续函数；局部紧空间上在无穷远消失的连续函数，取上确界范数。\\
+$L^p(\Omega),\ell^p$ & 函数按几乎处处相等识别；序列空间按计数测度。$L^\infty$ 使用本质上确界。\\
+$L^p_{\Loc}(\Omega)$ & 每个相对紧开子集上 $p$ 次可积；不要求全域范数有限。\\
+$\Test(\Omega),\Test_K$ & 紧支集光滑函数，标准严格 LF 拓扑；$\Test_K$ 固定支集于 $K\Subset\Omega$，取各阶一致收敛拓扑。\\
+$\Smooth(\Omega)$ & $C^\infty(\Omega)$，紧集上各阶一致收敛的 Fréchet 拓扑。\\
+$\Sch(\R^n)$ & Schwartz 空间；所有带多项式权重的导数有界。\\
+$\Dist,\Temp,\CompactDist$ & 分别是 $\Test,\Sch,\Smooth$ 的连续线性对偶；$\CompactDist$ 识别为紧支集分布。\\
+$H^s(\R^n)$ & Bessel--Sobolev 空间，$\|u\|_{H^s}^2=(2\pi)^{-n}\int(1+|\xi|^2)^s|\widehat u|^2$。\\
+$W^{m,p}(\Omega)$ & 不超过 $m$ 阶的分布导数均属于 $L^p$；整数 $m$、$p=2$ 时记 $H^m(\Omega)$。\\
+$H_0^1(\Omega)$ & $\Test(\Omega)$ 在 $H^1$ 中的闭包；Lipschitz 区域上等于零迹子空间。\\
+$H^{-1}(\Omega)$ & $H_0^1(\Omega)$ 的连续线性对偶；不能与所有 $H^1(\Omega)$ 泛函混同。\\
+$E_{M,a},E_M$ & 第 \ref{ch:weighted} 章的加权模型及其归纳极限；不宣称等同于原书所有 $W$ 型空间。\\
+$\widehat E_p$ & 局部凸空间按连续半范数 $p$ 商去核后得到的 Banach 完备化；$\widehat{\phantom E}$ 在此不表示 Fourier 变换。\\
+\bottomrule\end{longtable}
+入口：第 \ref{sec:yosida-01-03}、\ref{sec:yosida-04-09} 节，第 \ref{ch:test}、\ref{ch:fourier}、\ref{ch:pde}、\ref{ch:weighted} 章，以及第十章核空间附录（第 \pageref{app:yosida-10} 页）。
+
+\Needspace{12\baselineskip}
+\section*{拓扑、收敛与半范数}
+\begin{longtable}{p{0.27\linewidth}p{0.64\linewidth}}
+\toprule 记号 & 含义与约定\\\midrule\endhead
+$K\Subset\Omega$ & $K$ 为包含于开集 $\Omega$ 的紧集；不是只要求 $K$ 有界。\\
+$p_{K,m}$ & $\max_{|\alpha|\le m}\sup_K|\partial^\alpha\varphi|$；用于局部光滑或固定支集拓扑。\\
+$q_{N,m}$ & $\max_{|\alpha|\le m}\sup_x(1+|x|)^N|\partial^\alpha\varphi(x)|$；用于 Schwartz 拓扑。\\
+$p_{a,q}$ & $\sup_xe^{M(a|x|)}|\varphi^{(q)}(x)|$；每个函数共同使用一个 $a>0$ 控制所有阶。\\
+$\sigma(X,X')$ & 弱拓扑：逐连续线性泛函收敛。\\
+$\sigma(X',X)$ & 弱星拓扑：逐 $X$ 中元素配对收敛。\\
+$\beta(X',X)$ & 强对偶拓扑：在 $X$ 的每个有界集上一致配对收敛。\\
+$T_j\to T$（分布） & 专题中默认弱对偶收敛；不是默认范数收敛。\\
+$\varphi_j\to\varphi$ 于 $\Test$ & 支集落在共同内紧集，且所有阶导数一致收敛。\\
+$s\text{-}\lim$ & 算子逐向量的强极限；不表示算子范数极限。\\
+$\hookrightarrow,\Subset$（嵌入） & 前者在明确声明时表示连续单射；后者在空间嵌入语境表示紧嵌入，应与紧集记号区分。\\
+\bottomrule\end{longtable}
+入口：第 \ref{sec:yosida-05-01} 节、定理 \ref{thm:D-convergence} 与第 \ref{ch:distributions} 章。
+
+\Needspace{12\baselineskip}
+\section*{分布运算与 Fourier 常数}
+\begin{longtable}{p{0.27\linewidth}p{0.64\linewidth}}
+\toprule 记号 & 含义与约定\\\midrule\endhead
+$\Pair{T}{\varphi}$ & 双线性配对；$T_f(\varphi)=\int f\varphi$，不加共轭。\\
+$\partial^\alpha T$ & $\Pair{\partial^\alpha T}{\varphi}=(-1)^{|\alpha|}T(\partial^\alpha\varphi)$。\\
+$\delta_a,\pv(1/x)$ & 点质量；对称删去原点邻域所定义的 Cauchy 主值分布。\\
+$\supp T,\operatorname{sing\,supp}T$ & 支集；不能局部由光滑函数表示的点集。\\
+$\tau_hT,\check T$ & 平移与反射：$\tau_hT(\varphi)=T(\varphi(\cdot+h))$，$\check T(\varphi)=T(\varphi(-\cdot))$。\\
+$S\otimes T,S*T$ & 不同变量的张量积；卷积须满足本稿列出的紧支集或适当性等条件。\\
+$\widehat T,\FT T$ & 对偶 Fourier 变换：$\widehat T(\varphi)=T(\widehat\varphi)$。\\
+$\FT^{-1}$ & 函数侧使用正号指数与因子 $(2\pi)^{-n}$；$\FT^2T=(2\pi)^n\check T$。\\
+$\rho_\varepsilon$ & $\varepsilon^{-n}\rho(\cdot/\varepsilon)$，$\rho\in\Test$ 非负且积分为 $1$。\\
+$G_t$ & $(4\pi t)^{-n/2}e^{-|x|^2/(4t)}$，$t>0$；$\widehat G_t=e^{-t|\xi|^2}$。\\
+$M^*$ & 凸共轭 $\sup_{r\ge0}(rs-M(r))$，此处星号不表示算子伴随。\\
+\bottomrule\end{longtable}
+入口：第 \ref{ch:operations}--\ref{ch:weighted} 章；运算条件速查见附录 \ref{app:references}。
+
+\clearpage
+\section*{算子、谱与演化}
+\begin{longtable}{p{0.27\linewidth}p{0.64\linewidth}}
+\toprule 记号 & 含义与约定\\\midrule\endhead
+$D(A),\ker A,\operatorname{Ran}A$ & 定义域、核、值域；无界算子的表达式不能脱离定义域。\\
+$A',A^*,{}^tP$ & Banach 对偶、Hilbert 伴随、双线性形式转置；应依正文约定核对共轭。\\
+$\rho(A),\sigma(A)$ & 预解集与谱，$R(\lambda,A)=(\lambda I-A)^{-1}$；与正则化核 $\rho$ 无关。\\
+$r(A)$ & 有界算子的谱半径；一般不等于 $\|A\|$。\\
+$T(t),e^{tA}$ & 强连续半群，生成元为 $A$。写 $e^{-tB}$ 时生成元为 $-B$。\\
+$E(B),E_\lambda$ & 谱投影与单位分解；与测试空间字母 $E$ 或 $\Smooth$ 不同。\\
+$P_t(x,B),T_t,U_t$ & Markov 转移核、作用于可观测函数的算子、作用于密度的对偶演化；一般 $U_t\ne T_t^{-1}$。\\
+$A_n,Q$ & Cesàro 平均及其极限投影；不保证原迭代 $T^n$ 收敛。\\
+$J_h,B_h$ & 非线性部分使用增生图 $B$：$J_h=(I+hB)^{-1}$、$B_h=(I-J_h)/h$，方程写 $u'+Bu\ni0$。\\
+$u^+,u^-,|u|$ & 向量格的正部、负部与绝对值；不表示复数的实虚部。\\
+\bottomrule\end{longtable}
+入口：第七至十四章；密度演化见第 \pageref{prop:supp-markov-density} 页。线性生成元的 $(\lambda I-A)^{-1}$ 与非线性约定中的 $(I+hB)^{-1}$ 符号不同，须随方程一起核对。
